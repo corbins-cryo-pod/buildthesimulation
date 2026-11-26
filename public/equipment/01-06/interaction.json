@@ -1,0 +1,13 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"01-06","model":"Custom 12U 19-inch laboratory example rack",
+ "frame":{"units":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","deskLocalOrigin":"floor at cabinet center"},
+ "parts":{"hinge":"front_hinge","tray":"nas_tray","movableModule":"compute_sled"},"ports":["port_ups","port_patch"],
+ "actions":[
+  {"id":"door","node":"door_handle","action":"door","label":"Open or close cabinet","sizeM":[0.065,0.120,0.044]},
+  {"id":"pull","node":"nas_tray_pull","action":"pull","label":"Extend or seat NAS tray","sizeM":[0.050,0.065,0.045]},
+  {"id":"power","node":"ups_key","action":"power","label":"Enable or standby virtual UPS","sizeM":[0.042,0.041,0.044]},
+  {"id":"mount","node":"mount_target","action":"mount","label":"Place compute sled in selected rack unit","sizeM":[0.110,0.031,0.035]}
+ ],
+ "motion":{"doorAxis":"+Y","openDeg":-94,"travelZ":0.17,"rackUnitY":0.04445},
+ "assessment":"Metric static asset and shared action IDs for future controller binding; immersive WebXR and headset not tested."
+}

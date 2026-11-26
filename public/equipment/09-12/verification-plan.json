@@ -1,0 +1,15 @@
+{
+ "fixture":"BTS-CELL-3E Mk I original passive virtual fixture; all outputs synthetic",
+ "plannedBeforeImplementation":true,
+ "cases":[
+  {"id":"SLAB","kind":"Analytic","expected":100,"units":"Ω","tolerance":1e-9,"basis":"10 mm / (1 S/m × 100 mm²) = 100 Ω independently by uniform current density"},
+  {"id":"DOUBLE","kind":"Analytic","expected":50,"units":"Ω","tolerance":1e-9,"basis":"Doubling conductivity doubles conductance; R must halve from 100 Ω"},
+  {"id":"AREA","kind":"Analytic","expected":25,"units":"Ω","tolerance":1e-9,"basis":"Fourfold cross-section at fixed gap and conductivity gives one quarter the resistance"},
+  {"id":"OPEN_RE","kind":"Failure case","expected":"missing-reference","units":"error code","basis":"An open sensing path supplies no WE–RE voltage. No 2-electrode fallback."},
+  {"id":"SWAPPED_RE","kind":"Failure case","expected":"incorrect-assignment","units":"error code","basis":"RE connected to the WE terminal does not constitute a correctly mapped three-electrode test."},
+  {"id":"RC_CORNER","kind":"Analytic","expected":[350,-250],"units":"Ω (Re, Im)","tolerance":1e-7,"basis":"At f=1/(2π×500 Ω×10 µF), 500||C alone equals 250−j250 Ω, plus 100 Ω slab resistance"},
+  {"id":"CURRENT","kind":"Analytic","expected":0.0001,"units":"A RMS","tolerance":1e-12,"basis":"10 mV RMS / 100 Ω = 100 µA RMS under ideal source, no hardware compliance modeled"},
+  {"id":"VIAL_OD","kind":"Geometry","expected":72,"units":"mm","tolerance":0.01,"basis":"Original design specification at path Glass_vessel_shell; geometric tolerance is binary export rounding only"},
+  {"id":"OPEN_LID","kind":"Failure case","expected":"open-fixture","units":"error code","basis":"Shipped demonstration suspends measurement whenever the cartridge and contacts are raised."}
+ ]
+}

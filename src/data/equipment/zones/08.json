@@ -15,9 +15,10 @@
     "inputs": "Die and carrier pad coordinates, net IDs, capillary frame and loop control points",
     "outputs": "Assembly revision with ball and stitch endpoints, wire centerline and updated net graph",
     "acceptance": "Bond a pad pair on a two-net coupon. Graph traversal must connect exactly the selected pair, maintain the expected endpoint order and leave the adjacent net isolated.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with source-documented capillary; chassis inferred",
+    "simulationStatus": "Ordered ball/stitch loop, footprint and network verification",
+    "integrationStatus": "Versioned pad and connectivity graph JSON",
+    "simulator": "/simulations/equipment/08-01/simulator/"
   },
   {
     "id": "08-02",
@@ -55,14 +56,15 @@
     "inputs": "Bond program, fiducial transform, pad list, loop templates and keep-out volumes",
     "outputs": "Assembly revision with accepted wire paths, net map and rejected bond IDs",
     "acceptance": "Run a four-pad program with one deliberate collision. Verify all accepted endpoint pairs against the netlist and ensure the rejected wire creates no electrical edge.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric 5630i wedge-wedge configuration on 5600i chassis",
+    "simulationStatus": "Verified pad transform, fixture intersection and accepted-only net edges",
+    "integrationStatus": "Workholder actions, program/assembly JSON and metric VR targets",
+    "simulator": "/simulations/equipment/08-03/simulator/"
   },
   {
     "id": "08-04",
     "name": "Precision flip-chip bonder",
-    "model": "Finetech FINEPLACER lambda",
+    "model": "Finetech FINEPLACER lambda A7 · manual VAS and pivot arm",
     "evidence": "A",
     "priority": "P1",
     "page": 27,
@@ -75,14 +77,19 @@
     "inputs": "Die bump array, matching carrier pads, fiducials and XY/rotation transform",
     "outputs": "Placement revision with transformed bump centers, pad overlap and connection map",
     "acceptance": "Apply a known rigid offset and rotation to a labeled asymmetric bump array. Inverse registration must recover every intended pair and flag a deliberately shifted nonoverlapping bump.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass manual A7 metric GLB; dimensional anchors and inferred details",
+    "simulationStatus": "Rigid fiducial alignment and circular pad overlap verified; dry placement only",
+    "integrationStatus": "Simulator, placement JSON and pair CSV; headset not tested",
+    "simulator": "/simulations/equipment/08-04/simulator/",
+    "related": [
+      ["Finetech A6/A7 manual hosted by York University", "https://mpt.eecs.yorku.ca/wp-content/uploads/2019/11/Operators-Manual.pdf"],
+      ["Original lambda manufacturer datasheet hosted by EPFL", "https://www.epfl.ch/research/facilities/cmi/wp-content/uploads/2023/11/FINEPLACER_lambda_specifications_en.pdf"]
+    ]
   },
   {
     "id": "08-05",
     "name": "Optoelectronic die bonder",
-    "model": "ficonTEC FL-300",
+    "model": "ficonTEC FL-300, UC Davis–style optical/flip-chip cell",
     "evidence": "B",
     "priority": "P2",
     "page": 28,
@@ -95,14 +102,15 @@
     "inputs": "Emitter and receiver reference frames, die pads and measured or synthetic coupling map",
     "outputs": "Assembly pose, pad connections and an optical coupling estimate tied to its map",
     "acceptance": "Sweep offset across a symmetric synthetic coupling fixture. The peak must coincide with registered optical axes and equal positive and negative offsets must give equal modeled coupling.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric editable photo-informed cell and independent stage/tip geometry",
+    "simulationStatus": "Verified symmetric passive mode overlap and geometric pad eligibility",
+    "integrationStatus": "Dedicated virtual alignment bench with pose and sweep exports",
+    "simulator": "/simulations/equipment/08-05/simulator/"
   },
   {
     "id": "08-06",
     "name": "Bond pull / shear tester",
-    "model": "Nordson DAGE 4000",
+    "model": "Nordson DAGE legacy 4000 / WP100g cartridge",
     "evidence": "B",
     "priority": "P1",
     "page": 28,
@@ -115,9 +123,16 @@
     "inputs": "Bond ID, hook or shear contact, calibrated force trace and failure annotation",
     "outputs": "Destructive test event with peak force, failure class and post-test bond state",
     "acceptance": "Replay a trace with a known maximum and a labeled wire break. Recover the maximum and units, invalidate only the tested connection and retain the pre-test assembly revision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-scaled metric GLB · specimen, stage and pull hook",
+    "simulationStatus": "Unit-aware synthetic force replay with labeled failure and pre/post revision",
+    "integrationStatus": "Destructive test event and trace exports · VR semantic actions",
+    "simulator": "/simulations/equipment/08-06/simulator/",
+    "related": [
+      [
+        "Sources and independent fixture verification",
+        "/simulations/equipment/08-06/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "08-07",
@@ -135,9 +150,10 @@
     "inputs": "Substrate surface IDs, compatible material rules and treatment event metadata",
     "outputs": "Surface revision with activation state, timestamp and bond eligibility",
     "acceptance": "Activate one face of a two-sided coupon. Only that face may satisfy an activation prerequisite, and activation alone must leave bond strength unmeasured.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric original GLB · cited wafer size; enclosure visually inferred",
+    "simulationStatus": "Face-specific activation eligibility logic; no physical process simulation",
+    "integrationStatus": "Revisioned surface ID and event JSON, strength unmeasured",
+    "simulator": "/simulations/equipment/08-07/simulator/"
   },
   {
     "id": "08-08",
@@ -161,7 +177,7 @@
   {
     "id": "08-09",
     "name": "Helium leak detector",
-    "model": "HLT-160 leak detector (manufacturer/revision to verify)",
+    "model": "Balzers HLT 160 (guide BG 800 387 BE/B)",
     "evidence": "B",
     "priority": "P2",
     "page": 29,
@@ -174,14 +190,15 @@
     "inputs": "Package revision, blank baseline, calibrated leak signal, units and acceptance limit",
     "outputs": "Leak-rate measurement and threshold decision linked to the tested package",
     "acceptance": "Replay two calibrated leak standards bracketing the declared threshold. Baseline-corrected readings must match their values within fixture uncertainty and fall on opposite sides of the decision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with visually inferred cabinet dimensions",
+    "simulationStatus": "Synthetic calibrated flow replay, blank and uncertainty decision",
+    "integrationStatus": "Revisioned package report and trace export",
+    "simulator": "/simulations/equipment/08-09/simulator/"
   },
   {
     "id": "08-10",
     "name": "Dispensing / encapsulation",
-    "model": "Nordson EFD Ultimus V (candidate)",
+    "model": "Nordson EFD Ultimus V · 7012590",
     "evidence": "C",
     "priority": "P2",
     "page": 29,
@@ -192,9 +209,10 @@
     "inputs": "Assembly surface, dispenser path, deposition volume and material or calibration ID",
     "outputs": "Encapsulation revision with coverage, remaining exposed surfaces and cure state",
     "acceptance": "Dispense onto an ideal flat rectangular area at uniform modeled thickness. Recover the input volume from the thickness map and preserve deliberately masked contact openings.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric 7012590 controller, accessory and stage set",
+    "simulationStatus": "Verified virtual-volume integration and exposed contact preservation; no chemistry",
+    "integrationStatus": "Workholder/trigger actions, encoded shot program and coated height map export",
+    "simulator": "/simulations/equipment/08-10/simulator/"
   },
   {
     "id": "08-11",

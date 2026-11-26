@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+<title id="title">BTS-CELL-3E Mk I simplified sensing plane and passive circuit</title>
+<desc id="desc">A cross section of a rectangular uniform current path from the working face to the reference sensing plane. A counter terminal closes an ideal return, but does not set the sensing distance or add impedance.</desc>
+<rect width="960" height="300" rx="4" fill="#f3efe2"/>
+<g font-family="system-ui, sans-serif" fill="#223632" font-size="18">
+<text x="38" y="38" font-size="22" font-weight="bold">BTS-CELL-3E Mk I</text><text x="38" y="65">Top cutaway • schematic, not to scale</text>
+<text x="80" y="119" fill="#176b49" font-weight="bold">WE</text><text x="398" y="119" font-weight="bold">RE</text><text x="763" y="119" fill="#9b392d" font-weight="bold">CE</text>
+<rect x="106" y="140" width="304" height="54" fill="#b1d3c8" stroke="#416d65"/><text x="182" y="173">Uniform conductor</text>
+<path d="M410 131V201" stroke="#516360" stroke-width="2" stroke-dasharray="6 4"/>
+<path d="M100 140V194" stroke="#176b49" stroke-width="9"/><path d="M774 135V200" stroke="#9b392d" stroke-width="9"/>
+<path d="M411 167H765" stroke="#566461" stroke-width="2" stroke-dasharray="7 6"/><text x="471" y="155">Ideal return region, no series drop modeled</text>
+<path d="M106 205V234M410 205V234M106 224H410" fill="none" stroke="#374944" stroke-width="1.5"/>
+<path d="M106 224l9-4v8zm304 0l-9-4v8z" fill="#374944"/>
+<text x="121" y="254">L = 10 mm nominal; working face A = 100 mm²</text>
+<text x="566" y="254" font-size="16">RE measures voltage without drawing current.</text>
+</g></svg>

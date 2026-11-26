@@ -1,0 +1,18 @@
+{
+ "schema":"bts.instrument-bindings.preview.v1",
+ "deviceId":"09-06",
+ "frame":{"unit":"m","handedness":"right","up":"+Y","operatorFront":"+Z","placementAnchor":"bts_bench_anchor","kind":"bench","enclosureXYZ":[0.2611,0.1038,0.3032],"modelToleranceM":0.0015},
+ "controls":[
+   {"id":"power","node":"front_power","label":"Standby / power","action":"power","targetSizeM":[0.017,0.011,0.006]},
+   {"id":"capture","node":"front_trigger","label":"Capture output","action":"capture","targetSizeM":[0.017,0.011,0.006]},
+   {"id":"output-1","node":"front_ch1","label":"Toggle channel 1 output","action":"toggle-output","value":0,"targetSizeM":[0.017,0.011,0.006]},
+   {"id":"output-2","node":"front_ch2","label":"Toggle channel 2 output","action":"toggle-output","value":1,"targetSizeM":[0.017,0.011,0.006]},
+   {"id":"dial","node":"front_dial","label":"Increase selected channel frequency 100 Hz (virtual dial step)","action":"step-frequency","value":0,"targetSizeM":[0.027,0.027,0.011]}
+ ],
+ "ports":[
+  {"id":"out-1","node":"port_ch1","type":"BNC","direction":"output","unit":"V","normal":[0,0,1]},
+  {"id":"out-2","node":"port_ch2","type":"BNC","direction":"output","unit":"V","normal":[0,0,1]},
+  {"id":"sync","node":"port_sync","type":"BNC","direction":"output","normal":[0,0,1],"simulation":"Ideal marker timestamps only; no sync-line voltage model"},
+  {"id":"ext-trigger","node":"rear_ext_trigger","type":"BNC","direction":"bidirectional","normal":[0,0,-1],"simulation":"Not modeled"}
+ ]
+}

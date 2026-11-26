@@ -31,9 +31,10 @@
     "inputs": "Enclosure and ground connection state, coupled pickup trace and declared shielding factor",
     "outputs": "State-tagged pickup component for the acquisition noise model",
     "acceptance": "Inject a pure test tone with an illustrative 20 dB amplitude reduction in the closed state. Its amplitude should fall to one tenth and return when the modeled shielding is removed.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric custom GLB · design dimensions, not measured",
+    "simulationStatus": "Illustrative near-field pickup factor and linked fixture state",
+    "integrationStatus": "Revisioned state and common analog waveform JSON",
+    "simulator": "/simulations/equipment/16-02/simulator/"
   },
   {
     "id": "16-03",
@@ -49,9 +50,10 @@
     "inputs": "Bench geometry, load footprint, anchor and drawer state, tray inventory",
     "outputs": "Occupied anchor map, drawer transforms and tray locations",
     "acceptance": "Move a tray into an open drawer and close it. The tray must retain its ID and drawer-relative pose, while another object cannot claim its occupied slot.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original 1800 × 750 × 900 mm metric steel bench, cream storage, drawer and trays",
+    "simulationStatus": "Verified static slot fit, occupancy and drawer-relative identity/pose",
+    "integrationStatus": "Interactive placement, anchor export and VR actions",
+    "simulator": "/simulations/equipment/16-03/simulator/"
   },
   {
     "id": "16-04",

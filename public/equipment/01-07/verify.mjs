@@ -1,0 +1,10 @@
+import fs from 'node:fs';import {createStation,file,sample,svgSheet} from './draft.mjs';
+const u=n=>new URL(n,import.meta.url),plan=JSON.parse(fs.readFileSync(u('reference-plan.json')));
+const a=createStation(),before=file(a.read()),m=before.annotations[0];
+for(const k of ['zoomIn','zoomIn','rotateView'])a.dispatch(k);const later=file(a.read()),n=later.annotations[0];
+const b=fs.readFileSync(u('drafting-table.glb')),j=JSON.parse(b.toString('utf8',20,20+b.readUInt32LE(12))),w=j.nodes.find(n=>n.name==='Worktop_1100x650');
+const actual={SQUARE:m.lengthMm,VIEW_INVARIANCE:[n.lengthMm,later.view.zoom,later.view.rotationDeg,...n.anchorVertexIds],OVERLAY:Math.hypot(...before.specimenOverlay.translationMm),WORKTOP:[w.scale[0]*1e3,w.scale[2]*1e3]};
+for(const t of plan.checks){t.actual=actual[t.id];t.pass=JSON.stringify(t.actual)===JSON.stringify(t.expected);}if(plan.checks.some(t=>!t.pass))throw Error('Verification failed');
+for(const [k,v] of [['verification.json',plan],['example-outline.json',sample()],['example-sheet.json',before]])fs.writeFileSync(u(k),JSON.stringify(v,null,2)+'\n');
+fs.writeFileSync(u('example-sheet.svg'),svgSheet(a.read()));
+console.log('PASS',Object.keys(actual));

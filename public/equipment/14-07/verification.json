@@ -1,0 +1,76 @@
+{
+  "scope": "Predeclared synthetic arithmetic, not a decomposition experiment or a real temperature procedure.",
+  "rows": [
+    {
+      "id": "gross-initial",
+      "expected": 10,
+      "unit": "mg",
+      "tolerance": 1e-10,
+      "actual": 10,
+      "pass": true
+    },
+    {
+      "id": "gross-final",
+      "expected": 8,
+      "unit": "mg",
+      "tolerance": 1e-10,
+      "actual": 8,
+      "pass": true
+    },
+    {
+      "id": "gross-retained",
+      "expected": 80,
+      "unit": "%",
+      "tolerance": 1e-9,
+      "actual": 80,
+      "pass": true
+    },
+    {
+      "id": "net-retained",
+      "expected": 80,
+      "unit": "%",
+      "tolerance": 1e-9,
+      "actual": 80,
+      "pass": true
+    },
+    {
+      "id": "loss",
+      "expected": 2,
+      "unit": "mg",
+      "tolerance": 1e-10,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "id": "net-ignore-tare",
+      "expected": 80,
+      "unit": "%",
+      "tolerance": 1e-9,
+      "actual": 80,
+      "pass": true
+    },
+    {
+      "id": "blank-corrected",
+      "expected": 80,
+      "unit": "%",
+      "tolerance": 1e-9,
+      "actual": 79.99999999999999,
+      "pass": true
+    },
+    {
+      "id": "blank-ignored",
+      "expected": 82,
+      "unit": "%",
+      "tolerance": 1e-9,
+      "actual": 81.99999999999999,
+      "pass": true
+    },
+    {
+      "id": "missing-tare",
+      "expected": "tare",
+      "unit": "code",
+      "actual": "tare",
+      "pass": true
+    }
+  ]
+}

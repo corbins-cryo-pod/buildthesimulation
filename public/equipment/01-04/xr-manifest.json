@@ -1,0 +1,55 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "01-04",
+  "asset": "/equipment/01-04/connectomics-console.glb",
+  "scale": "glTF meter, +Y up and +Z toward operator; volume nm are a separate logical coordinate frame",
+  "metrics": {
+    "bytes": 170392,
+    "triangles": 2324,
+    "draws": 50,
+    "deskGltfXyzM": [
+      1.5499999523162842,
+      0.03999999910593033,
+      0.7400000095367432
+    ]
+  },
+  "implementation": "Display and future XR share DOM-independent action(); no immersive browser/headset run",
+  "nodes": [
+    {
+      "node": "zoom_trackball",
+      "label": "Toggle native or coarse rendering",
+      "action": {
+        "type": "zoom"
+      },
+      "diameterM": 0.084
+    },
+    {
+      "node": "annotation_key",
+      "label": "Append annotation at canonical cursor",
+      "action": {
+        "type": "add"
+      },
+      "boundsM": [
+        0.045,
+        0.017,
+        0.043
+      ]
+    },
+    {
+      "node": "primary_texture_anchor",
+      "label": "Live XY slice texture",
+      "panelXYm": [
+        0.72,
+        0.407
+      ]
+    },
+    {
+      "node": "side_texture_anchor",
+      "label": "Live selection provenance texture",
+      "panelXYm": [
+        0.445,
+        0.279
+      ]
+    }
+  ]
+}

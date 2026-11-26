@@ -1,0 +1,119 @@
+{
+  "schema": "bts.connectomics.annotation.v1",
+  "deviceId": "01-04",
+  "origin": "synthetic-geometry-only",
+  "volumeId": "BTS-SYN-TILES-001",
+  "volumeRevision": "synthetic-r1",
+  "annotationRevision": 4,
+  "coordinateFrame": "axis-aligned XYZ, lower corner registration, right-handed; units nm",
+  "originNm": [
+    1000,
+    -200,
+    500
+  ],
+  "voxelSizeNm": [
+    8,
+    8,
+    40
+  ],
+  "selection": {
+    "level": 1,
+    "worldNm": [
+      1064,
+      -148,
+      680
+    ],
+    "indexVox": [
+      4,
+      3,
+      2
+    ],
+    "tileId": "right",
+    "tileLocalVox": [
+      0,
+      3,
+      2
+    ],
+    "segmentId": 17,
+    "intensity": 151,
+    "voxelSizeNm": [
+      16,
+      16,
+      80
+    ]
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "worldNm": [
+        1048,
+        -148,
+        680
+      ],
+      "segmentId": 17,
+      "prevNodeId": null
+    },
+    {
+      "id": "node-2",
+      "worldNm": [
+        1064,
+        -148,
+        680
+      ],
+      "segmentId": 17,
+      "prevNodeId": "node-1"
+    },
+    {
+      "id": "node-3",
+      "worldNm": [
+        1080,
+        -148,
+        680
+      ],
+      "segmentId": 17,
+      "prevNodeId": "node-2"
+    }
+  ],
+  "edits": [
+    {
+      "revision": 1,
+      "type": "clear"
+    },
+    {
+      "revision": 2,
+      "type": "add-node",
+      "nodeId": "node-1",
+      "captureLevel": 0,
+      "segmentId": 17,
+      "worldNm": [
+        1048,
+        -148,
+        680
+      ]
+    },
+    {
+      "revision": 3,
+      "type": "add-node",
+      "nodeId": "node-2",
+      "captureLevel": 0,
+      "segmentId": 17,
+      "worldNm": [
+        1064,
+        -148,
+        680
+      ]
+    },
+    {
+      "revision": 4,
+      "type": "add-node",
+      "nodeId": "node-3",
+      "captureLevel": 0,
+      "segmentId": 17,
+      "worldNm": [
+        1080,
+        -148,
+        680
+      ]
+    }
+  ]
+}

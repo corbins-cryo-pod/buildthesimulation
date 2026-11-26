@@ -1,0 +1,7 @@
+import os,sys,json
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+ b=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH') or p.chromium.executable_path,args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']);g=b.new_page(viewport={'width':820,'height':760},accept_downloads=True);errors=[];g.on('pageerror',lambda e:errors.append(str(e)));g.goto(sys.argv[1].rstrip('/')+'/simulations/equipment/16-03/');g.get_by_role('link',name='Open simulator').click();g.wait_for_selector('#sb-view[data-ready=true]',timeout=30000)
+ g.click('#sb-detail');g.click('#sb-drawer');g.click('[data-grab=CASE_C]');g.click('[data-slot=drawer]');assert 'Footprint' in g.inner_text('#sb-status');g.click('[data-slot=side]');g.click('[data-grab=TRAY_A]');g.click('[data-slot=drawer]');assert '0.355' in g.inner_text('#sb-info');g.click('[data-grab=TRAY_B]');g.click('[data-slot=drawer]');assert 'occupied' in g.inner_text('#sb-status');g.click('[data-slot=right]');g.click('#sb-drawer');assert '0.015' in g.inner_text('#sb-info')
+ with g.expect_download() as d:g.click('#sb-save')
+ r=json.loads(d.value.path().read_text());a=next(x for x in r['items'] if x['id']=='TRAY_A');assert a['pose']['anchorId']=='drawer' and a['pose']['localPositionM']==[0,0,0] and not r['drawer']['open'];assert not errors,errors;print('PASS: GLB, oversize rejection, single-slot guard, retained ID and local pose, downloadable JSON');b.close()

@@ -1,0 +1,6 @@
+import os,sys,json
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+ b=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH') or p.chromium.executable_path,args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']);g=b.new_page(viewport={'width':820,'height':760},accept_downloads=True);errors=[];g.on('pageerror',lambda e:errors.append(str(e)));g.goto(sys.argv[1].rstrip('/')+'/simulations/equipment/08-10/');g.get_by_role('link',name='Open simulator').click();g.wait_for_selector('#dp-view[data-ready=true]',timeout=30000);g.click('#dp-plate');g.click('#dp-fire');assert '460.000 nL recovered · 5.000 µm film · 4 masked cells' in g.inner_text('#dp-result')
+ with g.expect_download() as d:g.click('#dp-save')
+ r=json.loads(d.value.path().read_text());assert r['integratedNL']==460 and r['maskedCells']==4 and len(r['pulses'])==92 and r['cureState']=='not modeled';g.click('#dp-stage');g.click('#dp-fire');assert 'Seat the plate' in g.inner_text('#dp-status');assert not errors,errors;print('PASS: model, virtual trigger, 460 nL to 5 µm map, four masked cells, JSON, fixture interlock');b.close()

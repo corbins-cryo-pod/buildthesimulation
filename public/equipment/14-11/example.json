@@ -1,0 +1,215 @@
+{
+  "schema": "bts.soak-report.v1",
+  "deviceId": "14-11",
+  "packageId": "PKG-B",
+  "contactIds": [
+    "PKG-B-HI",
+    "PKG-B-LO"
+  ],
+  "revision": 4,
+  "parentRevision": 3,
+  "units": {
+    "frequencyHz": "Hz",
+    "reOhm": "Ω",
+    "imOhm": "Ω",
+    "temperatureC": "°C",
+    "saltMassPercent": "% by mass",
+    "elapsedDays": "d",
+    "deltaMagnitudePercent": "%",
+    "deltaPhaseDeg": "deg"
+  },
+  "baselineOnly": false,
+  "selected": {
+    "frequencyHz": 1000,
+    "baselineMagnitudeOhm": 11228.58264334446,
+    "currentMagnitudeOhm": 12351.440907678905,
+    "deltaMagnitudePercent": 9.999999999999986,
+    "deltaPhaseDeg": 0,
+    "baselineRecordId": "PKG-B-D0",
+    "currentRecordId": "PKG-B-D14"
+  },
+  "conditionHistory": [
+    {
+      "recordId": "PKG-B-D0",
+      "elapsedDays": 0,
+      "timestamp": "2026-01-01T00:00:00.000Z",
+      "bathId": "B",
+      "temperatureC": 60,
+      "saltMassPercent": 0.9
+    },
+    {
+      "recordId": "PKG-B-D3",
+      "elapsedDays": 3,
+      "timestamp": "2026-01-04T00:00:00.000Z",
+      "bathId": "B",
+      "temperatureC": 60,
+      "saltMassPercent": 0.9
+    },
+    {
+      "recordId": "PKG-B-D7",
+      "elapsedDays": 7,
+      "timestamp": "2026-01-08T00:00:00.000Z",
+      "bathId": "B",
+      "temperatureC": 60,
+      "saltMassPercent": 0.9
+    },
+    {
+      "recordId": "PKG-B-D14",
+      "elapsedDays": 14,
+      "timestamp": "2026-01-15T00:00:00.000Z",
+      "bathId": "B",
+      "temperatureC": 60,
+      "saltMassPercent": 0.9
+    }
+  ],
+  "spectra": [
+    {
+      "schema": "bts.soak-impedance.v1",
+      "recordId": "PKG-B-D0",
+      "packageId": "PKG-B",
+      "contactIds": [
+        "PKG-B-HI",
+        "PKG-B-LO"
+      ],
+      "revision": 0,
+      "elapsedDays": 0,
+      "timestamp": "2026-01-01T00:00:00.000Z",
+      "condition": {
+        "bathId": "B",
+        "temperatureC": 60,
+        "saltMassPercent": 0.9
+      },
+      "kind": "synthetic",
+      "provenance": "Analytic passive parallel RC baseline; single-bin drift injection is a metrology verification fault, not an ingress mechanism.",
+      "points": [
+        {
+          "frequencyHz": 100,
+          "reOhm": 11982.969527694433,
+          "imOhm": -451.74730843674223
+        },
+        {
+          "frequencyHz": 1000,
+          "reOhm": 10506.755681534703,
+          "imOhm": -3960.9535754606695
+        },
+        {
+          "frequencyHz": 10000,
+          "reOhm": 788.8389627104426,
+          "imOhm": -2973.852828139823
+        }
+      ]
+    },
+    {
+      "schema": "bts.soak-impedance.v1",
+      "recordId": "PKG-B-D3",
+      "packageId": "PKG-B",
+      "contactIds": [
+        "PKG-B-HI",
+        "PKG-B-LO"
+      ],
+      "revision": 1,
+      "elapsedDays": 3,
+      "timestamp": "2026-01-04T00:00:00.000Z",
+      "condition": {
+        "bathId": "B",
+        "temperatureC": 60,
+        "saltMassPercent": 0.9
+      },
+      "kind": "synthetic",
+      "provenance": "Analytic passive parallel RC baseline; single-bin drift injection is a metrology verification fault, not an ingress mechanism.",
+      "points": [
+        {
+          "frequencyHz": 100,
+          "reOhm": 11982.969527694433,
+          "imOhm": -451.74730843674223
+        },
+        {
+          "frequencyHz": 1000,
+          "reOhm": 10731.900446139018,
+          "imOhm": -4045.831152077684
+        },
+        {
+          "frequencyHz": 10000,
+          "reOhm": 788.8389627104426,
+          "imOhm": -2973.852828139823
+        }
+      ]
+    },
+    {
+      "schema": "bts.soak-impedance.v1",
+      "recordId": "PKG-B-D7",
+      "packageId": "PKG-B",
+      "contactIds": [
+        "PKG-B-HI",
+        "PKG-B-LO"
+      ],
+      "revision": 2,
+      "elapsedDays": 7,
+      "timestamp": "2026-01-08T00:00:00.000Z",
+      "condition": {
+        "bathId": "B",
+        "temperatureC": 60,
+        "saltMassPercent": 0.9
+      },
+      "kind": "synthetic",
+      "provenance": "Analytic passive parallel RC baseline; single-bin drift injection is a metrology verification fault, not an ingress mechanism.",
+      "points": [
+        {
+          "frequencyHz": 100,
+          "reOhm": 11982.969527694433,
+          "imOhm": -451.74730843674223
+        },
+        {
+          "frequencyHz": 1000,
+          "reOhm": 11032.093465611439,
+          "imOhm": -4159.001254233704
+        },
+        {
+          "frequencyHz": 10000,
+          "reOhm": 788.8389627104426,
+          "imOhm": -2973.852828139823
+        }
+      ]
+    },
+    {
+      "schema": "bts.soak-impedance.v1",
+      "recordId": "PKG-B-D14",
+      "packageId": "PKG-B",
+      "contactIds": [
+        "PKG-B-HI",
+        "PKG-B-LO"
+      ],
+      "revision": 3,
+      "elapsedDays": 14,
+      "timestamp": "2026-01-15T00:00:00.000Z",
+      "condition": {
+        "bathId": "B",
+        "temperatureC": 60,
+        "saltMassPercent": 0.9
+      },
+      "kind": "synthetic",
+      "provenance": "Analytic passive parallel RC baseline; single-bin drift injection is a metrology verification fault, not an ingress mechanism.",
+      "points": [
+        {
+          "frequencyHz": 100,
+          "reOhm": 11982.969527694433,
+          "imOhm": -451.74730843674223
+        },
+        {
+          "frequencyHz": 1000,
+          "reOhm": 11557.431249688174,
+          "imOhm": -4357.048933006737
+        },
+        {
+          "frequencyHz": 10000,
+          "reOhm": 788.8389627104426,
+          "imOhm": -2973.852828139823
+        }
+      ]
+    }
+  ],
+  "otherPackages": [
+    "PKG-A"
+  ],
+  "limitations": "Simulated or replayed records only. No lifetime, ingress rate, material/biological condition or acceleration claim."
+}

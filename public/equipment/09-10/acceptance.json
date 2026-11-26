@@ -1,0 +1,14 @@
+{
+ "origin":"Predetermined ideal sinusoid and circuit expectations; analytic filter and load verification, not factory calibration.",
+ "cases":[
+  {"id":"gain","description":"20 mVpp differential at gain 100, high Z, DC bypass","expected":2,"unit":"Vpp","tolerance":1e-9},
+  {"id":"matched","description":"50 Ω load on the 50 Ω port halves calibrated high-Z gain","expected":1,"unit":"Vpp","tolerance":1e-9},
+  {"id":"low-cutoff","description":"One LP RC stage gives amplitude 1/√2 at its 1 kHz cutoff","expected":0.7071067811865476,"unit":"ratio","tolerance":1e-12},
+  {"id":"high-phase","description":"One HP RC stage leads by 45° at cutoff","expected":45,"unit":"deg","tolerance":1e-10},
+  {"id":"two-pole","description":"Two identical LP stages give 1/2 amplitude at their coincident cutoff","expected":0.5,"unit":"ratio","tolerance":1e-12},
+  {"id":"common-mode","description":"A-B rejects an equal tone on both input ports in the ideal model","expected":0,"unit":"V difference","tolerance":1e-12},
+  {"id":"dc-ac","description":"AC coupling blocks a zero-frequency steady-state component","expected":0,"unit":"ratio","tolerance":1e-12},
+  {"id":"overload","description":"20 mVpp at gain 1000 would require 20 Vpp and fails output headroom","expected":"output-overload","unit":"code"},
+  {"id":"ac-bandpass","description":"Do not offer combined AC-coupling and selected band-pass in the modeled subset","expected":"filter-mode","unit":"code"}
+ ]
+}

@@ -1,0 +1,69 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/01-06/verification.json';
+import metrics from '../../../../../public/equipment/01-06/asset-metrics.json';
+const p='/equipment/01-06/';
+const manual='https://sgcdn.startech.com/005329/media/sets/rk1219walhm_manual/rk1219walhm.pdf';
+const drawing='https://sgcdn.startech.com/005329/media/sets/RK1219WALL_Diagram/RK1219WALL-Diagram.pdf';
+const ups='https://shop.se.com/pro/us/en/product/apc-smart-ups-line-interactive-1500va-rackmount-2u-120v-6x-nema-5-15r-outlets-smartconnect-port-smartslot-avr-lcd/';
+const upspic='https://download.se.com/files?p_Doc_Ref=SPD_CENZ-AW7T9J_D_H&p_File_Type=rendition_1500_jpg';
+const guide='https://www.se.com/ca/en/download/document/SPD_AHUG-A6KA6F/';
+---
+<Layout pageTitle="Data infrastructure rack" description="Custom 19-inch rack with an operable NAS tray, assumed UPS budget and a self-contained mask and trace archive experiment." wide={true}>
+<article id="rack01">
+<nav><a href="/simulations/equipment/01-06/">← Equipment 01-06</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#rk-evidence">References and checks</a></nav>
+<header><small>01-06 · DATA INFRASTRUCTURE · OFFLINE VIRTUAL FIXTURE</small><h2>19-inch laboratory archive rack</h2><p>Open the cabinet, place an optional compute sled, and archive a synthetic mask and voltage trace. Restore them with matching checksums, then deliberately change the virtual trace to verify that the restore is refused.</p></header>
+<div class="bench"><section class="panel"><h3>Cabinet, rails and drive tray</h3>
+<div class="tools"><button data-rk-view="orbit">Reset view</button><button data-rk-view="front">Front face</button><button data-rk-view="rail">Rail close-up</button><button data-rk-view="rear">Rear view</button></div>
+<div id="rk-viewer"></div><p id="rk-model" role="status">Loading metric cabinet model…</p>
+<p>Orbit, zoom and click the door handle, NAS tray or UPS control. The custom assembly is an original dimensional design, not a survey or claim that these components have been fitted together physically. Immersive headset testing has not been done.</p></section>
+<section class="panel"><h3>Placement and UPS capacity</h3>
+<div class="tools"><button id="rk-door">Open cabinet</button><button id="rk-pull">Extend NAS tray</button><button id="rk-power">UPS standby</button><button id="rk-reset">Reset example</button></div>
+<div class="fields"><label>Starting rail position <select id="rk-u">{Array.from({length:12},(_,i)=>i+1).map(u=><option value={u} selected={u===9}>U{u}</option>)}</select></label><label>Sled real power <select id="rk-w"><option value="120">120 W nominal</option><option value="900">900 W test overload</option></select></label></div>
+<div class="tools"><button id="rk-mount">Mount 1U sled</button><button id="rk-remove" disabled>Remove sled</button></div>
+<p id="rk-mounts"></p><p id="rk-load" aria-live="polite"></p>
+<h3>Archive and restore a run</h3>
+<div class="tools"><button id="rk-archive">Archive example</button><button id="rk-restore" disabled>Verify and restore</button><button id="rk-damage" disabled>Change dummy trace</button><button id="rk-export" disabled>Export archive JSON</button></div>
+<div class="fields"><label>Import local run or archive JSON<input id="rk-file" type="file" accept=".json,application/json"/></label></div>
+<p id="rk-status" aria-live="polite">The example is ready to archive.</p>
+<p id="rk-event"></p><ul id="rk-checks" aria-label="Object integrity report"></ul></section></div>
+<section class="panel"><h3>Try the acceptance run</h3>
+<p><strong>Archive example → Verify and restore → Change dummy trace → Verify and restore.</strong> The first restore preserves the mask and trace IDs, parent links and sample revision. After the trace edit, only its digest fails and no restore event is recorded. Open the cabinet and mount the 900 W sled at U9 to see the separate overload interlock. U8 shows an occupied-position error.</p>
+<p>Rack slots use integer U positions, counted from the bottom. The browser estimates real watts as ΣP and conservatively bounds apparent volt-amperes as Σ(P/PF). That sum divided by 120 V is an estimated current, not a meter reading. The 240 W NAS, 48 W switch and optional sled with PF 0.80 are synthetic; passive patch hardware draws zero. The budget guard checks both UPS ratings. It is not a breaker, wiring, thermal, transient or battery-runtime model.</p>
+<p>Archive uses SHA-256 on exact UTF-8 bytes with a byte count and a run → mask → trace parent chain. It checks consistency with the stored record, not authorship or authenticity. There is no network connection, physical switching, long-term storage or user account. Export before leaving to retain the example. Binary encodings other than UTF-8 are outside this first pass.</p>
+<p><a href={p+'contract.json'}>I/O contract</a> · <a href={p+'example-run.json'}>Input run JSON</a> · <a href={p+'example-archive.json'}>Archive JSON fixture</a> · <a href="https://csrc.nist.gov/pubs/fips/180-4/final">NIST SHA-256 standard §6.2</a></p></section>
+<section class="panel" id="rk-evidence"><h3>Reference geometry and checks</h3>
+<div class="refs">
+<figure><img loading="lazy" src={p+'cabinet-view.webp'} alt="Original rendering of the graphite rack with closed vented front door"/><figcaption><strong>Closed cabinet, original render.</strong> Compare the mesh door, pull and exterior with the <a href={manual}>StarTech RK1219WALHM Rev. 02/22/2012 manual, p. 1</a>. This assembly uses a different custom cabinet.</figcaption></figure>
+<figure><img loading="lazy" src={p+'rail-view.webp'} alt="Original rack render with the front door open showing mounting rails, UPS, network switch and NAS tray"/><figcaption><strong>Open rails and tray, original render.</strong> The <a href={drawing}>RK1219WALL dimensional sheet 1</a> establishes metric rack pitch and rail spacing. Compare the UPS display, grilles and rear with the <a href={ups}>SMT1500RM2UC product gallery</a>, <a href={upspic}>rear image</a> and <a href={guide}>installation guide</a>. The NAS and switch are generic originals.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Parameter</th><th>Value</th><th>Scope and provenance</th></tr></thead><tbody>
+<tr><td>Mounting interface</td><td>12U, nominal 19 in (482.6 mm) front face; pitch 44.45 mm; 465 mm between rail centers</td><td>Nominal face and rack pitch, manufacturer drawing above; controls placement and scale.</td></tr>
+<tr><td>Cabinet body / useful depth</td><td>600 × 650 × 600 mm W×H×D / 500 mm</td><td>Original design values, exterior excludes handle; not measured. Door −94° and tray 170 mm are virtual design travel.</td></tr>
+<tr><td>UPS configuration and limits</td><td>APC SMT1500RM2UC, 2U, 1,000 W, 1,440 VA, 120 V AC output</td><td>Manufacturer product specification, Main. Controls virtual storage interlock. Modeled chassis details and clearance are approximate.</td></tr>
+<tr><td>Model budget</td><td>{metrics.bytes} B; {metrics.triangles} triangles; {metrics.primitives} primitives</td><td>Original metric GLB, named hinge, tray, mount and display actions. Static asset for later controller binding, not an immersive app.</td></tr>
+</tbody></table></div>
+<p><a href={p+'rack.glb'}>Metric GLB</a> · <a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'interaction.json'}>Motion and action anchors</a> · <a href={p+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/01-06/client.mjs';</script>
+<style>
+#rack01{max-width:1260px;margin:auto}
+#rack01 header{margin:1.35rem 0 1rem}#rack01 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}
+.panel h3{margin:0 0 .8rem}.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.2rem}.fields option{background:#f5f1e6;color:#151b1a}.fields label:only-child{grid-column:1/-1}
+#rk-viewer{height:365px;margin:.72rem 0;background:#293941}#rk-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#rk-status[data-error=true],#rk-load[data-error=true]{border-left:4px solid #a56542;padding-left:.6rem}
+#rk-checks{overflow-wrap:anywhere;font-size:.87rem;padding-left:1.15rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}
+th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#rk-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#rk-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

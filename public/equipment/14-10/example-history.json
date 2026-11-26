@@ -1,0 +1,1135 @@
+{
+  "schema": "bts.flex-fatigue.history.v1",
+  "deviceId": "14-10",
+  "origin": "synthetic-model",
+  "sample": {
+    "sampleId": "BTS-14-10-SYN-001",
+    "sampleRevision": "coupon-r1",
+    "contactIds": [
+      "J1",
+      "J2"
+    ],
+    "kind": "synthetic-surface-trace"
+  },
+  "settings": {
+    "radiusMm": 4.95,
+    "couponThicknessUm": 100,
+    "lengthMm": 20,
+    "widthMm": 1,
+    "sheetOhm": 0.5,
+    "cycles": 120,
+    "referenceLife": 1000,
+    "exponent": 2,
+    "driftAtLimit": 0.5,
+    "frequencyHz": 2,
+    "injectedOpen": 100
+  },
+  "completedCycles": 120,
+  "revision": 3,
+  "resumedAtCycle": 60,
+  "units": {
+    "timeS": "s",
+    "peakCurvaturePerM": "m^-1",
+    "peakStrain": "1",
+    "damage": "1",
+    "flatResistanceOhm": "ohm"
+  },
+  "samplePhases": {
+    "curvature": "90 degree crest",
+    "resistance": "returned flat at cycle end"
+  },
+  "events": [
+    {
+      "cycle": 100,
+      "timeS": 50,
+      "type": "open",
+      "reason": "synthetic-injection",
+      "contactIds": [
+        "J1",
+        "J2"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "cycle": 1,
+      "timeS": 0.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.001,
+      "flatResistanceOhm": 10.004999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 2,
+      "timeS": 1,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.002,
+      "flatResistanceOhm": 10.009999999999998,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 3,
+      "timeS": 1.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.003,
+      "flatResistanceOhm": 10.015,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 4,
+      "timeS": 2,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.004,
+      "flatResistanceOhm": 10.02,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 5,
+      "timeS": 2.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.005,
+      "flatResistanceOhm": 10.024999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 6,
+      "timeS": 3,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.006,
+      "flatResistanceOhm": 10.03,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 7,
+      "timeS": 3.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.007,
+      "flatResistanceOhm": 10.035,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 8,
+      "timeS": 4,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.008,
+      "flatResistanceOhm": 10.04,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 9,
+      "timeS": 4.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.009000000000000001,
+      "flatResistanceOhm": 10.045,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 10,
+      "timeS": 5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.01,
+      "flatResistanceOhm": 10.049999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 11,
+      "timeS": 5.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.011,
+      "flatResistanceOhm": 10.055,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 12,
+      "timeS": 6,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.012,
+      "flatResistanceOhm": 10.06,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 13,
+      "timeS": 6.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.013000000000000001,
+      "flatResistanceOhm": 10.065,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 14,
+      "timeS": 7,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.014,
+      "flatResistanceOhm": 10.069999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 15,
+      "timeS": 7.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.015,
+      "flatResistanceOhm": 10.075000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 16,
+      "timeS": 8,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.016,
+      "flatResistanceOhm": 10.08,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 17,
+      "timeS": 8.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.017,
+      "flatResistanceOhm": 10.084999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 18,
+      "timeS": 9,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.018000000000000002,
+      "flatResistanceOhm": 10.09,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 19,
+      "timeS": 9.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.019,
+      "flatResistanceOhm": 10.095,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 20,
+      "timeS": 10,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.02,
+      "flatResistanceOhm": 10.1,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 21,
+      "timeS": 10.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.021,
+      "flatResistanceOhm": 10.105,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 22,
+      "timeS": 11,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.022,
+      "flatResistanceOhm": 10.11,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 23,
+      "timeS": 11.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.023,
+      "flatResistanceOhm": 10.115,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 24,
+      "timeS": 12,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.024,
+      "flatResistanceOhm": 10.120000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 25,
+      "timeS": 12.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.025,
+      "flatResistanceOhm": 10.125,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 26,
+      "timeS": 13,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.026000000000000002,
+      "flatResistanceOhm": 10.129999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 27,
+      "timeS": 13.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.027,
+      "flatResistanceOhm": 10.135000000000002,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 28,
+      "timeS": 14,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.028,
+      "flatResistanceOhm": 10.14,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 29,
+      "timeS": 14.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.029,
+      "flatResistanceOhm": 10.145,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 30,
+      "timeS": 15,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.03,
+      "flatResistanceOhm": 10.149999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 31,
+      "timeS": 15.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.031,
+      "flatResistanceOhm": 10.155000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 32,
+      "timeS": 16,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.032,
+      "flatResistanceOhm": 10.16,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 33,
+      "timeS": 16.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.033,
+      "flatResistanceOhm": 10.165,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 34,
+      "timeS": 17,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.034,
+      "flatResistanceOhm": 10.169999999999998,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 35,
+      "timeS": 17.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.035,
+      "flatResistanceOhm": 10.175,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 36,
+      "timeS": 18,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.036000000000000004,
+      "flatResistanceOhm": 10.18,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 37,
+      "timeS": 18.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.037,
+      "flatResistanceOhm": 10.184999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 38,
+      "timeS": 19,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.038,
+      "flatResistanceOhm": 10.19,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 39,
+      "timeS": 19.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.039,
+      "flatResistanceOhm": 10.195,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 40,
+      "timeS": 20,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.04,
+      "flatResistanceOhm": 10.2,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 41,
+      "timeS": 20.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.041,
+      "flatResistanceOhm": 10.205,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 42,
+      "timeS": 21,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.042,
+      "flatResistanceOhm": 10.209999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 43,
+      "timeS": 21.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.043000000000000003,
+      "flatResistanceOhm": 10.215,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 44,
+      "timeS": 22,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.044,
+      "flatResistanceOhm": 10.22,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 45,
+      "timeS": 22.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.045,
+      "flatResistanceOhm": 10.225,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 46,
+      "timeS": 23,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.046,
+      "flatResistanceOhm": 10.229999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 47,
+      "timeS": 23.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.047,
+      "flatResistanceOhm": 10.235000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 48,
+      "timeS": 24,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.048,
+      "flatResistanceOhm": 10.24,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 49,
+      "timeS": 24.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.049,
+      "flatResistanceOhm": 10.245,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 50,
+      "timeS": 25,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.05,
+      "flatResistanceOhm": 10.25,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 51,
+      "timeS": 25.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.051000000000000004,
+      "flatResistanceOhm": 10.255,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 52,
+      "timeS": 26,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.052000000000000005,
+      "flatResistanceOhm": 10.26,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 53,
+      "timeS": 26.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.053,
+      "flatResistanceOhm": 10.265,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 54,
+      "timeS": 27,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.054,
+      "flatResistanceOhm": 10.27,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 55,
+      "timeS": 27.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.055,
+      "flatResistanceOhm": 10.275,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 56,
+      "timeS": 28,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.056,
+      "flatResistanceOhm": 10.280000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 57,
+      "timeS": 28.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.057,
+      "flatResistanceOhm": 10.285,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 58,
+      "timeS": 29,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.058,
+      "flatResistanceOhm": 10.29,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 59,
+      "timeS": 29.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.059000000000000004,
+      "flatResistanceOhm": 10.295000000000002,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 60,
+      "timeS": 30,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.06,
+      "flatResistanceOhm": 10.3,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 61,
+      "timeS": 30.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.061,
+      "flatResistanceOhm": 10.305,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 62,
+      "timeS": 31,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.062,
+      "flatResistanceOhm": 10.309999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 63,
+      "timeS": 31.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.063,
+      "flatResistanceOhm": 10.315000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 64,
+      "timeS": 32,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.064,
+      "flatResistanceOhm": 10.32,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 65,
+      "timeS": 32.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.065,
+      "flatResistanceOhm": 10.325,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 66,
+      "timeS": 33,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.066,
+      "flatResistanceOhm": 10.329999999999998,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 67,
+      "timeS": 33.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.067,
+      "flatResistanceOhm": 10.335,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 68,
+      "timeS": 34,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.068,
+      "flatResistanceOhm": 10.34,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 69,
+      "timeS": 34.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.069,
+      "flatResistanceOhm": 10.344999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 70,
+      "timeS": 35,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.07,
+      "flatResistanceOhm": 10.35,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 71,
+      "timeS": 35.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.07100000000000001,
+      "flatResistanceOhm": 10.355,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 72,
+      "timeS": 36,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.07200000000000001,
+      "flatResistanceOhm": 10.36,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 73,
+      "timeS": 36.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.073,
+      "flatResistanceOhm": 10.365,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 74,
+      "timeS": 37,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.074,
+      "flatResistanceOhm": 10.37,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 75,
+      "timeS": 37.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.075,
+      "flatResistanceOhm": 10.375,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 76,
+      "timeS": 38,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.076,
+      "flatResistanceOhm": 10.38,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 77,
+      "timeS": 38.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.077,
+      "flatResistanceOhm": 10.385,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 78,
+      "timeS": 39,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.078,
+      "flatResistanceOhm": 10.389999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 79,
+      "timeS": 39.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.079,
+      "flatResistanceOhm": 10.395000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 80,
+      "timeS": 40,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.08,
+      "flatResistanceOhm": 10.4,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 81,
+      "timeS": 40.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.081,
+      "flatResistanceOhm": 10.405,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 82,
+      "timeS": 41,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.082,
+      "flatResistanceOhm": 10.41,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 83,
+      "timeS": 41.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.083,
+      "flatResistanceOhm": 10.415000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 84,
+      "timeS": 42,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.084,
+      "flatResistanceOhm": 10.42,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 85,
+      "timeS": 42.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.085,
+      "flatResistanceOhm": 10.425,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 86,
+      "timeS": 43,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.08600000000000001,
+      "flatResistanceOhm": 10.43,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 87,
+      "timeS": 43.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.08700000000000001,
+      "flatResistanceOhm": 10.435,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 88,
+      "timeS": 44,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.088,
+      "flatResistanceOhm": 10.440000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 89,
+      "timeS": 44.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.089,
+      "flatResistanceOhm": 10.445,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 90,
+      "timeS": 45,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.09,
+      "flatResistanceOhm": 10.45,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 91,
+      "timeS": 45.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.091,
+      "flatResistanceOhm": 10.455000000000002,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 92,
+      "timeS": 46,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.092,
+      "flatResistanceOhm": 10.46,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 93,
+      "timeS": 46.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.093,
+      "flatResistanceOhm": 10.465,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 94,
+      "timeS": 47,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.094,
+      "flatResistanceOhm": 10.469999999999999,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 95,
+      "timeS": 47.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.095,
+      "flatResistanceOhm": 10.475000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 96,
+      "timeS": 48,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.096,
+      "flatResistanceOhm": 10.48,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 97,
+      "timeS": 48.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.097,
+      "flatResistanceOhm": 10.485,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 98,
+      "timeS": 49,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.098,
+      "flatResistanceOhm": 10.489999999999998,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 99,
+      "timeS": 49.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.099,
+      "flatResistanceOhm": 10.495000000000001,
+      "continuity": "closed"
+    },
+    {
+      "cycle": 100,
+      "timeS": 50,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.1,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 101,
+      "timeS": 50.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.101,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 102,
+      "timeS": 51,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.10200000000000001,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 103,
+      "timeS": 51.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.10300000000000001,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 104,
+      "timeS": 52,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.10400000000000001,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 105,
+      "timeS": 52.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.105,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 106,
+      "timeS": 53,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.106,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 107,
+      "timeS": 53.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.107,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 108,
+      "timeS": 54,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.108,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 109,
+      "timeS": 54.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.109,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 110,
+      "timeS": 55,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.11,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 111,
+      "timeS": 55.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.111,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 112,
+      "timeS": 56,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.112,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 113,
+      "timeS": 56.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.113,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 114,
+      "timeS": 57,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.114,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 115,
+      "timeS": 57.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.115,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 116,
+      "timeS": 58,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.116,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 117,
+      "timeS": 58.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.117,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 118,
+      "timeS": 59,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.11800000000000001,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 119,
+      "timeS": 59.5,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.11900000000000001,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    },
+    {
+      "cycle": 120,
+      "timeS": 60,
+      "peakCurvaturePerM": 200,
+      "peakStrain": 0.01,
+      "damage": 0.12,
+      "flatResistanceOhm": null,
+      "continuity": "open"
+    }
+  ]
+}

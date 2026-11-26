@@ -1,0 +1,110 @@
+{
+  "origin": "Analytic graticule and attenuator fixtures fixed before implementation; not hardware measured accuracy.",
+  "rows": [
+    {
+      "id": "record-vertical",
+      "description": "Equipment record: 2 Vpp sine at 1 V/div spans 2 vertical divisions",
+      "expected": 2,
+      "unit": "div",
+      "tolerance": 1e-9,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "id": "record-horizontal",
+      "description": "Equipment record: 1 kHz sine at 0.2 ms/div spans 5 horizontal divisions per cycle",
+      "expected": 5,
+      "unit": "div",
+      "tolerance": 1e-8,
+      "actual": 5,
+      "pass": true
+    },
+    {
+      "id": "cal-div",
+      "description": "Nominal 300 mVpp at 100 mV/div displays three divisions",
+      "expected": 3,
+      "unit": "div",
+      "tolerance": 1e-9,
+      "actual": 2.9999999999999996,
+      "pass": true
+    },
+    {
+      "id": "cal-period",
+      "description": "Nominal 1 kHz reference repeats every millisecond",
+      "expected": 1,
+      "unit": "ms",
+      "tolerance": 1e-8,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "id": "probe-division",
+      "description": "Same 300 mVpp with a 10× probe and unchanged 100 mV/div displays 0.3 divisions",
+      "expected": 0.3,
+      "unit": "div",
+      "tolerance": 1e-9,
+      "actual": 0.3,
+      "pass": true
+    },
+    {
+      "id": "probe-scale",
+      "description": "Coded ×10 probe multiplies front-panel input scale at tip from 0.1 to 1 V/div",
+      "expected": 1,
+      "unit": "V/div at tip",
+      "tolerance": 1e-12,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "id": "screen-time",
+      "description": "10 graticule divisions at 0.2 ms each occupy 2 ms total",
+      "expected": 2,
+      "unit": "ms",
+      "tolerance": 1e-10,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "id": "threshold",
+      "description": "Interpolated sweep starts where a rising edge reaches requested BNC level",
+      "expected": 0.15,
+      "unit": "V",
+      "tolerance": 1e-9,
+      "actual": 0.15,
+      "pass": true
+    },
+    {
+      "id": "ac-dc",
+      "description": "Idealized AC-coupled constant input settles to zero, like the grounded reference",
+      "expected": 0,
+      "unit": "Vpp",
+      "tolerance": 1e-10,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "id": "normal-blank",
+      "description": "NORMAL mode with no trigger presents no visible forward trace",
+      "expected": "blank",
+      "unit": "outcome",
+      "actual": "blank",
+      "pass": true
+    },
+    {
+      "id": "auto-free",
+      "description": "AUTO mode with no adequate trigger can still free-run",
+      "expected": "free-run",
+      "unit": "outcome",
+      "actual": "free-run",
+      "pass": true
+    },
+    {
+      "id": "single-repeat",
+      "description": "SINGLE consumes its arm after one valid sweep",
+      "expected": "not-armed",
+      "unit": "outcome",
+      "actual": "not-armed",
+      "pass": true
+    }
+  ]
+}

@@ -24,7 +24,7 @@
   {
     "id": "09-02",
     "name": "Semiconductor analyzer",
-    "model": "Keysight B1500A",
+    "model": "Keysight B1500A · B1517A HRSMU and B1520A MFCMU",
     "evidence": "A",
     "priority": "P1",
     "page": 30,
@@ -38,9 +38,14 @@
     "inputs": "Device terminal map, installed measurement modules, sweep definition and compliance limits",
     "outputs": "Terminal-resolved I–V or C–V measurements with compliance and range flags",
     "acceptance": "Sweep a resistor through a declared current limit. Match Ohm's law below compliance and flag the limited points. A separate ideal capacitor must yield constant capacitance with bias.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric chassis and module GLB; original animated probe fixture",
+    "simulationStatus": "Independently checked resistor compliance and ideal capacitor C–V",
+    "integrationStatus": "Dedicated simulator with typed passive fixture import and signed sweep export",
+    "simulator": "/simulations/equipment/09-02/simulator/",
+    "related": [
+      ["Instrument photos, model and verification", "/simulations/equipment/09-02/simulator/#b1500-evidence"],
+      ["Passive coupon and measurement contract", "/equipment/09-02/contract.json"]
+    ]
   },
   {
     "id": "09-03",
@@ -95,8 +100,8 @@
   {
     "id": "09-05",
     "name": "Analog aesthetic oscilloscope",
-    "model": "Tektronix 465B (legacy candidate)",
-    "evidence": "C",
+    "model": "Tektronix 465B cabinet / standard CRT",
+    "evidence": "A",
     "priority": "P1",
     "page": 31,
     "sources": [],
@@ -106,15 +111,20 @@
     "inputs": "Shared analog signal, vertical sensitivity, sweep time per division and trigger level",
     "outputs": "CRT trace projection and graticule coordinates tied to the source waveform",
     "acceptance": "Display a 2 V peak-to-peak, 1 kHz sine at 1 V/div and 0.2 ms/div. The graticule must show two vertical divisions peak-to-peak and five horizontal divisions per cycle.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with physical CRT graticule, editable geometry and original views",
+    "simulationStatus": "Numerically verified analog A sweep, trigger, probe scaling and screen clipping",
+    "integrationStatus": "Dedicated analog CRT simulator, compatible voltage import; headset testing pending",
+    "simulator": "/simulations/equipment/09-05/simulator/",
+    "related": [
+      ["Tektronix 465B official manual record", "https://www.tek.com/en/manual/465b-instruction-manual"],
+      ["Tektronix 465B Operator Manual", "https://w140.com/tekwiki/images/7/72/070-2756-00.pdf"]
+    ]
   },
   {
     "id": "09-06",
     "name": "Waveform generator",
-    "model": "Keysight 33622A (candidate)",
-    "evidence": "C",
+    "model": "Keysight 33622A Trueform (dual channel, standard bench configuration)",
+    "evidence": "A",
     "priority": "P1",
     "page": 31,
     "sources": [],
@@ -124,14 +134,19 @@
     "inputs": "Waveform parameters, sample clock, trigger time, source impedance and load convention",
     "outputs": "Timed source waveform and trigger events at the modeled output port",
     "acceptance": "Connect a resistive load matching the source impedance. A specified open-circuit sine amplitude must halve at the load while the generated frequency remains unchanged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented-size metric GLB / editable Blender generator",
+    "simulationStatus": "Numerically verified Thevenin source and load; time-series/marker output",
+    "integrationStatus": "Dedicated browser simulator and voltage handoff; immersive headset testing pending",
+    "simulator": "/simulations/equipment/09-06/simulator/",
+    "related": [
+      ["Keysight operating and service guide", "https://www.keysight.com/my/en/assets/9018-03714/service-manuals/9018-03714.pdf"],
+      ["Keysight Trueform datasheet", "https://www.keysight.com/content/dam/keysight/en/doc/ungate/data-sheets/5992-2572.pdf"]
+    ]
   },
   {
     "id": "09-07",
     "name": "Precision LCR meter",
-    "model": "Keysight E4980A",
+    "model": "Keysight E4980A 2 MHz + 16034E SMD fixture",
     "evidence": "A",
     "priority": "P2",
     "page": 31,
@@ -144,9 +159,15 @@
     "inputs": "Complex test impedance, fixture model, frequency grid and open/short calibration records",
     "outputs": "Corrected impedance and selected series or parallel component readings",
     "acceptance": "Simulate known stray shunt capacitance and series resistance on a capacitor standard. Apply matching open/short corrections and recover its labeled capacitance across the fixture's valid band.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented-enclosure metric GLB, original reference views and editable model source",
+    "simulationStatus": "Numerically verified passive AC impedance; explicit series and shunt fixture correction",
+    "integrationStatus": "Dedicated browser simulator and impedance exports; headset testing pending",
+    "simulator": "/simulations/equipment/09-07/simulator/",
+    "related": [
+      ["Keysight E4980A User’s Guide", "https://www.cmc.ca/wp-content/uploads/2019/07/E4980A-User-Guide.pdf"],
+      ["Keysight E4980A data sheet", "https://go.keysight.com/us/en/assets/7018-01355/data-sheets/5989-4435.pdf"],
+      ["Keysight 16034E SMD fixture", "https://www.keysight.com/us/en/product/16034E/test-fixture-smd-components.html"]
+    ]
   },
   {
     "id": "09-08",
@@ -213,9 +234,14 @@
     "inputs": "Differential input trace, gain, filter configuration, coupling and output range",
     "outputs": "Amplified voltage time series with filtering, saturation and noise metadata",
     "acceptance": "With noise disabled, drive an in-band sine below clipping and recover the selected gain. Then exceed the configured output range and verify clipping rather than wraparound.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented-size metric GLB with original views, ports, editable Blender source",
+    "simulationStatus": "Numerically verified ideal gain, filter, source and termination model",
+    "integrationStatus": "Dedicated simulator, volts waveform handoff to 09-04 and spatial control bindings; headset testing pending",
+    "simulator": "/simulations/equipment/09-10/simulator/",
+    "related": [
+      ["SRS SR560 operating manual rev. 3.1", "https://www.thinksrs.com/downloads/pdfs/manuals/SR560m.pdf"],
+      ["SRS SR560 product and panel reference photos", "https://www.thinksrs.com/products/sr560.html"]
+    ]
   },
   {
     "id": "09-11",
@@ -262,8 +288,19 @@
     "inputs": "Working, counter and reference port assignments, exposed area, bath geometry and electrolyte conductivity",
     "outputs": "Cell boundary-condition record and circuit terminals for the potentiostat",
     "acceptance": "In an ideal uniform-slab fixture, compare solution resistance with L/(σA). Doubling conductivity must halve resistance and removing the reference lead must prevent a three-electrode measurement.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original Mk I parametric fixture · metric GLB, moving probes and cartridge",
+    "simulationStatus": "Passive three-terminal slab and optional RC · analytic cases verified",
+    "integrationStatus": "Circuit JSON / EIS CSV · 09-01 solver interop verified (headless)",
+    "simulator": "/simulations/equipment/09-12/simulator/",
+    "related": [
+      [
+        "Original geometry and source reference images",
+        "/simulations/equipment/09-12/simulator/#evidence"
+      ],
+      [
+        "Numerical verification and interlocks",
+        "/simulations/equipment/09-12/simulator/#verification"
+      ]
+    ]
   }
 ]

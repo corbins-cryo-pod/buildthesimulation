@@ -1,0 +1,116 @@
+{
+  "schema": "bts.flex-fatigue.verification.v1",
+  "cases": [
+    {
+      "id": "neutral-curvature",
+      "expected": 200,
+      "unit": "m^-1",
+      "tolerance": 1e-9,
+      "actual": 200,
+      "outcome": "PASS"
+    },
+    {
+      "id": "outside-strain",
+      "expected": 0.01,
+      "unit": "1",
+      "tolerance": 1e-12,
+      "actual": 0.01,
+      "outcome": "PASS"
+    },
+    {
+      "id": "20-trace-squares",
+      "expected": 10,
+      "unit": "ohm",
+      "tolerance": 1e-12,
+      "actual": 10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "cycle-99-flat-resistance",
+      "expected": 10.495,
+      "unit": "ohm",
+      "tolerance": 1e-12,
+      "actual": 10.495000000000001,
+      "outcome": "PASS"
+    },
+    {
+      "id": "injected-first-event",
+      "expected": 100,
+      "unit": "cycle",
+      "tolerance": 0,
+      "actual": 100,
+      "outcome": "PASS"
+    },
+    {
+      "id": "restart-60-identical-rows",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "open-event-once",
+      "expected": 1,
+      "unit": "event",
+      "tolerance": 0,
+      "actual": 1,
+      "outcome": "PASS"
+    },
+    {
+      "id": "post-open-null",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "double-neutral-radius-reduces-damage-fourfold",
+      "expected": 0.25,
+      "unit": "1",
+      "tolerance": 1e-12,
+      "actual": 0.25,
+      "outcome": "PASS"
+    },
+    {
+      "id": "calibrated-life-threshold",
+      "expected": 4,
+      "unit": "cycle",
+      "tolerance": 0,
+      "actual": 4,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reject-tampered-checkpoint",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reject-incompatible-trace-length",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "nominal-base-width",
+      "expected": 0.32,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.3199999928474426,
+      "outcome": "PASS"
+    }
+  ],
+  "metrics": {
+    "bytes": 142068,
+    "triangles": 1748,
+    "draws": 55,
+    "baseGltfXyzM": [
+      0.3199999928474426,
+      0.017999999225139618,
+      0.2199999988079071
+    ]
+  },
+  "coverage": "Independent analytical and deterministic workflow checks; no independent fatigue-life measurement, hardware, or physical headset validation."
+}

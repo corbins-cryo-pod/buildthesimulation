@@ -1,0 +1,132 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.46,
+    0.41,
+    0.55995
+  ],
+  "meshes": 72,
+  "triangles": 11389,
+  "bytes": 656700,
+  "interaction": {
+    "Lid_cap": {
+      "action": "lid",
+      "boundsMinM": [
+        -0.1485,
+        0.2775,
+        0.0675
+      ],
+      "boundsMaxM": [
+        -0.0395,
+        0.3045,
+        0.1765
+      ]
+    },
+    "Lid_knob": {
+      "action": "lid",
+      "boundsMinM": [
+        -0.11,
+        0.321,
+        0.106
+      ],
+      "boundsMaxM": [
+        -0.078,
+        0.329,
+        0.138
+      ]
+    },
+    "Lid_shoulder": {
+      "action": "lid",
+      "boundsMinM": [
+        -0.1395,
+        0.3025,
+        0.0765
+      ],
+      "boundsMaxM": [
+        -0.0485,
+        0.3115,
+        0.1675
+      ]
+    },
+    "Sample_pan": {
+      "action": "sample",
+      "boundsMinM": [
+        -0.1245,
+        0.2763,
+        0.1135
+      ],
+      "boundsMaxM": [
+        -0.1075,
+        0.2797,
+        0.1305
+      ]
+    },
+    "Sample_charge": {
+      "action": "sample",
+      "boundsMinM": [
+        -0.1225,
+        0.2796,
+        0.1155
+      ],
+      "boundsMaxM": [
+        -0.1095,
+        0.281,
+        0.1285
+      ]
+    },
+    "Reference_pan": {
+      "action": "reference",
+      "boundsMinM": [
+        -0.0805,
+        0.2763,
+        0.1135
+      ],
+      "boundsMaxM": [
+        -0.0635,
+        0.2797,
+        0.1305
+      ]
+    },
+    "Sample_platform": {
+      "action": "sample",
+      "boundsMinM": [
+        -0.1275,
+        0.27115,
+        0.1105
+      ],
+      "boundsMaxM": [
+        -0.1045,
+        0.27685,
+        0.1335
+      ]
+    },
+    "Reference_platform": {
+      "action": "reference",
+      "boundsMinM": [
+        -0.0835,
+        0.27115,
+        0.1105
+      ],
+      "boundsMaxM": [
+        -0.0605,
+        0.27685,
+        0.1335
+      ]
+    }
+  },
+  "lid": {
+    "node": "Lid_manual_slide_pivot",
+    "closedM": [
+      -0.09399999678134918,
+      0.29899999499320984,
+      0.12200000137090683
+    ],
+    "virtualOpenDeltaM": [
+      0.255,
+      -0.158,
+      0
+    ],
+    "note": "Shown on left-side heating cell or moved to right convenience tray; ray hit bounds below are at rest."
+  }
+}

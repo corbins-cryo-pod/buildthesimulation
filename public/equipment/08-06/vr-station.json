@@ -1,0 +1,133 @@
+{
+  "schema": "bts.station.wire-pull.v1",
+  "equipment": "08-06",
+  "model": "./dage-4000.glb",
+  "units": "m",
+  "axis": "+Y up, +Z front",
+  "nodes": 105,
+  "triangles": 19232,
+  "bytes": 41868,
+  "motion": {
+    "Stage_X": [
+      -0.015,
+      0.015
+    ],
+    "Hook_pose": [
+      -0.024,
+      0
+    ]
+  },
+  "targets": [
+    {
+      "node": "Seat_coupon",
+      "action": "toggleSample",
+      "label": "Seat/unseat inert coupon",
+      "boundsM": {
+        "min": [
+          -0.04,
+          0.1465,
+          0.0235
+        ],
+        "max": [
+          0.04,
+          0.1695,
+          0.0785
+        ]
+      }
+    },
+    {
+      "node": "Hook_shaft",
+      "action": "engage",
+      "label": "Engage/disengage virtual hook",
+      "boundsM": {
+        "min": [
+          -0.012,
+          0.196,
+          0.041
+        ],
+        "max": [
+          0.012,
+          0.28,
+          0.065
+        ]
+      }
+    },
+    {
+      "node": "Joystick_run",
+      "action": "run",
+      "label": "Replay selected pull",
+      "boundsM": {
+        "min": [
+          0.1705,
+          0.087,
+          0.1335
+        ],
+        "max": [
+          0.1975,
+          0.103,
+          0.1565
+        ]
+      }
+    },
+    {
+      "node": "Bond_B1",
+      "action": "selectB1",
+      "label": "Select B1",
+      "boundsM": {
+        "min": [
+          -0.0195,
+          0.1675,
+          0.0425
+        ],
+        "max": [
+          -0.0105,
+          0.1725,
+          0.0635
+        ]
+      }
+    },
+    {
+      "node": "Bond_B2",
+      "action": "selectB2",
+      "label": "Select B2",
+      "boundsM": {
+        "min": [
+          -0.0045,
+          0.1675,
+          0.0425
+        ],
+        "max": [
+          0.0045,
+          0.1725,
+          0.0635
+        ]
+      }
+    },
+    {
+      "node": "Bond_B3",
+      "action": "selectB3",
+      "label": "Select B3",
+      "boundsM": {
+        "min": [
+          0.0105,
+          0.1675,
+          0.0425
+        ],
+        "max": [
+          0.0195,
+          0.1725,
+          0.0635
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./pull.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)",
+    "pose": "pose(station.read())"
+  },
+  "note": "Selected fixture offsets are virtual. Transform moving local ray regions with the node. No headset test claimed."
+}

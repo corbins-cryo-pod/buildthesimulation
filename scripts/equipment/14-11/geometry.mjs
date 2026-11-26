@@ -1,0 +1,13 @@
+import {readFileSync,writeFileSync} from 'node:fs';import {Box3,Matrix4,Quaternion,Vector3} from 'three';
+const dir=new URL('../../../public/equipment/14-11/',import.meta.url),buf=readFileSync(new URL('soak-witness.glb',dir)),j=JSON.parse(buf.toString('utf8',20,20+buf.readUInt32LE(12)));
+const boxes=new Map(),round=v=>v.toArray().map(x=>+x.toFixed(6)),xyz=(arr,def)=>new Vector3(...(arr??def));
+function visit(i,parent){
+ const node=j.nodes[i],local=node.matrix?new Matrix4().fromArray(node.matrix):new Matrix4().compose(xyz(node.translation,[0,0,0]),new Quaternion(...(node.rotation??[0,0,0,1])),xyz(node.scale,[1,1,1]));
+ const world=parent.clone().multiply(local),b=new Box3();
+ for(const p of j.meshes[node.mesh]?.primitives??[]){const a=j.accessors[p.attributes.POSITION];b.union(new Box3(xyz(a.min),xyz(a.max)).applyMatrix4(world))}
+ for(const k of node.children??[])b.union(visit(k,world));
+ boxes.set(node.name,b);return b;
+}
+const total=new Box3();for(const n of j.scenes[j.scene].nodes)total.union(visit(n,new Matrix4()));
+const rows=[['base width','BENCH_DATUM','x',620],['base depth','BENCH_DATUM','z',365],['bath A block width','A_BLOCK','x',226],['bath B block front-to-rear','B_BLOCK','z',198]].map(([check,n,k,expectedMm])=>({check,expectedMm,actualMm:boxes.get(n).getSize(new Vector3())[k]*1000,toleranceMm:.05}));for(const r of rows){r.pass=Math.abs(r.expectedMm-r.actualMm)<=r.toleranceMm;if(!r.pass)throw Error(r.check)}
+const controls=[['LID_PIVOT','cover',null,'Inspect or close the cover'],['A_PLUG','connect',0,'Change package A electrical connection'],['B_PLUG','connect',1,'Change package B electrical connection'],['LOGGER_SCREEN','run',null,'Record selected impedance witness']].map(([mesh,action,value,label])=>({mesh,action,value,label,minM:round(boxes.get(mesh).min),maxM:round(boxes.get(mesh).max)}));writeFileSync(new URL('xr.json',dir),JSON.stringify({schema:'bts.station.xr.v1',asset:'/equipment/14-11/soak-witness.glb',model:'/equipment/14-11/bench.mjs',dispatch:'act(state,action,value) returns next state; station() initializes',up:'+Y',front:'+Z',unit:'m',origin:'Bench plane under centre of base. Use existing metre scale. Closed-cover / plugged rest bounds below; update with live transforms.',motion:'LID_PIVOT rotates about local X 0…−75°; plug translation 0…0.026 m along up, illustrative. No hardware motion or temperature validation.',controls,geometry:{dimensions:rows,minM:round(total.min),maxM:round(total.max),nodes:j.nodes.length,bytes:buf.length,triangles:j.meshes.flatMap(m=>m.primitives).reduce((s,p)=>s+j.accessors[p.indices].count/3,0)}},null,2)+'\n')

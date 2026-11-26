@@ -1,0 +1,25 @@
+{
+ "schema":"bts.instrument-bindings.preview.v1","deviceId":"09-05",
+ "frame":{"unit":"m","handedness":"right","up":"+Y","operatorFront":"+Z","placementAnchor":"bts_bench_anchor","kind":"bench","enclosureXYZ":[0.328,0.157,0.437],"modelToleranceM":0.002,"depthStatus":"Estimated for unhooded, handle-stowed bench unit"},
+ "controls":[
+  {"id":"vertical-scale","node":"front_vdiv","label":"Step channel volts/div","action":"step-y","targetSizeM":[0.025,0.025,0.014]},
+  {"id":"horizontal-time","node":"front_time","label":"Step A time/div","action":"step-x","targetSizeM":[0.031,0.031,0.014]},
+  {"id":"slope","node":"front_slope","label":"Select rising/falling A trigger","action":"cycle-slope","targetSizeM":[0.008,0.008,0.006]},
+  {"id":"coupling","node":"front_coupling","label":"Cycle input DC, AC, GND","action":"cycle-coupling","targetSizeM":[0.009,0.008,0.006]},
+  {"id":"level","node":"front_level","label":"Step A trigger level","action":"step-level","targetSizeM":[0.017,0.017,0.009]},
+  {"id":"position","node":"front_position","label":"Step vertical trace position","action":"step-position","targetSizeM":[0.015,0.015,0.008]},
+  {"id":"power","node":"front_power","label":"Scope power","action":"power","targetSizeM":[0.010,0.010,0.008]},
+  {"id":"auto","node":"front_auto","label":"AUTO sweep","action":"select-mode","value":"AUTO","targetSizeM":[0.009,0.007,0.006]},
+  {"id":"norm","node":"front_normal","label":"NORMAL sweep","action":"select-mode","value":"NORM","targetSizeM":[0.009,0.007,0.006]},
+  {"id":"single","node":"front_single","label":"Arm single sweep","action":"arm","targetSizeM":[0.009,0.008,0.006]},
+  {"id":"intensity","node":"front_intensity","label":"Step beam intensity","action":"step-intensity","targetSizeM":[0.014,0.014,0.008]},
+  {"id":"focus","node":"front_focus","label":"Step focus","action":"step-focus","targetSizeM":[0.014,0.014,0.008]}
+ ],
+ "ports":[
+  {"id":"ch1","node":"in_ch1","label":"CH1 input","type":"BNC","unit":"V","normal":[0,0,1]},
+  {"id":"ch2","node":"in_ch2","label":"CH2 input","type":"BNC","unit":"V","normal":[0,0,1]},
+  {"id":"cal","node":"front_calibrator","label":"Nominal 300 mV calibrator","type":"calibrator clip","unit":"V","normal":[0,0,1]},
+  {"id":"ext-a","node":"ext_a","label":"A external trigger (not modeled)","type":"BNC","normal":[0,0,1]},
+  {"id":"out-a","node":"rear_gate_a","label":"A gate output (not modeled)","type":"BNC","normal":[0,0,-1]}
+ ]
+}
