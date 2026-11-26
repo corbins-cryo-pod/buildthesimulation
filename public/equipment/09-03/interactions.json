@@ -1,0 +1,108 @@
+{
+  "deviceId": "09-03",
+  "uri": "keithley-2450.glb",
+  "scale": "m",
+  "axes": "+X operator right, +Y up, +Z front",
+  "envelopeReferenceMm": [
+    255.3,
+    106.1,
+    425.4
+  ],
+  "actions": {
+    "rotary_encoder": {
+      "action": "adjustLimit",
+      "label": "Cycle the active compliance limit",
+      "anchorM": [
+        0.044,
+        0.078,
+        0.211
+      ],
+      "boundsM": [
+        0.022,
+        0.022,
+        0.008
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "output_key": {
+      "action": "output",
+      "label": "Enable output / run sweep; press again to disable",
+      "anchorM": [
+        0.076,
+        0.085,
+        0.2075
+      ],
+      "boundsM": [
+        0.017,
+        0.011,
+        0.005
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "jack_sense_hi": {
+      "action": "senseLeads",
+      "label": "SENSE HI lead pair",
+      "anchorM": [
+        0.067,
+        0.061,
+        0.208
+      ],
+      "boundsM": [
+        0.014,
+        0.014,
+        0.007
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "jack_force_hi": {
+      "action": "load",
+      "label": "FORCE HI lead pair",
+      "anchorM": [
+        0.088,
+        0.061,
+        0.208
+      ],
+      "boundsM": [
+        0.014,
+        0.014,
+        0.007
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "jack_sense_lo": {
+      "action": "senseLeads",
+      "label": "SENSE LO lead pair",
+      "anchorM": [
+        0.067,
+        0.042,
+        0.208
+      ],
+      "boundsM": [
+        0.014,
+        0.014,
+        0.007
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "jack_force_lo": {
+      "action": "load",
+      "label": "FORCE LO lead pair",
+      "anchorM": [
+        0.088,
+        0.042,
+        0.208
+      ],
+      "boundsM": [
+        0.014,
+        0.014,
+        0.007
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    }
+  },
+  "nodes": 18,
+  "drawCalls": 55,
+  "triangles": 23939,
+  "bytes": 668796,
+  "headsetTested": false
+}

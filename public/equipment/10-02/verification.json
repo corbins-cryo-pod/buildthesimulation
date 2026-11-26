@@ -1,0 +1,163 @@
+{
+  "deviceId": "10-02",
+  "configuration": "Axon Digidata 1550B base, no ANC",
+  "reference": "Predeclared analytical cases and manufacturer envelope (5040237 C, pp. 33–34); empirical validation not performed.",
+  "cases": [
+    {
+      "id": "ramp",
+      "expected": [
+        13,
+        2,
+        0,
+        true
+      ],
+      "actual": [
+        13,
+        2,
+        0,
+        true
+      ],
+      "unit": "samples; overloads; signed zero code; monotonic",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "transfer",
+      "expected": [
+        -32768,
+        -16384,
+        0,
+        16384,
+        32767
+      ],
+      "actual": [
+        -32768,
+        -16384,
+        0,
+        16384,
+        32767
+      ],
+      "unit": "signed codes",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "timing",
+      "expected": [
+        9,
+        0.0005,
+        0.5
+      ],
+      "actual": [
+        9,
+        0.0005,
+        0.4998779296875
+      ],
+      "unit": "samples; s; V",
+      "tolerance": "0 samples; 1e-12 s; 0.5 LSB",
+      "outcome": "PASS"
+    },
+    {
+      "id": "simultaneous",
+      "expected": [
+        "AI6",
+        "AI7",
+        9,
+        9
+      ],
+      "actual": [
+        "AI6",
+        "AI7",
+        9,
+        9
+      ],
+      "unit": "terminal; shared-grid sample counts",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "invalid",
+      "expected": 6,
+      "actual": 6,
+      "unit": "rejected invalid configurations with no stale record",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "physical",
+      "expected": [
+        483,
+        109,
+        363
+      ],
+      "actual": [
+        483.0000102519989,
+        108.99999737739563,
+        363.0000054836273
+      ],
+      "unit": "mm; W, H, D",
+      "tolerance": "1 mm per axis",
+      "outcome": "PASS"
+    },
+    {
+      "id": "connectors",
+      "expected": [
+        8,
+        8,
+        8,
+        4
+      ],
+      "actual": [
+        8,
+        8,
+        8,
+        4
+      ],
+      "unit": "ports: analog in/out, digital out, telegraph",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "asset-manifest",
+      "expected": [
+        46,
+        13468,
+        21,
+        644092
+      ],
+      "actual": [
+        46,
+        13468,
+        21,
+        644092
+      ],
+      "unit": "nodes, triangles, draw primitives, bytes",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "XR-anchor-metadata",
+      "expected": true,
+      "actual": true,
+      "unit": "stable named geometry controls and nonzero physical AABBs",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "MultiClamp-handoff",
+      "expected": [
+        131,
+        0,
+        "≤152.588 µV"
+      ],
+      "actual": [
+        131,
+        0,
+        151.37023316294517
+      ],
+      "unit": "samples, overloads, peak absolute residual (µV)",
+      "tolerance": "0 counts; 0.5 LSB",
+      "outcome": "PASS"
+    }
+  ]
+}

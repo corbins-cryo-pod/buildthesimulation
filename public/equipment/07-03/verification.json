@@ -1,0 +1,133 @@
+{
+  "deviceId": "07-03",
+  "basis": "Predeclared independent cases. The expected pitch is the authored fixture engraving interval, 10 µm. Recover its spacing from the rendered image intensities. At nominal 2.4 µm sensor pitch and 0.63× relay, the two physical sampling tolerances are one object-space pixel each. No physical camera acquisition or optical bench measurement is claimed.",
+  "tests": [
+    {
+      "id": "pitch10",
+      "category": "Register acceptance",
+      "test": "Resolve adjacent engraved marks at 10× from rendered pixels.",
+      "expected": 10,
+      "units": "µm",
+      "tolerance": 0.381,
+      "actual": 10.001878492745004,
+      "outcome": "Pass"
+    },
+    {
+      "id": "pitch20",
+      "category": "Register acceptance",
+      "test": "Resolve the same marks at 20× from rendered pixels.",
+      "expected": 10,
+      "units": "µm",
+      "tolerance": 0.191,
+      "actual": 10,
+      "outcome": "Pass"
+    },
+    {
+      "id": "ratio",
+      "category": "Control response",
+      "test": "Double objective magnification; the spacing in camera pixels doubles.",
+      "expected": 2,
+      "units": "ratio",
+      "tolerance": 0.03,
+      "actual": 1.9996243720124443,
+      "outcome": "Pass"
+    },
+    {
+      "id": "fov10",
+      "category": "Numerical verification",
+      "test": "Image width at 10× equals 384 × 2.4 /(10 × 0.63).",
+      "expected": 146.285714,
+      "units": "µm",
+      "tolerance": 0.000001,
+      "actual": 146.28571428571428,
+      "outcome": "Pass"
+    },
+    {
+      "id": "scale20",
+      "category": "Numerical verification",
+      "test": "At 20×, span of 52.5 pixels between interpolated endpoint positions.",
+      "expected": 10,
+      "units": "µm",
+      "tolerance": 0.000001,
+      "actual": 10,
+      "outcome": "Pass"
+    },
+    {
+      "id": "fluor-off",
+      "category": "Configuration interlock",
+      "test": "Select fluorescence on the transmitted-light Ts2 stand.",
+      "expected": "rejected",
+      "units": "status",
+      "tolerance": "exact",
+      "actual": "rejected",
+      "outcome": "Pass"
+    },
+    {
+      "id": "fluor-on",
+      "category": "Configuration interlock",
+      "test": "With Ts2-FL configured for blue excitation and green emission, acquire the labeled morphology and find nonzero green contrast.",
+      "expected": true,
+      "units": "contrast detected",
+      "tolerance": "exact",
+      "actual": true,
+      "outcome": "Pass"
+    },
+    {
+      "id": "defocus",
+      "category": "Control response",
+      "test": "Move the 20× synthetic micrometer from best focus to 10 µm defocus; the peak-to-trough contrast must decrease.",
+      "expected": true,
+      "units": "contrast decreased",
+      "tolerance": "exact",
+      "actual": true,
+      "outcome": "Pass"
+    },
+    {
+      "id": "epi-absent",
+      "category": "Configuration interlock",
+      "test": "Disable the epi module on the Ts2-FL stand and request fluorescence.",
+      "expected": "rejected",
+      "units": "status",
+      "tolerance": "exact",
+      "actual": "rejected",
+      "outcome": "Pass"
+    },
+    {
+      "id": "clipped-marks",
+      "category": "Measurement boundary",
+      "test": "Image a field containing only the longer fifth-division marks; no minor-division pitch may be reported.",
+      "expected": [
+        null,
+        null
+      ],
+      "units": "pitch result",
+      "tolerance": "exact",
+      "actual": [
+        null,
+        null
+      ],
+      "outcome": "Pass"
+    },
+    {
+      "id": "dark-lamp",
+      "category": "Control response",
+      "test": "At zero synthetic illumination and fixed exposure, the stage micrometer has zero red/green/blue signal and no pitch reading.",
+      "expected": true,
+      "units": "dark and unreadable",
+      "tolerance": "exact",
+      "actual": true,
+      "outcome": "Pass"
+    },
+    {
+      "id": "half-lamp",
+      "category": "Control response",
+      "test": "Halving excitation at fixed exposure halves the green-channel peak for the unsaturated fluorescent morphology, within 8-bit rounding.",
+      "expected": 0.5,
+      "units": "peak signal ratio",
+      "tolerance": 0.006,
+      "actual": 0.5,
+      "outcome": "Pass"
+    }
+  ],
+  "experimentalComparison": "Independent measured microscope images with known camera calibration and focus offsets were unavailable. The acceptance experiment uses a generated metrology fixture."
+}
