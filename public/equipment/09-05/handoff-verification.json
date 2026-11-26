@@ -1,0 +1,28 @@
+{
+  "classification": "Simulated data handoff from actual SR560 fixture; no hardware measurements",
+  "parent": {
+    "sampleId": "SR560-DIFFERENTIAL-CAL",
+    "revision": 1,
+    "dtS": 0.00000390625,
+    "source": "09-10 SRS SR560"
+  },
+  "settings": {
+    "probe": 1,
+    "voltsPerDivision": 0.5,
+    "tipVoltsPerDivision": 0.5,
+    "msPerDivision": 0.2,
+    "coupling": "DC",
+    "channel": "CH1",
+    "triggerLevelBncV": 0,
+    "slope": "rising",
+    "mode": "NORM",
+    "positionDiv": 0
+  },
+  "summary": {
+    "inputBncVpp": 2,
+    "tipEquivalentVpp": 2,
+    "visibleDivisions": 4,
+    "estimatedPeriodS": 0.001,
+    "clipped": false
+  }
+}

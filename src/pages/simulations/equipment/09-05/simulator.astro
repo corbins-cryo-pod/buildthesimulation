@@ -1,0 +1,116 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import verification from '../../../../../public/equipment/09-05/verification.json';
+import {YS,XS} from '../../../../../public/equipment/09-05/solver.mjs';
+const asset='/equipment/09-05/';
+const manual='https://w140.com/tekwiki/images/7/72/070-2756-00.pdf';
+const tek='https://www.tek.com/en/manual/465b-instruction-manual';
+const photos='https://skycraftsurplus.com/products/465b-tektronix-analog-oscilloscope-100mhz.html';
+const specs=[
+ ['Selected unit','465B cabinet, standard CRT, no DM44 / cover / accessory pouch','Tektronix instruction 070-2757-00 and operator 070-2756-00',tek],
+ ['Horizontal and vertical graticule','10 × 8 divisions at 1 cm per division','Operator manual display controls and 10-division sweep procedures. The raster overlay uses that physical screen area.',manual],
+ ['Cabinet dimensions','157 mm high without pouch; 292 mm case width or 328 mm with handle','Operator Table 9, printed pp. 93–94. Manual gives 460 mm with panel cover; bare modeled depth inferred (about 437 mm).',manual],
+ ['Nominal calibrator','300 mV square wave, approximately 1 kHz','Operator calibrator procedure and Tektronix product specification. Simulation uses exactly 300 mV and 1 kHz nominal.',manual],
+ ['Calibrated vertical range','5 mV/div to 5 V/div, ×1 / ×10 probe display','Operator pp. 4–5. Selected scale is at the BNC; tip scale multiplies by probe attenuation.',manual],
+ ['Trigger/sweep modes','A sweep: AUTO, NORMAL, SINGLE','Operator pp. 10–11 and single-sweep p. 25. No external/B-delay circuit or actual AUTO timer.',manual],
+];
+---
+<Layout pageTitle="Analog oscilloscope" subtitle="" description="Virtual 465B analog CRT with A-trigger, probe and graticule experiment." wide={true}>
+<article id="crt465b">
+<nav><a href="/simulations/equipment/09-05/">← Equipment 09-05</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#crt-evidence">Evidence &amp; verification</a></nav>
+<header><small>09-05 · ELECTRICAL INSTRUMENTATION · VIRTUAL BENCH</small><h2>Tektronix 465B analog oscilloscope</h2><p>Trace a nominal calibrator square wave with the A sweep, then measure it by divisions and probe ratio. This is an analog deflection model: no ADC quantization, digital acquisition memory, automatic FFT, or Tektronix firmware emulation.</p></header>
+<div class="work">
+<section class="panel">
+<h3>Orbit the physical scope</h3>
+<div class="tools"><button data-crt-view="orbit">Reset view</button><button data-crt-view="front">Front panel</button><button data-crt-view="rear">Rear ports</button><button data-crt-view="crt">CRT close-up</button></div>
+<div id="crt-viewer"></div><p id="crt-model" role="status">Loading metric 465B model…</p>
+<p>Drag to orbit, pinch to zoom. Use click-step settings on the voltage, TIME/DIV, level, position, intensity, and focus knobs. Depth and individual details are estimates. The physical-scale scene is not a headset claim.</p>
+</section>
+<section class="panel">
+<h3>Configure A sweep</h3>
+<div class="tools"><button id="crt-power">Power off</button><button id="crt-reset">Restore calibrator setup</button><button id="crt-arm">Arm single</button></div>
+<div class="fields">
+<label>Electrical witness<select id="crt-input"><option value="cal">465B calibrator (nominal)</option><option value="sine">1 kHz bench sine</option><option value="file">Imported volts file</option></select></label>
+<label>Input selection<select id="crt-channel"><option>CH1</option><option>CH2</option></select></label>
+<label>Probe<select id="crt-probe"><option value="1">×1 direct</option><option value="10">×10 calibrated</option></select></label>
+<label>Vertical coupling<select id="crt-couple"><option>DC</option><option>AC</option><option>GND</option></select></label>
+<label>Vertical scale · V/div at BNC<select id="crt-volts">{YS.map(s=><option value={s}>{s}</option>)}</select></label>
+<label>Timebase · ms/div<select id="crt-time">{XS.map(s=><option value={s}>{s}</option>)}</select></label>
+<label>Vertical position · div<input id="crt-pos" type="number" min="-4" max="4" step=".1"/></label>
+<label>A trigger level · BNC volts<input id="crt-level" type="number" min="-5" max="5" step=".001"/></label>
+<label>A trigger slope<select id="crt-slope"><option value="rising">Rising</option><option value="falling">Falling</option></select></label>
+<label>A trigger mode<select id="crt-mode"><option>AUTO</option><option>NORM</option><option>SINGLE</option></select></label>
+<label>Intensity<input id="crt-intensity" type="range" min=".1" max="1" step=".01"/></label>
+<label>Focus<input id="crt-focus" type="range" min="0" max="1" step=".01"/></label>
+<label>Import analog volts<input id="crt-file" type="file" accept=".json,application/json"/></label>
+</div>
+<p id="crt-probe-tip" aria-live="polite"></p>
+<div class="tools"><button id="crt-sweep">Run A sweep</button><button id="crt-json" disabled>Export screen JSON</button><button id="crt-csv" disabled>Export screen CSV</button></div>
+<p id="crt-status" aria-live="polite"></p>
+</section>
+</div>
+<section class="panel">
+<h3>CRT graticule</h3>
+<p id="crt-readout" aria-live="polite">No current trace.</p>
+<canvas id="crt-trace" width="650" height="520" aria-label="Analog CRT: ten horizontal divisions, eight vertical divisions; numeric interpretation above"></canvas>
+<p><strong>Try it:</strong> The nominal calibrator shows three vertical divisions at 0.1 V/div and a period of 1 ms. At ×10 the same probe-tip voltage becomes 0.3 divisions with the same internal vertical scale; lower the trigger level from 0.15 to 0.015 V at the BNC to find it again. Set NORM and put the level above the waveform peak: the trace disappears. AUTO gives a free-run fallback. To test SINGLE, arm and acquire once; a second sweep stays blank until re-armed.</p>
+<p><a href={asset+'example-beam-sweep.json'}>Example screen trace</a> · <a href={asset+'screen-schema.json'}>Trace output schema</a>. A <code>bts.analog-waveform.v1</code> file from another virtual station can be imported as signed voltage points. An exercised example is the 09-10 SR560 output: DC, ×1, 0.5 V/div, 0.2 ms/div and a rising 0 V trigger. Screen exports preserve source revision, time and graticule coordinates; not a digitized oscilloscope record.</p>
+</section>
+<section class="panel">
+<h3>Analog display model and limits</h3>
+<p>A calibrated probe divides tip voltage by 1 or 10. An optional nominal 10 Hz RC high-pass approximates DC-blocking AC input coupling, with constant prehistory. GND draws a reference in AUTO. The A sweep starts at the first requested threshold crossing and moves linearly across 10 divisions in <code>10 × TIME/DIV</code>. The spot's y-coordinate is <code>V<sub>BNC</sub> / (V/div) + position</code>. The physical grid clips at ±4 divisions; retrace is not drawn. Imported samples use piecewise-linear interpolation to drive the idealized beam.</p>
+<p>This bench does not reproduce the 100 MHz frequency response, physical probe compensation, A/B delayed sweeps, XY, multi-trace CHOP/ALT, variable uncalibrated verniers, external trigger, trigger filters, actual phosphor persistence, or true AUTO timer threshold. It demonstrates stage geometry and a documented analog control subset, not hardware performance.</p>
+</section>
+<section class="panel" id="crt-evidence">
+<h3>Reference views and verification</h3>
+<p>Verified physical-scale screen and cabinet width/height; depth without the cover, knob diameters, connectors, hinges, and handle position are inferred. Original renders complement used-unit photographs and the manufacturer’s illustrated manual.</p>
+<div class="views">
+<figure><img src={asset+'front-view.webp'} loading="lazy" alt="Original three-quarter render of Tektronix 465B with teal side shells"/><figcaption><strong>Cabinet and front panel.</strong> Teal slab, graticule between vertical and time/trigger groups, stowed handle. Compare <a href={photos}>front and side photographs of a 465B</a>.</figcaption></figure>
+<figure><img src={asset+'crt-detail.webp'} loading="lazy" alt="Original render of the recessed physical CRT screen and nearby controls"/><figcaption><strong>CRT face.</strong> Separate window and surround. The running viewer applies its 10 × 8 graticule at real scale. See <a href={manual}>Tektronix operator illustrations</a>.</figcaption></figure>
+<figure><img src={asset+'rear-view.webp'} loading="lazy" alt="Original Tektronix 465B rear rendering of outputs and vent"/><figcaption><strong>Rear assembly.</strong> A/B gate, CH1 signal port, Z-input, fan and selector cover. Compare the <a href={photos}>listed rear view</a>. All are passive geometry here.</figcaption></figure>
+</div>
+<dl class="specs">{specs.map(([key,v,desc,u])=><div><dt>{key}</dt><dd><strong>{v}</strong> · <a href={u}>{desc}</a></dd></div>)}</dl>
+<p><a href={asset+'465b.glb'}>Metric GLB</a> · <a href={asset+'build-model.py'}>Editable Blender generator</a> · <a href={asset+'interaction.json'}>Spatial manifest</a> · <a href={asset+'asset-metrics.json'}>GLB measurements</a></p>
+<h3>Verification results</h3><p>{verification.origin}</p>
+<div class="scroll"><table><thead><tr><th>Case</th><th>Expected</th><th>Simulated</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verification.rows.map(x=><tr><td>{x.description}</td><td>{x.expected} {x.unit}</td><td>{typeof x.actual==='number'?Number(x.actual.toPrecision(9)):x.actual}</td><td>{x.tolerance??'Exact code'}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={asset+'verification.json'}>Download verification</a> · <a href={asset+'acceptance.json'}>Predeclared analytical fixtures</a> · <a href={asset+'solver.mjs'}>Numerical solver</a></p>
+</section>
+</article>
+</Layout>
+<script>
+import '../../../../lib/equipment/09-05/client.mjs';
+</script>
+<style>
+#crt465b {max-width: 1280px; margin:auto; color:inherit;}
+#crt465b header {margin:1.4rem 0 1rem;}
+#crt465b header h2 {margin:.25rem 0 0;}
+#crt465b header p {max-width:85ch;}
+.work {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem;}
+.panel {border:1px solid color-mix(in srgb,currentColor 32%,transparent);padding:clamp(.8rem,2vw,1.4rem);margin:.6rem 0;border-radius:.33rem;min-width:0;}
+.panel h3 {margin:0 0 .85rem;}
+.tools {display:flex;gap:.4rem;flex-wrap:wrap;}
+.tools button {border:1px solid currentColor;background:transparent;color:inherit;min-height:38px;padding:.45rem .7rem;border-radius:.24rem;cursor:pointer;font:inherit;}
+.tools button[aria-pressed=true] {background:#d6bd73;color:#151b1a;}
+.tools button:disabled {opacity:.46;cursor:not-allowed;}
+#crt-viewer {height:350px;margin:.75rem 0 0;background:#263439;}
+#crt-viewer :global(canvas) {display:block;max-width:100%;touch-action:none;}
+.fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin:.8rem 0;}
+.fields label {display:flex;flex-direction:column;gap:.18rem;font-size:.9rem;}
+.fields input,.fields select {min-width:0;width:100%;min-height:38px;box-sizing:border-box;font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.2rem;padding:.26rem;}
+.fields option {color:#151b1a;background:#faf5e8;}
+#crt-actual,#crt-result {font-weight:700;margin:.7rem 0;}
+#crt-status[data-error=true] {color:inherit;border-left:4px solid #d16246;padding-left:.6rem;font-weight:600;}
+#crt-trace {display:block;width:min(100%,650px);height:auto;max-width:100%;border-radius:.2rem;}
+.views {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;}
+.views figure {margin:0;}
+.views img {display:block;width:100%;height:auto;}
+.views figcaption {margin:.35rem 0 1rem;font-size:.92rem;}
+.specs div {border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);padding:.55rem 0;}
+.specs dd {margin:.15rem 0;}
+.specs dt {font-weight:bold;}
+.scroll {overflow-x:auto;}
+table {border-collapse:collapse;width:100%;}
+th,td {text-align:left;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent);padding:.44rem;}
+@media(max-width:900px) {.work {grid-template-columns:1fr;} #crt-viewer {height:310px;}}
+@media(max-width:550px) {.views {grid-template-columns:1fr;} #crt-viewer {height:265px;} .tools button,.fields input,.fields select{min-height:44px;}}
+</style>

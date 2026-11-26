@@ -2,7 +2,7 @@
   {
     "id": "05-01",
     "name": "Stylus profilometer",
-    "model": "Bruker DektakXT",
+    "model": "Bruker DektakXT manual XY with enclosure and 1 µm radius stylus",
     "evidence": "B",
     "priority": "P1",
     "page": 18,
@@ -15,9 +15,10 @@
     "inputs": "Surface height field, stylus geometry, trace coordinates and vertical calibration ID",
     "outputs": "Height-versus-distance trace with step estimate and uncertainty",
     "acceptance": "Scan a certified step with plateaus wider than the tip. Evaluate height on the plateaus and compare with the certified interval; repeat in the reverse direction.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Metric articulated cabinet GLB with enclosed manual stage",
+    "simulationStatus": "Verified traceable-height witness, forward/reverse scans and rigid stylus envelope",
+    "integrationStatus": "Dedicated simulator, 04-04 ion-mill handoff and JSON/CSV export",
+    "simulator": "/simulations/equipment/05-01/simulator/",
     "related": [
       [
         "Neural Interface Studio",

@@ -1,0 +1,64 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "08-04",
+  "asset": "/equipment/08-04/fineplacer-lambda.glb",
+  "scale": "1 glTF unit = 1 m; +Y up, +Z toward operator",
+  "metrics": {
+    "sizeBytes": 239692,
+    "triangles": 2900,
+    "draws": 97,
+    "baseGltfXyzM": [
+      0.6200000047683716,
+      0.061000000685453415,
+      0.41999998688697815
+    ],
+    "controllerGltfXyzM": [
+      0.28999999165534973,
+      0.14300000667572021,
+      0.3100000023841858
+    ]
+  },
+  "dispatch": "DOM-independent action(state, action); desktop picks same action as buttons; immersive frontend not tested",
+  "items": [
+    {
+      "node": "optics_toggle",
+      "label": "Park or restore optical carriage",
+      "action": {
+        "type": "optics"
+      },
+      "diameterM": 0.034,
+      "travelMm": 113,
+      "inferred": true
+    },
+    {
+      "node": "arm_toggle",
+      "label": "Swing arm to dry placement or lift",
+      "action": {
+        "type": "arm"
+      },
+      "diameterM": 0.026,
+      "requires": "opticsParked"
+    },
+    {
+      "node": "placer_arm",
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "pivotM": [
+        0,
+        0.175,
+        -0.096
+      ],
+      "travelDeg": [
+        0,
+        90
+      ]
+    },
+    {
+      "node": "carrier_stage",
+      "scale": "m; output asset frame +Y up"
+    }
+  ]
+}

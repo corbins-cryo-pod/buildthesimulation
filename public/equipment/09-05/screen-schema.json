@@ -1,0 +1,10 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "description":"Analog screen trajectory. Horizontal range 0–10 divisions; y positive upward, including clipped deflections.",
+ "type":"object","required":["schema","kind","revision","outcome","screen","graticule","parent","windowS"],
+ "properties":{
+  "schema":{"const":"bts.analog-trace.screen.v1"},"kind":{"const":"simulated"},"revision":{"type":"integer","minimum":1},
+  "outcome":{"enum":["triggered","free-run"]},"windowS":{"type":"number","exclusiveMinimum":0},
+  "screen":{"type":"array","minItems":3,"items":{"type":"object","required":["timeS","spotXDiv","spotYDiv","inputBncV"],"properties":{"timeS":{"type":"number","minimum":0},"spotXDiv":{"type":"number","minimum":0,"maximum":10},"spotYDiv":{"type":"number"},"inputBncV":{"type":"number"}}}}
+ }
+}

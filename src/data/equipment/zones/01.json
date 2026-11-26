@@ -13,9 +13,10 @@
     "inputs": "Versioned mask polygons, substrate outline, database units and terminal netlist",
     "outputs": "Design revision with fabrication layers, contact IDs and design-rule findings",
     "acceptance": "Round-trip a two-contact layout through GDSII. Preserve both contacts and their spacing to one database unit; a deliberately disconnected trace must fail connectivity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Original metric retro desk, CRT and workstation enclosure",
+    "simulationStatus": "Verified restricted GDSII round trip and planar trace continuity",
+    "integrationStatus": "Live CRT layer actions, generic mask/GDSII export and VR target contract",
+    "simulator": "/simulations/equipment/01-01/simulator/",
     "related": [
       [
         "Neural Interface Designer",
@@ -62,7 +63,7 @@
   {
     "id": "01-03",
     "name": "GPU visualization node",
-    "model": "NVIDIA RTX 6000 Ada Generation workstation (reference configuration)",
+    "model": "Lenovo ThinkStation P7 / 1× NVIDIA RTX 6000 Ada",
     "evidence": "C",
     "priority": "P3",
     "page": 7,
@@ -73,9 +74,10 @@
     "inputs": "Versioned visualization dataset, job requests, estimated byte counts and virtual memory budget",
     "outputs": "Job-state events, allocated bytes and rendered-volume reference",
     "acceptance": "Queue two volumes that each fit individually but exceed the budget together. The second starts after the first releases memory; replay yields the same event order.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric chassis and GPU GLB; selected internals inferred",
+    "simulationStatus": "Deterministic synthetic FIFO, allocation and multiresolution budget",
+    "integrationStatus": "Revisioned synthetic volume and queue JSON",
+    "simulator": "/simulations/equipment/01-03/simulator/"
   },
   {
     "id": "01-04",
@@ -91,9 +93,15 @@
     "inputs": "Registered volume tiles, voxel-to-world transform, segmentation labels and annotation revision",
     "outputs": "Skeleton or segment selection with world coordinates, volume ID and edit history",
     "acceptance": "Trace through the boundary of two adjacent tiles. The node at the seam must have the same world position and segment ID at both zoom levels.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass original metric workstation and two live instrument displays",
+    "simulationStatus": "Synthetic two-tile two-scale seam, labels and exact world coordinates verified",
+    "integrationStatus": "Simulator with synthetic import and trace export; no service or headset claim",
+    "simulator": "/simulations/equipment/01-04/simulator/",
+    "related": [
+      ["Neuroglancer volume and chunk convention", "https://neuroglancer-docs.web.app/datasource/precomputed/volume.html"],
+      ["CAVE versioned annotations", "https://www.nature.com/articles/s41592-024-02426-z"],
+      ["ImageJ stack views", "https://imagej.github.io/imaging/z-functions"]
+    ]
   },
   {
     "id": "01-05",
@@ -126,6 +134,7 @@
     "evidence": "C",
     "priority": "P3",
     "page": 8,
+    "simulator": "/simulations/equipment/01-06/simulator/",
     "sources": [],
     "purpose": "Store experiment histories, model assets and microscopy volumes.",
     "geometryBrief": "Rack rails, drive bays, cooling grilles, switch and patch panel.",
@@ -133,14 +142,14 @@
     "inputs": "Versioned sample records, binary objects, content checksums and run manifests",
     "outputs": "Archived manifest with resolvable object IDs, integrity report and restore event",
     "acceptance": "Archive and restore a run containing a mask and a trace. Both checksums and parent links must match; a modified trace must fail the integrity check.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric GLB",
+    "simulationStatus": "Virtual fit, power budget and archive/restore",
+    "integrationStatus": "Interactive web route; archive JSON and import"
   },
   {
     "id": "01-07",
     "name": "Engineering drafting table",
-    "model": "Custom adjustable drafting desk and inspection monitor",
+    "model": "BTS-DRAFT Mk I original adjustable table and monitor",
     "evidence": "C",
     "priority": "P2",
     "page": 8,
@@ -151,8 +160,15 @@
     "inputs": "Sample CAD outline, scale, datum and dimension annotation set",
     "outputs": "Revision-linked drawing sheet, measured dimensions and specimen overlay transform",
     "acceptance": "Overlay a 10 mm square, zoom twice and rotate the view. Its dimension stays 10 mm and its annotations remain attached to the same vertices.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Editable metric custom workstation · hinge, lamp, ruler and drawers",
+    "simulationStatus": "1:1 planar drawing / specimen overlay with vertex-anchored dimensions",
+    "integrationStatus": "JSON outline import, 1:1 SVG and revision JSON export · VR actions",
+    "simulator": "/simulations/equipment/01-07/simulator/",
+    "related": [
+      [
+        "Model scope, references and verification",
+        "/simulations/equipment/01-07/simulator/#evidence"
+      ]
+    ]
   }
 ]

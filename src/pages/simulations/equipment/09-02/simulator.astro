@@ -1,0 +1,114 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import verification from '../../../../../public/equipment/09-02/verification.json';
+import geometry from '../../../../../public/equipment/09-02/asset-metrics.json';
+const a='/equipment/09-02/';
+const sheet='https://www.keysight.com/content/dam/keysight/en/doc/ungate/data-sheets/5989-2785.pdf';
+const quick='https://www.keysight.com/se/en/assets/9018-03729/quick-start-guides/9018-03729.pdf';
+const user='https://www.keysight.com/us/en/assets/9018-01850/user-manuals/9018-01850.pdf';
+const front='https://www.keysight.com/content/dam/keysight/en/img/prd/generators-sources-power/source-measure-units/b1500a-series/B1500A_FR_TRANS_SHAD.png';
+const rear='https://assets-us-01.kc-usercontent.com/ecb176a6-5a2e-0000-8943-84491e5fc8d1/a9b3f990-4437-41be-a690-671d998e8fa4/KEYSI-B1500A-04.jpg';
+const specs=[
+ ['Chassis envelope · geometry','420 W × 330 H × 575 D, mm','Keysight data sheet, p. 43. Footed benchtop cabinet; protruding connectors and attached leads excluded from the envelope study.',sheet+'#page=43'],
+ ['Touch panel · geometry','15 in (381 mm) nominal diagonal','Data sheet, p. 5. A 4:3 active area (304.8 × 228.6 mm) is inferred from the face photograph; button, fan, slot pitch, port and rail details are not dimensioned.',sheet+'#page=5'],
+ ['Slots · configuration','Ten slots; B1517A HRSMU in slot 7; B1520A MFCMU in slot 9','Data sheet, pp. 7–8. Selected physical positions match those modules in the reference photo; other occupied modules in that photo were replaced by blank covers in this build. No ASU or SCUU.',sheet+'#page=7'],
+ ['HRSMU · real limits','Up to 100 V, up to 100 mA; not simultaneous across all ranges','Data sheet, pp. 7, 19–20. These are documented hardware limits, not virtual operating ranges or an accuracy claim.',sheet+'#page=20'],
+ ['MFCMU · real AC test signal','1 kHz–5 MHz, 10–250 mV RMS','Data sheet, p. 24. The hardware has a separate built-in DC bias path; this model uses a limited subset.',sheet+'#page=24'],
+ ['I–V exercise · supported range','−1 to +1 V command; 1 µA–2 mA absolute compliance; 100 Ω–100 kΩ','Educational subset, ideal source and resistor with symmetric current limit; 3–81 points.',sheet+'#page=20'],
+ ['C–V exercise · supported range','−1 to +1 V bias, 1–100 kHz, 10–50 mV RMS, 100 pF–10 nF','Educational subset for an ideal capacitor. Capacitance does not vary with bias, but AC current varies with frequency.',sheet+'#page=24'],
+ ['Probe fixture · geometry','14 mm vertical travel (illustrative), two contacts, no separate measured dimensions','Original virtual fixture, not Keysight N1295A or 16442B geometry. Quick Start printable pp. 1-5–1-12 illustrates direct module wiring and physical test fixtures for context.',quick+'#page=11'],
+];
+---
+<Layout pageTitle="Semiconductor device analyzer" subtitle="" description="Virtual Keysight B1500A with source-measure compliance sweeps and multi-frequency capacitance measurement." wide={true}>
+<article id="b1500a">
+<nav><a href="/simulations/equipment/09-02/">← Equipment 09-02</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#b1500-evidence">References and verification</a></nav>
+<header><small>09-02 · ELECTRICAL CHARACTERIZATION · VIRTUAL BENCH</small><h2>Keysight B1500A semiconductor device analyzer</h2><p>Run a resistor I–V sweep and watch the source reduce the terminal voltage at its current limit. Then move the probe fixture to the capacitance module and verify that an ideal capacitor stays flat with DC bias.</p></header>
+<div class="work">
+<section class="panel"><h3>Instrument and probe fixture</h3>
+<div class="tools"><button data-b1500-view="orbit">Reset view</button><button data-b1500-view="front">Front panel</button><button data-b1500-view="rear">Module ports</button><button data-b1500-view="probes">Probe fixture</button><button data-b1500-view="screen">Display close-up</button></div>
+<div id="b1500-viewer"></div><p id="b1500-model" role="status">Loading original B1500A geometry…</p>
+<p>Drag to orbit and scroll or pinch to zoom. Click the front measurement, standby, and encoder controls, paired probes, or the matching module's rear connector. The rendered display shows the same sweep as the bench. Physical Quest testing is pending.</p></section>
+<section class="panel"><h3>Wire, program and measure</h3>
+<div class="fields">
+<label>Module<select id="b1500-mode"><option value="IV">B1517A HRSMU · I–V</option><option value="CV">B1520A MFCMU · C–V</option></select></label>
+<label>Import a passive coupon<input id="b1500-import" type="file" accept=".json,application/json"/></label>
+<label><span id="b1500-value-label">Resistance (Ω)</span><input id="b1500-value" type="number" min="100" max="100000" step="any"/></label>
+<label>Number of points<input id="b1500-steps" type="number" min="3" max="81" step="1"/></label>
+<label>Start bias (V)<input id="b1500-start" type="number" min="-1" max="1" step=".025"/></label>
+<label>Stop bias (V)<input id="b1500-stop" type="number" min="-1" max="1" step=".025"/></label>
+</div>
+<div class="fields" id="b1500-iv-fields"><label>Current compliance (µA)<input id="b1500-ilim" type="number" min="1" max="2000" step="1"/></label></div>
+<div class="fields" id="b1500-cv-fields" hidden><label>Frequency (kHz)<input id="b1500-frequency" type="number" min="1" max="100" step="any"/></label><label>Signal level (mV RMS)<input id="b1500-level" type="number" min="10" max="50" step="any"/></label></div>
+<p id="b1500-fixture"></p>
+<div class="tools"><button id="b1500-preset">Install matching coupon</button><button id="b1500-wire">Disconnect leads</button><button id="b1500-seat">Raise probes</button><button id="b1500-power">Standby</button><button id="b1500-reset">Restore I–V setup</button></div>
+<div class="tools run"><button id="b1500-run">Run sweep</button><button id="b1500-json" disabled>Export sweep JSON</button><button id="b1500-csv" disabled>Export sweep CSV</button></div>
+<p id="b1500-status" aria-live="polite"></p>
+</section>
+</div>
+<section class="panel"><h3>Trace and point readout</h3>
+<p id="b1500-result" aria-live="polite"></p>
+<canvas id="b1500-plot" width="700" height="480" aria-label="Measurement curve against commanded voltage. Numeric data are provided in the table below."></canvas>
+<details><summary>Inspect every measurement point</summary><div class="scroll"><table><thead><tr><th>Point</th><th>Command (V)</th><th>Terminal (V)</th><th id="b1500-last-title">Current (mA)</th><th>Flag</th></tr></thead><tbody id="b1500-rows"></tbody></table></div></details>
+<p><strong>I–V:</strong> The preset 1 kΩ resistor at a 250 µA limit gives 4 limited points in 9. At +0.4 V command, read +0.25 V at the terminal and +0.25 mA. Double the resistor to 2 kΩ and all 9 points stay below compliance.</p>
+<p><strong>C–V:</strong> Select B1520A, install the matching capacitor, connect the leads and lower the probes. Configure −1 through +1 V, 10 kHz and 30 mV RMS. Read 1 nF at every bias and approximately 1.885 µA RMS. At 100 kHz the current rises by 10× but the fit stays 1 nF.</p>
+</section>
+<section class="panel"><h3>Operating model and station contract</h3>
+<p><strong>Source/measure:</strong> for each command <var>V</var>, the unconstrained resistor current is <var>V</var>/<var>R</var>. When |I| exceeds compliance, this model enforces ±I<sub>limit</sub> and measures <var>V</var><sub>terminal</sub> = <var>I</var> × <var>R</var>. All points continue with per-point compliance flags; automatic abort is not modeled. At exactly the limit a point does not need adjustment.</p>
+<p><strong>Capacitance:</strong> the ideal parallel C model has Y = j2πfC, zero DC leakage, and I<sub>RMS</sub> = 2πfC&nbsp;V<sub>RMS</sub>. Its measured capacitance is Im(Y)/(2πf), independent of static bias. The two physical high and low lead pairs for C–V are collapsed to logical HI and LO. The sign is V = HI − LO; positive current enters HI. Step order is not a time basis.</p>
+<p>Incompatible coupons, duplicate or missing contacts, standby, disconnected or lifted probes and out-of-range settings stop a sweep. Only ideal passive coupons are included: no diode/CMOS extraction, cable loss, guard leakage, fringe capacitance, de-embedding, gain calibration or self-heating. Nominal module capability does not imply hardware accuracy for the simulated data.</p>
+<p><a href={a+'contract.json'}>Fixture and result contracts</a> · <a href={a+'resistor-coupon.json'}>Resistor input</a> · <a href={a+'capacitor-coupon.json'}>Capacitor input</a> · <a href={a+'example-iv.json'}>Example I–V output</a> · <a href={a+'example-cv.json'}>Example C–V output</a>. JSON and CSV preserve the sample and contact IDs and revisions; JSON retains settings, parent record, units and method. No published compatible consumer or physical probe-station link is claimed.</p>
+</section>
+<section class="panel" id="b1500-evidence"><h3>Illustrated instrument references</h3>
+<p>Illustrations below are original renders, not photographs or manufacturer CAD. The manufacturer and third-party photos are linked as view references only. Geometry was compared against the documented mainframe envelope and pictured exterior layout, not a physical instrument or CMM survey.</p>
+<div class="views">
+ <figure><img loading="lazy" src={a+'front-view.webp'} alt="Original B1500A cabinet front-left render with display and rotary control"/><figcaption><strong>Front-left / selected B1500A.</strong> Flat 4:3 display, right encoder and buttons, left-side vents and front USB. Compare the <a href={front}>Keysight front product photograph</a>; accessories in that image are not modeled as OEM units here.</figcaption></figure>
+ <figure><img loading="lazy" src={a+'rear-view.webp'} alt="Original rear render with cooling fans and selected module ports"/><figcaption><strong>Rear / B1517A + B1520A.</strong> Three fan cages, slots 7 and 9, triax Force/Sense and four C–V terminals. Compare the <a href={rear}>Electro Rent B1500A rear photograph of a more fully populated chassis</a> and <a href={user}>Keysight manual</a>.</figcaption></figure>
+ <figure><img loading="lazy" src={a+'probe-view.webp'} alt="Original close-up render of dual-contact probe fixture and test coupon"/><figcaption><strong>Sample area / original virtual accessory.</strong> Twin vertical contacts lower onto a two-pad coupon. Compare the <a href={quick+'#page=11'}>Keysight connection and test-fixture illustrations</a> for electrical context; this is not a replica of the pictured accessories.</figcaption></figure>
+</div>
+<dl class="specs">{specs.map(([k,v,n,l])=><div><dt>{k}</dt><dd><strong>{v}</strong> · <a href={l}>{n}</a></dd></div>)}</dl>
+<p><a href={a+'b1500a.glb'}>Download metric GLB</a> · <a href={a+'build-model.py'}>Editable Blender model source</a> · <a href={a+'interaction.json'}>Spatial action manifest</a> · <a href={a+'asset-metrics.json'}>Measured geometry and mesh budget</a></p>
+<h3>Independent verification</h3><p><strong>Geometry:</strong> the model reads {geometry.chassisMeters.map(m=>(m*1000).toFixed(2)).join(' × ')} mm in X × Y × Z versus 420 × 330 × 575 mm nominal (±5 mm envelope tolerance). The inferred active screen has the nominal 381 mm diagonal, and the modeled probe tips align with both pad centers within 0.2 mm.</p>
+<p><strong>Numerical tests:</strong> {verification.evidence} No hardware data replay or experimental validation is claimed.</p>
+<div class="scroll"><table><thead><tr><th>Reference</th><th>Expected</th><th>Simulated</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verification.rows.map(r=><tr><td>{r.why}</td><td>{typeof r.expect==='number'?Number(r.expect.toPrecision(8)):r.expect} {r.unit}</td><td>{typeof r.actual==='number'?Number(r.actual.toPrecision(8)):r.actual}</td><td>{r.tolerance??'Exact flag'}</td><td>{r.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'verification.json'}>Machine-readable numeric verification</a> · <a href={a+'acceptance.json'}>Predeclared fixtures and tolerances</a> · <a href={a+'solver.mjs'}>Numerical solver</a></p>
+</section>
+</article>
+</Layout>
+<script>
+import '../../../../lib/equipment/09-02/client.mjs';
+</script>
+<style>
+#b1500a {max-width: 1280px; margin:auto; color:inherit;}
+#b1500a header {margin:1.4rem 0 1rem;}
+#b1500a header h2 {margin:.25rem 0 0;}
+#b1500a header p {max-width:85ch;}
+.work {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem;}
+.panel {border:1px solid color-mix(in srgb,currentColor 32%,transparent);padding:clamp(.8rem,2vw,1.4rem);margin:.6rem 0;border-radius:.33rem;min-width:0;}
+.panel h3 {margin:0 0 .85rem;}
+.tools {display:flex;gap:.4rem;flex-wrap:wrap;}
+.tools button {border:1px solid currentColor;background:transparent;color:inherit;min-height:38px;padding:.45rem .7rem;border-radius:.24rem;cursor:pointer;font:inherit;}
+.tools button[aria-pressed=true] {background:#d6bd73;color:#151b1a;}
+.tools button:disabled {opacity:.46;cursor:not-allowed;}
+#b1500-viewer {height:350px;margin:.75rem 0 0;background:#263439;}
+#b1500-viewer :global(canvas) {display:block;max-width:100%;touch-action:none;}
+.fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin:.8rem 0;}
+.fields label {display:flex;flex-direction:column;gap:.18rem;font-size:.9rem;}
+.fields input,.fields select {min-width:0;width:100%;min-height:38px;box-sizing:border-box;font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.2rem;padding:.26rem;}
+.fields option {color:#151b1a;background:#faf5e8;}
+#b1500-actual,#b1500-result {font-weight:700;margin:.7rem 0;}
+#b1500-status[data-error=true] {color:inherit;border-left:4px solid #d16246;padding-left:.6rem;font-weight:600;}
+#b1500-plot {display:block;width:min(100%,650px);height:auto;max-width:100%;border-radius:.2rem;}
+.views {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;}
+.views figure {margin:0;}
+.views img {display:block;width:100%;height:auto;}
+.views figcaption {margin:.35rem 0 1rem;font-size:.92rem;}
+.specs div {border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);padding:.55rem 0;}
+.specs dd {margin:.15rem 0;}
+.specs dt {font-weight:bold;}
+.scroll {overflow-x:auto;}
+table {border-collapse:collapse;width:100%;}
+th,td {text-align:left;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent);padding:.44rem;}
+@media(max-width:900px) {.work {grid-template-columns:1fr;} #b1500-viewer {height:310px;}}
+@media(max-width:550px) {.views {grid-template-columns:1fr;} #b1500-viewer {height:265px;} .tools button,.fields input,.fields select{min-height:44px;}}
+.fields[hidden]{display:none}.run{margin-top:.65rem}
+</style>

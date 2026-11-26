@@ -1,0 +1,18 @@
+{
+  "schema":"bts.pcb-inspection.reference-cases.v1",
+  "basis":"Preimplementation literal rectangles and manual distance/subtraction, not machine data. Coupon two intended nets and no electronics.",
+  "cases":[
+    {"id":"isolated-intended-a","expected":"NET_A","unit":"net"},
+    {"id":"separate-connected-islands","expected":2,"unit":"component"},
+    {"id":"cross-net-gap","expected":0.35,"unit":"mm","tolerance":0.000001},
+    {"id":"oversize-gauge-blocked","expected":"too-narrow","unit":"classification"},
+    {"id":"smaller-gauge-pass","expected":"width-available","unit":"classification"},
+    {"id":"tangent-gauge-no-margin","expected":"zero-margin","unit":"classification"},
+    {"id":"introduced-bridge-shorts-islands","expected":true,"unit":"boolean"},
+    {"id":"broken-trace-opens-intended-net","expected":true,"unit":"boolean"},
+    {"id":"diagonal-3-4-5","expected":5,"unit":"mm","tolerance":0.000001},
+    {"id":"non-top-layer-rejected","expected":true,"unit":"boolean"},
+    {"id":"metric-width","expected":0.68,"unit":"m","tolerance":0.00001},
+    {"id":"metric-depth","expected":0.80,"unit":"m","tolerance":0.00001}
+  ]
+}

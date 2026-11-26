@@ -1,0 +1,74 @@
+{
+  "scope": "Independent analytic passive coupon references defined before model; no hardware or material calibration",
+  "checks": [
+    {
+      "id": "CORNER",
+      "expected": [
+        30,
+        20
+      ],
+      "unit": "MPa (E′,E″)",
+      "tolerance": 1e-8,
+      "basis": "e^-t/tau relaxation with E0=10 MPa, ΔE=40 MPa and ωτ=1 gives equal half-strength corrections.",
+      "actual": [
+        29.999999999999968,
+        19.999999999999996
+      ],
+      "pass": true
+    },
+    {
+      "id": "PHASOR",
+      "expected": [
+        7.794228634059948,
+        4.5
+      ],
+      "unit": "MPa (E′,E″)",
+      "tolerance": 1e-8,
+      "basis": "9 MPa stress/strain amplitude ratio and 30° stress lead.",
+      "actual": [
+        7.794228634059944,
+        4.499999999999994
+      ],
+      "pass": true
+    },
+    {
+      "id": "LIMIT",
+      "expected": [
+        12,
+        0
+      ],
+      "unit": "MPa (E′,E″)",
+      "tolerance": 1e-8,
+      "basis": "Purely elastic equilibrium spring is recovered when ΔE=0.",
+      "actual": [
+        11.999999999999995,
+        -2.5986679894179004e-16
+      ],
+      "pass": true
+    },
+    {
+      "id": "AMPLITUDE",
+      "expected": 2,
+      "unit": "force amplitude ratio",
+      "tolerance": 1e-10,
+      "basis": "Small strain linear response: doubling oscillation amplitude doubles force without changing modulus.",
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "id": "FOOTPRINT",
+      "expected": [
+        460,
+        560
+      ],
+      "unit": "mm (W,D)",
+      "tolerance": 0.01,
+      "basis": "TA Installation Requirements 925722 rev. K p. 17.",
+      "actual": [
+        460,
+        560
+      ],
+      "pass": true
+    }
+  ]
+}

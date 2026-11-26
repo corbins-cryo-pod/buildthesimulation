@@ -1,0 +1,108 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/08-03/bondtec-5630i.glb",
+  "model": "/equipment/08-03/bench.mjs",
+  "dispatch": "act(state,action,value); station() initializes",
+  "origin": "Bench plane under bonder centre; external monitor excluded from manufacturer chassis envelope. +Y up, +Z forward; all metres. Workholder local design +y reverses glTF +Z.",
+  "controls": [
+    {
+      "mesh": "ASSEMBLY_SEAT",
+      "action": "seat",
+      "label": "Seat/remove inert coupon",
+      "minM": [
+        -0.0105,
+        0.2222,
+        0.0765
+      ],
+      "maxM": [
+        0.0105,
+        0.223235,
+        0.0915
+      ]
+    },
+    {
+      "mesh": "BOND_TOOL",
+      "action": "align",
+      "label": "Confirm programmed fiducial transform",
+      "minM": [
+        -0.1315,
+        0.223,
+        -0.049
+      ],
+      "maxM": [
+        0.11975,
+        0.528,
+        0.11
+      ]
+    },
+    {
+      "mesh": "RUN_DISPLAY",
+      "action": "run",
+      "label": "Run programmed geometric plan",
+      "minM": [
+        0.3804,
+        0.25795,
+        -0.079
+      ],
+      "maxM": [
+        0.8676,
+        0.53205,
+        -0.075
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "label": "enclosure width",
+      "expectedMm": 700,
+      "actualMm": 699.999988079071,
+      "toleranceMm": 0.08,
+      "pass": true
+    },
+    {
+      "label": "enclosure depth",
+      "expectedMm": 650,
+      "actualMm": 649.9999761581421,
+      "toleranceMm": 0.08,
+      "pass": true
+    },
+    {
+      "label": "enclosure height",
+      "expectedMm": 700,
+      "actualMm": 699.9999992549419,
+      "toleranceMm": 0.08,
+      "pass": true
+    },
+    {
+      "label": "standard wedge length",
+      "expectedMm": 25.4,
+      "actualMm": 25.39999969303608,
+      "toleranceMm": 0.08,
+      "pass": true
+    },
+    {
+      "label": "workholder nominal XY footprint",
+      "expectedMm": 100,
+      "actualMm": 100.00000149011612,
+      "toleranceMm": 0.08,
+      "pass": true
+    }
+  ],
+  "geometry": {
+    "units": "m",
+    "nodes": 116,
+    "bytes": 828544,
+    "triangles": 11887,
+    "minM": [
+      -0.35,
+      0,
+      -0.325
+    ],
+    "maxM": [
+      0.8795,
+      0.7,
+      0.328
+    ]
+  },
+  "illustrative": "Outer envelope, 25.4 mm wedge and nominal 100 mm work envelope documented; workholder body mounting, head details and cable routes inferred. Not validated hardware collision certification or Quest session."
+}

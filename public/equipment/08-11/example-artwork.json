@@ -1,0 +1,17 @@
+{
+  "schema":"bts.pcb-inspection.artwork.v1",
+  "sampleId":"BTS-08-11-INERT-001",
+  "revision":"coupon-r1",
+  "units":"mm",
+  "layer":"top-copper",
+  "outlineMm":[60,45],
+  "rectangles":[
+    {"id":"A1","boundsMm":[5,5,15,12],"padId":"A1"},
+    {"id":"A_TRACE","boundsMm":[14,7.5,37.8,9.5]},
+    {"id":"A2","boundsMm":[36,5,44,12],"padId":"A2"},
+    {"id":"B1","boundsMm":[44.35,6,53,12],"padId":"B1"},
+    {"id":"B_TRACE","boundsMm":[49,11,51,35]},
+    {"id":"B2","boundsMm":[46,34,56,42],"padId":"B2"}
+  ],
+  "nets":[{"id":"NET_A","padIds":["A1","A2"]},{"id":"NET_B","padIds":["B1","B2"]}]
+}

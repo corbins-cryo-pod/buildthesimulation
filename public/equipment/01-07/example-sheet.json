@@ -1,0 +1,92 @@
+{
+  "schema": "bts.dimensioned-sheet.v1",
+  "equipmentId": "01-07",
+  "drawingId": "BTS-DRAFT-0001",
+  "sampleId": "SQUARE-10MM",
+  "revision": 1,
+  "parentRevision": 0,
+  "units": "mm",
+  "paper": {
+    "widthMm": 420,
+    "heightMm": 297
+  },
+  "physicalScale": "1:1",
+  "datum": {
+    "xMm": 0,
+    "yMm": 0
+  },
+  "outline": [
+    {
+      "id": "A",
+      "xMm": 0,
+      "yMm": 0
+    },
+    {
+      "id": "B",
+      "xMm": 10,
+      "yMm": 0
+    },
+    {
+      "id": "C",
+      "xMm": 10,
+      "yMm": 10
+    },
+    {
+      "id": "D",
+      "xMm": 0,
+      "yMm": 10
+    }
+  ],
+  "annotations": [
+    {
+      "id": "DIM-AB",
+      "anchorVertexIds": [
+        "A",
+        "B"
+      ],
+      "lengthMm": 10,
+      "sheetEndpointsMm": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "DIM-BC",
+      "anchorVertexIds": [
+        "B",
+        "C"
+      ],
+      "lengthMm": 10,
+      "sheetEndpointsMm": [
+        [
+          10,
+          0
+        ],
+        [
+          10,
+          10
+        ]
+      ]
+    }
+  ],
+  "specimenOverlay": {
+    "visible": true,
+    "translationMm": [
+      0,
+      0
+    ],
+    "rotationDeg": 0,
+    "scale": 1
+  },
+  "view": {
+    "zoom": 1,
+    "rotationDeg": 0
+  },
+  "provenance": "drawing-space measurement, not screen or physical metrology"
+}

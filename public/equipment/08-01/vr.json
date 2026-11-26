@@ -1,0 +1,92 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.465,
+    0.3585,
+    0.454
+  ],
+  "meshes": 55,
+  "triangles": 7408,
+  "bytes": 438204,
+  "interaction": {
+    "Manipulator_ball": {
+      "action": "place",
+      "boundsMinM": [
+        0.187,
+        0.051,
+        0.116
+      ],
+      "boundsMaxM": [
+        0.213,
+        0.077,
+        0.142
+      ]
+    },
+    "D_A": {
+      "action": "select",
+      "boundsMinM": [
+        0.0715,
+        0.089801,
+        0.13495
+      ],
+      "boundsMaxM": [
+        0.0716,
+        0.089805,
+        0.13505
+      ]
+    },
+    "D_B": {
+      "action": "select",
+      "boundsMinM": [
+        0.0724,
+        0.089801,
+        0.13495
+      ],
+      "boundsMaxM": [
+        0.0725,
+        0.089805,
+        0.13505
+      ]
+    },
+    "C_A": {
+      "action": "select",
+      "boundsMinM": [
+        0.071485,
+        0.089452,
+        0.137335
+      ],
+      "boundsMaxM": [
+        0.071615,
+        0.089456,
+        0.137465
+      ]
+    },
+    "C_B": {
+      "action": "select",
+      "boundsMinM": [
+        0.072385,
+        0.089452,
+        0.137335
+      ],
+      "boundsMaxM": [
+        0.072515,
+        0.089456,
+        0.137465
+      ]
+    }
+  },
+  "capillary": {
+    "node": "Capillary_Z_pivot",
+    "limitMm": {
+      "vertical": 14.2875,
+      "horizontalTotal": 15.875
+    },
+    "restM": [
+      0.072,
+      0.095,
+      0.135
+    ],
+    "placementMode": "virtual endpoint control; no real force/ultrasonics"
+  }
+}

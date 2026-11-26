@@ -1,0 +1,15 @@
+{
+  "origin":"Fixed analytical fixtures declared before implementation. Independent Ohm's-law/Thevenin divider and trigonometric/rectangular duty-cycle expectations; not measured device calibration.",
+  "cases":[
+    {"id":"match","expected":1,"unit":"Vpp","tolerance":1e-9,"description":"2 Vpp sine open circuit into 50 Ω with 50 Ω series source gives 1 Vpp"},
+    {"id":"open","expected":2,"unit":"Vpp","tolerance":1e-9,"description":"2 Vpp into open circuit retains 2 Vpp"},
+    {"id":"power","expected":0.0025,"unit":"W","tolerance":1e-12,"description":"1 Vpp zero-offset sine into 50 Ω gives 2.5 mW average"},
+    {"id":"period","expected":0.001,"unit":"s","tolerance":1e-12,"description":"1 kHz period unchanged by resistive loading"},
+    {"id":"75ohm","expected":1.2,"unit":"Vpp","tolerance":1e-9,"description":"2 Vpp open circuit with a 75 Ω physical load gives 1.2 Vpp"},
+    {"id":"reference-change","expected":2,"unit":"Vpp displayed","tolerance":1e-9,"description":"Changing display reference from 50 Ω to high Z doubles displayed amplitude; actual voltage unchanged"},
+    {"id":"quarter-duty","expected":-0.5,"unit":"V mean","tolerance":1e-9,"description":"25% +1 V and 75% −1 V square averages −0.5 V at the load"},
+    {"id":"bad-headroom","expected":"headroom","unit":"error code","description":"20 Vpp open-circuit plus 1 V offset exceeds the ±10 V peak model boundary"},
+    {"id":"bad-grid","expected":"sample-clock","unit":"error code","description":"1 kHz stimulus at 10 kSa/s does not meet the declared 20 samples/cycle model check"},
+    {"id":"output-off","expected":"output-off","unit":"error code","description":"No source trace can be captured while both outputs are disabled"}
+  ]
+}

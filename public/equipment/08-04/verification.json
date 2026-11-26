@@ -1,0 +1,115 @@
+{
+  "schema": "bts.flip-chip.verification.v1",
+  "metrics": {
+    "sizeBytes": 239692,
+    "triangles": 2900,
+    "draws": 97,
+    "baseGltfXyzM": [
+      0.6200000047683716,
+      0.061000000685453415,
+      0.41999998688697815
+    ],
+    "controllerGltfXyzM": [
+      0.28999999165534973,
+      0.14300000667572021,
+      0.3100000023841858
+    ]
+  },
+  "cases": [
+    {
+      "id": "observed-theta",
+      "expected": 2,
+      "unit": "deg",
+      "tolerance": 1e-9,
+      "actual": 1.9999999999999987,
+      "outcome": "PASS"
+    },
+    {
+      "id": "inverse-x",
+      "expected": -118.00742692365394,
+      "unit": "um",
+      "tolerance": 1e-9,
+      "actual": -118.00742692365397,
+      "outcome": "PASS"
+    },
+    {
+      "id": "inverse-y",
+      "expected": 59.15443509035039,
+      "unit": "um",
+      "tolerance": 1e-9,
+      "actual": 59.15443509035037,
+      "outcome": "PASS"
+    },
+    {
+      "id": "registered-good-bumps",
+      "expected": 4,
+      "unit": "pairs",
+      "tolerance": 0,
+      "actual": 4,
+      "outcome": "PASS"
+    },
+    {
+      "id": "defective-bump-overlap",
+      "expected": 0,
+      "unit": "fraction",
+      "tolerance": 0,
+      "actual": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "defect-distance",
+      "expected": 120,
+      "unit": "um",
+      "tolerance": 1e-9,
+      "actual": 120,
+      "outcome": "PASS"
+    },
+    {
+      "id": "repaired-bumps",
+      "expected": 5,
+      "unit": "pairs",
+      "tolerance": 0,
+      "actual": 5,
+      "outcome": "PASS"
+    },
+    {
+      "id": "equal-circle-lens",
+      "expected": 0.3910022189557706,
+      "unit": "fraction",
+      "tolerance": 1e-12,
+      "actual": 0.39100221895577075,
+      "outcome": "PASS"
+    },
+    {
+      "id": "base-width",
+      "expected": 0.62,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.6200000047683716,
+      "outcome": "PASS"
+    },
+    {
+      "id": "base-depth",
+      "expected": 0.42,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.41999998688697815,
+      "outcome": "PASS"
+    },
+    {
+      "id": "coincident-fiducials-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "optics-interlock",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Rigid analytic geometry and interlock logic only. No measured A7 precision, heat, force, physical bond, electrical continuity or headset data."
+}

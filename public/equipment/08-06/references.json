@@ -1,0 +1,6 @@
+{
+ "configuration":"Legacy Nordson DAGE 4000 family, not 4000 Plus/Stellar. WP100g wire-pull cartridge, editable sample mount and binocular optics; shear not implemented.",
+ "sources":{"brochure":"https://www.pi.infn.it/wp-content/uploads/2021/07/4000-Brochure.pdf","facility":"https://dresden-technologieportal.de/en/equipment/view/id/2260"},
+ "scale":{"envelopeWHDMm":[425,670,730],"basis":"Manufacturer legacy brochure specifications, including joystick and front wristrest; excludes external computer and monitor.","estimated":"Housing split, stage offsets, clamping shapes, hook housing, rear details and controller layout estimated. Original wire shapes are deliberately legible demonstration geometry, not actual wire metrology."},
+ "limitations":"Synthetic data fixture with predeclared wire-break label; no actual device routine, material qualification, preparation, or standards certification."
+}

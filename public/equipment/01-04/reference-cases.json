@@ -1,0 +1,18 @@
+{
+  "schema":"bts.connectomics.reference-cases.v1",
+  "basis":"Independent manual mapping of the literal anisotropic grid: world = [1000, -200, 500] nm plus each integer index times [8, 8, 40] nm. The left tile has eight x voxels; x=1064 is exactly its exclusive upper boundary.",
+  "cases":[
+    {"id":"seam-world","expected":[1064,-148,680],"unit":"nm"},
+    {"id":"seam-fine-index","expected":[8,6,4],"unit":"index XYZ"},
+    {"id":"seam-coarse-index","expected":[4,3,2],"unit":"index XYZ"},
+    {"id":"seam-fine-owner","expected":"right","unit":"tile ID"},
+    {"id":"seam-coarse-owner","expected":"right","unit":"tile ID"},
+    {"id":"seam-label-fine","expected":17,"unit":"synthetic label"},
+    {"id":"seam-label-coarse","expected":17,"unit":"synthetic label"},
+    {"id":"adjacent-left-owner","expected":"left","unit":"tile ID"},
+    {"id":"skeleton-retains-canonical-position","expected":true,"unit":"boolean"},
+    {"id":"out-of-volume-rejected","expected":true,"unit":"boolean"},
+    {"id":"alternate-segment-link-rejected","expected":true,"unit":"boolean"},
+    {"id":"desk-width","expected":1.55,"unit":"m","tolerance":0.00001}
+  ]
+}

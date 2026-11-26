@@ -1,0 +1,13 @@
+import {readFileSync,writeFileSync} from 'node:fs';import {Box3,Matrix4,Quaternion,Vector3} from 'three';
+const dir=new URL('../../../public/equipment/08-03/',import.meta.url),buf=readFileSync(new URL('bondtec-5630i.glb',dir)),j=JSON.parse(buf.toString('utf8',20,20+buf.readUInt32LE(12)));
+const boxes=new Map(),round=v=>v.toArray().map(x=>+x.toFixed(6)),xyz=(arr,def)=>new Vector3(...(arr??def));
+function visit(i,parent){
+ const node=j.nodes[i],local=node.matrix?new Matrix4().fromArray(node.matrix):new Matrix4().compose(xyz(node.translation,[0,0,0]),new Quaternion(...(node.rotation??[0,0,0,1])),xyz(node.scale,[1,1,1]));
+ const world=parent.clone().multiply(local),b=new Box3();
+ for(const p of j.meshes[node.mesh]?.primitives??[]){const a=j.accessors[p.attributes.POSITION];b.union(new Box3(xyz(a.min),xyz(a.max)).applyMatrix4(world))}
+ for(const k of node.children??[])b.union(visit(k,world));
+ boxes.set(node.name,b);return b;
+}
+const total=new Box3();for(const n of j.scenes[j.scene].nodes)total.union(visit(n,new Matrix4()));
+const rows=[['enclosure width','base_shell','x',700],['enclosure depth','base_shell','z',650],['enclosure height','MACHINE_DATUM','y',700],['standard wedge length','wedge_25_4','y',25.4],['workholder nominal XY footprint','vacuum_chuck','x',100]].map(([label,n,key,expectedMm])=>({label,expectedMm,actualMm:boxes.get(n).getSize(new Vector3())[key]*1000,toleranceMm:.08}));for(let r of rows){r.pass=Math.abs(r.expectedMm-r.actualMm)<=r.toleranceMm;if(!r.pass)throw Error(JSON.stringify(r))}
+const controls=[['ASSEMBLY_SEAT','seat','Seat/remove inert coupon'],['BOND_TOOL','align','Confirm programmed fiducial transform'],['RUN_DISPLAY','run','Run programmed geometric plan']].map(([mesh,action,label])=>({mesh,action,label,minM:round(boxes.get(mesh).min),maxM:round(boxes.get(mesh).max)}));writeFileSync(new URL('xr.json',dir),JSON.stringify({schema:'bts.station.xr.v1',asset:'/equipment/08-03/bondtec-5630i.glb',model:'/equipment/08-03/bench.mjs',dispatch:'act(state,action,value); station() initializes',origin:'Bench plane under bonder centre; external monitor excluded from manufacturer chassis envelope. +Y up, +Z forward; all metres. Workholder local design +y reverses glTF +Z.',controls,rows,geometry:{units:'m',nodes:j.nodes.length,bytes:buf.length,triangles:j.meshes.flatMap(m=>m.primitives).reduce((n,p)=>n+j.accessors[p.indices].count/3,0),minM:round(total.min),maxM:round(total.max)},illustrative:'Outer envelope, 25.4 mm wedge and nominal 100 mm work envelope documented; workholder body mounting, head details and cable routes inferred. Not validated hardware collision certification or Quest session.'},null,2)+'\n')

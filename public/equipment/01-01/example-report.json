@@ -1,0 +1,16 @@
+{
+  "schema": "bts.mask-check.v1",
+  "layoutId": "RECT_PAIR",
+  "revision": 1,
+  "parentRevision": 0,
+  "dbuUm": 0.001,
+  "contactIds": [
+    "P1",
+    "P2"
+  ],
+  "spacingDbu": 40000,
+  "spacingUm": 40,
+  "connected": true,
+  "findings": [],
+  "provenance": "Synthetic single-conductor rectangular design witness; no fabrication or full DRC certification."
+}

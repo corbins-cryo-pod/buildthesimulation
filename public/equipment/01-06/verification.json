@@ -1,0 +1,157 @@
+{
+  "scope": "Analytic dimensions, exact UTF-8 byte hashing, AC budget and software state checks. No measured cabinet, AC, endurance, runtime or headset validation.",
+  "rows": [
+    {
+      "id": "SHA-256 of abc (known vector)",
+      "expected": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "actual": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Mask UTF-8 size",
+      "expected": 94,
+      "actual": 94,
+      "unit": "bytes",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Trace UTF-8 size",
+      "expected": 32,
+      "actual": 32,
+      "unit": "bytes",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Clean example restore",
+      "expected": "2 objects accepted",
+      "actual": "2 objects accepted",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Modified trace",
+      "expected": "Trace only rejected",
+      "actual": "Trace only rejected",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Broken parent chain",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "U9 center elevation",
+      "expected": 432.825,
+      "actual": 432.82500000000005,
+      "unit": "mm",
+      "tol": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Nominal rail unit pitch",
+      "expected": 44.45,
+      "actual": 44.45,
+      "unit": "mm",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Occupied U8",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Default real load",
+      "expected": 288,
+      "actual": 288,
+      "unit": "W",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Default apparent load",
+      "expected": 360,
+      "actual": 360,
+      "unit": "VA",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Default estimated current",
+      "expected": 3,
+      "actual": 3,
+      "unit": "A",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "900 W sled aggregate watts",
+      "expected": 1188,
+      "actual": 1188,
+      "unit": "W",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "900 W sled aggregate apparent load",
+      "expected": 1485,
+      "actual": 1485,
+      "unit": "VA",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Overload interlock",
+      "expected": "Blocked",
+      "actual": "Blocked",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Cabinet closed model width",
+      "expected": 600,
+      "actual": 600,
+      "unit": "mm",
+      "tol": 1,
+      "pass": true
+    },
+    {
+      "id": "Cabinet closed model height",
+      "expected": 650,
+      "actual": 650,
+      "unit": "mm",
+      "tol": 1,
+      "pass": true
+    },
+    {
+      "id": "Rack target U9 in GLB",
+      "expected": 432.825,
+      "actual": 432.8249990940094,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "id": "GLB action bindings",
+      "expected": 4,
+      "actual": 4,
+      "unit": "actions",
+      "tol": 0,
+      "pass": true
+    }
+  ]
+}

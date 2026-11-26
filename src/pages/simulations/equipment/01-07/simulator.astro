@@ -1,0 +1,40 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import verified from '../../../../../public/equipment/01-07/verification.json';
+const a='/equipment/01-07/';
+---
+<Layout pageTitle="Engineering drafting table" subtitle="" description="Compare a 1:1 outline against an inert specimen and keep dimensions attached during view transforms." wide={true}>
+<article class="equipment draft107">
+<nav class="eq-nav"><a href="/simulations/equipment/01-07/">← Equipment 01-07</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Dimensions & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">01-07 / Drafting and inspection</span><h2>BTS-DRAFT Mk I · Drawing bench</h2><p>Inspect an original tilting worktop, then overlay a 10 mm square on a 1:1 drawing. Magnify and rotate the inspection view without moving the drawing’s dimension anchors or changing its scale.</p></header>
+<div class="dt-grid">
+<section class="dt-card"><h3>Drafting workstation</h3><div class="dt-bar"><button data-view="bench">Bench</button><button data-view="paper">Paper detail</button><button data-view="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="dt-camera"><canvas id="bench" aria-label="Drafting table with tilting top, ruler, drawers, task lamp, and monitor"></canvas></div>
+<p id="asset" class="dt-note" role="status">Loading metre-scale GLB…</p>
+<div class="dt-bar"><button id="tilt">Tilt worktop</button><button id="lamp">Switch task lamp off</button><button id="drawer">Open top drawer</button></div><p class="dt-note">The knobs, sheet and ruler have named virtual actions. The tilt cycles from flat to 45° in 15° steps. Drag or pinch in 3D to navigate.</p></section>
+<section class="dt-card"><h3>Drawing inspection</h3>
+<div class="dt-bar"><button id="zoomIn">Zoom ×2</button><button id="zoomOut">Zoom ÷2</button><button id="rotateView">Rotate view +30°</button><button id="resetView">Reset view</button><button id="overlay" class="primary">Hide specimen overlay</button></div>
+<div class="dt-paper"><svg id="drawing" width="600" height="352" role="img" aria-label="1:1 planar specimen drawing and dimension anchors"></svg></div>
+<p id="view" class="dt-note">View ×1 · 0° · physical drawing 1:1.</p>
+<div class="dt-table"><table><thead><tr><th>Dimension</th><th>Anchor IDs</th><th>Length</th></tr></thead><tbody id="dims"></tbody></table></div>
+<div class="dt-bar"><button id="example" class="primary">Run 10 mm check</button><button id="reset">Reset example</button></div>
+<p id="status" role="status" aria-live="polite">Example loaded. Try two zoom steps and rotate.</p>
+<label>Open 1:1 outline JSON locally <input type="file" id="import" accept="application/json,.json"/></label><a href={a+'example-outline.json'}>Example outline file</a></section>
+</div>
+<section class="dt-card"><h3>Portable sheet</h3><div class="dt-bar"><button id="export-json">Export dimensioned revision JSON</button><button id="export-svg">Export 420 × 297 mm SVG</button><a href={a+'example-sheet.json'}>Example result</a><a href={a+'example-sheet.svg'}>Example SVG</a></div>
+<p>JSON records the drawing and specimen IDs, parent revision, datum (mm), measured lengths, vertex IDs, and 1:1 overlay transform. The SVG keeps its declared physical A3 size and unrotated drawing axes no matter how the preview is rotated. Screen zoom, DPI and print scaling are not a physical calibration.</p></section>
+<section id="evidence"><h3>Original workstation dimensions and verification</h3><p>Worktop <b>1100 × 650 × 28 mm</b> (W × D × thickness); hinge height <b>930 mm</b> and output sheet <b>420 × 297 mm</b>. These are original design dimensions, not measurements of a physical desk. <a href="https://www.iso.org/standard/29017.html">ISO 5457 drawing-sheet convention</a> and <a href="https://www.iso.org/standard/64007.html">ISO 129-1 general dimensioning principles</a> provide context, not a compliance claim.</p>
+<p>Inputs are 3–48 ordered planar outline vertices (mm) and 1–16 dimensions with stable vertex-pair IDs, one datum offset, physical scale 1:1, and a parent revision. Length is computed in drawing space before view transforms. Imported outlines are shown as provided; this is not a full CAD parser or manufacturing tolerance engine. The specimen overlay uses the same imported outline to demonstrate registration, not to infer an independent real impression.</p>
+<div class="dt-table"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th title={c.basis}>{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{String(c.actual)}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable original model</a> · <a href={a+'drafting-table.glb'} download>Metric GLB</a> · <a href={a+'vr-station.json'}>VR action and pose manifest</a> · <a href={a+'draft.mjs'}>Headless logic</a> · <a href={a+'verification.json'}>Verification JSON</a>. No immersive headset has been tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/01-07/client.mjs';</script>
+<style>
+.draft107{--dt-rule:color-mix(in srgb,currentColor 28%,transparent);max-width:1280px;margin:auto}
+.dt-grid{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,1fr);gap:1rem}.dt-card{min-width:0;border:1px solid var(--dt-rule);padding:.82rem;margin:.8rem 0}.dt-card h3{margin:.2rem 0 .65rem}
+.dt-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.43rem;margin:.55rem 0}.dt-bar,.dt-note,.draft107 label{font:.88rem/1.4 system-ui,sans-serif}.draft107 button{font:inherit;padding:.39rem;color:inherit;background:var(--panel,Canvas);border:1px solid var(--dt-rule);border-radius:3px;min-height:36px;cursor:pointer}.draft107 .primary{background:#34594f;color:#fff}
+.dt-camera{aspect-ratio:1.52;background:#26353c}.dt-camera canvas,.dt-paper svg{width:100%;height:100%;display:block}.dt-camera canvas{touch-action:none}.dt-paper{aspect-ratio:1.70;background:#f1eee0}
+.dt-table{overflow:auto}.dt-table table{width:100%;border-collapse:collapse}.dt-table :is(td,th){border-bottom:1px solid var(--dt-rule);padding:.44rem;text-align:left}
+.draft107 .err{color:#9a4430}html[data-theme=dark] .draft107 .err{color:#f3a993}
+@media(max-width:820px){.dt-grid{grid-template-columns:1fr}}
+</style>
