@@ -1,0 +1,40 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.46492,
+    0.23876,
+    0.20433
+  ],
+  "meshes": 26,
+  "triangles": 5246,
+  "bytes": 267596,
+  "interaction": {
+    "Offline_count_plate": {
+      "action": "next",
+      "label": "Change the disconnected badge-count card",
+      "boundsMinM": [
+        0.192,
+        0.0485,
+        -0.0005
+      ],
+      "boundsMaxM": [
+        0.316,
+        0.0615,
+        0.0905
+      ]
+    }
+  },
+  "modelCabinetM": [
+    0.24384,
+    0.23876,
+    0.171
+  ],
+  "publishedCabinetMm": [
+    243.84,
+    238.76,
+    170.18
+  ],
+  "deviceActions": 0,
+  "offlineCardOnly": true
+}

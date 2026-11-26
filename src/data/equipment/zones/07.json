@@ -180,9 +180,10 @@
     "inputs": "Counting-slide image, calibrated observation volume and class-labeled reference masks",
     "outputs": "Count and concentration measurements with class counts and sampling uncertainty",
     "acceptance": "Use an annotated image with known class counts and volume. Recover the counts in an ideal fixture and scale concentration inversely when the specified sampled volume doubles.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-grounded sealed Countess 3 FL metric exterior",
+    "simulationStatus": "Dormant cabinet and separate geometric badge-count diagrams",
+    "integrationStatus": "Standalone browser station; no specimen or equipment connection",
+    "simulator": "/simulations/equipment/07-07/simulator/"
   },
   {
     "id": "07-08",
