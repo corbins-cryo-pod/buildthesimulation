@@ -1,0 +1,39 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import verification from '../../../../../public/equipment/03-02/verification.json';
+import refs from '../../../../../public/equipment/03-02/references.json';
+const a='/equipment/03-02/';
+---
+<Layout pageTitle="Thermal evaporation · AUTO 306" subtitle="" description="Inspect the Edwards AUTO 306 and compare an immutable synthetic pair of mirror-coupon maps." wide={true}>
+<article class="equipment ev302">
+<nav class="eq-nav"><a href="/simulations/equipment/03-02/">← Equipment 03-02</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Drawings & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">03-02 / Documentary instrument and synthetic map inspection</span><h2>Edwards AUTO 306 · Glass bell jar configuration</h2><p>Inspect the exterior and two virtual coupons. Compare their synthetic thickness maps across the centerline, then switch to an unchanged blank reference. The cabinet controls are inactive and there is no simulated deposition process.</p></header>
+<div class="ev-grid">
+<section class="ev-card"><h3>Model inspection</h3><div class="ev-bar"><button data-camera="whole">Front three-quarter</button><button data-camera="bell">Bell jar</button><button data-camera="coupon">Coupon view</button><button data-camera="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="ev-camera"><canvas id="instrument-model" aria-label="Metre-scale Edwards AUTO 306 with left bell jar and guard, sloped controller and cabinet"></canvas></div>
+<p id="asset" class="ev-note" role="status">Loading metre-scale GLB…</p><div class="ev-bar"><button id="cutaway">Hide glass for inspection</button></div><p class="ev-note">The cutaway changes only visibility. Click the glass to toggle it, or select a coupon after hiding it. Drag or pinch the model to inspect.</p></section>
+<section class="ev-card"><h3>Read-only coupon comparison</h3>
+<div class="ev-bar"><button id="run" class="primary">Compare paired maps</button><button id="blank">View unchanged blank</button><button id="reset">Reset example</button></div>
+<div class="ev-bar"><button id="focus-l">Focus left</button><button id="focus-both">Compare both</button><button id="focus-r">Focus right</button></div>
+<p id="status" role="status" aria-live="polite">Synthetic paired reference ready; select Compare paired maps.</p>
+<div id="maps" class="ev-maps"></div>
+<p id="axes" class="ev-note">Both maps are displayed in increasing +X. Compare mirrored columns; each row is at the same Z location.</p>
+<div class="ev-bar"><button id="export" disabled>Export current dataset JSON</button><a href={a+'example-maps.json'}>Paired example</a><a href={a+'blank-reference.json'}>Blank reference</a></div>
+<p class="ev-note">The export preserves coupon IDs, local X/Z sample locations in millimetres, 3 × 3 thickness grids in nanometres, geometry revision, and the residual.</p></section>
+</div>
+<section id="evidence"><h3>Documentary references and verification</h3>
+<figure class="ev-fig"><img src={a+'reference-elevation.svg'} alt="Original front elevation identifying the optional guard, inactive sloping control fascia, and cabinet dimensions." loading="lazy"/><figcaption>Original simplified elevation alongside the source links below. Guard contour, fascia details and inert holder are estimates or illustrative.</figcaption></figure>
+<ul>{refs.references.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>The exterior uses <b>880 mm width</b>, <b>595 mm depth</b>, <b>945 mm deck</b> and <b>1450 mm guard top</b> from the engineering views, excluding door-open clearance. Photo proportions determine visible front styling. No internal hardware, power, process inputs, or services are represented.</p>
+<p>This is an immutable synthetic thickness comparison, not film formation. Values are fixed at nine points per coupon, centred at ±60 mm in the local display frame. Reversing the right map's columns mirrors its X coordinates; the benchmark is the maximum absolute cell difference. The within-coupon nonuniformity metric is half-range divided by mean, expressed as a percentage; it is undefined for a zero-mean blank. No live hardware or experimental thickness measurements were used.</p>
+<div class="ev-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verification.checks.map(c=><tr><th>{c.id}</th><td>{Number(c.expected.toFixed(6))} {c.unit}</td><td>{Number(c.actual.toFixed(6))} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model generator</a> · <a href={a+'auto-306-display.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Source and geometry notes</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'maps.mjs'}>Standalone map logic</a> · <a href={a+'verification.json'}>Verification JSON</a>. No immersive headset test.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/03-02/client.mjs';</script>
+<style>
+.ev302{--ev-rule:color-mix(in srgb,currentColor 27%,transparent);max-width:1280px;margin:auto}.ev-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.ev-card{min-width:0;border:1px solid var(--ev-rule);margin:.8rem 0;padding:.85rem}.ev-card h3{margin:.21rem 0 .6rem}
+.ev-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.54rem 0}.ev-bar,.ev-note,.ev-fig figcaption{font:.86rem/1.4 system-ui,sans-serif}.ev302 button{font:inherit;padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--ev-rule);border-radius:3px;cursor:pointer;min-height:36px}.ev302 .primary{background:#34594f;color:#fff}.ev302 button:disabled{opacity:.53;cursor:default}
+.ev-camera{aspect-ratio:1.38;background:#283c42}.ev-camera canvas{width:100%;height:100%;display:block;touch-action:none}.ev-maps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}.ev-maps :global(.result){padding:.35rem;border:1px solid var(--ev-rule);min-width:0}.ev-maps :global(.muted){opacity:.53}.ev-maps :global(table){width:100%;border:1px solid var(--ev-rule);border-collapse:collapse;font: .81rem/1.3 system-ui,sans-serif;text-align:center}.ev-maps :global(td){padding:.34rem .08rem;color:#121e23;font-weight:650}.ev-maps :global(p){margin:.24rem 0;font:.75rem/1.3 system-ui,sans-serif}
+.ev-table{overflow:auto}.ev-table table{width:100%;border-collapse:collapse}.ev-table :is(td,th){border-bottom:1px solid var(--ev-rule);padding:.44rem;text-align:left}.ev-fig{margin:1rem 0;max-width:500px}.ev-fig img{display:block;width:100%;height:auto}
+@media(max-width:850px){.ev-grid{grid-template-columns:1fr}}
+</style>

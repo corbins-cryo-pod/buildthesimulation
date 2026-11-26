@@ -45,9 +45,16 @@
     "inputs": "Sample mount pose, source geometry, calibrated flux map and exposure interval",
     "outputs": "Thickness map linked to evaporant and chamber configuration",
     "acceptance": "Place mirror-image coupons about the axis of a symmetric source fixture. Their thickness profiles must mirror each other; zero exposure adds zero film.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Built",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/03-02/simulator/",
+    "related": [
+      [
+        "Documentary model and synthetic mirror-map verification",
+        "/simulations/equipment/03-02/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "03-03",

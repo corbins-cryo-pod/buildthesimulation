@@ -55,9 +55,16 @@
     "inputs": "Material-block geometry, registered virtual cut volume, SEM view and removal-scale calibration",
     "outputs": "Revised block geometry, removed volume, exposed-face image and parent revision",
     "acceptance": "Subtract a rectangular prism fully inside a homogeneous synthetic block. The removed volume should equal its three dimensions multiplied together within discretization error and the resulting face should lie on the commanded plane.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Verified inert cavity section viewer; no removal model",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/13-03/simulator/",
+    "related": [
+      [
+        "Hydra CX exterior and independent cavity measurements",
+        "/simulations/equipment/13-03/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "13-04",

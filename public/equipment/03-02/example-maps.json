@@ -1,0 +1,84 @@
+{
+  "schema": "buildthesimulation.synthetic-mirror-coupon-map.v1",
+  "datasetId": "AUTO306-TEACHING-PAIR-01",
+  "fixtureRevision": 1,
+  "provenance": "Constructed geometry and thickness values; not a process prediction or measurement.",
+  "coordinates": {
+    "convention": "Local to display frame with +X to right and +Z to front; mirror about X=0.",
+    "lengthUnit": "mm",
+    "thicknessUnit": "nm",
+    "zMm": [
+      -10,
+      0,
+      10
+    ]
+  },
+  "comparison": {
+    "mirror": "Pair L row i column j with R row i column 2-j",
+    "maxMirrorDeltaNm": 0
+  },
+  "coupons": {
+    "L": {
+      "id": "virtual-coupon-L",
+      "xMm": [
+        -70,
+        -60,
+        -50
+      ],
+      "matrixNm": [
+        [
+          74,
+          79,
+          83
+        ],
+        [
+          77,
+          82,
+          86
+        ],
+        [
+          74,
+          79,
+          83
+        ]
+      ],
+      "summary": {
+        "minNm": 74,
+        "maxNm": 86,
+        "meanNm": 79.66666666666667,
+        "halfRangeOverMeanPercent": 7.531380753138075
+      }
+    },
+    "R": {
+      "id": "virtual-coupon-R",
+      "xMm": [
+        50,
+        60,
+        70
+      ],
+      "matrixNm": [
+        [
+          83,
+          79,
+          74
+        ],
+        [
+          86,
+          82,
+          77
+        ],
+        [
+          83,
+          79,
+          74
+        ]
+      ],
+      "summary": {
+        "minNm": 74,
+        "maxNm": 86,
+        "meanNm": 79.66666666666667,
+        "halfRangeOverMeanPercent": 7.531380753138075
+      }
+    }
+  }
+}
