@@ -1,0 +1,93 @@
+{
+  "triangles": 2592,
+  "draws": 29,
+  "nodes": 12,
+  "bytes": 167344,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "concept_case": {
+      "at": [
+        -0.472,
+        0.785,
+        -0.017
+      ],
+      "extent": [
+        0.42,
+        0.232,
+        0.34
+      ],
+      "label": "Original inert cabinet proposal, never built; no action"
+    },
+    "gauge_board": {
+      "at": [
+        0.526,
+        0.806,
+        0.016
+      ],
+      "extent": [
+        0.277,
+        0.024,
+        0.203
+      ],
+      "label": "Independent dry gauge plan origin; no connection to the cabinet"
+    },
+    "gauge_puck": {
+      "at": [
+        0.526,
+        0.8065,
+        0.016
+      ],
+      "extent": [
+        0.036,
+        0.0151,
+        0.036
+      ],
+      "action": "view",
+      "label": "Read four dry clearances for the current stored pose"
+    },
+    "select_center": {
+      "at": [
+        0.385,
+        0.812,
+        0.235
+      ],
+      "extent": [
+        0.093,
+        0.036,
+        0.078
+      ],
+      "action": "select:center",
+      "label": "Select detached gauge center pose"
+    },
+    "select_touch": {
+      "at": [
+        0.526,
+        0.812,
+        0.235
+      ],
+      "extent": [
+        0.093,
+        0.036,
+        0.078
+      ],
+      "action": "select:touch",
+      "label": "Select detached gauge touch pose"
+    },
+    "select_overrun": {
+      "at": [
+        0.667,
+        0.812,
+        0.235
+      ],
+      "extent": [
+        0.093,
+        0.036,
+        0.078
+      ],
+      "action": "select:overrun",
+      "label": "Select detached gauge overrun pose"
+    }
+  }
+}
