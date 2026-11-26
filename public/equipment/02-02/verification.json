@@ -112,6 +112,10 @@
       {
         "name": "Model-stage frame conversion, contact and 100/150 µm alignment separation",
         "outcome": "PASS"
+      },
+      {
+        "name": "Static asset coupon sits on the chuck and glTF names match source",
+        "outcome": "PASS"
       }
     ],
     "limitations": "Two-point least-squares rigid registration; no optical metrology or resist validation. Separation stroke is modeled as a geometric interlock only.",
@@ -120,6 +124,17 @@
       "alignmentGapUm": 100.00000000000009,
       "maxAlignmentGapUm": 149.99999999999991,
       "scope": "Source-coordinate analytical consistency; actual GLB world-transform gap checked by Chromium test."
+    },
+    "glbAudit": {
+      "previousStaticCouponGapUm": 99.99999999999964,
+      "correctedStaticCouponGapUm": -8.673617379884035e-13,
+      "contactLiftMm": 1.300000000000032,
+      "contactGapUm": 0,
+      "separation100Um": 99.99999999998899,
+      "separation150Um": 149.9999999999835,
+      "nodeCount": 171,
+      "assetSizeBytes": 65432,
+      "method": "Independent calculation from GLB node translations and primitive box dimensions; numerical check, not measured hardware."
     }
   }
 }

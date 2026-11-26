@@ -32,3 +32,12 @@ test('Boolean interlocks are strict and explicit mark coordinates survive JSON e
 test('Independent loading validates coupon marks without requiring a photomask',()=>{const marks=[{id:'a',x:-3,y:1},{id:'b',x:3,y:1}];assert.ok(checkCouponMarks({...square,mask:null,couponFiducials:marks}).ok);assert.equal(checkCouponMarks({...square,couponFiducials:[marks[0],{...marks[1],x:9}]}).code,'fiducials');assert.ok(checkCouponMarks({...square,couponFiducials:null}).ok)});
 test('Model-stage frame conversion, contact and 100/150 µm alignment separation',()=>{const s={...defaults,xMm:1,yMm:-2,thetaDeg:6};const p=stageScenePose(s,{engaged:true,contact:true,separationUm:100});assert.ok(p.ok);near(p.positionM[0],.001);near(p.positionM[2],.002);near(p.rotationRad,Math.PI/30);near(p.modelGapUm,0);near(p.positionM[1],.0013);for(const d of [100,150]){const q=stageScenePose(s,{engaged:true,contact:false,separationUm:d});near(q.modelGapUm,d);near(p.positionM[1]-q.positionM[1],d/1e6)}assert.equal(stageScenePose(s,{engaged:false,contact:true,separationUm:100}).code,'mechanical');assert.equal(stageScenePose(s,{engaged:true,contact:false,separationUm:151}).code,'mechanical');
  const source=JSON.parse(readFileSync(new URL('../public/equipment/02-02/model-source.json',import.meta.url)));const n=Object.fromEntries(source.nodes.map(x=>[x.name,x]));near(n.transport.p[1],sceneGeometryMm.transportY);near(n.chuck.p[1]+n.chuck.size[1]/2,sceneGeometryMm.chuckSurfaceY);near(n.mask_holder.p[1]+n.mask_glass.p[1]-n.mask_glass.size[1]/2,sceneGeometryMm.maskBottomY)});
+
+test('Static asset coupon sits on the chuck and glTF names match source',()=>{
+ const src=JSON.parse(readFileSync(new URL('../public/equipment/02-02/model-source.json',import.meta.url))),ns=Object.fromEntries(src.nodes.map(n=>[n.name,n]));
+ const surface=ns.chuck.p[1]+ns.chuck.size[1]/2;near(ns.coupon.p[1]-ns.coupon.size[1]/2,surface);
+ for(const node of src.nodes.filter(n=>n.name.startsWith('vacuum_hole_'))){near(node.p[1],surface);near(node.size[1],.002);}
+ const g=JSON.parse(readFileSync(new URL('../public/equipment/02-02/mjb3.gltf',import.meta.url))),nodes=Object.fromEntries(g.nodes.map(n=>[n.name,n]));
+ assert.equal(Object.keys(nodes).length,src.nodes.length);for(const n of src.nodes){assert.ok(nodes[n.name]);for(let i=0;i<3;i++)near(nodes[n.name].translation[i],n.p[i]/1000);}
+ near(nodes.coupon.translation[1]-nodes.coupon.scale[1]/2,nodes.chuck.translation[1]+nodes.chuck.scale[1]/2);
+});

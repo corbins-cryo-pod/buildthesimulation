@@ -2,7 +2,7 @@
   "title": "Karl SUSS MJB3 — reference-informed Harvard CNS OL-3 configuration",
   "units": "mm",
   "axes": "x right, y up, z toward operator",
-  "dimensions": "25.4 mm chuck, 76.2 mm mask, 50.8 mm aperture documented; all enclosure, slide, hole layout and remaining geometry are inferred original design dimensions",
+  "dimensions": "25.4 mm chuck, 76.2 mm mask, 50.8 mm aperture documented; all enclosure, slide, hole layout and remaining geometry are inferred original design dimensions; dark vacuum-hole indicators are schematic flush surface marks, not measured bores or raised physical hardware",
   "materials": {
     "cream": [
       0.83,
@@ -1223,12 +1223,12 @@
       "shape": "cylinder",
       "size": [
         1,
-        0.25,
+        0.002,
         1
       ],
       "p": [
         -3,
-        9.1,
+        9,
         -3
       ],
       "mat": "black",
@@ -1244,12 +1244,12 @@
       "shape": "cylinder",
       "size": [
         1,
-        0.25,
+        0.002,
         1
       ],
       "p": [
         -3,
-        9.1,
+        9,
         3
       ],
       "mat": "black",
@@ -1265,12 +1265,12 @@
       "shape": "cylinder",
       "size": [
         1,
-        0.25,
+        0.002,
         1
       ],
       "p": [
         0,
-        9.1,
+        9,
         0
       ],
       "mat": "black",
@@ -1286,12 +1286,12 @@
       "shape": "cylinder",
       "size": [
         1,
-        0.25,
+        0.002,
         1
       ],
       "p": [
         3,
-        9.1,
+        9,
         -3
       ],
       "mat": "black",
@@ -1307,12 +1307,12 @@
       "shape": "cylinder",
       "size": [
         1,
-        0.25,
+        0.002,
         1
       ],
       "p": [
         3,
-        9.1,
+        9,
         3
       ],
       "mat": "black",
@@ -1333,7 +1333,7 @@
       ],
       "p": [
         0,
-        9.35,
+        9.25,
         0
       ],
       "mat": "silicon",
