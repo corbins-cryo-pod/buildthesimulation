@@ -1,0 +1,117 @@
+{
+  "schema": "bts.flip-chip.placement.v1",
+  "deviceId": "08-04",
+  "origin": "synthetic-geometry",
+  "sample": {
+    "dieId": "BTS-08-04-SYN-DIE",
+    "carrierId": "BTS-08-04-SYN-CARRIER",
+    "designRevision": "registration-coupon-r1"
+  },
+  "revision": 1,
+  "parentRevision": null,
+  "coordinateFrame": "carrier, face-down die already mirrored to the carrier view, +x right/+y away from operator; micrometers and CCW degrees",
+  "input": {
+    "xUm": 120,
+    "yUm": -55,
+    "deg": 2,
+    "defect": true,
+    "bumpRadiusUm": 35,
+    "padRadiusUm": 55,
+    "minOverlap": 0.5
+  },
+  "measuredPose": {
+    "xUm": 120.00000000000003,
+    "yUm": -54.999999999999986,
+    "deg": 1.9999999999999987,
+    "rmsUm": 3.2818563180946156e-14
+  },
+  "appliedCorrection": {
+    "xUm": -118.00742692365397,
+    "yUm": 59.15443509035037,
+    "deg": -1.9999999999999987,
+    "rmsUm": 1.0280385450400665e-13
+  },
+  "connections": [
+    {
+      "bumpId": "A",
+      "padId": "A",
+      "bumpCenterUm": [
+        -420,
+        -260.00000000000006
+      ],
+      "padCenterUm": [
+        -420,
+        -260
+      ],
+      "distanceUm": 5.684341886080802e-14,
+      "overlapFraction": 1,
+      "otherPadIds": [],
+      "status": "geometric-pass"
+    },
+    {
+      "bumpId": "B",
+      "padId": "B",
+      "bumpCenterUm": [
+        -190.00000000000003,
+        170
+      ],
+      "padCenterUm": [
+        -190,
+        170
+      ],
+      "distanceUm": 2.842170943040401e-14,
+      "overlapFraction": 1,
+      "otherPadIds": [],
+      "status": "geometric-pass"
+    },
+    {
+      "bumpId": "C",
+      "padId": "C",
+      "bumpCenterUm": [
+        79.99999999999996,
+        -230
+      ],
+      "padCenterUm": [
+        80,
+        -230
+      ],
+      "distanceUm": 4.263256414560601e-14,
+      "overlapFraction": 1,
+      "otherPadIds": [],
+      "status": "geometric-pass"
+    },
+    {
+      "bumpId": "D",
+      "padId": "D",
+      "bumpCenterUm": [
+        240,
+        305.00000000000006
+      ],
+      "padCenterUm": [
+        240,
+        305
+      ],
+      "distanceUm": 5.684341886080802e-14,
+      "overlapFraction": 1,
+      "otherPadIds": [],
+      "status": "geometric-pass"
+    },
+    {
+      "bumpId": "E",
+      "padId": "E",
+      "bumpCenterUm": [
+        550,
+        40.00000000000001
+      ],
+      "padCenterUm": [
+        430,
+        40
+      ],
+      "distanceUm": 120,
+      "overlapFraction": 0,
+      "otherPadIds": [],
+      "status": "no-overlap"
+    }
+  ],
+  "bondState": "placement-check-only; no physical attachment or electrical continuity predicted"
+}

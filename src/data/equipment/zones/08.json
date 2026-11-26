@@ -62,7 +62,7 @@
   {
     "id": "08-04",
     "name": "Precision flip-chip bonder",
-    "model": "Finetech FINEPLACER lambda",
+    "model": "Finetech FINEPLACER lambda A7 · manual VAS and pivot arm",
     "evidence": "A",
     "priority": "P1",
     "page": 27,
@@ -75,9 +75,14 @@
     "inputs": "Die bump array, matching carrier pads, fiducials and XY/rotation transform",
     "outputs": "Placement revision with transformed bump centers, pad overlap and connection map",
     "acceptance": "Apply a known rigid offset and rotation to a labeled asymmetric bump array. Inverse registration must recover every intended pair and flag a deliberately shifted nonoverlapping bump.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass manual A7 metric GLB; dimensional anchors and inferred details",
+    "simulationStatus": "Rigid fiducial alignment and circular pad overlap verified; dry placement only",
+    "integrationStatus": "Simulator, placement JSON and pair CSV; headset not tested",
+    "simulator": "/simulations/equipment/08-04/simulator/",
+    "related": [
+      ["Finetech A6/A7 manual hosted by York University", "https://mpt.eecs.yorku.ca/wp-content/uploads/2019/11/Operators-Manual.pdf"],
+      ["Original lambda manufacturer datasheet hosted by EPFL", "https://www.epfl.ch/research/facilities/cmi/wp-content/uploads/2023/11/FINEPLACER_lambda_specifications_en.pdf"]
+    ]
   },
   {
     "id": "08-05",
