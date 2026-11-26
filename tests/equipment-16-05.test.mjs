@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+import {initial,act,defaults,check} from '../public/equipment/16-05/solver.mjs';
+import {assets,anchors} from '../public/equipment/16-05/geometry-source.mjs';
+import {build} from '../public/equipment/16-05/mesh-writer.mjs';
+test('Independent 60–144–156 triangle and signed axial failure',()=>{const d={...defaults(),widthMm:288};const x=check(d);assert.equal(x.clearance.apertureMarginMm,36);assert.equal(x.clearance.doorPlaneMarginMm,50);assert.equal(x.clearance.fits,true);const over=check({...d,depthMm:736});assert.equal(over.clearance.doorPlaneMarginMm,-11);assert.equal(over.clearance.fits,false);});
+test('Geometry state and immutable nonoperational status',()=>{const r=act(initial(),'example');assert.equal(r.section,true);assert.equal(r.result.operatingState,'not modeled');assert.equal(r.result.loadedContentsModeled,false);assert.throws(()=>act(r,'unlock'),/Unknown/);assert.match(act(act(r,'set',{heightMm:0}),'check').error,/ranges/);});
+test('Asset regeneration, meter scale and noninteractive latch',()=>{const m=build(assets,anchors),r=readFileSync(new URL('../public/equipment/16-05/3870ea-tray-gauge.glb',import.meta.url));assert.ok(r.equals(Buffer.from(m.raw)));assert.equal(r.readUInt32LE(0),0x46546c67);assert.ok(r.length<110000);
+const j=JSON.parse(r.subarray(20,20+r.readUInt32LE(12)));assert.equal(m.metrics.unit,'m');assert.equal(j.nodes.find(x=>x.name==='carrier').extras.action,'check');assert.equal(j.nodes.find(x=>x.name==='locked_latch').extras.action,undefined);assert.match(j.nodes.find(x=>x.name==='locked_latch').extras.label,/Locked/);});

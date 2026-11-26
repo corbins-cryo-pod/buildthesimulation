@@ -85,9 +85,15 @@
     "inputs": "Virtual load identifiers and compatibility flags, chamber/door state and abstract cycle events",
     "outputs": "Cycle-state history and compatible supply processing records",
     "acceptance": "Try a flagged incompatible load, then cancel a compatible mock run halfway through. Neither case should produce a completed-cycle event.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric legacy 3870EA locked exterior and passive section",
+    "simulationStatus": "First pass: verified empty carrier fit; operating cycle out of scope",
+    "integrationStatus": "Linked: geometry gauge and signed-clearance JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/16-05/simulator/"
+      ]
+    ]
   },
   {
     "id": "16-06",
