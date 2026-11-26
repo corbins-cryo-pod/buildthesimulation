@@ -1,0 +1,122 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/14-11/soak-witness.glb",
+  "model": "/equipment/14-11/bench.mjs",
+  "dispatch": "act(state,action,value) returns next state; station() initializes",
+  "up": "+Y",
+  "front": "+Z",
+  "unit": "m",
+  "origin": "Bench plane under centre of base. Use existing metre scale. Closed-cover / plugged rest bounds below; update with live transforms.",
+  "motion": "LID_PIVOT rotates about local X 0…−75°; plug translation 0…0.026 m along up, illustrative. No hardware motion or temperature validation.",
+  "controls": [
+    {
+      "mesh": "LID_PIVOT",
+      "action": "cover",
+      "value": null,
+      "label": "Inspect or close the cover",
+      "minM": [
+        -0.2615,
+        0.185,
+        -0.071
+      ],
+      "maxM": [
+        0.2615,
+        0.213,
+        0.152
+      ]
+    },
+    {
+      "mesh": "A_PLUG",
+      "action": "connect",
+      "value": 0,
+      "label": "Change package A electrical connection",
+      "minM": [
+        -0.1655,
+        0.185,
+        0.105
+      ],
+      "maxM": [
+        -0.1245,
+        0.209,
+        0.124
+      ]
+    },
+    {
+      "mesh": "B_PLUG",
+      "action": "connect",
+      "value": 1,
+      "label": "Change package B electrical connection",
+      "minM": [
+        0.1245,
+        0.185,
+        0.105
+      ],
+      "maxM": [
+        0.1655,
+        0.209,
+        0.124
+      ]
+    },
+    {
+      "mesh": "LOGGER_SCREEN",
+      "action": "run",
+      "value": null,
+      "label": "Record selected impedance witness",
+      "minM": [
+        -0.0675,
+        0.077,
+        -0.0792
+      ],
+      "maxM": [
+        0.0675,
+        0.147,
+        -0.0752
+      ]
+    }
+  ],
+  "geometry": {
+    "dimensions": [
+      {
+        "check": "base width",
+        "expectedMm": 620,
+        "actualMm": 620.0000047683716,
+        "toleranceMm": 0.05,
+        "pass": true
+      },
+      {
+        "check": "base depth",
+        "expectedMm": 365,
+        "actualMm": 365.00000953674316,
+        "toleranceMm": 0.05,
+        "pass": true
+      },
+      {
+        "check": "bath A block width",
+        "expectedMm": 226,
+        "actualMm": 225.99999606609344,
+        "toleranceMm": 0.05,
+        "pass": true
+      },
+      {
+        "check": "bath B block front-to-rear",
+        "expectedMm": 198,
+        "actualMm": 197.9999989271164,
+        "toleranceMm": 0.05,
+        "pass": true
+      }
+    ],
+    "minM": [
+      -0.31,
+      0,
+      -0.1825
+    ],
+    "maxM": [
+      0.31,
+      0.213,
+      0.183
+    ],
+    "nodes": 88,
+    "bytes": 538732,
+    "triangles": 8856
+  }
+}
