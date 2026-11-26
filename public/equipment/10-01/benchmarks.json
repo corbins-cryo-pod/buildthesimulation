@@ -1,0 +1,16 @@
+{
+ "scope":"Independent design targets fixed from the documented circuit and passive circuit identities before implementation. No measured validation.",
+ "fixture":"CELL port equivalent minus the parallel pipette stray capacitance; whole-cell, bridge and series compensation all disabled; 500 MΩ parallel 33 pF, 10 MΩ access.",
+ "cases":[
+  {"id":"icTau","label":"Unloaded membrane time constant","expected":16.5,"unit":"ms","tol":1e-9},
+  {"id":"icTauV","label":"20 pA: membrane at one time constant","expected":6.321205588285577,"unit":"mV","tol":1e-7},
+  {"id":"icEquilibrium","label":"20 pA: long-pulse membrane response (400 ms)","expected":10,"unit":"mV","tol":1e-7},
+  {"id":"icAccess","label":"20 pA: instantaneous access voltage","expected":0.2,"unit":"mV","tol":1e-10},
+  {"id":"vcInitial","label":"10 mV step: initial access current","expected":1000,"unit":"pA","tol":1e-7},
+  {"id":"vcSteady","label":"10 mV step: settled leak through 510 MΩ","expected":19.607843137254903,"unit":"pA","tol":1e-8},
+  {"id":"vcTau","label":"Voltage-clamp charging (parallel effective resistance)","expected":0.3235294117647059,"unit":"ms","tol":1e-9},
+  {"id":"capDouble","label":"Doubling model capacitance doubles IC tau","expected":33,"unit":"ms","tol":1e-9},
+  {"id":"disconnected","label":"Disconnected model cell must reject sweep","expected":1,"unit":"rejected","tol":0},
+  {"id":"rail","label":"Over-range scaled output triggers virtual receiver clipping","expected":1,"unit":"flag","tol":0}
+ ]
+}

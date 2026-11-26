@@ -189,7 +189,7 @@
   {
     "id": "05-10",
     "name": "Raman microscope",
-    "model": "Horiba LabRAM (model variant pending)",
+    "model": "HORIBA LabRAM HR Evolution, Olympus BX-series / 532 nm virtual branch",
     "evidence": "B",
     "priority": "P2",
     "page": 20,
@@ -202,9 +202,10 @@
     "inputs": "Reference Raman spectra, calibrated shift axis and XY sampling grid",
     "outputs": "Shift spectra and spatial component-intensity map",
     "acceptance": "Assign two reference spectra with distinct isolated peaks to alternating tiles. Integrated peak-window maps must reproduce the known tiles without swapping axes.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with cabinet, microscope, visor, moving objective and stage",
+    "simulationStatus": "Verified analytical shift, linewidth and oriented silicon/polystyrene peak-area maps",
+    "integrationStatus": "Dedicated interactive simulator and typed spectra/map export",
+    "simulator": "/simulations/equipment/05-10/simulator/"
   },
   {
     "id": "05-11",
