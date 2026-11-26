@@ -1,0 +1,111 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "15-05",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.825,
+      0,
+      -1.038
+    ],
+    "max": [
+      1.5565,
+      2.0435,
+      0.862
+    ]
+  },
+  "budget": {
+    "byteLength": 419480,
+    "nodes": 45,
+    "triangles": 11427
+  },
+  "actions": [
+    {
+      "node": "FRAME_A",
+      "action": "picture",
+      "value": "A",
+      "label": "Inspect authored geometric card A",
+      "boundsAtRestM": {
+        "min": [
+          0.9935,
+          0.9075,
+          0.212
+        ],
+        "max": [
+          1.1305,
+          0.9545,
+          0.23
+        ]
+      }
+    },
+    {
+      "node": "FRAME_B",
+      "action": "picture",
+      "value": "B",
+      "label": "Inspect authored geometric card B",
+      "boundsAtRestM": {
+        "min": [
+          1.1715,
+          0.9075,
+          0.212
+        ],
+        "max": [
+          1.3085,
+          0.9545,
+          0.23
+        ]
+      }
+    },
+    {
+      "node": "FRAME_U",
+      "action": "picture",
+      "value": "U",
+      "label": "Inspect authored geometric card U",
+      "boundsAtRestM": {
+        "min": [
+          1.3495,
+          0.9075,
+          0.212
+        ],
+        "max": [
+          1.4865,
+          0.9545,
+          0.23
+        ]
+      }
+    }
+  ],
+  "actionModule": "phantom.mjs",
+  "interactionNotes": "Only the physically detached, unconnected geometry display has ray actions. The instrument exterior is a static exhibit, not an MRI volume or hardware system.",
+  "verification": [
+    {
+      "node": "MAGNET_SHELL_1650",
+      "axis": "x",
+      "expectedMm": 1650,
+      "actualMm": 1649.99998,
+      "toleranceMm": 0.15
+    },
+    {
+      "node": "BRUKER_7030_USR_V2_DOCUMENTARY",
+      "axis": "z",
+      "expectedMm": 1900,
+      "actualMm": 1900.00004,
+      "toleranceMm": 0.15
+    },
+    {
+      "node": "CHART_FACE",
+      "axis": "x",
+      "expectedMm": 607,
+      "actualMm": 606.99999,
+      "toleranceMm": 0.15
+    },
+    {
+      "node": "BORE_RIM_300",
+      "measurement": "innerDiameter",
+      "expectedMm": 300,
+      "actualMm": 299.99989,
+      "toleranceMm": 0.15
+    }
+  ]
+}

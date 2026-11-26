@@ -1,0 +1,56 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const d='/equipment/15-05/';
+const site='https://www.bruker.com/en/products-and-solutions/preclinical-imaging/mri/biospec/biospec-70-30-and-94-30.html';
+const paper='https://www.manualslib.com/manual/1845327/Bruker-Biospec-70-30-Usr-V2.html?page=';
+const facility='https://lfic.dfci.harvard.edu/facilities/biospec-7t';
+---
+<Layout pageTitle="Bruker BioSpec 70/30 USR V2 · 3D reference" subtitle="" wide={true}>
+<main class="equipment-page bts153">
+ <p><a href="/simulations/equipment/#equipment-15-05">↩ Equipment register · 15-05</a></p>
+ <h1>Bruker BioSpec 70/30 USR V2</h1>
+ <p>Orbit the <strong>non-operating 30 cm bore housing reconstruction</strong>. Then use the separate geometric card to see how the same point changes coordinates across three views. Nothing on this page controls the device or represents an MR image.</p>
+ <div class="p-grid">
+  <section aria-label="3D documentary model">
+   <div class="p-buttons"><button id="bp-front" type="button">Reset orbit</button><button id="bp-bore" type="button">Front rim detail</button><button id="bp-rear" type="button">Rear exterior</button><button id="bp-card" type="button">Card close-up</button></div>
+   <div id="bp-view" role="img" aria-label="Static white BioSpec gantry and detached green orthographic chart"></div><p id="bp-status">Loading metric documentary exterior…</p>
+  </section>
+  <section class="p-box">
+   <h2>Orthographic geometry card</h2>
+   <p>Pick A or B and follow its crosshair through XY, XZ and YZ. U shows a valid corner whose views have no mark.</p>
+   <canvas id="bp-plot" width="768" height="355" role="img" aria-label="Three schematic views with physically scaled axes and a known fiducial"></canvas>
+   <div class="p-buttons"><button id="bp-A" type="button">Read A</button><button id="bp-B" type="button">Read B</button><button id="bp-U" type="button">Read U</button><button id="bp-save" type="button">Export JSON</button></div>
+   <p id="bp-result" role="status"></p>
+  </section>
+ </div>
+ <section id="bp-refs">
+  <h2>Reference sheet</h2>
+  <p>The <a href={facility}>Dana-Farber Lurie Family Imaging Center installation photograph</a> (right side of the collage) establishes the rounded white 70/30 housing, blue bore rim and raised outer shroud. The <a href={paper+'38'}>Bruker BioSpec 70/30 USR_2_V020 planning sheets, Fig. 6.2 and Table 6.1</a> establish front/side proportions and overall width and depth. <a href={paper+'84'}>Fig. 7.4</a> is a separate transport drawing checked for front proportions only; do not read its shipping dimensions as working clearances.</p>
+  <div class="ref-gallery">
+   <figure><img src={d+'front-reference.webp'} width="595" height="410" alt="Original angled render of the white cylindrical BioSpec housing with blue front trim" loading="lazy"/><figcaption>Original browser render: soft white shroud, nominal blue bore rim, and independent green display.</figcaption></figure>
+   <figure><img src={d+'rear-reference.webp'} width="595" height="410" alt="Original rear render showing the white housing and approximate blank rear hardware envelope" loading="lazy"/><figcaption>Original browser render: simplified opaque rear outline, not a map of connectors or service access.</figcaption></figure>
+  </div>
+  <table><thead><tr><th>Dimension</th><th>Value</th><th>Use and source</th></tr></thead><tbody>
+   <tr><td>Horizontal bore</td><td>300 mm nominal diameter</td><td><a href={site}>Bruker BioSpec 70/30 model page</a>. This is the bare-bore nominal diameter, not an installed insert or a fit claim.</td></tr>
+   <tr><td>Magnet envelope</td><td>1,650 mm W × 1,900 mm D</td><td><a href={paper+'38'}>Table 6.1 (B1/L1)</a>; depth includes the specified rear envelope and excludes the table. The rack, table, active components and connectors are omitted.</td></tr>
+   <tr><td>Trim, shroud and pedestal</td><td>Estimated</td><td>Only the exterior is reconstructed. Local fillets, feet, rear casing outline and mounted appearance are photo-/drawing-derived approximations, not surveyed.</td></tr>
+  </tbody></table>
+ </section>
+ <section id="bp-proof">
+  <h2>Readout and checks</h2>
+  <p>The built-in card uses a 24 × 16 × 12 array with fictional center spacings (0.5, 1.25, 2) mm. For each axis, physical position equals the first center plus index × spacing. Project by retaining the two shown coordinates, and hold the third fixed at the chosen card's slice. No real volume, imported data, scanner physics, settings, field, operating procedure or safety conclusion is represented. This verifies only an authored coordinate example, not the register’s full MRI-volume workflow.</p>
+  <table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <tr><td>A · XY / XZ / YZ</td><td>(18, −15) / (18, 20) / (−15, 20) mm</td><td>Matches all three</td><td>Exact</td></tr>
+   <tr><td>B · distance from A</td><td>√53.25 mm</td><td>7.29726 mm</td><td>10⁻¹² mm² on squared distance</td></tr>
+   <tr><td>U · valid, unmarked corner</td><td>(21.5, −1.25, 28) mm; null mark</td><td>Exact coordinate, null all views</td><td>Exact</td></tr>
+   <tr><td>GLB width, depth and inner rim</td><td>1,650 / 1,900 / 300 mm</td><td>Matched</td><td>0.15 mm of authored nominal dimensions</td></tr>
+  </tbody></table>
+  <p><a href={d+'biospec-closed.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender generator</a> · <a href={d+'example-card.json'}>Example geometry export</a> · <a href={d+'xr.json'}>Detached-card VR anchors</a> (headset not tested).</p>
+ </section>
+</main>
+<script is:inline>window.biospecCard=import('/equipment/15-05/phantom.mjs');</script>
+<script>import '../../../../lib/equipment/15-05/client.mjs';</script>
+</Layout>
+<style>
+.bts153{max-width:82rem;margin:0 auto;padding-inline:1rem}.p-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(17rem,1fr);gap:1.3rem;align-items:start}.p-buttons{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.bts153 button{border:1px solid currentColor;border-radius:.22rem;color:inherit;background:transparent;font:inherit;padding:.4rem .62rem;cursor:pointer}.bts153 button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#bp-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#2c3d45;touch-action:none}#bp-view :global(canvas){display:block;width:100%;height:100%}#bp-plot{display:block;width:100%;height:auto;border-radius:.22rem}.p-box{border:1px solid currentColor;border-radius:.3rem;padding:1rem}.bts153 table{border-collapse:collapse;width:100%}.bts153 th,.bts153 td{border-bottom:1px solid currentColor;text-align:left;padding:.42rem .53rem}.bts153 section{margin-bottom:1.3rem}.ref-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.ref-gallery figure{margin:0 0 1rem}.ref-gallery img{max-width:100%;height:auto}@media(max-width:760px){.p-grid,.ref-gallery{grid-template-columns:1fr}.bts153 table{font-size:.92em}}
+</style>

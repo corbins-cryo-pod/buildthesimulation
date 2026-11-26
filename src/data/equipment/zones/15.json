@@ -78,7 +78,7 @@
   {
     "id": "15-05",
     "name": "Preclinical MRI",
-    "model": "Bruker BioSpec 7T (30 cm bore configuration)",
+    "model": "Bruker BioSpec 70/30 USR V2 (30 cm bare-bore reference)",
     "evidence": "B",
     "priority": "P3",
     "page": 47,
@@ -91,9 +91,10 @@
     "inputs": "Registered MRI volume, voxel-to-world affine, modality metadata and implant pose",
     "outputs": "Anatomical sections and registered overlays with source volume and physical coordinates",
     "acceptance": "Load an asymmetric labeled volume with anisotropic voxels and a known orientation. A fiducial overlay must meet its landmark within one voxel on all three section views.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented exterior built",
+    "simulationStatus": "Authored geometric card only",
+    "integrationStatus": "Documentary viewer and export wired",
+    "simulator": "/simulations/equipment/15-05/simulator/"
   },
   {
     "id": "15-06",
