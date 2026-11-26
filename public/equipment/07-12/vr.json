@@ -1,0 +1,46 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.5595,
+    0.4,
+    0.500925
+  ],
+  "meshes": 35,
+  "triangles": 6834,
+  "bytes": 359488,
+  "interaction": {
+    "Offline_geometry_card": {
+      "action": "next",
+      "label": "Switch fixed classroom geometry card",
+      "boundsMinM": [
+        0.2225,
+        0.112,
+        0.044
+      ],
+      "boundsMaxM": [
+        0.3915,
+        0.124,
+        0.202
+      ]
+    }
+  },
+  "modelCabinetM": [
+    0.27,
+    0.4,
+    0.500925
+  ],
+  "citedUnpackedCabinetMm": [
+    270,
+    400,
+    500
+  ],
+  "deviceActionCount": 0,
+  "detachedDiagramOnly": true,
+  "boardVisualStates": {
+    "initial": "triangle",
+    "triangleVisiblePrefix": "Offline_annotated_",
+    "flatVisiblePrefix": "Offline_flat_",
+    "rule": "Show only the prefix for the selected card; renderer must set initial visibility."
+  }
+}

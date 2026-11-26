@@ -278,9 +278,10 @@
     "inputs": "Archived fluorescence-versus-cycle curves, baseline convention, threshold and well IDs",
     "outputs": "Analysis record with per-well Cq, curve provenance and undetermined flags",
     "acceptance": "Supply a curve crossing the threshold midway between cycles and a flat control below threshold. Linear interpolation must recover the half-cycle value and mark the control undetermined.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-grounded sealed metric QuantStudio 3 exterior",
+    "simulationStatus": "Dormant chassis and independent fixed geometry annotations",
+    "integrationStatus": "Standalone viewer; no hardware, specimen or data linkage",
+    "simulator": "/simulations/equipment/07-12/simulator/"
   },
   {
     "id": "07-13",
