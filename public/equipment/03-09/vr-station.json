@@ -1,0 +1,111 @@
+{
+  "schema": "bts.station.blind-circular-fit.v1",
+  "equipment": "03-09",
+  "model": "./mini-mite-display.glb",
+  "axes": "+Y up, +Z front",
+  "units": "m",
+  "nodes": 57,
+  "bytes": 40740,
+  "triangles": 3524,
+  "hitTargets": [
+    {
+      "node": "Cover_front_plate",
+      "action": "cutaway",
+      "actionPayload": null,
+      "label": "Show/hide documentary lid",
+      "boundsM": {
+        "min": [
+          -0.1945,
+          0.2065,
+          0.1345
+        ],
+        "max": [
+          0.1945,
+          0.3395,
+          0.1415
+        ]
+      }
+    },
+    {
+      "node": "Blind_gauge_rim",
+      "action": "check",
+      "actionPayload": null,
+      "label": "Check selected inert carrier at blind gauge",
+      "boundsM": {
+        "min": [
+          0.267,
+          0.054,
+          0.0595
+        ],
+        "max": [
+          0.303,
+          0.09,
+          0.1025
+        ]
+      }
+    },
+    {
+      "node": "Carrier_small",
+      "action": "select",
+      "actionPayload": "small",
+      "label": "Select small carrier",
+      "boundsM": {
+        "min": [
+          0.2365,
+          0.02,
+          0.112
+        ],
+        "max": [
+          0.2555,
+          0.034,
+          0.142
+        ]
+      }
+    },
+    {
+      "node": "Carrier_touch",
+      "action": "select",
+      "actionPayload": "touch",
+      "label": "Select touch carrier",
+      "boundsM": {
+        "min": [
+          0.2787,
+          0.0184,
+          0.112
+        ],
+        "max": [
+          0.2993,
+          0.0356,
+          0.142
+        ]
+      }
+    },
+    {
+      "node": "Carrier_large",
+      "action": "select",
+      "actionPayload": "large",
+      "label": "Select large carrier",
+      "boundsM": {
+        "min": [
+          0.3205,
+          0.019,
+          0.112
+        ],
+        "max": [
+          0.3435,
+          0.035,
+          0.142
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./fit.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)",
+    "pose": "poses(state)"
+  },
+  "note": "Transform carrier picking bounds with displayed pose. Lid toggles visibility only. No headset test."
+}

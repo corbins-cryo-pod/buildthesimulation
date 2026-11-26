@@ -1,0 +1,6 @@
+{
+  "instrument":"Thermo Scientific Lindberg/Blue M Mini-Mite TF55035A-1 documentary model; independent display-only gauge",
+  "geometryExpectedMm":[406.4,381,279.4],
+  "independentBasis":"A centered rectangle fits a 22 mm mock circle if its corner-to-corner diagonal is at most 22 mm. Hand fixtures: 16×10 mm has squared diagonal 356 mm² and 1.5660188679 mm radial clearance. 20×12 mm has squared diagonal 544 mm², above 484 mm²; 0.6619037897 mm theoretical radial interference. 17.6×13.2 mm yields 484 mm² exactly: line-to-line touch, not a usable positive clearance.",
+  "tolerance":"1e-8 m for geometry, 1e-8 mm for reported radial gaps, exact categorical decisions. No manufacturing tolerances or operational hardware fit."
+}
