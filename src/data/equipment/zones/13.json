@@ -240,9 +240,15 @@
     "inputs": "Microscopy grid ID, initial surface-state metadata and abstract treatment event",
     "outputs": "Grid revision with updated treatment state, timestamp and original grid geometry",
     "acceptance": "Apply the event to one of two virtual grids. Only that grid should receive the surface-state entry; mesh topology and scale should be preserved for both.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: nominal standalone 91000 documentary enclosure",
+    "simulationStatus": "First pass: immutable inert drawing reviews; treatment outside scope",
+    "integrationStatus": "Linked: exterior viewer and documentary review JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/13-12/simulator/"
+      ]
+    ]
   },
   {
     "id": "13-13",
