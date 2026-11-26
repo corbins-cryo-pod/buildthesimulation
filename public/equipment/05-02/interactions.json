@@ -1,0 +1,68 @@
+{
+  "deviceId": "05-02",
+  "uri": "contour-gt-k.glb",
+  "scale": "m",
+  "axes": "+X operator right, +Y up, +Z front",
+  "envelopeMm": [
+    492,
+    754,
+    534
+  ],
+  "actions": {
+    "turret": {
+      "action": "objective",
+      "label": "Rotate the turret between 5× and 20×",
+      "anchorM": [
+        0,
+        0.357,
+        0.086
+      ],
+      "boundsM": [
+        0.192,
+        0.112,
+        0.188
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "stage": {
+      "action": "stage",
+      "label": "Translate sample stage between load and metrology",
+      "anchorM": [
+        0,
+        0.235,
+        0.145
+      ],
+      "boundsM": [
+        0.249,
+        0.056,
+        0.225
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "coupon": {
+      "action": "load",
+      "label": "Place or remove inert calibration coupon",
+      "anchorM": [
+        0,
+        0.257,
+        0.144
+      ],
+      "boundsM": [
+        0.08,
+        0.02,
+        0.065
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    }
+  },
+  "motion": {
+    "stageTravelZMeter": 0.08,
+    "turretTravelDeg": 180,
+    "testCouponScale": "true-scale carrier; mesoscopic step face is schematic"
+  },
+  "headsetTested": false,
+  "nodes": 10,
+  "drawCalls": 40,
+  "triangles": 24368,
+  "bytes": 732700
+}
