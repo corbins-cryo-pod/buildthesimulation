@@ -55,9 +55,10 @@
     "inputs": "Bond program, fiducial transform, pad list, loop templates and keep-out volumes",
     "outputs": "Assembly revision with accepted wire paths, net map and rejected bond IDs",
     "acceptance": "Run a four-pad program with one deliberate collision. Verify all accepted endpoint pairs against the netlist and ensure the rejected wire creates no electrical edge.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric 5630i wedge-wedge configuration on 5600i chassis",
+    "simulationStatus": "Verified pad transform, fixture intersection and accepted-only net edges",
+    "integrationStatus": "Workholder actions, program/assembly JSON and metric VR targets",
+    "simulator": "/simulations/equipment/08-03/simulator/"
   },
   {
     "id": "08-04",
