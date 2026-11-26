@@ -1,0 +1,97 @@
+[
+  {
+    "schema": "bts.synthetic-rectangle-review.v1",
+    "kind": "synthetic-detached-drawing",
+    "exhibitId": "MONACO-GEOMETRY-CARDS-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial fixed planar drawings; not equipment, optics, or acquired data",
+    "viewId": "OVERLAP",
+    "frame": {
+      "unit": "mm",
+      "width": 56,
+      "height": 32,
+      "x": "right",
+      "y": "down",
+      "origin": "upper-left"
+    },
+    "rectangles": [
+      {
+        "id": "A",
+        "boundsMm": [
+          4,
+          4,
+          28,
+          20
+        ],
+        "areaMm2": 384
+      },
+      {
+        "id": "B",
+        "boundsMm": [
+          12,
+          10,
+          36,
+          26
+        ],
+        "areaMm2": 384
+      }
+    ],
+    "overlap": {
+      "classification": "area overlap",
+      "boundsMm": [
+        12,
+        10,
+        28,
+        20
+      ],
+      "areaMm2": 160
+    },
+    "unionAreaMm2": 608,
+    "overlapFractionOfUnion": 0.2631578947368421
+  },
+  {
+    "schema": "bts.synthetic-rectangle-review.v1",
+    "kind": "synthetic-detached-drawing",
+    "exhibitId": "MONACO-GEOMETRY-CARDS-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial fixed planar drawings; not equipment, optics, or acquired data",
+    "viewId": "EDGE-TOUCH",
+    "frame": {
+      "unit": "mm",
+      "width": 56,
+      "height": 32,
+      "x": "right",
+      "y": "down",
+      "origin": "upper-left"
+    },
+    "rectangles": [
+      {
+        "id": "A",
+        "boundsMm": [
+          4,
+          4,
+          28,
+          20
+        ],
+        "areaMm2": 384
+      },
+      {
+        "id": "B",
+        "boundsMm": [
+          28,
+          4,
+          52,
+          20
+        ],
+        "areaMm2": 384
+      }
+    ],
+    "overlap": {
+      "classification": "boundary contact only",
+      "boundsMm": null,
+      "areaMm2": 0
+    },
+    "unionAreaMm2": 768,
+    "overlapFractionOfUnion": 0
+  }
+]

@@ -197,9 +197,10 @@
     "inputs": "Pupil amplitude, synthetic phase mask, wavelength and focal-plane sampling grid",
     "outputs": "Predicted relative irradiance map, spatial coordinates and propagation model version",
     "acceptance": "Compare a flat pupil phase with a known linear phase ramp on the same aperture. The far-field maximum should shift by the prescribed spatial frequency while integrated energy is conserved on a sufficiently sampled grid.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed documentary Monaco housing; vendor envelope checked",
+    "simulationStatus": "Detached fixed rectangle exhibit; no optics or device model",
+    "integrationStatus": "Dedicated simulator, editable asset and example exports linked",
+    "simulator": "/simulations/equipment/11-09/simulator/"
   },
   {
     "id": "11-10",
