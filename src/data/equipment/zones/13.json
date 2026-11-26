@@ -178,9 +178,15 @@
     "inputs": "Preserved-specimen revision, abstract preparation event and provenance",
     "outputs": "Post-substitution specimen revision with ordered preparation history",
     "acceptance": "Pass the preserved output from 13-08 through the event. The resulting specimen should retain both method records in order and trace back to the same source ID.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: static original metric AFS2 exterior",
+    "simulationStatus": "First pass: synthetic drawing annotations only; processing outside scope",
+    "integrationStatus": "Linked: documentary viewer and drawing ledger JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/13-09/simulator/"
+      ]
+    ]
   },
   {
     "id": "13-10",
