@@ -1,0 +1,44 @@
+{
+  "schema": "bts.equipment.07-01.sash-input.v1",
+  "deviceId": "07-01",
+  "modelNumber": "1305",
+  "sessionId": "A2-EXAMPLE-01",
+  "durationS": 30,
+  "initialSashMm": 203.2,
+  "events": [
+    {
+      "timeS": 2,
+      "type": "load",
+      "sampleId": "SEALED-A",
+      "sampleKind": "sealed-token"
+    },
+    {
+      "timeS": 10,
+      "type": "sash",
+      "heightMm": 223.2
+    },
+    {
+      "timeS": 14,
+      "type": "load",
+      "sampleId": "SEALED-B",
+      "sampleKind": "sealed-token"
+    },
+    {
+      "timeS": 19,
+      "type": "remove",
+      "sampleId": "SEALED-A",
+      "sampleKind": "sealed-token"
+    },
+    {
+      "timeS": 22,
+      "type": "sash",
+      "heightMm": 203.2
+    },
+    {
+      "timeS": 26,
+      "type": "remove",
+      "sampleId": "SEALED-B",
+      "sampleKind": "sealed-token"
+    }
+  ]
+}

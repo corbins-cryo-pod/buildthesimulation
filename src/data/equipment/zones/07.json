@@ -2,8 +2,8 @@
   {
     "id": "07-01",
     "name": "Biosafety cabinet",
-    "model": "Thermo Scientific 1300 Series Class II A2",
-    "evidence": "B",
+    "model": "Thermo Scientific 1300 Series Class II A2 · catalog 1305",
+    "evidence": "A",
     "priority": "P1",
     "page": 24,
     "sources": [
@@ -15,9 +15,24 @@
     "inputs": "Cabinet configuration, sash position, workspace occupancy and timestamped handling events",
     "outputs": "Session log with sash and workspace state and a labeled qualitative risk flag",
     "acceptance": "Replay a synthetic sash excursion across the configured warning boundary. The warning must follow the excursion and retain the affected sample ID. A visual check cannot establish sterility.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with articulated sash; manual dimensions and photograph-based detail",
+    "simulationStatus": "Discrete sash-position and sample-occupancy replay; warning intervals verified",
+    "integrationStatus": "Interactive simulator, replay input and versioned session-log export",
+    "simulator": "/simulations/equipment/07-01/simulator/",
+    "related": [
+      [
+        "Illustrated reference sheet and instrument specifications",
+        "/simulations/equipment/07-01/simulator/#references"
+      ],
+      [
+        "Verification results",
+        "/simulations/equipment/07-01/simulator/#verification"
+      ],
+      [
+        "Thermo Scientific operating manual 7021355, Rev. 20",
+        "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf"
+      ]
+    ]
   },
   {
     "id": "07-02",
@@ -38,7 +53,7 @@
     "acceptance": "Replay a recorded door excursion and place two virtual samples on different schedules. Only samples present during the excursion receive that interval in their exposure history.",
     "geometryStatus": "Physical-scale GLB checked against manual dimensions and photographs; internal offsets inferred",
     "simulationStatus": "Published chamber CO₂ and temperature replays, verified occupancy clipping and illustrative exchange model",
-    "integrationStatus": "Interactive station with logger import, sample map and versioned JSON / CSV exposure exports",
+    "integrationStatus": "Logger and sample import, JSON / CSV exposure exports and sample transfer with station 07-01",
     "simulator": "/simulations/equipment/07-02/simulator/",
     "related": [
       [

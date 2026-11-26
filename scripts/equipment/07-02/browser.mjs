@@ -78,6 +78,15 @@ try{
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await until(()=>evaluate('document.documentElement.scrollWidth<=window.innerWidth+1'),'Mobile horizontal overflow');
   await click('run');assert.equal(await textOf('co2'),'0.71 %');
+  await click('transfer');
+  const transfer=join(downloads,'07-02-to-07-01.json');
+  await until(()=>existsSync(transfer),'Cabinet transfer download');
+  await send('Page.navigate',{url:origin+'/simulations/equipment/07-01/simulator/'});
+  await until(()=>evaluate('!!document.getElementById("cab-import")?.onchange'),'Cabinet importer ready');
+  const {root}=await send('DOM.getDocument');
+  const {nodeId}=await send('DOM.querySelector',{nodeId:root.nodeId,selector:'#cab-import'});
+  await send('DOM.setFileInputFiles',{nodeId,files:[transfer]});
+  await until(()=>evaluate('document.body.textContent.includes("Loaded VIOS-")'),'Cabinet accepted the transfer');
   const record=await (await fetch(origin+'/simulations/equipment/07-02/')).text();assert.ok(record.includes('href="'+uri+'"'));
   assert.deepEqual(errors,[]);console.log('Passed GLB, cameras, interlocks, replay, simulation, 390px layout, JSON and CSV browser downloads for '+origin);
 }finally{

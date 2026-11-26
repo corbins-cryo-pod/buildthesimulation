@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://buildthesimulation.com/equipment/07-01/output-schema.json",
+  "title": "1305 sash and workspace session",
+  "description": "Version 1. Standalone example at example-session.json. Input-only jobs use #/$defs/input. The replay order is array order for equal timestamps; each new state applies over a half-open interval. The session can be clipped to any millisecond before export. Visits still present at the cursor have removedS = null. Prototype input capacity: 16 simultaneous tokens, 512 events, 24 hours; these are software limits.",
+  "type": "object",
+  "required": [
+    "schema",
+    "deviceId",
+    "modelNumber",
+    "sessionId",
+    "complete",
+    "provenance",
+    "input",
+    "state",
+    "intervals",
+    "eventHistory",
+    "sampleHistory",
+    "summary"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "bts.equipment.07-01.sash-session.v1"
+    },
+    "deviceId": {
+      "const": "07-01"
+    },
+    "modelNumber": {
+      "const": "1305"
+    },
+    "sessionId": {
+      "$ref": "#/$defs/identifier"
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "kind",
+        "solver",
+        "timeBase",
+        "positionReference",
+        "reference",
+        "interpretation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "simulated"
+        },
+        "solver": {
+          "const": "discrete-sash-occupancy/1"
+        },
+        "timeBase": {
+          "type": "string"
+        },
+        "positionReference": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "interpretation": {
+          "type": "string"
+        }
+      }
+    },
+    "input": {
+      "$ref": "#/$defs/input"
+    },
+    "state": {
+      "$ref": "#/$defs/state"
+    },
+    "intervals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/interval"
+      }
+    },
+    "eventHistory": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/eventRecord"
+      }
+    },
+    "sampleHistory": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sampleHistory"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "warningDurationS",
+        "sampleWarningSeconds",
+        "affectedSampleIds"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "warningDurationS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "sampleWarningSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1382400,
+          "description": "Sum of warning duration across concurrent specimens, specimen-seconds."
+        },
+        "affectedSampleIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "elapsed": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 86400,
+      "description": "Elapsed seconds from session start, at millisecond resolution."
+    },
+    "height": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 535,
+      "description": "Sash opening above the fully closed stop, in mm."
+    },
+    "input": {
+      "type": "object",
+      "required": [
+        "sessionId",
+        "durationS",
+        "initialSashMm",
+        "events"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "bts.equipment.07-01.sash-input.v1"
+        },
+        "deviceId": {
+          "const": "07-01"
+        },
+        "modelNumber": {
+          "const": "1305"
+        },
+        "sessionId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "durationS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "initialSashMm": {
+          "$ref": "#/$defs/height"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          },
+          "maxItems": 512
+        }
+      }
+    },
+    "event": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "timeS",
+            "type",
+            "heightMm"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "timeS": {
+              "$ref": "#/$defs/elapsed"
+            },
+            "type": {
+              "const": "sash"
+            },
+            "heightMm": {
+              "$ref": "#/$defs/height"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "timeS",
+            "type",
+            "sampleId"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "timeS": {
+              "$ref": "#/$defs/elapsed"
+            },
+            "type": {
+              "enum": [
+                "load",
+                "remove"
+              ]
+            },
+            "sampleId": {
+              "$ref": "#/$defs/identifier"
+            },
+            "sampleKind": {
+              "const": "sealed-token"
+            }
+          }
+        }
+      ]
+    },
+    "eventRecord": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "eventIndex",
+            "timeS",
+            "type",
+            "heightMm",
+            "state"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "eventIndex": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 511
+            },
+            "timeS": {
+              "$ref": "#/$defs/elapsed"
+            },
+            "type": {
+              "const": "sash"
+            },
+            "heightMm": {
+              "$ref": "#/$defs/height"
+            },
+            "state": {
+              "$ref": "#/$defs/state"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "eventIndex",
+            "timeS",
+            "type",
+            "sampleId",
+            "sampleKind",
+            "state"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "eventIndex": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 511
+            },
+            "timeS": {
+              "$ref": "#/$defs/elapsed"
+            },
+            "type": {
+              "enum": [
+                "load",
+                "remove"
+              ]
+            },
+            "sampleId": {
+              "$ref": "#/$defs/identifier"
+            },
+            "sampleKind": {
+              "const": "sealed-token"
+            },
+            "state": {
+              "$ref": "#/$defs/state"
+            }
+          }
+        }
+      ]
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "timeS",
+        "sashMm",
+        "position",
+        "warning",
+        "presentSampleIds",
+        "qualitativeFlag"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "timeS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "sashMm": {
+          "$ref": "#/$defs/height"
+        },
+        "position": {
+          "enum": [
+            "closed",
+            "below-work",
+            "work",
+            "above-work"
+          ]
+        },
+        "warning": {
+          "type": "boolean"
+        },
+        "presentSampleIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true,
+          "maxItems": 16
+        },
+        "qualitativeFlag": {
+          "enum": [
+            "sash-position-warning",
+            "closed-reduced-mode",
+            "work-position"
+          ]
+        }
+      }
+    },
+    "interval": {
+      "type": "object",
+      "required": [
+        "startS",
+        "endS",
+        "durationS",
+        "sashMm",
+        "position",
+        "warning",
+        "presentSampleIds",
+        "qualitativeFlag"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "startS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "endS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "durationS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "sashMm": {
+          "$ref": "#/$defs/height"
+        },
+        "position": {
+          "enum": [
+            "closed",
+            "below-work",
+            "work",
+            "above-work"
+          ]
+        },
+        "warning": {
+          "type": "boolean"
+        },
+        "presentSampleIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true,
+          "maxItems": 16
+        },
+        "qualitativeFlag": {
+          "enum": [
+            "sash-position-warning",
+            "closed-reduced-mode",
+            "work-position"
+          ]
+        }
+      }
+    },
+    "visit": {
+      "type": "object",
+      "required": [
+        "enteredS",
+        "removedS",
+        "observedUntilS",
+        "warningDurationS"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "enteredS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "removedS": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/elapsed"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observedUntilS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "warningDurationS": {
+          "$ref": "#/$defs/elapsed"
+        }
+      }
+    },
+    "sampleHistory": {
+      "type": "object",
+      "required": [
+        "sampleId",
+        "sampleKind",
+        "warningDurationS",
+        "visits"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sampleId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sampleKind": {
+          "const": "sealed-token"
+        },
+        "warningDurationS": {
+          "$ref": "#/$defs/elapsed"
+        },
+        "visits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visit"
+          }
+        }
+      }
+    }
+  }
+}

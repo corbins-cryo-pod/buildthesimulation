@@ -21,6 +21,8 @@ export async function init() {
   const {defaults,exampleSamples,simulate,analyze,validateSamples,replay,replayFiles,readingAt,exposureCSV,importCSV}=await import(/* @vite-ignore */ solverURL);
   let trace=null,custom=null,samples=structuredClone(exampleSamples),result=null,time=0,paused=true;
   let viewer=null,moveCursor=()=>{},inspection={outerOpen:true,glassOpen:false},currentFrame=0,loadSeq=0;
+  const handoffURL=base+'handoff.mjs';
+  const getHandoff=()=>import(/* @vite-ignore */ handoffURL);
   const cache=new Map(),mode=$('mode'),chart=$('chart'),msg=t=>{$('status').textContent=t;};
   const modelFields=['temp_C','co2_pct','duration_s','start_s','open_s'];
   const conf=()=>({...Object.fromEntries(modelFields.map(k=>[k,$(k).valueAsNumber])),glass:$('access').value==='glass',gasConnected:$('connected').checked});
@@ -49,7 +51,7 @@ export async function init() {
   }
   function stop(){paused=true;cancelAnimationFrame(currentFrame);$('play').textContent='Play trace';}
   function invalidate(){
-    stop();result=null;$('result').hidden=true;$('json').disabled=$('csv').disabled=true;
+    stop();result=null;$('result').hidden=true;$('transfer').disabled=$('json').disabled=$('csv').disabled=true;
     $('timeline').disabled=$('play').disabled=true;time=0;msg('Setup changed. Run the experiment to update the sample histories.');
   }
   function sync(){
@@ -110,7 +112,7 @@ export async function init() {
       const a=s.statistics[channel];
       putRow(body,'td',[s.sampleId,s.shelf,s.enter_s+'–'+s.leave_s,s.glassOpen_s.toFixed(1),a.min.toFixed(2),a.mean.toFixed(2),a.below_s.toFixed(1)]);
     }
-    $('result').hidden=false;$('json').disabled=$('csv').disabled=false;
+    $('result').hidden=false;$('transfer').disabled=$('json').disabled=$('csv').disabled=false;
   }
   $('run').onclick=()=>{
     try {
@@ -147,7 +149,24 @@ export async function init() {
   $('add').onclick=()=>{let i=samples.length+1;while(samples.some(s=>s.sampleId==='VIOS-'+i))i++;samples.push({sampleId:'VIOS-'+i,shelf:2,enter_s:0,leave_s:end()||300,parentRevision:0});sampleForm();invalidate();paintChart();sync();};
   $('manifest').onchange=async event=>{
     const f=event.target.files[0];if(!f)return;
-    try{if(f.size>250000)throw Error('Sample map exceeds 250 KB.');const next=JSON.parse(await f.text());validateSamples(next,end());samples=next;sampleForm();invalidate();paintChart();sync();msg('Imported '+samples.length+' reservations and their parent revisions.');}catch(e){msg('Sample map rejected. '+e.message);}finally{event.target.value='';}
+    try{if(f.size>250000)throw Error('Sample map exceeds 250 KB.');const data=JSON.parse(await f.text());const next=Array.isArray(data)?validateSamples(data,end()):(await getHandoff()).fromCabinet(data,end());samples=next;sampleForm();invalidate();paintChart();sync();msg('Imported '+samples.length+' reservations and their parent revisions.');}catch(e){msg('Sample map rejected. '+e.message);}finally{event.target.value='';}
+  };
+  $('cabinet-example').onclick=async()=>{
+    try{
+      if(!trace)throw Error('Select a chamber trace first.');
+      const response=await fetch('/equipment/07-01/example-session.json');
+      if(!response.ok)throw Error('Cabinet example unavailable.');
+      const {fromCabinet}=await getHandoff();
+      samples=fromCabinet(await response.json(),end());sampleForm();invalidate();paintChart();sync();
+      msg('Loaded SEALED-A and SEALED-B from cabinet session A2-EXAMPLE-01. Set the incubator reservations and run.');
+    }catch(e){msg(e.message);}
+  };
+  $('transfer').onclick=async()=>{
+    try{if(!result)return;const current=result;const {toCabinet}=await getHandoff();
+      const job=toCabinet(current,'VIOS-'+crypto.randomUUID());
+      download('07-02-to-07-01.json',JSON.stringify(job,null,2),'application/json');
+      msg('Cabinet replay exported. Open station 07-01 and select Import replay.');
+    }catch(e){msg(e.message);}
   };
   $('logger').onchange=async event=>{
     const f=event.target.files[0];if(!f)return;

@@ -1,0 +1,123 @@
+---
+import { readFileSync } from 'node:fs';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import '../../../../lib/equipment/07-01/cabinet.css';
+
+const assets = '/equipment/07-01/';
+const data = (name) => JSON.parse(readFileSync('public'+assets+name, 'utf8'));
+const research = data('research.json');
+const verification = data('verification.json');
+const geometry = data('geometry-verification.json');
+const display = (value) => Array.isArray(value) ? value.join(', ') : String(value);
+---
+<Layout compactHeader wide pageTitle="1300 Series A2 · Biosafety cabinet simulator" subtitle="" description="Operate the Thermo Scientific 1305 in 3D and trace sash-position warnings through a two-specimen session.">
+<article class="equipment cabinet-lab" id="cabinet-lab">
+  <nav class="cab-nav" aria-label="Laboratory navigation">
+    <a href="/simulations/equipment/07-01/">← Equipment 07-01</a>
+    <span><a href="#references">Reference sheet</a><a href="#verification">Verification</a></span>
+  </nav>
+  <header class="cab-title">
+    <div><span class="cab-label">Thermo Scientific · 1300 Series A2</span><h1>Biosafety cabinet</h1></div>
+    <p>Track a sash-position warning through a handling session with two sealed specimens.</p>
+  </header>
+  <div class="cab-workspace">
+    <div class="cab-instrument">
+      <div class="cab-bar"><strong>Instrument view</strong><span>1305 &nbsp; / &nbsp; 4 ft &nbsp; / &nbsp; 120 V</span></div>
+      <div id="cab-view" class="cab-view" aria-label="Interactive 3D cabinet. Drag to orbit and pinch or scroll to zoom.">
+        <img id="cab-poster" src={assets+'model-front.webp'} width="600" height="520" alt="Front view of the modeled cabinet" />
+        <div id="cab-canvas"></div>
+        <span id="cab-3d-status" role="status">Loading cabinet…</span>
+      </div>
+      <div class="cab-cameras" aria-label="Camera presets">
+        {['Overview','Front','Work surface','Keypad','Side','Rear'].map((v,i)=><button type="button" data-camera={i} aria-pressed={i===0?'true':'false'}>{v}</button>)}
+        <button type="button" data-zoom=".78" aria-label="Zoom in">+</button><button type="button" data-zoom="1.28" aria-label="Zoom out">−</button>
+      </div>
+      <div class="cab-caption"><span>Drag to orbit · pinch or scroll to zoom</span><a href={assets+'cabinet.glb'} download>Download GLB ↓</a></div>
+    </div>
+    <section class="cab-console" aria-labelledby="experiment-title">
+      <h2 id="experiment-title">Sash excursion</h2>
+      <div class="cab-modes" aria-label="Session mode">
+        <button type="button" id="cab-example-mode" aria-pressed="true">Example replay</button>
+        <button type="button" id="cab-manual-mode" aria-pressed="false">Manual session</button>
+      </div>
+      <div class="cab-readouts">
+        <div><span class="cab-label">Sash opening</span><strong id="cab-height">203.2 <small>mm</small></strong></div>
+        <div><span class="cab-label">Session time</span><strong id="cab-time">0 <small>s</small></strong></div>
+      </div>
+      <div id="cab-indicator" data-position="work"><span aria-hidden="true"></span><strong id="cab-position">Working position</strong></div>
+      <p id="cab-present">Work surface empty</p>
+      <div id="cab-replay">
+        <label for="cab-cursor">Replay position</label>
+        <input id="cab-cursor" type="range" min="0" max="30" step="0.001" value="0"/>
+        <div class="cab-range-ends"><span>0 s</span><span id="cab-duration">30 s</span></div>
+        <div class="cab-actions"><button class="cab-primary" id="cab-play" type="button">Run example</button><button id="cab-step" type="button">Next event</button><button id="cab-finish" type="button">Go to result</button></div>
+        <div id="cab-excursion-field">
+          <label for="cab-excursion">Opening at 10 s (mm)</label>
+          <div class="cab-inline"><input id="cab-excursion" type="number" min="0" max="535" step="any" value="223.2"/><button id="cab-apply-excursion" type="button">Apply to replay</button></div>
+        </div>
+      </div>
+      <div id="cab-manual" hidden>
+        <label for="cab-manual-height">Sash opening (mm)</label>
+        <div class="cab-inline"><input id="cab-manual-height" type="number" min="0" max="535" step="any" value="203.2"/><button id="cab-set-height" type="button">Move sash</button></div>
+        <label for="cab-token">Sealed specimen ID</label>
+        <div class="cab-inline"><input id="cab-token" value="SEALED-01" maxlength="64"/><button id="cab-load" type="button">Load</button><button id="cab-remove" type="button">Remove</button></div>
+        <label for="cab-advance-time">Hold current state (s)</label>
+        <div class="cab-inline"><input id="cab-advance-time" type="number" min="0.001" max="86400" step=".001" value="5"/><button id="cab-advance" type="button">Advance clock</button></div>
+      </div>
+      <p id="cab-feedback" role="status" aria-live="polite">Ready · 30-second example</p>
+    </section>
+  </div>
+  <section id="cab-results" class="cab-section" aria-labelledby="cab-results-title">
+    <div class="cab-section-title"><h2 id="cab-results-title">Session record</h2><span class="cab-label" id="cab-session-name">A2-EXAMPLE-01</span></div>
+    <div class="cab-record-grid">
+      <div>
+        <div class="cab-key"><span><i class="cab-presence"></i>Specimen present</span><span><i class="cab-warning"></i>Sash warning</span></div>
+        <div id="cab-trace" aria-label="Observed cabinet and specimen intervals" role="img"></div>
+        <div class="cab-actions"><button id="cab-export" type="button">Export session JSON ↓</button><button id="cab-import-open" type="button">Import replay…</button><button id="cab-restore-example" type="button">Restore example</button><input id="cab-import" type="file" accept=".json,application/json" hidden/></div>
+      </div>
+      <div class="cab-results-summary"><div><span class="cab-label">Cabinet warning time</span><strong id="cab-warning-time">0 s</strong></div>
+        <div><span class="cab-label">Warning time by specimen</span><ul id="cab-samples"><li>No specimens observed</li></ul></div>
+      </div>
+    </div>
+    <details class="cab-log"><summary>Timestamped handling events</summary><div class="cab-table"><table><thead><tr><th>Time</th><th>Event</th><th>Position</th><th>Present after event</th></tr></thead><tbody id="cab-events"></tbody></table></div></details>
+  </section>
+  <section class="cab-section" id="references">
+    <div class="cab-section-title"><h2>Illustrated reference sheet</h2><a href={assets+'model-source.py'} download>Editable model source ↓</a></div>
+    <p>{research.configuration} The five labeled plates are original renders of the downloadable model. Each links to the photograph or illustrated manual used for comparison.</p>
+    <div class="cab-plates">{research.views.map((v,i)=><figure>
+      <a href={v.image.startsWith('/') ? v.image : assets+v.image}><img src={v.image.startsWith('/') ? v.image : assets+v.image} alt={v.alt} width="600" height="450" loading="lazy" /></a>
+      <figcaption><strong>{v.title}</strong><p>{v.caption}</p><a href={v.url}>{v.source} · {v.page}</a><small>{v.revision}</small><span class="cab-links"><a href={v.image.replace('/ref-','/model-')}>Unlabeled model view</a>{v.additionalSources?.map(s=><a href={s.url}>{s.label}</a>)}</span></figcaption>
+    </figure>)}</div>
+    <h3>Specifications</h3>
+    <div class="cab-table" tabindex="0" aria-label="Specifications, horizontally scrollable"><table><thead><tr><th>Parameter</th><th>Value</th><th>Configuration / conditions</th><th>Used for</th><th>Source</th></tr></thead>
+    <tbody>{research.specs.map(s=><tr><th scope="row">{s.name}</th><td>{s.value} {s.unit}</td><td>{s.condition}</td><td>{s.use}</td><td>{s.url?<a href={s.url}>{s.source} · {s.page}</a>:s.source}</td></tr>)}</tbody></table></div>
+    <details><summary>Reconstruction notes and source index</summary><ul>{research.limits.map(l=><li>{l}</li>)}</ul><ul>{research.sources.map(s=><li><a href={s.url}>{s.title}</a> · {s.revision}</li>)}</ul></details>
+  </section>
+  <section class="cab-section" id="contract">
+    <div class="cab-section-title"><h2>How the experiment works</h2><a href={assets+'session.mjs'} download>Event model ↓</a></div>
+    <p>The opening is the vertical distance above the closed stop. A sash event sets this height until the next event. The simulated position switch reports closed at 0 mm, working within 184.15–209.55 mm inclusive, and a warning at other open positions up to 535 mm. The manual gives an asymmetric tolerance around 8 in. The model assumes immediate switch response. <a href="https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=13">Operating manual, p. 1-6</a></p>
+    <p>Load and remove events identify sealed specimen tokens. For each specimen the solver intersects its visits with the cabinet’s warning intervals, then sums the intersection lengths. Each interval includes its start and excludes its end. Events at the same time execute in input order. A specimen can leave and return under the same ID.</p>
+    <dl class="cab-contract">
+      <dt>Input</dt><dd>Catalog 1305 configuration, session ID, starting height in mm, and up to 512 ordered events. Time starts at zero and has 1 ms resolution. Sessions support up to 24 hours and 16 simultaneous tokens. These last two limits belong to this software.</dd>
+      <dt>Output</dt><dd>The JSON includes the replay input, device and solver versions, simulated position and qualitative flag, timestamped events, occupancy intervals, and warning seconds for each ID. Export at any cursor position for a partial observation. Import either a saved session or its input to replay the original schedule.</dd>
+      <dt>Handoff</dt><dd>Export a completed session to load released specimen IDs and visit histories in the <a href="/simulations/equipment/07-02/simulator/">incubator station</a>. Its cabinet replay export can return the same sealed IDs here through <b>Import replay</b>.</dd>
+      <dt>Rejection</dt><dd>An incompatible model, out-of-range height, invalid timestamp, duplicate load, absent specimen removal or transfer through a closed sash produces an error and preserves the last accepted state.</dd>
+    </dl>
+    <p class="cab-links"><a href={assets+'example-input.json'} download>Example input</a><a href={assets+'example-session.json'} download>Example result</a><a href={assets+'output-schema.json'} download>Output schema</a></p>
+  </section>
+  <section class="cab-section" id="verification">
+    <div class="cab-section-title"><h2>Verification</h2><span class="cab-label">Catalog 1305</span></div>
+    <p>The independent timing fixture holds the sash above its working range from 10 to 22 s. Specimen A occupies the surface from 2 to 19 s and B from 14 to 26 s. Their hand-calculated warning intervals are 9 s and 8 s. Exact agreement is required for these whole-second times.</p>
+    <div class="cab-table" tabindex="0" aria-label="Verification results, horizontally scrollable"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Units</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>
+    {[...verification.tests,...(Array.isArray(geometry)?geometry:geometry.tests)].map(row=><tr><th scope="row">{row.test}</th><td>{display(row.expected)}</td><td>{display(row.actual)}</td><td>{row.units}</td><td>{display(row.tolerance)}</td><td>{row.outcome ?? (row.pass?'Pass':'Fail')}</td></tr>)}</tbody></table></div>
+    <p>The mesh checks allow 0.25 mm for the cabinet, tray and port dimensions, and 1 mm at the sloped pane edge. These tolerances cover rounding and mesh construction. In the front photograph the keypad center sits at 0.76 of cabinet width and the canopy ends at 0.61 of cabinet height. A tolerance of 0.05 in these fractions allows for camera tilt and pixel selection. The counterweight moves opposite the sash at an assumed 1:1 ratio.</p>
+    <p><strong>Evidence limit.</strong> Geometry checks compare the downloadable mesh with documented dimensions. Timing checks use synthetic input. Independent switch recordings and contamination measurements are unavailable. The qualitative flag describes sash position alone and cannot establish sterility.</p>
+    <p>Browser checks exercised the working-area and rear views, closed-sash rejection, loading at maximum opening, and the zero-excursion control. The example JSON downloaded from the browser matched the published fixture byte for byte.</p>
+    <p class="cab-links"><a href={assets+'verification.json'} download>Event verification data</a><a href={assets+'geometry-verification.json'} download>Geometry checks</a></p>
+  </section>
+</article></Layout>
+<script>
+  import { initCabinet } from '../../../../lib/equipment/07-01/client.js';
+  initCabinet();
+</script>
