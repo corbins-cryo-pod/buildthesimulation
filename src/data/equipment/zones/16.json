@@ -6,6 +6,7 @@
     "evidence": "C",
     "priority": "P1",
     "page": 49,
+    "simulator": "/simulations/equipment/16-01/simulator/",
     "sources": [],
     "purpose": "Support microscopes and electrophysiology rigs.",
     "geometryBrief": "Honeycomb tabletop, hole grid, legs and air isolators.",
@@ -13,9 +14,9 @@
     "inputs": "Table hole pattern, mount footprint and pose, fixture anchors and optional noise spectrum",
     "outputs": "Table-to-fixture transform, occupied mounts and optional fixture vibration input",
     "acceptance": "Snap a two-hole mount to a matching grid and translate the table. Relative mount coordinates must remain fixed; an incompatible hole spacing must refuse attachment.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric GLB",
+    "simulationStatus": "Fixture snap and analytic vertical isolation",
+    "integrationStatus": "Interactive simulator route and transform export"
   },
   {
     "id": "16-02",

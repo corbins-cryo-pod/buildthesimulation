@@ -1,0 +1,105 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/01-01/mask-console.glb",
+  "station": "/equipment/01-01/layout.mjs",
+  "dispatch": "act(state,action,value); station() initializes",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "Floor under centre of desk, no scale adjustment. CRT aperture actual mesh; planar contents shown with screen zoom only.",
+  "geometry": {
+    "rows": [
+      {
+        "label": "desk width",
+        "expectedMm": 1440,
+        "actualMm": 1440.000057220459,
+        "toleranceMm": 0.05,
+        "pass": true
+      },
+      {
+        "label": "desk depth",
+        "expectedMm": 730,
+        "actualMm": 730.0000190734863,
+        "toleranceMm": 0.05,
+        "pass": true
+      },
+      {
+        "label": "CRT active width",
+        "expectedMm": 350,
+        "actualMm": 349.9999940395355,
+        "toleranceMm": 0.05,
+        "pass": true
+      },
+      {
+        "label": "CRT active height",
+        "expectedMm": 219,
+        "actualMm": 218.99999678134918,
+        "toleranceMm": 0.05,
+        "pass": true
+      }
+    ],
+    "minM": [
+      -0.72,
+      0,
+      -0.365
+    ],
+    "maxM": [
+      0.72,
+      1.15,
+      0.365
+    ],
+    "bytes": 941188,
+    "nodes": 134,
+    "triangles": 13662
+  },
+  "controls": [
+    {
+      "mesh": "LAYER_PADS",
+      "action": "layer",
+      "value": "pads",
+      "label": "Show or hide contact shapes",
+      "minM": [
+        0.1755,
+        0.765,
+        0.233
+      ],
+      "maxM": [
+        0.2145,
+        0.773,
+        0.271
+      ]
+    },
+    {
+      "mesh": "LAYER_TRACES",
+      "action": "layer",
+      "value": "traces",
+      "label": "Show or hide routing geometry",
+      "minM": [
+        0.2255,
+        0.765,
+        0.233
+      ],
+      "maxM": [
+        0.2645,
+        0.773,
+        0.271
+      ]
+    },
+    {
+      "mesh": "RUN_CHECK",
+      "action": "check",
+      "value": null,
+      "label": "Check width and connectivity",
+      "minM": [
+        0.2755,
+        0.765,
+        0.233
+      ],
+      "maxM": [
+        0.3145,
+        0.773,
+        0.271
+      ]
+    }
+  ]
+}

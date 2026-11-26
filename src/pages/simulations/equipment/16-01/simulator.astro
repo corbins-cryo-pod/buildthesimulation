@@ -1,0 +1,85 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/16-01/verification.json';
+import stats from '../../../../../public/equipment/16-01/asset-metrics.json';
+const p='/equipment/16-01/';
+const isolators='https://www.newport.com/p/S-2000A-428';
+const series='https://www.newport.com/p/tuned-damped-research-optical-tables/rs2000-optical-table-tops-with-two-tuned-dampers';
+const legDrawing='https://api.p1.mks.com/medias/sys_master/npresources/h4b/hb2/9954508111902/S-2000%20DIM/S-2000-DIM.pdf';
+const footprint='https://api.p1.mks.com/medias/sys_master/images/images/h60/h5c/8933935775774/Leg-Location-And-Mounting-Dimensions.pdf';
+const photo='https://api.p1.mks.com/medias/sys_master/DefaultCelumAssetsFolder/h4c/h4a/9897797648414/VC-RS2000_400w/VC-RS2000-400w.jpg';
+const baseModel='https://eng.libretexts.org/Courses/California_State_Polytechnic_University_Humboldt/Mechanical_Engineering_Vibrations/Topic_09._Forced_Vibration__Base_Excitation';
+---
+<Layout pageTitle="Vibration-isolation table" description="Metric optical table, two-hole fixture registration and passive vertical base-to-fixture displacement." wide={true}>
+<article id="optical16">
+<nav><a href="/simulations/equipment/16-01/">← Equipment 16-01</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#ot-evidence">References and checks</a></nav>
+<header><small>16-01 · LAB FIXTURE · PASSIVE VIBRATION MODEL</small><h2>Newport optical isolation table</h2><p>Snap a two-hole witness onto a 25 mm mounting grid, move the table as a single assembly, and compare the floor's vertical motion with the mounted fixture's motion.</p></header>
+<div class="bench">
+<section class="panel"><h3>Table, isolators and witness</h3>
+<div class="tools"><button data-ot-view="orbit">Reset view</button><button data-ot-view="front">Front view</button><button data-ot-view="grid">Witness close-up</button><button data-ot-view="rear">Rear view</button></div>
+<div id="ot-viewer"></div><p id="ot-model" role="status">Loading metric optical table…</p>
+<p>The three colored blocks on the front are virtual controls for snap, add weight and translate, not Newport hardware. Select the witness to release it. Real micrometre displacement is reported numerically, not exaggerated in the model. No physical headset testing has been done.</p></section>
+<section class="panel"><h3>Register the two-hole mount</h3>
+<div class="fields">
+<label>First hole X index<input type="number" id="ot-ix" min="0" max="71" step="1"/></label>
+<label>First hole Z index<input type="number" id="ot-iz" min="0" max="47" step="1"/></label>
+<label>Witness pin spacing (mm)<input type="number" id="ot-spacingMm" min="25" max="150" step="any"/></label>
+<label>World X shift (mm)<input type="number" id="ot-xShiftMm" min="-500" max="500" step="any"/></label>
+<label>World Z shift (mm)<input type="number" id="ot-zShiftMm" min="-500" max="500" step="any"/></label>
+</div>
+<div class="tools"><button id="ot-snap">Snap mount</button><button id="ot-release">Release mount</button><button id="ot-shift">Translate table / restore</button></div>
+<p id="ot-fit" aria-live="polite"></p><p id="ot-world"></p>
+<h3>Base vibration and load</h3>
+<div class="fields">
+<label>Frequency (Hz)<input type="number" id="ot-frequencyHz" min="0" max="25" step="any"/></label>
+<label>Floor peak amplitude (µm)<input type="number" id="ot-baseUm" min="0" max="100" step="any"/></label>
+<label>Added center mass (kg)<input type="number" id="ot-addedKg" min="0" max="100" step="any"/></label>
+<label>Import input JSON<input type="file" id="ot-file" accept=".json,application/json"/></label>
+</div>
+<div class="tools"><button id="ot-load">Add 60 kg equivalent load</button><button id="ot-run">Run selected tone</button><button id="ot-export" disabled>Export fixture and response</button><button id="ot-reset">Reset example</button></div>
+<p id="ot-status" aria-live="polite"></p></section>
+</div>
+<section class="panel"><h3>Vertical fixture displacement</h3><p id="ot-result" aria-live="polite"></p><p id="ot-modal"></p>
+<canvas id="ot-plot" width="760" height="390" aria-label="Predicted gain in dB versus vertical base vibration frequency, selected tone marked after running."></canvas>
+<p><strong>Try it:</strong> With the attached example, a 10 µm base tone gives about 0.808 µm at 5 Hz and 31.62 µm at 1 Hz. Move the table and compare the fixture's unchanged local coordinates with its new world location. Change spacing to 60 mm and try snapping again to see the off-grid mount refused.</p>
+</section>
+<section class="panel"><h3>Physics and output</h3>
+<p>The linear model treats the table and an attached inert witness as one rigid vertical mass. For floor displacement y and table displacement x, the equation is m x″ + c(x′ − y′) + k(x − y) = 0. The complex displacement ratio is H = (1 + i·2ζr)/(1 − r² + i·2ζr), where r is drive frequency divided by natural frequency. The exported displacement is input peak amplitude × |H|, in µm. The readout includes the phase of H. The isolation crossover is at r = √2, regardless of damping in this model.</p>
+<p>Assumed 300 kg effective baseline mass and nominal 1 Hz support natural frequency determine k. Chosen ζ = 1/6 gives 10 dB at 1 Hz, consistent with the catalog nominal gain; the largest modeled peak is nearby but not exactly at 1 Hz. Adding centered mass holds effective k and c fixed. At 5 Hz the model transmits about 8.08% versus the catalog's 6%; it is not a fit to the entire commercial response. No pressure, rocking, table flexure, structural damping modes, measured spectrum, actual installation instructions or load certification are provided.</p>
+<p><a href={p+'contract.json'}>I/O contract</a> · <a href={p+'example-input.json'}>Input example</a> · <a href={p+'example-output.json'}>Output example</a> · <a href={baseModel}>Base-excitation reference derivation</a></p></section>
+<section class="panel" id="ot-evidence"><h3>Reference geometry and checks</h3>
+<div class="refs">
+<figure><img loading="lazy" src={p+'table-view.webp'} alt="Original rendering of a four-leg optical table with satin top and black side walls"/><figcaption><strong>Table and four legs, original render.</strong> Compare the <a href={photo}>RS2000 series photo</a>, the <a href={isolators}>S-2000A-428 four-leg photo and technical specs</a>, and the <a href={legDrawing}>isolator elevation, sheet 1</a>. Selected M-RS2000-46-8 dimensions are listed in the related products on the four-leg page.</figcaption></figure>
+<figure><img loading="lazy" src={p+'grid-view.webp'} alt="Original rendering of two witness screws mounted in evenly spaced metric holes"/><figcaption><strong>Metric mounting grid, original render.</strong> Grid pitch, edge clearance and skin thickness come from the <a href={series}>RS2000 series technical specifications</a>; underside leg layout from the <a href={footprint}>manufacturer dimension drawing, sheet 1</a>. Witness is original; the visual holes are actual openings with simplified profile and no modeled threading.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Parameter</th><th>Value</th><th>Source and scope</th></tr></thead><tbody>
+<tr><td>M-RS2000-46-8 tabletop</td><td>1800 × 1200 × 203 mm; M6 nominal</td><td>S-2000A-428 related products + RS2000 technical specifications; overall geometry.</td></tr>
+<tr><td>Grid and steel skin</td><td>25 mm pitch, 12.5 mm border, first-pass 72 × 48 openings; nominal skin 4.8 mm</td><td>RS2000 specifications; opening count derived; sealing and threaded geometry simplified.</td></tr>
+<tr><td>S-2000A-428 legs, 4</td><td>711.2 mm height, Ø254 mm base, Ø171 mm cap</td><td>Technical specification and elevational drawing sheet 1; port detail and trim approximated.</td></tr>
+<tr><td>Vertical response specifications</td><td>1 Hz, +10 dB; 94% isolation at 5 Hz, 98% at 10 Hz</td><td>S-2000A-428 technical-specification table; modeled nominal and independently stated vendor comparisons, not measured on this simulator.</td></tr>
+<tr><td>Metric asset</td><td>{stats.bytes} bytes; {stats.triangles} triangles; {stats.primitives} primitives</td><td>Real metric mesh and semantic action targets. Future controller integration, not an immersive app.</td></tr>
+</tbody></table></div>
+<p><a href={p+'optical-table.glb'}>Metric GLB</a> · <a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'interaction.json'}>Named actions and placement anchors</a> · <a href={p+'verification.json'}>Verification results</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/16-01/client.mjs';</script>
+<style>
+#optical16{max-width:1260px;margin:auto}
+#optical16 header{margin:1.37rem 0 1rem}#optical16 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.18rem}.fields input[type=file]{width:100%}
+#ot-viewer{height:388px;margin:.72rem 0;background:#293941}#ot-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#ot-plot{max-width:760px;width:100%;height:auto;display:block}#ot-result{font-weight:bold}
+#ot-status[data-error=true]{border-left:4px solid #a56542;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}
+th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#ot-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#ot-viewer{height:260px}.tools button,.fields input{min-height:44px}}
+</style>

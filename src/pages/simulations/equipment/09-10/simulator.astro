@@ -1,0 +1,120 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import verification from '../../../../../public/equipment/09-10/verification.json';
+import {FILTERS,GAINS,HP,LP} from '../../../../../public/equipment/09-10/solver.mjs';
+const asset='/equipment/09-10/';
+const manual='https://www.thinksrs.com/downloads/pdfs/manuals/SR560m.pdf';
+const official='https://www.thinksrs.com/products/sr560.html';
+const specs=[
+ ['Meter envelope','206.375 W × 88.9 H × 377.825 D mm','Manual p. 5 (8⅛ × 3½ × 14⅞ in); exterior geometry nominal',manual+'#page=9'],
+ ['Source and coupling','A, B or A−B; DC, AC (0.03 Hz high-pass), ground','Manual pp. 7–8. Ideal A−B subtraction and cutoff model; no common-mode leakage.',manual+'#page=11'],
+ ['Filter architecture','Two selectable RC stages, low/high/bandpass/bypass','Manual p. 8. Coincident poles modeled as cascaded identical first-order stages, not Butterworth.',manual+'#page=12'],
+ ['Gain','Hardware 1–50,000, calibrated high impedance','Manual pp. 5, 9. Teaching subset 1–1000; no dynamic-reserve range switching or gain vernier.',manual+'#page=13'],
+ ['Outputs','Two insulated front BNCs: 50 Ω and 600 Ω','Manual p. 9. Resistive load matching halves gain. Virtual unloaded output guard ±5 V; hardware 10 Vpp listed.',manual+'#page=13'],
+ ['Input impedance','100 MΩ, 25 pF, DC-coupled','Manual pp. 5, 7. Not included here; inputs are ideal prescribed voltages.',manual+'#page=9'],
+];
+const names={bypass:'Bypass',hp:'High-pass · 6 dB/oct',hp2:'High-pass · 12 dB/oct',lp:'Low-pass · 6 dB/oct',lp2:'Low-pass · 12 dB/oct',bp:'Band-pass · one HP plus one LP'};
+---
+<Layout pageTitle="Low-noise preamplifier" subtitle="" description="SRS SR560 electrical gain, filter and load matching bench." wide={true}>
+<article id="sr560">
+<nav><a href="/simulations/equipment/09-10/">← Equipment 09-10</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#pre-evidence">Evidence &amp; verification</a></nav>
+<header><small>09-10 · ELECTRICAL INSTRUMENTATION · VIRTUAL BENCH</small><h2>Stanford Research Systems SR560</h2><p>Drive the standard, feet-down SR560 with a simulated electrical calibration signal. Compare A and B against A−B, sweep the RC filter settings, and see how output loading changes the measured voltage. Bench electronics only: the manufacturer does not approve this instrument for use with human subjects.</p></header>
+<div class="work">
+<section class="panel">
+<h3>3D instrument</h3>
+<div class="tools"><button data-pre-view="orbit">Reset view</button><button data-pre-view="front">Front panel</button><button data-pre-view="rear">Rear ports</button><button data-pre-view="source">Source close-up</button></div>
+<div id="pre-viewer"></div><p id="pre-model" role="status">Loading metric model…</p>
+<p>Drag to orbit, scroll or pinch to zoom. The spatial controls and form share instrument state. Try the gain, source, filter or invert keys on the front panel; the LEDs show the selected state. Form labels remain readable on a phone. The GLB and control manifest are prepared for room-scale integration, not verified immersive VR.</p>
+</section>
+<section class="panel">
+<h3>Configure path</h3>
+<div class="tools"><button id="pre-power">Power off</button><button id="pre-reset">Reset example</button><button id="pre-generated">Use generated input</button></div>
+<p id="pre-source-note"></p>
+<div class="fields">
+<label>Input selector<select id="pre-source"><option>A</option><option>A-B</option><option>B</option></select></label>
+<label>Coupling<select id="pre-couple"><option>DC</option><option>AC</option><option>GND</option></select></label>
+<label>Rolloff<select id="pre-filter">{FILTERS.map(x=><option value={x}>{names[x]}</option>)}</select></label>
+<label>Calibrated gain<select id="pre-gain">{GAINS.map(g=><option value={g}>×{g}</option>)}</select></label>
+<label>High-pass · Hz<select id="pre-hp">{HP.map(h=><option value={h}>{h}</option>)}</select></label>
+<label>Low-pass · Hz<select id="pre-lp">{LP.map(h=><option value={h}>{h}</option>)}</select></label>
+<label>Output port<select id="pre-port"><option value="50">50 Ω</option><option value="600">600 Ω</option></select></label>
+<label>Actual load<select id="pre-load"><option value="high">Ideal high Z</option><option value="1000000">1 MΩ scope</option><option value="50">50 Ω</option><option value="600">600 Ω</option></select></label>
+<label>Generated tone · Hz<input type="number" id="pre-freq" min="100" max="10000" step="any" value="1000"/></label>
+<label>Generated differential tone · mVpp<input type="number" id="pre-amp" min="0" max="500" step="any" value="20"/></label>
+<label>Generated 50 Hz common tone · mVpp<input type="number" id="pre-common" min="0" max="500" step="any" value="8"/></label>
+<label>Import signed-volts waveform<input type="file" id="pre-import" accept="application/json,.json"/></label>
+</div>
+<div class="tools"><label class="check"><input type="checkbox" id="pre-invert"/> Invert output</label><button id="pre-capture">Capture output</button></div>
+<p id="pre-status" aria-live="polite"></p>
+</section>
+</div>
+<section class="panel">
+<h3>Amplified output</h3>
+<p id="pre-result" aria-live="polite">No current output capture.</p>
+<canvas id="pre-trace" width="700" height="250" aria-label="Output voltage plotted against time, with numeric summary above"></canvas>
+<div class="tools"><button id="pre-json" disabled>Export JSON</button><button id="pre-csv" disabled>Export CSV</button></div>
+<p><strong>Try it:</strong> The ready example is A−B, DC bypass, gain ×100 and high Z. Capture 2.0000 Vpp, then try a 50 Ω load on the 50 Ω port and capture 1.0000 Vpp. Return to high Z and select low-pass 6 dB/oct at 1 kHz: output is approximately 1.4142 Vpp. At ×1000 the high-Z bypass example is flagged as out of modeled headroom.</p>
+<p><strong>Scope handoff:</strong> Download the <a href={asset+'example-preamp-waveform.json'}>calibration waveform</a>. The 09-04 oscilloscope importer was exercised on this file: 2.0000 Vpp, 1.0000 ms, no clipping at 0.25 V/div, 0.5 ms/div, 256 kSa/s and rising 0 V trigger. The sample is generated, not a recording from real electronics.</p>
+<p><a href={asset+'waveform-schema.json'}>Waveform schema</a> · <a href={asset+'example-preamp-waveform.json'}>Versioned example</a>. Import one signed-voltage channel to A, or two as A/B, 16 to 65,536 uniform records; output retains source lineage, sample seconds, gain, port/termination and model version. One-channel import selects A. The preamp is not a digitizer; Capture is the virtual bench readout, not a hardware key.</p>
+</section>
+<section class="panel">
+<h3>Circuit model and limits</h3>
+<p>Ideal filters use <code>Hlp = 1/(1+jf/fc)</code> or <code>Hhp = (jf/fc)/(1+jf/fc)</code> with cascaded complex responses. The built-in two-tone stimulus uses steady-state analytical phasors at 256 kSa/s for 32 ms. An imported waveform is processed by a prewarped bilinear one-pole stage per selected filter with constant prehistory; keep frequencies far enough below Nyquist and allow settling. AC coupling uses the nominal 0.03 Hz high-pass and the simulation conservatively allows only the single-stage and bypass modes when selected.</p>
+<p>Output is signed gain times the filtered voltage and <code>Rload/(Rload+Rport)</code>; ideal high Z has unity load ratio. ±5 V unloaded headroom and the input bound produce a warning rather than a fictitious clipped recording. The 1.5 V input peak guard is a virtual constraint, not a hardware overload limit; actual behavior depends on coupling and gain allocation. Hardware low noise, bandwidth rolloff, gain-mode allocation, common-mode error, batteries, blanking, protection, reflections and DC drift are not modeled. These circuit checks do not establish factory calibration, spectral noise or a target application’s electrical safety.</p>
+</section>
+<section class="panel" id="pre-evidence">
+<h3>Reference views and verification</h3>
+<p>Original renders from the editable model. Official front, side and rear images establish broad proportions and control layout. Individual switch spacing, port protrusions, legends and feet are estimates. The side reference shows bail deployed; the virtual instrument rests on its feet.</p>
+<div class="views">
+<figure><img src={asset+'front-view.webp'} loading="lazy" alt="Original SR560 front three-quarter reconstruction"/><figcaption><strong>Front and shell.</strong> Pale face, dark air-slot fascia and bench feet. Compare the <a href="https://www.thinksrs.com/images/instr/sr560/SR560%20Wide.jpg">official 3/4 photo</a>.</figcaption></figure>
+<figure><img src={asset+'source-detail.webp'} loading="lazy" alt="Original detail of the SR560 input connectors and filter controls"/><figcaption><strong>Signal input and controls.</strong> Port pair, coupling, source and filter keys. Compare the <a href="https://www.thinksrs.com/images/instr/sr560/SR560_FPlg.jpg">official front photo</a> and <a href={manual+'#page=11'}>manual Figure 2</a>.</figcaption></figure>
+<figure><img src={asset+'rear-view.webp'} loading="lazy" alt="Original rear port rendering of the SR560"/><figcaption><strong>Rear.</strong> Power-cover section, ±12 V and grounding jacks, blanking and RS232. Compare the <a href="https://www.thinksrs.com/images/instr/sr560/SR560_RPlg.jpg">official rear photo</a> and <a href={manual+'#page=14'}>manual Figure 3</a>.</figcaption></figure>
+</div>
+<dl class="specs">{specs.map(([key,value,desc,h])=><div><dt>{key}</dt><dd><strong>{value}</strong> · <a href={h}>{desc}</a></dd></div>)}</dl>
+<p><a href={official}>Official product page</a> · <a href={asset+'sr560.glb'}>Metric GLB</a> · <a href={asset+'build-model.py'}>Editable Blender generator</a> · <a href={asset+'interaction.json'}>Spatial bindings</a> · <a href={asset+'asset-metrics.json'}>Model metrics</a></p>
+<h3>Verification results</h3>
+<p>{verification.origin}</p>
+<div class="scroll"><table><thead><tr><th>Case</th><th>Expected</th><th>Simulated</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verification.rows.map(x=><tr><td>{x.description}</td><td>{x.expected} {x.unit}</td><td>{typeof x.actual==='number'?Number(x.actual.toPrecision(9)):x.actual}</td><td>{x.tolerance??'Exact code'}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={asset+'verification.json'}>Download verification</a> · <a href={asset+'acceptance.json'}>Predeclared reference cases</a> · <a href={asset+'solver.mjs'}>Numerical implementation</a></p>
+</section>
+</article>
+</Layout>
+<script>
+import '../../../../lib/equipment/09-10/client.mjs';
+</script>
+<style>
+#sr560 {max-width: 1280px; margin:auto; color:inherit;}
+#sr560 header {margin:1.4rem 0 1rem;}
+#sr560 header h2 {margin:.25rem 0 0;}
+#sr560 header p {max-width:85ch;}
+.work {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem;}
+.panel {border:1px solid color-mix(in srgb,currentColor 32%,transparent);padding:clamp(.8rem,2vw,1.4rem);margin:.6rem 0;border-radius:.33rem;min-width:0;}
+.panel h3 {margin:0 0 .85rem;}
+.tools {display:flex;gap:.4rem;flex-wrap:wrap;}
+.tools button {border:1px solid currentColor;background:transparent;color:inherit;min-height:38px;padding:.45rem .7rem;border-radius:.24rem;cursor:pointer;font:inherit;}
+.tools button[aria-pressed=true] {background:#d6bd73;color:#151b1a;}
+.tools button:disabled {opacity:.46;cursor:not-allowed;}
+#pre-viewer {height:350px;margin:.75rem 0 0;background:#263439;}
+#pre-viewer :global(canvas) {display:block;max-width:100%;touch-action:none;}
+.fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin:.8rem 0;}
+.fields label {display:flex;flex-direction:column;gap:.18rem;font-size:.9rem;}
+.fields input,.fields select {min-width:0;width:100%;min-height:38px;box-sizing:border-box;font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.2rem;padding:.26rem;}
+.fields option {color:#151b1a;background:#faf5e8;}
+#pre-actual,#pre-result {font-weight:700;margin:.7rem 0;}
+#pre-status[data-error=true] {color:inherit;border-left:4px solid #d16246;padding-left:.6rem;font-weight:600;}
+#pre-trace {display:block;width:min(100%,760px);height:auto;max-width:100%;border-radius:.2rem;}
+.views {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;}
+.views figure {margin:0;}
+.views img {display:block;width:100%;height:auto;}
+.views figcaption {margin:.35rem 0 1rem;font-size:.92rem;}
+.specs div {border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);padding:.55rem 0;}
+.specs dd {margin:.15rem 0;}
+.specs dt {font-weight:bold;}
+.scroll {overflow-x:auto;}
+table {border-collapse:collapse;width:100%;}
+th,td {text-align:left;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent);padding:.44rem;}
+@media(max-width:900px) {.work {grid-template-columns:1fr;} #pre-viewer {height:310px;}}
+@media(max-width:550px) {.views {grid-template-columns:1fr;} #pre-viewer {height:265px;} .tools button,.fields input,.fields select{min-height:44px;}}
+.check {display:inline-flex;align-items:center;gap:.45rem;padding:0 .55rem;}
+#pre-trace {margin-bottom:.6rem;}
+</style>
