@@ -15,9 +15,10 @@
     "inputs": "Die and carrier pad coordinates, net IDs, capillary frame and loop control points",
     "outputs": "Assembly revision with ball and stitch endpoints, wire centerline and updated net graph",
     "acceptance": "Bond a pad pair on a two-net coupon. Graph traversal must connect exactly the selected pair, maintain the expected endpoint order and leave the adjacent net isolated.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with source-documented capillary; chassis inferred",
+    "simulationStatus": "Ordered ball/stitch loop, footprint and network verification",
+    "integrationStatus": "Versioned pad and connectivity graph JSON",
+    "simulator": "/simulations/equipment/08-01/simulator/"
   },
   {
     "id": "08-02",
