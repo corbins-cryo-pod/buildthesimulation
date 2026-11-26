@@ -1,0 +1,142 @@
+{
+  "schema": "bts.readonly-coating-inspection.v1",
+  "equipmentId": "03-04",
+  "sampleId": "inert-d635-witness",
+  "sourceRevision": 1,
+  "provenance": "Synthetic already prepared maps; no deposition, processing, target behavior or device control.",
+  "axes": {
+    "xMm": [
+      -20,
+      -10,
+      0,
+      10,
+      20
+    ],
+    "zMm": [
+      -20,
+      -10,
+      0,
+      10,
+      20
+    ],
+    "verticalUnit": "nm",
+    "order": "substrate upward; rows follow increasing +Z"
+  },
+  "layers": [
+    {
+      "id": "witness-A",
+      "material": "Synthetic A",
+      "nm": [
+        [
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        [
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        [
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        [
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        [
+          38,
+          39,
+          40,
+          41,
+          42
+        ]
+      ]
+    },
+    {
+      "id": "witness-B",
+      "material": "Synthetic B",
+      "nm": [
+        [
+          24,
+          24,
+          24,
+          24,
+          24
+        ],
+        [
+          22,
+          22,
+          22,
+          22,
+          22
+        ],
+        [
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        [
+          22,
+          22,
+          22,
+          22,
+          22
+        ],
+        [
+          24,
+          24,
+          24,
+          24,
+          24
+        ]
+      ]
+    }
+  ],
+  "fit": {
+    "fits": true,
+    "radialClearanceMm": 27,
+    "minimumClearanceMm": 2,
+    "nominalSeatMm": 154,
+    "offsetMm": 0,
+    "diameterMm": 100
+  },
+  "selected": {
+    "ix": 2,
+    "iz": 2,
+    "xMm": 0,
+    "zMm": 0,
+    "totalNm": 60,
+    "stack": [
+      {
+        "layerId": "witness-A",
+        "material": "Synthetic A",
+        "orderBottomFirst": 0,
+        "cumulativeBaseNm": 0,
+        "cumulativeTopNm": 40,
+        "thicknessNm": 40
+      },
+      {
+        "layerId": "witness-B",
+        "material": "Synthetic B",
+        "orderBottomFirst": 1,
+        "cumulativeBaseNm": 40,
+        "cumulativeTopNm": 60,
+        "thicknessNm": 20
+      }
+    ]
+  }
+}

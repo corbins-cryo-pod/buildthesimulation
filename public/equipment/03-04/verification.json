@@ -1,0 +1,93 @@
+{
+  "scope": "Analytic passive fit, read-only grid data preservation, and measured bounds of the original GLB only. No evidence of the real chamber moving, transfer compatibility, deposition, experimental maps or headset operation.",
+  "rows": [
+    {
+      "id": "Centered Ø100 witness radial margin",
+      "expected": 27,
+      "actual": 27,
+      "unit": "mm",
+      "tol": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Centered Ø150 witness margin at exact boundary",
+      "expected": 2,
+      "actual": 2,
+      "unit": "mm",
+      "tol": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Centered Ø150.02 witness",
+      "expected": "Reject",
+      "actual": "Reject",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Center lower layer A",
+      "expected": 40,
+      "actual": 40,
+      "unit": "nm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Center upper layer B",
+      "expected": 20,
+      "actual": 20,
+      "unit": "nm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Center total thickness",
+      "expected": 60,
+      "actual": 60,
+      "unit": "nm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Opposite corner total",
+      "expected": 66,
+      "actual": 66,
+      "unit": "nm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Both input maps unchanged",
+      "expected": "Exact arrays",
+      "actual": "Exact arrays",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Virtual seat inner diameter",
+      "expected": 154,
+      "actual": 153.99996535683104,
+      "unit": "mm",
+      "tol": 0.005,
+      "pass": true
+    },
+    {
+      "id": "Inert GLB example disc diameter",
+      "expected": 100,
+      "actual": 100.00000149011612,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "id": "Inert tray with witness moves as one",
+      "expected": 155,
+      "actual": 155.00000000000003,
+      "unit": "mm",
+      "tol": 0.0001,
+      "pass": true
+    }
+  ]
+}

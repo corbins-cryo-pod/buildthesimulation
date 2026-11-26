@@ -90,6 +90,7 @@
     "evidence": "B",
     "priority": "P2",
     "page": 12,
+    "simulator": "/simulations/equipment/03-04/simulator/",
     "sources": [
       "S06"
     ],
@@ -99,9 +100,9 @@
     "inputs": "Installed target list, layer sequence, substrate revision and target-specific rate profiles",
     "outputs": "Ordered multilayer stack with target IDs and spatial thickness for each layer",
     "acceptance": "Deposit simulated materials A then B with distinct profile maps. Cross-section inspection must find B above A and recover both original thickness maps.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass documentary metric GLB",
+    "simulationStatus": "Passive inert fit and read-only layer inspection",
+    "integrationStatus": "Web inspector and evidence export"
   },
   {
     "id": "03-05",

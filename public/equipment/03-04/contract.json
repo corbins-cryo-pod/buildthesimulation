@@ -1,0 +1,7 @@
+{
+ "equipmentId":"03-04",
+ "input":{"schema":"bts.readonly-coating-witness.v1","specimen":"Synthetic witness ID, positive integer revision, circular 45–180 mm diameter and lateral offset ±35 mm; fit must leave 2 mm radial clearance","axes":"Strictly increasing +X and +Z axes in mm, 2–31 samples per axis; rectangle fits inside the circular witness. Z increases toward the viewer at the front.","layers":"Exactly two distinct synthetic layer IDs in substrate-to-top order, row-major nanometre maps with cells in 0–2,000 nm","restriction":"These are already prepared read-only synthetic maps. There are no physical process inputs."},
+ "output":{"schema":"bts.readonly-coating-inspection.v1","fields":"Sample ID, source revision, preserved axes and layers, passive fit, selected (ix, iz) location and cumulative bottom/top values in nm","examples":["example-witness.json","example-inspection.json"]},
+ "failure":["Wrong schema, grid range, shapes, invalid map corners, blocked clearance or missing witness rejects the requested action. No fabricated output."],
+ "limitations":["Only a static documentary cabinet and an invented inert diagrammatic load tray. No powered operation, process settings, material recipe, gas/vacuum system, real stage/door travel, thickness metrology calibration or hardware-fit claim."],"downstream":"No verified station consumes this exact schema yet."
+}
