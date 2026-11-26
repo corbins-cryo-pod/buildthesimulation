@@ -217,9 +217,10 @@
     "inputs": "Container and well IDs, capacity, aliquot volumes, rack pose and sample lineage",
     "outputs": "Per-well volume/identity ledger and rack-relative sample locations",
     "acceptance": "Load different labeled aliquots into wells A1 and A2, move the rack, then attempt to overfill A1. Both labels and volumes must survive the move and rejected overfill.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric original GLB, reusable vessels and shared 96-well mesh",
+    "simulationStatus": "Inert dry displacement, capacity and preserved identities through pose changes",
+    "integrationStatus": "Revisioned well-relative and world-coordinate sample ledger JSON",
+    "simulator": "/simulations/equipment/16-12/simulator/"
   },
   {
     "id": "16-13",

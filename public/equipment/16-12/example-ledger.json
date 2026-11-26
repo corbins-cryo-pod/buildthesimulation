@@ -1,0 +1,1512 @@
+{
+  "schema": "bts.dry-sample-ware.v1",
+  "source": "simulated",
+  "fixtureId": "DRY-FIXTURE-96-01",
+  "fixtureRevision": 4,
+  "geometry": {
+    "plateFootprintMm": [
+      127.76,
+      85.48
+    ],
+    "pitchMm": 9
+  },
+  "units": {
+    "coordinates": "mm",
+    "volume": "uL equivalent dry displacement"
+  },
+  "rackPose": {
+    "id": "index",
+    "originGlbMm": [
+      86,
+      0,
+      45
+    ],
+    "axes": [
+      "X right",
+      "Y up",
+      "Z toward operator"
+    ]
+  },
+  "lidOn": false,
+  "capOn": true,
+  "slots": {
+    "A1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 80,
+      "entries": [
+        {
+          "sampleId": "DRY-FIXTURE-96-01-R2",
+          "label": "slate",
+          "volumeUl": 80,
+          "parentFixture": "DRY-FIXTURE-96-01"
+        }
+      ]
+    },
+    "A2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 110,
+      "entries": [
+        {
+          "sampleId": "DRY-FIXTURE-96-01-R3",
+          "label": "amber",
+          "volumeUl": 110,
+          "parentFixture": "DRY-FIXTURE-96-01"
+        }
+      ]
+    },
+    "A3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "A12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        31.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        76.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "B12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        22.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        67.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "C12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        13.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        58.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "D12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        4.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        49.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "E12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        -4.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        40.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "F12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        -13.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        31.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "G12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        -22.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        22.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H1": {
+      "centerMm": [
+        -49.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        36.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H2": {
+      "centerMm": [
+        -40.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        45.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H3": {
+      "centerMm": [
+        -31.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        54.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H4": {
+      "centerMm": [
+        -22.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        63.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H5": {
+      "centerMm": [
+        -13.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        72.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H6": {
+      "centerMm": [
+        -4.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        81.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H7": {
+      "centerMm": [
+        4.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        90.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H8": {
+      "centerMm": [
+        13.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        99.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H9": {
+      "centerMm": [
+        22.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        108.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H10": {
+      "centerMm": [
+        31.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        117.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H11": {
+      "centerMm": [
+        40.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        126.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    },
+    "H12": {
+      "centerMm": [
+        49.5,
+        7.57,
+        -31.5
+      ],
+      "worldCenterMm": [
+        135.5,
+        7.57,
+        13.5
+      ],
+      "capacityUl": 200,
+      "totalUl": 0,
+      "entries": []
+    }
+  },
+  "events": [
+    {
+      "action": "put",
+      "revision": 2,
+      "wellId": "A1",
+      "sampleId": "DRY-FIXTURE-96-01-R2",
+      "label": "slate",
+      "volumeUl": 80
+    },
+    {
+      "action": "put",
+      "revision": 3,
+      "wellId": "A2",
+      "sampleId": "DRY-FIXTURE-96-01-R3",
+      "label": "amber",
+      "volumeUl": 110
+    },
+    {
+      "action": "move",
+      "revision": 4,
+      "pose": "index"
+    }
+  ],
+  "note": "Only inert geometric dry markers; volumes are nominal displacement metadata, not instructions for handling matter."
+}
