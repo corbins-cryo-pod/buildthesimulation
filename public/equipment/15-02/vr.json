@@ -1,0 +1,41 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.5485,
+    0.568,
+    0.538968
+  ],
+  "meshes": 43,
+  "triangles": 6009,
+  "bytes": 347756,
+  "interaction": {
+    "Offline_zoom_tile": {
+      "action": "toggle",
+      "label": "Change only the unrelated chart display scale",
+      "boundsMinM": [
+        0.3115,
+        0.0815,
+        0.08
+      ],
+      "boundsMaxM": [
+        0.3745,
+        0.0885,
+        0.106
+      ]
+    }
+  },
+  "modelPrimaryEnvelopeM": [
+    0.298,
+    0.568,
+    0.513991
+  ],
+  "citedPrimaryEnvelopeMm": [
+    298,
+    568,
+    514
+  ],
+  "citedExtraOcularProjectionMm": 25,
+  "instrumentActions": 0,
+  "offlineChartIndependent": true
+}
