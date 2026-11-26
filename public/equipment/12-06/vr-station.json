@@ -1,0 +1,71 @@
+{
+  "schema": "bts.station.inert-reslice.v1",
+  "equipment": "12-06",
+  "model": "./lsm980-nlo-display.glb",
+  "axes": "+Y up +Z front",
+  "units": "m",
+  "nodes": 164,
+  "bytes": 47332,
+  "triangles": 37056,
+  "hitTargets": [
+    {
+      "node": "Workstation_monitor_screen",
+      "action": "cyclePlane",
+      "label": "Switch between XY and XZ stack sections",
+      "boundsM": {
+        "min": [
+          0.7905,
+          0.862,
+          -0.0405
+        ],
+        "max": [
+          1.2615,
+          1.138,
+          -0.0315
+        ]
+      }
+    },
+    {
+      "node": "Workstation_stack_button",
+      "action": "measure",
+      "label": "Measure bright inset in selected slice",
+      "boundsM": {
+        "min": [
+          1.2045,
+          0.75,
+          0.117
+        ],
+        "max": [
+          1.2695,
+          0.774,
+          0.159
+        ]
+      }
+    },
+    {
+      "node": "Inert_stack_window",
+      "action": "center",
+      "label": "Restore central reference slice",
+      "boundsM": {
+        "min": [
+          -0.617,
+          1.173,
+          0.0825
+        ],
+        "max": [
+          -0.549,
+          1.185,
+          0.1415
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./stack.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Read-only inert stack and passive equipment display; no headset test."
+}
