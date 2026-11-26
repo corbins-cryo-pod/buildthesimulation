@@ -2,7 +2,7 @@ import {defaults, sweep as sharedSweep} from '../10-01/solver.mjs';
 export const fixture=Object.freeze({schema:'bts.passive-clamp-fixture.v1',sampleId:defaults.sampleId,parentRevision:defaults.parentRevision,rsMOhm:defaults.rsMOhm,rlMOhm:defaults.rmMOhm,cPf:defaults.cmPf});
 export const ranges=Object.freeze({low:{limitA:2e-6,scale:5e6},medium:{limitA:20e-9,scale:5e8},high:{limitA:200e-12,scale:5e10}});
 export const calibrationId='VIRTUAL-EPC10-ANALYTIC-RC-1';
-export const initial=()=>({fixture:{...fixture},settings:{mode:'IC',holding:0,step:20,durationMs:100,range:'medium'},powered:true,connected:true,host:true,guideClosed:true,result:null,count:0});
+export const initial=()=>({fixture:{...fixture},settings:{mode:'IC',holding:0,step:20,durationMs:100,range:'medium'},powered:true,connected:true,host:true,result:null,count:0});
 function verifyFixture(q){
  if(q?.schema!=='bts.passive-clamp-fixture.v1'||typeof q.sampleId!=='string'||!/^[A-Za-z0-9_-]{1,64}$/u.test(q.sampleId)||!Number.isSafeInteger(q.parentRevision)||q.parentRevision<0||q.parentRevision>1e8)throw Error('Use a labeled inert resistor/capacitor fixture JSON.');
  for(const [k,l,h] of [['rsMOhm',0,50],['rlMOhm',10,1000],['cPf',1,250]])if(!Number.isFinite(q[k])||q[k]<l||q[k]>h)throw Error(k+' outside the supported virtual range.');
@@ -28,7 +28,7 @@ export function run(s=initial()){
   records:{timeS:a.columns.timeS,commandSI:a.columns.commandSI,circuitNodeV:a.columns.membraneV,electrodeV:a.columns.electrodeV,currentA:a.columns.currentA,monitorV,clipped}};
 }
 export function waveform(a,limit=a.records.monitorV.length){
- return {schema:'bts.analog-waveform.v1',sampleId:a.sampleId,parentRevision:a.parentRevision,revision:a.revision,dtS:a.acquisition.dtS,t0S:0,channels:[{id:'EPC10-PRIMARY',unit:'V',samples:a.records.monitorV.slice(0,limit)}],provenance:{source:'10-04',classification:'simulated',scaleVPerPhysicalSI:a.acquisition.monitorScaleVPerSI,physicalUnit:a.acquisition.physicalPrimaryUnit,calibrationId:a.calibrationId,clippedSamples:a.records.clipped.slice(0,limit).filter(Boolean).length,partial:limit<a.records.monitorV.length}};
+ return {schema:'bts.analog-waveform.v1',sampleId:a.sampleId,parentRevision:a.parentRevision,revision:a.revision,dtS:a.acquisition.dtS,t0S:0,startS:0,kind:'simulated electronic clamp monitor',source:'10-04 HEKA EPC 10 USB virtual monitor',channels:[{id:'EPC10-PRIMARY',unit:'V',samples:a.records.monitorV.slice(0,limit)}],provenance:{source:'10-04',classification:'simulated',scaleVPerPhysicalSI:a.acquisition.monitorScaleVPerSI,physicalUnit:a.acquisition.physicalPrimaryUnit,calibrationId:a.calibrationId,clippedSamples:a.records.clipped.slice(0,limit).filter(Boolean).length,partial:limit<a.records.monitorV.length}};
 }
 export function dispatch(s,a,v){
  const ok=(state,message)=>({ok:true,state,message});

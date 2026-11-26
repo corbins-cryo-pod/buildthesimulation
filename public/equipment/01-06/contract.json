@@ -1,0 +1,7 @@
+{
+ "equipmentId":"01-06",
+ "inputs":{"placement":"1-based U index, integer 1–12, from below; U pitch 44.45 mm","module":"1U x 390 mm; 120 or 900 W at PF 0.80, illustrative","run":"bts.rack-run-input.v1; example-run.json; one UTF-8 mask and one trace with up to 65536 bytes per object","archiveImport":"bts.rack-archive.v1; example-archive.json; IDs, revision, parent links, bytes and SHA-256 remain unchanged during restore"},
+ "outputs":{"power":"W, VA and estimated RMS-equivalent current in A at 120 V; conservative summed VA","placement":"Physical metric model, rack datum Y=55 mm, positive Y up","archive":"bts.rack-archive.v1; objects by logical ID and embedded UTF-8 text; no network addresses","restore":"In-memory restore event with original run, sample and revision plus per-object checks"},
+ "failures":["Out-of-rail module, duplicate units or exceeded mounting depth","Virtual UPS disabled or real/apparent limit exceeded","Door closed or NAS tray extended during incompatible actions","Wrong schema, mask/trace parent links or any digest/byte count mismatch"],
+ "limits":["No thermal or battery-runtime model","No mains switching, networking, persistent storage, user authentication or external access","Checksums compare content to its recorded digest; no signature or authenticity assertion","No vendor-specific compatibility guarantees"]
+}

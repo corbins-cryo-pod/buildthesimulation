@@ -1,0 +1,7 @@
+{
+ "equipmentId":"10-04",
+ "input":{"schema":"bts.passive-clamp-fixture.v1","hardware":"virtual amplifier, virtual host and inert dummy connected","fixture":"sampleId, parentRevision, series 0–50 MΩ (VC requires ≥0.1), load 10–1,000 MΩ, 1–250 pF","command":"rectangular current step in pA or voltage step in mV; bounded total command ±200 pA IC / ±100 mV VC; 1–500 ms","acquisition":"100,000 samples/s; 5 ms preamble and 25 ms post-step, numerical / unfiltered"},
+ "output":{"full":"bts.heka-passive-clamp.v1; s, A, V, simulated range flags, source identities, command settings and simulated calibration ID","monitor":"bts.analog-waveform.v1; channel EPC10-PRIMARY in V, host clock and scale metadata. Compatible with the 09-04 scope software importer."},
+ "failure":["Unavailable power/host/dummy, invalid fixture or futile zero-R voltage step blocks capture. Ranges mark clipping in the virtual monitor, not in the ideal circuit arrays."],
+ "limits":["Passive electronic components only; no biology, electrode or pipette procedure, noise, compensation, vendor filter implementation, real hardware control or hardware calibration."]
+}
