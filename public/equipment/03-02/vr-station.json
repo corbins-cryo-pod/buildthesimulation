@@ -1,0 +1,74 @@
+{
+  "schema": "bts.station.auto306-documentary.v1",
+  "equipment": "03-02",
+  "model": "./auto-306-display.glb",
+  "units": "m",
+  "axes": "+Y up, +Z front",
+  "nodes": 84,
+  "bytes": 48276,
+  "triangles": 16776,
+  "hitTargets": [
+    {
+      "node": "Bell_jar",
+      "action": "cutaway",
+      "actionPayload": null,
+      "label": "Toggle glass visibility without moving equipment",
+      "boundsM": {
+        "min": [
+          -0.3885,
+          1.0765,
+          -0.244
+        ],
+        "max": [
+          -0.0515,
+          1.4235,
+          0.094
+        ]
+      }
+    },
+    {
+      "node": "Coupon_L",
+      "action": "focus",
+      "actionPayload": "L",
+      "label": "Inspect coupon left synthetic map",
+      "boundsM": {
+        "min": [
+          -0.3005,
+          1.202,
+          -0.0835
+        ],
+        "max": [
+          -0.2595,
+          1.208,
+          -0.0525
+        ]
+      }
+    },
+    {
+      "node": "Coupon_R",
+      "action": "focus",
+      "actionPayload": "R",
+      "label": "Inspect coupon right synthetic map",
+      "boundsM": {
+        "min": [
+          -0.1805,
+          1.202,
+          -0.0835
+        ],
+        "max": [
+          -0.1395,
+          1.208,
+          -0.0525
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./maps.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(type,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Use glass visibility flag for optional occlusion. No headset session tested."
+}
