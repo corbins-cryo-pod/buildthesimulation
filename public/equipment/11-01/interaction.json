@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"11-01",
+  "asset":"doric-ledd1.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","mount":"bench"},
+  "parts":{"housing":"doric_ledd1_dormant_housing","display":"unpowered_lcd_window","fixedControlVisual":"fixed_silver_knob_relief","exhibit":"detached_count_card_exhibit"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_count_card_panel","label":"Show the next fixed arithmetic count card","sizeM":[0.133,0.081,0.036],"range":[0,2],"mode":"read-only"}],
+  "vrEvidence":"Metric visual and named detached action only; no physical headset operation verified."
+}

@@ -1,0 +1,8 @@
+{
+  "equipmentId":"11-01",
+  "configuration":"Doric Lenses LEDD_1 single-channel driver housing only, no source module, serial or production revision",
+  "scope":"Dormant documentary model and separate preauthored arithmetic count-card review",
+  "input":{"schema":"bts.synthetic-count-card-archive.v1","archiveId":"DORIC-DETACHED-ARITHMETIC-001","cards":["REFERENCE","DOUBLE","EMPTY"],"symbols":["Circle","Square","Diamond"],"valueUnit":"nonnegative integer mark count"},
+  "output":{"schema":"bts.synthetic-count-card-review.v1","fields":"Drawing/card IDs, fixture revision, symbol counts, total, unitless normalized fractions or null when empty","physicalClaim":false},
+  "limits":["No LED module, instrument setting or any hardware controls","No optical data, exposure, electrical traces or biological work","No device calibration or immersive validation"]
+}

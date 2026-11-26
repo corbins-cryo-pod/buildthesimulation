@@ -17,9 +17,10 @@
     "inputs": "TTL event stream, LED module spectrum, current-to-power calibration and coupling factor",
     "outputs": "Fiber-output optical power (W) vs time, spectrum and calibration ID",
     "acceptance": "Replay a calibrated constant-amplitude square pulse. The integrated delivered energy should equal calibrated output power × pulse duration after the fixture coupling loss.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Single-channel LEDD_1 closed documentary metric GLB",
+    "simulationStatus": "Detached unitless arithmetic only; no light or drive model",
+    "integrationStatus": "Dedicated simulator, editable asset and example exports linked",
+    "simulator": "/simulations/equipment/11-01/simulator/",
     "related": [
       [
         "Optogenetics Laboratory",
