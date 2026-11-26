@@ -1,0 +1,24 @@
+{
+  "schema": "bts.abstract-intensity-card.v1",
+  "artifactId": "GENERIC-INTENSITY-CARD-01",
+  "revision": 1,
+  "source": "Original fixed abstract chart. No physical sample, instrument signal or measured data.",
+  "axis": "Four dimensionless categories (not time), intensity in arbitrary units",
+  "tag": "A",
+  "present": true,
+  "axisCeilingAu": 50,
+  "authoredAu": [
+    10,
+    20,
+    30,
+    40
+  ],
+  "meanAuthoredAu": 25,
+  "displayAu": [
+    10,
+    20,
+    30,
+    40
+  ],
+  "aboveDisplayCount": 0
+}
