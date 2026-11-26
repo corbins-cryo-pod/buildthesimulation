@@ -1,0 +1,107 @@
+{
+  "equipment": "13-03",
+  "basis": "The digital block is 96×64×48 µm with 2 µm isotropic voxels. Its pre-existing void covers X centers 29–51, Y 19–37, Z 13–27 µm (12×10×8 voxels); the analytic dimensions are 24×20×16 µm and volume is 7680 µm³. XY at z=21 µm sees 480 µm²; XZ at y=29 µm sees 384 µm². XY z=1 µm is solid, and selecting it leaves the geometry unmodified.",
+  "scope": "Read-only synthetic geometry only and one published documentary datum; no image acquisition/milling model.",
+  "checks": [
+    {
+      "id": "Known XYZ void volume",
+      "expected": 7680,
+      "actual": 7680,
+      "unit": "µm³",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Known void-cell count",
+      "expected": 960,
+      "actual": 960,
+      "unit": "voxels",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XY plane coordinates",
+      "expected": 21,
+      "actual": 21,
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XY cavity extent",
+      "expected": [
+        24,
+        20
+      ],
+      "actual": [
+        24,
+        20
+      ],
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XY cavity area",
+      "expected": 480,
+      "actual": 480,
+      "unit": "µm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XZ cavity extent",
+      "expected": [
+        24,
+        16
+      ],
+      "actual": [
+        24,
+        16
+      ],
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XZ cavity area",
+      "expected": 384,
+      "actual": 384,
+      "unit": "µm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank section has no void",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank section does not change volume",
+      "expected": 7680,
+      "actual": 7680,
+      "unit": "µm³",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Published chamber datum",
+      "expected": 0.379,
+      "actual": 0.379,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named inspection hits",
+      "expected": 3,
+      "actual": 3,
+      "unit": "hits",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}
