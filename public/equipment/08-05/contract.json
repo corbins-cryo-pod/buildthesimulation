@@ -1,0 +1,4 @@
+{
+ "input":{"schema":"bts.fl300-fixture.v1","lineage":["sampleId","revision"],"axes":{"emitterAxisUm":"[x,y] in µm","receiverAxisUm":"[x,y] in µm"},"modeRadiusUm":"identical Gaussian radii 1–25 µm","peakFraction":"0.01–1 power fraction","pads":"up to 16 unique ID pairs with emitter/receiver [x,y] and equal rectangular [width,height] in µm","example":"example-fixture.json"},
+ "output":{"schema":"bts.fl300-alignment.v1","classification":"synthetic analytic","fields":["sampleId","sampleRevision","runRevision","reference","frame","pose","registeredStageCenterUm","peakAtCurrentY","pads","data"],"units":{"stageXUm":"µm","stageYUm":"µm","powerFraction":"1","areaUm2":"µm²"},"example":"example-alignment.json"}
+}

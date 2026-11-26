@@ -84,7 +84,7 @@
   {
     "id": "08-05",
     "name": "Optoelectronic die bonder",
-    "model": "ficonTEC FL-300",
+    "model": "ficonTEC FL-300, UC Davis–style optical/flip-chip cell",
     "evidence": "B",
     "priority": "P2",
     "page": 28,
@@ -97,9 +97,10 @@
     "inputs": "Emitter and receiver reference frames, die pads and measured or synthetic coupling map",
     "outputs": "Assembly pose, pad connections and an optical coupling estimate tied to its map",
     "acceptance": "Sweep offset across a symmetric synthetic coupling fixture. The peak must coincide with registered optical axes and equal positive and negative offsets must give equal modeled coupling.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric editable photo-informed cell and independent stage/tip geometry",
+    "simulationStatus": "Verified symmetric passive mode overlap and geometric pad eligibility",
+    "integrationStatus": "Dedicated virtual alignment bench with pose and sweep exports",
+    "simulator": "/simulations/equipment/08-05/simulator/"
   },
   {
     "id": "08-06",
