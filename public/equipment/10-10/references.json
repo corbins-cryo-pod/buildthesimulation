@@ -1,0 +1,10 @@
+{
+ "instrument":"Open Ephys Acquisition Board (3rd Generation), OEPS-9029, shell with one visual optional I/O accessory and no working electronics",
+ "refs":[
+  {"title":"Open Ephys OEPS-9029 front product photo","url":"https://open-ephys.org/acquisition-system/oeps-9029","caption":"Front gallery shows rounded translucent white cover, four auxiliary rectangular openings and four smaller sockets through one recess."},
+  {"title":"Open Ephys hardware guide, Gen 3 rear photo","url":"https://open-ephys.github.io/acq-board-docs/_images/acq_board_back_gen3.png","caption":"Rear view distinguishes two adjacent openings, centered clock BNC and the small round opening; labels are documentary only."},
+  {"title":"Open Ephys Gen 3 Case STL (design commit 66364fe)","url":"https://github.com/open-ephys/oe-acquisition-board-gen3/blob/66364fe749872bb2daf1f5bfc00865f568b8bb99/Hardware/Case/acquisition-board-case_X.STL","caption":"The inspected binary STL vertex bounding box measured 165.0531 mm × 163.8552 mm × 28.52 mm (W × D × H); nominal rendering anchored to it. No OEM geometry or circuit layout is redistributed."},
+  {"title":"Open Ephys GUI Binary Format: sample numbers and event timestamps","url":"https://open-ephys.github.io/gui-docs/User-Manual/Data-formats/Binary-format.html","caption":"Independent concept references for explicit integer indices, per-channel sample order and elapsed seconds. Educational CSV/JSON are not native GUI format."}
+ ],
+ "limits":"PCB, package placement, accessories, corner radii and detailed connector trim are visual approximations. No electrical compatibility, physical dimensions of the accessory, or hardware performance is asserted."
+}

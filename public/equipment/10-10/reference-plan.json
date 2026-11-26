@@ -1,0 +1,6 @@
+{
+  "instrument": "Open Ephys Gen 3 OEPS-9029",
+  "independentBasis": "Finite teaching sweep starts at hardware-style counter 1000 with four blocks of four samples, 1 kHz. Input blocks deliberately arrive [2,0,3] so 1004–1007 are missing. The original sample 1010 maps to relative index 10 and 0.010 s, remains in slot 10 and retains ordered [10,110] mV. A complete replay restores four rows without retiming trigger. Do not interpolate or compress holes.",
+  "caseDimensionsMm":{"width":165.0531,"depth":163.8552,"height":28.52},
+  "tolerance":"Exact integer counter and channel checks, 1e-12 s timestamp tolerance, and 1e-8 m for CAD envelope checks."
+}

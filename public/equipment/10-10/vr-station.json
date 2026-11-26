@@ -1,0 +1,71 @@
+{
+  "schema": "bts.station.dummy-acq.v1",
+  "equipment": "10-10",
+  "model": "./open-ephys-gen3-display.glb",
+  "axes": "+Y up, +Z front",
+  "units": "m",
+  "nodes": 103,
+  "bytes": 43800,
+  "triangles": 6744,
+  "hitTargets": [
+    {
+      "node": "Top_shell_overlay",
+      "action": "cutaway",
+      "label": "Toggle top shell visibility",
+      "boundsM": {
+        "min": [
+          -0.082,
+          0.02142,
+          -0.0815
+        ],
+        "max": [
+          0.082,
+          0.02872,
+          0.0815
+        ]
+      }
+    },
+    {
+      "node": "Aux_1_rim",
+      "action": "run",
+      "label": "Replay synthetic counter blocks",
+      "boundsM": {
+        "min": [
+          -0.063,
+          0.0075,
+          0.0775
+        ],
+        "max": [
+          -0.047,
+          0.0155,
+          0.0825
+        ]
+      }
+    },
+    {
+      "node": "Synthetic_demo_tag",
+      "action": "toggleGap",
+      "label": "Toggle demonstration missing-block fault",
+      "boundsM": {
+        "min": [
+          0.104,
+          0.001,
+          0.06
+        ],
+        "max": [
+          0.15,
+          0.007,
+          0.072
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./replay.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "All actions are local teaching behaviors; not associated with the OEM ports. No headset test."
+}
