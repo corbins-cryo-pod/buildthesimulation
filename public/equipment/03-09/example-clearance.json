@@ -1,0 +1,21 @@
+{
+  "schema": "buildthesimulation.inert-envelope-check.v1",
+  "fixtureId": "BLUEM-MINI-MITE-DOCUMENTARY",
+  "fixtureRevision": 1,
+  "inspectionRevision": 1,
+  "gauge": {
+    "id": "bts-blind-22",
+    "diameterMm": 22,
+    "kind": "original non-OEM blind inspection gauge"
+  },
+  "result": {
+    "carrierId": "demo-small-16x10",
+    "gaugeId": "bts-blind-22",
+    "widthMm": 16,
+    "heightMm": 10,
+    "diagonalMm": 18.867962264113206,
+    "radialGapMm": 1.5660188679433968,
+    "outcome": "clear"
+  },
+  "provenance": "Original blind visual gauge; mathematical geometry only. Not real equipment compatibility."
+}

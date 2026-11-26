@@ -1,0 +1,40 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import verified from '../../../../../public/equipment/03-09/verification.json';
+import refs from '../../../../../public/equipment/03-09/references.json';
+const a='/equipment/03-09/';
+---
+<Layout pageTitle="Lindberg/Blue M Mini-Mite" subtitle="" description="Inspect a documentary enclosure and compare dry carrier clearance in a separate mock gauge." wide={true}>
+<article class="equipment fg309">
+<nav class="eq-nav"><a href="/simulations/equipment/03-09/">← Equipment 03-09</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">03-09 / Documentary exterior and inert fit fixture</span><h2>Lindberg/Blue M Mini-Mite · TF55035A-1</h2><p>Inspect the enclosure of the Thermo Scientific tube furnace, then check three inert blocks against a separate, virtual 22 mm blind gauge. The furnace is a static exterior with no active controls.</p></header>
+<div class="fg-grid">
+<section class="fg-card"><h3>Instrument and separate gauge</h3>
+<div class="fg-bar"><button data-view="whole">Front three-quarter</button><button data-view="end">Side</button><button data-view="gauge">Gauge close-up</button><button data-view="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="fg-camera"><canvas id="instrument" aria-label="Metre-scale Mini-Mite enclosure and separate blind mock fit gauge"></canvas></div>
+<p id="asset" class="fg-note" role="status">Loading metre-scale GLB…</p>
+<div class="fg-bar"><button id="cutaway">Hide exterior lid for inspection</button></div><p class="fg-note">This changes visibility only. Drag or pinch to inspect. Select an inert carrier in 3D and click the rim of the detached gauge to check it.</p></section>
+<section class="fg-card"><h3>Centered clearance</h3>
+<div class="fg-bar"><label>Inert test block <select id="carrier"><option value="small">16 × 10 mm</option><option value="touch">17.6 × 13.2 mm</option><option value="large">20 × 12 mm</option></select></label><button id="check" class="primary">Check mock gauge fit</button><button id="reset">Reset</button></div>
+<svg id="fit-plot" role="img" viewBox="0 0 300 185" aria-label="Centered rectangle and 22 millimetre mock gauge in cross-section"></svg>
+<p id="status" role="status" aria-live="polite">16 × 10 mm carrier selected. Check its radial clearance.</p>
+<p id="details" class="fg-note">Gauge inside diameter: 22 mm. Values are nominal, without a manufacturing tolerance.</p>
+<div class="fg-bar"><button id="export" disabled>Export fit JSON</button><a href={a+'example-clearance.json'}>Example result</a></div>
+<p>Input: one of three inert rectangular envelope IDs. Output: centered diagonal, signed corner clearance in millimetres, fit class and inspection revision. A negative gap is blocked; zero indicates theoretical line-to-line contact, not usable clearance.</p></section>
+</div>
+<section id="evidence"><h3>Visual sources and independent test</h3>
+<figure class="fg-fig"><img src={a+'reference-elevation.svg'} alt="Original front elevation of the cream Mini-Mite housing with blue lower panel and a separate mock gauge." loading="lazy"/><figcaption>Original elevation and centered fit diagram. The instrument exterior is separate from the non-OEM dry gauge.</figcaption></figure>
+<ul>{refs.references.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>The published closed cabinet measures <b>406.4 × 381 × 279.4 mm</b> (W × H × D, exactly converted from 16 × 15 × 11 in). Exterior trim, panel and support geometry are photo-derived estimates. The <b>22 mm</b> aperture and three test blocks are original teaching dimensions, not the actual process tube or real accessories.</p>
+<p>For a rectangle exactly centered in a circle, the four corners share radius √(width² + height²)/2. Subtract that radius from 11 mm to get the signed clearance. A successful match changes only the display pose. This geometric check does not reproduce the register’s planned thermal history and shrinkage experiment, or a real assembly fit.</p>
+<div class="fg-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th>{c.id}</th><td>{typeof c.expected==='number'?Number(c.expected.toFixed(6)):c.expected} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(6)):c.actual} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model generator</a> · <a href={a+'mini-mite-display.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Source and dimension notes</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'fit.mjs'}>Standalone fit logic</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/03-09/client.mjs';</script>
+<style>
+.fg309{--fg-rule:color-mix(in srgb,currentColor 27%,transparent);max-width:1270px;margin:auto}.fg-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:1rem}.fg-card{min-width:0;border:1px solid var(--fg-rule);padding:.85rem;margin:.8rem 0}.fg-card h3{margin:.21rem 0 .6rem}
+.fg-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.fg-bar,.fg-note,.fg-fig figcaption{font:.86rem/1.4 system-ui,sans-serif}.fg309 :is(button,select){font:inherit;padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--fg-rule);border-radius:3px;cursor:pointer;min-height:36px}.fg309 .primary{background:#34594f;color:#fff}.fg309 button:disabled{opacity:.55;cursor:default}
+.fg-camera{aspect-ratio:1.5;background:#283c42}.fg-camera canvas{width:100%;height:100%;display:block;touch-action:none}.fg309 #fit-plot{display:block;width:100%;height:auto;max-height:255px;background:#e9e8dd}
+.fg-table{overflow:auto}.fg-table table{width:100%;border-collapse:collapse}.fg-table :is(td,th){border-bottom:1px solid var(--fg-rule);padding:.44rem;text-align:left}.fg-fig{margin:1rem 0;max-width:620px}.fg-fig img{width:100%;height:auto;display:block}.fg-fig figcaption{margin:.37rem 0}
+@media(max-width:830px){.fg-grid{grid-template-columns:1fr}}
+</style>

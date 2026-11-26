@@ -1,0 +1,107 @@
+{
+  "schema": "bts.tga-replay.v1",
+  "classification": "synthetic replay",
+  "instrument": "TA Instruments Q50",
+  "sampleId": "SYNTHETIC-MASS-10TO8",
+  "sampleRevision": 1,
+  "panId": "Q50-VIRTUAL-PAN-01",
+  "runRevision": 1,
+  "basis": "gross",
+  "appliedTareMg": 2,
+  "blankApplied": true,
+  "initialMg": 10,
+  "terminalMg": 8,
+  "removedMg": 2,
+  "terminalPercent": 80,
+  "units": {
+    "timeS": "s",
+    "temperatureC": "°C",
+    "indicatedMg": "mg",
+    "blankMg": "mg",
+    "correctedMg": "mg",
+    "retainedPercent": "%"
+  },
+  "rows": [
+    {
+      "timeS": 0,
+      "temperatureC": 25,
+      "indicatedMg": 12,
+      "blankMg": 0,
+      "correctedMg": 10,
+      "retainedPercent": 100
+    },
+    {
+      "timeS": 63,
+      "temperatureC": 61,
+      "indicatedMg": 12,
+      "blankMg": 0,
+      "correctedMg": 10,
+      "retainedPercent": 100
+    },
+    {
+      "timeS": 151,
+      "temperatureC": 143,
+      "indicatedMg": 11.97,
+      "blankMg": 0,
+      "correctedMg": 9.97,
+      "retainedPercent": 99.70000000000002
+    },
+    {
+      "timeS": 233,
+      "temperatureC": 172,
+      "indicatedMg": 11.81,
+      "blankMg": 0,
+      "correctedMg": 9.81,
+      "retainedPercent": 98.1
+    },
+    {
+      "timeS": 431,
+      "temperatureC": 220,
+      "indicatedMg": 11.48,
+      "blankMg": 0,
+      "correctedMg": 9.48,
+      "retainedPercent": 94.8
+    },
+    {
+      "timeS": 509,
+      "temperatureC": 237,
+      "indicatedMg": 10.96,
+      "blankMg": 0,
+      "correctedMg": 8.96,
+      "retainedPercent": 89.60000000000001
+    },
+    {
+      "timeS": 640,
+      "temperatureC": 291,
+      "indicatedMg": 10.46,
+      "blankMg": 0,
+      "correctedMg": 8.46,
+      "retainedPercent": 84.60000000000001
+    },
+    {
+      "timeS": 800,
+      "temperatureC": 338,
+      "indicatedMg": 10.15,
+      "blankMg": 0,
+      "correctedMg": 8.15,
+      "retainedPercent": 81.5
+    },
+    {
+      "timeS": 1017,
+      "temperatureC": 397,
+      "indicatedMg": 10.02,
+      "blankMg": 0,
+      "correctedMg": 8.02,
+      "retainedPercent": 80.2
+    },
+    {
+      "timeS": 1263,
+      "temperatureC": 451,
+      "indicatedMg": 10,
+      "blankMg": 0,
+      "correctedMg": 8,
+      "retainedPercent": 80
+    }
+  ],
+  "provenance": "Synthetic table replay only; temperature values are data labels, not a thermal schedule."
+}

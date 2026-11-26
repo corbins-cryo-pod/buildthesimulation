@@ -1,0 +1,134 @@
+{
+  "schema": "bts.bond-test-event.v1",
+  "equipmentId": "08-06",
+  "sampleId": "BTS-WIRE-COUPON-A",
+  "bondId": "B1",
+  "parentRevision": 0,
+  "revision": 1,
+  "provenance": {
+    "mode": "synthetic calibrated-unit replay; no instrument measurement",
+    "cartridge": "WP100g modeled range",
+    "failureLabelSource": "predeclared fixture annotation",
+    "measured": false
+  },
+  "peak": {
+    "forceN": 0.32,
+    "forceMilliN": 320,
+    "forceGramForce": 32.630918815293704,
+    "displacementUm": 140,
+    "timeS": 0.4,
+    "index": 4
+  },
+  "classification": "wire-break",
+  "trace": {
+    "columns": [
+      "time_s",
+      "vertical_displacement_um",
+      "pull_force_N"
+    ],
+    "samples": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0.1,
+        30,
+        0.08
+      ],
+      [
+        0.2,
+        60,
+        0.16
+      ],
+      [
+        0.3,
+        107,
+        0.25
+      ],
+      [
+        0.4,
+        140,
+        0.32
+      ],
+      [
+        0.5,
+        164,
+        0.062
+      ],
+      [
+        0.6,
+        178,
+        0.011
+      ],
+      [
+        0.7,
+        190,
+        0
+      ]
+    ]
+  },
+  "preTest": {
+    "revision": 0,
+    "parentRevision": null,
+    "sampleId": "BTS-WIRE-COUPON-A",
+    "bonds": [
+      {
+        "id": "B1",
+        "pads": [
+          "P1",
+          "P2"
+        ],
+        "state": "connected"
+      },
+      {
+        "id": "B2",
+        "pads": [
+          "P3",
+          "P4"
+        ],
+        "state": "connected"
+      },
+      {
+        "id": "B3",
+        "pads": [
+          "P5",
+          "P6"
+        ],
+        "state": "connected"
+      }
+    ]
+  },
+  "postTest": {
+    "revision": 1,
+    "parentRevision": 0,
+    "sampleId": "BTS-WIRE-COUPON-A",
+    "bonds": [
+      {
+        "id": "B1",
+        "pads": [
+          "P1",
+          "P2"
+        ],
+        "state": "invalidated"
+      },
+      {
+        "id": "B2",
+        "pads": [
+          "P3",
+          "P4"
+        ],
+        "state": "connected"
+      },
+      {
+        "id": "B3",
+        "pads": [
+          "P5",
+          "P6"
+        ],
+        "state": "connected"
+      }
+    ]
+  }
+}

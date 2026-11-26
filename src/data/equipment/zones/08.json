@@ -64,7 +64,7 @@
   {
     "id": "08-04",
     "name": "Precision flip-chip bonder",
-    "model": "Finetech FINEPLACER lambda",
+    "model": "Finetech FINEPLACER lambda A7 · manual VAS and pivot arm",
     "evidence": "A",
     "priority": "P1",
     "page": 27,
@@ -77,9 +77,14 @@
     "inputs": "Die bump array, matching carrier pads, fiducials and XY/rotation transform",
     "outputs": "Placement revision with transformed bump centers, pad overlap and connection map",
     "acceptance": "Apply a known rigid offset and rotation to a labeled asymmetric bump array. Inverse registration must recover every intended pair and flag a deliberately shifted nonoverlapping bump.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass manual A7 metric GLB; dimensional anchors and inferred details",
+    "simulationStatus": "Rigid fiducial alignment and circular pad overlap verified; dry placement only",
+    "integrationStatus": "Simulator, placement JSON and pair CSV; headset not tested",
+    "simulator": "/simulations/equipment/08-04/simulator/",
+    "related": [
+      ["Finetech A6/A7 manual hosted by York University", "https://mpt.eecs.yorku.ca/wp-content/uploads/2019/11/Operators-Manual.pdf"],
+      ["Original lambda manufacturer datasheet hosted by EPFL", "https://www.epfl.ch/research/facilities/cmi/wp-content/uploads/2023/11/FINEPLACER_lambda_specifications_en.pdf"]
+    ]
   },
   {
     "id": "08-05",
@@ -105,7 +110,7 @@
   {
     "id": "08-06",
     "name": "Bond pull / shear tester",
-    "model": "Nordson DAGE 4000",
+    "model": "Nordson DAGE legacy 4000 / WP100g cartridge",
     "evidence": "B",
     "priority": "P1",
     "page": 28,
@@ -118,9 +123,16 @@
     "inputs": "Bond ID, hook or shear contact, calibrated force trace and failure annotation",
     "outputs": "Destructive test event with peak force, failure class and post-test bond state",
     "acceptance": "Replay a trace with a known maximum and a labeled wire break. Recover the maximum and units, invalidate only the tested connection and retain the pre-test assembly revision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-scaled metric GLB · specimen, stage and pull hook",
+    "simulationStatus": "Unit-aware synthetic force replay with labeled failure and pre/post revision",
+    "integrationStatus": "Destructive test event and trace exports · VR semantic actions",
+    "simulator": "/simulations/equipment/08-06/simulator/",
+    "related": [
+      [
+        "Sources and independent fixture verification",
+        "/simulations/equipment/08-06/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "08-07",

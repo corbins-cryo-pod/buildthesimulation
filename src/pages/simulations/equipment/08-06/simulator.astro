@@ -1,0 +1,44 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import reference from '../../../../../public/equipment/08-06/references.json';
+import validated from '../../../../../public/equipment/08-06/verification.json';
+const a='/equipment/08-06/',r=reference.sources;
+---
+<Layout pageTitle="Wire-pull bond test laboratory" subtitle="" description="Replay a synthetic wire-break trace and inspect the targeted bond’s assembly revision." wide={true}>
+<article class="equipment pull806">
+<nav class="eq-nav"><a href="/simulations/equipment/08-06/">← Equipment 08-06</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">08-06 / Assembly characterization</span><h2>DAGE 4000 · Virtual wire pull</h2><p>Explore a legacy Nordson DAGE 4000 with binocular optics and a modeled WP100g pull cartridge. Seat the inert coupon, engage one intact bond, and replay an annotated force record. The replay is simulated. It does not measure or qualify a real bond.</p></header>
+<div class="pull-grid">
+<section class="pull-card"><h3>Instrument and fixture</h3><div class="pull-bar">{[['bench','Bench'],['hook','Hook close-up'],['rear','Rear']].map(([k,n])=><button data-view={k}>{n}</button>)}<button id="reset-view">Reset</button></div>
+<div class="pull-view"><canvas id="device" aria-label="Legacy DAGE 4000 with virtual hook and three bond coupon"></canvas></div>
+<p id="asset" class="pull-small" role="status">Loading the metric GLB…</p>
+<p class="pull-small">Orbit or pinch to zoom. Select Hook close-up to see stage alignment and the separated wire. In 3D, the hook, coupon mount and joystick share the page’s virtual actions.</p></section>
+<section class="pull-card"><h3>Replay one destructive event</h3>
+<label>Selected connection<select id="bond">{['B1','B2','B3'].map(s=><option value={s}>{s}</option>)}</select></label>
+<div class="pull-bar"><button id="coupon">Unseat coupon</button><button id="hook">Engage virtual hook</button><button id="run" class="go">Replay wire pull</button></div>
+<div class="pull-bar"><button id="example">Run B1 example</button><button id="reset">Reset assembly</button></div>
+<p id="status" role="status" aria-live="polite">Inert coupon seated. Choose B1 and engage the virtual hook.</p>
+<div class="pull-table"><table><thead><tr><th>Bond</th><th>Pad pair</th><th>Assembly state</th></tr></thead><tbody id="bonds"></tbody></table></div>
+<p id="lineage" class="pull-small">Assembly revision 0. The pre-test revision is preserved in the event.</p></section>
+</div>
+<section class="pull-card"><h3>Force–displacement replay</h3>
+<div class="pull-values">{[['Peak force','force'],['At displacement','dist'],['Predeclared failure','failure'],['Batch (mean peak)','batch']].map(([k,n])=><div><small>{k}</small><strong data-v={n}>—</strong></div>)}</div>
+<div class="pull-chart"><canvas id="plot" width="1060" height="269" aria-label="Simulated wire pull force vs vertical displacement"></canvas></div>
+<div class="pull-bar"><button id="json" disabled>Export test event JSON</button><button id="csv" disabled>Export trace CSV</button><a href={a+'output-schema.json'}>Schema</a><a href={a+'example-event.json'}>Example event</a></div>
+</section>
+<section id="evidence"><h3>Sources and independent checks</h3><p>The documented legacy platform envelope is <b>425 × 670 × 730 mm (W × H × D)</b>, including joystick and wristrest and excluding the PC; <a href={r.brochure+'#page=4'}>manufacturer brochure, PDF p. 4</a>. The <a href={r.brochure+'#page=2'}>front three-quarter photograph, PDF p. 2</a> informed housing, stage, microscope and control placement. Photo-based proportions and rear details are estimates; the wire arcs are enlarged for visibility. The <a href={r.facility}>institutional instrument record</a> documents the legacy model’s WP100g pull cartridge. Only this virtual wire-pull mode is represented, not shear or later DAGE 4000 Plus/Stellar systems.</p>
+<p>The input is an inert three-bond fixture, one selected bond ID and an annotated synthetic trace. The independent maximum is taken directly over discrete force samples; no interpolation or real sensor signal is implied. The wire-break label comes from fixture metadata, not inference from the force drop. The result keeps force in N, mN and gram-force (1 gf = 0.00980665 N), displacement in µm, the original and resulting revisions, and all untested contacts unchanged. There is no material certification, instrument calibration, process setup or hardware control.</p>
+<div class="pull-table"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Result</th></tr></thead><tbody>{validated.cases.map(x=><tr><th title={x.reason}>{x.id}</th><td>{String(x.expected)} {x.unit??''}</td><td>{String(x.actual)}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable parametric model</a> · <a href={a+'dage-4000.glb'} download>Metric GLB</a> · <a href={a+'vr-station.json'}>VR actions and physical bounds</a> · <a href={a+'pull.mjs'}>Headless fixture logic</a> · <a href={a+'verification.json'}>Checks JSON</a>. No headset test is claimed.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/08-06/client.mjs';</script>
+<style>
+.pull806{--rule:color-mix(in srgb,currentColor 28%,transparent);max-width:1280px;margin:auto}.pull-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1rem}.pull-card{min-width:0;border:1px solid var(--rule);padding:.8rem;margin:.8rem 0}.pull-card h3{margin:.25rem 0 .65rem}
+.pull-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.55rem 0}.pull-bar,.pull-small,.pull806 label{font:.88rem/1.45 system-ui,sans-serif}
+.pull806 :is(button,select){font:inherit;padding:.39rem;border:1px solid var(--rule);border-radius:3px;background:var(--panel,Canvas);color:inherit}.pull806 button{min-height:37px;cursor:pointer}.pull806 .go{background:#2b5660;color:white}.pull806 button:disabled{opacity:.48}.pull806 label{display:grid;gap:.18rem}.pull806 select{max-width:11rem}
+.pull-view{aspect-ratio:1.52;background:#26353b}.pull806 canvas{width:100%;height:100%;display:block}.pull-view canvas{touch-action:none}.pull-chart{height:207px;background:#26353b}
+.pull-values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:.6rem 0}.pull-values :is(small,strong){display:block}.pull-values strong{font:600 clamp(1rem,2.35vw,1.45rem)/1.4 monospace}
+.pull-table{overflow:auto}.pull-table table{width:100%;border-collapse:collapse}.pull-table :is(th,td){padding:.44rem;border-bottom:1px solid var(--rule);text-align:left}
+.pull806 .failed{color:#ab4b3f}html[data-theme=dark] .pull806 .failed{color:#f6af9e}
+@media(max-width:810px){.pull-grid{grid-template-columns:1fr}.pull-values{grid-template-columns:repeat(2,minmax(0,1fr))}.pull-chart{height:164px}}
+</style>
