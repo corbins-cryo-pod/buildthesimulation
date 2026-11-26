@@ -207,9 +207,10 @@
     "inputs": "Mold relief mesh, casting plane, port locations and bond alignment transform",
     "outputs": "Replica revision with channel geometry, port graph, bond state and defect annotations",
     "acceptance": "Invert a rectangular raised master feature. The replica must contain a recess of equal ideal depth and width. An intentionally misaligned port must fail the connectivity check.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original metric dry-table concept, no installed instrument claim",
+    "simulationStatus": "Static furniture and detached geometric footprint check",
+    "integrationStatus": "Standalone viewer; no fabrication workflow or station linkage",
+    "simulator": "/simulations/equipment/06-10/simulator/"
   },
   {
     "id": "06-11",
