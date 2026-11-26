@@ -4,8 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 async function boot(){
 const base='/equipment/10-01/', $=id=>document.querySelector('#mc-'+id);
-const stationUrl=base+'station.mjs';
-const {station}=await import(/* @vite-ignore */ stationUrl);
+const {station}=await window.mcStationModule;
 const api=station(), ctrlNames=['holding','step','durationMs','rmMOhm','cmPf','rsMOhm','gain','sampleId'];
 let diagramTexture,visualSync=()=>{},lastSummary='';
 function msg(s,err=false){$('status').textContent=s;$('status').dataset.err=String(err);}

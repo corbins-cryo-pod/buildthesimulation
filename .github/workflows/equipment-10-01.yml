@@ -1,0 +1,40 @@
+name: Equipment 10-01 passive clamp
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/10-01/**'
+      - 'scripts/equipment/10-01/**'
+      - 'src/pages/simulations/equipment/10-01/**'
+      - 'src/lib/equipment/10-01/**'
+      - 'tests/equipment-10-01-multiclamp.mjs'
+      - '.github/workflows/equipment-10-01.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Reproduce circuit and geometry reports
+        run: |
+          node scripts/equipment/10-01/verify.mjs
+          node scripts/equipment/10-01/geometry.mjs
+          git diff --exit-code -- public/equipment/10-01
+          node --test tests/equipment-10-01-multiclamp.mjs
+      - run: npm run build
+      - name: Exercise both browser sizes, GLB, IC/VC, exports and failures
+        run: |
+          python3 -m venv "$RUNNER_TEMP/clamp-browser"
+          "$RUNNER_TEMP/clamp-browser/bin/pip" install playwright==1.56.0
+          "$RUNNER_TEMP/clamp-browser/bin/playwright" install --with-deps chromium
+          export CHROMIUM_PATH=$("$RUNNER_TEMP/clamp-browser/bin/python" -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()')
+          python3 -m http.server --bind 127.0.0.1 --directory dist 4411 &
+          server=$!
+          trap 'kill $server' EXIT
+          "$RUNNER_TEMP/clamp-browser/bin/python" scripts/equipment/10-01/browser-smoke.py http://127.0.0.1:4411

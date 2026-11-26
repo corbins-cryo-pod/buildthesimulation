@@ -4,9 +4,10 @@ import json, math, os, sys
 from playwright.sync_api import sync_playwright
 origin=sys.argv[1].rstrip('/') if len(sys.argv)>1 else 'http://localhost:4411'
 with sync_playwright() as p:
- b=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+ b=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-gpu-watchdog','--ignore-gpu-blocklist'])
  for width,height in [(1220,850),(390,844)]:
   pg=b.new_page(viewport={'width':width,'height':height},accept_downloads=True)
+  pg.on("console",lambda m:print("browser:",m.type,m.text[:180],flush=True) if m.type=="error" else None)
   errors=[];pg.on("pageerror",lambda e:errors.append(str(e)))
   pg.goto(origin+'/simulations/equipment/10-01/',wait_until="domcontentloaded",timeout=90000)
   pg.get_by_role("link",name="Open simulator").click()
