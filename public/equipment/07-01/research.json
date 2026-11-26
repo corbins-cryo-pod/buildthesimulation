@@ -1,0 +1,253 @@
+{
+  "configuration": "Thermo Scientific 1300 Series Class II, Type A2, catalog 1305. Four-foot 120 V cabinet with a one-piece stainless interior and an 8-inch working opening. Cabinet only, with the standard task lamp and rear-wall receptacles. The optional stand, armrests, UV lamp, service valves and exhaust thimble are omitted.",
+  "sources": [
+    {
+      "id": "M",
+      "title": "Thermo Scientific operating manual",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf",
+      "revision": "7021355, Rev. 20 (August 2022)"
+    },
+    {
+      "id": "B",
+      "title": "Thermo Scientific 1300 Series brochure",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/brochures/1300-Series-A2-Biological-Safety-Cabinet.pdf",
+      "revision": "EXT3202 0722 (July 2022)"
+    },
+    {
+      "id": "G",
+      "title": "American Instrument Exchange photo gallery",
+      "url": "https://www.americaninstrument.com/products/thermo-1305-biosafety-cabinet-0870vv-bio-cab",
+      "revision": "Catalog 1305, listing 0870VV BIO CAB; unit release unreported"
+    },
+    {
+      "id": "C",
+      "title": "Thermo Fisher model matrix and operating manual archive",
+      "url": "https://knowledge1.thermofisher.com/Lab_Equipment/Biological_Safety_Cabinets/Thermo_Fisher_Scientific_Biological_Safety_Cabinets/Thermo_Fisher_Scientific_Biological_Safety_Cabinet_Operator_Manuals/7021355_-_1300_Series_A2_Class_II_TYPE_A2_Biological_Safety_Cabinet_-_Operating_Manual",
+      "revision": "Catalog 1305 row, stainless interior, 8-inch sash, 120 V"
+    },
+    {
+      "id": "S25",
+      "title": "Western Michigan University Homer Stryker M.D. School of Medicine equipment inventory",
+      "url": "https://wmed.edu/tissueculturelab",
+      "revision": "Institutional record; six 1300 Series A2 cabinets, individual models unspecified"
+    }
+  ],
+  "specs": [
+    {
+      "name": "Cabinet envelope",
+      "value": "1300 × 800 × 1568",
+      "unit": "mm",
+      "condition": "Width × depth × height of cabinet alone.",
+      "use": "Geometry",
+      "source": "Thermo Scientific operating manual",
+      "page": "7-1",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=52"
+    },
+    {
+      "name": "Chamber envelope",
+      "value": "1200 × 630 × 780",
+      "unit": "mm",
+      "condition": "Inside width × depth × height; nominal clear dimensions.",
+      "use": "Geometry",
+      "source": "Thermo Scientific operating manual",
+      "page": "7-1",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=52"
+    },
+    {
+      "name": "Nominal working opening",
+      "value": "8 (203.2)",
+      "unit": "in (mm)",
+      "condition": "Measured vertically from deck to lower sash edge. The specification table rounds to 203 mm.",
+      "use": "Sash position",
+      "source": "Thermo Scientific operating manual",
+      "page": "i, 7-1",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=52"
+    },
+    {
+      "name": "Working-position interval",
+      "value": "7.25–8.25",
+      "unit": "in",
+      "condition": "Nominal 8 in, −0.75/+0.25 in; 184.15–209.55 mm. The simulator includes both endpoints.",
+      "use": "Warning boundary",
+      "source": "Thermo Scientific operating manual",
+      "page": "1-6",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=13"
+    },
+    {
+      "name": "Maximum opening",
+      "value": "535",
+      "unit": "mm",
+      "condition": "Four-foot model, full loading opening.",
+      "use": "Travel limit",
+      "source": "Thermo Scientific operating manual",
+      "page": "7-1",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=52"
+    },
+    {
+      "name": "Front slope",
+      "value": "10",
+      "unit": "°",
+      "condition": "Back from vertical at the operator opening.",
+      "use": "Geometry",
+      "source": "Thermo Scientific 1300 Series brochure",
+      "page": "2",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/brochures/1300-Series-A2-Biological-Safety-Cabinet.pdf#page=2"
+    },
+    {
+      "name": "Cable pass-through",
+      "value": "76",
+      "unit": "mm Ø",
+      "condition": "One plugged SmartPort on each side.",
+      "use": "Geometry",
+      "source": "Thermo Scientific operating manual",
+      "page": "7-1",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=52"
+    },
+    {
+      "name": "Service access",
+      "value": "23",
+      "unit": "mm Ø",
+      "condition": "Three smaller ports on each side. No optional service valves fitted in this build.",
+      "use": "Geometry",
+      "source": "Thermo Scientific operating manual",
+      "page": "1-2, 7-1",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=52"
+    },
+    {
+      "name": "Accessory receptacles",
+      "value": "2",
+      "unit": "duplex outlets",
+      "condition": "One on either side of the inside rear wall.",
+      "use": "Component layout",
+      "source": "Thermo Scientific operating manual",
+      "page": "1-2, 1-8",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=15"
+    },
+    {
+      "name": "Task light",
+      "value": "1",
+      "unit": "fluorescent lamp",
+      "condition": "Four-foot cabinet, behind front canopy.",
+      "use": "Component layout",
+      "source": "Thermo Scientific operating manual",
+      "page": "1-9",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=16"
+    },
+    {
+      "name": "Supply",
+      "value": "120 / 60",
+      "unit": "V AC / Hz",
+      "condition": "North American cabinet-only configuration.",
+      "use": "Identification",
+      "source": "Thermo Scientific 1300 Series brochure",
+      "page": "5–6",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/brochures/1300-Series-A2-Biological-Safety-Cabinet.pdf#page=5"
+    }
+  ],
+  "views": [
+    {
+      "title": "Operator side",
+      "image": "/equipment/07-01/ref-front.webp",
+      "alt": "Original model rendering of the cabinet enclosure and operator opening.",
+      "caption": "The front and oblique photographs place the projecting canopy above the blue window rails. The stainless deck lies between the front intake grille and the perforated strip at the back. The catalog photographs show a cabinet without a stand.",
+      "source": "American Instrument Exchange photo gallery",
+      "page": "gallery images 1–3",
+      "revision": "Catalog 1305, listing 0870VV BIO CAB; unit release unreported",
+      "url": "https://www.americaninstrument.com/products/thermo-1305-biosafety-cabinet-0870vv-bio-cab",
+      "additionalSources": [
+        {
+          "label": "Front photograph",
+          "url": "https://cdn.shopify.com/s/files/1/0252/1228/9072/files/0870yy-1_36664c6a-4bb0-4504-87c0-64d396e00ad6.jpg?v=1766141839"
+        },
+        {
+          "label": "Left oblique photograph",
+          "url": "https://cdn.shopify.com/s/files/1/0252/1228/9072/files/0870yy-2_6cb03330-53d6-46db-ad3a-acd907423bca.jpg?v=1766141839"
+        },
+        {
+          "label": "Right oblique photograph",
+          "url": "https://cdn.shopify.com/s/files/1/0252/1228/9072/files/0870yy-3_ac0c4bab-383e-40f4-ab5c-ec78ef2a68a9.jpg?v=1766141839"
+        },
+        {
+          "label": "Manufacturer family photograph, p. 3",
+          "url": "https://documents.thermofisher.com/TFS-Assets/LED/brochures/1300-Series-A2-Biological-Safety-Cabinet.pdf#page=3"
+        }
+      ]
+    },
+    {
+      "title": "Work chamber and loading opening",
+      "image": "/equipment/07-01/ref-workspace.webp",
+      "alt": "Original loading-area rendering of the sealed specimen on the steel tray, with an accessory outlet on the rear wall.",
+      "caption": "The exact-model gallery shows the continuous steel tray, grilles and the rear-wall receptacles. Figure 1-4 distinguishes the fully raised loading opening from the working position. The sealed specimen in the render belongs to the virtual session.",
+      "source": "American Instrument Exchange photo gallery",
+      "page": "gallery images 1–2",
+      "revision": "Catalog 1305, listing 0870VV BIO CAB; unit release unreported",
+      "url": "https://www.americaninstrument.com/products/thermo-1305-biosafety-cabinet-0870vv-bio-cab",
+      "additionalSources": [
+        {
+          "label": "Front photograph",
+          "url": "https://cdn.shopify.com/s/files/1/0252/1228/9072/files/0870yy-1_36664c6a-4bb0-4504-87c0-64d396e00ad6.jpg?v=1766141839"
+        },
+        {
+          "label": "Manual, window openings, fig. 1-4",
+          "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=13"
+        }
+      ]
+    },
+    {
+      "title": "Control panel",
+      "image": "/equipment/07-01/ref-panel.webp",
+      "alt": "Original model rendering of the right-hand membrane controls.",
+      "caption": "The brochure close-up shows the display at left and the key and indicator banks at right. The manual photographs identify the sash-position indicator and its green working-position response.",
+      "source": "Thermo Scientific 1300 Series brochure",
+      "page": "4",
+      "revision": "EXT3202 0722 (July 2022)",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/brochures/1300-Series-A2-Biological-Safety-Cabinet.pdf#page=4",
+      "additionalSources": [
+        {
+          "label": "Manual, sash and indicator photographs, figs. 1-5–1-8",
+          "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=14"
+        },
+        {
+          "label": "Manual, control layout, fig. 4-1",
+          "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=34"
+        }
+      ]
+    },
+    {
+      "title": "Side and top interfaces",
+      "image": "/equipment/07-01/ref-interface.webp",
+      "alt": "Original model rendering showing the cabinet interfaces.",
+      "caption": "The manual locates the cord, serial connection and fuse holders on top. Its oblique drawing and the right-side photograph locate the wall penetrations relative to the sloping front. The accessory outlet callout points into the chamber.",
+      "source": "Thermo Scientific operating manual",
+      "page": "1-8–1-9, fig. 1-9",
+      "revision": "7021355, Rev. 20 (August 2022)",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=16",
+      "additionalSources": [
+        {
+          "label": "Catalog 1305 right-side photograph",
+          "url": "https://cdn.shopify.com/s/files/1/0252/1228/9072/files/0870yy-3_ac0c4bab-383e-40f4-ab5c-ec78ef2a68a9.jpg?v=1766141839"
+        },
+        {
+          "label": "Side-port close-up, brochure p. 4",
+          "url": "https://documents.thermofisher.com/TFS-Assets/LED/brochures/1300-Series-A2-Biological-Safety-Cabinet.pdf#page=4"
+        }
+      ]
+    },
+    {
+      "title": "Rear counterweight",
+      "image": "/equipment/07-01/ref-rear.webp",
+      "alt": "Original model rendering of the rear face and sash counterweight.",
+      "caption": "The manufacturer’s rear three-quarter drawing identifies the counterweight between two vertical side rails. The panel outline and guides can be compared visually. The drawing gives no counterweight mass or dimensions.",
+      "source": "Thermo Scientific operating manual",
+      "page": "3-4, fig. 3-2",
+      "revision": "7021355, Rev. 20 (August 2022)",
+      "url": "https://documents.thermofisher.com/TFS-Assets/LED/manuals/1300-A2-BSC-User-Manual.pdf#page=29",
+      "additionalSources": []
+    }
+  ],
+  "limits": [
+    "The equipment register establishes the 1300 A2 family. Catalog 1305 and the Rev. 20 dimensions specify this reconstruction. The institutional inventory does not identify its six individual units by catalog number.",
+    "Small enclosure profiles, sash-glass thickness, switch internals, cable routing and counterweight geometry are inferred. No survey, manufacturer CAD, serial-specific rear photograph or dimensioned internal assembly drawing was available.",
+    "The illustrated manual and commercial catalog remain at their original links. All renderings on this sheet are original views of the downloadable model. The source images establish component placement and proportions; they provide no independent experimental measurement of the simulated warning."
+  ]
+}
