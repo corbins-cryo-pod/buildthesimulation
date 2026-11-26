@@ -1,0 +1,57 @@
+{
+  "triangles": 3812,
+  "draws": 30,
+  "nodes": 8,
+  "bytes": 264728,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "workholder": {
+      "at": [
+        0,
+        0.124,
+        0.159
+      ],
+      "extent": [
+        0.178,
+        0.063,
+        0.178
+      ],
+      "action": "seat",
+      "label": "Seat / lift virtual package"
+    },
+    "lever": {
+      "at": [
+        0.191,
+        0.191,
+        0.202
+      ],
+      "extent": [
+        0.052,
+        0.075,
+        0.135
+      ],
+      "action": "apex",
+      "label": "Toggle the virtual loop-height preset"
+    },
+    "keypad": {
+      "at": [
+        0.227,
+        0.099,
+        0.278
+      ],
+      "extent": [
+        0.124,
+        0.044,
+        0.126
+      ],
+      "action": "run",
+      "label": "Evaluate virtual ribbon"
+    }
+  },
+  "motion": {
+    "workholderTravelM": 0.012,
+    "demonstrationLeverRadians": 0.24
+  }
+}
