@@ -1,0 +1,80 @@
+[
+  {
+    "id": "register",
+    "setup": "40×20×10 mm slab, sigma 2 S/m, phi left 5 V and right 0 V",
+    "expected": {
+      "currentA": 0.05,
+      "centerV": 2.5,
+      "electricXVm": 125,
+      "currentDensityAm2": 250
+    },
+    "tolerances": {
+      "currentA": 1e-7,
+      "centerV": 1e-7,
+      "electricXVm": 0.000001,
+      "currentDensityAm2": 0.000001
+    },
+    "actual": {
+      "currentA": 0.05,
+      "centerV": 2.4999999999999982,
+      "electricXVm": 125,
+      "currentDensityAm2": 250
+    },
+    "pass": true
+  },
+  {
+    "id": "refinement",
+    "setup": "8, 16, 32 subdivisions in X, same slab",
+    "expected": {
+      "maxCurrentErrorA": 0,
+      "maxPotentialErrorV": 0
+    },
+    "tolerances": {
+      "maxCurrentErrorA": 1e-7,
+      "maxPotentialErrorV": 1e-7
+    },
+    "actual": {
+      "maxCurrentErrorA": 2.914335439641036e-16,
+      "maxPotentialErrorV": 1.1102230246251565e-14
+    },
+    "pass": true
+  },
+  {
+    "id": "reverse",
+    "setup": "Swap the electrode potentials",
+    "expected": {
+      "currentA": -0.05
+    },
+    "tolerances": {
+      "currentA": 1e-7
+    },
+    "actual": {
+      "currentA": -0.05000000000000007
+    },
+    "pass": true
+  },
+  {
+    "id": "equal",
+    "setup": "Both electrodes held at 5 V",
+    "expected": {
+      "currentA": 0,
+      "centerV": 5
+    },
+    "tolerances": {
+      "currentA": 1e-7,
+      "centerV": 1e-7
+    },
+    "actual": {
+      "currentA": 0,
+      "centerV": 5.000000000000005
+    },
+    "pass": true
+  },
+  {
+    "id": "invalid-domain",
+    "setup": "Zero slab length",
+    "expected": "Use positive slab dimensions 5–120 mm.",
+    "actual": "Use positive slab dimensions 5–120 mm.",
+    "pass": true
+  }
+]

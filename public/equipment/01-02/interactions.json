@@ -1,0 +1,58 @@
+{
+  "triangles": 1588,
+  "draws": 29,
+  "nodes": 13,
+  "bytes": 107628,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "main_screen": {
+      "anchor": [
+        -0.26,
+        1.142,
+        -0.212
+      ],
+      "at": [
+        -0.26,
+        1.142,
+        -0.212
+      ],
+      "extent": [
+        0.55,
+        0.326,
+        0.074
+      ],
+      "action": "run",
+      "label": "Solve uniform slab"
+    },
+    "keypad_mesh": {
+      "at": [
+        0.02,
+        0.81,
+        0.19
+      ],
+      "extent": [
+        0.084,
+        0.04,
+        0.117
+      ],
+      "action": "grid",
+      "label": "Change X mesh subdivisions"
+    },
+    "terminal_switch": {
+      "at": [
+        0.596,
+        0.82,
+        0.2
+      ],
+      "extent": [
+        0.075,
+        0.1,
+        0.074
+      ],
+      "action": "reverse",
+      "label": "Swap end-face potentials"
+    }
+  }
+}
