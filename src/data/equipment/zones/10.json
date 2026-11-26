@@ -321,9 +321,10 @@
     "inputs": "Nerve geometry and axon population, cuff contact map, pulse events, conductivity and acquisition clock",
     "outputs": "Compound action potential (V), recruitment by population, propagation latency (s) and model provenance",
     "acceptance": "Use identical synthetic axons with known conduction velocity and two recording positions. The latency difference should equal separation divided by velocity within sampling and solver resolution.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Original metric dry visual placeholder only; no working wet or biological fixture",
+    "simulationStatus": "Dry inert block fit and detached label inspection only; no physiological model",
+    "integrationStatus": "Viewer with nominal fit/label export; original latency acceptance not run",
+    "simulator": "/simulations/equipment/10-14/simulator/",
     "related": [
       [
         "Measured recording datasets",
