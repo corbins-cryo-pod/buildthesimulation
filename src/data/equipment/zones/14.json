@@ -157,7 +157,7 @@
   {
     "id": "14-08",
     "name": "Differential scanning calorimeter",
-    "model": "TA Instruments Q20",
+    "model": "TA Instruments Q20 / manual lid and pans",
     "evidence": "B",
     "priority": "P3",
     "page": 44,
@@ -170,9 +170,10 @@
     "inputs": "Reference and specimen heat-flow traces, acquisition time, temperature, mass and sign convention",
     "outputs": "Baseline-corrected thermogram, peak temperature and mass-normalized transition enthalpy",
     "acceptance": "Integrate a synthetic baseline-subtracted peak with known area over time. Recover the inserted energy per sample mass and the temperature at the known peak.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · catalog enclosure and inferred working cell",
+    "simulationStatus": "Synthetic differential heat-flow scan, baseline subtraction and transition integration",
+    "integrationStatus": "Revisioned thermogram JSON and aligned trace CSV",
+    "simulator": "/simulations/equipment/14-08/simulator/"
   },
   {
     "id": "14-09",
