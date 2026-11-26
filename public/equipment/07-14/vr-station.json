@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.tsx60086a.documentary.v1",
+  "equipment": "07-14",
+  "model": "./tsx60086a-documentary.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 46,
+  "bytes": 48140,
+  "triangles": 3404,
+  "hitTargets": [
+    {
+      "node": "Choose_fixed_shape",
+      "action": "cycle",
+      "label": "Cycle the immutable geometry drawing",
+      "boundsM": {
+        "min": [
+          0.7270000000000001,
+          0.79,
+          0.192
+        ],
+        "max": [
+          0.845,
+          0.838,
+          0.224
+        ]
+      }
+    },
+    {
+      "node": "Rotate_fixed_drawing",
+      "action": "rotate",
+      "label": "Rotate the geometry drawing 90 degrees",
+      "boundsM": {
+        "min": [
+          0.9390000000000001,
+          0.79,
+          0.192
+        ],
+        "max": [
+          1.057,
+          0.838,
+          0.224
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./drawing.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Only the independent shape plaque has actions. No headset test."
+}

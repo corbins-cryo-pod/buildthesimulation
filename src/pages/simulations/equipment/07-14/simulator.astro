@@ -1,0 +1,34 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/07-14/references.json';
+import v from '../../../../../public/equipment/07-14/verification.json';
+const a='/equipment/07-14/';
+---
+<Layout pageTitle="Thermo Scientific TSX60086A · Documentary exhibit" subtitle="" description="Inspect the closed TSX60086A upright enclosure and compare unrelated fixed geometric drawings." wide={true}>
+<article class="equipment tsx0714">
+<nav class="eq-nav"><a href="/simulations/equipment/07-14/">← Equipment 07-14</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources &amp; checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">07-14 / Closed legacy cabinet and detached shape comparison</span><h2>Thermo Scientific TSX60086A · Exterior &amp; drawing plaque</h2><p>Inspect the original TSX60086A exterior with a closed door and blank screen. On the separate drawing plaque, see how two shapes can have equal area and different perimeters, or the reverse.</p></header>
+<div class="dn-grid"><section class="dn-card"><h3>3D exhibit</h3>
+<div class="dn-bar"><button data-view="whole">Whole exhibit</button><button data-view="front">Cabinet front</button><button data-view="rear">Cabinet rear</button><button data-view="chart">Drawing plaque</button><button id="camera-reset">Reset view</button></div>
+<div class="dn-camera"><canvas id="tsx-model" aria-label="Closed grey TSX60086A cabinet with blue blank display and a separate drawing plaque"></canvas></div>
+<p id="asset" class="dn-note" role="status">Loading metric GLB…</p><p class="dn-note">Drag to orbit, pinch or scroll to zoom. On the separate plaque, the amber key cycles the drawing and the pale key rotates just the drawing. The door, screen, and vents are static 3D geometry.</p></section>
+<section class="dn-card"><h3>Compare fixed shapes</h3><div class="dn-bar"><label>Drawing <select id="shape"><option value="strip">80 × 20 mm strip</option><option value="rectangle">50 × 30 mm rectangle</option><option value="square">40 × 40 mm square</option></select></label><button class="primary" id="rotate" aria-pressed="false">Rotate drawing</button><button id="reset">Reset</button></div>
+<canvas id="drawing" width="480" height="320" role="img" aria-label="Two fixed geometric shapes drawn at the same scale with an optional 90 degree rotation of the chosen shape"></canvas>
+<p class="dn-note" id="status" role="status" aria-live="polite">80 × 20 mm · area 1600 mm² (same) · perimeter 200 mm (+40 mm).</p>
+<div class="dn-bar"><button id="json">Export drawing JSON</button><a href={a+'example-drawing.json'}>Example result</a></div>
+<p class="dn-note">The dashed 40 × 40 mm comparison square remains fixed. Area is width × height; perimeter is twice their sum. Turning the paper exchanges displayed dimensions without changing either quantity. The drafting dimensions have no relation to the cabinet.</p></section></div>
+<section id="evidence"><h3>Sources and geometric verification</h3>
+<div class="photo-pair">
+<figure><img src={a+'reference-front.webp'} width="640" height="400" alt="Original render of the TSX60086A front, blue bezel, static left latch and right grille" loading="lazy"/><figcaption>Original three-quarter front render. The <a href={refs.references[0].url}>2018 technical sheet, p. 3</a> establishes the seam height and major exterior features; the identified photographs establish colors and fascia.</figcaption></figure>
+<figure><img src={a+'reference-rear.webp'} width="640" height="400" alt="Original rear three-quarter render with simplified rear grille and sealed body" loading="lazy"/><figcaption>Original rear three-quarter render of the same GLB. The scene includes a sealed outline of the rear plate and grille. Fine details are approximate.</figcaption></figure>
+</div>
+<ul>{refs.references.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>The legacy A-series authored shell uses <b>1006 × 960 × 1981 mm</b> (W × D × H) from the 2018 OEM technical sheet, not the later catalog’s slightly different depth. The front panel seam is 464.8 mm above the floor. Latch, hinge protrusions and cosmetic fittings are separate estimates. This is not a dimensional drawing for installation. No temperature, freezing, alarms, material/inventory workflows, interior access or operating behavior are implemented.</p>
+<div class="dn-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{v.checks.map(c=><tr><th scope="row">{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(8)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model</a> · <a href={a+'tsx60086a-documentary.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Reference notes</a> · <a href={a+'vr-station.json'}>VR action manifest</a> · <a href={a+'drawing.mjs'}>Geometry module</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p>
+</section></article></Layout><script>import '../../../../lib/equipment/07-14/client.mjs';</script>
+<style>
+.tsx0714{--dn-rule:color-mix(in srgb,currentColor 26%,transparent);max-width:1280px;margin:auto}.dn-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.dn-card{min-width:0;border:1px solid var(--dn-rule);padding:.85rem;margin:.8rem 0}.dn-card h3{margin:.21rem 0 .6rem}.dn-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.dn-bar,.dn-note,.dn-fig figcaption{font:.89rem/1.4 system-ui,sans-serif}
+.tsx0714 :is(button,select){font:inherit;padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--dn-rule);border-radius:3px;min-height:38px;cursor:pointer}.tsx0714 .primary{background:#34594f;color:#fff}.dn-camera{aspect-ratio:1.34;background:#263b40}.dn-camera canvas{width:100%;height:100%;display:block;touch-action:none}.tsx0714 #drawing{display:block;width:100%;height:auto;max-width:492px;margin:.6rem 0}.dn-table{overflow:auto}.dn-table table{width:100%;border-collapse:collapse}.dn-table :is(td,th){border-bottom:1px solid var(--dn-rule);padding:.42rem;text-align:left}.dn-fig{margin:1rem 0;max-width:680px}.dn-fig img{width:100%;height:auto;display:block}.dn-fig figcaption{margin:.38rem 0}@media(max-width:850px){.dn-grid{grid-template-columns:1fr}}
+.tsx0714 .photo-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;max-width:860px}.tsx0714 .photo-pair figure{margin:0}.tsx0714 .photo-pair img{display:block;width:100%;height:auto}.tsx0714 .photo-pair figcaption{font:.86rem/1.4 system-ui,sans-serif;margin:.3rem 0}@media(max-width:600px){.tsx0714 .photo-pair{grid-template-columns:1fr}}</style>

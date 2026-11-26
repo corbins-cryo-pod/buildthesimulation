@@ -1,0 +1,10 @@
+{
+ "configuration":"Thermo Scientific TSX60086A legacy single-door upright; not TSX60086FA/LA or TSX Core",
+ "dimensionsMm":{"width":1006,"depth":960,"height":1981,"frontSeamAboveFloor":464.8,"basis":"2018 OEM metric technical data sheet pp. 1, 3; envelope excludes separately modeled peripheral features"},
+ "references":[
+  {"title":"Thermo Scientific TSX60086A Technical Data Sheet, 2018, pp. 1 and 3","url":"https://www.laboratory-equipment.com/pub/media/asset-library/t/s/tsx60086a-ult-freezer-specification-thermo-fisher-scientific.pdf","caption":"OEM sheet mirrored by distributor. Page 1 gives nominal overall dimensions; page 3 identifies panel break, latch side, three hinges, front right vent and rear left vent. Only exterior geometry is represented."},
+  {"title":"Thermo Fisher knowledge-base record for TSX60086A","url":"https://knowledge1.thermofisher.com/Lab_Equipment/Cold_Storage_Systems/Cold_Storage_Technical_Data_Sheets/ULT_Freezer_Technical_Data_Sheets/Thermo_Scientific_Ultra_Low_Temperature_Freezer_TSX60086A_-_Technical_Data_Sheet","caption":"Confirms the exact legacy A-model designation; not a Universal or Core variant."},
+  {"title":"Photographs of an identified TSX60086A, New Life Scientific","url":"https://newlifescientific.com/products/thermo-tsx60086a-tsx-series-upright-ult-ultra-low-temperature-freezer-115v","caption":"Closed front, display border, side profile and rear shroud show a verified photographed cabinet. Its live display and open interior are intentionally not reproduced."}
+ ],
+ "assumptions":"2018 technical-data sheet lists depth 960 mm, while later catalog lists 37.6 in (~955 mm). This model selects the sheet revision, not a blend. Display width, recesses and grille pitch are photo-estimated. No interiors, handling, monitoring, materials, specimen state or thermal behavior."
+}
