@@ -55,7 +55,7 @@ export function step(s,a,v){
   if(a==='load')return {ok:true,state:{...s,loaded:!s.loaded,down:false}};
   const q=sample(a==='standard'?standard():v?.raw,v?.row);if(!q.ok)return q;
   const t=q.value,l=t.segments[0][0],r=t.segments.at(-1)[1],c=t.edgeUm;
-  return {ok:true,state:{...s,sample:t,loaded:true,down:false,center:c,length:Math.floor(1.72*Math.min(c-l,r-c))}};
+  return {ok:true,state:{...s,...(v?.example?{range:6.5,tilt:0,noise:0,level:true,points:401,repeats:2,direction:'alternate'}:a==='standard'?{range:65.5}:{}),sample:t,loaded:true,down:false,center:c,length:Math.floor(1.72*Math.min(c-l,r-c))}};
  }
  if(a==='settings')return {ok:true,state:{...s,...v}};
  if(a==='scan')return scan(s);

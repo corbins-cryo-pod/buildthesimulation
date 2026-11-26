@@ -15,7 +15,7 @@ function act(a,v){const q=step(s,a,v);if(!q.ok){if(a==='scan')out=null;status(q.
 }
 for(const k of ids)$(k).onchange=e=>act('settings',{[k]:k==='level'?e.target.checked:k==='direction'?e.target.value:e.target.tagName==='SELECT'?Number(e.target.value):e.target.valueAsNumber});
 for(const k of ['hood','power','load','tower','standard','scan','reset'])$(k).onclick=()=>act(k);
-$('mill').onclick=async()=>{try{const f=await fetch(dir+'ionmill-input-example.json');if(!f.ok)throw Error('Example unavailable');act('import',{raw:await f.json()});}catch(e){status(e.message,true);}};
+$('mill').onclick=async()=>{try{const f=await fetch(dir+'ionmill-input-example.json');if(!f.ok)throw Error('Example unavailable');act('import',{raw:await f.json(),example:true});}catch(e){status(e.message,true);}};
 $('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;
  try{if(f.size>1e6)throw Error('Use a JSON file below 1 MB.');act('import',{raw:JSON.parse(await f.text()),row:$('row').value===''?undefined:$('row').valueAsNumber});}catch(err){status('Import: '+err.message,true);}
  e.target.value='';

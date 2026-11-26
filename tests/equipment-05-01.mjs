@@ -20,7 +20,7 @@ test('safety interlocks and corrupt input',()=>{
 });
 test('handoff, identity, firmware distinction, typed outputs',()=>{
  assert.equal(hand.sampleId,mill.sample.sampleId);assert.equal(hand.sampleRevision,mill.sample.revision);
- assert.equal(hand.sourceProfile.map.row,8);assert.equal(def.classification,'simulated');assert.equal(def.referenceExpandedUm,.029);assert.equal(def.calibrationId,'VIRTUAL-LVDT-LINEAR-1');assert.ok(csv(def).startsWith('sampleId,sampleRevision,scanRevision,calibrationId'));
+ const ready=step({...base,hood:true,tilt:2,noise:3},'import',{raw:mill,example:true}).state;assert.equal(ready.range,6.5);assert.equal(ready.tilt,0);assert.equal(ready.noise,0);assert.equal(hand.sourceProfile.map.row,8);assert.equal(def.classification,'simulated');assert.equal(def.referenceExpandedUm,.029);assert.equal(def.calibrationId,'VIRTUAL-LVDT-LINEAR-1');assert.ok(csv(def).startsWith('sampleId,sampleRevision,scanRevision,calibrationId'));
 });
 const glb=read('dektakxt.glb'),js=JSON.parse(glb.subarray(20,20+glb.readUInt32LE(12)).toString()),m=JSON.parse(read('interaction.json'));
 const n=id=>{const o=js.nodes.filter(x=>x.name===id);assert.equal(o.length,1,id);return o[0];};
