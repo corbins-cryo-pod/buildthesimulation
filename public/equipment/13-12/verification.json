@@ -1,0 +1,98 @@
+[
+  {
+    "id": "card-independent",
+    "events": [
+      [
+        "A",
+        "outline-reviewed"
+      ]
+    ],
+    "expected": {
+      "notesA": 1,
+      "notesB": 0,
+      "geometryIntact": true,
+      "authorId": "bts-synthetic-catalogue"
+    },
+    "actual": {
+      "notesA": 1,
+      "notesB": 0,
+      "geometryIntact": true,
+      "authorId": "bts-synthetic-catalogue"
+    },
+    "pass": true
+  },
+  {
+    "id": "card-b-retain-author",
+    "events": [
+      [
+        "A",
+        "outline-reviewed"
+      ],
+      [
+        "B",
+        "label-reviewed"
+      ]
+    ],
+    "expected": {
+      "notesA": 1,
+      "notesB": 1,
+      "revision": 2,
+      "authorId": "bts-synthetic-catalogue"
+    },
+    "actual": {
+      "notesA": 1,
+      "notesB": 1,
+      "revision": 2,
+      "authorId": "bts-synthetic-catalogue"
+    },
+    "pass": true
+  },
+  {
+    "id": "reject-duplicate",
+    "events": [
+      [
+        "A",
+        "outline-reviewed"
+      ],
+      [
+        "A",
+        "outline-reviewed"
+      ]
+    ],
+    "expected": {
+      "notesA": 1,
+      "notesB": 0,
+      "revision": 1,
+      "error": "This drawing already has that review tag."
+    },
+    "actual": {
+      "notesA": 1,
+      "notesB": 0,
+      "revision": 1,
+      "error": "This drawing already has that review tag."
+    },
+    "pass": true
+  },
+  {
+    "id": "reject-unknown",
+    "events": [
+      [
+        "Z",
+        "outline-reviewed"
+      ]
+    ],
+    "expected": {
+      "notesA": 0,
+      "notesB": 0,
+      "revision": 0,
+      "error": "Choose one of the two drawing cards."
+    },
+    "actual": {
+      "notesA": 0,
+      "notesB": 0,
+      "revision": 0,
+      "error": "Choose one of the two drawing cards."
+    },
+    "pass": true
+  }
+]
