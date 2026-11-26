@@ -24,8 +24,20 @@
     "order": "row-major",
     "originMm": "lower left edge of ROI",
     "spacingMm": "[dx,dy]",
-    "values": "nx*ny cell-center doses"
+    "values": "nx*ny area-averaged doses in mJ/cm²",
+    "sampling": "cell-average",
+    "coverage": "local-roi",
+    "outsideRoi": "unknown",
+    "integration": "hard contact: exact polygon area and circular aperture intersection; proximity: analytic Gaussian integration or edge-aware adaptive slice quadrature"
   },
   "provenance": "simulation, not measurements",
-  "example": "example-result.json"
+  "example": "example-result.json",
+  "exposure": {
+    "illuminationDiameterMm": 150,
+    "peakDoseMjCm2": "Nominal incident dose I*t, not necessarily the maximum cell average"
+  },
+  "statistics": {
+    "maxDoseMjCm2": "Maximum reported cell average",
+    "equivalentClearAreaMm2": "Integrated dose divided by incident dose"
+  }
 }

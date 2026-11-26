@@ -6,7 +6,7 @@
     "depth": 1000,
     "height": 1860
   },
-  "notes": "Manufacturer brochure p.11 overall envelope and travel; 150 mm wafer and 178 mm mask from NIST. All unmeasured internal panels, optics, drawer stroke, wiring and supports are original reconstruction estimates. Drawer motion 160 mm is illustrative and not a factory specification.",
+  "notes": "Manufacturer brochure p.11 overall envelope and travel; 150 mm wafer and 178 mm mask from NIST. All unmeasured internal panels, optics, drawer stroke, wiring and supports are original reconstruction estimates. Drawer motion 160 mm is illustrative and not a factory specification. Revision 2: wafer is seated on the chuck surface at 21 mm local y. Decorative groove lines are coplanar visual markers, not machined recess geometry. Exposure lift is calculated from the loaded GLB geometry.",
   "materials": {
     "steel": [
       0.62,
@@ -1537,10 +1537,10 @@
     {
       "name": "chuck_groove_54",
       "shape": "ring",
-      "mat": "chrome",
+      "mat": "black",
       "p": [
         0,
-        21.3,
+        20.779999999999998,
         0
       ],
       "size": [
@@ -1558,10 +1558,10 @@
     {
       "name": "chuck_groove_90",
       "shape": "ring",
-      "mat": "chrome",
+      "mat": "black",
       "p": [
         0,
-        21.3,
+        20.779999999999998,
         0
       ],
       "size": [
@@ -1579,10 +1579,10 @@
     {
       "name": "chuck_groove_125",
       "shape": "ring",
-      "mat": "chrome",
+      "mat": "black",
       "p": [
         0,
-        21.3,
+        20.779999999999998,
         0
       ],
       "size": [
@@ -1603,7 +1603,7 @@
       "mat": "wafer",
       "p": [
         0,
-        21.8,
+        21.3375,
         0
       ],
       "size": [
@@ -1624,7 +1624,7 @@
       "mat": "gold",
       "p": [
         -20,
-        22.4,
+        21.725,
         0
       ],
       "size": [
@@ -1645,7 +1645,7 @@
       "mat": "gold",
       "p": [
         -20,
-        22.4,
+        21.725,
         0
       ],
       "size": [
@@ -1666,7 +1666,7 @@
       "mat": "gold",
       "p": [
         20,
-        22.4,
+        21.725,
         0
       ],
       "size": [
@@ -1687,7 +1687,7 @@
       "mat": "gold",
       "p": [
         20,
-        22.4,
+        21.725,
         0
       ],
       "size": [

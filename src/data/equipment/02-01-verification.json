@@ -1,6 +1,6 @@
 {
   "configuration": "SUSS MA/BA6 Gen4 standard 150 mm mask-aligner, UV400 365 nm TSA, 178 mm mask holder",
-  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate.",
+  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate. Revision 2: analytic area, translated/rotated area, subpixel line, circular aperture and proximity energy checks executed against revised source. Old tests retained; no experimental calibration. Revision 2 geometry supplement: seating is computed from source chuck/wafer faces; 9 combinations of selected thickness and gap verify the kinematic plane equation (not measured device motion). Rotated proximity audit: prior 4×4 quadrature missed steep transitions at 1 µm gap; replaced with Gaussian integral over each clipped vertical slice and adaptive 8-point Gauss quadrature split at geometric/optical edges. Dense midpoint references are independent spatial integration of the same Gaussian surrogate, not experimental wave-optics validation.",
   "checks": [
     {
       "name": "F1 translation X",
@@ -160,6 +160,278 @@
       "actual": 1179937895,
       "unit": "",
       "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 2 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.17240000000013175,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 4 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.17239999999998554,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 8 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.17239999999999145,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 16 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000008,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Rotated and translated hard-contact analytic area",
+      "expected": 0.17240000000000003,
+      "actual": 0.17240000000000902,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "1 µm line on 16 µm grid, exact area",
+      "expected": 0.00023,
+      "actual": 0.00023000000000000006,
+      "unit": "mm²",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "name": "Outside illumination aperture",
+      "expected": 0,
+      "actual": 0,
+      "unit": "fraction",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Inside illumination aperture",
+      "expected": 1,
+      "actual": 1,
+      "unit": "fraction",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Pixel crossing circular aperture, independent series",
+      "expected": 0.49999111111109595,
+      "actual": 0.4999911111100083,
+      "unit": "fraction",
+      "tolerance": 2e-7,
+      "pass": true
+    },
+    {
+      "name": "Offset wafer ROI outside fixed illumination field",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mJ/cm²",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "name": "Proximity integrated area at coarse pitch, padded ROI",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000108,
+      "unit": "mm²",
+      "tolerance": 2e-7,
+      "pass": true
+    },
+    {
+      "name": "Proximity integrated area at minimum gap",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000008,
+      "unit": "mm²",
+      "tolerance": 2e-7,
+      "pass": true
+    },
+    {
+      "name": "Non-boolean interlock rejected",
+      "expected": "interlock",
+      "actual": "interlock",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Actual example peak dose",
+      "expected": 100,
+      "actual": 100,
+      "unit": "mJ/cm²",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Wafer seats on chuck surface",
+      "expected": 21,
+      "actual": 21,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.1 mm wafer / 0 µm gap",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.1 mm wafer / 1 µm gap",
+      "expected": 1,
+      "actual": 0.9999999999763531,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.1 mm wafer / 300 µm gap",
+      "expected": 300,
+      "actual": 299.9999999999545,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.675 mm wafer / 0 µm gap",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.675 mm wafer / 1 µm gap",
+      "expected": 1,
+      "actual": 0.9999999999763531,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.675 mm wafer / 300 µm gap",
+      "expected": 300,
+      "actual": 299.9999999999545,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 10 mm wafer / 0 µm gap",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 10 mm wafer / 1 µm gap",
+      "expected": 1,
+      "actual": 0.9999999999763531,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 10 mm wafer / 300 µm gap",
+      "expected": 300,
+      "actual": 299.9999999999545,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Regenerated GLB declared length",
+      "expected": 82060,
+      "actual": 82060,
+      "unit": "bytes",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.044 mm (400² midpoint ref)",
+      "expected": 0.8759157115456205,
+      "actual": 0.8759157115418712,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.046 mm (400² midpoint ref)",
+      "expected": 0.7506104745197175,
+      "actual": 0.7506104745202926,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.048 mm (400² midpoint ref)",
+      "expected": 0.6253052372598454,
+      "actual": 0.6253052372601462,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.05 mm (400² midpoint ref)",
+      "expected": 0.49999999999997613,
+      "actual": 0.49999999999999956,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.052 mm (400² midpoint ref)",
+      "expected": 0.37469476274001484,
+      "actual": 0.3746947627398535,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.054 mm (400² midpoint ref)",
+      "expected": 0.2493895254796567,
+      "actual": 0.24938952547970708,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.056 mm (400² midpoint ref)",
+      "expected": 0.12408428845348851,
+      "actual": 0.12408428845812844,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated aperture-edge proximity cell (600² midpoint ref)",
+      "expected": 0.24401602425361452,
+      "actual": 0.24401283583589187,
+      "unit": "dose fraction",
+      "tolerance": 0.0003,
+      "pass": true
+    },
+    {
+      "name": "Rotated proximity integrated dose at min gap",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000037,
+      "unit": "mm²",
+      "tolerance": 2e-7,
       "pass": true
     }
   ]
