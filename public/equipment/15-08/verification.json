@@ -1,0 +1,54 @@
+[
+  {
+    "id": "ten-percent-growth",
+    "expected": {
+      "displayDeltaA": 10,
+      "displayDeltaB": 0,
+      "status": "defined"
+    },
+    "actual": {
+      "displayDeltaA": 10,
+      "displayDeltaB": 0,
+      "status": "defined"
+    },
+    "tolerance": "exact relative percentage for this authored fixture",
+    "pass": true
+  },
+  {
+    "id": "signed-difference",
+    "expected": {
+      "displayDeltaA": -15,
+      "displayDeltaB": 5,
+      "status": "defined"
+    },
+    "actual": {
+      "displayDeltaA": -15,
+      "displayDeltaB": 5,
+      "status": "defined"
+    },
+    "tolerance": "exact relative percentage for this authored fixture",
+    "pass": true
+  },
+  {
+    "id": "undefined-zero-baseline",
+    "expected": {
+      "displayDeltaA": null,
+      "displayDeltaB": 0,
+      "status": "partial"
+    },
+    "actual": {
+      "displayDeltaA": null,
+      "displayDeltaB": 0,
+      "status": "partial"
+    },
+    "tolerance": "exact relative percentage for this authored fixture",
+    "pass": true
+  },
+  {
+    "id": "reject-unknown",
+    "expected": "Choose a stored drawing comparison.",
+    "actual": "Choose a stored drawing comparison.",
+    "tolerance": "exact relative percentage for this authored fixture",
+    "pass": true
+  }
+]

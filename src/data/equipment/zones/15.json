@@ -151,9 +151,20 @@
     "inputs": "Time-indexed power Doppler images, baseline window, ROI mask and experiment event times",
     "outputs": "Relative power Doppler time course and hemodynamic change map aligned to events",
     "acceptance": "Step one phantom ROI from 100 to 110 power units while a control ROI stays flat. Its baseline-relative map should show +10% in the first and zero in the control.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Photograph-evidenced closed Iconeus One lower cart only, using explicitly assumed dimensional datum",
+    "simulationStatus": "Independent authored width comparison verified; no physical, imaging, acquisition or biological model",
+    "integrationStatus": "Dormant metric GLB, detached view controls and JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/15-08/simulator/",
+    "related": [
+      [
+        "Documentary references",
+        "/simulations/equipment/15-08/simulator/#icon-references"
+      ],
+      [
+        "Detached geometric verification",
+        "/simulations/equipment/15-08/simulator/#icon-checks"
+      ]
+    ]
   },
   {
     "id": "15-09",
