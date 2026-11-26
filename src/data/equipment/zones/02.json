@@ -224,9 +224,10 @@
     "inputs": "Substrate, coating calibration and two scheduled coating/bake operations",
     "outputs": "Resist revision with separate coating map and temperature-time record",
     "acceptance": "Run the same coat twice with different bake schedules. Pre-bake thickness maps must match; the two histories must show their respective bake traces.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "79-component metric GLB; exact constructed brochure envelope; estimated internal geometry and selected chuck",
+    "simulationStatus": "Paired pre-bake maps, bounded user-point calibration, independent thermal histories and numerical verification; no experimental validation",
+    "integrationStatus": "Dedicated simulator and paired resist JSON/CSV export; CI browser verification configured",
+    "simulator": "/simulations/equipment/02-08/simulator/"
   },
   {
     "id": "02-09",

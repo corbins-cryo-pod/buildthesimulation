@@ -1,0 +1,180 @@
+{
+  "type": "object",
+  "required": [
+    "schema",
+    "instrumentId",
+    "dataKind",
+    "input",
+    "units",
+    "specimenA",
+    "specimenB"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.cee200cbx.paired-resist.v1"
+    },
+    "instrumentId": {
+      "const": "02-08"
+    },
+    "dataKind": {
+      "const": "simulated"
+    },
+    "specimenA": {
+      "$ref": "#/$defs/specimen"
+    },
+    "specimenB": {
+      "$ref": "#/$defs/specimen"
+    }
+  },
+  "$defs": {
+    "specimen": {
+      "type": "object",
+      "required": [
+        "sampleId",
+        "parentSampleId",
+        "parentRevision",
+        "revision",
+        "coating",
+        "bake",
+        "postBakeThicknessUm",
+        "history",
+        "material",
+        "substrate"
+      ],
+      "properties": {
+        "sampleId": {
+          "type": "string"
+        },
+        "parentSampleId": {
+          "type": "string"
+        },
+        "parentRevision": {
+          "type": "integer"
+        },
+        "revision": {
+          "type": "integer"
+        },
+        "coating": {
+          "type": "object",
+          "required": [
+            "calibrationId",
+            "spinHistory",
+            "preBakeMap",
+            "calibrationKind",
+            "validRpm"
+          ],
+          "properties": {
+            "preBakeMap": {
+              "type": "object",
+              "required": [
+                "n",
+                "pitchMm",
+                "originMm",
+                "unit",
+                "values"
+              ],
+              "properties": {
+                "n": {
+                  "const": 41
+                },
+                "pitchMm": {
+                  "type": "number"
+                },
+                "unit": {
+                  "const": "µm"
+                },
+                "values": {
+                  "type": "array",
+                  "minItems": 1681,
+                  "maxItems": 1681,
+                  "items": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "calibrationKind": {
+              "enum": [
+                "illustrative",
+                "user-points"
+              ]
+            },
+            "validRpm": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "bake": {
+          "type": "object",
+          "required": [
+            "mode",
+            "schedule",
+            "tauS",
+            "temperatureHistory",
+            "thermalExposureAboveAmbientCs",
+            "plateCondition"
+          ],
+          "properties": {
+            "mode": {
+              "const": "contact"
+            },
+            "temperatureHistory": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "timeS",
+                  "plateC",
+                  "waferC"
+                ]
+              }
+            },
+            "thermalExposureAboveAmbientCs": {
+              "type": "number",
+              "minimum": 0
+            },
+            "plateCondition": {
+              "type": "string"
+            }
+          }
+        },
+        "postBakeThicknessUm": {
+          "type": "null"
+        },
+        "material": {
+          "type": "string"
+        },
+        "substrate": {
+          "type": "object",
+          "required": [
+            "shape",
+            "diameterMm",
+            "chuckDiameterMm"
+          ],
+          "properties": {
+            "shape": {
+              "const": "circle"
+            },
+            "diameterMm": {
+              "enum": [
+                100,
+                125
+              ]
+            },
+            "chuckDiameterMm": {
+              "const": 57.2
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "method": "Exact solver and model generator executed in JS isolate; no experimental validation",
+  "checks": [
+    {
+      "test": "Register: pre-bake maps identical",
+      "expected": true,
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Register: separate bake traces",
+      "expected": "51 and 91 samples; different final T",
+      "actual": [
+        51,
+        91,
+        99.85135503151047,
+        109.9988683651041
+      ],
+      "tolerance": "exact sample counts",
+      "outcome": "PASS"
+    },
+    {
+      "test": "One thermal time constant",
+      "expected": "71.67328302979894 °C",
+      "actual": 71.67328302979894,
+      "tolerance": "1e-9 °C",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Flat film at reference RPM",
+      "expected": "1.6 µm",
+      "actual": 1.6,
+      "tolerance": "1e-12 µm",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Halve RPM",
+      "expected": "1.414213562373095",
+      "actual": 1.4142135623730951,
+      "tolerance": "1e-12",
+      "outcome": "PASS"
+    },
+    {
+      "test": "6000 rpm limit",
+      "expected": "accepted",
+      "actual": 1.3063945294843617,
+      "tolerance": "finite",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Speed above limit",
+      "expected": "rejected",
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Incompatible wafer",
+      "expected": "rejected",
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Plate above limit",
+      "expected": "rejected",
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Outside wafer",
+      "expected": null,
+      "actual": null,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "No post-bake thickness claim",
+      "expected": null,
+      "actual": null,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Closed assembly bounding box",
+      "expected": "711 × 305 × 483 mm (x,y,z)",
+      "actual": [
+        711,
+        305,
+        483
+      ],
+      "tolerance": "exact constructed conservative box",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Bake plate diameter",
+      "expected": "254 mm",
+      "actual": 254,
+      "tolerance": "exact by construction",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Component IDs and parent references",
+      "expected": "unique; valid",
+      "actual": 79,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "GLB header and length",
+      "expected": "glTF v2",
+      "actual": 64284,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Two-point calibration exponent",
+      "expected": 0.5,
+      "actual": 0.49999999999999994,
+      "tolerance": "1e-12",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Calibration endpoint 2500",
+      "expected": 2,
+      "actual": 2,
+      "tolerance": "1e-12 µm",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Calibration endpoint 5000",
+      "expected": 1.4142135623730951,
+      "actual": 1.4142135623730951,
+      "tolerance": "1e-12 µm",
+      "outcome": "PASS"
+    },
+    {
+      "test": "No extrapolation",
+      "expected": true,
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Independent RK4 temperature",
+      "expected": 119.42719851074057,
+      "actual": 119.42719851074146,
+      "tolerance": "1e-8 °C",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Independent trapezoidal exposure",
+      "expected": 460.81931121565793,
+      "actual": 460.8193655102566,
+      "tolerance": "1e-4 °C·s",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Fractional dwell endpoint",
+      "expected": 7.3,
+      "actual": 7.3,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Center thickness with edge bead",
+      "expected": 1.6,
+      "actual": 1.6,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "No shared map mutation",
+      "expected": 1.6,
+      "actual": 1.6,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Fixed-chuck fit limit",
+      "expected": true,
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    }
+  ],
+  "componentCount": 79,
+  "default": {
+    "centerUm": 1.6,
+    "meanUm": 1.6154607310486153,
+    "finalA": 99.85135503151047,
+    "finalB": 109.9988683651041,
+    "exposureA": 3235.1891597479166,
+    "exposureB": 7134.009053079167
+  },
+  "visualReview": "Independent original render reconstructed from committed metric node definitions was inspected against the ASU and seller photographs; silhouette and module placement agree qualitatively, rear details not photo-verified. Surface overlap on badge/rear panel corrected after review. No photogrammetry.",
+  "audit": "2026-11-25: reviewed manufacturer 2010 brochure, KU equipment listing and January 2021 SOP; chuck discrepancy documented; fixed-chuck scope narrowed. User calibration fits supplied pre-bake points without extrapolation. No measured lab data."
+}
