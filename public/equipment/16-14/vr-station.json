@@ -1,0 +1,139 @@
+{
+  "schema": "bts.station.blind-fixture.v1",
+  "equipment": "16-14",
+  "model": "./blind-fixture.glb",
+  "units": "m",
+  "axes": "+Y up, +Z front",
+  "nodes": 68,
+  "bytes": 35612,
+  "triangles": 3212,
+  "hitTargets": [
+    {
+      "node": "Key_A_face",
+      "action": "toggle",
+      "actionPayload": "A",
+      "label": "Seat / remove virtual token A",
+      "boundsM": {
+        "min": [
+          -0.261,
+          0.265,
+          -0.048
+        ],
+        "max": [
+          -0.225,
+          0.301,
+          -0.038
+        ]
+      }
+    },
+    {
+      "node": "Blind_socket_A",
+      "action": "inspect",
+      "actionPayload": "A",
+      "label": "Inspect blind recess A",
+      "boundsM": {
+        "min": [
+          -0.291,
+          0.247,
+          -0.108
+        ],
+        "max": [
+          -0.195,
+          0.319,
+          -0.08
+        ]
+      }
+    },
+    {
+      "node": "Station_A_facade",
+      "action": "inspect",
+      "actionPayload": "A",
+      "label": "Inspect label continuity at station A",
+      "boundsM": {
+        "min": [
+          -0.325,
+          0.0195,
+          0.197
+        ],
+        "max": [
+          -0.161,
+          0.0865,
+          0.209
+        ]
+      }
+    },
+    {
+      "node": "Key_B_face",
+      "action": "toggle",
+      "actionPayload": "B",
+      "label": "Seat / remove virtual token B",
+      "boundsM": {
+        "min": [
+          0.225,
+          0.265,
+          -0.048
+        ],
+        "max": [
+          0.261,
+          0.301,
+          -0.038
+        ]
+      }
+    },
+    {
+      "node": "Blind_socket_B",
+      "action": "inspect",
+      "actionPayload": "B",
+      "label": "Inspect blind recess B",
+      "boundsM": {
+        "min": [
+          0.195,
+          0.247,
+          -0.108
+        ],
+        "max": [
+          0.291,
+          0.319,
+          -0.08
+        ]
+      }
+    },
+    {
+      "node": "Station_B_facade",
+      "action": "inspect",
+      "actionPayload": "B",
+      "label": "Inspect label continuity at station B",
+      "boundsM": {
+        "min": [
+          0.161,
+          0.0195,
+          0.197
+        ],
+        "max": [
+          0.325,
+          0.0865,
+          0.209
+        ]
+      }
+    }
+  ],
+  "motion": {
+    "Token_A_slide": {
+      "axis": "+Z",
+      "travelM": 0.022
+    },
+    "Token_B_slide": {
+      "axis": "+Z",
+      "travelM": 0.022
+    }
+  },
+  "adapter": {
+    "module": "./continuity.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)",
+    "pose": "pose(state)"
+  },
+  "note": "Translate key hit bounds by current token displacement from default; static markers do not move. No immersive test."
+}

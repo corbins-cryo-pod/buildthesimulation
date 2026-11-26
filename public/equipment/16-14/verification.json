@@ -1,0 +1,133 @@
+{
+  "equipment": "16-14",
+  "basis": "Make two disjoint virtual edges, A-triangle→Instrument A and B-square→Instrument B. Neither instrument is linked initially. Matching keys yield true,true; removing triangle-A yields false,true and leaves the B edge ID alone. Offering square-B to A must reject without a revision change. Reinstall triangle-A and the same A edge ID returns.",
+  "scope": "Virtual Boolean labels and nominal geometry; no physical flow or operation benchmarking.",
+  "checks": [
+    {
+      "id": "Independent branch truth table",
+      "expected": [
+        [
+          false,
+          false
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ]
+      ],
+      "actual": [
+        [
+          false,
+          false
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ]
+      ],
+      "unit": "flags",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Successful/rejected ledger revision",
+      "expected": [
+        0,
+        2,
+        3,
+        3,
+        4
+      ],
+      "actual": [
+        0,
+        2,
+        3,
+        3,
+        4
+      ],
+      "unit": "revisions",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Wrong key result",
+      "expected": "key-mismatch",
+      "actual": "key-mismatch",
+      "unit": "code",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Other branch retains B edge",
+      "expected": "blind-B-to-station-B",
+      "actual": "blind-B-to-station-B",
+      "unit": "edge ID",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Restored A edge keeps original ID",
+      "expected": "blind-A-to-station-A",
+      "actual": "blind-A-to-station-A",
+      "unit": "edge ID",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Token A Z withdrawal",
+      "expected": 0.022,
+      "actual": 0.022,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Nominal wall board scale",
+      "expected": [
+        0.86,
+        0.41,
+        0.028
+      ],
+      "actual": [
+        0.86,
+        0.41,
+        0.028
+      ],
+      "unit": "m",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Ray targets mapped",
+      "expected": 6,
+      "actual": 6,
+      "unit": "hits",
+      "tolerance": "exact",
+      "pass": true
+    }
+  ]
+}

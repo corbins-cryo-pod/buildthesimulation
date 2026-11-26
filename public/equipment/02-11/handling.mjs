@@ -1,0 +1,13 @@
+// Dry geometric handling and immutable identity tracking only. No processing or real control.
+export const fixture={model:'SUSS ACS200 Gen3 (non-TE), one 200 mm cassette + one dry chuck',cassette:'CAS-A',diameterMm:200,chuck:'CH-200',chuckCenterM:[.483,1.054,-.012],armHeightM:1.076,bayPoseM:[0,1.062,.018],slots:[{id:'CAS-A/01',positionM:[-.572,1.054,.30]},{id:'CAS-A/02',positionM:[-.572,1.013,.30]},{id:'CAS-A/03',positionM:[-.572,.972,.30]}]};
+const ids=['DRY-W01','DRY-W02','DRY-W03'],ck=(x,m)=>{if(!x)throw Error(m)};
+export const station=()=>({schema:'bts.dry-handler-state.v1',revision:0,cover:true,started:false,wafers:ids.map((id,i)=>({id,originSlot:fixture.slots[i].id,diameterMm:200,status:'queued',location:fixture.slots[i].id,dryRevision:0,history:[]}))});
+export function act(s,a,v){if(a==='reset')return station();let n={...s,revision:s.revision+1,wafers:s.wafers.map(w=>({...w,history:[...w.history]}))};const find=id=>n.wafers.find(w=>w.id===id),event=(q,to,phase)=>{q.history.push({revision:n.revision,waferId:q.id,originSlot:q.originSlot,from:q.location,to,phase});q.location=to};
+ switch(a){case'cover':n.cover=!s.cover;break;
+ case'cancel':{const q=find(v);ck(q&&['queued','cancelled'].includes(q.status)&&!s.started,'Plan cancellations before dry dispatch.');q.status=q.status==='queued'?'cancelled':'queued';break}
+ case'diameter':{const q=find(v?.id);ck(q&&q.status==='queued'&&!s.started&&[150,200].includes(v.diameterMm),'Choose 150 or 200 mm on a queued wafer before dispatch.');q.diameterMm=v.diameterMm;break}
+ case'advance':{n.started=true;const current=n.wafers.find(w=>w.status==='on-arm'||w.status==='on-chuck');if(current){if(current.status==='on-arm'){event(current,fixture.chuck,'chuck-seat');current.status='on-chuck'}else{event(current,current.originSlot,'dry-return');current.status='completed';current.dryRevision++}break}
+ const q=n.wafers.find(w=>w.status==='queued');ck(q,'No remaining dry-transfer jobs.');if(q.diameterMm!==fixture.diameterMm){q.status='size-rejected';event(q,q.originSlot,'size-rejected');break}q.status='on-arm';event(q,'TRANSFER_ARM','cassette-pickup');break}
+ case'run':{let u=s,guard=0;while(u.wafers.some(w=>['queued','on-arm','on-chuck'].includes(w.status))&&guard++<12)u=act(u,'advance');ck(guard>0,'No remaining jobs.');return u}
+ default:throw Error('Unknown dry transfer action.');}return n;}
+export function report(s){return {schema:'bts.dry-wafer-ledger.v1',deviceId:'02-11',revision:s.revision,fixture,units:{diameter:'mm',position:'m'},frame:'Cabinet-centred floor origin, +Y up/+Z toward operator',wafers:s.wafers.map(w=>({...w})),scope:'Simulation of dry location/identity only; no film, recipe, process parameters, vacuum, spin cycle, bake, calibration or physical hardware control.'}}

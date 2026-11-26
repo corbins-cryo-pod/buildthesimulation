@@ -66,6 +66,7 @@
     "evidence": "B",
     "priority": "P2",
     "page": 38,
+    "simulator": "/simulations/equipment/12-04/simulator/",
     "sources": [
       "S57"
     ],
@@ -75,9 +76,9 @@
     "inputs": "Fluorophore phantom or raw reference image, mode-specific measured PSF and pixel spacing",
     "outputs": "Resolution-tagged STED or confocal image, measured feature widths and calibration provenance",
     "acceptance": "Use isolated beads from a matched confocal/STED reference pair. Recovered widths should fall inside their respective calibration intervals, with the observed difference reproduced under those reference conditions.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass dormant metric GLB",
+    "simulationStatus": "Read-only synthetic width comparison",
+    "integrationStatus": "Interactive image viewer and profile export"
   },
   {
     "id": "12-05",

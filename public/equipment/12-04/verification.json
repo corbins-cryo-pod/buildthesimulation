@@ -1,0 +1,77 @@
+{
+  "scope": "Independent analytical checks of two fixed synthetic image widths; hashed data and original model geometry only. No real image acquisition, microscope calibration or headset test.",
+  "rows": [
+    {
+      "id": "Broad spot FWHM analytic reference",
+      "expected": 240,
+      "actual": 240,
+      "unit": "nm",
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "id": "Narrow spot FWHM analytic reference",
+      "expected": 80,
+      "actual": 80,
+      "unit": "nm",
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "id": "Wide minus narrow",
+      "expected": 160,
+      "actual": 160,
+      "unit": "nm",
+      "tol": 0.04,
+      "pass": true
+    },
+    {
+      "id": "Width ratio",
+      "expected": 3,
+      "actual": 3,
+      "unit": "ratio",
+      "tol": 0.001,
+      "pass": true
+    },
+    {
+      "id": "Orthogonal broad width difference",
+      "expected": 0,
+      "actual": 0,
+      "unit": "nm",
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "id": "Orthogonal narrow width difference",
+      "expected": 0,
+      "actual": 0,
+      "unit": "nm",
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "id": "Faint off-center line",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Proxy stand base modeled width",
+      "expected": 310,
+      "actual": 310.0000023841858,
+      "unit": "mm",
+      "tol": 0.02,
+      "pass": true
+    },
+    {
+      "id": "Proxy stand base modeled depth",
+      "expected": 500,
+      "actual": 500,
+      "unit": "mm",
+      "tol": 0.02,
+      "pass": true
+    }
+  ]
+}

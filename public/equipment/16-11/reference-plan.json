@@ -1,0 +1,6 @@
+{
+  "candidate":"BTS-HANDLING Mk I original inert fixtures",
+  "reference":"Map test before implementation: wafer W100-01 starts in staging, its diameter is 100 mm and orientation is +30° about +Y measured from +Z toward +X. The 100 mm cassette accepts that size and is empty at A02. The 75 mm carrier is 25 mm too small. A matching slot already occupied by another wafer also rejects.",
+  "expected":{"initial":"staging-100","validDestination":"cassette-100-A02","validOpeningsMm":100,"invalidOpeningMm":75,"diameterDeficitMm":25,"orientationDeg":30,"custodyRecordsAfterBoth":1,"copiesOfWafer":1},
+  "tolerance":"Exact nominal categorical match and identity accounting; physical model scale within 1e-8 m."
+}

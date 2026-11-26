@@ -1,0 +1,82 @@
+{
+  "schema": "buildthesimulation.blind-label-continuity.v1",
+  "fixtureId": "BTS-BLIND-MK-I",
+  "fixtureRevision": 1,
+  "ledgerRevision": 4,
+  "provenance": "virtual static labeled connectivity only, no physical services",
+  "branches": [
+    {
+      "id": "A",
+      "key": "triangle-A",
+      "shape": "triangle",
+      "retainedEdgeId": "blind-A-to-station-A",
+      "instrumentId": "station-A"
+    },
+    {
+      "id": "B",
+      "key": "square-B",
+      "shape": "square",
+      "retainedEdgeId": "blind-B-to-station-B",
+      "instrumentId": "station-B"
+    }
+  ],
+  "readiness": [
+    {
+      "instrumentId": "station-A",
+      "branchId": "A",
+      "key": "triangle-A",
+      "ready": true,
+      "edgeId": "blind-A-to-station-A"
+    },
+    {
+      "instrumentId": "station-B",
+      "branchId": "B",
+      "key": "square-B",
+      "ready": true,
+      "edgeId": "blind-B-to-station-B"
+    }
+  ],
+  "history": [
+    {
+      "revision": 1,
+      "branchId": "A",
+      "instrumentId": "station-A",
+      "edgeId": "blind-A-to-station-A",
+      "tokenId": "triangle-A",
+      "action": "seat",
+      "ready": true
+    },
+    {
+      "revision": 2,
+      "branchId": "B",
+      "instrumentId": "station-B",
+      "edgeId": "blind-B-to-station-B",
+      "tokenId": "square-B",
+      "action": "seat",
+      "ready": true
+    },
+    {
+      "revision": 3,
+      "branchId": "A",
+      "instrumentId": "station-A",
+      "edgeId": "blind-A-to-station-A",
+      "tokenId": "triangle-A",
+      "action": "remove",
+      "ready": false
+    },
+    {
+      "revision": 4,
+      "branchId": "A",
+      "instrumentId": "station-A",
+      "edgeId": "blind-A-to-station-A",
+      "tokenId": "triangle-A",
+      "action": "seat",
+      "ready": true
+    }
+  ],
+  "lastInspection": {
+    "ok": true,
+    "code": "seat",
+    "text": "Branch A marker seated. Only station-A changes readiness."
+  }
+}
