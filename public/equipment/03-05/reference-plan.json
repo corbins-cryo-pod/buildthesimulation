@@ -1,0 +1,51 @@
+{
+  "declaredBeforeImplementation": true,
+  "fixture": "Original dry 112 mm diameter alignment gauge outside static equipment.",
+  "cases": [
+    {
+      "id": "3-4-5",
+      "inputs": {
+        "diameterMm": 100,
+        "offsetXmm": 3,
+        "offsetZmm": 4
+      },
+      "expected": {
+        "offsetMm": 5,
+        "marginMm": 1,
+        "fits": true
+      }
+    },
+    {
+      "id": "6-8-10",
+      "inputs": {
+        "diameterMm": 100,
+        "offsetXmm": 6,
+        "offsetZmm": 8
+      },
+      "expected": {
+        "offsetMm": 10,
+        "marginMm": -4,
+        "fits": false
+      }
+    },
+    {
+      "id": "exact-touch",
+      "inputs": {
+        "diameterMm": 112,
+        "offsetXmm": 0,
+        "offsetZmm": 0
+      },
+      "expected": {
+        "offsetMm": 0,
+        "marginMm": 0,
+        "fits": true
+      }
+    },
+    {
+      "id": "missing-witness",
+      "expected": {
+        "result": null
+      }
+    }
+  ]
+}
