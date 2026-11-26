@@ -271,7 +271,7 @@
   {
     "id": "02-11",
     "name": "Automated coater",
-    "model": "SUSS ACS200",
+    "model": "SUSS ACS200 Gen3 · 200 mm dry handling",
     "evidence": "B",
     "priority": "P3",
     "page": 11,
@@ -284,9 +284,10 @@
     "inputs": "Cassette slot map, independent wafer IDs, coating jobs and film calibration",
     "outputs": "Per-wafer coat revisions, slot history and thickness maps",
     "acceptance": "Load three distinguishable wafers and cancel the middle job. Only the two completed IDs receive films; every output must resolve to its original slot.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric Gen3 footprint, cassette, virtual transport and chuck",
+    "simulationStatus": "Verified dry handling identity, cancellation and fixture-size rejection (no coating)",
+    "integrationStatus": "Cutaway, dry step/batch controls, slot ledger JSON and metric VR targets",
+    "simulator": "/simulations/equipment/02-11/simulator/"
   },
   {
     "id": "02-12",

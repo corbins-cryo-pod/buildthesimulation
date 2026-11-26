@@ -1,0 +1,133 @@
+{
+  "schema": "bts.dry-wafer-ledger.v1",
+  "deviceId": "02-11",
+  "revision": 7,
+  "fixture": {
+    "model": "SUSS ACS200 Gen3 (non-TE), one 200 mm cassette + one dry chuck",
+    "cassette": "CAS-A",
+    "diameterMm": 200,
+    "chuck": "CH-200",
+    "chuckCenterM": [
+      0.483,
+      1.054,
+      -0.012
+    ],
+    "armHeightM": 1.076,
+    "bayPoseM": [
+      0,
+      1.062,
+      0.018
+    ],
+    "slots": [
+      {
+        "id": "CAS-A/01",
+        "positionM": [
+          -0.572,
+          1.054,
+          0.3
+        ]
+      },
+      {
+        "id": "CAS-A/02",
+        "positionM": [
+          -0.572,
+          1.013,
+          0.3
+        ]
+      },
+      {
+        "id": "CAS-A/03",
+        "positionM": [
+          -0.572,
+          0.972,
+          0.3
+        ]
+      }
+    ]
+  },
+  "units": {
+    "diameter": "mm",
+    "position": "m"
+  },
+  "frame": "Cabinet-centred floor origin, +Y up/+Z toward operator",
+  "wafers": [
+    {
+      "id": "DRY-W01",
+      "originSlot": "CAS-A/01",
+      "diameterMm": 200,
+      "status": "completed",
+      "location": "CAS-A/01",
+      "dryRevision": 1,
+      "history": [
+        {
+          "revision": 2,
+          "waferId": "DRY-W01",
+          "originSlot": "CAS-A/01",
+          "from": "CAS-A/01",
+          "to": "TRANSFER_ARM",
+          "phase": "cassette-pickup"
+        },
+        {
+          "revision": 3,
+          "waferId": "DRY-W01",
+          "originSlot": "CAS-A/01",
+          "from": "TRANSFER_ARM",
+          "to": "CH-200",
+          "phase": "chuck-seat"
+        },
+        {
+          "revision": 4,
+          "waferId": "DRY-W01",
+          "originSlot": "CAS-A/01",
+          "from": "CH-200",
+          "to": "CAS-A/01",
+          "phase": "dry-return"
+        }
+      ]
+    },
+    {
+      "id": "DRY-W02",
+      "originSlot": "CAS-A/02",
+      "diameterMm": 200,
+      "status": "cancelled",
+      "location": "CAS-A/02",
+      "dryRevision": 0,
+      "history": []
+    },
+    {
+      "id": "DRY-W03",
+      "originSlot": "CAS-A/03",
+      "diameterMm": 200,
+      "status": "completed",
+      "location": "CAS-A/03",
+      "dryRevision": 1,
+      "history": [
+        {
+          "revision": 5,
+          "waferId": "DRY-W03",
+          "originSlot": "CAS-A/03",
+          "from": "CAS-A/03",
+          "to": "TRANSFER_ARM",
+          "phase": "cassette-pickup"
+        },
+        {
+          "revision": 6,
+          "waferId": "DRY-W03",
+          "originSlot": "CAS-A/03",
+          "from": "TRANSFER_ARM",
+          "to": "CH-200",
+          "phase": "chuck-seat"
+        },
+        {
+          "revision": 7,
+          "waferId": "DRY-W03",
+          "originSlot": "CAS-A/03",
+          "from": "CH-200",
+          "to": "CAS-A/03",
+          "phase": "dry-return"
+        }
+      ]
+    }
+  ],
+  "scope": "Simulation of dry location/identity only; no film, recipe, process parameters, vacuum, spin cycle, bake, calibration or physical hardware control."
+}

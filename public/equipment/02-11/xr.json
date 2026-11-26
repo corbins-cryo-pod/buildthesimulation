@@ -1,0 +1,160 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/02-11/acs200.glb",
+  "station": "/equipment/02-11/handling.mjs",
+  "dispatch": "act(state,action,value), station(), report(state)",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "Floor at cabinet centre, physical scale. Marker positions are illustrative dry pose stations.",
+  "fixture": {
+    "model": "SUSS ACS200 Gen3 (non-TE), one 200 mm cassette + one dry chuck",
+    "cassette": "CAS-A",
+    "diameterMm": 200,
+    "chuck": "CH-200",
+    "chuckCenterM": [
+      0.483,
+      1.054,
+      -0.012
+    ],
+    "armHeightM": 1.076,
+    "bayPoseM": [
+      0,
+      1.062,
+      0.018
+    ],
+    "slots": [
+      {
+        "id": "CAS-A/01",
+        "positionM": [
+          -0.572,
+          1.054,
+          0.3
+        ]
+      },
+      {
+        "id": "CAS-A/02",
+        "positionM": [
+          -0.572,
+          1.013,
+          0.3
+        ]
+      },
+      {
+        "id": "CAS-A/03",
+        "positionM": [
+          -0.572,
+          0.972,
+          0.3
+        ]
+      }
+    ]
+  },
+  "controls": [
+    {
+      "mesh": "ADVANCE_KEY",
+      "action": "advance",
+      "label": "Advance one dry pose",
+      "minM": [
+        0.603,
+        1.243,
+        0.7915
+      ],
+      "maxM": [
+        0.681,
+        1.273,
+        0.8045
+      ]
+    },
+    {
+      "mesh": "COVER_HANDLE",
+      "action": "cover",
+      "label": "Toggle display cutaway",
+      "minM": [
+        -0.529,
+        1.284,
+        0.739
+      ],
+      "maxM": [
+        -0.511,
+        1.414,
+        0.767
+      ]
+    },
+    {
+      "mesh": "DRY_SCREEN",
+      "action": "run",
+      "label": "Complete virtual dry batch",
+      "minM": [
+        0.5005,
+        1.414,
+        0.788
+      ],
+      "maxM": [
+        0.7995,
+        1.62,
+        0.796
+      ]
+    }
+  ],
+  "geometry": {
+    "rows": [
+      {
+        "label": "published cabinet footprint width",
+        "expectedMm": 1850,
+        "actualMm": 1850.000023841858,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "published cabinet footprint depth",
+        "expectedMm": 1500,
+        "actualMm": 1500,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "wafer 01 diameter",
+        "expectedMm": 200,
+        "actualMm": 200.00000298023224,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "wafer 02 diameter",
+        "expectedMm": 200,
+        "actualMm": 200.00000298023224,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "wafer 03 diameter",
+        "expectedMm": 200,
+        "actualMm": 200.00000298023224,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "dry chuck seat diameter",
+        "expectedMm": 200,
+        "actualMm": 200.00000298023224,
+        "toleranceMm": 0.08,
+        "pass": true
+      }
+    ],
+    "nodes": 82,
+    "bytes": 555144,
+    "triangles": 8198,
+    "minM": [
+      -0.925,
+      0,
+      -0.75
+    ],
+    "maxM": [
+      0.925,
+      2.163,
+      0.806
+    ]
+  },
+  "limit": "Internal XYZ/tooling, three drawn cassette slots and cabinet height are estimates. No vendor safety or robot trajectory simulation."
+}
