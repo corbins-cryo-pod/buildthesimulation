@@ -1,6 +1,6 @@
 {
   "executed": "2026-11-25; isolated JavaScript execution before repository integration",
-  "scope": "Analytic reference tests and geometry/asset checks. Not empirical process validation; browser and production checks pending.",
+  "scope": "Analytic reference tests and geometry/asset checks. Not empirical process validation; browser and production checks pending. Optical assay checked against analytic coherent diffraction orders and two-circle overlap for partially coherent illumination; not experimental validation.",
   "tests": [
     {
       "name": "Acceptance: count",
@@ -184,6 +184,133 @@
       "actual": 38344,
       "tolerance": 0,
       "pass": true
+    },
+    {
+      "name": "Aerial coherent three-order center intensity",
+      "expected": 1.2919045069369328,
+      "actual": 1.2919045069369326,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial coherent three-order quarter-period intensity",
+      "expected": 0.25,
+      "actual": 0.25,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial coherent three-order mean intensity",
+      "expected": 0.45264236728467555,
+      "actual": 0.45264236728467555,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial coherent zero-order only intensity",
+      "expected": 0.25,
+      "actual": 0.25,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial coherent cutoff contrast",
+      "expected": 0,
+      "actual": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial open-field normalization",
+      "expected": 1,
+      "actual": 1,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial open-field dose (mJ/cm²)",
+      "expected": 100,
+      "actual": 100,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial all-open threshold width (µm)",
+      "expected": 0.56,
+      "actual": 0.56,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial opaque mask intensity",
+      "expected": 0,
+      "actual": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial opaque threshold fraction",
+      "expected": 0,
+      "actual": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial partially coherent center vs analytic disk overlap",
+      "expected": 0.5454250732233185,
+      "actual": 0.5450163102627386,
+      "tolerance": 0.005,
+      "pass": true
+    },
+    {
+      "name": "Aerial partially coherent refined grid center vs analytic",
+      "expected": 0.5454250732233185,
+      "actual": 0.5453272463121315,
+      "tolerance": 0.002,
+      "pass": true
+    },
+    {
+      "name": "Aerial quadrature refinement center intensity",
+      "expected": 0.5453272463121315,
+      "actual": 0.5450163102627386,
+      "tolerance": 0.005,
+      "pass": true
+    },
+    {
+      "name": "Aerial symmetric defocus intensity",
+      "expected": 0.38991920868826024,
+      "actual": 0.38991920868826024,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial doubled dose (mJ/cm²)",
+      "expected": 109.00326205254771,
+      "actual": 109.00326205254771,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Aerial threshold response monotonic",
+      "expected": true,
+      "actual": true,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Aerial annular source finite",
+      "expected": true,
+      "actual": true,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Aerial rejects unsupported NA",
+      "expected": true,
+      "actual": true,
+      "tolerance": 0,
+      "pass": true
     }
-  ]
+  ],
+  "revision": "1.1"
 }
