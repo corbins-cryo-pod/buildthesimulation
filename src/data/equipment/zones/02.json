@@ -111,7 +111,7 @@
   {
     "id": "02-04",
     "name": "Photomask pattern generator",
-    "model": "Heidelberg DWL 2000",
+    "model": "Heidelberg Instruments DWL 2000 / NIST 6-inch reference",
     "evidence": "B",
     "priority": "P2",
     "page": 9,
@@ -124,9 +124,10 @@
     "inputs": "Mask blank ID, artwork, write grid, fiducials and polarity",
     "outputs": "Mask revision with writable-area bounds, feature map and fiducial coordinates",
     "acceptance": "Write asymmetric fiducials on a mask blank and load it into the aligner. Its orientation and tone must survive the handoff, and the original wafer must remain untouched.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · nominal cabinet and source-based 152.4 mm blank",
+    "simulationStatus": "Dry two-mark rigid preview and type/tone preservation; no exposure",
+    "integrationStatus": "Read-only preview JSON round trip; no operational aligner pathway",
+    "simulator": "/simulations/equipment/02-04/simulator/"
   },
   {
     "id": "02-05",
