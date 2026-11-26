@@ -1,0 +1,10 @@
+{
+ "configuration":"Legacy Vevo 3100 cart from Vevo LAZR-X configuration, no probe or auxiliary cabinet",
+ "dimensionsMm":{"width":540,"depth":680,"foldedHeightReferenceOnly":1220,"authoredUprightHeightEstimate":1580,"basis":"VisualSonics 51224-03 Rev 1.4, printed p. 717; only W/D used to scale upright GLB"},
+ "references":[
+  {"title":"VisualSonics Vevo 3100 user manual 51224-03 Rev. 1.4, p. 717","url":"https://www.cpu.edu.cn/_upload/article/files/bc/19/7c0b27b4411a8b5d606ee7896715/868c7659-7890-41aa-9f0b-69ffc7c9b01e.pdf","caption":"OEM publication mirrored by university. The physical-dimensions table identifies the Vevo 3100 cart footprint and its separate folded-height measurement."},
+  {"title":"Fujifilm VisualSonics Vevo LAZR-X launch product photograph","url":"https://media-ecn.s3.amazonaws.com/embedded_image/2017/02/170224-new%20imaging%20tool.jpg","caption":"Front three-quarter view shows the Vevo 3100 monitor, sloped lower screen, cart rail and dark main front. This exhibit reconstructs only that cart, not the auxiliary laser unit or other accessories visible in the photo."},
+  {"title":"UNSW biological imaging facility equipment photograph","url":"https://www.unsw.edu.au/research/facilities-and-infrastructure/find-an-instrument/bril-instruments/VisualSonics-Vevo3100-Ultrasound","caption":"Installed 3100 confirms the widening handrail and silver outline around the front display. No screen content or workflow illustrated there is reproduced."}
+ ],
+ "assumptions":"Blank screens, fixed castors and closed body. Monitor height/halo, shroud radii and connector-free rear are photo estimates; no external probe, cables, operating optics, emissions, acquisition, calibration data, placement, or animal/specimen workflow."
+}

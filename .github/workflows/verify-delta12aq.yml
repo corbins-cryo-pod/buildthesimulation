@@ -1,0 +1,27 @@
+name: Verify Delta12AQ equipment 02-10
+on:
+  pull_request:
+    paths: ['public/equipment/02-10/**','src/lib/equipment/02-10-viewer.js','src/pages/simulations/equipment/02-10/**','src/data/equipment/zones/02.json','tests/equipment-02-10-delta12aq.mjs','scripts/equipment/02-10/**','.github/workflows/verify-delta12aq.yml']
+  push:
+    branches: [main]
+    paths: ['public/equipment/02-10/**','src/lib/equipment/02-10-viewer.js','src/pages/simulations/equipment/02-10/**','src/data/equipment/zones/02.json','.github/workflows/verify-delta12aq.yml']
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-02-10-delta12aq.mjs tests/equipment-register.mjs
+      - run: npm run build --ignore-scripts
+      - run: node --test scripts/equipment/02-10/browser-smoke.mjs
+      - name: Production browser verification
+        if: github.event_name == 'push'
+        env:
+          DELTA_URL: https://buildthesimulation.com
+        run: node --test scripts/equipment/02-10/browser-smoke.mjs

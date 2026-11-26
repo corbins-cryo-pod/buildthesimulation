@@ -1,0 +1,107 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "13-13",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.4,
+      0,
+      -0.383
+    ],
+    "max": [
+      0.9845,
+      1.04,
+      0.3833
+    ]
+  },
+  "budget": {
+    "byteLength": 582088,
+    "nodes": 81,
+    "triangles": 8346
+  },
+  "actions": [
+    {
+      "node": "READ_P",
+      "action": "select",
+      "value": "P",
+      "label": "Read fixed mark P",
+      "boundsAtRestM": {
+        "min": [
+          0.642,
+          0.423,
+          0.1065
+        ],
+        "max": [
+          0.728,
+          0.451,
+          0.1175
+        ]
+      }
+    },
+    {
+      "node": "READ_Q",
+      "action": "select",
+      "value": "Q",
+      "label": "Read fixed mark Q",
+      "boundsAtRestM": {
+        "min": [
+          0.826,
+          0.423,
+          0.1065
+        ],
+        "max": [
+          0.912,
+          0.451,
+          0.1175
+        ]
+      }
+    }
+  ],
+  "actionModule": "card.mjs",
+  "interactionNotes": "Separate immutable synthetic coordinate card. Attach chart visual to +Z of READER_SCREEN. Equipment is static and nonfunctional.",
+  "verification": [
+    {
+      "node": "FULL_WIDTH_DEPTH_DATUM",
+      "axis": "x",
+      "expectedMm": 800,
+      "actualMm": 800.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "FULL_WIDTH_DEPTH_DATUM",
+      "axis": "z",
+      "expectedMm": 766,
+      "actualMm": 765.99997,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CM3050S_CLOSED_EQUIPMENT",
+      "axis": "y",
+      "expectedMm": 1040,
+      "actualMm": 1039.99996,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CM3050S_CLOSED_EQUIPMENT",
+      "axis": "x",
+      "expectedMm": 882,
+      "actualMm": 882,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "READER_SCREEN",
+      "axis": "x",
+      "expectedMm": 363,
+      "actualMm": 363.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "LOW_FRONT_ARMREST",
+      "axis": "y-top",
+      "expectedMm": 840,
+      "actualMm": 840,
+      "toleranceMm": 0.05
+    }
+  ]
+}

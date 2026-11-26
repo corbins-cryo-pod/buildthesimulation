@@ -1,0 +1,39 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/10-10/references.json';
+import verified from '../../../../../public/equipment/10-10/verification.json';
+const a='/equipment/10-10/';
+---
+<Layout pageTitle="Open Ephys Acquisition Board Gen 3" subtitle="" description="Recover a dropped block and keep a synthetic marker at its original sample counter." wide={true}>
+<article class="equipment oe1010">
+<nav class="eq-nav"><a href="/simulations/equipment/10-10/">← Equipment 10-10</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">10-10 / Passive acquisition electronics exhibit</span><h2>Open Ephys Gen 3 · Counter replay</h2><p>Replay a two-channel synthetic voltage ramp with one missing block. The gap should stay visible without shifting the marker or reordering either channel. Restore the block and compare the same clock.</p></header>
+<div class="oe-grid">
+<section class="oe-card"><h3>OEPS-9029 and passive I/O display</h3>
+<div class="oe-bar"><button data-view="whole">Front three-quarter</button><button data-view="front">Front sockets</button><button data-view="rear">Rear</button><button data-view="board">Board detail</button><button id="camera-reset">Reset camera</button></div>
+<div class="oe-camera"><canvas id="acq-model" aria-label="Metric Open Ephys Gen 3 white enclosure with front and rear connector shapes and inert I/O board"></canvas></div>
+<p id="asset" class="oe-note" role="status">Loading metre-scale GLB…</p><div class="oe-bar"><button id="cutaway">Hide cover for inspection</button></div><p class="oe-note">Drag or pinch to inspect. The 3D landmarks mirror the local replay buttons only. No ports communicate with actual equipment.</p></section>
+<section class="oe-card"><h3>Synthetic two-channel clock</h3>
+<div class="oe-bar"><button id="run" class="primary">Replay numbered blocks</button><button id="gap">Restore missing block</button><button id="reset">Reset example</button></div>
+<p id="status" role="status" aria-live="polite">Example ready. Block 1 is missing.</p>
+<div class="oe-plot"><svg id="plot" viewBox="0 0 530 176" role="img" aria-label="Replay traces with counter-indexed sample gap and original marker"></svg></div>
+<div class="oe-table"><table><thead id="heads"></thead><tbody id="rows"></tbody></table></div>
+<div class="oe-bar"><button id="json" disabled>Export JSON</button><button id="csv" disabled>Export CSV</button><label>Open local synthetic block file <input id="import" type="file" accept=".json,application/json"/></label></div><p class="oe-note"><a href={a+'example-input.json'}>Example input</a> · <a href={a+'example-replay.json'}>Example JSON output</a> · <a href={a+'example-replay.csv'}>Example CSV result</a>.</p>
+</section>
+</div>
+<section id="evidence"><h3>Sources, case scale and independent tests</h3>
+<figure class="oe-fig"><img src={a+'reference-layout.svg'} alt="Original diagram of the white Gen 3 case, with front rectangular ports and distinct rear clock opening." loading="lazy"/><figcaption>Original exterior illustration; images and CAD below are linked, not redistributed.</figcaption></figure>
+<ul>{refs.refs.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>The manufacturer photographs establish visual layout. The pinned open-design case STL supplies only a <b>165.0531 × 163.8552 × 28.52 mm</b> W × D × H bounding box. This is a simplified original reconstruction, not a real PCB trace layout, header dimensions, firmware, or assembly. The separate I/O board is illustrative.</p>
+<p>Input is local synthetic JSON with 1–8 ordered channels in mV, first sample counter, rate 100–100,000 Hz, 1–64 equal-size blocks of 1–64 samples, and optional event counters. Blocks may arrive out of order; duplicate or off-grid starts reject. A counter's elapsed time is (counter − first counter) / rate. Missing block samples are null in JSON and blank in CSV and are neither interpolated nor removed. Preview plots at most three channels and shows the first 24 rows; exports contain every channel and row. Event counters are independent of the presence of voltage samples and are flagged if they land in a hole. This file format is not native Open Ephys Binary or a hardware driver.</p>
+<div class="oe-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th>{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(10)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model generator</a> · <a href={a+'open-ephys-gen3-display.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Dimension and source notes</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'replay.mjs'}>Independent replay module</a> · <a href={a+'verification.json'}>Results JSON</a>. No headset session tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/10-10/client.mjs';</script>
+<style>
+.oe1010{--oe-rule:color-mix(in srgb,currentColor 26%,transparent);max-width:1270px;margin:auto}.oe-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}.oe-card{min-width:0;border:1px solid var(--oe-rule);padding:.85rem;margin:.8rem 0}.oe-card h3{margin:.23rem 0 .6rem}
+.oe-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.46rem;margin:.52rem 0}.oe-bar,.oe-note,.oe-fig figcaption{font:.86rem/1.4 system-ui,sans-serif}.oe1010 button{font:inherit;padding:.39rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--oe-rule);border-radius:3px;min-height:36px;cursor:pointer}.oe1010 button:disabled{opacity:.53;cursor:default}.oe1010 .primary{background:#34594f;color:#fff}.oe1010 input[type=file]{font:inherit;max-width:100%;display:block}
+.oe-camera{aspect-ratio:1.5;background:#2b3c43}.oe-camera canvas{width:100%;height:100%;display:block;touch-action:none}.oe-plot{background:#182c35;aspect-ratio:530/176}.oe-plot svg{width:100%;height:100%;display:block}
+.oe-table{overflow:auto;max-height:285px}.oe-table table{width:100%;border-collapse:collapse}.oe-table :is(td,th){border-bottom:1px solid var(--oe-rule);padding:.37rem;text-align:left}.oe-table :global(.gap){background:color-mix(in srgb,#b58a53 22%,transparent)}.oe-fig{margin:1rem 0;max-width:620px}.oe-fig img{width:100%;height:auto;display:block}
+@media(max-width:840px){.oe-grid{grid-template-columns:1fr}}
+</style>

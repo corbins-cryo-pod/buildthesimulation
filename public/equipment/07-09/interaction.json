@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"07-09",
+  "asset":"lonza-core-x.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","mount":"bench"},
+  "parts":{"core":"lonza_core_closed_module","xUnit":"lonza_x_closed_module","display":"core_static_blank_display","lowerPlate":"x_sealed_drawer_outline","exhibit":"detached_outline_exhibit"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_outline_panel","label":"Compare the other saved abstract drawing","sizeM":[0.225,0.132,0.045],"range":[0,1],"mode":"read-only"}],
+  "vrEvidence":"Metric asset and read-only action map, no XR device operation or headset evaluation."
+}

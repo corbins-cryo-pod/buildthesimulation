@@ -1,0 +1,73 @@
+[
+  {
+    "id": "joint-plane",
+    "k": 5,
+    "expected": {
+      "zUm": 0,
+      "nonzero": 88,
+      "sum": 8080
+    },
+    "actual": {
+      "zUm": 0,
+      "nonzero": 88,
+      "sum": 8080
+    },
+    "pass": true
+  },
+  {
+    "id": "later-plane",
+    "k": 9,
+    "expected": {
+      "zUm": 5,
+      "nonzero": 24,
+      "sum": 3600
+    },
+    "actual": {
+      "zUm": 5,
+      "nonzero": 24,
+      "sum": 3600
+    },
+    "pass": true
+  },
+  {
+    "id": "empty-plane",
+    "k": 0,
+    "expected": {
+      "zUm": -6.25,
+      "nonzero": 0,
+      "sum": 0
+    },
+    "actual": {
+      "zUm": -6.25,
+      "nonzero": 0,
+      "sum": 0
+    },
+    "pass": true
+  },
+  {
+    "id": "voxel-lookup",
+    "k": 5,
+    "x": 17,
+    "y": 8,
+    "expected": {
+      "xUm": 0.5,
+      "yUm": -2,
+      "zUm": 0,
+      "value": 150
+    },
+    "actual": {
+      "xUm": 0.5,
+      "yUm": -2,
+      "zUm": 0,
+      "value": 150
+    },
+    "pass": true
+  },
+  {
+    "id": "invalid-plane",
+    "k": 13,
+    "expected": "Choose an integer plane from 0 to 12.",
+    "actual": "Choose an integer plane from 0 to 12.",
+    "pass": true
+  }
+]

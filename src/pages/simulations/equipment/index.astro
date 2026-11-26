@@ -23,7 +23,7 @@ const statuses = [...new Set(equipment.map(row => row.geometryStatus))].sort();
     <p id="equipment-count" class="eq-meta" role="status">{equipment.length} of {equipment.length} records</p>
     {zones.map(zone=><section class="eq-zone" data-zone={zone.id}>
       <header><span class="eq-meta">Zone {zone.id}</span><h2>{zone.name}</h2></header>
-      <ul>{equipment.filter(r=>zoneId(r)===zone.id).map(r=><li class="eq-row" data-id={r.id} data-priority={r.priority} data-evidence={r.evidence} data-geometry={r.geometryStatus} data-terms={[r.id,r.name,r.model,r.purpose,zone.name].join(' ').toLowerCase()}>
+      <ul>{equipment.filter(r=>zoneId(r)===zone.id).map(r=><li id={'equipment-'+r.id} class="eq-row" data-id={r.id} data-priority={r.priority} data-evidence={r.evidence} data-geometry={r.geometryStatus} data-terms={[r.id,r.name,r.model,r.purpose,zone.name].join(' ').toLowerCase()}>
         <span class="eq-meta">{r.id}</span><div><a href={base+r.id+'/'}>{r.name}</a><span class="eq-model">{r.model}</span></div><span class="eq-grade" aria-label={r.priority+', evidence '+r.evidence}>{r.priority} · {r.evidence}</span>
       </li>)}</ul>
     </section>)}

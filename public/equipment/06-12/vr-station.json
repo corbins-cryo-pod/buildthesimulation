@@ -1,0 +1,64 @@
+{
+  "schema": "bts.station.microtester-g2-spring.v1",
+  "equipment": "06-12",
+  "model": "./microtester-g2.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 57,
+  "bytes": 38424,
+  "triangles": 8436,
+  "hitTargets": [
+    {
+      "node": "Preview_toggle_key",
+      "action": "togglePreview",
+      "label": "Switch the synthetic state between home and requested travel",
+      "boundsM": {
+        "min": [
+          0.013999999999999999,
+          0.0143,
+          0.1125
+        ],
+        "max": [
+          0.064,
+          0.0237,
+          0.1415
+        ]
+      }
+    },
+    {
+      "node": "Run_virtual_trace_key",
+      "action": "run",
+      "label": "Calculate the virtual dry spring trace",
+      "boundsM": {
+        "min": [
+          0.07699999999999999,
+          0.0143,
+          0.1125
+        ],
+        "max": [
+          0.127,
+          0.0237,
+          0.1415
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./spring.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "namedMotion": {
+    "actuator": "Virtual_motor_datum",
+    "probe": "Virtual_follower",
+    "fixture": "Virtual_spring_strip",
+    "direction": "-X",
+    "travelUm": [
+      0,
+      160
+    ]
+  },
+  "note": "Only virtual spring exercise. No headset session tested."
+}

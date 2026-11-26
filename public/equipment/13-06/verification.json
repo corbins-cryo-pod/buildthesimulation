@@ -1,0 +1,133 @@
+{
+  "scope": "Immutable digital replay of a native inert raster and its stored X reflection; authored metric geometry. No measurement, calibration, acquisition, 3D reconstruction or headset claim.",
+  "rows": [
+    {
+      "id": "A row-major index",
+      "expected": 1132,
+      "actual": 1132,
+      "unit": "index",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "A horizontal coordinate",
+      "expected": 30,
+      "actual": 30,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "A vertical coordinate",
+      "expected": 50,
+      "actual": 50,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "A raw value",
+      "expected": 228,
+      "actual": 228,
+      "unit": "ADU",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "A–B Euclidean distance",
+      "expected": 60,
+      "actual": 60,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Native signed determinant",
+      "expected": 384,
+      "actual": 384,
+      "unit": "px²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Mirrored A index",
+      "expected": 1163,
+      "actual": 1163,
+      "unit": "index",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "A–B mirror distance",
+      "expected": 60,
+      "actual": 60,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Mirror signed determinant",
+      "expected": -384,
+      "actual": -384,
+      "unit": "px²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Default window on A",
+      "expected": 228,
+      "actual": 228,
+      "unit": "ADU",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Narrow window on A",
+      "expected": 255,
+      "actual": 255,
+      "unit": "ADU",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Midpoint window reference",
+      "expected": 128,
+      "actual": 128,
+      "unit": "ADU",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Malformed mirror or reversed contrast",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Authored cabinet body W",
+      "expected": 1.25,
+      "actual": 1.25,
+      "unit": "m",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "id": "Authored cabinet body H",
+      "expected": 2.14,
+      "actual": 2.140000104904175,
+      "unit": "m",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "id": "Authored cabinet body D",
+      "expected": 0.93,
+      "actual": 0.9300000071525574,
+      "unit": "m",
+      "tolerance": 0.000001,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "method":"Worthington LS series brochure p. 2 for nominal 683 mm barrel diameter and 991 mm height. Detached art-board areas from hand multiplication and inclusion–exclusion: 600+500+500, with one 8×15 overlap in the marked edge case.",
+  "cases":[
+    {"id":"diameter-x","expected":0.683,"tolerance":0.00001,"unit":"m"},
+    {"id":"diameter-z","expected":0.683,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":0.991,"tolerance":0.00001,"unit":"m"},
+    {"id":"separate-union","expected":1600,"unit":"mm²"},
+    {"id":"touching-union","expected":1600,"unit":"mm²"},
+    {"id":"overlap-union","expected":1480,"unit":"mm²"},
+    {"id":"overlap-area","expected":120,"unit":"mm²"},
+    {"id":"outside-margin","expected":-7,"unit":"mm"},
+    {"id":"touch-not-overlap","expected":true,"unit":"boolean"},
+    {"id":"case-ids-stable","expected":true,"unit":"boolean"},
+    {"id":"unsupported-action-rejected","expected":true,"unit":"boolean"}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "bts.detached-coordinate-card.v1",
+  "revision": 1,
+  "cardId": "ABSTRACT-AXIS-CARD-01",
+  "sourceRevision": "AXES-ORIENTATION-DEMO-001",
+  "mode": "original",
+  "axes": "X right and Y up; right-handed positive rotation counterclockwise",
+  "units": "mm",
+  "plot": [
+    {
+      "id": "A",
+      "xyMm": [
+        -12,
+        5
+      ],
+      "viewMm": [
+        -12,
+        5
+      ]
+    },
+    {
+      "id": "B",
+      "xyMm": [
+        6,
+        14
+      ],
+      "viewMm": [
+        6,
+        14
+      ]
+    },
+    {
+      "id": "C",
+      "xyMm": [
+        0,
+        -8
+      ],
+      "viewMm": [
+        0,
+        -8
+      ]
+    }
+  ],
+  "vectorMm": [
+    18,
+    9
+  ],
+  "pairLengthMm": 20.12461179749811,
+  "provenance": "Fictitious 2D teaching coordinates. No apparatus connection, operation, acquisition or output."
+}

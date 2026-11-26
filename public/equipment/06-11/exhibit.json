@@ -1,0 +1,11 @@
+{
+  "schema":"bts.synthetic-projection-cards.v1",
+  "exhibitId":"OF12G-OPTICAL-ILLUSTRATION-001",
+  "revision":1,
+  "provenance":"BuildTheSimulation original abstract cards and ideal length-projection demonstration; not a device, a working drawing, or a measured photo",
+  "units":"mm",
+  "cardSizeMm":[40,30],
+  "perspectivePlaneDistanceMm":80,
+  "cards":[{"id":"CARD-NEAR","zMm":200},{"id":"CARD-FAR","zMm":400}],
+  "views":[{"id":"PARALLEL","kind":"orthographic"},{"id":"PERSPECTIVE","kind":"pinhole"}]
+}

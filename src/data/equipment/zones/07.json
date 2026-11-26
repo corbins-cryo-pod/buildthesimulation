@@ -114,20 +114,21 @@
     "inputs": "Timestamped image sequence, field ID, spatial calibration and tracking annotations",
     "outputs": "Time-lapse observation with track coordinates, gaps and source provenance",
     "acceptance": "Track a synthetic object translating by a known distance at irregular frame intervals. Recover physical velocity from timestamps and retain a missing-frame gap.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: source-dimensioned CellCyte Gen 2 dormant frame",
+    "simulationStatus": "First pass: immutable inert image dimensions; acquisition and time tracking outside scope",
+    "integrationStatus": "Linked: documentary viewer with static image PNG/JSON",
     "related": [
       [
         "Biohybrid Neural Interface Laboratory",
         "/simulations/biohybrid-interface/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/07-04/simulator/"
   },
   {
     "id": "07-05",
     "name": "Live cell imager",
-    "model": "Sartorius Incucyte S3",
+    "model": "Sartorius Incucyte S3 (closed exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 24,
@@ -140,9 +141,10 @@
     "inputs": "Plate map, well and field IDs, timestamped image series and segmentation masks",
     "outputs": "Per-well confluence and morphology time courses with coverage and missing-data flags",
     "acceptance": "Replay two wells with independent known foreground-area ramps. Each trace must recover its own occupied fraction and a skipped well must display a missing value.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented post-2021 closed microscope and inactive controller",
+    "simulationStatus": "Detached static nonbiological graphic review only; no acquisition or growth",
+    "integrationStatus": "Interactive exterior, independent chart, missing-mask JSON and metric ray targets",
+    "simulator": "/simulations/equipment/07-05/simulator/"
   },
   {
     "id": "07-06",
@@ -160,9 +162,10 @@
     "inputs": "Rotor layout, tube masses, parent sample IDs and recorded fraction yields",
     "outputs": "Run-state record and labeled daughter fractions with parentage and unrecovered material",
     "acceptance": "Place equal masses opposite each other in a symmetric rotor, then remove one. The balance flag must change, and replayed fraction totals plus recorded loss must equal the parent quantity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: closed metric 5810 R casing; documented envelope and support depth verified",
+    "simulationStatus": "First pass: independent immutable planar statics diagrams; original operational acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR display action and annotation JSON",
+    "simulator": "/simulations/equipment/07-06/simulator/"
   },
   {
     "id": "07-07",
@@ -180,9 +183,10 @@
     "inputs": "Counting-slide image, calibrated observation volume and class-labeled reference masks",
     "outputs": "Count and concentration measurements with class counts and sampling uncertainty",
     "acceptance": "Use an annotated image with known class counts and volume. Recover the counts in an ideal fixture and scale concentration inversely when the specified sampled volume doubles.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-grounded sealed Countess 3 FL metric exterior",
+    "simulationStatus": "Dormant cabinet and separate geometric badge-count diagrams",
+    "integrationStatus": "Standalone browser station; no specimen or equipment connection",
+    "simulator": "/simulations/equipment/07-07/simulator/"
   },
   {
     "id": "07-08",
@@ -200,9 +204,16 @@
     "inputs": "Tissue record, recorded yield summary, viability labels and parent batch ID",
     "outputs": "Derived suspension record carrying source linkage and reported yield uncertainty",
     "acceptance": "Replay an annotated benchmark with known viable, nonviable and unclassified counts. Preserve the reported totals and unclassified category, including missing measurements.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documented nominal dormant legacy Octo exterior",
+    "simulationStatus": "Detached static shape comparison; no specimen workflows",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
+    "simulator": "/simulations/equipment/07-08/simulator/",
+    "related": [
+      [
+        "Legacy model references and arithmetic checks",
+        "/simulations/equipment/07-08/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "07-09",
@@ -220,9 +231,10 @@
     "inputs": "Sample ID, opaque condition identifier and externally recorded assay outcomes",
     "outputs": "Condition event and linked outcome observations with provenance",
     "acceptance": "Replay two labeled conditions, one lacking an outcome. Each must retain its supplied observations and the missing outcome must remain unknown.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed documentary Core and X metric GLB; published envelope checked",
+    "simulationStatus": "Detached fixed abstract drawing comparison only; no instrument workflow",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/07-09/simulator/"
   },
   {
     "id": "07-10",
@@ -238,14 +250,15 @@
     "inputs": "Event table, channel units, gate polygons and parent population ID",
     "outputs": "Event membership, counts and virtual daughter-population records",
     "acceptance": "Apply a rectangular gate to a hand-labeled point cloud containing boundary points. Match expected event IDs under the documented boundary rule and deduplicate overlapping gates in the union.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: source-dimensioned dormant FACSAria II shell",
+    "simulationStatus": "First pass: detached immutable triangle only; acquisition and population selection excluded",
+    "integrationStatus": "Linked: documentary viewer and abstract length JSON",
+    "simulator": "/simulations/equipment/07-10/simulator/"
   },
   {
     "id": "07-11",
     "name": "Plate reader",
-    "model": "Molecular Devices SpectraMax i3x",
+    "model": "Molecular Devices SpectraMax i3x (closed standalone)",
     "evidence": "B",
     "priority": "P2",
     "page": 26,
@@ -258,9 +271,10 @@
     "inputs": "Plate map, blank wells, reference intensities and calibration curve",
     "outputs": "Per-well absorbance or fluorescence record with blank correction and uncertainty",
     "acceptance": "Use a synthetic dilution series in the calibration range with a known blank offset. Recover the supplied slope and map each result back to its original well.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric standalone closed case",
+    "simulationStatus": "Detached static arbitrary-unit figure only; no instrument measurements",
+    "integrationStatus": "Interactive exterior, independent immutable chart, JSON and room VR anchors",
+    "simulator": "/simulations/equipment/07-11/simulator/"
   },
   {
     "id": "07-12",
@@ -278,9 +292,10 @@
     "inputs": "Archived fluorescence-versus-cycle curves, baseline convention, threshold and well IDs",
     "outputs": "Analysis record with per-well Cq, curve provenance and undetermined flags",
     "acceptance": "Supply a curve crossing the threshold midway between cycles and a flat control below threshold. Linear interpolation must recover the half-cycle value and mark the control undetermined.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-grounded sealed metric QuantStudio 3 exterior",
+    "simulationStatus": "Dormant chassis and independent fixed geometry annotations",
+    "integrationStatus": "Standalone viewer; no hardware, specimen or data linkage",
+    "simulator": "/simulations/equipment/07-12/simulator/"
   },
   {
     "id": "07-13",
@@ -298,14 +313,15 @@
     "inputs": "Archive inventory, unique vial and batch IDs, rack positions and logged temperature",
     "outputs": "Storage or retrieval event with address, time and environmental history",
     "acceptance": "Store two labeled vials, retrieve one and replay that event. Only its location should change and each vial must retain its original batch identity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: sealed standalone non-AT LS6000 shell; manufacturer diameter and height verified; CS100 pairing not modeled",
+    "simulationStatus": "First pass: unrelated fixed abstract artwork diagram; original storage acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable metric GLB, passive named XR action and example JSON",
+    "simulator": "/simulations/equipment/07-13/simulator/"
   },
   {
     "id": "07-14",
     "name": "Ultra-low freezer",
-    "model": "Thermo Scientific TSX series (exact cabinet pending)",
+    "model": "Thermo Scientific TSX60086A (legacy exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 26,
@@ -318,9 +334,16 @@
     "inputs": "Rack occupancy, sample IDs, compartment temperature trace and alarm rule",
     "outputs": "Temperature alarm intervals and affected inventory records",
     "acceptance": "Replay a trace with one threshold excursion across a known inventory change. Flag the excursion and associate only the samples present during its interval.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, source-dimensioned documentary TSX60086A exterior",
+    "simulationStatus": "Detached fixed geometry; no thermal, alarm or inventory model",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
+    "simulator": "/simulations/equipment/07-14/simulator/",
+    "related": [
+      [
+        "Legacy cabinet sources and arithmetic checks",
+        "/simulations/equipment/07-14/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "07-15",
@@ -338,8 +361,15 @@
     "inputs": "Vessel configuration, construct ID, recorded rotation or flow, and tracer boundary conditions",
     "outputs": "Transport time course with vessel-frame coordinates and model assumptions",
     "acceptance": "For a declared closed-vessel conservative tracer fixture, require constant total tracer mass under rotation. Compare spatial redistribution separately with a measured tracer series for the chosen vessel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric RCCS-4D closed shell, sized from the brochure, with inferred covers and no working assemblies",
+    "simulationStatus": "Detached abstract polygon-area exhibit verified; no instrument operation, culture or transport behavior modeled",
+    "integrationStatus": "Documentary GLB viewer, independent outline selection and JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/07-15/simulator/",
+    "related": [
+      [
+        "Documentary scope and verification",
+        "/simulations/equipment/07-15/simulator/#rccs-checks"
+      ]
+    ]
   }
 ]

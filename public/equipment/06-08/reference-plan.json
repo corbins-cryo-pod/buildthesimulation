@@ -1,0 +1,38 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Pure centered two-rectangle comparison on a fixed inert drawing, not equipment or installation geometry.",
+  "cases": [
+    {
+      "id": "roomy-frame",
+      "frame": "roomy",
+      "expected": {
+        "marginXMm": 6,
+        "marginZMm": 5,
+        "contained": true
+      }
+    },
+    {
+      "id": "narrow-frame",
+      "frame": "narrow",
+      "expected": {
+        "marginXMm": -2,
+        "marginZMm": 4,
+        "contained": false
+      }
+    },
+    {
+      "id": "tangent-frame",
+      "frame": "tangent",
+      "expected": {
+        "marginXMm": 0,
+        "marginZMm": 0,
+        "contained": true
+      }
+    },
+    {
+      "id": "unknown-frame",
+      "frame": "outside",
+      "expected": "Choose one of the stored drawing frames."
+    }
+  ]
+}

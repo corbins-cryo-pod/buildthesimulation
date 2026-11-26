@@ -1,0 +1,4 @@
+import {test}from'node:test';import assert from'node:assert/strict';import{station,act,measure}from'../public/equipment/13-07/gauge.mjs';
+test('A is 45-60-75 µm; 300 canvas pixels at 1×',()=>{const m=measure(station());assert.equal(m.distanceDisplayPx,300);assert.equal(m.distanceUm,75);assert.equal(m.referenceBarDisplayPx,120)});
+test('1.5× increases raw pixel distances and bar lengths by 50% but preserves length',()=>{const a=station(),b=act(a,'zoom'),m=measure(b);assert.equal(m.distanceDisplayPx,450);assert.equal(m.referenceBarDisplayPx,180);assert(Math.abs(m.distanceUm-75)<1e-8);assert.equal(a.zoom,1)});
+test('B is 30-40-50 µm; reject unknown modes and preserve provenance',()=>{const m=measure(act(station(),'pair','B'));assert.equal(m.distanceUm,50);assert.equal(m.revision,1);assert.equal(m.sampleId,'FIDUCIAL-CARD-UC7-01');assert.throws(()=>act(station(),'pair','C'),RangeError);assert.throws(()=>measure({pair:'A',zoom:2}),RangeError)});

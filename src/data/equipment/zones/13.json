@@ -15,9 +15,10 @@
     "inputs": "Surface or referenced SEM field, specimen pose, raster sampling and detector/image calibration",
     "outputs": "SEM raster, specimen-space transform, pixel spacing and source modality",
     "acceptance": "Rasterize a reference grating at normal incidence and a known tilt. In the orthographic fixture its projected pitch along the tilted dimension should scale by the cosine of the tilt.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: original metric GeminiSEM 560 closed optical-column exterior",
+    "simulationStatus": "First pass: verified synthetic grating pitch; SEM operation outside scope",
+    "integrationStatus": "Linked: passive viewer and calibrated PNG/JSON",
+    "simulator": "/simulations/equipment/13-01/simulator/"
   },
   {
     "id": "13-02",
@@ -35,9 +36,10 @@
     "inputs": "Voxel block ID, milling-plane pose, section increment and in-plane pixel spacing",
     "outputs": "Ordered slice images, anisotropic voxel spacing and block-to-image transform",
     "acceptance": "Sample a synthetic block containing a diagonal wire. Reconstructed endpoints should agree in physical coordinates with the original wire within one voxel along each axis.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass dormant standard Crossbeam 550 base exterior; separate invented diagram display",
+    "simulationStatus": "Verified locked synthetic 2D geometry inspection only; no acquisition, milling, or volume reconstruction",
+    "integrationStatus": "Interactive metric exterior, diagram selection, JSON export, room/VR action bounds",
+    "simulator": "/simulations/equipment/13-02/simulator/"
   },
   {
     "id": "13-03",
@@ -55,9 +57,16 @@
     "inputs": "Material-block geometry, registered virtual cut volume, SEM view and removal-scale calibration",
     "outputs": "Revised block geometry, removed volume, exposed-face image and parent revision",
     "acceptance": "Subtract a rectangular prism fully inside a homogeneous synthetic block. The removed volume should equal its three dimensions multiplied together within discretization error and the resulting face should lie on the commanded plane.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Verified inert cavity section viewer; no removal model",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/13-03/simulator/",
+    "related": [
+      [
+        "Hydra CX exterior and independent cavity measurements",
+        "/simulations/equipment/13-03/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "13-04",
@@ -75,9 +84,10 @@
     "inputs": "Prepared virtual block or reference stack, section indices, frame shifts and contrast metadata",
     "outputs": "Registered block-face stack, missing-section mask, transforms and voxel spacing",
     "acceptance": "Shift a fiducial stack by known in-plane offsets and omit a slice. Alignment should recover fiducial positions and retain the missing physical z position in the metadata.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric sealed exterior; photo-inferred console and documented 24-inch display",
+    "simulationStatus": "First pass: passive preauthored synthetic geometry labels, volume and gap; acquisition and registration deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, named passive VR action and sample JSON",
+    "simulator": "/simulations/equipment/13-04/simulator/"
   },
   {
     "id": "13-05",
@@ -95,9 +105,10 @@
     "inputs": "Thin-section volume or reference TEM image, section pose, pixel pitch and contrast model",
     "outputs": "Projection image, dimensional scale, contrast-model ID and source section ID",
     "acceptance": "Under a declared linear projection approximation, two identical overlapping synthetic density layers should double the projected density compared with one layer. Check lateral dimensions against the phantom.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric static main-instrument GLB/source",
+    "simulationStatus": "Dormant exterior and read-only offline lattice pitch comparison",
+    "integrationStatus": "Standalone asset viewer; no acquisition or instrument connection",
+    "simulator": "/simulations/equipment/13-05/simulator/"
   },
   {
     "id": "13-06",
@@ -115,9 +126,10 @@
     "inputs": "Archived cryo-EM image set or projection fixture, acquisition metadata, pixel size and orientation data where applicable",
     "outputs": "Indexed reference images, reconstruction volume when supported, voxel scale and source dataset provenance",
     "acceptance": "Reconstruct supplied projections of a phantom with known handed orientation. Check landmark spacings and handedness against the reference and preserve the source image IDs.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric GLB; cabinet dimensions inferred",
+    "simulationStatus": "Read-only synthetic image archive; index, scale and orientation verified",
+    "integrationStatus": "Dedicated simulator, source asset and example export linked",
+    "simulator": "/simulations/equipment/13-06/simulator/"
   },
   {
     "id": "13-07",
@@ -136,9 +148,10 @@
     "inputs": "Block ID, cutting axis, virtual section thickness, serial order and loss flags",
     "outputs": "Thin-section child IDs, each with index, physical depth and collection status",
     "acceptance": "Remove the middle section of a five-section fixture. Four collected IDs should remain while physical depth and serial numbering retain the gap.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Dormant nominal UC7 exterior, 10.4-inch blank screen, and separate original inert pad",
+    "simulationStatus": "Verified passive synthetic fiducial measurement invariant to display zoom; no sectioning",
+    "integrationStatus": "Interactive exterior, calibrated synthetic chart, JSON provenance and XR pick targets",
+    "simulator": "/simulations/equipment/13-07/simulator/"
   },
   {
     "id": "13-08",
@@ -157,9 +170,10 @@
     "inputs": "Virtual specimen ID, prior state and preservation-method record",
     "outputs": "Preserved-specimen revision, timestamp, method and provenance",
     "acceptance": "Apply a preservation event to a labeled specimen. The new revision should cite the input and method while preserving coordinates and leaving unspecified ultrastructure unknown.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric dormant exterior with published overall body and station envelope",
+    "simulationStatus": "First pass: detached inert outline annotation only; preservation acceptance deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, named exhibit action and annotation example",
+    "simulator": "/simulations/equipment/13-08/simulator/"
   },
   {
     "id": "13-09",
@@ -178,9 +192,10 @@
     "inputs": "Preserved-specimen revision, abstract preparation event and provenance",
     "outputs": "Post-substitution specimen revision with ordered preparation history",
     "acceptance": "Pass the preserved output from 13-08 through the event. The resulting specimen should retain both method records in order and trace back to the same source ID.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: static original metric AFS2 exterior",
+    "simulationStatus": "First pass: synthetic drawing annotations only; processing outside scope",
+    "integrationStatus": "Linked: documentary viewer and drawing ledger JSON",
+    "simulator": "/simulations/equipment/13-09/simulator/"
   },
   {
     "id": "13-10",
@@ -199,9 +214,16 @@
     "inputs": "Specimen surface ID, coating material, modeled film thickness (m) and coverage mask",
     "outputs": "Coating-layer revision with thickness, coverage and parent specimen link",
     "acceptance": "Use a planar coupon and a rectangular coverage mask. Measured film step should match prescribed thickness within mesh resolution, and the uncoated area should retain its original height.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric GLB; dormant basic cabinet",
+    "simulationStatus": "Passive immutable synthetic coupon geometry; 13 checks",
+    "integrationStatus": "Standalone viewer and read-only JSON export",
+    "simulator": "/simulations/equipment/13-10/simulator/",
+    "related": [
+      [
+        "Documentary cabinet and synthetic coupon checks",
+        "/simulations/equipment/13-10/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "13-11",
@@ -220,9 +242,10 @@
     "inputs": "Virtual specimen geometry, drying event and optional uniform shrinkage factor",
     "outputs": "Dried specimen revision, transformed geometry when enabled, shrinkage assumption and parent ID",
     "acceptance": "Use a cube with linear shrinkage factor s. Edge lengths should scale by s and volume by s³; with s equal to one the geometry should remain identical.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric documentary exterior GLB/source",
+    "simulationStatus": "Dormant cabinet and detached abstract ratio diagram",
+    "integrationStatus": "Standalone viewer; no preparation, process or equipment linkage",
+    "simulator": "/simulations/equipment/13-11/simulator/"
   },
   {
     "id": "13-12",
@@ -240,14 +263,15 @@
     "inputs": "Microscopy grid ID, initial surface-state metadata and abstract treatment event",
     "outputs": "Grid revision with updated treatment state, timestamp and original grid geometry",
     "acceptance": "Apply the event to one of two virtual grids. Only that grid should receive the surface-state entry; mesh topology and scale should be preserved for both.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: nominal standalone 91000 documentary enclosure",
+    "simulationStatus": "First pass: immutable inert drawing reviews; treatment outside scope",
+    "integrationStatus": "Linked: exterior viewer and documentary review JSON",
+    "simulator": "/simulations/equipment/13-12/simulator/"
   },
   {
     "id": "13-13",
     "name": "Cryostat",
-    "model": "Leica CM3050 (S variant to verify)",
+    "model": "Leica CM3050 S (standard cabinet, closed exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 42,
@@ -260,9 +284,10 @@
     "inputs": "Frozen specimen volume, cutting-plane pose, section thickness and destination slide IDs",
     "outputs": "Child section images, parent-volume transforms, slab depths and slide assignments",
     "acceptance": "Cut through an oblique fiducial in a digital phantom. The section intercept should shift by the analytically expected amount with depth and map back to the parent line within voxel resolution.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented nominal closed CM3050 S cabinet and static side wheel; detached synthetic reader",
+    "simulationStatus": "Verified passive oblique-coordinate diagram only; no physical sample or cutting",
+    "integrationStatus": "Interactive cabinet view, inert coordinate-card export and stable VR anchors",
+    "simulator": "/simulations/equipment/13-13/simulator/"
   },
   {
     "id": "13-14",
@@ -280,14 +305,15 @@
     "inputs": "Embedded virtual block, cutting orientation, thickness, starting index and collection list",
     "outputs": "Serial section geometries, order, physical depth and block lineage",
     "acceptance": "Generate a ribbon of equal-thickness sections from a calibrated block. Successive center depths should differ by the selected thickness, with unique indices and an unchanged parent reference.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: dormant metric HM 325 902100A exterior; nominal catalog envelope verified",
+    "simulationStatus": "First pass: detached generic CAD draft inspection only; section generation deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, detached VR action and annotation JSON",
+    "simulator": "/simulations/equipment/13-14/simulator/"
   },
   {
     "id": "13-15",
     "name": "Micro-CT",
-    "model": "Bruker SkyScan 1270",
+    "model": "Bruker SkyScan 1272 CMOS Edition",
     "evidence": "B",
     "priority": "P1",
     "page": 42,
@@ -300,8 +326,9 @@
     "inputs": "Attenuation phantom or real projection set, projection geometry, angles and detector pitch",
     "outputs": "CT volume, voxel spacing, reconstruction transform and artifact/coverage metadata",
     "acceptance": "Project and reconstruct a synthetic two-bead phantom of known separation. Check center spacing against physical ground truth within reconstruction resolution and flag an intentionally incomplete rotation.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric GLB; published SkyScan 1272 dimensions",
+    "simulationStatus": "Read-only inert slice ruler; center spacing and missing-plane handling checked",
+    "integrationStatus": "Dedicated simulator, editable model and example export linked",
+    "simulator": "/simulations/equipment/13-15/simulator/"
   }
 ]

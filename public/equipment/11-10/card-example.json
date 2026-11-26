@@ -1,0 +1,30 @@
+{
+  "schema": "bts.detached-ideal-series-card.v1",
+  "revision": 1,
+  "cardId": "SYNTHETIC-PAPER-SERIES-01",
+  "sourceRevision": "SERIES-DIAGRAM-A",
+  "mode": "complete",
+  "units": {
+    "potential": "V",
+    "resistance": "Ω",
+    "current": "µA"
+  },
+  "state": "closed-series",
+  "equivalentOhm": 10100,
+  "currentMicroamp": 99.00990099009901,
+  "resistiveDrops": [
+    {
+      "id": "DRAWN-R1",
+      "ohm": 3300,
+      "dropV": 0.32673267326732675
+    },
+    {
+      "id": "DRAWN-R2",
+      "ohm": 6800,
+      "dropV": 0.6732673267326733
+    }
+  ],
+  "gapDropV": 0,
+  "referenceV": 1,
+  "provenance": "Fixed mathematical drawing with a normalized 1 V reference, not an equipment configuration, measured trace, specimen or operational output."
+}

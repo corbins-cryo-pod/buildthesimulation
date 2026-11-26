@@ -1,0 +1,54 @@
+[
+  {
+    "id": "horizontal-side",
+    "segment": "AB",
+    "expected": {
+      "dx": 8,
+      "dy": 0,
+      "length": 8
+    },
+    "actual": {
+      "dx": 8,
+      "dy": 0,
+      "length": 8
+    },
+    "pass": true
+  },
+  {
+    "id": "vertical-side",
+    "segment": "BC",
+    "expected": {
+      "dx": 0,
+      "dy": -6,
+      "length": 6
+    },
+    "actual": {
+      "dx": 0,
+      "dy": -6,
+      "length": 6
+    },
+    "pass": true
+  },
+  {
+    "id": "hypotenuse",
+    "segment": "CA",
+    "expected": {
+      "dx": -8,
+      "dy": 6,
+      "length": 10
+    },
+    "actual": {
+      "dx": -8,
+      "dy": 6,
+      "length": 10
+    },
+    "pass": true
+  },
+  {
+    "id": "unknown-side",
+    "segment": "AX",
+    "expected": "Choose a listed side of the abstract triangle.",
+    "actual": "Choose a listed side of the abstract triangle.",
+    "pass": true
+  }
+]

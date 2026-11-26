@@ -1,0 +1,45 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    2.0755,
+    0.9144,
+    0.762
+  ],
+  "meshes": 38,
+  "triangles": 7770,
+  "bytes": 380128,
+  "interaction": {
+    "Offline_footprint_token": {
+      "action": "next",
+      "label": "Cycle detached top-view footprint pose",
+      "initialBoundsMinM": [
+        0.986,
+        0.7045,
+        0.109
+      ],
+      "initialBoundsMaxM": [
+        1.226,
+        0.7175,
+        0.209
+      ],
+      "worldYawDegrees": [
+        0,
+        -36.869897645844,
+        -90
+      ]
+    }
+  },
+  "modelFurnitureM": [
+    1.524,
+    0.9144,
+    0.762
+  ],
+  "authoredFurnitureMm": [
+    1524,
+    914.4,
+    762
+  ],
+  "instrumentActions": 0,
+  "fixtureCoordinatesSeparate": true
+}

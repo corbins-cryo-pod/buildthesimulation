@@ -1,0 +1,16 @@
+{
+  "method":"Eppendorf manual p.60 dimensions and footprint depth; disconnected teaching diagram checked with manual moment products +6×0.4, −8×0.3 and −7×0.3.",
+  "cases":[
+    {"id":"width","expected":0.700,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":0.345,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":0.608,"tolerance":0.00001,"unit":"m"},
+    {"id":"support-footprint-depth","expected":0.536,"tolerance":0.00001,"unit":"m"},
+    {"id":"left-moment","expected":2.4,"tolerance":1e-10,"unit":"N·m"},
+    {"id":"right-moment","expected":-2.4,"tolerance":1e-10,"unit":"N·m"},
+    {"id":"balanced-net","expected":0,"tolerance":1e-10,"unit":"N·m"},
+    {"id":"offset-net","expected":0.3,"tolerance":1e-10,"unit":"N·m"},
+    {"id":"offset-sign","expected":true,"unit":"boolean"},
+    {"id":"keeps-drawing-frame","expected":true,"unit":"boolean"},
+    {"id":"unsupported-command-rejected","expected":true,"unit":"boolean"}
+  ]
+}

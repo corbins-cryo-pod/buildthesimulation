@@ -1,0 +1,32 @@
+{
+  "schema": "bts.dry-circular-gauge.v1",
+  "deviceId": "15-14",
+  "kind": "original passive gauge drawing",
+  "sourceId": "detached-circle-gauge-01",
+  "sourceRevision": 0,
+  "readRevision": 1,
+  "poseId": "center",
+  "label": "Centered",
+  "frame": "+X right, +Z operator-facing; origin at the center of the rectangular opening",
+  "units": {
+    "length": "mm"
+  },
+  "geometry": {
+    "widthMm": 120,
+    "depthMm": 80,
+    "radiusMm": 18
+  },
+  "centerMm": {
+    "x": 0,
+    "z": 0
+  },
+  "marginsMm": {
+    "left": 42,
+    "right": 42,
+    "rear": 22,
+    "front": 22
+  },
+  "minimumClearanceMm": 22,
+  "status": "clear",
+  "deviceStateModeled": false
+}

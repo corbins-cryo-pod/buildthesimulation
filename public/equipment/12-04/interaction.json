@@ -1,0 +1,8 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"12-04","model":"Leica STELLARIS 8 tauSTED / DMi8-style dormant documentary bench",
+ "frame":{"units":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor"},
+ "parts":{"stand":"dmi8_documentary_stand","scanhead":"stellaris_scanhead","sealedModule":"sealed_auxiliary_unit","terminal":"review_terminal","stage":"stage_inspection_anchor"},
+ "ports":["documentary_rear_module","documentary_rear_stand"],
+ "actions":[{"id":"compare-stored-image","node":"image_comparator_tile","action":"view","label":"Toggle between two stored synthetic comparison images","sizeM":[0.265,0.146,0.035]}],
+ "assessment":"Only original review interface tile is interactive. Documentary instruments are dormant, no physical settings, motion or headset verification."
+}

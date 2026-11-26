@@ -1,0 +1,73 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/12-04/verification.json';
+import metrics from '../../../../../public/equipment/12-04/asset-metrics.json';
+const p='/equipment/12-04/';
+const technical='https://biometra.unimi.it/system/files/2025-05/General%20Features%20of%20the%20system%20STELLARIS%208.pdf';
+const stand='https://downloads.leica-microsystems.com/DMi8%20ID/Brochure%20or%20Flyer/Leica_DMi8_Ind-Brochure_en.pdf';
+const institution='https://www.mcgill.ca/abif/equipment/leica-stellaris-8-sted-flim';
+const installed='https://www.mcgill.ca/abif/files/abif/leica_stellaris_8.jpeg';
+const product='https://www.leica-microsystems.com/products/confocal-microscopes/p/stellaris-sted/';
+---
+<Layout pageTitle="Leica STELLARIS 8 synthetic image comparison" description="Dormant documentary microscope and a passive comparison of two fixed synthetic point-spread images." wide={true}>
+<article id="leica12">
+<nav><a href="/simulations/equipment/12-04/">← Equipment 12-04</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#le-evidence">References and checks</a></nav>
+<header><small>12-04 · DORMANT DOCUMENTARY MODEL · SYNTHETIC IMAGES</small><h2>Leica STELLARIS 8 tauSTED image comparison</h2><p>Inspect a dormant exterior and compare an ideal broad spot with a narrower one. Both images are fixed synthetic references; this station does not run, configure or measure a microscope.</p></header>
+<div class="bench">
+<section class="panel"><h3>Dormant microscope and review monitor</h3>
+<div class="tools"><button data-le-view="orbit">Reset view</button><button data-le-view="front">Front view</button><button data-le-view="stand">Stand close-up</button><button data-le-view="rear">Rear view</button></div>
+<div id="le-viewer"></div><p id="le-model" role="status">Loading metric documentary geometry…</p>
+<p>The chassis, stand and accessories do not move. Select the original digital review tile or its button to swap between the two stored images. The generic review monitor is not Leica control software. A headset has not been tested.</p></section>
+<section class="panel"><h3>Fixed image references</h3>
+<div class="image-pair">
+<figure><canvas id="le-wide" width="260" height="260" aria-label="Broad synthetic grayscale spot"></canvas><figcaption>Broad synthetic spot</figcaption></figure>
+<figure><canvas id="le-narrow" width="260" height="260" aria-label="Narrow synthetic grayscale spot"></canvas><figcaption>Narrow synthetic spot</figcaption></figure>
+</div>
+<div class="fields"><label>Profile direction<select id="le-axis"><option value="x">X across a row</option><option value="y">Y along a column</option></select></label>
+<label>Fixed profile line (0–64)<input type="number" id="le-line" min="0" max="64" step="1"/></label></div>
+<div class="tools"><button id="le-run" disabled>Read both widths</button><button id="le-view">Show narrow image on 3D monitor</button><button id="le-reset">Reset center</button></div>
+<p id="le-active"></p><p id="le-status" aria-live="polite"></p></section>
+</div>
+<section class="panel"><h3>Half-height width</h3><p id="le-result" aria-live="polite"></p>
+<canvas id="le-plot" width="760" height="408" aria-label="Broad and narrow synthetic profile lines with half-height crossings."></canvas>
+<div class="tools"><button id="le-json" disabled>Export comparison JSON</button><button id="le-csv" disabled>Export line profile CSV</button></div>
+<p><strong>Try it:</strong> The center line gives 240 nm and 80 nm in the example, a 160 nm difference. Both axes agree for these ideal round spots. A line far from the center is refused if either peak is too faint for the chosen comparison.</p></section>
+<section class="panel"><h3>What the comparison measures</h3>
+<p>Each 65 × 65 raster uses 10 nm per synthetic pixel and includes a fixed known background. Find the line peak, take half its height above background, and linearly interpolate the two surrounding pixel pairs. Their distance is the full width at half maximum (FWHM). This estimates the synthetic spot width, not lateral or axial resolution on a real Leica device. No measured calibration images, material data or experimental resolution claims are included.</p>
+<p>The two fixed test widths are author-selected; no simulator control changes the images. There is no optical propagation, acquisition, instrument control, real calibration or sample workflow. The underlying fixture sources are pinned by their byte hashes in each export.</p>
+<p><a href={p+'contract.json'}>I/O contract</a> · <a href={p+'build-fixtures.py'}>Editable synthetic-raster authoring source</a> · <a href={p+'wide.json'}>Wide image data</a> · <a href={p+'narrow.json'}>Narrow image data</a> · <a href={p+'example-comparison.json'}>Reference example output</a>.</p></section>
+<section class="panel" id="le-evidence"><h3>Documentary geometry and checks</h3>
+<div class="refs">
+<figure><img loading="lazy" src={p+'benchtop-view.webp'} alt="Original rendering of dormant Leica gray and black inverted microscope, red-trim scan head and separate generic monitor"/><figcaption><strong>Dormant complete station, original rendering.</strong> Compare <a href={technical+'#page=1'}>Leica June 2022 STELLARIS 8 documentation, cover</a>, <a href={installed}>McGill installation photograph</a>, and <a href={institution}>McGill's DMi8 variant record</a>. Supporting cases and monitor are editorial, not measured. <a href={product}>Official product family</a>.</figcaption></figure>
+<figure><img loading="lazy" src={p+'stand-view.webp'} alt="Original render of the fixed DMi8-style stand, eyepieces and stage opening"/><figcaption><strong>Fixed stand detail, original rendering.</strong> Compare the <a href={stand+'#page=10'}>Leica DMi8 industrial family drawing, p. 10</a>. Its 310 mm base width and 500 mm body depth are scale proxies; the particular CS stand and accessories are not an exact industrial-model match.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Parameter</th><th>Value</th><th>Use and source</th></tr></thead><tbody>
+<tr><td>Documentary configuration</td><td>STELLARIS 8 tauSTED family with representative inverted DMi8, a closed scan-head case and sealed ancillary case</td><td>Leica technical cover and McGill photographs. Measurements of scan head, stand accessories and ancillary equipment are not known here.</td></tr>
+<tr><td>Stand footprint proxy</td><td>310 mm width × 500 mm body depth</td><td>Related manufacturer's DMi8 industrial drawing p. 10; anchors only the original base model. No overall survey.</td></tr>
+<tr><td>Synthetic fixture</td><td>65 × 65 pixels, 10 nm/pixel; authorial 240 nm and 80 nm FWHM</td><td>Generated here as a fixed verification reference, not a vendor capability or optical setting.</td></tr>
+<tr><td>Metric cabinet mesh</td><td>{metrics.bytes} bytes; {metrics.triangles} triangles; {metrics.primitives} primitives</td><td>Named single read-only action for future controller binding. No immersive claim.</td></tr>
+</tbody></table></div>
+<p><a href={p+'stellaris8.glb'}>Metric GLB</a> · <a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'interaction.json'}>Action and pose anchors</a> · <a href={p+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+</section>
+</article></Layout>
+<script>import '../../../../lib/equipment/12-04/client.mjs';</script>
+<style>
+#leica12{max-width:1260px;margin:auto}
+#leica12 header{margin:1.37rem 0 1rem}#leica12 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.18rem}.fields option{background:#f5f1e6;color:#151b1a}
+#le-viewer{height:356px;margin:.72rem 0;background:#293941}#le-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+.image-pair,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.image-pair figure,.refs figure{margin:0}
+.image-pair canvas,.refs img{width:100%;height:auto}.image-pair canvas{display:block;background:#142d39;cursor:crosshair;image-rendering:pixelated}.image-pair figcaption,.refs figcaption{margin:.35rem 0 1rem}
+#le-plot{max-width:760px;width:100%;height:auto;display:block}#le-result{font-weight:bold}#le-status[data-error=true]{border-left:4px solid #a56542;padding-left:.6rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#le-viewer{height:305px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#le-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/12-10/verification.json';
+import metrics from '../../../../../public/equipment/12-10/asset-metrics.json';
+const p='/equipment/12-10/';
+const specs='https://evidentscientific.com/en/products/slide-scanners/vs200';
+const brochure='https://bcf.technion.ac.il/wp-content/uploads/2024/06/VS200_v4.1_brochure_EN_2023_10_Web.pdf';
+const old='https://www.temco.ro/wp-content/uploads/2018/03/VS200_brochure_EN.pdf';
+const epfl='https://www.epfl.ch/research/facilities/ptbiop/equipment/slide-scanner-4/';
+const epflPhoto='https://www.epfl.ch/research/facilities/ptbiop/wp-content/uploads/2023/03/Olympus-Slide-Scanner-3-1024x768.jpeg';
+---
+<Layout pageTitle="Olympus Evident VS200 inert mosaic viewer" description="Dormant VS200 single-tray exterior and a passive metric viewer for eight preauthored inert image tiles." wide={true}>
+<article id="vs12">
+<nav><a href="/simulations/equipment/12-10/">← Equipment 12-10</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#vs-evidence">References and checks</a></nav>
+<header><small>12-10 · DORMANT DOCUMENTARY MODEL · SYNTHETIC MOSAIC</small><h2>Olympus / Evident SLIDEVIEW VS200 mosaic review</h2><p>Inspect the closed single-tray cabinet and review eight saved, inert calibration-grid tiles. Follow a cursor from tile pixels to millimetres and check that a fiducial crossing a tile boundary appears once.</p></header>
+<div class="bench">
+<section class="panel"><h3>Closed exterior and review station</h3>
+<div class="tools"><button data-vs-view="orbit">Reset view</button><button data-vs-view="front">Front view</button><button data-vs-view="plate">Inert grid close-up</button><button data-vs-view="rear">Rear view</button></div>
+<div id="vs-viewer"></div><p id="vs-model" role="status">Loading metric documentary VS200…</p>
+<p>The model is the research single-tray base with standard camera cover, not the pictured expanded loader variant. The cabinet, camera and access panel stay closed and dormant. Click the generic monitor to advance a saved tile. The inert plate is a separate exhibit, not a real stage or specimen handling simulation. Physical headset testing has not been done.</p></section>
+<section class="panel"><h3>Inspect the registered tile frame</h3>
+<canvas id="vs-mosaic" width="696" height="264" aria-label="Registered synthetic tile mosaic with tile and cursor overlays"></canvas>
+<div class="fields"><label>Source tile<select id="vs-tile">{[0,1,2,3,4,5,6,7].map(i=><option value={i}>R{Math.floor(i/4)}C{i%4}</option>)}</select></label>
+<label>Tile X pixel (0–31)<input id="vs-x" type="number" min="0" max="31" step="1"/></label>
+<label>Tile Z pixel (0–23)<input id="vs-z" type="number" min="0" max="23" step="1"/></label></div>
+<p id="vs-position" aria-live="polite"></p><p id="vs-result" aria-live="polite"></p>
+<div class="tools"><button id="vs-next" disabled>Review next tile</button><button id="vs-reset">Reset cursor</button><button id="vs-json" disabled>Export metric mosaic JSON</button><button id="vs-csv" disabled>Export fiducials CSV</button><button id="vs-png" disabled>Export mosaic PNG preview</button></div>
+<p id="vs-status" aria-live="polite"></p></section>
+</div>
+<section class="panel"><h3>How the tile arithmetic works</h3>
+<p>The inert fixture is 76 mm along X, 26 mm across Z and 1 mm thick. Each stored image tile covers 32 × 24 synthetic display pixels at 0.5 mm per pixel. The first mosaic corner is (8, 2) mm; tile steps are 14 mm in X and 10 mm in Z; horizontal and vertical overlap are 2 mm each. The selected centre starts at the tile corner plus (index + ½) × 0.5 mm.</p>
+<p><strong>Ready example:</strong> Tile R1C2 pixel (6, 8) maps to mosaic (62, 28) and stage (39.25, 16.25) mm. Five distinct crosses survive the assembly, including crosses spanning seams, and all 944 duplicate-coverage pixels agree exactly.</p>
+<p>The browser assembles by preset integer offsets; it refuses out-of-lattice positions or conflicting overlap values. It does not estimate alignment from noisy images. The maximum stage residual compares supplied positions to the declared lattice. Connected-component checks count crosses in the merged array without counting any twice. These numbers do not imply real VS200 registration, pixel size, optics, focus, calibration or scan performance. No operation or biological specimen workflow is implemented.</p>
+<p><a href={p+'contract.json'}>I/O contract</a> · <a href={p+'fixture.json'}>Locked source tiles</a> · <a href={p+'build-fixture.py'}>Editable fixture source</a> · <a href={p+'example-mosaic-summary.json'}>Expected metrics</a> · <a href={p+'example-fiducials.csv'}>Example fiducial CSV</a>. The display PNG is an uncalibrated preview; JSON carries the units and provenance.</p></section>
+<section class="panel" id="vs-evidence"><h3>References and verification</h3>
+<div class="refs">
+<figure><img loading="lazy" src={p+'cabinet-view.webp'} alt="Original dormant single-tray white VS200 cabinet with blue fascia and separate mosaic monitor"/><figcaption><strong>Single-tray base front, original render.</strong> Compare the <a href={old}>Olympus research brochure exterior</a> and <a href={brochure+'#page=11'}>Evident N8601672-082023 dimension sheet</a>. The base body, upper camera cover and short rear projection establish the overall scale, but details and monitor placement are editorial.</figcaption></figure>
+<figure><img loading="lazy" src={p+'rear-view.webp'} alt="Original rear rendering with the VS200 documentary cabinet and passive service panel"/><figcaption><strong>Rear silhouette, original render.</strong> Compare the base elevation in the <a href={brochure+'#page=11'}>same manufacturer sheet</a>. The <a href={epflPhoto}>EPFL installation photograph</a> shows the optional adjacent loader; its <a href={epfl}>equipment record</a> is a separate variant, not modeled here.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Parameter</th><th>Value</th><th>Scope</th></tr></thead><tbody>
+<tr><td>Research single-tray base, standard camera</td><td>572 mm W, 662.5 mm overall H, 597.5 mm main-body D; 671.5 mm nominal overall D</td><td>Manufacturer brochure “Base Unit with Standard Camera” view. Front trim, openings and rear connector silhouettes are simplified. No measured or clinical model.</td></tr>
+<tr><td>Nominal single tray compatibility</td><td>Up to six standard 25–26.5 mm × 75–76.5 mm × 0.9–1.2 mm pieces</td><td><a href={specs}>Evident product specification</a>. Used only to select the inert 26 × 76 × 1 mm exhibit; no loading is simulated.</td></tr>
+<tr><td>Asset budget</td><td>{metrics.bytes} bytes; {metrics.triangles} triangles; {metrics.primitives} primitives</td><td>Metric model with one named read-only review action. No immersive app claim.</td></tr>
+</tbody></table></div>
+<p><a href={p+'vs200.glb'}>Metric GLB</a> · <a href={p+'build-model.py'}>Editable Blender geometry</a> · <a href={p+'interaction.json'}>Action and pose anchors</a> · <a href={p+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+</section></article></Layout>
+<script>import '../../../../lib/equipment/12-10/client.mjs';</script>
+<style>
+#vs12{max-width:1260px;margin:auto}
+#vs12 header{margin:1.37rem 0 1rem}#vs12 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin:.8rem 0}.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.18rem}.fields option{background:#f5f1e6;color:#151b1a}
+#vs-viewer{height:354px;margin:.72rem 0;background:#293941}#vs-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#vs-mosaic{width:100%;height:auto;display:block;image-rendering:pixelated;cursor:crosshair;background:#203544}
+#vs-status[data-error=true]{border-left:4px solid #a56542;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#vs-viewer{height:305px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#vs-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

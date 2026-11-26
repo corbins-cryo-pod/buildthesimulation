@@ -1,0 +1,40 @@
+{
+  "schema": "bts.detached-drafting-inspection.v1",
+  "revision": 1,
+  "diagramId": "draft-a",
+  "sourceVersion": "draft-a-authored-1",
+  "pointIds": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "verticesMm": [
+    [
+      10,
+      8
+    ],
+    [
+      90,
+      8
+    ],
+    [
+      90,
+      68
+    ]
+  ],
+  "edgesMm": [
+    80,
+    60,
+    100
+  ],
+  "perimeterMm": 240,
+  "diagonalPrMm": 100,
+  "areaMm2": 2400,
+  "rigidTranslation": true,
+  "shiftMm": [
+    0,
+    0
+  ],
+  "frame": "Independent diagram: +X right, +Y up, coordinate units mm.",
+  "provenance": "Original mathematical demonstration geometry, not acquired data. No relation to the HM 325 or to any physical part."
+}

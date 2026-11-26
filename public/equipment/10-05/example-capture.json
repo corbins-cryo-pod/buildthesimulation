@@ -1,0 +1,37 @@
+{
+  "schema": "buildthesimulation.inert-focal-target.v1",
+  "couponId": "BTS-ETCH-2PLANE-01",
+  "couponRevision": 1,
+  "captureRevision": 1,
+  "source": "synthetic inert calibration coupon only",
+  "unit": "um",
+  "frame": "sample X right, Y toward operator, Z up. Raster column/row zero indexed.",
+  "calibration": {
+    "widthPx": 81,
+    "heightPx": 61,
+    "centerPx": [
+      40,
+      30
+    ],
+    "pixelUm": 5,
+    "focusStepUm": 10,
+    "contrastSigmaUm": 20,
+    "visibilityThreshold": 0.5
+  },
+  "stage": {
+    "xUm": 0,
+    "yUm": 0,
+    "focusUm": 0
+  },
+  "target": {
+    "id": "ETCH-A",
+    "pixel": [
+      32,
+      33
+    ],
+    "xUm": -40,
+    "yUm": 15,
+    "zUm": 0,
+    "relativeContrast": 1
+  }
+}

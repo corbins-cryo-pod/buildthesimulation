@@ -17,9 +17,10 @@
     "inputs": "TTL event stream, LED module spectrum, current-to-power calibration and coupling factor",
     "outputs": "Fiber-output optical power (W) vs time, spectrum and calibration ID",
     "acceptance": "Replay a calibrated constant-amplitude square pulse. The integrated delivered energy should equal calibrated output power × pulse duration after the fixture coupling loss.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Single-channel LEDD_1 closed documentary metric GLB",
+    "simulationStatus": "Detached unitless arithmetic only; no light or drive model",
+    "integrationStatus": "Dedicated simulator, editable asset and example exports linked",
+    "simulator": "/simulations/equipment/11-01/simulator/",
     "related": [
       [
         "Optogenetics Laboratory",
@@ -30,7 +31,7 @@
   {
     "id": "11-02",
     "name": "Laser diode module",
-    "model": "Doric CLD + LDD driver",
+    "model": "Doric CLDM + LDMD-1 (capped exteriors)",
     "evidence": "A",
     "priority": "P2",
     "page": 36,
@@ -43,9 +44,10 @@
     "inputs": "Laser/driver configuration ID, gate events, calibrated spectrum, output power and divergence",
     "outputs": "Time-stamped optical-source state, wavelength (m), power (W) and beam envelope",
     "acceptance": "Toggle the emission-enable state while gate pulses continue. The disabled interval should contain zero emitted power and the enabled interval should follow the selected reference pulse and spectrum.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric LDMD-1 and CLDM shape; inactive opaque cases",
+    "simulationStatus": "Detached abstract shapes inspection only; no source operation or signals",
+    "integrationStatus": "Interactive dormant exterior, disconnected card, JSON and metric room anchors",
+    "simulator": "/simulations/equipment/11-02/simulator/"
   },
   {
     "id": "11-03",
@@ -64,9 +66,10 @@
     "inputs": "Train duration and intervals (s), trigger mode, input edge times and shared clock ID",
     "outputs": "Clock-tagged TTL edges, pulse indices and synchronization markers",
     "acceptance": "Schedule ten equally spaced pulses after a trigger. Check all twenty transitions against the analytical times to within one scheduler tick, including the final falling edge.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Catalog-grounded metric OTPG_4 exterior only",
+    "simulationStatus": "Inactive enclosure and detached coordinate readout",
+    "integrationStatus": "Standalone viewer only; no signals, timing or hardware linkage",
+    "simulator": "/simulations/equipment/11-03/simulator/",
     "related": [
       [
         "Optogenetics Laboratory",
@@ -90,9 +93,10 @@
     "inputs": "Excitation schedule, fluorescence field or trace, collection weights, background and detector response",
     "outputs": "Aggregate demodulated fluorescence time series, reference channel and event-aligned timestamps",
     "acceptance": "Combine two synthetic emitters of known brightness with a constant background. Below saturation the recovered modulation should match their weighted sum and remain invariant when equal-weight emitter IDs are exchanged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric capped NC500 and iLFMC4-G3 exteriors; nominal envelopes verified",
+    "simulationStatus": "First pass: detached authored coordinate-card comparison; original sensing acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR display action and JSON example",
+    "simulator": "/simulations/equipment/11-04/simulator/"
   },
   {
     "id": "11-05",
@@ -110,15 +114,20 @@
     "inputs": "Optical power spectrum at the detector, wavelength setting, detector-head responsivity and calibrated range",
     "outputs": "Measured power (W), sensor ID, calibration reference and range status",
     "acceptance": "Feed two monochromatic standards at different wavelengths and select their matching wavelength settings. Each corrected reading should agree with its standard within the head calibration uncertainty.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built, documented console only; no sensor",
+    "simulationStatus": "Detached synthetic unit conversion; no sensor or optical calibration",
+    "integrationStatus": "Standalone console exhibit and numerical JSON",
     "related": [
       [
         "Optogenetics Laboratory",
         "/simulations/optogenetics/"
+      ],
+      [
+        "Console references and independent unit checks",
+        "/simulations/equipment/11-05/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/11-05/simulator/"
   },
   {
     "id": "11-06",
@@ -136,14 +145,25 @@
     "inputs": "Breadboard hole lattice (m), mounting footprints, port axes and component transforms",
     "outputs": "Placed fixture transforms, optical connection graph and clearance conflicts",
     "acceptance": "Snap two reference mounts a known number of pitches apart. Their separation should equal pitch × interval count. Placing both solid bases in the same volume should report a collision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric photo- and specification-grounded SDPM7590 frame, B7590A board with 1,080 recessed holes, and original dry mounts",
+    "simulationStatus": "Verified 25 mm lattice snapping and axis-aligned base fit, clearance and 3D overlap; no beam or vibration model",
+    "integrationStatus": "Interactive 3D/top plan and placement JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/11-06/simulator/",
+    "related": [
+      [
+        "Illustrated configuration",
+        "/simulations/equipment/11-06/simulator/#desk-references"
+      ],
+      [
+        "Dry fit verification",
+        "/simulations/equipment/11-06/simulator/#desk-checks"
+      ]
+    ]
   },
   {
     "id": "11-07",
     "name": "Fiber LED excitation",
-    "model": "Thorlabs M470F1 + LEDD1B (research example)",
+    "model": "Thorlabs M470F1 + LEDD1B (closed exterior reference)",
     "evidence": "B",
     "priority": "P1",
     "page": 37,
@@ -156,14 +176,15 @@
     "inputs": "Module spectrum, driver command, fiber properties and measured coupling transfer",
     "outputs": "Spectral power distribution and coupled optical power (W) at the fiber output",
     "acceptance": "Use a reference spectrum with known integrated power and a near-grey coupling factor. The output spectrum should retain its shape and integrate to source power × transmission.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary T-Cube and capped legacy family shell; approximate trim",
+    "simulationStatus": "Separate immutable unit conversion only; no beam, drive or coupling",
+    "integrationStatus": "Interactive documentary exterior and detached abstract units card",
+    "simulator": "/simulations/equipment/11-07/simulator/"
   },
   {
     "id": "11-08",
     "name": "High-speed fluorescence camera",
-    "model": "Hamamatsu ORCA-Flash4.0 (variant pending)",
+    "model": "Hamamatsu ORCA-Flash4.0 V3 C13440-20CU (exterior reference)",
     "evidence": "B",
     "priority": "P2",
     "page": 37,
@@ -177,9 +198,10 @@
     "inputs": "Photon arrival field, pixel calibration, exposure window, frame clock and camera noise parameters",
     "outputs": "Timestamped image frames, pixel size, digital counts, saturation mask and acquisition metadata",
     "acceptance": "Render a uniform static field at two exposure durations below saturation. After dark subtraction, the expected mean signal should scale with exposure and the frame timestamps should follow the input clock.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented C13440-20CU metric exterior GLB",
+    "simulationStatus": "Inert camera and physically separate fixed graphic ruler",
+    "integrationStatus": "Standalone viewer; no camera or image-acquisition connection",
+    "simulator": "/simulations/equipment/11-08/simulator/"
   },
   {
     "id": "11-09",
@@ -197,9 +219,10 @@
     "inputs": "Pupil amplitude, synthetic phase mask, wavelength and focal-plane sampling grid",
     "outputs": "Predicted relative irradiance map, spatial coordinates and propagation model version",
     "acceptance": "Compare a flat pupil phase with a known linear phase ramp on the same aperture. The far-field maximum should shift by the prescribed spatial frequency while integrated energy is conserved on a sufficiently sampled grid.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed documentary Monaco housing; vendor envelope checked",
+    "simulationStatus": "Detached fixed rectangle exhibit; no optics or device model",
+    "integrationStatus": "Dedicated simulator, editable asset and example exports linked",
+    "simulator": "/simulations/equipment/11-09/simulator/"
   },
   {
     "id": "11-10",
@@ -215,14 +238,15 @@
     "inputs": "Emitter coordinates, per-site drive waveform, emission and thermal calibrations, optical tissue and opsin models",
     "outputs": "Per-emitter optical power, local irradiance, temperature rise and photocurrent with separate model IDs",
     "acceptance": "Switch one emitter on in a symmetric homogeneous synthetic medium. Compare optical and thermal maps at mirrored points, then disable opsin expression and verify that photocurrent vanishes while both physical fields persist.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "First pass: original unbuilt nonoperational nominal enclosure; no measured dimensions",
+    "simulationStatus": "First pass: detached ideal passive series card only; original optical acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR display action and JSON example",
     "related": [
       [
         "Optogenetics Laboratory",
         "/simulations/optogenetics/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/11-10/simulator/"
   }
 ]

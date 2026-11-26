@@ -1,0 +1,6 @@
+{
+ "configuration":"Thorlabs PM100D console only, red protective boot fitted, loose rear support shown stowed, no accessory sensor or cable",
+ "geometryBasis":"Thorlabs 2023 manual p.66 [PDF p.68] lists 183×109×40 mm with boot and 81.4×61.0 mm active display. The site models the pictured landscape pose, so those correspond to X span, Y span, and Z thickness. Figs. 1–4 pp.10–11 establish front keys, side silhouettes, bottom marks and rear stand.",
+ "independentReference":"With a 1 mW logarithmic reference, fixed 1 mW is 1000 µW and 0 dBm. A tenfold smaller 0.1 mW = 100 µW = −10 dBm. Exactly 0 W remains 0 in linear units and has no finite dBm value. The 0.25 mW example is 250 µW and 10 log10(1/4) ≈ −6.02059991328 dBm.",
+ "tolerance":"Exact numeric W values and null at zero; 1e-9 dB arithmetic tolerance and 1e-7 metre GLB dimensional tolerance. No calibration or exposure range implied."
+}

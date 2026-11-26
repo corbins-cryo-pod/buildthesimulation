@@ -1,0 +1,66 @@
+{
+  "schema": "bts.mfcs-ez.detached-drafting-view.v1",
+  "equipment": "06-07",
+  "units": "mm",
+  "provenance": "invented drawing coordinates; not hardware centers, routing or instrument output",
+  "panel": {
+    "id": "BTS-DRAFT-DOTS-04",
+    "revision": "1",
+    "widthMm": 150,
+    "heightMm": 75,
+    "datumXMm": 75,
+    "yMm": 37.5,
+    "marks": {
+      "A": 30,
+      "B": 60,
+      "C": 90,
+      "D": 120
+    }
+  },
+  "inspection": {
+    "pair": "AB",
+    "mirrored": false,
+    "markers": [
+      {
+        "name": "A",
+        "sourceXMm": 30,
+        "displayXMm": 30,
+        "yMm": 37.5
+      },
+      {
+        "name": "B",
+        "sourceXMm": 60,
+        "displayXMm": 60,
+        "yMm": 37.5
+      },
+      {
+        "name": "C",
+        "sourceXMm": 90,
+        "displayXMm": 90,
+        "yMm": 37.5
+      },
+      {
+        "name": "D",
+        "sourceXMm": 120,
+        "displayXMm": 120,
+        "yMm": 37.5
+      }
+    ],
+    "from": {
+      "name": "A",
+      "sourceXMm": 30,
+      "displayXMm": 30,
+      "yMm": 37.5
+    },
+    "to": {
+      "name": "B",
+      "sourceXMm": 60,
+      "displayXMm": 60,
+      "yMm": 37.5
+    },
+    "deltaMm": 30,
+    "distanceMm": 30,
+    "midpointXMm": 45,
+    "datumXMm": 75
+  }
+}

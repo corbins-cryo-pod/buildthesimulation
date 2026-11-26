@@ -1,0 +1,71 @@
+{
+  "schema": "bts.station.ace600-static-inspection.v1",
+  "equipment": "13-10",
+  "model": "./ace600-closed.glb",
+  "axes": "+Y up; +Z front",
+  "units": "m",
+  "nodes": 34,
+  "bytes": 35836,
+  "triangles": 572,
+  "hitTargets": [
+    {
+      "node": "Pick_Raised_Point",
+      "action": "raised",
+      "label": "Select a point on the pre-existing step",
+      "boundsM": {
+        "min": [
+          0.297,
+          0.0395,
+          0.1325
+        ],
+        "max": [
+          0.349,
+          0.054,
+          0.177
+        ]
+      }
+    },
+    {
+      "node": "Pick_Surround_Point",
+      "action": "surround",
+      "label": "Select an uncoated comparison point",
+      "boundsM": {
+        "min": [
+          0.364,
+          0.0395,
+          0.1325
+        ],
+        "max": [
+          0.416,
+          0.054,
+          0.177
+        ]
+      }
+    },
+    {
+      "node": "Read_Passive_Step",
+      "action": "read",
+      "label": "Read the height difference at both points",
+      "boundsM": {
+        "min": [
+          0.431,
+          0.0395,
+          0.1325
+        ],
+        "max": [
+          0.483,
+          0.054,
+          0.177
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./coupon.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Only the detached display desk is interactive. No headset testing."
+}

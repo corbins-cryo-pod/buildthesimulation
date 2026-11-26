@@ -1,0 +1,251 @@
+{
+  "schema": "bts.ace600.preexisting-coupon-inspection.v1",
+  "equipment": "13-10",
+  "provenance": "synthetic geometry; no instrument acquisition, process or material metadata",
+  "coupon": {
+    "id": "BTS-ACE600-VISUAL-01",
+    "revision": "1",
+    "kind": "immutable-synthetic-geometry",
+    "sizeMm": [
+      20,
+      12
+    ],
+    "pitchMm": 0.5,
+    "boundsMm": [
+      6,
+      3,
+      14,
+      9
+    ],
+    "heightNm": 36
+  },
+  "units": {
+    "horizontal": "mm",
+    "height": "nm"
+  },
+  "selection": {
+    "row": 12,
+    "column": 20
+  },
+  "measurement": {
+    "point": {
+      "xMm": 10.25,
+      "yMm": 6.25,
+      "heightNm": 36
+    },
+    "reference": {
+      "xMm": 2.25,
+      "yMm": 6.25,
+      "heightNm": 0
+    },
+    "stepNm": 36,
+    "row": 12,
+    "yMm": 6.25
+  },
+  "profile": {
+    "row": 12,
+    "yMm": 6.25,
+    "points": [
+      {
+        "column": 0,
+        "xMm": 0.25,
+        "heightNm": 0
+      },
+      {
+        "column": 1,
+        "xMm": 0.75,
+        "heightNm": 0
+      },
+      {
+        "column": 2,
+        "xMm": 1.25,
+        "heightNm": 0
+      },
+      {
+        "column": 3,
+        "xMm": 1.75,
+        "heightNm": 0
+      },
+      {
+        "column": 4,
+        "xMm": 2.25,
+        "heightNm": 0
+      },
+      {
+        "column": 5,
+        "xMm": 2.75,
+        "heightNm": 0
+      },
+      {
+        "column": 6,
+        "xMm": 3.25,
+        "heightNm": 0
+      },
+      {
+        "column": 7,
+        "xMm": 3.75,
+        "heightNm": 0
+      },
+      {
+        "column": 8,
+        "xMm": 4.25,
+        "heightNm": 0
+      },
+      {
+        "column": 9,
+        "xMm": 4.75,
+        "heightNm": 0
+      },
+      {
+        "column": 10,
+        "xMm": 5.25,
+        "heightNm": 0
+      },
+      {
+        "column": 11,
+        "xMm": 5.75,
+        "heightNm": 0
+      },
+      {
+        "column": 12,
+        "xMm": 6.25,
+        "heightNm": 36
+      },
+      {
+        "column": 13,
+        "xMm": 6.75,
+        "heightNm": 36
+      },
+      {
+        "column": 14,
+        "xMm": 7.25,
+        "heightNm": 36
+      },
+      {
+        "column": 15,
+        "xMm": 7.75,
+        "heightNm": 36
+      },
+      {
+        "column": 16,
+        "xMm": 8.25,
+        "heightNm": 36
+      },
+      {
+        "column": 17,
+        "xMm": 8.75,
+        "heightNm": 36
+      },
+      {
+        "column": 18,
+        "xMm": 9.25,
+        "heightNm": 36
+      },
+      {
+        "column": 19,
+        "xMm": 9.75,
+        "heightNm": 36
+      },
+      {
+        "column": 20,
+        "xMm": 10.25,
+        "heightNm": 36
+      },
+      {
+        "column": 21,
+        "xMm": 10.75,
+        "heightNm": 36
+      },
+      {
+        "column": 22,
+        "xMm": 11.25,
+        "heightNm": 36
+      },
+      {
+        "column": 23,
+        "xMm": 11.75,
+        "heightNm": 36
+      },
+      {
+        "column": 24,
+        "xMm": 12.25,
+        "heightNm": 36
+      },
+      {
+        "column": 25,
+        "xMm": 12.75,
+        "heightNm": 36
+      },
+      {
+        "column": 26,
+        "xMm": 13.25,
+        "heightNm": 36
+      },
+      {
+        "column": 27,
+        "xMm": 13.75,
+        "heightNm": 36
+      },
+      {
+        "column": 28,
+        "xMm": 14.25,
+        "heightNm": 0
+      },
+      {
+        "column": 29,
+        "xMm": 14.75,
+        "heightNm": 0
+      },
+      {
+        "column": 30,
+        "xMm": 15.25,
+        "heightNm": 0
+      },
+      {
+        "column": 31,
+        "xMm": 15.75,
+        "heightNm": 0
+      },
+      {
+        "column": 32,
+        "xMm": 16.25,
+        "heightNm": 0
+      },
+      {
+        "column": 33,
+        "xMm": 16.75,
+        "heightNm": 0
+      },
+      {
+        "column": 34,
+        "xMm": 17.25,
+        "heightNm": 0
+      },
+      {
+        "column": 35,
+        "xMm": 17.75,
+        "heightNm": 0
+      },
+      {
+        "column": 36,
+        "xMm": 18.25,
+        "heightNm": 0
+      },
+      {
+        "column": 37,
+        "xMm": 18.75,
+        "heightNm": 0
+      },
+      {
+        "column": 38,
+        "xMm": 19.25,
+        "heightNm": 0
+      },
+      {
+        "column": 39,
+        "xMm": 19.75,
+        "heightNm": 0
+      }
+    ]
+  }
+}

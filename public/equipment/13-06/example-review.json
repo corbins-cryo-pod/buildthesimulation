@@ -1,0 +1,50 @@
+{
+  "schema": "bts.synthetic-image-review.v1",
+  "kind": "synthetic-digital-replay",
+  "sampleId": "GLA2-INERT-SYMBOL-001",
+  "revision": 1,
+  "source": "BuildTheSimulation authorial inert geometric exhibit; no acquisition, no FEM or microscopy model",
+  "imageId": "GLA2-EXH-A",
+  "basisImageId": "GLA2-EXH-A",
+  "imageIndex": 0,
+  "orientation": "native",
+  "frame": {
+    "sizePx": [
+      56,
+      56
+    ],
+    "pixelSizeNm": 2.5,
+    "rowOrigin": "top",
+    "scaleProvenance": "invented fixture coordinate scale, not vendor sampling"
+  },
+  "landmarks": {
+    "A": [
+      12,
+      20
+    ],
+    "B": [
+      36,
+      20
+    ],
+    "C": [
+      18,
+      36
+    ]
+  },
+  "point": {
+    "column": 12,
+    "row": 20,
+    "pixelIndex": 1132,
+    "centerNm": [
+      30,
+      50
+    ],
+    "rawADU": 228
+  },
+  "landmarkSeparationNm": 60,
+  "orientationDeterminantPx2": 384,
+  "displayWindowADU": [
+    0,
+    255
+  ]
+}

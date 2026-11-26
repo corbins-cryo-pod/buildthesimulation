@@ -1,0 +1,14 @@
+{
+  "schema": "bts.synthetic-pattern-archive.v1",
+  "archiveId": "ABSTRACT-SIX-TILES-001",
+  "revision": 1,
+  "provenance": "Authored static geometry exercise, not measured or used by the equipment.",
+  "grid": { "cols": 9, "rows": 7, "pitchMm": 2 },
+  "referenceId": "CARD-A",
+  "cards": [
+    {"id":"CARD-A","label":"Reference arrangement","cells":[[1,1],[1,2],[1,3],[1,4],[2,4],[3,4]]},
+    {"id":"CARD-B","label":"Translated arrangement","cells":[[4,2],[4,3],[4,4],[4,5],[5,5],[6,5]]},
+    {"id":"CARD-C","label":"Reflected arrangement","cells":[[6,2],[6,3],[6,4],[4,5],[5,5],[6,5]]},
+    {"id":"CARD-D","label":"Stored blank card","cells":[]}
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "schema": "bts.microtester.dry-spring.v1",
+  "equipment": "06-12",
+  "kind": "simulated",
+  "fixture": {
+    "id": "BTS-DRY-SPRING-01",
+    "revision": "1",
+    "gapUm": 25,
+    "beamStiffnessMnPerUm": 0.16,
+    "forceCeilingMn": 5,
+    "roundingStepMn": 0.01,
+    "stepUm": 5,
+    "maxTravelUm": 160
+  },
+  "units": {
+    "force": "mN",
+    "displacement": "µm",
+    "stiffness": "mN/µm"
+  },
+  "model": "massless quasistatic linear springs in series; dry and fictitious",
+  "result": {
+    "travelUm": 100,
+    "springK": 0.04,
+    "rows": [
+      {
+        "travelUm": 0,
+        "contact": false,
+        "totalCompressionUm": 0,
+        "idealMn": 0,
+        "displayedMn": 0,
+        "springCompressionUm": 0,
+        "beamDeflectionUm": 0,
+        "reconstructedSpringUm": 0,
+        "overload": false
+      },
+      {
+        "travelUm": 5,
+        "contact": false,
+        "totalCompressionUm": 0,
+        "idealMn": 0,
+        "displayedMn": 0,
+        "springCompressionUm": 0,
+        "beamDeflectionUm": 0,
+        "reconstructedSpringUm": 0,
+        "overload": false
+      },
+      {
+        "travelUm": 10,
+        "contact": false,
+        "totalCompressionUm": 0,
+        "idealMn": 0,
+        "displayedMn": 0,
+        "springCompressionUm": 0,
+        "beamDeflectionUm": 0,
+        "reconstructedSpringUm": 0,
+        "overload": false
+      },
+      {
+        "travelUm": 15,
+        "contact": false,
+        "totalCompressionUm": 0,
+        "idealMn": 0,
+        "displayedMn": 0,
+        "springCompressionUm": 0,
+        "beamDeflectionUm": 0,
+        "reconstructedSpringUm": 0,
+        "overload": false
+      },
+      {
+        "travelUm": 20,
+        "contact": false,
+        "totalCompressionUm": 0,
+        "idealMn": 0,
+        "displayedMn": 0,
+        "springCompressionUm": 0,
+        "beamDeflectionUm": 0,
+        "reconstructedSpringUm": 0,
+        "overload": false
+      },
+      {
+        "travelUm": 25,
+        "contact": false,
+        "totalCompressionUm": 0,
+        "idealMn": 0,
+        "displayedMn": 0,
+        "springCompressionUm": 0,
+        "beamDeflectionUm": 0,
+        "reconstructedSpringUm": 0,
+        "overload": false
+      },
+      {
+        "travelUm": 30,
+        "contact": true,
+        "totalCompressionUm": 5,
+        "idealMn": 0.16,
+        "displayedMn": 0.16,
+        "springCompressionUm": 4,
+        "beamDeflectionUm": 1,
+        "reconstructedSpringUm": 4,
+        "overload": false
+      },
+      {
+        "travelUm": 35,
+        "contact": true,
+        "totalCompressionUm": 10,
+        "idealMn": 0.32,
+        "displayedMn": 0.32,
+        "springCompressionUm": 8,
+        "beamDeflectionUm": 2,
+        "reconstructedSpringUm": 8,
+        "overload": false
+      },
+      {
+        "travelUm": 40,
+        "contact": true,
+        "totalCompressionUm": 15,
+        "idealMn": 0.48,
+        "displayedMn": 0.48,
+        "springCompressionUm": 12,
+        "beamDeflectionUm": 3,
+        "reconstructedSpringUm": 12,
+        "overload": false
+      },
+      {
+        "travelUm": 45,
+        "contact": true,
+        "totalCompressionUm": 20,
+        "idealMn": 0.64,
+        "displayedMn": 0.64,
+        "springCompressionUm": 16,
+        "beamDeflectionUm": 4,
+        "reconstructedSpringUm": 16,
+        "overload": false
+      },
+      {
+        "travelUm": 50,
+        "contact": true,
+        "totalCompressionUm": 25,
+        "idealMn": 0.8,
+        "displayedMn": 0.8,
+        "springCompressionUm": 20,
+        "beamDeflectionUm": 5,
+        "reconstructedSpringUm": 20,
+        "overload": false
+      },
+      {
+        "travelUm": 55,
+        "contact": true,
+        "totalCompressionUm": 30,
+        "idealMn": 0.96,
+        "displayedMn": 0.96,
+        "springCompressionUm": 24,
+        "beamDeflectionUm": 6,
+        "reconstructedSpringUm": 24,
+        "overload": false
+      },
+      {
+        "travelUm": 60,
+        "contact": true,
+        "totalCompressionUm": 35,
+        "idealMn": 1.12,
+        "displayedMn": 1.12,
+        "springCompressionUm": 28.000000000000004,
+        "beamDeflectionUm": 7.000000000000001,
+        "reconstructedSpringUm": 28,
+        "overload": false
+      },
+      {
+        "travelUm": 65,
+        "contact": true,
+        "totalCompressionUm": 40,
+        "idealMn": 1.28,
+        "displayedMn": 1.28,
+        "springCompressionUm": 32,
+        "beamDeflectionUm": 8,
+        "reconstructedSpringUm": 32,
+        "overload": false
+      },
+      {
+        "travelUm": 70,
+        "contact": true,
+        "totalCompressionUm": 45,
+        "idealMn": 1.44,
+        "displayedMn": 1.44,
+        "springCompressionUm": 36,
+        "beamDeflectionUm": 9,
+        "reconstructedSpringUm": 36,
+        "overload": false
+      },
+      {
+        "travelUm": 75,
+        "contact": true,
+        "totalCompressionUm": 50,
+        "idealMn": 1.6,
+        "displayedMn": 1.6,
+        "springCompressionUm": 40,
+        "beamDeflectionUm": 10,
+        "reconstructedSpringUm": 40,
+        "overload": false
+      },
+      {
+        "travelUm": 80,
+        "contact": true,
+        "totalCompressionUm": 55,
+        "idealMn": 1.76,
+        "displayedMn": 1.76,
+        "springCompressionUm": 44,
+        "beamDeflectionUm": 11,
+        "reconstructedSpringUm": 44,
+        "overload": false
+      },
+      {
+        "travelUm": 85,
+        "contact": true,
+        "totalCompressionUm": 60,
+        "idealMn": 1.92,
+        "displayedMn": 1.92,
+        "springCompressionUm": 48,
+        "beamDeflectionUm": 12,
+        "reconstructedSpringUm": 48,
+        "overload": false
+      },
+      {
+        "travelUm": 90,
+        "contact": true,
+        "totalCompressionUm": 65,
+        "idealMn": 2.08,
+        "displayedMn": 2.08,
+        "springCompressionUm": 52,
+        "beamDeflectionUm": 13,
+        "reconstructedSpringUm": 52,
+        "overload": false
+      },
+      {
+        "travelUm": 95,
+        "contact": true,
+        "totalCompressionUm": 70,
+        "idealMn": 2.24,
+        "displayedMn": 2.24,
+        "springCompressionUm": 56.00000000000001,
+        "beamDeflectionUm": 14.000000000000002,
+        "reconstructedSpringUm": 56,
+        "overload": false
+      },
+      {
+        "travelUm": 100,
+        "contact": true,
+        "totalCompressionUm": 75,
+        "idealMn": 2.4,
+        "displayedMn": 2.4,
+        "springCompressionUm": 60,
+        "beamDeflectionUm": 15,
+        "reconstructedSpringUm": 60,
+        "overload": false
+      }
+    ],
+    "fits": {
+      "effectiveMnPerUm": 0.032,
+      "springMnPerUm": 0.04
+    },
+    "peakDisplayedMn": 2.4
+  }
+}

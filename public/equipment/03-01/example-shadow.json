@@ -1,0 +1,89 @@
+{
+  "schema": "bts.ideal-light-shadow.v1",
+  "deviceId": "03-01",
+  "sampleId": "inert-disc-01",
+  "kind": "simulated geometry",
+  "revision": 1,
+  "parentRevision": 0,
+  "pocketId": "P1",
+  "placement": "seated",
+  "diameterMm": 100,
+  "radialRecessMarginMm": 2,
+  "referenceGeometry": {
+    "edgeHeightMm": 0.1,
+    "angleFromNormalDeg": 45,
+    "lateralGridMm": 0.025
+  },
+  "lightShadow": {
+    "analyticalLengthMm": 0.09999999999999999,
+    "shadowCells": 4,
+    "rasterLengthMm": 0.1,
+    "profile": [
+      {
+        "xMm": 0.0125,
+        "relativeIllumination": 0
+      },
+      {
+        "xMm": 0.037500000000000006,
+        "relativeIllumination": 0
+      },
+      {
+        "xMm": 0.0625,
+        "relativeIllumination": 0
+      },
+      {
+        "xMm": 0.08750000000000001,
+        "relativeIllumination": 0
+      },
+      {
+        "xMm": 0.1125,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.1375,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.1625,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.1875,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.21250000000000002,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.23750000000000002,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.2625,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.28750000000000003,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.3125,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.3375,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.36250000000000004,
+        "relativeIllumination": 1
+      },
+      {
+        "xMm": 0.3875,
+        "relativeIllumination": 1
+      }
+    ]
+  },
+  "provenance": "Independent parallel-light geometry worksheet; synthetic dimensionless visibility, not material or thickness data. No tool operation."
+}

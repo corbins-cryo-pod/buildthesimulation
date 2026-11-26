@@ -1,0 +1,58 @@
+[
+  {
+    "id": "wide-scale",
+    "zoom": 0.8,
+    "expected": {
+      "gridSpacingPx": 16.551724137931,
+      "scaleBarPx": 16.551724137931,
+      "raisedPositive": true,
+      "floorDisparityPx": 0
+    },
+    "actual": {
+      "gridSpacingPx": 16.551724137931046,
+      "scaleBarPx": 16.551724137931036,
+      "raisedPositive": true,
+      "floorDisparityPx": 0
+    },
+    "pass": true
+  },
+  {
+    "id": "double-scale",
+    "zoom": 1.6,
+    "expected": {
+      "gridSpacingPx": 33.103448275862,
+      "scaleBarPx": 33.103448275862,
+      "raisedPositive": true,
+      "floorDisparityPx": 0
+    },
+    "actual": {
+      "gridSpacingPx": 33.10344827586209,
+      "scaleBarPx": 33.10344827586207,
+      "raisedPositive": true,
+      "floorDisparityPx": 0
+    },
+    "pass": true
+  },
+  {
+    "id": "pointer-center",
+    "zoom": 0.8,
+    "expected": {
+      "xMm": 0,
+      "yMm": 0,
+      "zMm": 0
+    },
+    "actual": {
+      "xMm": 0,
+      "yMm": 0,
+      "zMm": 0
+    },
+    "pass": true
+  },
+  {
+    "id": "bad-zoom",
+    "zoom": 11,
+    "expected": "Choose an offered zoom setting.",
+    "actual": "Choose an offered zoom setting.",
+    "pass": true
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "schema": "bts.synthetic-drawing-notes.v1",
+  "deviceId": "13-09",
+  "kind": "original inert drawing and annotation ledger",
+  "sourceId": "inert-drawing-01",
+  "sourceRevision": 0,
+  "documentRevision": 2,
+  "drawing": {
+    "dimensionsMm": [
+      40,
+      28
+    ],
+    "frame": "origin at center, positive X right and Y up",
+    "landmarks": {
+      "upper-notch": {
+        "label": "Upper notch",
+        "xyMm": [
+          -10,
+          11
+        ]
+      },
+      "center-cross": {
+        "label": "Center reference",
+        "xyMm": [
+          0,
+          0
+        ]
+      },
+      "right-arrow": {
+        "label": "Right arrow",
+        "xyMm": [
+          13,
+          -5
+        ]
+      }
+    }
+  },
+  "notes": [
+    {
+      "ordinal": 1,
+      "parentRevision": 0,
+      "sourceId": "inert-drawing-01",
+      "feature": "upper-notch",
+      "tag": "outline-mark",
+      "xyMm": [
+        -10,
+        11
+      ]
+    },
+    {
+      "ordinal": 2,
+      "parentRevision": 1,
+      "sourceId": "inert-drawing-01",
+      "feature": "center-cross",
+      "tag": "locator-mark",
+      "xyMm": [
+        0,
+        0
+      ]
+    }
+  ],
+  "documentScope": "Documentation only. No record of a specimen, material change, process, or physical instrument."
+}

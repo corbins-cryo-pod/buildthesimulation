@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.mfcs-ez-inert-panel.v1",
+  "equipment": "06-07",
+  "model": "./mfcs-ez-dormant.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 57,
+  "bytes": 53448,
+  "triangles": 8232,
+  "hitTargets": [
+    {
+      "node": "Panel_pair_key",
+      "action": "cycle",
+      "label": "Cycle original drawing dot pairs",
+      "boundsM": {
+        "min": [
+          0.203,
+          0.046,
+          0.025
+        ],
+        "max": [
+          0.259,
+          0.062,
+          0.037
+        ]
+      }
+    },
+    {
+      "node": "Panel_mirror_key",
+      "action": "mirror",
+      "label": "Mirror the drawing horizontal coordinates",
+      "boundsM": {
+        "min": [
+          0.305,
+          0.046,
+          0.025
+        ],
+        "max": [
+          0.36100000000000004,
+          0.062,
+          0.037
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./panel.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "No moving parts. Only the independent diagram is interactive. No headset verification."
+}

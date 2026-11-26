@@ -1,0 +1,21 @@
+{
+  "schema": "bts.synthetic-envelope-comparison.v1",
+  "sampleId": "GENERIC-DIMENSION-CARD-01",
+  "revision": 1,
+  "origin": "Original immutable printed 2D dimension card. Not associated with hardware, processes or physical measurements.",
+  "axes": "Card XY; +X right, +Y up, millimeters",
+  "tag": "A",
+  "sectionMm": [
+    24,
+    15
+  ],
+  "openingMm": [
+    28,
+    17
+  ],
+  "clearancePerSideMm": [
+    2,
+    1
+  ],
+  "status": "clear"
+}

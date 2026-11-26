@@ -1,0 +1,132 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "13-02",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.41,
+      0,
+      -0.5415
+    ],
+    "max": [
+      1.1195,
+      1.75,
+      0.748
+    ]
+  },
+  "budget": {
+    "byteLength": 414424,
+    "nodes": 67,
+    "triangles": 5992
+  },
+  "actions": [
+    {
+      "node": "INSPECT_BODY",
+      "action": "inspect",
+      "value": "body",
+      "label": "Inspect body",
+      "boundsAtRestM": {
+        "min": [
+          0.6265,
+          0.95,
+          0.546
+        ],
+        "max": [
+          0.7555,
+          0.98,
+          0.556
+        ]
+      }
+    },
+    {
+      "node": "INSPECT_VOID",
+      "action": "inspect",
+      "value": "void",
+      "label": "Inspect void",
+      "boundsAtRestM": {
+        "min": [
+          0.7865,
+          0.95,
+          0.546
+        ],
+        "max": [
+          0.9155,
+          0.98,
+          0.556
+        ]
+      }
+    },
+    {
+      "node": "INSPECT_DIAGONAL",
+      "action": "inspect",
+      "value": "diagonal",
+      "label": "Inspect diagonal",
+      "boundsAtRestM": {
+        "min": [
+          0.9465,
+          0.95,
+          0.546
+        ],
+        "max": [
+          1.0755,
+          0.98,
+          0.556
+        ]
+      }
+    }
+  ],
+  "actionModule": "section.mjs",
+  "interactionNotes": "Attach a passive synthetic diagram as a texture to the +Z face of INSPECTOR_SCREEN. Documentary case is inactive. Select only body, void or chord.",
+  "verification": [
+    {
+      "node": "CABINET_ENVELOPE",
+      "axis": "x",
+      "expectedMm": 820,
+      "actualMm": 819.99999,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "CABINET_ENVELOPE",
+      "axis": "z",
+      "expectedMm": 1083,
+      "actualMm": 1082.99994,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "CROSSBEAM550_DOCUMENTARY",
+      "axis": "y",
+      "expectedMm": 1750,
+      "actualMm": 1749.99999,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "FLOOR_PAD",
+      "axis": "x",
+      "expectedMm": 80,
+      "actualMm": 80,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "FLOOR_PAD",
+      "axis": "z",
+      "expectedMm": 80,
+      "actualMm": 80,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "INSPECTOR_SCREEN",
+      "axis": "x",
+      "expectedMm": 487,
+      "actualMm": 486.99999,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "INSPECTOR_SCREEN",
+      "axis": "y",
+      "expectedMm": 307,
+      "actualMm": 307.00001,
+      "toleranceMm": 0.03
+    }
+  ]
+}

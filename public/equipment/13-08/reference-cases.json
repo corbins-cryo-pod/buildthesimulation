@@ -1,0 +1,16 @@
+{
+  "method":"Physically independent result: Pythagorean integer triples 60/80/100 and 50/120/130 mm, plus a cardinal exterior envelope from Leica's specification. Metadata must never transform authored corners or infer unknown interior.",
+  "cases":[
+    {"id":"width","expected":1.16,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":1.285,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":0.79,"tolerance":0.00001,"unit":"m"},
+    {"id":"card-a","expected":100,"tolerance":1e-10,"unit":"mm"},
+    {"id":"card-b","expected":130,"tolerance":1e-10,"unit":"mm"},
+    {"id":"card-a-edge","expected":60,"tolerance":1e-10,"unit":"mm"},
+    {"id":"card-b-edge","expected":120,"tolerance":1e-10,"unit":"mm"},
+    {"id":"keeps-corners","expected":true,"unit":"boolean"},
+    {"id":"interior-stays-unknown","expected":true,"unit":"boolean"},
+    {"id":"wrong-object-rejected","expected":true,"unit":"boolean"},
+    {"id":"physical-action-rejected","expected":true,"unit":"boolean"}
+  ]
+}

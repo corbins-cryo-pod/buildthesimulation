@@ -1,0 +1,79 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.5305,
+    0.297,
+    0.3725
+  ],
+  "meshes": 81,
+  "triangles": 13235,
+  "bytes": 717648,
+  "interaction": {
+    "Cover_handle": {
+      "action": "cover",
+      "boundsMinM": [
+        -0.0685,
+        0.277,
+        0.1315
+      ],
+      "boundsMaxM": [
+        0.0685,
+        0.297,
+        0.1525
+      ]
+    },
+    "Cover_front_rail": {
+      "action": "cover",
+      "boundsMinM": [
+        -0.259,
+        0.266,
+        0.1195
+      ],
+      "boundsMaxM": [
+        0.259,
+        0.288,
+        0.1385
+      ]
+    },
+    "Dry_band_left": {
+      "action": "check",
+      "boundsMinM": [
+        -0.055,
+        0.1635,
+        0.028
+      ],
+      "boundsMaxM": [
+        -0.041,
+        0.1665,
+        0.058
+      ]
+    },
+    "Dry_band_right": {
+      "action": "check",
+      "boundsMinM": [
+        0.041,
+        0.1635,
+        0.028
+      ],
+      "boundsMaxM": [
+        0.055,
+        0.1665,
+        0.058
+      ]
+    }
+  },
+  "cover": {
+    "node": "Visual_cover_hinge",
+    "axis": "X",
+    "visualAngleRad": [
+      -1.35,
+      0
+    ]
+  },
+  "nominalCabinetMm": [
+    530,
+    300,
+    360
+  ]
+}

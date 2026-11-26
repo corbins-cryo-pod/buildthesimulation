@@ -1,0 +1,118 @@
+{
+  "schema": "bts.tsx60086a.exterior-geometry.v1",
+  "scope": "Source dimensions and separate fixed rectangles only; no instrument performance or workflow",
+  "checks": [
+    {
+      "id": "Technical sheet nominal width",
+      "expected": 1.006,
+      "actual": 1.006,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Technical sheet nominal depth",
+      "expected": 0.96,
+      "actual": 0.96,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Technical sheet nominal height",
+      "expected": 1.981,
+      "actual": 1.9809999999999999,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Front drawing parting-line height",
+      "expected": 0.4648,
+      "actual": 0.4648,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Right hinge silhouettes",
+      "expected": 3,
+      "actual": 3,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "80×20 strip area",
+      "expected": 1600,
+      "actual": 1600,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Equal area, different perimeter",
+      "expected": 40,
+      "actual": 40,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Rotated strip exchanges axes",
+      "expected": "20,80",
+      "actual": "20,80",
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Rotation does not change area or perimeter",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "50×30 rectangle area difference",
+      "expected": -100,
+      "actual": -100,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Unequal area, same perimeter",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Square compared to itself",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Invalid selection preserves current shape",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Detached ray targets present",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

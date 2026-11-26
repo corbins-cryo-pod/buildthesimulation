@@ -1,0 +1,30 @@
+{
+  "schema": "bts.nano-footprint-chart.v1",
+  "equipment": "04-05",
+  "provenance": "nominal manufacturer housing against invented 2D rectangles; not installation or equipment data",
+  "units": "mm",
+  "model": {
+    "id": "Diener-Nano-tabletop-dormant",
+    "widthMm": 540,
+    "depthMm": 800,
+    "heightMm": 775
+  },
+  "comparison": {
+    "frame": "narrow",
+    "revision": "1",
+    "orientationDeg": 90,
+    "frameMm": [
+      650,
+      850
+    ],
+    "footprintMm": [
+      800,
+      540
+    ],
+    "signedSideMarginsMm": [
+      -75,
+      155
+    ],
+    "contained": false
+  }
+}

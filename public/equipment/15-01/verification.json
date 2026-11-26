@@ -1,0 +1,102 @@
+{
+  "schema": "bts.kopf940.static-outline.verification.v1",
+  "scope": "Nominal plate and separate generic triangle arithmetic only; no positioning or device calibration",
+  "checks": [
+    {
+      "id": "Documentary plate width",
+      "expected": 0.254,
+      "actual": 0.254,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Documentary plate depth",
+      "expected": 0.35306,
+      "actual": 0.35306,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Separated blank console windows",
+      "expected": 3,
+      "actual": 3,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Model supported read-only exterior",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Independent right triangle area",
+      "expected": 24,
+      "actual": 24,
+      "unit": "units²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Right triangle perimeter",
+      "expected": 24,
+      "actual": 24,
+      "unit": "units",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Wide triangle independent Heron oracle",
+      "expected": 21.3307290077,
+      "actual": 21.330729007701542,
+      "unit": "units²",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Triangle on exact inequality boundary",
+      "expected": 0,
+      "actual": 0,
+      "unit": "units²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Impossible shape refuses an area",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Impossible shape gap",
+      "expected": 1,
+      "actual": 1,
+      "unit": "unit",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Hide labels preserves the same area",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Detached ray targets present",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

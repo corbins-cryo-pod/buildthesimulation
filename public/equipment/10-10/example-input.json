@@ -1,0 +1,91 @@
+{
+  "schema": "buildthesimulation.synthetic-counter-blocks.v1",
+  "streamId": "dummy-ramp-2ch",
+  "revision": 1,
+  "provenance": "synthetic",
+  "sampleRateHz": 1000,
+  "voltageUnit": "mV",
+  "firstCounter": 1000,
+  "blockSize": 4,
+  "blockCount": 4,
+  "channelIds": [
+    "A",
+    "B"
+  ],
+  "blocks": [
+    {
+      "id": "blk-2",
+      "startCounter": 1008,
+      "samples": [
+        [
+          8,
+          108
+        ],
+        [
+          9,
+          109
+        ],
+        [
+          10,
+          110
+        ],
+        [
+          11,
+          111
+        ]
+      ]
+    },
+    {
+      "id": "blk-0",
+      "startCounter": 1000,
+      "samples": [
+        [
+          0,
+          100
+        ],
+        [
+          1,
+          101
+        ],
+        [
+          2,
+          102
+        ],
+        [
+          3,
+          103
+        ]
+      ]
+    },
+    {
+      "id": "blk-3",
+      "startCounter": 1012,
+      "samples": [
+        [
+          12,
+          112
+        ],
+        [
+          13,
+          113
+        ],
+        [
+          14,
+          114
+        ],
+        [
+          15,
+          115
+        ]
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "edge-01",
+      "counter": 1010,
+      "line": "M1",
+      "edge": "rising"
+    }
+  ]
+}

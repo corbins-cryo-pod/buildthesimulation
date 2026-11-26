@@ -1,0 +1,60 @@
+[
+  {
+    "id": "left-station",
+    "station": "left",
+    "expected": {
+      "xMm": 10,
+      "lowerMm": 8,
+      "upperMm": 20,
+      "spacingMm": 12
+    },
+    "actual": {
+      "xMm": 10,
+      "lowerMm": 8,
+      "upperMm": 20,
+      "spacingMm": 12
+    },
+    "pass": true
+  },
+  {
+    "id": "middle-station",
+    "station": "center",
+    "expected": {
+      "xMm": 30,
+      "lowerMm": 9,
+      "upperMm": 24,
+      "spacingMm": 15
+    },
+    "actual": {
+      "xMm": 30,
+      "lowerMm": 9,
+      "upperMm": 24,
+      "spacingMm": 15
+    },
+    "pass": true
+  },
+  {
+    "id": "right-station",
+    "station": "right",
+    "expected": {
+      "xMm": 50,
+      "lowerMm": 10,
+      "upperMm": 28,
+      "spacingMm": 18
+    },
+    "actual": {
+      "xMm": 50,
+      "lowerMm": 10,
+      "upperMm": 28,
+      "spacingMm": 18
+    },
+    "pass": true
+  },
+  {
+    "id": "invalid-station",
+    "station": "missing",
+    "expected": "Choose a labeled drawing station.",
+    "actual": "Choose a labeled drawing station.",
+    "pass": true
+  }
+]

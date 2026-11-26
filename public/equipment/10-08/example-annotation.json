@@ -1,0 +1,86 @@
+{
+  "schema": "bts.facet-annotation.report.v1",
+  "deviceId": "10-08",
+  "origin": "pre-authored-synthetic-macro-reference",
+  "fixtureId": "WEDGE-A",
+  "fixtureRevision": "drawn-facets-r1",
+  "revision": 1,
+  "parentRevision": null,
+  "units": {
+    "points": "mm",
+    "interiorDeg": "degrees"
+  },
+  "frame": "2D XY in artificial block plane; angle between undirected fitted lines in [0, 90]",
+  "interiorDeg": 36.86989764584401,
+  "sourceTracks": {
+    "base": [
+      [
+        -32,
+        0
+      ],
+      [
+        -24,
+        0
+      ],
+      [
+        -16,
+        0
+      ],
+      [
+        -8,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "facet": [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        16,
+        12
+      ],
+      [
+        24,
+        18
+      ],
+      [
+        32,
+        24
+      ]
+    ]
+  },
+  "fittedLines": {
+    "base": {
+      "centroidMm": [
+        -16,
+        0
+      ],
+      "direction": [
+        1,
+        0
+      ],
+      "rmsOrthogonalMm": 0
+    },
+    "facet": {
+      "centroidMm": [
+        16,
+        12
+      ],
+      "direction": [
+        0.8,
+        0.6
+      ],
+      "rmsOrthogonalMm": 1.2560739669470201e-15
+    }
+  },
+  "scope": "Passive inspection only, not a fabricated tip, beveling model, or resistance estimate."
+}

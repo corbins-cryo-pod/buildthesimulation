@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Simulated ribbon layout assembly",
+  "required": [
+    "schema",
+    "kind",
+    "deviceId",
+    "sampleId",
+    "inputRevision",
+    "revision",
+    "units",
+    "pads",
+    "points",
+    "gapUm",
+    "layoutPass",
+    "connectivity",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.ribbon-clearance.v1"
+    },
+    "kind": {
+      "const": "simulated"
+    },
+    "deviceId": {
+      "const": "08-02"
+    },
+    "gapUm": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Signed vertical clearance in µm if obstacle overlaps, null otherwise."
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "xUm",
+          "yUm",
+          "centerZUm",
+          "lowerZUm",
+          "upperZUm"
+        ]
+      }
+    },
+    "connectivity": {
+      "type": "object",
+      "description": "Geometry-eligible pad edge only, not measured electrical continuity."
+    }
+  }
+}

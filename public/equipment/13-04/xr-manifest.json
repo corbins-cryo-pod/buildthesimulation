@@ -1,0 +1,34 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "13-04",
+  "asset": "/equipment/13-04/volumescope2-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator; preauthored stack metric coordinates are separate, in micrometers.",
+  "metrics": {
+    "bytes": 90416,
+    "triangles": 936,
+    "draws": 44
+  },
+  "scope": "Passive teaching plane selection only. No immersive headset test.",
+  "nodes": [
+    {
+      "node": "plane_next_overlay",
+      "label": "Cycle preauthored plane",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.109,
+        0.015,
+        0.052
+      ]
+    },
+    {
+      "node": "stack_display_anchor",
+      "label": "Passive live teaching display texture",
+      "boundsM": [
+        0.5169397661,
+        0.3230873538
+      ]
+    }
+  ]
+}

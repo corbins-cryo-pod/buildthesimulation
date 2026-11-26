@@ -1,0 +1,110 @@
+{
+  "schema": "bts.verification.ace600.v1",
+  "scope": "Geometric benchmark only; no experimental metrology or hardware validation",
+  "checks": [
+    {
+      "id": "Cabinet width",
+      "expected": 0.3,
+      "actual": 0.3,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Cabinet depth",
+      "expected": 0.54,
+      "actual": 0.54,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Cabinet height",
+      "expected": 0.64,
+      "actual": 0.64,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Central raised bins",
+      "expected": 16,
+      "actual": 16,
+      "unit": "bins",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Central surrounding bins",
+      "expected": 24,
+      "actual": 24,
+      "unit": "bins",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Central edge samples",
+      "expected": "0,36,36,0",
+      "actual": "0,36,36,0",
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank row raised bins",
+      "expected": 0,
+      "actual": 0,
+      "unit": "bins",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Half-open right edge",
+      "expected": 0,
+      "actual": 0,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Point-to-reference step",
+      "expected": 36,
+      "actual": 36,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Unraised comparison remains zero",
+      "expected": 0,
+      "actual": 0,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Invalid row rejected without state or revision change",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Named passive 3D targets",
+      "expected": 3,
+      "actual": 3,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "GLB is lightweight",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

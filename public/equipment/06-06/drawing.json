@@ -1,0 +1,10 @@
+{
+  "schema":"bts.synthetic-drawing-ruler.v1",
+  "drawingId":"NSL-GEOMETRIC-PLATE-001",
+  "revision":1,
+  "provenance":"BuildTheSimulation original abstract drawing, unrelated to any device or specimen",
+  "frame":{"widthPx":81,"heightPx":81,"pixelSizeMm":0.25,"origin":"upper-left pixel center","+column":"right","+row":"down"},
+  "points":{"A":[16,20],"B":[48,44],"C":[48,20]},
+  "views":[{"id":"BASE","orientation":"native"},{"id":"R90","orientation":"clockwise-90"}],
+  "pairs":["AB","AC","BC"]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "bts.dry-basket-audit.v1",
+  "deviceId": "16-10",
+  "kind": "simulated bookkeeping",
+  "sampleId": "inert-coupon-01",
+  "revision": 2,
+  "parentRevision": 1,
+  "fitRevision": 1,
+  "plannedVirtualS": 60,
+  "elapsedVirtualS": 20,
+  "status": "interrupted",
+  "history": [
+    {
+      "event": "begin",
+      "elapsedVirtualS": 0,
+      "status": "in-progress"
+    },
+    {
+      "event": "step",
+      "elapsedVirtualS": 8,
+      "status": "in-progress"
+    },
+    {
+      "event": "step",
+      "elapsedVirtualS": 20,
+      "status": "in-progress"
+    },
+    {
+      "event": "interrupt",
+      "elapsedVirtualS": 20,
+      "status": "interrupted"
+    }
+  ],
+  "completedCycleEntries": [],
+  "cleanliness": "not evaluated",
+  "physicalCycleRan": false
+}

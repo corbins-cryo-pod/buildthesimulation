@@ -1,0 +1,26 @@
+---
+import Layout from '../../../../layouts/Layout.astro';import '../../../../styles/equipment.css';
+const d='/equipment/07-07/',doc='https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0019567-Countess-3FL-Automated-Cell-Counter-UG.pdf';
+---
+<Layout pageTitle="Invitrogen Countess 3 FL exterior and independent badge-count cards" description="Inspect the sealed Countess 3 FL cabinet and compare two fixed toy badge diagrams on a separate stand." wide={true}>
+<article class="equipment" id="countess"><nav class="eq-nav"><a href="/simulations/equipment/07-07/">← Equipment 07-07</a><a href="/simulations/equipment/">Register</a><a href="#count-evidence">References and checks</a></nav>
+<header class="eq-mast"><p class="eq-meta">07-07 / SEALED DOCUMENTARY EXTERIOR · DETACHED DIAGRAMS</p><h2>Four squares, but how many connected groups?</h2><p class="eq-lede">Orbit the unpowered Countess 3 FL. The separate teaching stand compares two authored pixel diagrams made from the same four square badges.</p></header>
+<div class="cnt-cols"><section><h3>Sealed Countess exterior</h3><canvas id="count-model" aria-label="Orbitable Countess 3 FL cabinet and unrelated toy badge stand"></canvas><p id="count-viewstatus" role="status">Loading metric GLB…</p><button id="count-front">Reset overview</button><button id="count-rear">Rear exterior</button><button id="count-board">Detached card</button></section>
+<section><h3>Offline graphic cards</h3><label>Fixed card <select id="count-card"><option value="isolated">A · four separate squares</option><option value="touching">B · two edges touch</option></select></label><button id="count-next">Switch card</button>
+<canvas id="count-pattern" width="48" height="32" role="img" aria-label="Toy raster of square badges, each connected group shown in its own color"></canvas>
+<p id="count-measure" role="status"></p><p id="count-detail"></p><p>Different colors indicate separate connected groups. Four authored squares still cover 100 pixels in both cards. Two touching square edges belong to a single group, so shape count and connected group count differ.</p>
+<button id="count-export">Download the toy group summary</button><p><a href={d+'example-count.json'}>Example: touching card output</a>. No acquisition or result is associated with the case.</p></section></div>
+<section id="count-evidence"><h3>Selected exterior and check</h3><div class="cnt-cols">
+<figure><img src={d+'station.webp'} alt="Original Countess 3 FL case with blank fascia and unrelated badge board"/><figcaption>Original front quarter, catalog AMQAF2000. The <a href={doc+'#page=1'}>Invitrogen document MAN0019567 revision F cover photo</a> establishes the sloped dark face, indigo trim, white exterior, and closed silhouette.</figcaption></figure>
+<figure><img src={d+'rear.webp'} alt="Original passive rear housing with simplified rear detail"/><figcaption>Original comparison angle. Geometry is anchored to <a href={doc+'#page=85'}>printed p. 85, Physical characteristics</a>. Rear panel, edges, recess and feet are inferred; the front has no active insertion or controls.</figcaption></figure></div>
+<table><thead><tr><th>Check</th><th>Expected</th><th>Actual / tolerance</th></tr></thead><tbody>
+<tr><td>Cabinet W × H × D</td><td>243.84 × 238.76 × 170.18 mm (9.6 × 9.4 × 6.7 in)</td><td>Within 1.5 mm in GLB, not an as-built survey</td></tr><tr><td>A: four 5 × 5 squares with gaps</td><td>4 groups, 25 px each; 100 px total</td><td>Exact</td></tr><tr><td>B: two share an edge</td><td>3 groups, 50 / 25 / 25 px; 100 px total</td><td>Exact</td></tr></tbody></table>
+<p>Starting at each unvisited foreground pixel, the toy algorithm follows connected horizontal and vertical pixel edges. Fixed geometric cards only; no real image entry, cells, treatment, calibrated volume, specimen, settings, acquisition, or preparation. The register’s original instrument acceptance is not implemented.</p><p><a href={d+'build-model.py'}>Editable Blender source</a> · <a href={d+'countess-3-fl.glb'}>Metric GLB</a> · <a href={d+'count-board.mjs'}>Toy cards, actions and report</a> · <a href={d+'vr.json'}>VR target and bounds</a>. Headset use not verified.</p></section></article></Layout>
+<script>import '../../../../lib/equipment/07-07/client.mjs';</script>
+<style is:global>
+#countess .cnt-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem}#countess section{margin:1rem 0;padding:1rem;border:1px solid var(--border);min-width:0}
+#countess :is(button,select){font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:.4rem;margin:.2rem .25rem .2rem 0;max-width:100%}#countess button{cursor:pointer}#countess :is(button,select):focus-visible{outline:2px solid #b28d5e}
+#count-model{width:100%;height:354px;display:block;touch-action:none}#count-pattern{width:min(100%,360px);height:auto;display:block;margin:.5rem auto;image-rendering:pixelated}#countess figure{margin:.5rem 0}#countess figure img{width:100%}
+#countess table{width:100%;font-size:.94rem;border-collapse:collapse;text-align:left}#countess td,#countess th{border-bottom:1px solid var(--border);padding:.35rem}
+@media(max-width:850px){#countess .cnt-cols{grid-template-columns:minmax(0,1fr)}#count-model{height:282px}}
+</style>

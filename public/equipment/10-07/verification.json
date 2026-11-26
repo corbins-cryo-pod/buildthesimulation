@@ -1,0 +1,134 @@
+[
+  {
+    "id": "rotated-axis",
+    "inputs": {
+      "xMm": 3,
+      "yMm": 0,
+      "zMm": 0,
+      "yawDeg": 90
+    },
+    "expected": {
+      "tipSampleMm": [
+        4,
+        1,
+        1
+      ],
+      "blockedAxes": []
+    },
+    "actual": {
+      "tipSampleMm": [
+        4,
+        1,
+        1
+      ],
+      "blockedAxes": []
+    },
+    "pass": true
+  },
+  {
+    "id": "positive-bound",
+    "inputs": {
+      "xMm": 40,
+      "yMm": 0,
+      "zMm": 0,
+      "yawDeg": 90
+    },
+    "expected": {
+      "tipSampleMm": [
+        4,
+        10.5,
+        1
+      ],
+      "appliedStageMm": [
+        12.5,
+        0,
+        0
+      ],
+      "blockedAxes": [
+        "X"
+      ]
+    },
+    "actual": {
+      "tipSampleMm": [
+        4,
+        10.5,
+        1
+      ],
+      "appliedStageMm": [
+        12.5,
+        0,
+        0
+      ],
+      "blockedAxes": [
+        "X"
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "negative-z",
+    "inputs": {
+      "xMm": 0,
+      "yMm": 0,
+      "zMm": -21,
+      "yawDeg": 0
+    },
+    "expected": {
+      "tipSampleMm": [
+        4,
+        -2,
+        -11.5
+      ],
+      "appliedStageMm": [
+        0,
+        0,
+        -12.5
+      ],
+      "blockedAxes": [
+        "Z"
+      ]
+    },
+    "actual": {
+      "tipSampleMm": [
+        4,
+        -2,
+        -11.5
+      ],
+      "appliedStageMm": [
+        0,
+        0,
+        -12.5
+      ],
+      "blockedAxes": [
+        "Z"
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "zero-frame",
+    "inputs": {
+      "xMm": 0,
+      "yMm": 0,
+      "zMm": 0,
+      "yawDeg": 180
+    },
+    "expected": {
+      "tipSampleMm": [
+        4,
+        -2,
+        1
+      ],
+      "blockedAxes": []
+    },
+    "actual": {
+      "tipSampleMm": [
+        4,
+        -2,
+        1
+      ],
+      "blockedAxes": []
+    },
+    "pass": true
+  }
+]

@@ -1,0 +1,38 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/13-03/references.json';
+import verified from '../../../../../public/equipment/13-03/verification.json';
+const a='/equipment/13-03/';
+---
+<Layout pageTitle="Helios 5 Hydra CX · Documentary exhibit" subtitle="" description="Inspect a dormant Helios 5 Hydra CX and view the measured geometry of a sealed synthetic cavity." wide={true}>
+<article class="equipment hy1303">
+<nav class="eq-nav"><a href="/simulations/equipment/13-03/">← Equipment 13-03</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">13-03 / Documentary shell and passive geometry lookup</span><h2>Helios 5 Hydra CX · Inert cavity viewer</h2><p>Inspect the closed instrument exterior. Use the separate workstation to look at a pre-existing void in an inert digital block and compare top-down and cross-section dimensions. Selecting a section never changes the block.</p></header>
+<div class="hy-grid">
+<section class="hy-card"><h3>Dormant instrument and viewer desk</h3><div class="hy-bar"><button data-view="whole">Whole exhibit</button><button data-view="front">Cabinet and columns</button><button data-view="desk">Display desk</button><button data-view="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="hy-camera"><canvas id="hydra-model" aria-label="Closed Helios 5 Hydra CX with an angled exterior and a separate black dual-monitor digital viewer"></canvas></div>
+<p id="asset" class="hy-note" role="status">Loading metre-scale GLB…</p><p class="hy-note">Drag or pinch to inspect. In 3D, the display screen switches sections; the desk keys center the section or measure it. The instrument itself remains sealed and unpowered.</p></section>
+<section class="hy-card"><h3>Read-only cavity geometry</h3>
+<div class="hy-bar"><button id="xy" aria-pressed="true">Top-down XY</button><button id="xz" aria-pressed="false">Cross-section XZ</button><button id="center">Center section</button></div>
+<div class="hy-bar"><label>Section index <input id="slice" type="range" min="0" max="23" step="1" value="10" /></label><output id="position">Z = 21 µm</output></div>
+<canvas id="section" width="48" height="32" aria-label="Digital cavity mask, dark cavity on light solid"></canvas>
+<p id="axes" class="hy-note">48 × 32 voxels · 2 µm per voxel.</p>
+<div class="hy-bar"><button id="measure" class="primary">Measure cavity</button><button id="reset">Reset</button></div>
+<p id="status" role="status" aria-live="polite">Top-down central section ready.</p>
+<div class="hy-bar"><button id="json">Export geometry JSON</button><button id="png">Download section PNG</button><a href={a+'example-section.json'}>Example result</a></div></section></div>
+<section id="evidence"><h3>References and independent checks</h3>
+<figure class="hy-fig"><img src={a+'reference-elevation.svg'} alt="Original exterior drawing identifying the upper housings and depicting distinct sections of a pre-existing void" loading="lazy"/><figcaption>Original exterior drawing and digital bar-free sections. No operational geometry or manufacturer CAD reproduced.</figcaption></figure>
+<ul>{refs.references.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>A published <b>379 mm</b> chamber inside width sets two measurement datum nodes. Exterior door, support cabinet, columns, and desk were estimated from reference photos and are not installation dimensions. There is no chamber access, physical sample handling, operating or material removal mode.</p>
+<p>The immutable test fixture is a 96 × 64 × 48 µm digital block with isotropic 2 µm voxels and one pre-existing rectangular void. Voxel centers lie half a voxel from cell edges. Area is occupied void count × 4 µm² within the selected section. Volume is the sum of all original void voxel counts × 8 µm³. The mask export and JSON retain the original block ID and revision, plane, units and measured bounds. It is not an acquired microscope image or the register's planned removal model.</p>
+<div class="hy-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th>{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(8)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model</a> · <a href={a+'hydra-cx-display.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Reference notes</a> · <a href={a+'vr-station.json'}>VR action manifest</a> · <a href={a+'sections.mjs'}>Independent geometry core</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/13-03/client.mjs';</script>
+<style>
+.hy1303{--hy-rule:color-mix(in srgb,currentColor 27%,transparent);max-width:1280px;margin:auto}.hy-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.hy-card{min-width:0;border:1px solid var(--hy-rule);padding:.85rem;margin:.8rem 0}.hy-card h3{margin:.21rem 0 .6rem}
+.hy-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.hy-bar,.hy-note,.hy-fig figcaption{font:.86rem/1.4 system-ui,sans-serif}.hy1303 :is(button,input){font:inherit;accent-color:#426d60}.hy1303 button{padding:.39rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--hy-rule);border-radius:3px;min-height:36px;cursor:pointer}.hy1303 :is(.primary,button[aria-pressed=true]){background:#34594f;color:#fff}
+.hy-camera{aspect-ratio:1.43;background:#293f43}.hy-camera canvas{width:100%;height:100%;display:block;touch-action:none}.hy1303 #section{display:block;width:100%;height:auto;max-width:480px;image-rendering:pixelated;background:#213842}
+.hy-table{overflow:auto}.hy-table table{width:100%;border-collapse:collapse}.hy-table :is(td,th){border-bottom:1px solid var(--hy-rule);padding:.44rem;text-align:left}.hy-fig{margin:1rem 0;max-width:620px}.hy-fig img{width:100%;height:auto;display:block}.hy-fig figcaption{margin:.38rem 0}
+@media(max-width:840px){.hy-grid{grid-template-columns:1fr}}
+</style>

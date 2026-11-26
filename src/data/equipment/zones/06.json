@@ -15,20 +15,25 @@
     "inputs": "Scaffold mesh, voxel kernel, hatch path and calibrated coordinate transform",
     "outputs": "Scaffold revision with predicted solid volume, voxel grid and unresolved-feature flags",
     "acceptance": "Render two parallel rods at successively wider separations. Resolve two components when their modeled voxel footprints separate and recover center spacing to within one voxel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built, photo-based dormant exterior with proxy scale",
+    "simulationStatus": "Read-only detached geometry ruler; no manufacturing model",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
     "related": [
       [
         "Biohybrid Neural Interface Laboratory",
         "/simulations/biohybrid-interface/"
+      ],
+      [
+        "Documentary exterior sources and drawing checks",
+        "/simulations/equipment/06-01/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/06-01/simulator/"
   },
   {
     "id": "06-02",
     "name": "Extrusion bioprinter",
-    "model": "CELLINK BIO X6",
+    "model": "CELLINK BIO X6 Gen 3 (closed exterior)",
     "evidence": "B",
     "priority": "P1",
     "page": 21,
@@ -41,9 +46,10 @@
     "inputs": "Labeled toolpaths, nozzle footprints, material IDs and scaffold carrier",
     "outputs": "Scaffold revision with strand geometry, material labels and per-material deposited volume",
     "acceptance": "Print two synthetic lines with different tool assignments. Check their centerlines, preserve material order at crossings and compare each straight strand volume with cross-section times length.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric Gen 3 outer envelope; dormant exterior only",
+    "simulationStatus": "Independent fixed signed-ruler illustration only; no fabrication or device operation",
+    "integrationStatus": "Interactive exterior view, detached generic ruler and JSON export",
+    "simulator": "/simulations/equipment/06-02/simulator/"
   },
   {
     "id": "06-03",
@@ -61,9 +67,10 @@
     "inputs": "Binary slice masks, layer spacing, virtual exposure-response curve and carrier ID",
     "outputs": "Construct revision with predicted solid mask per layer and spatial resolution",
     "acceptance": "Expose a three-layer resolution staircase with an all-dark control layer. Its three footprints must match the input at the ideal threshold and the dark layer must remain empty.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: nominal metric LUMEN X Gen 3 dormant enclosure",
+    "simulationStatus": "First pass: detached abstract readout; fabrication outside scope",
+    "integrationStatus": "Linked: documentary viewer and diagram JSON",
+    "simulator": "/simulations/equipment/06-03/simulator/"
   },
   {
     "id": "06-04",
@@ -79,9 +86,10 @@
     "inputs": "Fixture mesh, build orientation, layer spacing, support geometry and documented build envelope",
     "outputs": "Sliced build job, support intersections and out-of-envelope flags",
     "acceptance": "Slice an axis-aligned rectangular block of height exactly ten layers. Recover ten occupied slices and flag the same block when translated past a build boundary.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: stationary standard Form 4 exterior, nominal size verified",
+    "simulationStatus": "First pass: passive detached clearance only; actual production acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable metric GLB, detached VR action and JSON example",
+    "simulator": "/simulations/equipment/06-04/simulator/"
   },
   {
     "id": "06-05",
@@ -99,9 +107,10 @@
     "inputs": "Collector frame, axial orientation distribution, length distribution and random seed",
     "outputs": "Scaffold revision containing fiber centerlines and a measured orientation histogram",
     "acceptance": "Generate isotropic and aligned planar fixtures. Their axial order magnitudes should approach zero and one respectively within the declared finite-sample tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass original sealed metric NE200 exterior",
+    "simulationStatus": "Dormant exterior and detached equal-area rectangle exercise",
+    "integrationStatus": "Standalone viewer; no fabrication or instrument connection",
+    "simulator": "/simulations/equipment/06-05/simulator/"
   },
   {
     "id": "06-06",
@@ -119,9 +128,10 @@
     "inputs": "Collector travel axis, sheet extent, synthetic fiber density field and random seed",
     "outputs": "Sheet revision with fiber density by area and collector-frame orientation map",
     "acceptance": "Generate a sheet with a known two-band density ratio. Recover that ratio within sampling uncertainty and rotate the map with the collector frame.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed documentary metric exterior; published nominal envelope",
+    "simulationStatus": "Detached abstract drawing ruler only; no process model",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/06-06/simulator/"
   },
   {
     "id": "06-07",
@@ -140,15 +150,20 @@
     "inputs": "Chip channel graph, hydraulic resistances, pressure boundary values and reservoir volumes",
     "outputs": "Run record with pressure, branch flow and volume-based residence time",
     "acceptance": "Use two identical parallel channels between fixed-pressure reservoirs. Each must carry half the total flow, satisfy Q = Δp/R and give equal residence times.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built, documented nominal MFCS-EZ enclosure",
+    "simulationStatus": "Detached inert drafting comparison; no flow or control model",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
     "related": [
       [
         "Biohybrid Neural Interface Laboratory",
         "/simulations/biohybrid-interface/"
+      ],
+      [
+        "Documentary exterior and drawing checks",
+        "/simulations/equipment/06-07/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/06-07/simulator/"
   },
   {
     "id": "06-08",
@@ -167,14 +182,15 @@
     "inputs": "Module-to-channel map, flow target, sensor readings and calibrated pressure limits",
     "outputs": "Controller log with commanded pressure, measured flow, settling error and limit flags",
     "acceptance": "Drive a known synthetic hydraulic resistance with a reachable target, then an unreachable one. Check settling against the specified controller tolerance and pressure limiting for the second case.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: dimensioned original standalone Flow EZ shell",
+    "simulationStatus": "First pass: immutable detached drawing; hydraulic operation outside scope",
+    "integrationStatus": "Linked: documentary shell and geometric JSON",
+    "simulator": "/simulations/equipment/06-08/simulator/"
   },
   {
     "id": "06-09",
     "name": "Syringe pump",
-    "model": "New Era NE-1000 (confirm exact pump model)",
+    "model": "New Era NE-1000 Rev A (bare chassis)",
     "evidence": "B",
     "priority": "P1",
     "page": 23,
@@ -187,9 +203,10 @@
     "inputs": "Syringe bore, plunger travel, remaining volume and connection to a virtual channel",
     "outputs": "Dispense event with delivered volume, remaining inventory and line status",
     "acceptance": "Advance a cylindrical syringe by a known displacement. Delivered volume must equal bore area times travel until empty, and repeated requests cannot dispense more than the initial inventory.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric NE-1000 bare enclosure only",
+    "simulationStatus": "Detached inert rectangle comparison; no pump operation or delivery",
+    "integrationStatus": "Interactive exterior and detached immutable dimension export",
+    "simulator": "/simulations/equipment/06-09/simulator/"
   },
   {
     "id": "06-10",
@@ -207,9 +224,10 @@
     "inputs": "Mold relief mesh, casting plane, port locations and bond alignment transform",
     "outputs": "Replica revision with channel geometry, port graph, bond state and defect annotations",
     "acceptance": "Invert a rectangular raised master feature. The replica must contain a recess of equal ideal depth and width. An intentionally misaligned port must fail the connectivity check.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original metric dry-table concept, no installed instrument claim",
+    "simulationStatus": "Static furniture and detached geometric footprint check",
+    "integrationStatus": "Standalone viewer; no fabrication workflow or station linkage",
+    "simulator": "/simulations/equipment/06-10/simulator/"
   },
   {
     "id": "06-11",
@@ -227,9 +245,10 @@
     "inputs": "Cast-part ID, logged chamber temperature, initial part temperature and optional material calibration",
     "outputs": "Thermal history linked to the casting and a cure-state estimate when calibration exists",
     "acceptance": "Replay a constant chamber-temperature step with a first-order thermal fixture. Match its analytic time constant and leave quantitative cure unknown when the material curve is absent.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed solid-door documentary GLB; vendor envelope checked",
+    "simulationStatus": "Detached synthetic projection exercise only; no heating or cure model",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/06-11/simulator/"
   },
   {
     "id": "06-12",
@@ -247,8 +266,15 @@
     "inputs": "Specimen ID, displacement history, indenter geometry and force calibration",
     "outputs": "Measurement record with force–displacement, creep trace when available and stiffness estimate",
     "acceptance": "Load a virtual linear spring of known stiffness. After contact, recover the slope within the declared sensor tolerance and report zero load before contact.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, nominal metric G2 model with synthetic dry fixture",
+    "simulationStatus": "Verified ideal dry spring contact and beam compensation; no creep model",
+    "integrationStatus": "Standalone viewer and dry force/displacement JSON/CSV",
+    "simulator": "/simulations/equipment/06-12/simulator/",
+    "related": [
+      [
+        "G2 references and independent spring checks",
+        "/simulations/equipment/06-12/simulator/#evidence"
+      ]
+    ]
   }
 ]

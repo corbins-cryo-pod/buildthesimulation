@@ -1,0 +1,44 @@
+{
+  "schema": "bts.tsx60086a.detached-drawing.v1",
+  "equipment": "07-14",
+  "reference": {
+    "id": "BTS-FIXED-RECTANGLES-01",
+    "revision": "1",
+    "shapes": {
+      "strip": [
+        80,
+        20
+      ],
+      "rectangle": [
+        50,
+        30
+      ],
+      "square": [
+        40,
+        40
+      ]
+    }
+  },
+  "units": {
+    "length": "mm",
+    "area": "mm²"
+  },
+  "provenance": "unrelated original fixed-shape drawing; no cabinet or inventory data",
+  "comparison": {
+    "shape": "strip",
+    "degrees": 0,
+    "originalDimensionsMm": [
+      80,
+      20
+    ],
+    "displayDimensionsMm": [
+      80,
+      20
+    ],
+    "areaMm2": 1600,
+    "perimeterMm": 200,
+    "differenceAreaMm2": 0,
+    "differencePerimeterMm": 40,
+    "equalArea": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "equipmentId":"06-11",
+  "configuration":"Jeio Tech Lab Companion OF-12G solid door, catalog AAH12166U; verified geometry envelope only",
+  "scope":"Dormant closed model and fixed detached synthetic viewing geometry",
+  "input":{"schema":"bts.synthetic-projection-cards.v1","exhibitId":"OF12G-OPTICAL-ILLUSTRATION-001","lengthUnit":"mm","cardSizeMm":[40,30],"views":["PARALLEL","PERSPECTIVE"],"poses":"Two immutable front-parallel cards, nominal depth 200 and 400 mm"},
+  "output":{"schema":"bts.synthetic-projection-review.v1","fields":"Original and projected lengths, source card IDs and exhibit revision, projection factors and near/far width ratio","physicalClaim":false},
+  "limits":["No device control, heating, curing, vacuum, settings or sample data","Not a real-camera model, physical calibration, acquisition or headset validation"]
+}

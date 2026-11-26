@@ -1,0 +1,80 @@
+{
+  "triangles": 1580,
+  "draws": 28,
+  "nodes": 9,
+  "bytes": 103416,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "drawing_display": {
+      "at": [
+        0.615,
+        1.109,
+        0.02
+      ],
+      "extent": [
+        0.399,
+        0.246,
+        0.047
+      ],
+      "action": "view",
+      "label": "Read the current detached triangle side"
+    },
+    "select_AB": {
+      "at": [
+        0.469,
+        0.81,
+        0.239
+      ],
+      "extent": [
+        0.094,
+        0.032,
+        0.069
+      ],
+      "action": "select:AB",
+      "label": "Read immutable segment AB"
+    },
+    "select_BC": {
+      "at": [
+        0.615,
+        0.81,
+        0.239
+      ],
+      "extent": [
+        0.094,
+        0.032,
+        0.069
+      ],
+      "action": "select:BC",
+      "label": "Read immutable segment BC"
+    },
+    "select_CA": {
+      "at": [
+        0.763,
+        0.81,
+        0.239
+      ],
+      "extent": [
+        0.094,
+        0.032,
+        0.069
+      ],
+      "action": "select:CA",
+      "label": "Read immutable segment CA"
+    },
+    "opaque_front": {
+      "at": [
+        -0.242,
+        1.0090000000000001,
+        0.26899999999999996
+      ],
+      "extent": [
+        0.445,
+        0.343,
+        0.009
+      ],
+      "label": "Sealed opaque exterior, not interactive"
+    }
+  }
+}

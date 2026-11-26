@@ -1,0 +1,15 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"16-09","model":"IKA C-MAG HS 7 S1 (3581201)",
+ "frame":{"units":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor"},
+ "parts":{"device":"device_body","plate":"ceramic_plate","vessel":"inert_vessel","probe":"virtual_probe","rotor":"stir_bar","display":"display_window","heaterLamp":"heater_led","hotLamp":"hot_flag"},"ports":["port_mains","port_contact_probe","port_rod_mount"],
+ "actions":[
+  {"id":"heating","node":"heat_knob","action":"heat","label":"Toggle synthetic heating boundary","sizeM":[0.037,0.039,0.044]},
+  {"id":"mixing","node":"stir_knob","action":"stir","label":"Toggle simulated stirring","sizeM":[0.037,0.039,0.044]},
+  {"id":"standby","node":"power_switch","action":"power","label":"Set virtual power or standby","sizeM":[0.035,0.037,0.029]},
+  {"id":"vessel","node":"vessel_target","action":"load","label":"Lift inert vessel","sizeM":[0.041,0.055,0.041]},
+  {"id":"place","node":"ceramic_plate","action":"load","label":"Place inert vessel","sizeM":[0.15,0.042,0.15]},
+  {"id":"sample","node":"probe_target","action":"probe","label":"Insert or retract virtual probe","sizeM":[0.036,0.045,0.036]}
+ ],
+ "motion":{"probeLiftM":0.065,"rotorAxis":"+Y","knobAxis":"+Z","rotorDisplayHz":1.2},
+ "assessment":"Metric asset and desktop/touch action IDs for future controller integration. No immersive or headset testing."
+}

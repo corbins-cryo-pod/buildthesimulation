@@ -1,0 +1,50 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Independent static rectangle grid arithmetic. No image acquisition, time or biological object.",
+  "pixelSizeMm": [
+    0.25,
+    0.2
+  ],
+  "cases": [
+    {
+      "id": "complete-rectangle",
+      "frame": "complete",
+      "expected": {
+        "widthPx": 40,
+        "heightPx": 28,
+        "widthMm": 10,
+        "heightMm": 5.6,
+        "areaMm2": 56,
+        "edgeClipped": false,
+        "visiblePixels": 1120
+      }
+    },
+    {
+      "id": "cropped-rectangle",
+      "frame": "cropped",
+      "expected": {
+        "widthMm": null,
+        "heightMm": null,
+        "areaMm2": null,
+        "edgeClipped": true,
+        "visiblePixels": 784
+      }
+    },
+    {
+      "id": "blank-reference",
+      "frame": "blank",
+      "expected": {
+        "widthMm": null,
+        "heightMm": null,
+        "areaMm2": null,
+        "edgeClipped": false,
+        "visiblePixels": 0
+      }
+    },
+    {
+      "id": "unknown-frame",
+      "frame": "unknown",
+      "expected": "Choose a stored geometric image."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.9,
+    0.440309,
+    0.761
+  ],
+  "meshes": 72,
+  "triangles": 10819,
+  "bytes": 596688,
+  "interaction": {
+    "Synthetic_plane_card_0": {
+      "action": "plane",
+      "id": "lower",
+      "label": "View lower synthetic plane",
+      "boundsMinM": [
+        0.04,
+        0.049,
+        0.4065
+      ],
+      "boundsMaxM": [
+        0.118,
+        0.061,
+        0.4855
+      ]
+    },
+    "Synthetic_plane_card_1": {
+      "action": "plane",
+      "id": "middle",
+      "label": "View middle synthetic plane",
+      "boundsMinM": [
+        0.134,
+        0.049,
+        0.4065
+      ],
+      "boundsMaxM": [
+        0.212,
+        0.061,
+        0.4855
+      ]
+    },
+    "Synthetic_plane_card_2": {
+      "action": "plane",
+      "id": "upper",
+      "label": "View upper synthetic plane",
+      "boundsMinM": [
+        0.228,
+        0.049,
+        0.4065
+      ],
+      "boundsMaxM": [
+        0.306,
+        0.061,
+        0.4855
+      ]
+    }
+  },
+  "measuredT1ShellM": [
+    0.406,
+    0.23,
+    0.327
+  ],
+  "documentedOriginalT1EnvelopeMm": [
+    480,
+    252,
+    327
+  ],
+  "modeledT1AssemblyM": [
+    0.48,
+    0.252,
+    0.3287
+  ],
+  "limits": "Static exterior. Actions target the separate offline card reader, not the microscope."
+}

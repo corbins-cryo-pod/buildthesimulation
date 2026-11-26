@@ -1,0 +1,10 @@
+{
+ "configuration":"CellScale MicroTester G2, standard primary optics and original dry synthetic test spring",
+ "dimensionsMm":{"width":560,"depth":140,"height":240,"basis":"Published complete instrument envelope, arrangement interpreted from source photos."},
+ "references":[
+  {"title":"CellScale MicroTester G2 product specifications","url":"https://cellscale.com/products/mechanical-testers/microtester/","caption":"Distinguishes G2 from LT and gives the 56 × 14 × 24 cm nominal enclosure."},
+  {"title":"CellScale G2 brochure hosted by World Precision Instruments, pages 1–2","url":"https://www.wpi-europe.com/downloads/content/MicroTester%20G2%20Brochure.pdf","caption":"Three-quarter complete unit shows the left camera body, cylindrical lens collar, transparent chamber and separate upper right actuator; dimensional table confirms model envelope."},
+  {"title":"CellScale MicroTester G2 manual, Introduction / Force Sensing Microbeam","url":"https://www.cellscale.com/downloads2/MicroTester%20User%20ManualG2.pdf","caption":"Doc basis for a spring-like beam whose deflection determines force. The demonstration uses invented spring constants, not this model's calibration or a working fixture."}
+ ],
+ "assumptions":"Approximate camera, tower, mechanical details and nonfunctional sealed rear. No microscope imaging metrics, biological or specimen workflows, wet operation, or physical device connections."
+}

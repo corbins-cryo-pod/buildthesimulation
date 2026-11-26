@@ -1,0 +1,93 @@
+{
+  "triangles": 1640,
+  "draws": 23,
+  "nodes": 12,
+  "bytes": 100016,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "drawing_display": {
+      "at": [
+        0.108,
+        0.088,
+        0.024
+      ],
+      "extent": [
+        0.136,
+        0.081,
+        0.02
+      ],
+      "action": "view",
+      "label": "Read the detached comparison frame"
+    },
+    "select_roomy": {
+      "at": [
+        0.062,
+        0.044,
+        0.073
+      ],
+      "extent": [
+        0.032,
+        0.018,
+        0.032
+      ],
+      "action": "select:roomy",
+      "label": "Select roomy immutable drawing"
+    },
+    "select_narrow": {
+      "at": [
+        0.108,
+        0.044,
+        0.073
+      ],
+      "extent": [
+        0.032,
+        0.018,
+        0.032
+      ],
+      "action": "select:narrow",
+      "label": "Select narrow immutable drawing"
+    },
+    "select_tangent": {
+      "at": [
+        0.155,
+        0.044,
+        0.073
+      ],
+      "extent": [
+        0.032,
+        0.018,
+        0.032
+      ],
+      "action": "select:tangent",
+      "label": "Select tangent immutable drawing"
+    },
+    "fixed_front_cap": {
+      "at": [
+        -0.058,
+        0.034,
+        0.032
+      ],
+      "extent": [
+        0.04,
+        0.04,
+        0.004
+      ],
+      "label": "Static documentary cap"
+    },
+    "inactive_inset": {
+      "at": [
+        -0.058,
+        0.088,
+        0.029
+      ],
+      "extent": [
+        0.051,
+        0.061,
+        0.003
+      ],
+      "label": "Blank unconnected exterior face"
+    }
+  }
+}

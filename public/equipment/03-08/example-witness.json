@@ -1,0 +1,92 @@
+{
+  "schema": "bts.dry-witness-report.v1",
+  "deviceId": "03-08",
+  "witnessId": "SCS-GEO-W01",
+  "parentRevision": 0,
+  "revision": 1,
+  "units": "µm",
+  "frame": "+X toward right edge, +Y rear, +Z normal to coupon top",
+  "faces": [
+    {
+      "id": "TOP-EXPOSED",
+      "label": "Top witness",
+      "mask": false,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "before": [
+        0,
+        0,
+        500
+      ],
+      "after": [
+        0,
+        0,
+        502.5
+      ],
+      "offsetUm": 2.5,
+      "tangentUm": 0,
+      "expectedUm": 2.5,
+      "toleranceUm": 0.000001,
+      "pass": true,
+      "contactOpen": null
+    },
+    {
+      "id": "SIDE-EXPOSED",
+      "label": "Right sidewall",
+      "mask": false,
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "before": [
+        4000,
+        0,
+        250
+      ],
+      "after": [
+        4002.5,
+        0,
+        250
+      ],
+      "offsetUm": 2.5,
+      "tangentUm": 0,
+      "expectedUm": 2.5,
+      "toleranceUm": 0.000001,
+      "pass": true,
+      "contactOpen": null
+    },
+    {
+      "id": "P1",
+      "label": "Masked contact P1",
+      "mask": true,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "before": [
+        2400,
+        0,
+        500
+      ],
+      "after": [
+        2400,
+        0,
+        500
+      ],
+      "offsetUm": 0,
+      "tangentUm": 0,
+      "expectedUm": 0,
+      "toleranceUm": 0.000001,
+      "pass": true,
+      "contactOpen": true
+    }
+  ],
+  "passed": true,
+  "provenance": "Original pre-authored points on inert planar faces. No experiment, process recipe, physical film prediction or measured data.",
+  "scope": "Inspects existing straight-face coordinate tags only; no material process, hard corners, mask edge model or hardware control."
+}

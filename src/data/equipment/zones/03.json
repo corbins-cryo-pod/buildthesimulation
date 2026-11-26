@@ -15,9 +15,9 @@
     "inputs": "Patterned substrate and mask height, source direction, material and calibrated deposited thickness",
     "outputs": "Directional metal-layer map and shadow boundaries on the sample",
     "acceptance": "Project a parallel oblique flux past a vertical mask edge of known height. The shadow length must match the geometric projection to one lateral grid cell.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: original metric BJD-1800 family enclosure and six-position carrier",
+    "simulationStatus": "First pass: passive carrier fit and geometric optical shadow analogy; deposition out of scope",
+    "integrationStatus": "Linked: interactive witness station and optical JSON",
     "related": [
       [
         "Neural Interface Studio",
@@ -27,7 +27,8 @@
         "Microfabrication Laboratory",
         "/simulations/microfabrication/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/03-01/simulator/"
   },
   {
     "id": "03-02",
@@ -120,9 +121,10 @@
     "inputs": "Substrate surface, material ID, cycle count and fitted growth-per-cycle data",
     "outputs": "Barrier-layer thickness and cycle history with stated coverage assumptions",
     "acceptance": "Use an ideal saturated constant-growth fixture with no incubation. Doubling the cycle count must double thickness; zero cycles leave the initial surface unchanged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: original metric S100 exterior and separate inert gauge",
+    "simulationStatus": "First pass: dry circular fit verified; process model out of scope",
+    "integrationStatus": "Linked: carrier clearance gauge and geometry JSON",
+    "simulator": "/simulations/equipment/03-05/simulator/"
   },
   {
     "id": "03-06",
@@ -152,7 +154,7 @@
   {
     "id": "03-07",
     "name": "PECVD",
-    "model": "Oxford Plasmalab 80+",
+    "model": "Oxford Plasmalab 80 Plus PECVD cabinet / visual reference",
     "evidence": "B",
     "priority": "P1",
     "page": 13,
@@ -165,14 +167,15 @@
     "inputs": "Substrate geometry, calibrated deposition map, dielectric model and virtual deposition interval",
     "outputs": "Dielectric layer with thickness map and property provenance for electrical analysis",
     "acceptance": "Build two equal-area parallel-plate fixtures with dielectric thicknesses in a 1:2 ratio. With fixed permittivity and fringing disabled, predicted capacitances must have a 2:1 ratio.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB based on typical Oxford cabinet dimensions",
+    "simulationStatus": "View-only dry fit and static fictional reference maps; no plasma process",
+    "integrationStatus": "Read-only dry geometry and immutable map JSON",
+    "simulator": "/simulations/equipment/03-07/simulator/"
   },
   {
     "id": "03-08",
     "name": "Parylene coating",
-    "model": "SCS PDS 2010 Labcoter",
+    "model": "SCS PDS 2010 Labcoter 2 · dry reference",
     "evidence": "A",
     "priority": "P1",
     "page": 13,
@@ -186,9 +189,10 @@
     "inputs": "Exposed surface mesh, masking geometry and calibrated nominal coating thickness",
     "outputs": "Conformal polymer surface revision and masked contact map",
     "acceptance": "Coat an ideal coupon with an exposed top and sidewall plus a masked contact. Both exposed faces acquire the specified normal offset while the contact remains open.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric Labcoter 2 exterior and illustrated dry holder",
+    "simulationStatus": "Verified read-only normal offsets and contact-mask geometry; no deposition",
+    "integrationStatus": "Inspect reference geometry, export mask report and reuse metric VR targets",
+    "simulator": "/simulations/equipment/03-08/simulator/"
   },
   {
     "id": "03-09",
@@ -206,9 +210,16 @@
     "inputs": "Polymer film revision, temperature history, timebase and fitted cure/shrinkage model",
     "outputs": "Cure-state field, thickness change and thermal provenance",
     "acceptance": "Replay a calibration coupon's thermal trace and compare predicted shrinkage with an independent thickness measurement. A zero-duration replay must preserve its initial state.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Inert centered-clearance check verified; thermal model not implemented",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/03-09/simulator/",
+    "related": [
+      [
+        "Documentary Mini-Mite and inert dry fit",
+        "/simulations/equipment/03-09/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "03-10",
@@ -226,9 +237,10 @@
     "inputs": "Compatible coupon ID, programmed chamber trace and material-response model if available",
     "outputs": "Thermal history and any explicitly modeled change to the specimen",
     "acceptance": "Replay a ramp–hold–cool fixture for an inert coupon. Match the supplied peak and hold duration within the sampling interval and leave material properties intact.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric 3-1750 housing, vertical-lift depiction and original dry shelf",
+    "simulationStatus": "First pass: empty tray geometry verified; thermal treatment out of scope",
+    "integrationStatus": "Linked: cold shelf gauge and JSON",
+    "simulator": "/simulations/equipment/03-10/simulator/"
   },
   {
     "id": "03-11",

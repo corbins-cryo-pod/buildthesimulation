@@ -1,0 +1,6 @@
+{
+ "configuration":"CellScale MicroTester G2 standard one-camera benchtop exterior, empty clear guard and site-original dry spring stand-in.",
+ "geometryBasis":"CellScale G2 brochure: 56 × 14 × 24 cm. WPI brochure p.1 photo indicates lateral order optics housing → cylindrical nose → transparent window and upright actuator at right. Exact subcomponent sizes not dimensioned.",
+ "independentCase":"Virtual spring k=0.040 mN/µm in series with fictional force beam kb=0.160 mN/µm. Equilibrium at 100 µm travel from 25 µm gap: equal force, displacement ratio 4:1, 60 µm spring + 15 µm beam, 2.40 mN. Effective slope equals 0.032 mN/µm; recovered spring slope 0.040 mN/µm. At 24 or 25 µm the reading is zero. A stiffer k=0.080 mN/µm demands >5 mN before 160 µm and invalidates the trace rather than saturating forever or misreporting fitted slope.",
+ "tolerance":"1e-8 for ideal analytic cases; within 1% on fitted spring slope with virtual 0.01 mN digitization. This digitization is author-selected and not an OEM resolution or accuracy claim."
+}

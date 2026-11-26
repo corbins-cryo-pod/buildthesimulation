@@ -1,0 +1,55 @@
+{
+  "schema": "bts.inert-cartesian-pose.v1",
+  "deviceId": "10-07",
+  "kind": "simulated geometry",
+  "sampleId": "inert-cube-01",
+  "revision": 1,
+  "parentRevision": 0,
+  "local": {
+    "axes": [
+      "X",
+      "Y",
+      "Z"
+    ],
+    "requestedStageMm": [
+      3,
+      0,
+      0
+    ],
+    "appliedStageMm": [
+      3,
+      0,
+      0
+    ],
+    "actuatorTravelMm": [
+      -12.5,
+      12.5
+    ],
+    "blockedAxes": []
+  },
+  "sample": {
+    "yawAboutPlusZDeg": 90,
+    "datumMm": [
+      4,
+      -2,
+      1
+    ],
+    "displacementSampleMm": [
+      0,
+      3,
+      0
+    ],
+    "tipSampleMm": [
+      4,
+      1,
+      1
+    ],
+    "tipSampleM": [
+      0.004,
+      0.001,
+      0.001
+    ],
+    "frame": "right-handed; Z up"
+  },
+  "provenance": "Sutter rounded 25 mm full mechanical travel used for centered home. Rigid synthetic coordinate reference, not a measured or controlled instrument; collision not modeled."
+}

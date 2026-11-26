@@ -1,0 +1,99 @@
+{
+  "schema": "bts.detached-drafting-inspection.verification.v1",
+  "metrics": {
+    "bytes": 83200,
+    "triangles": 1052,
+    "draws": 29,
+    "instrumentXYZM": [
+      0.41999998688697815,
+      0.279999993275851,
+      0.49000000953674316
+    ]
+  },
+  "cases": [
+    {
+      "id": "width",
+      "expected": 0.42,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.41999998688697815,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 0.28,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.279999993275851,
+      "outcome": "PASS"
+    },
+    {
+      "id": "depth",
+      "expected": 0.49,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.49000000953674316,
+      "outcome": "PASS"
+    },
+    {
+      "id": "diagonal",
+      "expected": 100,
+      "tolerance": 1e-10,
+      "unit": "mm",
+      "actual": 100,
+      "outcome": "PASS"
+    },
+    {
+      "id": "area",
+      "expected": 2400,
+      "tolerance": 1e-10,
+      "unit": "mm²",
+      "actual": 2400,
+      "outcome": "PASS"
+    },
+    {
+      "id": "perimeter",
+      "expected": 240,
+      "tolerance": 1e-10,
+      "unit": "mm",
+      "actual": 240,
+      "outcome": "PASS"
+    },
+    {
+      "id": "translation-x",
+      "expected": -32,
+      "unit": "mm",
+      "actual": -32,
+      "outcome": "PASS"
+    },
+    {
+      "id": "translation-y",
+      "expected": 26,
+      "unit": "mm",
+      "actual": 26,
+      "outcome": "PASS"
+    },
+    {
+      "id": "area-invariant",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "display-labels-stable",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "physical-action-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Nominal stationary exterior and independently authored plane geometry only."
+}

@@ -1,0 +1,94 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const p='/equipment/15-06/';
+const doc='https://bcf.technion.ac.il/wp-content/uploads/2024/04/ima-iv-SKYSCAN-1276-brochure.pdf';
+const catalog='https://www.bruker.com/en/products-and-solutions/preclinical-imaging/preclinical-micro-ct/skyscan-1276.html';
+const mayo='https://www.mayo.edu/-/media/kcms/gbs/research/images/2026/05/21/22/04/x-ray-imaging-core-632x264-1276.jpg';
+const refs=[
+ ['front-quarter.webp','Front-left quarter: bow-sided body, navy center, and sealed rounded front. The photo is an earlier 1276 installation; it corroborates exterior family shape only.',mayo,'Mayo Clinic 1276 installation photograph'],
+ ['side-profile.webp','Closed side silhouette, stationary nose and blank lower display. Rear trim and local divisions are illustrative.',doc+'#page=8','Bruker CMOS Edition technical drawing, p. 8']
+];
+const checks=[
+ ['Frame 0 object cell area','160 × 0.05 = 8.0 mm²','8.0 mm²','Within 10⁻⁹ mm²'],
+ ['Frame 0 width from 14 columns','2.80 mm','2.80 mm','Within 10⁻⁹ mm'],
+ ['Frame 0 annotation / intersection','28 / 8 cells','28 / 8 cells','Exact'],
+ ['Stored empty frame 1','0 shape cells, annotation 28','0 shape cells, annotation 28','Exact'],
+ ['Missing frame 2','No layer IDs or result','No layer IDs or result','Exact'],
+ ['Closed cabinet W × D × H','954 × 1,190 × 940 mm','954 × 1,190 × 940 mm nominal','0.6 mm, overall geometry']
+];
+---
+<Layout title="Bruker SkyScan 1276 CMOS · Closed cabinet and fixed synthetic archive" description="Inspect the inactive SkyScan 1276 CMOS cabinet and a detached two-layer geometric raster exhibit. No acquisition or reconstruction.">
+ <main id="sky76-exhibit">
+  <p><a href="/simulations/equipment/15-06/">← Equipment record 15-06</a></p>
+  <p class="series">LABORATORY EQUIPMENT / 15-06 / DOCUMENTARY EXHIBIT</p>
+  <h1>SkyScan 1276 CMOS Edition</h1>
+  <p class="lead">Orbit the closed 1276 cabinet, then review a detached archive of simple geometric drawings. A stored empty frame still has an annotation. A missing frame has no measurements at all.</p>
+  <div class="duo">
+   <section class="card">
+    <h2>Dormant metric enclosure</h2>
+    <div id="sky76-view" class="viewer"></div><p id="sky76-model" role="status">Loading the closed cabinet…</p>
+    <div class="actions" aria-label="3D viewpoints">
+     <button type="button" data-sky76-view="orbit">Reset orbit</button><button type="button" data-sky76-view="front">Front quarter</button><button type="button" data-sky76-view="side">Left side</button><button type="button" data-sky76-view="archive">Detached archive</button>
+    </div>
+    <p>Drag to orbit and scroll or pinch to zoom. Tap only the detached display to cycle the fixed frames. Nothing on the cabinet opens or operates.</p>
+   </section>
+   <section class="card">
+    <h2>Detached geometry and annotation archive</h2>
+    <canvas id="sky76-diagram" width="560" height="420" aria-label="Fixed synthetic rectangular-ring label with separate diagonal annotation marks, displayed in metric proportions."></canvas>
+    <div class="inputs">
+     <label>Archive frame<select id="sky76-slice"><option value="0">0 · Stored geometric ring</option><option value="1">1 · Stored empty shape</option><option value="2">2 · Missing frame</option></select></label>
+     <label class="mask-toggle"><input id="sky76-overlay" type="checkbox" checked/> Show independent annotation</label>
+    </div>
+    <div class="actions"><button id="sky76-next" type="button" disabled>Next saved position</button><button id="sky76-reset" type="button">Reset archive review</button><button id="sky76-export" type="button" disabled>Export review JSON</button></div>
+    <p id="sky76-status" role="status" aria-live="polite">Loading fixed geometric layers…</p>
+    <p id="sky76-result" class="readout"></p>
+   </section>
+  </div>
+  <section>
+   <h2>Model selection and exterior references</h2>
+   <p>This is the Bruker <strong>SkyScan 1276 CMOS Edition</strong> using the manufacturer's compact <strong>ATS-sized closed</strong> envelope, not the longer cabinet variant and not the separate 1272 instrument. The nominal dimensions are for the closed outside only. There is no implied serial or measured local trim. No accessory, working mechanism or connection is represented.</p>
+   <div class="refs">
+    {refs.map(([f,label,href,source])=><figure><img src={p+f} alt={label} width="780" height="560" loading="lazy" /><figcaption><strong>Original reference-based rendering.</strong> {label} <a href={href}>{source} (original source)</a>.</figcaption></figure>)}
+   </div>
+   <div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th><th>Evidence / role</th></tr></thead><tbody>
+    <tr><td>Exterior W × D × H</td><td>954 × 1,190 × 940 mm</td><td><a href={doc+'#page=8'}>Bruker CMOS brochure, p. 8</a> and <a href={catalog}>Bruker closed ATS specification</a> define the envelope, not individual contours.</td></tr>
+    <tr><td>Enclosure skin</td><td>Ivory bow-shaped flanks, navy center and closed rounded front</td><td><a href={mayo}>Mayo photograph</a> and brochure p. 8. Local seams, rear geometry and inactive display placement are approximate.</td></tr>
+    <tr><td>Detached fixture pitch</td><td>0.20 × 0.25 × 0.50 mm; 32 × 24 cells per stored plane</td><td><a href={p+'saved-phantom.json'}>Original synthetic archive</a>, not a measured or scanner-specific scale.</td></tr>
+   </tbody></table></div>
+  </section>
+  <section>
+   <h2>What the archive measures</h2>
+   <p>The source stores two independent binary arrays for each available frame: pale shape labels and orange hatching for annotations. Every labeled cell contributes 0.20 × 0.25 = 0.05 mm². Frame 0 contains a fixed 14 × 14 outer rectangle with a 6 × 6 opening, or 160 cells and 8.0 mm². Its 14 occupied columns span 2.80 mm of cell support. The 28 annotation cells are counted separately, including 8 coincident cells.</p>
+   <p>Changing annotation visibility does not alter stored data or totals. In frame 1 the stored shape is empty, so area is zero and width is undefined. Frame 2 is absent; no layer IDs or measurements are invented. JSON preserves archive, frame and layer identifiers, revision, units and coverage.</p>
+   <p><strong>Limits:</strong> the exhibit does not acquire, reconstruct, register or infer scans. There are no specimens, imaging settings, dose or biological workflows. The metric asset and named detached target are available for VR authoring; immersive operation has not been verified.</p>
+  </section>
+  <section>
+   <h2>Focused verification</h2>
+   <div class="tablewrap"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.map(([name,x,y,t])=><tr><td>{name}</td><td>{x}</td><td>{y}</td><td>{t}</td><td>Pass</td></tr>)}</tbody></table></div>
+   <p><a href={p+'verification.json'}>Verification results</a> · <a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-reviews.json'}>Example exports</a> · <a href={p+'saved-phantom.json'}>Fixed label archive</a> · <a href={p+'build-fixture.py'}>Fixture source</a></p>
+   <p><a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'skyscan1276.glb'} download>Download metric GLB</a> · <a href={p+'interaction.json'}>Interaction manifest</a> · <a href={p+'asset-metrics.json'}>GLB metrics</a></p>
+  </section>
+ </main>
+</Layout>
+<script>
+import '../../../../lib/equipment/15-06/client.mjs';
+</script>
+<style>
+main{max-width:1100px;margin:auto;padding:1.2rem clamp(.9rem,2.5vw,2rem) 3rem}
+.series,.readout,table,input,select,button{font-family:var(--font-label,system-ui,sans-serif)}
+.series{font-size:.78rem;letter-spacing:.13em}.lead{max-width:72ch}
+.duo,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.card{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:1rem;border-radius:.25rem}
+.viewer{height:clamp(23rem,45vw,32rem);overflow:hidden;background:#263949}
+.viewer :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+#sky76-diagram{display:block;width:min(100%,26rem);height:auto;background:#263949;margin:.5rem auto 1rem}
+.actions,.inputs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+button,input,select{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 50%,transparent);border-radius:.2rem;padding:.5rem;font-size:.91rem;min-height:2.6rem}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input{width:min(18rem,55vw)}label{display:grid;font-size:.86rem;gap:.25rem}
+figure{margin:0}figure img{width:100%;height:auto;display:block}figcaption{font-size:.92rem;margin:.45rem 0}
+section{margin:1.5rem 0}.duo section{margin:0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent);text-align:left;padding:.5rem;vertical-align:top}
+[data-error=true]{font-weight:bold;color:var(--accent,currentColor)}
+@media(max-width:770px){.duo,.refs{grid-template-columns:1fr}.viewer{height:22rem}}
+.mask-toggle{display:flex;align-items:center;gap:.35rem}.mask-toggle input{width:1.2em;min-height:1.2em;accent-color:var(--accent)}
+</style>

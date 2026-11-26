@@ -1,0 +1,8 @@
+{
+ "model":"ZEISS LSM 980 NLO · Axio Examiner.Z1",
+ "fixture":"Synthetic 64×48×21 inert stack; 2×2×5 µm voxels, voxel centers at integer index times spacing.",
+ "independentBasis":"Bright cuboid occupies X indices 22–33 (12 voxels), Y 17–24 (8 voxels), Z 5–10 (6 voxels), inclusive. Its width is 24 µm in either view; XY extent is 16 µm in Y and XZ extent is 30 µm in Z using occupied voxel edges. XY at z=7 includes 96 bright voxels; XZ at y=20 includes 72. XY at z=0 has no bright pixels; fixed contrast display must not change membership.",
+ "scannerMm":[450,220,550],
+ "tableMm":[1800,910,1500],
+ "tolerance":"Exact integer mask geometry; 1e-8 m for nominal GLB envelope."
+}

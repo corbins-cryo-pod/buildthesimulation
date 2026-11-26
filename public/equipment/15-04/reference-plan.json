@@ -1,0 +1,68 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Verify discrete geometric offsets on one pre-authored, immutable, nonbiological table of drawing coordinates.",
+  "cases": [
+    {
+      "id": "three-four-five",
+      "index": 1,
+      "expected": {
+        "status": "adjacent",
+        "coordinateMm": {
+          "x": 3,
+          "y": 4
+        },
+        "deltaMm": {
+          "x": 3,
+          "y": 4,
+          "length": 5
+        },
+        "elapsedS": 0.5
+      }
+    },
+    {
+      "id": "signed-reversal",
+      "index": 2,
+      "expected": {
+        "status": "adjacent",
+        "coordinateMm": {
+          "x": 6,
+          "y": 0
+        },
+        "deltaMm": {
+          "x": 3,
+          "y": -4,
+          "length": 5
+        },
+        "elapsedS": 0.5
+      }
+    },
+    {
+      "id": "missing-sample",
+      "index": 3,
+      "expected": {
+        "status": "missing",
+        "coordinateMm": null,
+        "deltaMm": null,
+        "elapsedS": null
+      }
+    },
+    {
+      "id": "no-bridge",
+      "index": 4,
+      "expected": {
+        "status": "no-adjacent",
+        "coordinateMm": {
+          "x": 13,
+          "y": 8
+        },
+        "deltaMm": null,
+        "elapsedS": null
+      }
+    },
+    {
+      "id": "invalid-index",
+      "index": 7,
+      "expected": "Choose a stored index from 0 to 6."
+    }
+  ]
+}

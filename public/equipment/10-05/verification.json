@@ -1,0 +1,139 @@
+{
+  "equipment": "10-05",
+  "basis": "Original etched two-plane plate. Bench targets A=(-40,15,0) µm and B=(45,-20,80) µm; raster center pixel (40,30) and 5 µm/pixel gives A=(32,33) and B=(49,26) with centered stage. Focusing at 40 µm neither marker is strong enough to select. A +25 µm X stage offset shifts B from 49 to 44 px but inverse calibration returns the same 45 µm sample X. Independent location tolerance is one lateral pixel and one axial teaching step (5 µm, 5 µm, 10 µm).",
+  "scope": "Synthetic contrast and geometry only. Not optics calibration or biological imaging.",
+  "checks": [
+    {
+      "id": "Lower focal target",
+      "expected": "ETCH-A",
+      "actual": "ETCH-A",
+      "unit": "ID",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Lower camera center",
+      "expected": [
+        32,
+        33
+      ],
+      "actual": [
+        32,
+        33
+      ],
+      "unit": "px",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Lower sample-space coordinate",
+      "expected": [
+        -40,
+        15,
+        0
+      ],
+      "actual": [
+        -40,
+        15,
+        0
+      ],
+      "unit": "µm",
+      "tolerance": [
+        5,
+        5,
+        10
+      ],
+      "pass": true
+    },
+    {
+      "id": "Upper focal target",
+      "expected": "ETCH-B",
+      "actual": "ETCH-B",
+      "unit": "ID",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Upper camera center",
+      "expected": [
+        49,
+        26
+      ],
+      "actual": [
+        49,
+        26
+      ],
+      "unit": "px",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Upper sample-space coordinate",
+      "expected": [
+        45,
+        -20,
+        80
+      ],
+      "actual": [
+        45,
+        -20,
+        80
+      ],
+      "unit": "µm",
+      "tolerance": [
+        5,
+        5,
+        10
+      ],
+      "pass": true
+    },
+    {
+      "id": "Mid-plane visible target count",
+      "expected": 0,
+      "actual": 0,
+      "unit": "targets",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Pan of +25 µm shifts target pixel",
+      "expected": 44,
+      "actual": 44,
+      "unit": "px",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Inverse map preserves sample X",
+      "expected": 45,
+      "actual": 45,
+      "unit": "µm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "XY base width",
+      "expected": 0.15719999999999998,
+      "actual": 0.15719999999999998,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "XY base depth",
+      "expected": 0.3,
+      "actual": 0.3,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named XR rays",
+      "expected": 3,
+      "actual": 3,
+      "unit": "hits",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "configuration":"Nanoscribe Photonic Professional GT2 floor-standing exterior as pictured on OEM product-folder cover",
+  "referenceBenchmark":"Immutable drawing with 5 µm line increments. A=(10,10), B=(40,50), C=(45,10) µm. Independent checks: A→B uses a 30-40-50 right triangle; A→C horizontal distance 35 µm; A→A is zero; reversing A→B changes vector signs but not length.",
+  "scaleBasis":"Legacy GT public 900×900×1420 mm envelope used solely as a provisional scale scaffold; exact GT2 exterior dimensions not established from the public GT2 reference.",
+  "tolerance":"1e-10 µm arithmetic for drawing; 1e-7 m for dimensions of the authored model only."
+}

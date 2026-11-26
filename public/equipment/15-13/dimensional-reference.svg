@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350" role="img" aria-labelledby="title desc">
+ <title id="title">Original geometry cards, drawing BTS-1513-G01 revision 1</title><desc id="desc">Top plan of the separate locator: 84 millimeter X-span, 66 millimeter depth, plus an 18 millimeter wide keyed relief extending 11 millimeters. Center of relief offset 16 millimeters from X zero. The separate nominal block is 80 by 62 with a 14 millimeter wide key.</desc>
+ <defs><marker id="a" orient="auto-start-reverse" markerWidth="6" markerHeight="6" refX="5" refY="3"><path d="M0 0L6 3L0 6Z" fill="#6b4d1f"/></marker></defs>
+ <rect x="1" y="1" width="758" height="348" rx="10" fill="#f4efe2" stroke="#87724f"/>
+ <text x="24" y="30" fill="#2e3834" font-family="sans-serif" font-size="17">BTS-1513-G01 · revision 1 · authored dimensions in mm</text>
+ <g fill="none" stroke-width="2">
+  <path d="M55 92H265V257H222.5V284.5H177.5V257H55Z" stroke="#287061" fill="#a8c5b5"/><path d="M60 97H260V252H217.5V279.5H182.5V252H60Z" stroke="#ab671a" stroke-dasharray="5 3"/>
+  <path d="M160 72V302M35 174.5H285" stroke="#687b78" stroke-dasharray="4 3"/>
+  <path d="M400 113H600V268H557.5V295.5H522.5V268H400Z" fill="#e2a453" stroke="#98571a"/>
+  <path d="M55 75H265M40 92V257M177.5 307H222.5M280 258V284.5M400 92H600M385 113V268" stroke="#6b4d1f" marker-start="url(#a)" marker-end="url(#a)"/>
+ </g>
+ <g font-family="sans-serif" fill="#37443d" font-size="15">
+  <text x="150" y="68">84</text><text x="12" y="181">66</text><text x="193" y="328">18</text><text x="291" y="277">11</text>
+  <text x="73" y="126">Gauge opening</text><text x="73" y="203">Nominal overlay: dashed</text><text x="73" y="225">Key center X = +16</text>
+  <text x="492" y="84">80</text><text x="358" y="191">62</text><text x="435" y="157">Independent block</text><text x="435" y="199">Key width 14 · tip Z = +42</text><text x="435" y="222">Gauge key tip Z = +44</text>
+  <text x="498" y="327">+Z toward keyed edge</text>
+ </g>
+</svg>

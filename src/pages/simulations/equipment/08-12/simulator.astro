@@ -1,0 +1,42 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import reference from '../../../../../public/equipment/08-12/references.json';
+import evidence from '../../../../../public/equipment/08-12/verification.json';
+const a='/equipment/08-12/',r=reference.sources;
+---
+<Layout pageTitle="Unpowered PCB rework laboratory" subtitle="" description="Replace a virtual polarized diode, check both pin-to-net assignments, and export the assembly revision." wide={true}>
+<article class="equipment dde812">
+<nav class="eq-nav"><a href="/simulations/equipment/08-12/">← Equipment 08-12</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">References & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">08-12 / Electronics assembly</span><h2>JBC DDE · PCB rework bench</h2><p>A metric reconstruction from the JBC DDE-D and DDSE electric kit references, with a T245, DR560, their stands and the MSE module. The virtual bench only edits an unpowered, inert board. Replace diode D1 and confirm which net each lead reaches.</p></header>
+<div class="dde-grid"><section class="dde-card"><h3>Workbench</h3>
+<div class="dde-tools">{[['bench','Workbench'],['board','Board detail'],['rear','Rear connections']].map(([k,n])=><button data-view={k}>{n}</button>)}<button id="reset-view">Reset camera</button></div>
+<div class="dde-view"><canvas id="bench" aria-label="JBC DDE workstation with two tools and a polarized component on the sample circuit board"></canvas></div><p class="dde-small" id="model-status" role="status">Loading metric GLB…</p>
+<p class="dde-small">Drag to orbit or pinch to zoom. Click either tool to select it, the diode to rotate an uncommitted placement, or the board mount to inspect. The tools and connectors are never powered.</p></section>
+<section class="dde-card"><h3>Replace one polarized component</h3>
+<p id="status" role="status" aria-live="polite">Original D1 installed. Remove it to begin the virtual replacement.</p>
+<div class="dde-tools"><button id="remove">Remove D1</button><button id="place">Place replacement</button><button id="rotate">Rotate 180°</button><button id="join" class="go">Join if orientation is correct</button></div>
+<div class="dde-tools"><button id="inspect">Inspect graph</button><button id="example">Run both orientations</button><button id="reset">Reset fixture</button></div>
+<div class="dde-meta"><div><small>Fixture revision</small><strong id="revision">0</strong></div><div><small>Placement</small><strong id="placement">D1-ORIGINAL</strong></div><div><small>Selected tool</small><strong id="tool">Inspect</strong></div></div>
+<div class="dde-table"><table><thead><tr><th>Pad</th><th>Net</th><th>Component pin</th><th>Joint</th></tr></thead><tbody id="pads"></tbody></table></div>
+<p class="dde-small">The stripe marks the cathode (K). P1 must remain VPLUS and P2 must remain RETURN. A virtual join updates topology only; it is not a solder-quality judgment or procedure.</p>
+<div class="dde-tools"><button id="download">Download assembly JSON</button><a href={a+'output-schema.json'}>Schema</a><a href={a+'example-assembly.json'}>Example revision</a></div>
+</section></div>
+<section id="evidence"><h3>Sources and independent checks</h3>
+<p>The DDE cabinet is <b>148 × 120 × 232 mm (W × H × D)</b>, from <a href={r.ddeManual+'#page=15'}>JBC manual 0035481, p. 15</a>. The <a href={r.ddeManual+'#page=2'}>front housing photo</a> and <a href={r.ddeManual+'#page=3'}>rear and accessory diagram</a> informed visible features. The <a href={r.kit}>DDSE product composition</a> names the electric module and two tools; a <a href={r.kitManual+'#page=1'}>related DDSE-QC package photo</a> shows their general physical arrangement. Accessory and cooling contours are estimated. No third-party photos or drawings are redistributed.</p>
+<p>The <b>75 × 48 × 1.6 mm</b> coupon and pad geometry are original design dimensions. The input consists of the built-in BOM, a fixed two-pad map and a selected rework action. The JSON carries stable sample/component/pad IDs, parent and current revision, accepted history, open/connected joint states, pending placement and the edge list. It does not infer current flow through the diode. No thermal behavior, solder metallurgy, board power, currents or hardware controls are modeled.</p>
+<div class="dde-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Observed</th><th>Result</th></tr></thead><tbody>{evidence.cases.map(c=><tr><th title={c.reason}>{c.id}</th><td>{typeof c.expected==='object'?JSON.stringify(c.expected):c.expected}</td><td>{typeof c.actual==='object'?JSON.stringify(c.actual):c.actual}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable Python model</a> · <a href={a+'dde-bench.glb'} download>Download metric GLB</a> · <a href={a+'vr-station.json'}>VR semantic controls</a> · <a href={a+'assembly.mjs'}>Headless assembly reducer</a> · <a href={a+'verification.json'}>Verification results</a>. No headset has been tested.</p></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/08-12/client.mjs';</script>
+<style>
+.dde812{--dde-rule:color-mix(in srgb,currentColor 29%,transparent);max-width:1280px;margin:auto}
+.dde-grid{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(0,1fr);gap:1rem}.dde-card{min-width:0;border:1px solid var(--dde-rule);padding:.85rem;margin:.7rem 0}
+.dde-card h3{margin:.3rem 0 .6rem}.dde-tools{display:flex;gap:.38rem .52rem;flex-wrap:wrap;align-items:center;margin:.55rem 0}.dde-tools,.dde-small{font:.9rem/1.42 system-ui,sans-serif}
+.dde812 button{color:inherit;background:var(--panel,Canvas);border:1px solid var(--dde-rule);border-radius:3px;min-height:37px;padding:.4rem;font:inherit;cursor:pointer}.dde812 button.go{background:#2b5961;color:#fff}
+.dde-view{aspect-ratio:1.48;background:#26353a}.dde-view canvas{width:100%;height:100%;display:block;touch-action:none}
+.dde-meta{display:grid;grid-template-columns:1fr 1.45fr 1fr;gap:.3rem;margin:1rem 0}.dde-meta :is(small,strong){display:block}.dde-meta strong{font:.91rem monospace}
+.dde-table{overflow:auto}.dde-table table{width:100%;border-collapse:collapse}.dde-table :is(th,td){border-bottom:1px solid var(--dde-rule);text-align:left;padding:.45rem}
+#status{min-height:2.5rem}.dde812 .iserror{color:#a74533}html[data-theme=dark] .dde812 .iserror{color:#fabba5}
+@media(max-width:800px){.dde-grid{grid-template-columns:1fr}}@media(max-width:420px){.dde-card{padding:.55rem}}
+</style>

@@ -1,0 +1,113 @@
+{
+  "triangles": 4748,
+  "draws": 46,
+  "nodes": 14,
+  "bytes": 297192,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "port_A": {
+      "at": [
+        -0.176,
+        0.029,
+        0.101
+      ],
+      "extent": [
+        0.021,
+        0.027,
+        0.013
+      ],
+      "action": "select:A-01",
+      "label": "Read stored channel A-01 or report no data",
+      "portId": "RHS-A"
+    },
+    "port_B": {
+      "at": [
+        -0.116,
+        0.029,
+        0.101
+      ],
+      "extent": [
+        0.021,
+        0.027,
+        0.013
+      ],
+      "action": "select:B-01",
+      "label": "Read stored channel B-01 or report no data",
+      "portId": "RHS-B"
+    },
+    "port_C": {
+      "at": [
+        -0.056,
+        0.029,
+        0.101
+      ],
+      "extent": [
+        0.021,
+        0.027,
+        0.013
+      ],
+      "action": "select:C-01",
+      "label": "Read stored channel C-01 or report no data",
+      "portId": "RHS-C"
+    },
+    "port_D": {
+      "at": [
+        0.004,
+        0.029,
+        0.101
+      ],
+      "extent": [
+        0.021,
+        0.027,
+        0.013
+      ],
+      "action": "select:D-01",
+      "label": "Read stored channel D-01 or report no data",
+      "portId": "RHS-D"
+    },
+    "head_A": {
+      "at": [
+        -0.164,
+        0.007,
+        0.204
+      ],
+      "extent": [
+        0.015,
+        0.006,
+        0.024
+      ],
+      "action": "select:A-01",
+      "label": "Read synthetic trace for headstage A"
+    },
+    "head_B": {
+      "at": [
+        -0.062,
+        0.007,
+        0.222
+      ],
+      "extent": [
+        0.013,
+        0.006,
+        0.024
+      ],
+      "action": "select:B-01",
+      "label": "Read synthetic trace for headstage B"
+    },
+    "head_C": {
+      "at": [
+        0.059,
+        0.007,
+        0.195
+      ],
+      "extent": [
+        0.015,
+        0.006,
+        0.024
+      ],
+      "action": "select:C-01",
+      "label": "Read synthetic trace for headstage C"
+    }
+  }
+}

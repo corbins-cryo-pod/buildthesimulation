@@ -1,0 +1,107 @@
+{
+  "schema": "bts.detached-ideal-series-card.verification.v1",
+  "metrics": {
+    "bytes": 83532,
+    "triangles": 1008,
+    "draws": 32,
+    "proposedFixtureXYZM": [
+      0.23999999463558197,
+      0.11500000022351742,
+      0.18000000715255737
+    ]
+  },
+  "cases": [
+    {
+      "id": "width",
+      "expected": 0.24,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.23999999463558197,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 0.115,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.11500000022351742,
+      "outcome": "PASS"
+    },
+    {
+      "id": "depth",
+      "expected": 0.18,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.18000000715255737,
+      "outcome": "PASS"
+    },
+    {
+      "id": "normal-total",
+      "expected": 10100,
+      "unit": "Ω",
+      "actual": 10100,
+      "outcome": "PASS"
+    },
+    {
+      "id": "normal-current",
+      "expected": 99.00990099009901,
+      "tolerance": 1e-10,
+      "unit": "µA",
+      "actual": 99.00990099009901,
+      "outcome": "PASS"
+    },
+    {
+      "id": "voltage-a",
+      "expected": 0.32673267326732675,
+      "tolerance": 1e-10,
+      "unit": "V",
+      "actual": 0.32673267326732675,
+      "outcome": "PASS"
+    },
+    {
+      "id": "voltage-b",
+      "expected": 0.6732673267326733,
+      "tolerance": 1e-10,
+      "unit": "V",
+      "actual": 0.6732673267326733,
+      "outcome": "PASS"
+    },
+    {
+      "id": "closed-drop-sum",
+      "expected": 1,
+      "tolerance": 1e-10,
+      "unit": "V",
+      "actual": 1,
+      "outcome": "PASS"
+    },
+    {
+      "id": "open-current",
+      "expected": 0,
+      "unit": "µA",
+      "actual": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "open-gap-voltage",
+      "expected": 1,
+      "unit": "V",
+      "actual": 1,
+      "outcome": "PASS"
+    },
+    {
+      "id": "open-resistance-is-not-zero",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "physical-command-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Original nominal fixture geometry and independent ideal arithmetic, not measured or operational hardware."
+}

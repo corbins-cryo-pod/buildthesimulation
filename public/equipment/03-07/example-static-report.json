@@ -1,0 +1,51 @@
+{
+  "schema": "bts.static-coupon-inspection.v1",
+  "source": "simulated",
+  "instrumentId": "03-07",
+  "sampleId": "OX80-DRY-WITNESS-01",
+  "revision": 2,
+  "analysis": "pure geometry; non-operational",
+  "axis": {
+    "units": "mm",
+    "originGlbMm": [
+      -24,
+      1186,
+      96
+    ],
+    "x": "right",
+    "z": "toward operator"
+  },
+  "geometry": {
+    "id": "dry-witness",
+    "diameterMm": 100,
+    "centerXZM": [
+      0,
+      0
+    ],
+    "ringRadiusMm": 60,
+    "remainingMm": 10,
+    "fits": true
+  },
+  "map": {
+    "id": "thin",
+    "source": "immutable fictional teaching data; not as-built or deposited",
+    "unit": "nm",
+    "shape": [
+      3,
+      3
+    ],
+    "values": [
+      398,
+      401,
+      399,
+      402,
+      400,
+      398,
+      397,
+      400,
+      401
+    ],
+    "nominalCenterNm": 400
+  },
+  "processStateChanged": false
+}

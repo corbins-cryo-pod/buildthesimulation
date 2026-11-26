@@ -1,0 +1,57 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.2365,
+    0.0213,
+    0.083
+  ],
+  "meshes": 52,
+  "triangles": 6837,
+  "bytes": 392140,
+  "interaction": {
+    "Offline_locator_marker": {
+      "action": "next",
+      "label": "Switch the detached coordinate readout",
+      "boundsMinM": [
+        0.1468,
+        0.0183,
+        0.0155
+      ],
+      "boundsMaxM": [
+        0.1556,
+        0.0213,
+        0.0243
+      ],
+      "positionsM": [
+        [
+          0.1512,
+          0.0198,
+          0.0199
+        ],
+        [
+          0.1071,
+          0.0198,
+          0.001
+        ],
+        [
+          0.126,
+          0.0198,
+          0.001
+        ]
+      ]
+    }
+  },
+  "modelCabinetM": [
+    0.135,
+    0.021,
+    0.058
+  ],
+  "citedExteriorMm": [
+    135,
+    21,
+    58
+  ],
+  "actualDeviceActions": 0,
+  "independentReadout": true
+}

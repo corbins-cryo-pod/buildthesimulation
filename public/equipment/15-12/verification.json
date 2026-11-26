@@ -1,0 +1,118 @@
+{
+  "schema": "bts.tdt.offline-file.verification.v1",
+  "scope": "Named rack envelope and synthetic fixed file analysis only; not device, protocol or biological validation",
+  "checks": [
+    {
+      "id": "Rack face width (19 in)",
+      "expected": 0.4826,
+      "actual": 0.48260000000000003,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Rack face height (3U)",
+      "expected": 0.13335,
+      "actual": 0.13335,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "RA4PA exterior indicators",
+      "expected": 4,
+      "actual": 4,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Default first qualifying record",
+      "expected": "L3",
+      "actual": "L3",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Independent peak index",
+      "expected": 76,
+      "actual": 76,
+      "unit": "sample",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Known offset within one file sample",
+      "expected": 2.2,
+      "actual": 2.2,
+      "unit": "ms",
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "id": "Threshold at exact equality includes L3",
+      "expected": "L3",
+      "actual": "L3",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Higher offline threshold moves first case",
+      "expected": "L4",
+      "actual": "L4",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "L4 tied maximum uses earliest known index",
+      "expected": 76,
+      "actual": 76,
+      "unit": "sample",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "9 mV outside the window is ignored",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "No-result export records null, not an invented peak",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "All immutable source rows in CSV",
+      "expected": 512,
+      "actual": 512,
+      "unit": "rows",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Caller cannot mutate fixed source",
+      "expected": 6,
+      "actual": 6,
+      "unit": "mV",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Detached hits present",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

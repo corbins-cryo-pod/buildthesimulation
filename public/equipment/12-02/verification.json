@@ -1,0 +1,119 @@
+{
+  "equipment": "12-02",
+  "basis": "Use Nikon DS-Qi2 nominal 7.3 µm sensor pixel and a fixed 400×256 pixel crop with 1× camera relay. A 36.5 µm reticle pitch projects to 365/7.3=50 pixels at 10× and 730/7.3=100 at 20×; the same fixed 2920 µm sensor width spans 292 and 146 µm in object space. Compare line peaks in rendered image rather than using nominal grid pitch as the measurement.",
+  "scope": "Synthetic optical scale and documented exterior dimensions; not measured performance.",
+  "checks": [
+    {
+      "id": "10× line-group spacing",
+      "expected": 50,
+      "actual": 50,
+      "unit": "px",
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "id": "20× line-group spacing",
+      "expected": 100,
+      "actual": 100,
+      "unit": "px",
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "id": "10× image-derived physical pitch",
+      "expected": 36.5,
+      "actual": 36.5,
+      "unit": "µm",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "20× image-derived physical pitch",
+      "expected": 36.5,
+      "actual": 36.5,
+      "unit": "µm",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "10× horizontal FOV",
+      "expected": 292,
+      "actual": 292,
+      "unit": "µm",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "20× horizontal FOV",
+      "expected": 146,
+      "actual": 146,
+      "unit": "µm",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Fixed camera FOV ratio",
+      "expected": 2,
+      "actual": 2,
+      "unit": "ratio",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Out of focus measurement blocked",
+      "expected": true,
+      "actual": true,
+      "unit": "flag",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Body width",
+      "expected": 0.24,
+      "actual": 0.24,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Body depth",
+      "expected": 0.4953,
+      "actual": 0.4953,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Single-layer stage top",
+      "expected": 0.3405,
+      "actual": 0.3405,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Single-layer lamp top",
+      "expected": 0.668,
+      "actual": 0.668,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "20× turret lands on optical X axis",
+      "expected": 0,
+      "actual": 6.938893903907228e-18,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named scene actions",
+      "expected": 3,
+      "actual": 3,
+      "unit": "hits",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

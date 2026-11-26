@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"06-06",
+  "asset":"ns-lab.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_floor_anchor","mount":"floor"},
+  "parts":{"cabinet":"nslab_dormant_cabinet","window":"closed_opaque_front_window","display":"blank_front_display","review":"detached_abstract_drawing_stand"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_drawing_panel","label":"Show the other fixed drawing orientation","sizeM":[0.39,0.39,0.045],"range":[0,1],"mode":"read-only"}],
+  "vrEvidence":"Metric model and bounded authoring action only; no immersive verification"
+}

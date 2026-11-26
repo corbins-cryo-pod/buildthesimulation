@@ -1,0 +1,142 @@
+{
+  "triangles": 6508,
+  "draws": 49,
+  "nodes": 16,
+  "bytes": 410600,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "receive_plug_bnc": {
+      "at": [
+        0.066,
+        0.067,
+        0.048
+      ],
+      "extent": [
+        0.016,
+        0.016,
+        0.048
+      ],
+      "action": "toggle",
+      "label": "Mate or unmate BNC lead",
+      "portId": "PANEL-BNC-IN-01"
+    },
+    "sink_bnc": {
+      "at": [
+        0.066,
+        0.067,
+        0.028
+      ],
+      "extent": [
+        0.018,
+        0.018,
+        0.017
+      ],
+      "action": "sink:BNC",
+      "label": "Select BNC jack",
+      "portId": "PANEL-BNC-IN-01"
+    },
+    "sink_sma": {
+      "at": [
+        -0.027,
+        0.067,
+        0.028
+      ],
+      "extent": [
+        0.01,
+        0.01,
+        0.016
+      ],
+      "action": "sink:SMA",
+      "label": "Select SMA witness",
+      "portId": "PANEL-SMA-WITNESS"
+    },
+    "sink_usb": {
+      "at": [
+        0.012,
+        0.067,
+        0.025
+      ],
+      "extent": [
+        0.014,
+        0.006,
+        0.012
+      ],
+      "action": "sink:USB",
+      "label": "Select USB-A witness",
+      "portId": "PANEL-USB-A-WITNESS"
+    },
+    "sink_ffc": {
+      "at": [
+        0.041,
+        0.067,
+        0.024
+      ],
+      "extent": [
+        0.007,
+        0.005,
+        0.008
+      ],
+      "action": "sink:FFC",
+      "label": "Select FFC witness",
+      "portId": "PANEL-FFC-WITNESS"
+    },
+    "display_sma": {
+      "at": [
+        -0.027,
+        0.031,
+        0.086
+      ],
+      "extent": [
+        0.01,
+        0.01,
+        0.025
+      ],
+      "action": "plug:SMA",
+      "label": "Select SMA candidate"
+    },
+    "display_usb": {
+      "at": [
+        0.012,
+        0.031,
+        0.082
+      ],
+      "extent": [
+        0.018,
+        0.009,
+        0.028
+      ],
+      "action": "plug:USB",
+      "label": "Select USB-A candidate"
+    },
+    "display_ffc": {
+      "at": [
+        0.041,
+        0.031,
+        0.091
+      ],
+      "extent": [
+        0.004,
+        0.002,
+        0.03
+      ],
+      "action": "plug:FFC",
+      "label": "Select FFC candidate"
+    },
+    "pulse_button": {
+      "at": [
+        -0.066,
+        0.035,
+        0.022
+      ],
+      "extent": [
+        0.016,
+        0.016,
+        0.011
+      ],
+      "action": "pulse",
+      "label": "Route an ideal pulse"
+    }
+  }
+}

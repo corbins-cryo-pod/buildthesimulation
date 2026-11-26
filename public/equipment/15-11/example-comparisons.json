@@ -1,0 +1,70 @@
+[
+  {
+    "schema": "bts.synthetic-pattern-comparison.v1",
+    "archiveId": "ABSTRACT-SIX-TILES-001",
+    "revision": 1,
+    "source": "synthetic-inert-drawing",
+    "referenceId": "CARD-A",
+    "cardId": "CARD-B",
+    "grid": {
+      "cols": 9,
+      "rows": 7,
+      "pitchMm": 2
+    },
+    "algorithm": "Subtract each nonempty card’s independent minimum X and Y; no rotation or mirror; Jaccard intersection divided by union.",
+    "card": {
+      "occupiedCells": 6,
+      "areaMm2": 24
+    },
+    "coverage": "stored-pattern",
+    "comparison": {
+      "intersectionCells": 6,
+      "unionCells": 6,
+      "iou": 1
+    }
+  },
+  {
+    "schema": "bts.synthetic-pattern-comparison.v1",
+    "archiveId": "ABSTRACT-SIX-TILES-001",
+    "revision": 1,
+    "source": "synthetic-inert-drawing",
+    "referenceId": "CARD-A",
+    "cardId": "CARD-C",
+    "grid": {
+      "cols": 9,
+      "rows": 7,
+      "pitchMm": 2
+    },
+    "algorithm": "Subtract each nonempty card’s independent minimum X and Y; no rotation or mirror; Jaccard intersection divided by union.",
+    "card": {
+      "occupiedCells": 6,
+      "areaMm2": 24
+    },
+    "coverage": "stored-pattern",
+    "comparison": {
+      "intersectionCells": 3,
+      "unionCells": 9,
+      "iou": 0.3333333333333333
+    }
+  },
+  {
+    "schema": "bts.synthetic-pattern-comparison.v1",
+    "archiveId": "ABSTRACT-SIX-TILES-001",
+    "revision": 1,
+    "source": "synthetic-inert-drawing",
+    "referenceId": "CARD-A",
+    "cardId": "CARD-D",
+    "grid": {
+      "cols": 9,
+      "rows": 7,
+      "pitchMm": 2
+    },
+    "algorithm": "Subtract each nonempty card’s independent minimum X and Y; no rotation or mirror; Jaccard intersection divided by union.",
+    "card": {
+      "occupiedCells": 0,
+      "areaMm2": 0
+    },
+    "coverage": "stored-blank",
+    "comparison": null
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "schema": "bts.detached-coordinate-card.verification.v1",
+  "metrics": {
+    "bytes": 344096,
+    "triangles": 4936,
+    "draws": 102,
+    "consoleXYZM": [
+      0.4000000059604645,
+      0.05000000074505806,
+      0.11500000286102338
+    ],
+    "cubeXYZM": [
+      0.1470000073313713,
+      0.058000002056360245,
+      0.10900000189115668
+    ]
+  },
+  "cases": [
+    {
+      "id": "console-width",
+      "expected": 0.4,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.4000000059604645,
+      "outcome": "PASS"
+    },
+    {
+      "id": "console-depth",
+      "expected": 0.115,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.11500000286102338,
+      "outcome": "PASS"
+    },
+    {
+      "id": "console-height",
+      "expected": 0.05,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.05000000074505806,
+      "outcome": "PASS"
+    },
+    {
+      "id": "cube-width-with-tabs",
+      "expected": 0.147,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.1470000073313713,
+      "outcome": "PASS"
+    },
+    {
+      "id": "cube-depth",
+      "expected": 0.109,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.10900000189115668,
+      "outcome": "PASS"
+    },
+    {
+      "id": "cube-height",
+      "expected": 0.058,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.058000002056360245,
+      "outcome": "PASS"
+    },
+    {
+      "id": "normal-length",
+      "expected": 20.12461179749811,
+      "tolerance": 1e-10,
+      "unit": "mm",
+      "actual": 20.12461179749811,
+      "outcome": "PASS"
+    },
+    {
+      "id": "ccw-vector-x",
+      "expected": -9,
+      "unit": "mm",
+      "actual": -9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "cw-vector-y",
+      "expected": -18,
+      "unit": "mm",
+      "actual": -18,
+      "outcome": "PASS"
+    },
+    {
+      "id": "length-invariant",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unsupported-command-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Closed Doric enclosures and independent fixed geometry card. No hardware or headset test."
+}

@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"15-06",
+  "asset":"skyscan1276.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","mount":"bench"},
+  "parts":{"housing":"skyscan1276_dormant_cabinet","blueFront":"fixed_navy_front_center","closedNose":"closed_rounded_front_shell","display":"dark_inactive_side_display","exhibit":"detached_phantom_review_stand"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_phantom_panel","label":"Review the next fixed phantom frame","sizeM":[0.351,0.260,0.045],"range":[0,2],"mode":"read-only"}],
+  "vrEvidence":"Metric asset with separate selection target; no immersive operation or headset verification."
+}

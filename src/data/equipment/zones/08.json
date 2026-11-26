@@ -36,9 +36,10 @@
     "inputs": "Pad map, wedge orientation, ribbon or wire cross-section and keep-out geometry",
     "outputs": "Assembly revision with directional bond footprints, wire envelope and clearance report",
     "acceptance": "Route a ribbon over a known obstacle. A loop below the clearance threshold must intersect the obstacle and a raised reference loop must clear it.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/08-02/simulator/",
+    "geometryStatus": "First-pass metric 4523D bench",
+    "simulationStatus": "Verified ribbon clearance and footprints",
+    "integrationStatus": "Interactive package study and assembly exports"
   },
   {
     "id": "08-03",
@@ -240,7 +241,7 @@
   {
     "id": "08-12",
     "name": "Rework and soldering",
-    "model": "JBC DDE 2-tool station (candidate)",
+    "model": "JBC DDSE-1QF electric layout / DDE-D / T245 + DR560",
     "evidence": "C",
     "priority": "P2",
     "page": 29,
@@ -251,8 +252,15 @@
     "inputs": "Component BOM, footprint orientation, pad-to-pin map and requested rework action",
     "outputs": "Assembly revision with populated footprints, joint states and a revised connectivity graph",
     "acceptance": "Replace a polarized two-pin component on a labeled fixture. Correct orientation must preserve both mapped nets and a reversed placement must trigger the declared polarity check.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric DDE housing and editable two-tool workbench GLB",
+    "simulationStatus": "Virtual polarized two-pin replacement and net-graph validation",
+    "integrationStatus": "Revisioned assembly graph JSON and VR actions",
+    "simulator": "/simulations/equipment/08-12/simulator/",
+    "related": [
+      [
+        "Sources and independent fixture checks",
+        "/simulations/equipment/08-12/simulator/#evidence"
+      ]
+    ]
   }
 ]

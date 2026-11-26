@@ -1,0 +1,79 @@
+{
+  "equipment": "03-09",
+  "basis": "A centered rectangle fits a 22 mm mock circle if its corner-to-corner diagonal is at most 22 mm. Hand fixtures: 16×10 mm has squared diagonal 356 mm² and 1.5660188679 mm radial clearance. 20×12 mm has squared diagonal 544 mm², above 484 mm²; 0.6619037897 mm theoretical radial interference. 17.6×13.2 mm yields 484 mm² exactly: line-to-line touch, not a usable positive clearance.",
+  "scope": "Analytical mock-gauge compatibility and nominal exterior geometry only.",
+  "checks": [
+    {
+      "id": "16 × 10 mm clearance",
+      "expected": 1.5660188679,
+      "actual": 1.5660188679433968,
+      "unit": "mm",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Centered carrier fits",
+      "expected": "clear",
+      "actual": "clear",
+      "unit": "class",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "20 × 12 mm interference",
+      "expected": -0.6619037897,
+      "actual": -0.6619037896905997,
+      "unit": "mm",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Oversized carrier rejected",
+      "expected": "blocked",
+      "actual": "blocked",
+      "unit": "class",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "22 mm diagonal boundary",
+      "expected": "touch",
+      "actual": "touch",
+      "unit": "class",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Envelope width",
+      "expected": 0.4064,
+      "actual": 0.4064,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Envelope closed height",
+      "expected": 0.381,
+      "actual": 0.381,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Envelope depth",
+      "expected": 0.2794,
+      "actual": 0.2794,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named ray targets",
+      "expected": 5,
+      "actual": 5,
+      "unit": "hits",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

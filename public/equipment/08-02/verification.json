@@ -1,0 +1,72 @@
+[
+  {
+    "id": "low-loop",
+    "inputs": "Apex 120 µm",
+    "expected": {
+      "gapUm": -12.3,
+      "intersects": true,
+      "layoutPass": false
+    },
+    "tolerance": 1e-9,
+    "actual": {
+      "gapUm": -12.300000000000011,
+      "intersects": true,
+      "layoutPass": false
+    },
+    "pass": true
+  },
+  {
+    "id": "raised-loop",
+    "inputs": "Apex 160 µm",
+    "expected": {
+      "gapUm": 26.1,
+      "intersects": false,
+      "layoutPass": true
+    },
+    "tolerance": 1e-9,
+    "actual": {
+      "gapUm": 26.099999999999994,
+      "intersects": false,
+      "layoutPass": true
+    },
+    "pass": true
+  },
+  {
+    "id": "clear-but-below-margin",
+    "inputs": "Apex 135 µm, require 15 µm gap",
+    "expected": {
+      "gapUm": 2.1,
+      "intersects": false,
+      "layoutPass": false
+    },
+    "tolerance": 1e-9,
+    "actual": {
+      "gapUm": 2.0999999999999943,
+      "intersects": false,
+      "layoutPass": false
+    },
+    "pass": true
+  },
+  {
+    "id": "transverse-escape",
+    "inputs": "Obstacle center offset 160 µm, width 100 µm, ribbon width 127 µm.",
+    "expected": {
+      "gapUm": null,
+      "intersects": false,
+      "layoutPass": true
+    },
+    "actual": {
+      "gapUm": null,
+      "intersects": false,
+      "layoutPass": true
+    },
+    "pass": true
+  },
+  {
+    "id": "fixture-unseated",
+    "inputs": "Remove package before Preview",
+    "expected": "Seat the package before evaluating the ribbon.",
+    "actual": "Seat the package before evaluating the ribbon.",
+    "pass": true
+  }
+]

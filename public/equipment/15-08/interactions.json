@@ -1,0 +1,93 @@
+{
+  "triangles": 2156,
+  "draws": 35,
+  "nodes": 10,
+  "bytes": 153088,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "lower_cart": {
+      "at": [
+        -0.505,
+        0,
+        -0.036
+      ],
+      "extent": [
+        0.81,
+        0.651,
+        0.974
+      ],
+      "label": "Closed gray/orange lower-cart model, nominal scale proxy only; no action"
+    },
+    "opaque_front": {
+      "at": [
+        -0.505,
+        0.391,
+        0.36200000000000004
+      ],
+      "extent": [
+        0.664,
+        0.369,
+        0.038
+      ],
+      "label": "Intentionally sealed front; static styling only"
+    },
+    "display": {
+      "at": [
+        0.62,
+        1.105,
+        0.022
+      ],
+      "extent": [
+        0.422,
+        0.266,
+        0.044
+      ],
+      "action": "view",
+      "label": "Read the separate authored width comparison"
+    },
+    "select_growth": {
+      "at": [
+        0.481,
+        0.8270000000000001,
+        0.239
+      ],
+      "extent": [
+        0.097,
+        0.04,
+        0.084
+      ],
+      "action": "select:growth",
+      "label": "Select detached growth drawing"
+    },
+    "select_mixed": {
+      "at": [
+        0.62,
+        0.8270000000000001,
+        0.239
+      ],
+      "extent": [
+        0.097,
+        0.04,
+        0.084
+      ],
+      "action": "select:mixed",
+      "label": "Select detached mixed drawing"
+    },
+    "select_zero": {
+      "at": [
+        0.759,
+        0.8270000000000001,
+        0.239
+      ],
+      "extent": [
+        0.097,
+        0.04,
+        0.084
+      ],
+      "action": "select:zero",
+      "label": "Select detached zero drawing"
+    }
+  }
+}

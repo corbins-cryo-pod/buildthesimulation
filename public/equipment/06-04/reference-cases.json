@@ -1,0 +1,16 @@
+{
+  "method":"Formlabs W/D/H compared with closed model mesh bounds. Independently hand-calculate opposite clearance faces of the unrelated authored teaching diagram; 128−106 leaves 22 mm combined X clearance in all three sign cases.",
+  "cases":[
+    {"id":"width","expected":0.398,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":0.554,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":0.367,"tolerance":0.00001,"unit":"m"},
+    {"id":"left-centered","expected":11,"unit":"mm"},
+    {"id":"right-tangent","expected":0,"unit":"mm"},
+    {"id":"right-offset","expected":-3,"unit":"mm"},
+    {"id":"unchanged-depth","expected":12,"unit":"mm"},
+    {"id":"unchanged-height","expected":16,"unit":"mm"},
+    {"id":"combined-gap","expected":22,"unit":"mm"},
+    {"id":"classifies-three-states","expected":true,"unit":"boolean"},
+    {"id":"physical-action-rejected","expected":true,"unit":"boolean"}
+  ]
+}

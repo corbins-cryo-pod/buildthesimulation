@@ -1,0 +1,791 @@
+{
+  "schema": "bts.ribbon-clearance.v1",
+  "deviceId": "08-02",
+  "kind": "simulated",
+  "model": "Kulicke & Soffa 4523D, vertical-feed geometry study",
+  "sampleId": "package-fanout-01",
+  "inputRevision": 0,
+  "revision": 1,
+  "configuration": {
+    "sampleId": "package-fanout-01",
+    "spanUm": 500,
+    "apexUm": 160,
+    "thicknessUm": 25,
+    "widthUm": 127,
+    "blockXUm": 250,
+    "blockLengthUm": 100,
+    "blockOffsetUm": 0,
+    "blockWidthUm": 100,
+    "blockHeightUm": 115,
+    "marginUm": 15,
+    "orientationDeg": 0
+  },
+  "units": {
+    "position": "µm",
+    "gapUm": "µm",
+    "orientationDeg": "deg"
+  },
+  "coordinateFrame": "Package-local; X from pad A to B, Y across substrate plane, Z up",
+  "pads": [
+    {
+      "id": "PAD-A",
+      "centerUm": [
+        0,
+        0,
+        0
+      ],
+      "footprintUm": [
+        150,
+        127
+      ],
+      "directionDeg": 0
+    },
+    {
+      "id": "PAD-B",
+      "centerUm": [
+        500,
+        0,
+        0
+      ],
+      "footprintUm": [
+        150,
+        127
+      ],
+      "directionDeg": 0
+    }
+  ],
+  "points": [
+    {
+      "xUm": 0,
+      "yUm": 0,
+      "centerZUm": 12.5,
+      "lowerZUm": 0,
+      "upperZUm": 25
+    },
+    {
+      "xUm": 5,
+      "yUm": 0,
+      "centerZUm": 12.5,
+      "lowerZUm": 0,
+      "upperZUm": 25
+    },
+    {
+      "xUm": 10,
+      "yUm": 0,
+      "centerZUm": 12.544,
+      "lowerZUm": 0.04400000000000048,
+      "upperZUm": 25.044
+    },
+    {
+      "xUm": 15,
+      "yUm": 0,
+      "centerZUm": 18.624,
+      "lowerZUm": 6.123999999999999,
+      "upperZUm": 31.124
+    },
+    {
+      "xUm": 20,
+      "yUm": 0,
+      "centerZUm": 24.576,
+      "lowerZUm": 12.076,
+      "upperZUm": 37.076
+    },
+    {
+      "xUm": 25,
+      "yUm": 0,
+      "centerZUm": 30.4,
+      "lowerZUm": 17.9,
+      "upperZUm": 42.9
+    },
+    {
+      "xUm": 30,
+      "yUm": 0,
+      "centerZUm": 36.096,
+      "lowerZUm": 23.595999999999997,
+      "upperZUm": 48.596
+    },
+    {
+      "xUm": 35,
+      "yUm": 0,
+      "centerZUm": 41.664,
+      "lowerZUm": 29.164,
+      "upperZUm": 54.164
+    },
+    {
+      "xUm": 40,
+      "yUm": 0,
+      "centerZUm": 47.104000000000006,
+      "lowerZUm": 34.604000000000006,
+      "upperZUm": 59.604000000000006
+    },
+    {
+      "xUm": 45,
+      "yUm": 0,
+      "centerZUm": 52.416,
+      "lowerZUm": 39.916,
+      "upperZUm": 64.916
+    },
+    {
+      "xUm": 50,
+      "yUm": 0,
+      "centerZUm": 57.6,
+      "lowerZUm": 45.1,
+      "upperZUm": 70.1
+    },
+    {
+      "xUm": 55,
+      "yUm": 0,
+      "centerZUm": 62.656000000000006,
+      "lowerZUm": 50.156000000000006,
+      "upperZUm": 75.156
+    },
+    {
+      "xUm": 60,
+      "yUm": 0,
+      "centerZUm": 67.584,
+      "lowerZUm": 55.084,
+      "upperZUm": 80.084
+    },
+    {
+      "xUm": 65,
+      "yUm": 0,
+      "centerZUm": 72.384,
+      "lowerZUm": 59.884,
+      "upperZUm": 84.884
+    },
+    {
+      "xUm": 70,
+      "yUm": 0,
+      "centerZUm": 77.05600000000001,
+      "lowerZUm": 64.55600000000001,
+      "upperZUm": 89.55600000000001
+    },
+    {
+      "xUm": 75,
+      "yUm": 0,
+      "centerZUm": 81.6,
+      "lowerZUm": 69.1,
+      "upperZUm": 94.1
+    },
+    {
+      "xUm": 80,
+      "yUm": 0,
+      "centerZUm": 86.016,
+      "lowerZUm": 73.516,
+      "upperZUm": 98.516
+    },
+    {
+      "xUm": 85,
+      "yUm": 0,
+      "centerZUm": 90.304,
+      "lowerZUm": 77.804,
+      "upperZUm": 102.804
+    },
+    {
+      "xUm": 90,
+      "yUm": 0,
+      "centerZUm": 94.464,
+      "lowerZUm": 81.964,
+      "upperZUm": 106.964
+    },
+    {
+      "xUm": 95,
+      "yUm": 0,
+      "centerZUm": 98.496,
+      "lowerZUm": 85.996,
+      "upperZUm": 110.996
+    },
+    {
+      "xUm": 100,
+      "yUm": 0,
+      "centerZUm": 102.4,
+      "lowerZUm": 89.9,
+      "upperZUm": 114.9
+    },
+    {
+      "xUm": 105,
+      "yUm": 0,
+      "centerZUm": 106.17600000000002,
+      "lowerZUm": 93.67600000000002,
+      "upperZUm": 118.67600000000002
+    },
+    {
+      "xUm": 110,
+      "yUm": 0,
+      "centerZUm": 109.82400000000001,
+      "lowerZUm": 97.32400000000001,
+      "upperZUm": 122.32400000000001
+    },
+    {
+      "xUm": 115,
+      "yUm": 0,
+      "centerZUm": 113.34400000000002,
+      "lowerZUm": 100.84400000000002,
+      "upperZUm": 125.84400000000002
+    },
+    {
+      "xUm": 120,
+      "yUm": 0,
+      "centerZUm": 116.73599999999999,
+      "lowerZUm": 104.23599999999999,
+      "upperZUm": 129.236
+    },
+    {
+      "xUm": 125,
+      "yUm": 0,
+      "centerZUm": 120,
+      "lowerZUm": 107.5,
+      "upperZUm": 132.5
+    },
+    {
+      "xUm": 130,
+      "yUm": 0,
+      "centerZUm": 123.136,
+      "lowerZUm": 110.636,
+      "upperZUm": 135.636
+    },
+    {
+      "xUm": 135,
+      "yUm": 0,
+      "centerZUm": 126.144,
+      "lowerZUm": 113.644,
+      "upperZUm": 138.644
+    },
+    {
+      "xUm": 140,
+      "yUm": 0,
+      "centerZUm": 129.024,
+      "lowerZUm": 116.524,
+      "upperZUm": 141.524
+    },
+    {
+      "xUm": 145,
+      "yUm": 0,
+      "centerZUm": 131.77599999999998,
+      "lowerZUm": 119.27599999999998,
+      "upperZUm": 144.27599999999998
+    },
+    {
+      "xUm": 150,
+      "yUm": 0,
+      "centerZUm": 134.39999999999998,
+      "lowerZUm": 121.89999999999998,
+      "upperZUm": 146.89999999999998
+    },
+    {
+      "xUm": 155,
+      "yUm": 0,
+      "centerZUm": 136.896,
+      "lowerZUm": 124.39599999999999,
+      "upperZUm": 149.396
+    },
+    {
+      "xUm": 160,
+      "yUm": 0,
+      "centerZUm": 139.26399999999998,
+      "lowerZUm": 126.76399999999998,
+      "upperZUm": 151.76399999999998
+    },
+    {
+      "xUm": 165,
+      "yUm": 0,
+      "centerZUm": 141.504,
+      "lowerZUm": 129.004,
+      "upperZUm": 154.004
+    },
+    {
+      "xUm": 170,
+      "yUm": 0,
+      "centerZUm": 143.61599999999999,
+      "lowerZUm": 131.11599999999999,
+      "upperZUm": 156.11599999999999
+    },
+    {
+      "xUm": 175,
+      "yUm": 0,
+      "centerZUm": 145.6,
+      "lowerZUm": 133.1,
+      "upperZUm": 158.1
+    },
+    {
+      "xUm": 180,
+      "yUm": 0,
+      "centerZUm": 147.456,
+      "lowerZUm": 134.956,
+      "upperZUm": 159.956
+    },
+    {
+      "xUm": 185,
+      "yUm": 0,
+      "centerZUm": 149.184,
+      "lowerZUm": 136.684,
+      "upperZUm": 161.684
+    },
+    {
+      "xUm": 190,
+      "yUm": 0,
+      "centerZUm": 150.784,
+      "lowerZUm": 138.284,
+      "upperZUm": 163.284
+    },
+    {
+      "xUm": 195,
+      "yUm": 0,
+      "centerZUm": 152.256,
+      "lowerZUm": 139.756,
+      "upperZUm": 164.756
+    },
+    {
+      "xUm": 200,
+      "yUm": 0,
+      "centerZUm": 153.6,
+      "lowerZUm": 141.1,
+      "upperZUm": 166.1
+    },
+    {
+      "xUm": 205,
+      "yUm": 0,
+      "centerZUm": 154.816,
+      "lowerZUm": 142.316,
+      "upperZUm": 167.316
+    },
+    {
+      "xUm": 210,
+      "yUm": 0,
+      "centerZUm": 155.90400000000002,
+      "lowerZUm": 143.40400000000002,
+      "upperZUm": 168.40400000000002
+    },
+    {
+      "xUm": 215,
+      "yUm": 0,
+      "centerZUm": 156.864,
+      "lowerZUm": 144.364,
+      "upperZUm": 169.364
+    },
+    {
+      "xUm": 220,
+      "yUm": 0,
+      "centerZUm": 157.69600000000003,
+      "lowerZUm": 145.19600000000003,
+      "upperZUm": 170.19600000000003
+    },
+    {
+      "xUm": 225,
+      "yUm": 0,
+      "centerZUm": 158.4,
+      "lowerZUm": 145.9,
+      "upperZUm": 170.9
+    },
+    {
+      "xUm": 230,
+      "yUm": 0,
+      "centerZUm": 158.97600000000003,
+      "lowerZUm": 146.47600000000003,
+      "upperZUm": 171.47600000000003
+    },
+    {
+      "xUm": 235,
+      "yUm": 0,
+      "centerZUm": 159.42399999999998,
+      "lowerZUm": 146.92399999999998,
+      "upperZUm": 171.92399999999998
+    },
+    {
+      "xUm": 240,
+      "yUm": 0,
+      "centerZUm": 159.744,
+      "lowerZUm": 147.244,
+      "upperZUm": 172.244
+    },
+    {
+      "xUm": 245,
+      "yUm": 0,
+      "centerZUm": 159.936,
+      "lowerZUm": 147.436,
+      "upperZUm": 172.436
+    },
+    {
+      "xUm": 250,
+      "yUm": 0,
+      "centerZUm": 160,
+      "lowerZUm": 147.5,
+      "upperZUm": 172.5
+    },
+    {
+      "xUm": 255,
+      "yUm": 0,
+      "centerZUm": 159.93599999999998,
+      "lowerZUm": 147.43599999999998,
+      "upperZUm": 172.43599999999998
+    },
+    {
+      "xUm": 260,
+      "yUm": 0,
+      "centerZUm": 159.744,
+      "lowerZUm": 147.244,
+      "upperZUm": 172.244
+    },
+    {
+      "xUm": 265,
+      "yUm": 0,
+      "centerZUm": 159.424,
+      "lowerZUm": 146.924,
+      "upperZUm": 171.924
+    },
+    {
+      "xUm": 270,
+      "yUm": 0,
+      "centerZUm": 158.976,
+      "lowerZUm": 146.476,
+      "upperZUm": 171.476
+    },
+    {
+      "xUm": 275,
+      "yUm": 0,
+      "centerZUm": 158.39999999999998,
+      "lowerZUm": 145.89999999999998,
+      "upperZUm": 170.89999999999998
+    },
+    {
+      "xUm": 280,
+      "yUm": 0,
+      "centerZUm": 157.696,
+      "lowerZUm": 145.196,
+      "upperZUm": 170.196
+    },
+    {
+      "xUm": 285,
+      "yUm": 0,
+      "centerZUm": 156.864,
+      "lowerZUm": 144.364,
+      "upperZUm": 169.364
+    },
+    {
+      "xUm": 290,
+      "yUm": 0,
+      "centerZUm": 155.904,
+      "lowerZUm": 143.404,
+      "upperZUm": 168.404
+    },
+    {
+      "xUm": 295,
+      "yUm": 0,
+      "centerZUm": 154.816,
+      "lowerZUm": 142.316,
+      "upperZUm": 167.316
+    },
+    {
+      "xUm": 300,
+      "yUm": 0,
+      "centerZUm": 153.60000000000002,
+      "lowerZUm": 141.10000000000002,
+      "upperZUm": 166.10000000000002
+    },
+    {
+      "xUm": 305,
+      "yUm": 0,
+      "centerZUm": 152.256,
+      "lowerZUm": 139.756,
+      "upperZUm": 164.756
+    },
+    {
+      "xUm": 310,
+      "yUm": 0,
+      "centerZUm": 150.78400000000002,
+      "lowerZUm": 138.28400000000002,
+      "upperZUm": 163.28400000000002
+    },
+    {
+      "xUm": 315,
+      "yUm": 0,
+      "centerZUm": 149.184,
+      "lowerZUm": 136.684,
+      "upperZUm": 161.684
+    },
+    {
+      "xUm": 320,
+      "yUm": 0,
+      "centerZUm": 147.456,
+      "lowerZUm": 134.956,
+      "upperZUm": 159.956
+    },
+    {
+      "xUm": 325,
+      "yUm": 0,
+      "centerZUm": 145.6,
+      "lowerZUm": 133.1,
+      "upperZUm": 158.1
+    },
+    {
+      "xUm": 330,
+      "yUm": 0,
+      "centerZUm": 143.61599999999999,
+      "lowerZUm": 131.11599999999999,
+      "upperZUm": 156.11599999999999
+    },
+    {
+      "xUm": 335,
+      "yUm": 0,
+      "centerZUm": 141.504,
+      "lowerZUm": 129.004,
+      "upperZUm": 154.004
+    },
+    {
+      "xUm": 340,
+      "yUm": 0,
+      "centerZUm": 139.26399999999998,
+      "lowerZUm": 126.76399999999998,
+      "upperZUm": 151.76399999999998
+    },
+    {
+      "xUm": 345,
+      "yUm": 0,
+      "centerZUm": 136.89600000000002,
+      "lowerZUm": 124.39600000000002,
+      "upperZUm": 149.39600000000002
+    },
+    {
+      "xUm": 350,
+      "yUm": 0,
+      "centerZUm": 134.40000000000003,
+      "lowerZUm": 121.90000000000003,
+      "upperZUm": 146.90000000000003
+    },
+    {
+      "xUm": 355,
+      "yUm": 0,
+      "centerZUm": 131.776,
+      "lowerZUm": 119.27600000000001,
+      "upperZUm": 144.276
+    },
+    {
+      "xUm": 360,
+      "yUm": 0,
+      "centerZUm": 129.024,
+      "lowerZUm": 116.524,
+      "upperZUm": 141.524
+    },
+    {
+      "xUm": 365,
+      "yUm": 0,
+      "centerZUm": 126.144,
+      "lowerZUm": 113.644,
+      "upperZUm": 138.644
+    },
+    {
+      "xUm": 370,
+      "yUm": 0,
+      "centerZUm": 123.13600000000001,
+      "lowerZUm": 110.63600000000001,
+      "upperZUm": 135.63600000000002
+    },
+    {
+      "xUm": 375,
+      "yUm": 0,
+      "centerZUm": 120,
+      "lowerZUm": 107.5,
+      "upperZUm": 132.5
+    },
+    {
+      "xUm": 380,
+      "yUm": 0,
+      "centerZUm": 116.73599999999999,
+      "lowerZUm": 104.23599999999999,
+      "upperZUm": 129.236
+    },
+    {
+      "xUm": 385,
+      "yUm": 0,
+      "centerZUm": 113.344,
+      "lowerZUm": 100.844,
+      "upperZUm": 125.844
+    },
+    {
+      "xUm": 390,
+      "yUm": 0,
+      "centerZUm": 109.824,
+      "lowerZUm": 97.324,
+      "upperZUm": 122.324
+    },
+    {
+      "xUm": 395,
+      "yUm": 0,
+      "centerZUm": 106.17599999999999,
+      "lowerZUm": 93.67599999999999,
+      "upperZUm": 118.67599999999999
+    },
+    {
+      "xUm": 400,
+      "yUm": 0,
+      "centerZUm": 102.39999999999998,
+      "lowerZUm": 89.89999999999998,
+      "upperZUm": 114.89999999999998
+    },
+    {
+      "xUm": 405,
+      "yUm": 0,
+      "centerZUm": 98.496,
+      "lowerZUm": 85.996,
+      "upperZUm": 110.996
+    },
+    {
+      "xUm": 410,
+      "yUm": 0,
+      "centerZUm": 94.46400000000001,
+      "lowerZUm": 81.96400000000001,
+      "upperZUm": 106.96400000000001
+    },
+    {
+      "xUm": 415,
+      "yUm": 0,
+      "centerZUm": 90.30400000000002,
+      "lowerZUm": 77.80400000000002,
+      "upperZUm": 102.80400000000002
+    },
+    {
+      "xUm": 420,
+      "yUm": 0,
+      "centerZUm": 86.01600000000002,
+      "lowerZUm": 73.51600000000002,
+      "upperZUm": 98.51600000000002
+    },
+    {
+      "xUm": 425,
+      "yUm": 0,
+      "centerZUm": 81.60000000000001,
+      "lowerZUm": 69.10000000000001,
+      "upperZUm": 94.10000000000001
+    },
+    {
+      "xUm": 430,
+      "yUm": 0,
+      "centerZUm": 77.056,
+      "lowerZUm": 64.556,
+      "upperZUm": 89.556
+    },
+    {
+      "xUm": 435,
+      "yUm": 0,
+      "centerZUm": 72.384,
+      "lowerZUm": 59.884,
+      "upperZUm": 84.884
+    },
+    {
+      "xUm": 440,
+      "yUm": 0,
+      "centerZUm": 67.584,
+      "lowerZUm": 55.084,
+      "upperZUm": 80.084
+    },
+    {
+      "xUm": 445,
+      "yUm": 0,
+      "centerZUm": 62.65599999999999,
+      "lowerZUm": 50.15599999999999,
+      "upperZUm": 75.15599999999999
+    },
+    {
+      "xUm": 450,
+      "yUm": 0,
+      "centerZUm": 57.59999999999999,
+      "lowerZUm": 45.09999999999999,
+      "upperZUm": 70.1
+    },
+    {
+      "xUm": 455,
+      "yUm": 0,
+      "centerZUm": 52.41599999999998,
+      "lowerZUm": 39.91599999999998,
+      "upperZUm": 64.91599999999998
+    },
+    {
+      "xUm": 460,
+      "yUm": 0,
+      "centerZUm": 47.103999999999985,
+      "lowerZUm": 34.603999999999985,
+      "upperZUm": 59.603999999999985
+    },
+    {
+      "xUm": 465,
+      "yUm": 0,
+      "centerZUm": 41.66399999999997,
+      "lowerZUm": 29.163999999999973,
+      "upperZUm": 54.16399999999997
+    },
+    {
+      "xUm": 470,
+      "yUm": 0,
+      "centerZUm": 36.096000000000025,
+      "lowerZUm": 23.596000000000025,
+      "upperZUm": 48.596000000000025
+    },
+    {
+      "xUm": 475,
+      "yUm": 0,
+      "centerZUm": 30.400000000000027,
+      "lowerZUm": 17.900000000000027,
+      "upperZUm": 42.90000000000003
+    },
+    {
+      "xUm": 480,
+      "yUm": 0,
+      "centerZUm": 24.576000000000022,
+      "lowerZUm": 12.076000000000022,
+      "upperZUm": 37.07600000000002
+    },
+    {
+      "xUm": 485,
+      "yUm": 0,
+      "centerZUm": 18.624000000000017,
+      "lowerZUm": 6.1240000000000165,
+      "upperZUm": 31.124000000000017
+    },
+    {
+      "xUm": 490,
+      "yUm": 0,
+      "centerZUm": 12.544000000000013,
+      "lowerZUm": 0.04400000000001292,
+      "upperZUm": 25.04400000000001
+    },
+    {
+      "xUm": 495,
+      "yUm": 0,
+      "centerZUm": 12.5,
+      "lowerZUm": 0,
+      "upperZUm": 25
+    },
+    {
+      "xUm": 500,
+      "yUm": 0,
+      "centerZUm": 12.5,
+      "lowerZUm": 0,
+      "upperZUm": 25
+    }
+  ],
+  "gapUm": 26.099999999999994,
+  "intersects": false,
+  "belowMargin": false,
+  "padFit": true,
+  "layoutPass": true,
+  "connectivity": {
+    "edge": [
+      "PAD-A",
+      "PAD-B"
+    ],
+    "idealEligible": true,
+    "measuredElectricalContinuity": false
+  },
+  "provenance": {
+    "method": "parabolic centerline with endpoint floor at half thickness; rectangular sweep; exact end-of-overlap clearance",
+    "measuredHardware": false,
+    "history": [
+      {
+        "deviceId": "08-02",
+        "operation": "virtual ribbon design check",
+        "parentRevision": 0,
+        "resultRevision": 1
+      }
+    ]
+  }
+}

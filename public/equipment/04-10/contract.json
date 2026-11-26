@@ -1,0 +1,9 @@
+{
+  "equipmentId":"04-10",
+  "configuration":"LPKF ProtoLaser R4, candidate manufacturer part 10099642; exterior reference flyer 10101711-230125-EN",
+  "identityNote":"R4 is documented as picosecond; candidate status retained. No manufacturing serial or production revision is verified.",
+  "scope":"Dormant exterior and detached, read-only comparison of two immutable authorial chart rasters",
+  "input":{"schema":"bts.synthetic-printed-chart-pair.v1","sampleId":"CAL-R4-PRINTED-PAIR-001","shapePx":[54,36],"pixelSizeMm":0.25,"rows":"Integer 0 through 35, top to bottom; one horizontal ink span per saved row","view":"A or B; both source IDs remain in output"},
+  "output":{"schema":"bts.synthetic-chart-comparison.v1","fields":"Sample ID, revision, chart IDs and row, raster scale, printed-width pair and difference B minus A, thermal width not applicable","units":"mm","physicalClaim":false},
+  "limits":["Cannot accept user layouts or paths","No operational laser control, process settings, material processing, kerf, thermal predictions or real measurements","No immersive headset operation verified"]
+}

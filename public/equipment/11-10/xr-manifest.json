@@ -1,0 +1,39 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "11-10",
+  "asset": "/equipment/11-10/fixture-concept-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Detached card uses normalized synthetic SI values and no geometry-to-hardware link.",
+  "metrics": {
+    "bytes": 83532,
+    "triangles": 1008,
+    "draws": 32,
+    "proposedFixtureXYZM": [
+      0.23999999463558197,
+      0.11500000022351742,
+      0.18000000715255737
+    ]
+  },
+  "scope": "Independent desktop/card only, no headset tested.",
+  "nodes": [
+    {
+      "node": "detached_card_select_badge",
+      "label": "Switch fixed passive circuit-card snapshots",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.066,
+        0.014,
+        0.028
+      ]
+    },
+    {
+      "node": "circuit_card_display_anchor",
+      "label": "Standalone teaching display texture",
+      "boundsM": [
+        0.168,
+        0.111
+      ]
+    }
+  ]
+}

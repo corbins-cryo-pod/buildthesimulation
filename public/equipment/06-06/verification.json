@@ -1,0 +1,85 @@
+{
+  "scope": "Vendor nominal closed exterior and geometry of an independent immutable abstract drawing. Not hardware, operation, materials or headset evidence.",
+  "rows": [
+    {
+      "id": "AB nominal geometry",
+      "expected": 10,
+      "actual": 10,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "AB after quarter-turn",
+      "expected": 10,
+      "actual": 10,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "AC distance, view 0",
+      "expected": 8,
+      "actual": 8,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "AC distance, view 1",
+      "expected": 8,
+      "actual": 8,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "BC distance, view 0",
+      "expected": 6,
+      "actual": 6,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "BC distance, view 1",
+      "expected": 6,
+      "actual": 6,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Unknown pair rejection",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Nominal width",
+      "expected": 1295,
+      "actual": 1295.0000166893005,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "Nominal height",
+      "expected": 2053,
+      "actual": 2052.999973297119,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "Nominal depth",
+      "expected": 1045,
+      "actual": 1044.9999496340752,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    }
+  ]
+}

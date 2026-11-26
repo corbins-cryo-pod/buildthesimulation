@@ -1,0 +1,16 @@
+{
+  "schema": "bts.07-07.offline-badges.v1",
+  "source": "fixed nonbiological geometric badge card",
+  "revision": 1,
+  "card": "touching",
+  "authoredSquares": 4,
+  "connectedGroups": 3,
+  "groupPixels": [
+    50,
+    25,
+    25
+  ],
+  "foregroundPixels": 100,
+  "connectivity": "four adjacent raster edges",
+  "deviceConnection": false
+}

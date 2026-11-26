@@ -1,0 +1,118 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "07-11",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.287,
+      0,
+      -0.30275
+    ],
+    "max": [
+      0.529,
+      0.382,
+      0.30275
+    ]
+  },
+  "budget": {
+    "byteLength": 311104,
+    "nodes": 45,
+    "triangles": 4703
+  },
+  "actions": [
+    {
+      "node": "PICK_A",
+      "action": "read",
+      "value": "A",
+      "label": "Read disconnected printed graphic A",
+      "boundsAtRestM": {
+        "min": [
+          0.2425,
+          0.1295,
+          0.185
+        ],
+        "max": [
+          0.3035,
+          0.1525,
+          0.193
+        ]
+      }
+    },
+    {
+      "node": "PICK_B",
+      "action": "read",
+      "value": "B",
+      "label": "Read disconnected printed graphic B",
+      "boundsAtRestM": {
+        "min": [
+          0.3345,
+          0.1295,
+          0.185
+        ],
+        "max": [
+          0.3955,
+          0.1525,
+          0.193
+        ]
+      }
+    },
+    {
+      "node": "PICK_U",
+      "action": "read",
+      "value": "U",
+      "label": "Read disconnected printed graphic U",
+      "boundsAtRestM": {
+        "min": [
+          0.4265,
+          0.1295,
+          0.185
+        ],
+        "max": [
+          0.4875,
+          0.1525,
+          0.193
+        ]
+      }
+    }
+  ],
+  "actionModule": "chart.mjs",
+  "interactionNotes": "Chart texture goes on +Z face of CHART_SCREEN. Only the independent chart reader has action anchors. Hardware enclosure is dormant.",
+  "verification": [
+    {
+      "node": "I3X_STANDALONE_DORMANT",
+      "axis": "x",
+      "expectedMm": 392,
+      "actualMm": 391.99999,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "I3X_STANDALONE_DORMANT",
+      "axis": "z",
+      "expectedMm": 605.5,
+      "actualMm": 605.49998,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "I3X_STANDALONE_DORMANT",
+      "axis": "y",
+      "expectedMm": 325,
+      "actualMm": 325,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CHART_SCREEN",
+      "axis": "x",
+      "expectedMm": 286,
+      "actualMm": 286.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CHART_SCREEN",
+      "axis": "y",
+      "expectedMm": 173,
+      "actualMm": 172.99999,
+      "toleranceMm": 0.05
+    }
+  ]
+}

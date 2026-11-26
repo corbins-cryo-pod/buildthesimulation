@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ordered-annotations",
+    "events": [
+      [
+        "upper-notch",
+        "outline-mark"
+      ],
+      [
+        "center-cross",
+        "locator-mark"
+      ]
+    ],
+    "expected": {
+      "sourceId": "inert-drawing-01",
+      "revision": 2,
+      "features": [
+        "upper-notch",
+        "center-cross"
+      ],
+      "ordinals": [
+        1,
+        2
+      ]
+    },
+    "actual": {
+      "sourceId": "inert-drawing-01",
+      "revision": 2,
+      "features": [
+        "upper-notch",
+        "center-cross"
+      ],
+      "ordinals": [
+        1,
+        2
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "duplicate-guard",
+    "events": [
+      [
+        "upper-notch",
+        "outline-mark"
+      ],
+      [
+        "upper-notch",
+        "outline-mark"
+      ]
+    ],
+    "expected": {
+      "revision": 1,
+      "lastError": "That drawing tag already exists."
+    },
+    "actual": {
+      "revision": 1,
+      "lastError": "That drawing tag already exists."
+    },
+    "pass": true
+  },
+  {
+    "id": "invalid-feature",
+    "events": [
+      [
+        "unknown",
+        "outline-mark"
+      ]
+    ],
+    "expected": {
+      "revision": 0,
+      "lastError": "Choose a documented landmark."
+    },
+    "actual": {
+      "revision": 0,
+      "lastError": "Choose a documented landmark."
+    },
+    "pass": true
+  }
+]

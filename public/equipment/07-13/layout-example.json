@@ -1,0 +1,109 @@
+{
+  "schema": "bts.detached-art-layout.v1",
+  "revision": 1,
+  "mode": "separate",
+  "boardId": "ART-POSTER-01",
+  "sourceRevision": "AUTHORED-PAPER-LAYOUT-01",
+  "coordinateFrame": "Independent poster millimeters, +X right +Y up",
+  "board": {
+    "min": [
+      0,
+      0
+    ],
+    "max": [
+      100,
+      75
+    ]
+  },
+  "tiles": [
+    {
+      "id": "ART-A",
+      "min": [
+        10,
+        10
+      ],
+      "max": [
+        40,
+        30
+      ]
+    },
+    {
+      "id": "ART-B",
+      "min": [
+        50,
+        15
+      ],
+      "max": [
+        75,
+        35
+      ]
+    },
+    {
+      "id": "ART-C",
+      "min": [
+        15,
+        40
+      ],
+      "max": [
+        35,
+        65
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "ids": [
+        "ART-A",
+        "ART-B"
+      ],
+      "overlapDepthMm": [
+        -10,
+        15
+      ],
+      "overlapAreaMm2": 0,
+      "relation": "separated"
+    },
+    {
+      "ids": [
+        "ART-A",
+        "ART-C"
+      ],
+      "overlapDepthMm": [
+        20,
+        -10
+      ],
+      "overlapAreaMm2": 0,
+      "relation": "separated"
+    },
+    {
+      "ids": [
+        "ART-B",
+        "ART-C"
+      ],
+      "overlapDepthMm": [
+        -15,
+        -5
+      ],
+      "overlapAreaMm2": 0,
+      "relation": "separated"
+    }
+  ],
+  "clearances": [
+    {
+      "id": "ART-A",
+      "signedMinMm": 10
+    },
+    {
+      "id": "ART-B",
+      "signedMinMm": 15
+    },
+    {
+      "id": "ART-C",
+      "signedMinMm": 10
+    }
+  ],
+  "sumTileAreasMm2": 1600,
+  "occupiedMm2": 1600,
+  "label": "separate",
+  "provenance": "Imagined artwork positions and ideal rectangle geometry. Not a vessel, contents, storage system, process, or fit suggestion."
+}

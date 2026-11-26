@@ -119,9 +119,16 @@
     "inputs": "Resist thickness, underlying material ID and calibrated removal function",
     "outputs": "Cleaned surface revision and residual resist thickness",
     "acceptance": "Strip two resist patches with different initial thicknesses. At a removal greater than the thinner patch but below the thicker one, only the thinner patch clears; neither thickness becomes negative.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, nominal metric dormant tabletop housing",
+    "simulationStatus": "Passive paper footprint comparison; no material treatment model",
+    "integrationStatus": "Standalone exhibit; geometry-only JSON",
+    "simulator": "/simulations/equipment/04-05/simulator/",
+    "related": [
+      [
+        "Documentary model sources and independent checks",
+        "/simulations/equipment/04-05/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "04-06",
@@ -137,9 +144,10 @@
     "inputs": "Material stack, opening mask, abstract process ID and material compatibility table",
     "outputs": "Revised layer outline, undercut estimate and compatibility result",
     "acceptance": "Use an isotropic constant-speed fixture over a straight mask edge. Lateral undercut must equal vertical depth; an unsupported material pair must return an unresolved operation.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original nominal metric GLB, identity unverified",
+    "simulationStatus": "Static dry enclosure and independent footprint diagram",
+    "integrationStatus": "Standalone viewer only; no processing or equipment linkage",
+    "simulator": "/simulations/equipment/04-06/simulator/"
   },
   {
     "id": "04-07",
@@ -157,9 +165,10 @@
     "inputs": "Parent wafer revision, die layout, cut paths and blade kerf",
     "outputs": "Child die IDs, parent links, kerf geometry and damaged-die flags",
     "acceptance": "Run two perpendicular centerline cuts through a rectangular blank. Create four child dies and reconcile die area plus the union of both kerfs with the starting area.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: dormant metric DAD321 cabinet; nominal exterior verified, accessories inferred",
+    "simulationStatus": "First pass: detached printed-grid inspection only; material separation acceptance deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, named detached action and JSON example",
+    "simulator": "/simulations/equipment/04-07/simulator/"
   },
   {
     "id": "04-08",
@@ -177,14 +186,15 @@
     "inputs": "Backside geometry, initial thickness field, material ID and removal map",
     "outputs": "Thinned substrate revision, residual thickness and estimated removed volume",
     "acceptance": "Apply a uniform removal below the initial thickness to a parallel-sided wafer. Final thickness and volume loss must equal the initial thickness minus removal and area × removal, respectively.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: nominal metric DAG810 closed exterior",
+    "simulationStatus": "First pass: detached drawing readout; material processing out of scope",
+    "integrationStatus": "Linked: documentary viewer and dimension JSON",
+    "simulator": "/simulations/equipment/04-08/simulator/"
   },
   {
     "id": "04-09",
     "name": "Chemical mechanical polishing",
-    "model": "G&P POLI 500",
+    "model": "G&P POLI-500 AC (closed exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 17,
@@ -197,13 +207,14 @@
     "inputs": "Height map, material regions, removal coefficients and planarization history",
     "outputs": "Post-polish topography, material-removal map and planarity metric",
     "acceptance": "For an ideal single-material plane and uniform removal field, the output must stay planar and shift by the prescribed removal amount at every sampled point.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric closed POLI-500 AC cabinet and detached radial reference",
+    "simulationStatus": "Verified read-only inert radial geometry; no polishing or removal field",
+    "integrationStatus": "3D exterior, detached chart, fixed fiducial exports and stable XR picks",
+    "simulator": "/simulations/equipment/04-09/simulator/"
   },
   {
     "id": "04-10",
-    "name": "Femtosecond micromachining",
+    "name": "Picosecond micromachining (candidate)",
     "model": "LPKF ProtoLaser R4 (candidate)",
     "evidence": "C",
     "priority": "P3",
@@ -215,9 +226,10 @@
     "inputs": "Flexible substrate revision, programmed path, material-specific kerf and thermal calibration",
     "outputs": "Cut contour with kerf and heat-affected-zone estimate or unknown flag",
     "acceptance": "Cut one straight path using a constant-width fixture. The measured width must equal the specified kerf away from endpoints; a missing thermal calibration leaves the heat-affected width unknown.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric closed exterior; published cabinet envelope",
+    "simulationStatus": "Read-only preprinted chart widths; no kerf or thermal model",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/04-10/simulator/"
   },
   {
     "id": "04-11",
@@ -235,9 +247,10 @@
     "inputs": "Stock solid, fixture coordinate frame, cutter profile and toolpath",
     "outputs": "Machined solid, swept-volume record and fixture-interference flags",
     "acceptance": "Sweep a flat-ended cylindrical tool along a straight slot. Compare its simulated plan area with a radius-ended analytic slot, and its depth with the commanded plunge.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: closed opaque free-standing GX enclosure, nominal outer dimensions verified",
+    "simulationStatus": "First pass: detached immutable circle CAD reading only; machining acceptance deferred",
+    "integrationStatus": "First pass: simulator route, asset, named detached action and example JSON",
+    "simulator": "/simulations/equipment/04-11/simulator/"
   },
   {
     "id": "04-12",
@@ -255,8 +268,9 @@
     "inputs": "Two wafer revisions, face orientation, alignment transform, bondable masks and void map",
     "outputs": "Assembly revision with both parents, bonded area and interfacial void regions",
     "acceptance": "Offset two identical square bond pads by half their width along one axis. Their bonded area must halve in the void-free fixture; adding a known nonoverlapping void inside it subtracts its area.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass original metric exterior; dimensions inferred",
+    "simulationStatus": "Dormant reference and detached unit-square comparison",
+    "integrationStatus": "Standalone viewer only; no equipment or material linkage",
+    "simulator": "/simulations/equipment/04-12/simulator/"
   }
 ]

@@ -1,0 +1,54 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    1.1775,
+    1.04,
+    0.675423
+  ],
+  "meshes": 53,
+  "triangles": 8823,
+  "bytes": 505552,
+  "interaction": {
+    "Offline_gold_rect": {
+      "action": "next",
+      "label": "Cycle detached equal-area rectangles",
+      "initialBoundsMinM": [
+        0.598,
+        0.5375,
+        0.048
+      ],
+      "initialBoundsMaxM": [
+        0.698,
+        0.5475,
+        0.148
+      ],
+      "dynamicXZScale": [
+        [
+          1,
+          1
+        ],
+        [
+          1.25,
+          0.8
+        ],
+        [
+          2,
+          0.5
+        ]
+      ]
+    }
+  },
+  "modelCabinetM": [
+    0.7703,
+    1.04,
+    0.675423
+  ],
+  "citedExteriorEnvelopeMm": [
+    770,
+    1040,
+    675
+  ],
+  "cabinetSealed": true,
+  "actualDeviceActionCount": 0
+}

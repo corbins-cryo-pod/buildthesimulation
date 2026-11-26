@@ -1,0 +1,85 @@
+{
+  "scope": "Read-only inert labeled planes and nominal metric enclosure. Not acquisition, reconstruction, resolution testing, calibration or headset proof.",
+  "rows": [
+    {
+      "id": "Midplane Z",
+      "expected": 1.6,
+      "actual": 1.6,
+      "unit": "mm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "id": "Midplane centers distance",
+      "expected": 2.6,
+      "actual": 2.5999999999999996,
+      "unit": "mm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "id": "Midplane A extent under discrete symmetric label",
+      "expected": 69,
+      "actual": 69,
+      "unit": "voxels",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Known missing plane",
+      "expected": "missing",
+      "actual": "missing",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Missing plane distance",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank end plane",
+      "expected": "stored",
+      "actual": "stored",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank end plane distance",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Bruker standard exterior width",
+      "expected": 1160,
+      "actual": 1159.999966621399,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "Bruker standard exterior height",
+      "expected": 330,
+      "actual": 330.000014975667,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "Bruker standard exterior depth",
+      "expected": 520,
+      "actual": 519.9999809265137,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    }
+  ]
+}

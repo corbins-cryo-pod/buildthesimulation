@@ -1,0 +1,35 @@
+{
+  "declaredBeforeImplementation": true,
+  "fixture": "Two immutable synthetic 240×96 grayscale grating patterns with 0.05 µm/pixel metadata. No acquisition.",
+  "cases": [
+    {
+      "id": "normal-pattern",
+      "frame": "normal",
+      "expected": {
+        "pitchPx": 40,
+        "pitchUm": 2,
+        "edges": 6
+      }
+    },
+    {
+      "id": "compressed-pattern",
+      "frame": "projected",
+      "expected": {
+        "pitchPx": 20,
+        "pitchUm": 1,
+        "edges": 12
+      }
+    },
+    {
+      "id": "cosine-ratio",
+      "expected": {
+        "ratio": 0.5
+      }
+    },
+    {
+      "id": "missing-source",
+      "frame": "unknown",
+      "expected": "Choose one of the stored grating images."
+    }
+  ]
+}

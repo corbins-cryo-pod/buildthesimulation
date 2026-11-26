@@ -1,0 +1,50 @@
+{
+  "declaredBeforeImplementation": true,
+  "method": "Independent analytic parabolic loop vs axis-aligned blocker. Units µm. Ribbon thickness 25 µm; obstacle top 115 µm from x=200 to 300 µm on 500 µm span.",
+  "cases": [
+    {
+      "id": "low-loop",
+      "inputs": "Apex 120 µm",
+      "expected": {
+        "gapUm": -12.3,
+        "intersects": true,
+        "layoutPass": false
+      },
+      "tolerance": 1e-9
+    },
+    {
+      "id": "raised-loop",
+      "inputs": "Apex 160 µm",
+      "expected": {
+        "gapUm": 26.1,
+        "intersects": false,
+        "layoutPass": true
+      },
+      "tolerance": 1e-9
+    },
+    {
+      "id": "clear-but-below-margin",
+      "inputs": "Apex 135 µm, require 15 µm gap",
+      "expected": {
+        "gapUm": 2.1,
+        "intersects": false,
+        "layoutPass": false
+      },
+      "tolerance": 1e-9
+    },
+    {
+      "id": "transverse-escape",
+      "inputs": "Obstacle center offset 160 µm, width 100 µm, ribbon width 127 µm.",
+      "expected": {
+        "gapUm": null,
+        "intersects": false,
+        "layoutPass": true
+      }
+    },
+    {
+      "id": "fixture-unseated",
+      "inputs": "Remove package before Preview",
+      "expected": "Seat the package before evaluating the ribbon."
+    }
+  ]
+}

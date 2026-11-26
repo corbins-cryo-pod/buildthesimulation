@@ -1,0 +1,48 @@
+{
+  "schema": "bts.kopf940.detached-triangles.v1",
+  "equipment": "15-01",
+  "card": {
+    "id": "BTS-PLAIN-TRIANGLES-01",
+    "revision": "1",
+    "lengths": {
+      "right": [
+        6,
+        8,
+        10
+      ],
+      "wide": [
+        6,
+        8,
+        12
+      ],
+      "flat": [
+        6,
+        8,
+        14
+      ],
+      "impossible": [
+        6,
+        8,
+        15
+      ]
+    }
+  },
+  "units": {
+    "length": "illustration units",
+    "area": "illustration units squared"
+  },
+  "provenance": "unrelated synthetic mathematics graphic; no coordinates, measurements or anatomical scene",
+  "illustration": {
+    "id": "right",
+    "sides": [
+      6,
+      8,
+      10
+    ],
+    "kind": "closed",
+    "totalSideLength": 24,
+    "gapLength": 0,
+    "area": 24,
+    "labels": true
+  }
+}

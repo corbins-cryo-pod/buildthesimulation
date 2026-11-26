@@ -1,0 +1,7 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"10-13","variant":"Neuropixels 1.0 reference production geometry only","asset":"/models/neuropixels-engineering/models/neuropixels-shank.glb","assetSha256":"cece4752789eef49aaab1cf4937417740678ea08d40744828283ae74beaa23ca",
+ "frame":{"units":"m","up":"+Y proximal","front":"+Z contacts","placementAnchor":"bts_bench_anchor","anchorScope":"viewer-owned empty group at reconstructed distal tip; no modification to source GLB"},
+ "parts":{"geometryRevision":"BTS-NPX1-R1","originalRootScale":0.001,"runtimeSites":"npx_virtual_sites","siteData":"Instanced 12 µm surface squares; index is original engineering geometric site_id."},
+ "actions":[{"id":"select-asset-site","node":"npx_virtual_sites","action":"site","payload":"instanceId 0–959","tolerance":"12 µm controller visualization target; use a close-up or enlarged interface control."},{"id":"choose-replay-bank","action":"bank","payload":"0–2 UI or future controller menu"},{"id":"synthetic-display-shift","action":"shift","payload":"±5000 µm display only"},{"id":"replay-test-tone","action":"run","payload":null}],
+ "assessment":"The desktop/touch viewer batches original coordinates in one site draw. No true hardware routing or immersive testing."
+}

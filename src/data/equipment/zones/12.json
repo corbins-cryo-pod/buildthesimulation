@@ -15,9 +15,10 @@
     "inputs": "Specimen mesh or volume, calibrated zoom and stereo geometry, focus and stage transform",
     "outputs": "Left/right inspection views, scale bar and sample-space pointer location",
     "acceptance": "Image a calibrated grid with an elevated fiducial. Grid spacing should match its scale bar at two zoom settings and the raised point should show the expected disparity sign.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric V12 silhouette, optics and manufactured ruler",
+    "simulationStatus": "First pass: verified scale and ideal stereo disparity direction",
+    "integrationStatus": "Linked: binocular views, sample pointer and JSON",
+    "simulator": "/simulations/equipment/12-01/simulator/"
   },
   {
     "id": "12-02",
@@ -35,14 +36,21 @@
     "inputs": "Culture or MEA sample ID, stage pose, objective calibration, exposure and channel selection",
     "outputs": "Objective-tagged calibrated image, focal-plane transform and exposure metadata",
     "acceptance": "Image a calibration grid with two objective profiles. The measured physical pitch should stay constant and the field of view should shrink with increasing magnification for a fixed camera.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Inert 10×/20× reticle pitch and calibrated FOV verified",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/12-02/simulator/",
+    "related": [
+      [
+        "Ti2-E exterior, sources and independent reticle checks",
+        "/simulations/equipment/12-02/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "12-03",
     "name": "Laser scanning confocal",
-    "model": "ZEISS LSM 980 with Airyscan 2",
+    "model": "ZEISS LSM 980 with Airyscan 2 · side-port documentary configuration",
     "evidence": "B",
     "priority": "P1",
     "page": 38,
@@ -55,9 +63,14 @@
     "inputs": "Labeled fluorescence volume, channel-specific measured PSF, scan grid and acquisition mode",
     "outputs": "Registered channel stack, voxel spacing and optical-section metadata",
     "acceptance": "Image isolated sub-resolution beads using a reference scan profile. Compare lateral and axial widths to held-out bead measurements and verify that a channel lacking fluorophore remains at background.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Passive metric layout on documented active table; hardware shapes inferred",
+    "simulationStatus": "Synthetic analytic plane inspection and width checks only; no hardware acquisition",
+    "integrationStatus": "Viewer and synthetic plane PNG/CSV/JSON; experimental acceptance not run",
+    "simulator": "/simulations/equipment/12-03/simulator/",
+    "related": [
+      ["ZEISS side-port arrangement (Fig. 15)", "https://www.zeiss.com.sg/content/dam/rms/countries/singapore/apac/lsm980-manual.pdf#page=66"],
+      ["ZEISS large table dimensions", "https://asset-downloads.zeiss.com/catalogs/download/mic/05fd8acd-c539-4a72-979d-c454c578e3d8/EN_product-info_LSM-980.pdf#page=37"]
+    ]
   },
   {
     "id": "12-04",
@@ -66,6 +79,7 @@
     "evidence": "B",
     "priority": "P2",
     "page": 38,
+    "simulator": "/simulations/equipment/12-04/simulator/",
     "sources": [
       "S57"
     ],
@@ -75,9 +89,9 @@
     "inputs": "Fluorophore phantom or raw reference image, mode-specific measured PSF and pixel spacing",
     "outputs": "Resolution-tagged STED or confocal image, measured feature widths and calibration provenance",
     "acceptance": "Use isolated beads from a matched confocal/STED reference pair. Recovered widths should fall inside their respective calibration intervals, with the observed difference reproduced under those reference conditions.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass dormant metric GLB",
+    "simulationStatus": "Read-only synthetic width comparison",
+    "integrationStatus": "Interactive image viewer and profile export"
   },
   {
     "id": "12-05",
@@ -95,9 +109,10 @@
     "inputs": "Moving fluorescent volume, disk-section response, exposure windows and z-stack schedule",
     "outputs": "Time-indexed optical stacks with per-plane timestamps and motion blur",
     "acceptance": "Move a fluorescent point at constant known speed. Its centroid should follow the midpoint of each exposure and the added motion blur should grow with speed × exposure.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric exterior GLB and original source",
+    "simulationStatus": "Static instrument and offline synthetic grid registration",
+    "integrationStatus": "Linked standalone scene; no hardware or other station connection",
+    "simulator": "/simulations/equipment/12-05/simulator/"
   },
   {
     "id": "12-06",
@@ -115,9 +130,16 @@
     "inputs": "Fluorescent volume, nonlinear excitation PSF, attenuation model and scan schedule",
     "outputs": "Depth-indexed fluorescence images and timestamps with optical parameters",
     "acceptance": "Use uniform, unsaturated virtual fluorophore without bleaching. Doubling excitation intensity at a fixed depth should quadruple two-photon fluorescence in the quadratic model.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Verified passive inert XY/XZ stack; no excitation model",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/12-06/simulator/",
+    "related": [
+      [
+        "Axio Examiner NLO display and checked passive stack",
+        "/simulations/equipment/12-06/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "12-07",
@@ -135,9 +157,10 @@
     "inputs": "Fluorescent specimen, illumination and detection poses, view transforms and voxel spacing",
     "outputs": "Per-view stacks, registered volume and transforms to the specimen frame",
     "acceptance": "Acquire a fiducial phantom from two simulated orientations. After registration corresponding beads should co-locate within the declared resampling tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric dormant main module and a separate visual replay display",
+    "simulationStatus": "Verified offline synthetic inert plane coordinates and scale only; no acquisition or registration",
+    "integrationStatus": "Interactive enclosure, plane replay, export and stable metric room/VR actions",
+    "simulator": "/simulations/equipment/12-07/simulator/"
   },
   {
     "id": "12-08",
@@ -155,9 +178,10 @@
     "inputs": "Time-indexed fluorescent volume, effective lattice PSF, plane schedule and bleaching model",
     "outputs": "Time-resolved optical sections, exposure history and separated bleaching metadata",
     "acceptance": "Image stationary fluorescent fiducials with bleaching switched on and off. Centroids should remain fixed while only the enabled run follows the selected intensity-decay curve.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric sealed Lattice module and separate playback desk",
+    "simulationStatus": "First pass: synthetic stack viewer only; acquisition and bleaching outside scope",
+    "integrationStatus": "Linked: read-only plane picker and exports",
+    "simulator": "/simulations/equipment/12-08/simulator/"
   },
   {
     "id": "12-09",
@@ -176,9 +200,10 @@
     "inputs": "Raw patterned frames, phase and orientation labels, optical transfer function and pixel scale",
     "outputs": "Reconstructed SIM image, reconstruction configuration and artifact flags",
     "acceptance": "Generate patterned frames for a known grating within the modeled passband. Recover its spatial frequency and orientation. Remove a required phase frame and check that reconstruction is flagged incomplete.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric stationary exterior; nominal 1200 × 900 mm table verified; individual housings inferred",
+    "simulationStatus": "First pass: passive staged synthetic grating comparison and Fourier inspection; original SIM acceptance deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, stable display action, sample export and targeted local verification",
+    "simulator": "/simulations/equipment/12-09/simulator/"
   },
   {
     "id": "12-10",
@@ -187,6 +212,7 @@
     "evidence": "B",
     "priority": "P2",
     "page": 39,
+    "simulator": "/simulations/equipment/12-10/simulator/",
     "sources": [
       "S58"
     ],
@@ -196,9 +222,9 @@
     "inputs": "Slide ID, focus surface, tile coordinates, overlap and calibrated pixel spacing",
     "outputs": "Pyramidal slide mosaic, tile transforms, focus map and physical scale",
     "acceptance": "Scan a grid slide with repeated features crossing tile boundaries. After stitching each fiducial should appear once and seam displacement should meet the predetermined pixel tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass dormant metric GLB",
+    "simulationStatus": "Read-only synthetic tile registration",
+    "integrationStatus": "Interactive mapped tile viewer and exports"
   },
   {
     "id": "12-11",
@@ -216,8 +242,9 @@
     "inputs": "Registered section image, parent section ID, physical scale and closed ROI polygon",
     "outputs": "Derived virtual sample ID, ROI mask, physical area and parent-to-ROI transform",
     "acceptance": "Select a rectangle on a synthetic calibrated section. The reported area should match its width × height within rasterization error and the child mask should map to the same parent pixels.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric static exterior GLB with editable source",
+    "simulationStatus": "Dormant instrument; independent fictional polygon area board",
+    "integrationStatus": "Standalone browser station; no hardware or specimen connection",
+    "simulator": "/simulations/equipment/12-11/simulator/"
   }
 ]

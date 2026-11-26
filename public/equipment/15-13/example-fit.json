@@ -1,0 +1,25 @@
+{
+  "schema": "bts.inert-locator-fit.v1",
+  "source": "Original virtual geometry; no physical measurement",
+  "part": "NOMINAL",
+  "revision": 1,
+  "jigId": "BTS-OFFLINE-LOCATOR-1513",
+  "units": "mm",
+  "frame": "x and z in tray plane; fixture datum fixed; +z toward keyed relief; y up",
+  "turnDeg": 0,
+  "bodyClearanceMm": {
+    "positiveX": 2,
+    "negativeX": 2,
+    "positiveZ": 2,
+    "negativeZ": 2
+  },
+  "keyClearanceMm": {
+    "left": 2,
+    "right": 2,
+    "positiveZ": 2,
+    "negativeZ": 64
+  },
+  "signedMinimumMm": 2,
+  "verdict": "clear",
+  "seated": true
+}

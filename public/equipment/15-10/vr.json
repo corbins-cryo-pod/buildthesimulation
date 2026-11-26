@@ -1,0 +1,50 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    1.209,
+    1.549,
+    0.6375
+  ],
+  "meshes": 62,
+  "triangles": 10371,
+  "bytes": 561928,
+  "interaction": {
+    "Offline_column_tab": {
+      "action": "next",
+      "label": "Change the column on the unrelated art card",
+      "boundsMinM": [
+        0.728,
+        0.769,
+        0.2645
+      ],
+      "boundsMaxM": [
+        0.78,
+        0.783,
+        0.3015
+      ]
+    }
+  },
+  "modelCartM": [
+    0.787,
+    1.549,
+    0.559
+  ],
+  "citedCartMm": [
+    787,
+    1549,
+    559
+  ],
+  "modelHeadM": [
+    0.08,
+    0.17,
+    0.23
+  ],
+  "citedHeadMm": [
+    80,
+    170,
+    230
+  ],
+  "actualDeviceActions": 0,
+  "imageIndependent": true
+}

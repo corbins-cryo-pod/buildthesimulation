@@ -1,0 +1,52 @@
+{
+  "triangles": 2672,
+  "draws": 34,
+  "nodes": 11,
+  "bytes": 183356,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "viewer_screen": {
+      "at": [
+        0.34,
+        1.01,
+        -0.052
+      ],
+      "extent": [
+        0.317,
+        0.202,
+        0.042
+      ],
+      "action": "view",
+      "label": "Read the selected locked grating"
+    },
+    "compare_button": {
+      "at": [
+        0.702,
+        0.797,
+        0.193
+      ],
+      "extent": [
+        0.085,
+        0.035,
+        0.069
+      ],
+      "action": "toggle",
+      "label": "Switch the locked stock reference"
+    },
+    "fixed_chamber": {
+      "at": [
+        -0.41,
+        0.929,
+        0.185
+      ],
+      "extent": [
+        0.365,
+        0.273,
+        0.213
+      ],
+      "label": "Fixed closed exterior; no action"
+    }
+  }
+}

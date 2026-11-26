@@ -1,0 +1,6 @@
+{
+ "instrument":"Nikon Eclipse Ti2-E single-layer documentary reconstruction with virtual camera crop",
+ "expected":{"pitchUm":36.5,"pitchPx10":50,"pitchPx20":100,"fovUm10":292,"fovUm20":146,"ratio":2,"baseMm":[240,495.3],"stageTopMm":340.5,"armTopMm":668},
+ "independentBasis":"Use Nikon DS-Qi2 nominal 7.3 µm sensor pixel and a fixed 400×256 pixel crop with 1× camera relay. A 36.5 µm reticle pitch projects to 365/7.3=50 pixels at 10× and 730/7.3=100 at 20×; the same fixed 2920 µm sensor width spans 292 and 146 µm in object space. Compare line peaks in rendered image rather than using nominal grid pitch as the measurement.",
+ "tolerance":"0.05 pixels for independent line recovery, 1e-7 for unit/metric comparisons. Synthetic optics only."
+}

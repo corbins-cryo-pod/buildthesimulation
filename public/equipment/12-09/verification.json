@@ -1,0 +1,95 @@
+{
+  "schema": "bts.staged-grating.verification.v1",
+  "metrics": {
+    "bytes": 154160,
+    "triangles": 1920,
+    "draws": 58
+  },
+  "cases": [
+    {
+      "id": "frequency",
+      "expected": 0.9110862335695782,
+      "tolerance": 1e-9,
+      "unit": "cycles/µm",
+      "actual": 0.9110862335695781,
+      "outcome": "PASS"
+    },
+    {
+      "id": "pitch",
+      "expected": 1.0975909449120567,
+      "tolerance": 1e-9,
+      "unit": "µm",
+      "actual": 1.0975909449120567,
+      "outcome": "PASS"
+    },
+    {
+      "id": "frequency-vector-angle",
+      "expected": 30.96375653207352,
+      "tolerance": 1e-9,
+      "unit": "° CCW from +X",
+      "actual": 30.963756532073518,
+      "outcome": "PASS"
+    },
+    {
+      "id": "wide-contrast",
+      "expected": 0.16019993777424785,
+      "tolerance": 1e-9,
+      "unit": "relative",
+      "actual": 0.16019993777424799,
+      "outcome": "PASS"
+    },
+    {
+      "id": "narrow-contrast",
+      "expected": 0.5942080322715915,
+      "tolerance": 1e-9,
+      "unit": "relative",
+      "actual": 0.5942080322715899,
+      "outcome": "PASS"
+    },
+    {
+      "id": "contrast-increases",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "flat-has-no-frequency",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "missing-image-flag",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "hardware-command-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "table-width",
+      "expected": 1.2,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 1.2000000476837158,
+      "outcome": "PASS"
+    },
+    {
+      "id": "table-depth",
+      "expected": 0.9,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.8999999761581421,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Only analytic inert image comparison and nominal table plan dimensions were verified."
+}

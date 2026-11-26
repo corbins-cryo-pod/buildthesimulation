@@ -1,0 +1,6 @@
+{
+ "configured":"JBC DDSE-1QF electric two-tool layout: DDE-D control housing, T245 and ADS stand, DR560 and DRS stand, MSE electric module; no hot-air gun, no pneumatic substitute",
+ "sources":{"kit":"https://www.jbctools.com/ddse-ddve-2-tools-dde-station-product-1745.html","kitManual":"https://www.jbctools.com/pdf/ID-186346.pdf","ddeManual":"https://www.jbctools.com/pdf/manual-dde-d-control-unit-0035481_ID-255079_EN.pdf","drawing":"https://www.jbctools.com/pdf/DDSE-QC_Exploded_View.pdf"},
+ "specs":{"controllerXYZMm":[148,120,232],"documented":"JBC DDE-D manual 0035481 p. 15; p. 2 control unit and p. 3 connector/stand layout.","boardMm":[75,1.6,48],"boardBasis":"Original inert BTS board design; not a commercial board.","inferred":"Undocumented stand, accessory and cable dimensions and outer shell contours are estimates."},
+ "limitations":"Vendor photos and drawings are linked, not transferred. No thermal conversion, actual iron, powered board behavior or real electrical measurements."
+}

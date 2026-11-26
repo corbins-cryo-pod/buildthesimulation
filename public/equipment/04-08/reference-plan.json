@@ -1,0 +1,41 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Fixed original exterior of a line-pair drawing only, not a wafer, process or dimension history.",
+  "cases": [
+    {
+      "id": "left-station",
+      "station": "left",
+      "expected": {
+        "xMm": 10,
+        "lowerMm": 8,
+        "upperMm": 20,
+        "spacingMm": 12
+      }
+    },
+    {
+      "id": "middle-station",
+      "station": "center",
+      "expected": {
+        "xMm": 30,
+        "lowerMm": 9,
+        "upperMm": 24,
+        "spacingMm": 15
+      }
+    },
+    {
+      "id": "right-station",
+      "station": "right",
+      "expected": {
+        "xMm": 50,
+        "lowerMm": 10,
+        "upperMm": 28,
+        "spacingMm": 18
+      }
+    },
+    {
+      "id": "invalid-station",
+      "station": "missing",
+      "expected": "Choose a labeled drawing station."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.kopf940-static-outline.v1",
+  "equipment": "15-01",
+  "model": "./kopf940-outline.glb",
+  "units": "m",
+  "axes": "+Y up +Z front (display orientation only)",
+  "nodes": 27,
+  "bytes": 32768,
+  "triangles": 1904,
+  "hitTargets": [
+    {
+      "node": "Cycle_triangle_artwork",
+      "action": "cycle",
+      "label": "Cycle the separate triangle illustration",
+      "boundsM": {
+        "min": [
+          0.2975,
+          0.091,
+          0.068
+        ],
+        "max": [
+          0.36050000000000004,
+          0.107,
+          0.084
+        ]
+      }
+    },
+    {
+      "node": "Toggle_triangle_side_labels",
+      "action": "labels",
+      "label": "Show or hide side labels in the illustration",
+      "boundsM": {
+        "min": [
+          0.4075,
+          0.091,
+          0.068
+        ],
+        "max": [
+          0.47050000000000003,
+          0.107,
+          0.084
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./triangles.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Detached illustration only. No headset session tested."
+}

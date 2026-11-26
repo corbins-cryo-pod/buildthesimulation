@@ -1,0 +1,109 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/03-08/labcoter2.glb",
+  "station": "/equipment/03-08/witness.mjs",
+  "dispatch": "station(); act(state,action,value)",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "Floor at centre of main cabinet.",
+  "controls": [
+    {
+      "mesh": "CHAMBER_PANE",
+      "action": "cutaway",
+      "label": "Toggle display-only exterior sleeve",
+      "minM": [
+        -0.153,
+        0.9782,
+        -0.135
+      ],
+      "maxM": [
+        0.153,
+        1.283,
+        0.1815
+      ]
+    },
+    {
+      "mesh": "WITNESS_COUPON",
+      "action": "inspect",
+      "label": "Read pre-authored geometry tags",
+      "minM": [
+        -0.004,
+        1.0052,
+        0.0695
+      ],
+      "maxM": [
+        0.004,
+        1.00576,
+        0.0745
+      ]
+    }
+  ],
+  "geometry": {
+    "rows": [
+      {
+        "label": "cabinet width",
+        "expectedMm": 495,
+        "actualMm": 495.0000047683716,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "cabinet depth",
+        "expectedMm": 604,
+        "actualMm": 603.9999723434448,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "system nominal height",
+        "expectedMm": 1283,
+        "actualMm": 1282.9999774694443,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "chamber nominal width",
+        "expectedMm": 304.8,
+        "actualMm": 304.80000376701355,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "chamber nominal height",
+        "expectedMm": 304.8,
+        "actualMm": 304.80000376701355,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "authored dry coupon width",
+        "expectedMm": 8,
+        "actualMm": 8.00000037997961,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "authored dry coupon depth",
+        "expectedMm": 5,
+        "actualMm": 4.999999888241291,
+        "toleranceMm": 0.06,
+        "pass": true
+      }
+    ],
+    "nodes": 56,
+    "triangles": 6057,
+    "bytes": 402212,
+    "minM": [
+      -0.2475,
+      0,
+      -0.3035
+    ],
+    "maxM": [
+      0.2475,
+      1.283,
+      0.3115
+    ]
+  },
+  "scope": "Exterior approximations only. Cover toggle hides the visual sleeve; it does not animate a real mechanism or expose a service diagram."
+}

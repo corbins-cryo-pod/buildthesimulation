@@ -2,7 +2,7 @@
   {
     "id": "15-01",
     "name": "Stereotaxic frame",
-    "model": "Kopf Model 940 (candidate; confirm species configuration)",
+    "model": "David Kopf Instruments Model 940 (documentary outline)",
     "evidence": "C",
     "priority": "P2",
     "page": 46,
@@ -13,9 +13,16 @@
     "inputs": "Digital anatomy coordinate frame, stage-axis calibration, mount pose and virtual point",
     "outputs": "Probe pose and landmark coordinates with parent frame and transform provenance",
     "acceptance": "Use an asymmetric landmark triad and known rigid transform. Transform each point to stage coordinates and back within numeric tolerance; left and right labels must remain distinct.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documentary solid profile with known exterior plate scale",
+    "simulationStatus": "Detached triangle illustration; no positioning model",
+    "integrationStatus": "Standalone exhibit and artwork JSON",
+    "simulator": "/simulations/equipment/15-01/simulator/",
+    "related": [
+      [
+        "Exterior references and independent static artwork checks",
+        "/simulations/equipment/15-01/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "15-02",
@@ -33,9 +40,10 @@
     "inputs": "Scaled virtual specimen, camera calibration, zoom state and implant pose",
     "outputs": "Inspection view and annotated positions/distances in specimen coordinates",
     "acceptance": "Measure a synthetic 1 mm fiducial at two zoom levels. Its pixel separation should change with zoom while calibrated physical distance remains 1 mm within rounding.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Nikon motorized SMZ25 documented metric exterior",
+    "simulationStatus": "Dormant instrument and independent fixed-chart scaling",
+    "integrationStatus": "Standalone viewer; no specimen, optical or hardware link",
+    "simulator": "/simulations/equipment/15-02/simulator/"
   },
   {
     "id": "15-03",
@@ -53,9 +61,10 @@
     "inputs": "Timestamped paw-contact masks, paw identity and calibrated walkway coordinates",
     "outputs": "Footfall table with contact intervals, stance durations and same-paw stride lengths",
     "acceptance": "Replay two same-paw contacts 30 mm apart, each lasting 0.1 s. Recover the two stance intervals and one 30 mm stride within sampling resolution.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: stationary CatWalk XT 10.7 exterior, documented frame envelope verified",
+    "simulationStatus": "First pass: unrelated abstract polygon mark inspection; original gait acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR action and JSON example",
+    "simulator": "/simulations/equipment/15-03/simulator/"
   },
   {
     "id": "15-04",
@@ -71,14 +80,25 @@
     "inputs": "Timestamped video or planar trajectory, spatial calibration, tracking mask and arena regions",
     "outputs": "Position and speed series, zone entries, dwell time and missing-detection flags",
     "acceptance": "Replay a marker moving at constant known speed across one zone boundary. Recover one entry and the prescribed speed to pixel/time resolution, with an inserted occlusion marked missing.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original metric illustrative PC desk and monitor, not Noldus hardware",
+    "simulationStatus": "Verified fixed nonbiological geometric waypoint inspection and missing-data gaps; no video, tracking, acquisition or behavior analysis",
+    "integrationStatus": "Interactive 3D/2D illustration, authored CSV and JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/15-04/simulator/",
+    "related": [
+      [
+        "Software context and illustrative console",
+        "/simulations/equipment/15-04/simulator/#wp-references"
+      ],
+      [
+        "Fixed waypoint verification",
+        "/simulations/equipment/15-04/simulator/#wp-checks"
+      ]
+    ]
   },
   {
     "id": "15-05",
     "name": "Preclinical MRI",
-    "model": "Bruker BioSpec 7T (30 cm bore configuration)",
+    "model": "Bruker BioSpec 70/30 USR V2 (30 cm bare-bore reference)",
     "evidence": "B",
     "priority": "P3",
     "page": 47,
@@ -91,9 +111,10 @@
     "inputs": "Registered MRI volume, voxel-to-world affine, modality metadata and implant pose",
     "outputs": "Anatomical sections and registered overlays with source volume and physical coordinates",
     "acceptance": "Load an asymmetric labeled volume with anisotropic voxels and a known orientation. A fiducial overlay must meet its landmark within one voxel on all three section views.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented exterior built",
+    "simulationStatus": "Authored geometric card only",
+    "integrationStatus": "Documentary viewer and export wired",
+    "simulator": "/simulations/equipment/15-05/simulator/"
   },
   {
     "id": "15-06",
@@ -111,14 +132,15 @@
     "inputs": "CT volume with voxel scale, implant geometry, registration transform and artifact mask",
     "outputs": "Registered anatomy/implant volume, world-space distances and labeled artifact regions",
     "acceptance": "Register a digital array to a bead phantom of known spacing. Recover spacing to voxel resolution and preserve a supplied streak mask independently of the implant label.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed catalogue-sized 1276 CMOS exterior; no mechanisms",
+    "simulationStatus": "Detached synthetic shape and annotation archive; no scanning or registration",
+    "integrationStatus": "Dedicated simulator, editable asset and example exports linked",
+    "simulator": "/simulations/equipment/15-06/simulator/"
   },
   {
     "id": "15-07",
     "name": "High-frequency ultrasound",
-    "model": "VisualSonics Vevo 3100 LAZR",
+    "model": "FUJIFILM VisualSonics Vevo 3100 (legacy LAZR-X console exterior)",
     "evidence": "B",
     "priority": "P3",
     "page": 47,
@@ -131,9 +153,16 @@
     "inputs": "Calibrated B-mode image or synthetic echo frame, transducer preset and depth sampling",
     "outputs": "Ultrasound image, depth localization and acquisition metadata",
     "acceptance": "Supply two axial reflectors at known depths in a synthetic frame. The ruler must recover their separation to within one axial sample under the declared calibration.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documented dormant 3100 cart footprint",
+    "simulationStatus": "Detached static graphic ruler; no acquisition or exposure",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
+    "simulator": "/simulations/equipment/15-07/simulator/",
+    "related": [
+      [
+        "Cart references and independent ruler checks",
+        "/simulations/equipment/15-07/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "15-08",
@@ -151,9 +180,20 @@
     "inputs": "Time-indexed power Doppler images, baseline window, ROI mask and experiment event times",
     "outputs": "Relative power Doppler time course and hemodynamic change map aligned to events",
     "acceptance": "Step one phantom ROI from 100 to 110 power units while a control ROI stays flat. Its baseline-relative map should show +10% in the first and zero in the control.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Photograph-evidenced closed Iconeus One lower cart only, using explicitly assumed dimensional datum",
+    "simulationStatus": "Independent authored width comparison verified; no physical, imaging, acquisition or biological model",
+    "integrationStatus": "Dormant metric GLB, detached view controls and JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/15-08/simulator/",
+    "related": [
+      [
+        "Documentary references",
+        "/simulations/equipment/15-08/simulator/#icon-references"
+      ],
+      [
+        "Detached geometric verification",
+        "/simulations/equipment/15-08/simulator/#icon-checks"
+      ]
+    ]
   },
   {
     "id": "15-09",
@@ -171,9 +211,10 @@
     "inputs": "Calibrated emission frames, dark reference, exposure duration, ROI and attenuation metadata",
     "outputs": "Background-corrected optical signal and longitudinal ROI series with calibration provenance",
     "acceptance": "In the linear unsaturated range, double source counts and exposure time together. The dark-corrected counts per second must agree across both frames.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: stationary classic IVIS Spectrum non-CT exterior; nominal cabinet dimensions verified",
+    "simulationStatus": "First pass: detached fixed grayscale-code examples only; original imaging acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR action and digital pattern exports",
+    "simulator": "/simulations/equipment/15-09/simulator/"
   },
   {
     "id": "15-10",
@@ -191,9 +232,10 @@
     "inputs": "OCT B-scan, axial tissue-distance calibration, retinal boundaries and implant annotations",
     "outputs": "Layer thickness profile, annotated cross section and implant-to-layer offsets",
     "acceptance": "Supply two parallel boundaries five pixels apart on a scan calibrated to 4 µm per axial pixel in tissue. Recover 20 µm across valid columns and flag missing boundaries.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-grounded inactive metric cart and sealed head exterior",
+    "simulationStatus": "Dormant exhibit and detached graphic scale with missing-mark guard",
+    "integrationStatus": "Standalone viewer; no optics, clinical data or hardware linkage",
+    "simulator": "/simulations/equipment/15-10/simulator/"
   },
   {
     "id": "15-11",
@@ -209,14 +251,15 @@
     "inputs": "Recorded or modeled ERG epochs, flash timing, voltage calibration and baseline window",
     "outputs": "Event-aligned ERG average, trough/peak amplitudes and implicit times",
     "acceptance": "Replay clean synthetic epochs with a known negative trough and a later positive peak. Recover their times relative to the flash within one sample and amplitudes under the selected baseline convention.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original metric documentary exteriors",
+    "simulationStatus": "Detached synthetic pattern comparison",
+    "integrationStatus": "Dedicated interactive exhibit route",
+    "simulator": "/simulations/equipment/15-11/simulator/"
   },
   {
     "id": "15-12",
     "name": "Auditory electrophysiology",
-    "model": "Tucker-Davis RZ6 + Medusa system",
+    "model": "Tucker-Davis RZ6-A-P1 + RA4PA Medusa (exterior)",
     "evidence": "A",
     "priority": "P2",
     "page": 48,
@@ -229,9 +272,16 @@
     "inputs": "Stimulus level and trigger times, calibrated auditory response epochs, peak windows and detection rule",
     "outputs": "Averaged ABR traces, latency estimates and rule-defined threshold with stimulus units",
     "acceptance": "Create a noise-free level series with a fixed-latency peak appearing only above a known test level. The detector should select the first positive level and recover latency within one sample.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documented rack face and estimated disconnected cases",
+    "simulationStatus": "Verified offline synthetic peak index; no stimulation or acquisition",
+    "integrationStatus": "Standalone exhibit and fixed-file trace JSON/CSV",
+    "simulator": "/simulations/equipment/15-12/simulator/",
+    "related": [
+      [
+        "Case geometry references and offline verification",
+        "/simulations/equipment/15-12/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "15-13",
@@ -247,9 +297,10 @@
     "inputs": "Cochlear array geometry, conductive medium, pulse events, auditory fiber positions and place–frequency map",
     "outputs": "Per-fiber extracellular voltage and modeled recruitment indexed by cochlear place and frequency",
     "acceptance": "In an ideal homogeneous point-source fixture, compare voltage at two known distances with the analytic 1/r ratio. A zero-current trial must reproduce the unstimulated model baseline.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Unbuilt closed-enclosure study and separate gauge",
+    "simulationStatus": "Passive geometric fit only; research workflow not represented",
+    "integrationStatus": "Documentary exterior and geometric fit export wired",
+    "simulator": "/simulations/equipment/15-13/simulator/",
     "related": [
       [
         "Cochlear Implant Laboratory",
@@ -271,14 +322,23 @@
     "inputs": "Retinal layer geometry, implant pose, pixel illumination or current map and response model",
     "outputs": "Layer-indexed drive and model response maps, registered to implant pixels",
     "acceptance": "Illuminate one pixel in a symmetric synthetic phantom, then mirror the input. The drive map must mirror accordingly; a zero-drive control must reproduce the unstimulated baseline.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Original unbuilt inert cabinet concept, not physical hardware; independent authored metric gauge",
+    "simulationStatus": "Verified detached dry geometric clearances only; no retinal, electrical, optical, or operating model",
+    "integrationStatus": "Metric GLB, 3D/2D gauge viewer and JSON export; browser and headset verification pending",
     "related": [
       [
         "Retina Laboratory",
         "/simulations/retinal-implant/"
+      ],
+      [
+        "Original geometry and scope",
+        "/simulations/equipment/15-14/simulator/#dry-references"
+      ],
+      [
+        "Detached gauge verification",
+        "/simulations/equipment/15-14/simulator/#dry-checks"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/15-14/simulator/"
   }
 ]

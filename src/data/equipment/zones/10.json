@@ -118,9 +118,16 @@
     "inputs": "Slice volume ID, voxel spacing, stage pose, objective calibration and cell annotations",
     "outputs": "Calibrated focal-plane image, sample-space target position and selected cell ID",
     "acceptance": "Place labeled beads on two known planes. Moving focus between them should select the corresponding bead and return its coordinates within one image voxel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Verified inert marked-plane optics and coordinate recovery",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/10-05/simulator/",
+    "related": [
+      [
+        "Upright optical exhibit and synthetic focal chart",
+        "/simulations/equipment/10-05/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "10-06",
@@ -138,9 +145,10 @@
     "inputs": "Capillary geometry, virtual pull preset ID, paired tip-profile and resistance calibration",
     "outputs": "Paired virtual pipette IDs, modeled taper geometry (m), estimated resistance (Ω) and calibration bounds",
     "acceptance": "Reserve measured pipette profiles for a blind comparison. Check predicted tip diameter and resistance against their predeclared uncertainty bands and flag extrapolated presets.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric P-1000 shell and non-operational authored replacement insert",
+    "simulationStatus": "Dry solid gauge geometry only; no instrument operation",
+    "integrationStatus": "Revisioned passive dry gauge report JSON",
+    "simulator": "/simulations/equipment/10-06/simulator/"
   },
   {
     "id": "10-07",
@@ -158,14 +166,15 @@
     "inputs": "Mount-to-sample transform, stage displacement (m), travel envelope and collision meshes",
     "outputs": "Tip pose in sample coordinates, actual displacement and travel or collision status",
     "acceptance": "Rotate the mount frame by 90 degrees and command a single-axis displacement. The sample-space axis should rotate accordingly and a command past its calibrated travel should stop at the limit.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric MP-285/T tabletop controller and three slide carriages",
+    "simulationStatus": "First pass: verified inert coordinate transform and bounded virtual travel",
+    "integrationStatus": "Linked: interactive coordinate stage and pose export",
+    "simulator": "/simulations/equipment/10-07/simulator/"
   },
   {
     "id": "10-08",
     "name": "Microelectrode beveler",
-    "model": "Sutter BV-10",
+    "model": "Sutter BV-10-D · stationary stereo-head documentary model",
     "evidence": "A",
     "priority": "P2",
     "page": 34,
@@ -178,9 +187,14 @@
     "inputs": "Pipette ID, initial tip geometry and a matched before/after bevel calibration set",
     "outputs": "Child tip revision, modeled bevel surface and estimated resistance (Ω)",
     "acceptance": "Replay a held-out tip pair. Compare estimated opening area and resistance change with measured before/after values and retain uncertainty for each quantity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric BV-10-D GLB; fixed surfaces only",
+    "simulationStatus": "Fictitious facet annotation only; no fabrication or resistance simulation",
+    "integrationStatus": "Static viewer and annotation export; original experimental acceptance not run",
+    "simulator": "/simulations/equipment/10-08/simulator/",
+    "related": [
+      ["Sutter BV-10 factory photograph", "https://www.sutter.com/hs-fs/hubfs/WEB%20-%20Product%20Images/BV-10_lg.jpg?height=1483&name=BV-10_lg.jpg&width=2000"],
+      ["Sutter BV-10 manual Rev. 3.00 cover", "https://www.sutter.com/hubfs/WEB%20-%20Manuals/BV-10_OpMan.pdf#page=1"]
+    ]
   },
   {
     "id": "10-09",
@@ -199,15 +213,16 @@
     "inputs": "Headstage configuration, electrode map, per-channel stimulus events, load model and reference signals",
     "outputs": "Channel-indexed voltage traces (V), delivered current events (A), impedance estimates (Ω) and timestamps",
     "acceptance": "Route one balanced biphasic command to a known resistive dummy channel. Integrated net charge should be zero within time-step error and the channel response should match I × R in the unclipped ideal fixture.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: metric 1U M4200 and static M4016/M4032 witnesses",
+    "simulationStatus": "First pass: verified read-only synthetic alignment; stimulation outside scope",
+    "integrationStatus": "Linked: channel picker, JSON/CSV and scope handoff",
     "related": [
       [
         "Measured recording datasets",
         "/recordings/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/10-09/simulator/"
   },
   {
     "id": "10-10",
@@ -227,15 +242,20 @@
     "inputs": "Extracellular sample stream, event clock, channel map and buffer configuration",
     "outputs": "Timestamped channel blocks, event markers and detected acquisition gaps",
     "acceptance": "Replay a numbered multichannel ramp with one missing block and one trigger. Reassembly should retain channel order, flag the gap and place the trigger at the original sample.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built",
+    "simulationStatus": "Verified synthetic counter gaps and marker alignment",
+    "integrationStatus": "Built",
     "related": [
       [
         "Measured recording datasets",
         "/recordings/"
+      ],
+      [
+        "Gen 3 visual model and synthetic counter checks",
+        "/simulations/equipment/10-10/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/10-10/simulator/"
   },
   {
     "id": "10-11",
@@ -254,14 +274,15 @@
     "inputs": "Chip/site map, selected recording routes, specimen ID and spatial signal field",
     "outputs": "Routed channel traces (V) and an activity map with unsampled sites masked",
     "acceptance": "Place a single synthetic source on a known routed site. It should appear at that coordinate. Attempting to route 1,021 simultaneous recording channels should reject the configuration or demand another acquisition.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric MaxOne hub, recording unit and one empty PSM chip",
+    "simulationStatus": "Verified ideal passive site selection and synthetic marker playback; no stimulation",
+    "integrationStatus": "Masked activity map, routed voltage exports and reusable metric VR targets",
+    "simulator": "/simulations/equipment/10-11/simulator/"
   },
   {
     "id": "10-12",
     "name": "Multiwell HD-MEA",
-    "model": "MaxWell Biosystems MaxTwo",
+    "model": "MaxWell Biosystems MaxTwo / six-well visual reference",
     "evidence": "A",
     "priority": "P2",
     "page": 35,
@@ -274,9 +295,10 @@
     "inputs": "Multiwell layout ID, independent specimen IDs, channel selections and session timeline",
     "outputs": "Per-well activity maps and traces keyed to specimen, well and session",
     "acceptance": "Replay a spike train in one well and silence in another, then unload and revisit both. No spikes should cross wells and both timelines should retain their original sample counts.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric documented dock and empty 6-well plate, authored travel",
+    "simulationStatus": "Passive coordinate picks and independent immutable synthetic traces",
+    "integrationStatus": "Keyed well and common analog waveform JSON",
+    "simulator": "/simulations/equipment/10-12/simulator/"
   },
   {
     "id": "10-13",
@@ -285,6 +307,7 @@
     "evidence": "A",
     "priority": "P1",
     "page": 35,
+    "simulator": "/simulations/equipment/10-13/simulator/",
     "sources": [
       "S48",
       "S49"
@@ -295,9 +318,9 @@
     "inputs": "Probe variant and site-map revision, bank selection, shank pose and extracellular field",
     "outputs": "Recording channels (V) mapped to physical contact IDs and 3D locations",
     "acceptance": "Replay a depth-coded field and switch banks. Each channel should report the value at its selected physical site. Verify against the exact 1.0 or 2.0 map used in that run.",
-    "geometryStatus": "Existing asset to review",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Verified existing Neuropixels 1.0 metric geometry",
+    "simulationStatus": "Synthetic site-index replay on pinned 1.0 map",
+    "integrationStatus": "Interactive site picker and mapped exports",
     "related": [
       [
         "Neuropixels 1.0 engineering model and viewer",
@@ -323,9 +346,10 @@
     "inputs": "Nerve geometry and axon population, cuff contact map, pulse events, conductivity and acquisition clock",
     "outputs": "Compound action potential (V), recruitment by population, propagation latency (s) and model provenance",
     "acceptance": "Use identical synthetic axons with known conduction velocity and two recording positions. The latency difference should equal separation divided by velocity within sampling and solver resolution.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Original metric dry visual placeholder only; no working wet or biological fixture",
+    "simulationStatus": "Dry inert block fit and detached label inspection only; no physiological model",
+    "integrationStatus": "Viewer with nominal fit/label export; original latency acceptance not run",
+    "simulator": "/simulations/equipment/10-14/simulator/",
     "related": [
       [
         "Measured recording datasets",
@@ -336,7 +360,7 @@
   {
     "id": "10-15",
     "name": "Isolated pulse stimulator",
-    "model": "A-M Systems Model 2100 (candidate)",
+    "model": "A-M Systems Model 2100 / de-energized visual reference",
     "evidence": "C",
     "priority": "P1",
     "page": 35,
@@ -347,14 +371,15 @@
     "inputs": "Requested pulse train, isolated-load circuit, output mode and compliance limit",
     "outputs": "Time-resolved delivered voltage and current, polarity, compliance events and delivered charge (C)",
     "acceptance": "Drive a synthetic resistor in current mode within compliance and then beyond compliance. Confirm V = IR in the first trace and a flagged voltage-limited response in the second.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric nominal cabinet and separate fictional label board",
+    "simulationStatus": "Passive shape/label matching only; pulse-delivery test unsupported",
+    "integrationStatus": "Static label board report JSON without instrument connection",
+    "simulator": "/simulations/equipment/10-15/simulator/"
   },
   {
     "id": "10-16",
     "name": "Vibrating tissue slicer",
-    "model": "Leica VT1200 S (candidate)",
+    "model": "Leica VT1200 S, documented exterior only",
     "evidence": "C",
     "priority": "P2",
     "page": 35,
@@ -365,8 +390,9 @@
     "inputs": "Virtual specimen volume, cutting plane, requested thickness (m) and specimen transform",
     "outputs": "Ordered child slice IDs, plane transforms, extents and parent volume reference",
     "acceptance": "Section a labeled cuboid in the virtual fixture. Slice extents should cover the requested interval without overlap and each landmark should map back to its parent coordinate.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric external housing, dormant controller and separate author-designed fit gauge",
+    "simulationStatus": "Verified inert rectangular fit and landmark geometry only; original slicing acceptance not implemented",
+    "integrationStatus": "Interactive browser scene, fit report export and reusable VR anchors",
+    "simulator": "/simulations/equipment/10-16/simulator/"
   }
 ]

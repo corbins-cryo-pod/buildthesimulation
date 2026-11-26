@@ -1,0 +1,4 @@
+import {test} from 'node:test';import assert from'node:assert/strict';import{station,act,inspect}from'../public/equipment/13-13/card.mjs';
+test('read hand-checked fixed intercept at each station',()=>{assert.deepEqual(inspect(station()).selectedPositionMm,[14,12]);assert.deepEqual(inspect(act(station(),'select','Q')).selectedPositionMm,[32,36])});
+test('independent 3:4:5 triangle at 6 mm per ratio keeps units and unchanged ID',()=>{const r=inspect(station());assert.deepEqual(r.pToQ,{deltaXMm:18,deltaYMm:24,distanceMm:30});assert.equal(r.sampleId,'SLOPE-CARD-CM3050-01');assert.equal(r.revision,1)});
+test('label selection cannot modify fixed chart geometry or unknown controls',()=>{const p=inspect(station()),q=inspect(act(station(),'select','Q'));assert.deepEqual(q.fixedMarksMm,p.fixedMarksMm);assert.throws(()=>act(station(),'select','R'),RangeError);assert.throws(()=>act(station(),'move',2),RangeError)});

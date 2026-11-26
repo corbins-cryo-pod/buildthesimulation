@@ -1,0 +1,74 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Two immutable 42 × 28 mm drawing cards with independent review tags; no physical material or treatment state.",
+  "cases": [
+    {
+      "id": "card-independent",
+      "events": [
+        [
+          "A",
+          "outline-reviewed"
+        ]
+      ],
+      "expected": {
+        "notesA": 1,
+        "notesB": 0,
+        "geometryIntact": true,
+        "authorId": "bts-synthetic-catalogue"
+      }
+    },
+    {
+      "id": "card-b-retain-author",
+      "events": [
+        [
+          "A",
+          "outline-reviewed"
+        ],
+        [
+          "B",
+          "label-reviewed"
+        ]
+      ],
+      "expected": {
+        "notesA": 1,
+        "notesB": 1,
+        "revision": 2,
+        "authorId": "bts-synthetic-catalogue"
+      }
+    },
+    {
+      "id": "reject-duplicate",
+      "events": [
+        [
+          "A",
+          "outline-reviewed"
+        ],
+        [
+          "A",
+          "outline-reviewed"
+        ]
+      ],
+      "expected": {
+        "notesA": 1,
+        "notesB": 0,
+        "revision": 1,
+        "error": "This drawing already has that review tag."
+      }
+    },
+    {
+      "id": "reject-unknown",
+      "events": [
+        [
+          "Z",
+          "outline-reviewed"
+        ]
+      ],
+      "expected": {
+        "notesA": 0,
+        "notesB": 0,
+        "revision": 0,
+        "error": "Choose one of the two drawing cards."
+      }
+    }
+  ]
+}

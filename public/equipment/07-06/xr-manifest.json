@@ -1,0 +1,40 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "07-06",
+  "asset": "/equipment/07-06/eppendorf-5810r-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Statics card has independent coordinates.",
+  "metrics": {
+    "bytes": 111020,
+    "triangles": 1400,
+    "draws": 42,
+    "instrumentXYZM": [
+      0.6999999955296516,
+      0.3450000117300078,
+      0.6079999804496765
+    ],
+    "nominalSupportDepthM": 0.5360000133514404
+  },
+  "scope": "Detached display action only. No immersive headset tested.",
+  "nodes": [
+    {
+      "node": "detached_statics_badge",
+      "label": "Switch the detached static moment drawing",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.078,
+        0.015,
+        0.038
+      ]
+    },
+    {
+      "node": "detached_statics_screen_anchor",
+      "label": "Independent teaching screen texture",
+      "boundsM": [
+        0.275,
+        0.188
+      ]
+    }
+  ]
+}

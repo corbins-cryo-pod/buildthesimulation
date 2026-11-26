@@ -1,0 +1,71 @@
+{
+  "schema": "bts.station.hydra-static-inspection.v1",
+  "equipment": "13-03",
+  "model": "./hydra-cx-display.glb",
+  "axes": "+Y up +Z front",
+  "units": "m",
+  "nodes": 72,
+  "bytes": 37012,
+  "triangles": 3652,
+  "hitTargets": [
+    {
+      "node": "Section_monitor_screen",
+      "action": "cyclePlane",
+      "label": "Switch passive XY/XZ section",
+      "boundsM": {
+        "min": [
+          0.344,
+          0.895,
+          0.015
+        ],
+        "max": [
+          0.762,
+          1.165,
+          0.027
+        ]
+      }
+    },
+    {
+      "node": "Section_view_key",
+      "action": "center",
+      "label": "Center the passive section",
+      "boundsM": {
+        "min": [
+          0.9775,
+          0.7695,
+          0.23
+        ],
+        "max": [
+          1.0585,
+          0.7925,
+          0.286
+        ]
+      }
+    },
+    {
+      "node": "Volume_measure_key",
+      "action": "measure",
+      "label": "Count pre-existing void voxels",
+      "boundsM": {
+        "min": [
+          1.0745,
+          0.7695,
+          0.23
+        ],
+        "max": [
+          1.1555,
+          0.7925,
+          0.286
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./sections.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Read-only viewer actions on separate desk. No headset testing."
+}

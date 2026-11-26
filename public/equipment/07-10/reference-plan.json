@@ -1,0 +1,38 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Independent fixed right triangle in abstract drawing units. No measurement of instrument, particles or operating state.",
+  "cases": [
+    {
+      "id": "horizontal-side",
+      "segment": "AB",
+      "expected": {
+        "dx": 8,
+        "dy": 0,
+        "length": 8
+      }
+    },
+    {
+      "id": "vertical-side",
+      "segment": "BC",
+      "expected": {
+        "dx": 0,
+        "dy": -6,
+        "length": 6
+      }
+    },
+    {
+      "id": "hypotenuse",
+      "segment": "CA",
+      "expected": {
+        "dx": -8,
+        "dy": 6,
+        "length": 10
+      }
+    },
+    {
+      "id": "unknown-side",
+      "segment": "AX",
+      "expected": "Choose a listed side of the abstract triangle."
+    }
+  ]
+}

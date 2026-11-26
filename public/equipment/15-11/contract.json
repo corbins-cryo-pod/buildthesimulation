@@ -1,0 +1,9 @@
+{
+  "equipmentId":"15-11",
+  "configuration":"Diagnosys desktop Espion E3 D315 console with D125-2N ColorDome desktop housing, modeled disconnected and inactive",
+  "scope":"Static opaque documentary exteriors and detached immutable authored geometry cards",
+  "inputs":{"schema":"bts.synthetic-pattern-archive.v1","archiveId":"ABSTRACT-SIX-TILES-001","grid":[9,7],"pitchMm":2,"frame":"Integer grid addresses, X right and Y down","selection":"Four stored cards only; no upload or flashing","actions":["next","select","reset"]},
+  "operation":"Remove bounding-box translation of each nonempty pattern; compare its occupied addresses with fixed CARD-A, without rotation or reflection.",
+  "outputs":{"schema":"bts.synthetic-pattern-comparison.v1","fields":"Archive ID, revision, reference/card IDs, grid, occupied cells, area in square millimeters, intersection, union and dimensionless Jaccard overlap when defined","storedBlank":"Zero occupied area; comparison null"},
+  "limitations":["No equipment settings, stimulation, light timing, waveforms, electrophysiology, procedures, measurements or subjects.","No XR session or headset verification."]
+}

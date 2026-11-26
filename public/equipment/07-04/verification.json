@@ -1,0 +1,70 @@
+[
+  {
+    "id": "complete-rectangle",
+    "frame": "complete",
+    "expected": {
+      "widthPx": 40,
+      "heightPx": 28,
+      "widthMm": 10,
+      "heightMm": 5.6,
+      "areaMm2": 56,
+      "edgeClipped": false,
+      "visiblePixels": 1120
+    },
+    "actual": {
+      "widthPx": 40,
+      "heightPx": 28,
+      "widthMm": 10,
+      "heightMm": 5.6,
+      "areaMm2": 56,
+      "edgeClipped": false,
+      "visiblePixels": 1120
+    },
+    "pass": true
+  },
+  {
+    "id": "cropped-rectangle",
+    "frame": "cropped",
+    "expected": {
+      "widthMm": null,
+      "heightMm": null,
+      "areaMm2": null,
+      "edgeClipped": true,
+      "visiblePixels": 784
+    },
+    "actual": {
+      "widthMm": null,
+      "heightMm": null,
+      "areaMm2": null,
+      "edgeClipped": true,
+      "visiblePixels": 784
+    },
+    "pass": true
+  },
+  {
+    "id": "blank-reference",
+    "frame": "blank",
+    "expected": {
+      "widthMm": null,
+      "heightMm": null,
+      "areaMm2": null,
+      "edgeClipped": false,
+      "visiblePixels": 0
+    },
+    "actual": {
+      "widthMm": null,
+      "heightMm": null,
+      "areaMm2": null,
+      "edgeClipped": false,
+      "visiblePixels": 0
+    },
+    "pass": true
+  },
+  {
+    "id": "unknown-frame",
+    "frame": "unknown",
+    "expected": "Choose a stored geometric image.",
+    "actual": "Choose a stored geometric image.",
+    "pass": true
+  }
+]

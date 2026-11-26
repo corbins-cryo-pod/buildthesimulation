@@ -1,0 +1,86 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const p='/equipment/11-09/';
+const doc='https://www.coherent.com/content/dam/coherent/site/en/resources/datasheet/lasers/monaco-1035-ds.pdf';
+const photo='https://assets.coherent.com/is/image/coherentinc/monaco-1035?%24small%24=';
+const refs=[
+ ['front-quarter.webp','Front-left quarter: dark elongated cover, pale end plate and narrow lower rail. The end plate is deliberately blanked.',photo,'Coherent Monaco 1035 family exterior photograph'],
+ ['side-elevation.webp','Long-side elevation: nominal envelope and exterior markings, with no cables or interfaces.',doc+'#page=4','Coherent mechanical specifications, p. 4']
+];
+const checks=[
+ ['Two input rectangle areas','384 mm² each','384 mm² each','Exact'],
+ ['Interior overlap','160 mm²','160 mm²','Exact'],
+ ['Interior union','608 mm²','608 mm²','Exact'],
+ ['Boundary contact','Shared edge; zero area','Shared edge; zero area','Exact'],
+ ['Envelope W × L × H','360.3 × 668.7 × 180.5 mm','360.3 × 668.7 × 180.5 mm','0.2 mm, overall geometry only']
+];
+---
+<Layout title="Coherent Monaco 1035-80-60 · Documentary housing and geometry cards" description="Inspect the closed dormant Monaco housing and compare two unrelated fixed geometrical overlays. No instrument operation.">
+ <main id="monaco09-exhibit">
+  <p><a href="/simulations/equipment/11-09/">← Equipment record 11-09</a></p>
+  <p class="series">LABORATORY EQUIPMENT / 11-09 / DOCUMENTARY EXHIBIT</p>
+  <h1>Coherent Monaco 1035-80-60</h1>
+  <p class="lead">Inspect the closed reference enclosure, then compare two unrelated geometry cards. In the first card the rectangles share 160 mm². In the second they share an edge but no area.</p>
+  <div class="duo">
+   <section class="card">
+    <h2>Dormant metric housing</h2>
+    <div id="monaco09-view" class="viewer"></div><p id="monaco09-model" role="status">Loading the closed enclosure…</p>
+    <div class="actions" aria-label="3D viewpoints">
+     <button type="button" data-monaco09-view="orbit">Reset orbit</button><button type="button" data-monaco09-view="front">Front quarter</button><button type="button" data-monaco09-view="side">Long side</button><button type="button" data-monaco09-view="archive">Detached card stand</button>
+    </div>
+    <p>Drag to orbit and scroll or pinch to zoom. Select the detached display to switch card. The housing has no operable surfaces or connections.</p>
+   </section>
+   <section class="card">
+    <h2>Detached geometric overlap</h2>
+    <canvas id="monaco09-diagram" width="560" height="320" aria-label="Fixed A and B geometric rectangles with either positive common area or boundary contact only."></canvas>
+    <div class="actions"><button id="monaco09-next" type="button" disabled>Switch geometry card</button><button id="monaco09-reset" type="button">Reset overlap card</button><button id="monaco09-export" type="button" disabled>Export review JSON</button></div>
+    <p id="monaco09-status" role="status" aria-live="polite">Loading the fixed geometric drawings…</p>
+    <p id="monaco09-result" class="readout"></p>
+   </section>
+  </div>
+  <section>
+   <h2>Documented housing and views</h2>
+   <p>The equipment register designates <strong>Coherent Monaco 1035-80-60</strong> as a research example. The manufacturer supplies one mechanical drawing for both that model and the 1035-40-40. This exhibit shows that closed body envelope only, not the separate power unit, other accessories, optical assembly, or a particular serial revision. The cover photograph documents common family livery rather than confirming a serial-specific configuration.</p>
+   <div class="refs">
+    {refs.map(([f,label,href,source])=><figure><img src={p+f} alt={label} width="780" height="510" loading="lazy" /><figcaption><strong>Original reference-based rendering.</strong> {label} <a href={href}>{source} (original source)</a>.</figcaption></figure>)}
+   </div>
+   <div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th><th>Evidence / role</th></tr></thead><tbody>
+    <tr><td>Closed body W × L × H</td><td>360.3 × 668.7 × 180.5 mm</td><td><a href={doc+'#page=4'}>Coherent mechanical drawing, p. 4</a>; the side and plan arrows define the overall enclosure excluding flexible leads.</td></tr>
+    <tr><td>Exterior appearance</td><td>Dark long cover, light end plates, metal trim</td><td><a href={photo}>Coherent exterior photograph</a>; local trim and seams inferred. All interface geometry is omitted.</td></tr>
+    <tr><td>Detached drawing frame</td><td>56 × 32 mm, planar</td><td><a href={p+'rectangles.json'}>Original abstract fixture</a>; unrelated to the device and not an optical pattern or measurement.</td></tr>
+   </tbody></table></div>
+  </section>
+  <section>
+   <h2>What the rectangle comparison measures</h2>
+   <p>The axis-aligned drawing uses a top-left origin, X to the right and Y down, in millimeters. Subtract the larger lower coordinate from the smaller upper coordinate along each axis. The two positive remainders give 16 mm × 10 mm in the overlap example. If either remaining length is zero, the drawings can share a boundary but not positive area. The union is A + B minus the shared area. The export preserves both rectangle bounds, card ID, revision, intersection classification and units.</p>
+   <p><strong>Limits:</strong> there is no beam, optics path, device operation, exposure, parameter, process, biological workflow or measurement. The metric geometry and named detached target are available for VR authoring; no headset validation is claimed.</p>
+  </section>
+  <section>
+   <h2>Focused verification</h2>
+   <div class="tablewrap"><table><thead><tr><th>Test</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.map(([name,x,y,t])=><tr><td>{name}</td><td>{x}</td><td>{y}</td><td>{t}</td><td>Pass</td></tr>)}</tbody></table></div>
+   <p><a href={p+'verification.json'}>Verification results</a> · <a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-reviews.json'}>Example exports</a> · <a href={p+'rectangles.json'}>Fixed drawing fixture</a></p>
+   <p><a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'monaco-1035.glb'} download>Download metric GLB</a> · <a href={p+'interaction.json'}>Interaction manifest</a> · <a href={p+'asset-metrics.json'}>GLB metrics</a></p>
+  </section>
+ </main>
+</Layout>
+<script>
+import '../../../../lib/equipment/11-09/client.mjs';
+</script>
+<style>
+main{max-width:1100px;margin:auto;padding:1.2rem clamp(.9rem,2.5vw,2rem) 3rem}
+.series,.readout,table,input,select,button{font-family:var(--font-label,system-ui,sans-serif)}
+.series{font-size:.78rem;letter-spacing:.13em}.lead{max-width:72ch}
+.duo,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.card{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:1rem;border-radius:.25rem}
+.viewer{height:clamp(23rem,45vw,32rem);overflow:hidden;background:#263949}
+.viewer :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+#monaco09-diagram{display:block;width:min(100%,26rem);height:auto;background:#263949;margin:.5rem auto 1rem}
+.actions,.inputs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+button,input,select{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 50%,transparent);border-radius:.2rem;padding:.5rem;font-size:.91rem;min-height:2.6rem}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input{width:min(18rem,55vw)}label{display:grid;font-size:.86rem;gap:.25rem}
+figure{margin:0}figure img{width:100%;height:auto;display:block}figcaption{font-size:.92rem;margin:.45rem 0}
+section{margin:1.5rem 0}.duo section{margin:0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent);text-align:left;padding:.5rem;vertical-align:top}
+[data-error=true]{font-weight:bold;color:var(--accent,currentColor)}
+@media(max-width:770px){.duo,.refs{grid-template-columns:1fr}.viewer{height:22rem}}
+</style>

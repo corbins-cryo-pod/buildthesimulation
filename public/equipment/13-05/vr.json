@@ -1,0 +1,40 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    2.873,
+    2.49,
+    1.76
+  ],
+  "meshes": 75,
+  "triangles": 9533,
+  "bytes": 537928,
+  "interaction": {
+    "Offline_lattice_panel": {
+      "action": "compare",
+      "label": "Switch to the other fixed lattice",
+      "boundsMinM": [
+        1.2755,
+        0.6455,
+        0.453
+      ],
+      "boundsMaxM": [
+        1.7445,
+        0.6685,
+        0.803
+      ]
+    }
+  },
+  "modelMainUnitM": [
+    2.16,
+    2.49,
+    1.76
+  ],
+  "publishedMainUnitMm": [
+    2160,
+    2490,
+    1760
+  ],
+  "instrumentControls": false,
+  "dataPanelIndependent": true
+}

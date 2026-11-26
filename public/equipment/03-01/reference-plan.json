@@ -1,0 +1,37 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Independent geometric shadow ruler and mechanical fit; no deposited material or equipment settings.",
+  "cases": [
+    {
+      "id": "45-degree-ruler",
+      "expected": {
+        "analyticalLengthMm": 0.1,
+        "shadowCells": 4,
+        "rasterLengthMm": 0.1,
+        "placement": "seated"
+      },
+      "toleranceMm": 0.025
+    },
+    {
+      "id": "axis-normal",
+      "expected": {
+        "analyticalLengthMm": 0,
+        "shadowCells": 0
+      },
+      "toleranceMm": 0.025
+    },
+    {
+      "id": "oversize",
+      "expected": {
+        "seated": false,
+        "result": null
+      }
+    },
+    {
+      "id": "requires-witness",
+      "expected": {
+        "result": null
+      }
+    }
+  ]
+}

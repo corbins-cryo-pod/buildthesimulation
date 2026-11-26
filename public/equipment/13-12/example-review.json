@@ -1,0 +1,93 @@
+{
+  "schema": "bts.inert-drawing-card-review.v1",
+  "deviceId": "13-12",
+  "kind": "original inert documentation",
+  "authorId": "bts-synthetic-catalogue",
+  "revision": 1,
+  "records": {
+    "A": {
+      "sourceId": "inert-card-A",
+      "geometry": {
+        "dimensionsMm": [
+          42,
+          28
+        ],
+        "verticesMm": [
+          [
+            -21,
+            -14
+          ],
+          [
+            21,
+            -14
+          ],
+          [
+            21,
+            14
+          ],
+          [
+            -21,
+            14
+          ]
+        ],
+        "triangles": [
+          0,
+          1,
+          2,
+          0,
+          2,
+          3
+        ]
+      },
+      "caption": "Notched outline drafting reference",
+      "notes": [
+        {
+          "card": "A",
+          "label": "outline-reviewed",
+          "sourceId": "inert-card-A",
+          "authorId": "bts-synthetic-catalogue",
+          "revision": 1,
+          "parentRevision": 0
+        }
+      ]
+    },
+    "B": {
+      "sourceId": "inert-card-B",
+      "geometry": {
+        "dimensionsMm": [
+          42,
+          28
+        ],
+        "verticesMm": [
+          [
+            -21,
+            -14
+          ],
+          [
+            21,
+            -14
+          ],
+          [
+            21,
+            14
+          ],
+          [
+            -21,
+            14
+          ]
+        ],
+        "triangles": [
+          0,
+          1,
+          2,
+          0,
+          2,
+          3
+        ]
+      },
+      "caption": "Crosshair drafting reference",
+      "notes": []
+    }
+  },
+  "limitations": "No physical object state, hardware operation, specimens, or process events."
+}

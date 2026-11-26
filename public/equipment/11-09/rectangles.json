@@ -1,0 +1,11 @@
+{
+  "schema":"bts.synthetic-rectangle-comparison.v1",
+  "exhibitId":"MONACO-GEOMETRY-CARDS-001",
+  "revision":1,
+  "provenance":"BuildTheSimulation authorial fixed planar drawings; not equipment, optics, or acquired data",
+  "frame":{"unit":"mm","width":56,"height":32,"x":"right","y":"down","origin":"upper-left"},
+  "cases":[
+    {"id":"OVERLAP","rectangles":[{"id":"A","boundsMm":[4,4,28,20]},{"id":"B","boundsMm":[12,10,36,26]}]},
+    {"id":"EDGE-TOUCH","rectangles":[{"id":"A","boundsMm":[4,4,28,20]},{"id":"B","boundsMm":[28,4,52,20]}]}
+  ]
+}

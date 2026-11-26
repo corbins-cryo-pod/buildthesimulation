@@ -89,9 +89,10 @@
     "inputs": "Virtual load identifiers and compatibility flags, chamber/door state and abstract cycle events",
     "outputs": "Cycle-state history and compatible supply processing records",
     "acceptance": "Try a flagged incompatible load, then cancel a compatible mock run halfway through. Neither case should produce a completed-cycle event.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric legacy 3870EA locked exterior and passive section",
+    "simulationStatus": "First pass: verified empty carrier fit; operating cycle out of scope",
+    "integrationStatus": "Linked: geometry gauge and signed-clearance JSON",
+    "simulator": "/simulations/equipment/16-05/simulator/"
   },
   {
     "id": "16-06",
@@ -168,6 +169,7 @@
     "evidence": "C",
     "priority": "P2",
     "page": 50,
+    "simulator": "/simulations/equipment/16-09/simulator/",
     "sources": [],
     "purpose": "Represent routine mixing and heating.",
     "geometryBrief": "Ceramic top, control knobs, stir bar and beaker.",
@@ -175,9 +177,9 @@
     "inputs": "Virtual vessel, heater/stirrer state, temperature probe and mixing-state model",
     "outputs": "Temperature history and agitation state associated with the vessel",
     "acceptance": "Disable heating and cooling in an equilibrium phantom; switch stirring on and off. The mixing state should follow the control while temperature stays at the configured equilibrium.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric GLB",
+    "simulationStatus": "Inert equilibrium and analytic heat-transfer phantom",
+    "integrationStatus": "Interactive simulator, fixture import and history export"
   },
   {
     "id": "16-10",
@@ -195,9 +197,10 @@
     "inputs": "Basket contents, part compatibility, virtual run duration and cancellation event",
     "outputs": "Per-part cleaning-cycle history with elapsed time and completion state",
     "acceptance": "Cancel a 60 s mock cycle at 20 s. The part record should report 20 s elapsed and interrupted status, with no completed-cycle entry.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric CPX1800H enclosure, lid and original basket",
+    "simulationStatus": "First pass: dry geometry and interrupted mock log verified",
+    "integrationStatus": "Linked: interactive simulator and JSON exports",
+    "simulator": "/simulations/equipment/16-10/simulator/"
   },
   {
     "id": "16-11",
@@ -257,9 +260,10 @@
     "inputs": "Source and sink port types, pin map, signal class, cable endpoints and allowed bend radius",
     "outputs": "Validated connection edge, channel routing and bend warnings",
     "acceptance": "Route a known pulse through a compatible BNC signal path and verify the receiving channel ID. A direct SMA-to-BNC attempt without a modeled adapter must create no connection.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric BNC, SMA, USB-A and FFC benchmark assets",
+    "simulationStatus": "First pass: passive BNC compatibility and routed pulse verified",
+    "integrationStatus": "Linked: simulator, connection export and 09-04 waveform handoff",
+    "simulator": "/simulations/equipment/16-13/simulator/"
   },
   {
     "id": "16-14",

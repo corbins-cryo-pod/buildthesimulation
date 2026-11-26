@@ -1,0 +1,79 @@
+{
+  "triangles": 2644,
+  "draws": 26,
+  "nodes": 9,
+  "bytes": 172000,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "card_A": {
+      "at": [
+        0.135,
+        0.05,
+        0.06
+      ],
+      "extent": [
+        0.042,
+        0.007,
+        0.028
+      ],
+      "action": "card:A",
+      "label": "Select independent original card A"
+    },
+    "card_B": {
+      "at": [
+        0.212,
+        0.05,
+        0.06
+      ],
+      "extent": [
+        0.042,
+        0.007,
+        0.028
+      ],
+      "action": "card:B",
+      "label": "Select independent original card B"
+    },
+    "review_key": {
+      "at": [
+        0.308,
+        0.06,
+        0.061
+      ],
+      "extent": [
+        0.054,
+        0.027,
+        0.045
+      ],
+      "action": "add",
+      "label": "Append the current documentary tag"
+    },
+    "inactive_panel": {
+      "at": [
+        -0.032,
+        0.103,
+        0.084
+      ],
+      "extent": [
+        0.09,
+        0.013,
+        0.081
+      ],
+      "label": "No device interaction"
+    },
+    "fixed_bell": {
+      "at": [
+        -0.16499999999999998,
+        0.164,
+        -0.047
+      ],
+      "extent": [
+        0.134,
+        0.132,
+        0.134
+      ],
+      "label": "Fixed exterior bell silhouette"
+    }
+  }
+}

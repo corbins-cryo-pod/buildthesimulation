@@ -1,0 +1,126 @@
+{
+  "schema": "bts.mfcs-ez.geometry-evidence.v1",
+  "scope": "Casing and photo proportions, not fluid or electrical performance; separate illustrated coordinates only",
+  "checks": [
+    {
+      "id": "Datasheet casing width",
+      "expected": 0.23,
+      "actual": 0.23,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Datasheet casing depth",
+      "expected": 0.16,
+      "actual": 0.16,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Datasheet casing height",
+      "expected": 0.063,
+      "actual": 0.063,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "OEM photo normalized front center 1",
+      "expected": 0.401,
+      "actual": 0.401304347826087,
+      "unit": "fraction of W",
+      "tolerance": 0.025,
+      "pass": true
+    },
+    {
+      "id": "OEM photo normalized front center 2",
+      "expected": 0.551,
+      "actual": 0.551,
+      "unit": "fraction of W",
+      "tolerance": 0.025,
+      "pass": true
+    },
+    {
+      "id": "OEM photo normalized front center 3",
+      "expected": 0.696,
+      "actual": 0.696,
+      "unit": "fraction of W",
+      "tolerance": 0.025,
+      "pass": true
+    },
+    {
+      "id": "OEM photo normalized front center 4",
+      "expected": 0.842,
+      "actual": 0.842,
+      "unit": "fraction of W",
+      "tolerance": 0.025,
+      "pass": true
+    },
+    {
+      "id": "A→B neighboring spacing",
+      "expected": 30,
+      "actual": 30,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Mirror signs change",
+      "expected": -30,
+      "actual": -30,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Mirror spacing is invariant",
+      "expected": 30,
+      "actual": 30,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "All span A→D",
+      "expected": 90,
+      "actual": 90,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "A→D midpoint on datum",
+      "expected": 75,
+      "actual": 75,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Empty interval A→A",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Unknown selection rejected",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Detached hit target names resolved",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

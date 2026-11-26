@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"13-15",
+  "asset":"skyscan1272.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","mount":"bench"},
+  "parts":{"cabinet":"skyscan1272_dormant_enclosure","shield":"closed_shielded_door","exhibit":"detached_slice_review_stand"},
+  "ports":[],
+  "actions":[{"action":"next","node":"archive_slice_panel","label":"Review the next stored slice","sizeM":[0.280,0.257,0.045],"range":[0,16],"mode":"read-only"}],
+  "vrEvidence":"Metric GLB and semantic action IDs for authoring; no immersive or headset claim"
+}
