@@ -1,0 +1,57 @@
+{
+  "lockedBeforeImplementation": true,
+  "cases": [
+    {
+      "id": "oracle-a",
+      "radiusM": 2.5e-05,
+      "stiffnessNPerM": 0.5,
+      "travelM": [
+        4.4047715405015524e-07,
+        1.16e-06,
+        1.7939387691339814e-06
+      ],
+      "bendM": [
+        4.047715405015525e-08,
+        1.6e-07,
+        2.939387691339814e-07
+      ],
+      "expected": "Independent scalar reference; no material or instrument certification.",
+      "expectedPa": 12000,
+      "expectedTolerPa": 0.0001,
+      "deltaM": [
+        4e-07,
+        1e-06,
+        1.5e-06
+      ]
+    },
+    {
+      "id": "fit-sites",
+      "expected": [
+        12000,
+        48000
+      ],
+      "coordinatesMm": [
+        [
+          -2,
+          0.7
+        ],
+        [
+          2,
+          -0.7
+        ]
+      ],
+      "tolerancePa": 0.0001
+    },
+    {
+      "id": "scaled-k",
+      "expected": "A wrong spring calibration changes fitted modulus",
+      "tolerance": "predictable direction"
+    },
+    {
+      "id": "finite-thickness",
+      "expected": "Reject H < 10a or indentation depth > 0.1 tip radius",
+      "tolerance": "exact"
+    }
+  ],
+  "note": "Canonical constant-radius force oracle specified in scripts/equipment/14-05/verify.mjs; model uses ideal Hertz and no tissue."
+}
