@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.tdt-offline-file.v1",
+  "equipment": "15-12",
+  "model": "./rz6-ra4pa-exteriors.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 131,
+  "bytes": 68880,
+  "triangles": 10444,
+  "hitTargets": [
+    {
+      "node": "Recompute_from_fixed_file",
+      "action": "analyze",
+      "label": "Read the immutable offline file at the selected analysis threshold",
+      "boundsM": {
+        "min": [
+          -0.129,
+          0.145,
+          -0.307
+        ],
+        "max": [
+          -0.016999999999999994,
+          0.169,
+          -0.283
+        ]
+      }
+    },
+    {
+      "node": "Cycle_offline_threshold",
+      "action": "cycleThreshold",
+      "label": "Cycle offline software threshold",
+      "boundsM": {
+        "min": [
+          0.043000000000000003,
+          0.145,
+          -0.307
+        ],
+        "max": [
+          0.155,
+          0.169,
+          -0.283
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./offline.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Only detached offline figure actions. No headset session tested."
+}

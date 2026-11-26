@@ -1,0 +1,10 @@
+{
+ "configuration":"Tucker-Davis Technologies RZ6-A-P1 3U processor plus RA4PA four-channel Medusa; not RA16PA/Medusa4Z",
+ "references":[
+  {"title":"TDT RZ6 Multi I/O Processor bid supplement, pp. 1–2","url":"https://www.tdt.com/wp-content/uploads/2019/04/RZ6.pdf","caption":"Front exterior photograph identifies the two dark functional-panel regions and rack ears. Page 2 specifies the nominal 19-inch, 3U front dimensions; architecture identifies variant A-P1."},
+  {"title":"TDT RZ Series Processor Operator Manual, p. 7","url":"https://www.tdt.com/files/manuals/RZ5_RZ6_Operator%27s_Manual.pdf#page=7","caption":"Independent OEM confirmation of rack height and width for RZ6 chassis. No hardware setting or workflows are recreated."},
+  {"title":"TDT RA4PA product silhouette, printed page 7","url":"https://www.tdt.com/files/manuals/ABRGuideRA4PA.pdf#page=11","caption":"Use only the drawing captioned Preamplifier/Digitizer to identify the RA4PA case and four dark indicators. No headstage or biological measurement illustrations are reproduced."}
+ ],
+ "dimensionsMm":{"rackFace":[482.6,133.35],"bodyDepthEstimate":305,"ra4paEstimate":[120,65,30]},
+ "limits":"Inferred case depth, face relief and preamp proportions. RZ6 rack and RA4PA cases are unpowered, all markings and capped connector-like faces are static. No routing, controls, firmware, biological work, delivery, audio or acquisition."
+}
