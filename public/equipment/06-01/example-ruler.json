@@ -1,0 +1,44 @@
+{
+  "schema": "bts.gt2.detached-ruler.v1",
+  "equipment": "06-01",
+  "drawing": {
+    "id": "BTS-GT2-RULER-01",
+    "revision": "1",
+    "units": "µm",
+    "stepUm": 5,
+    "widthUm": 80,
+    "heightUm": 60,
+    "marks": {
+      "A": [
+        10,
+        10
+      ],
+      "B": [
+        40,
+        50
+      ],
+      "C": [
+        45,
+        10
+      ]
+    }
+  },
+  "provenance": "read-only synthetic coordinate geometry; no instrument output",
+  "measurement": {
+    "from": "A",
+    "to": "B",
+    "fromUm": [
+      10,
+      10
+    ],
+    "toUm": [
+      40,
+      50
+    ],
+    "deltaUm": [
+      30,
+      40
+    ],
+    "distanceUm": 50
+  }
+}

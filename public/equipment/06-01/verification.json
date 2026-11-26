@@ -1,0 +1,86 @@
+{
+  "schema": "bts.gt2.read-only-ruler.verification.v1",
+  "scope": "Authored proxy geometry and analytic drawing only; not GT2 metrology",
+  "checks": [
+    {
+      "id": "Authored proxy width",
+      "expected": 0.9,
+      "actual": 0.9,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Authored proxy depth",
+      "expected": 0.9,
+      "actual": 0.9,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Authored proxy height",
+      "expected": 1.42,
+      "actual": 1.42,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "A→B by 30–40–50 triangle",
+      "expected": 50,
+      "actual": 50,
+      "unit": "µm",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "B→A distance invariant",
+      "expected": 50,
+      "actual": 50,
+      "unit": "µm",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "B→A axis signs reverse",
+      "expected": "-30,-40",
+      "actual": "-30,-40",
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "A→C horizontal length",
+      "expected": 35,
+      "actual": 35,
+      "unit": "µm",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Coincident marks",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Invalid pair preserves current selection",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Passive 3D targets resolve",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}
