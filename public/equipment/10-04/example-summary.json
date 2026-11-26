@@ -1,0 +1,34 @@
+{
+  "schema": "bts.heka-passive-clamp.v1",
+  "fixture": {
+    "schema": "bts.passive-clamp-fixture.v1",
+    "sampleId": "PATCH1U-CH1",
+    "parentRevision": 0,
+    "rsMOhm": 10,
+    "rlMOhm": 500,
+    "cPf": 33
+  },
+  "settings": {
+    "mode": "IC",
+    "holding": 0,
+    "step": 20,
+    "durationMs": 100,
+    "range": "medium"
+  },
+  "acquisition": {
+    "dtS": 0.00001,
+    "preS": 0.005,
+    "durationS": 0.1,
+    "postS": 0.025,
+    "monitorScaleVPerSI": 10,
+    "vcCurrentLimitA": null,
+    "physicalPrimaryUnit": "V",
+    "clockHz": 99999.99999999999
+  },
+  "summary": {
+    "tauMs": 16.5,
+    "settledPrimarySI": 0.010199999999999999,
+    "clippedSamples": 0,
+    "peakAbsPrimarySI": 0.01017665599112471
+  }
+}

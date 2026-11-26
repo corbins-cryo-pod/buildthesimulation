@@ -82,6 +82,7 @@
     "evidence": "B",
     "priority": "P2",
     "page": 33,
+    "simulator": "/simulations/equipment/10-04/simulator/",
     "sources": [
       "S38"
     ],
@@ -91,9 +92,9 @@
     "inputs": "Shared clamp circuit, stimulus command, headstage gain and acquisition clock",
     "outputs": "Mode-tagged current or voltage trace, command log and headstage calibration ID",
     "acceptance": "Replay the passive model cell from 10-01 with identical settings. After conversion to SI units the EPC and MultiClamp adapters should agree within the common solver tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "First-pass metric GLB",
+    "simulationStatus": "Shared passive electronic clamp adapter",
+    "integrationStatus": "Interactive bench and checked scope handoff",
     "related": [
       [
         "Cortex Laboratory",
