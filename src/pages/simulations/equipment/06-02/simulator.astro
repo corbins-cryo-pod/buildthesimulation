@@ -4,7 +4,6 @@ const d='/equipment/06-02/';
 const series='https://www.cellink.com/wp-content/uploads/2025/05/BIO-X-Series-Brochure_31.03.25_DIGITAL.pdf';
 ---
 <Layout pageTitle="CELLINK BIO X6 exterior and independent ruler" subtitle="" wide={true}>
- <link rel="stylesheet" href="/styles/equipment.css"/>
  <main class="equipment-page bx">
   <p><a href="/simulations/equipment/#equipment-06-02">↩ Equipment register · 06-02</a></p>
   <h1>CELLINK BIO X6 · closed exterior</h1>
@@ -25,20 +24,20 @@ const series='https://www.cellink.com/wp-content/uploads/2025/05/BIO-X-Series-Br
    <h2>Reference sheet</h2>
    <p><a href={series+'#page=6'}>CELLINK Gen 3 brochure, pp. 10–11</a> establishes the exterior front-angle silhouette, white top and bottom rails, and rounded right return. In this model the lid is non-opening and opaque: no internals or mechanism are included. The rear visible seams are illustrative. No manufacturer photograph is reproduced.</p>
    <figure><img src={d+'front-reference.webp'} width="520" height="362" alt="Original closed outer shell with visible BIO X6 badge and separate handheld ruler reader" loading="lazy"/><figcaption>Original exterior render. The frosted face intentionally hides all internal parts. The generic dark-green reader is not CELLINK hardware.</figcaption></figure>
-   <table><thead><tr><th>Item</th><th>Value</th><th>Evidence</th></tr></thead><tbody>
+   <div class="bx-table-scroll" role="region" aria-label="BIO X6 geometry specifications" tabindex="0"><table><thead><tr><th>Item</th><th>Value</th><th>Evidence</th></tr></thead><tbody>
    <tr><td>Gen 3 outer envelope</td><td>800 × 400 × 500 mm (length × depth × height)</td><td><a href={series+'#page=12'}>CELLINK Gen 3 printed pp. 22–23, 2025 brochure</a>; the older BIO X6 brochure lists a different length, not used here.</td></tr>
    <tr><td>Detached generic ruler</td><td>2 mm between printed ticks</td><td>Original authored geometry, not a hardware part or specification.</td></tr>
-   </tbody></table>
+   </tbody></table></div>
   </section>
   <section id="bx-proof">
    <h2>Readout and verification</h2>
    <p>Pick an existing mark L or R. Its signed coordinate is (tick index − 6) × 2 mm. JSON preserves the fixed ruler’s ID, revision, mark, axis and scale. This routine does not modify the chart, send a command, or satisfy the catalogue’s original fabrication acceptance.</p>
-   <table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <div class="bx-table-scroll" role="region" aria-label="BIO X6 ruler verification" tabindex="0"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
    <tr><td>L at tick 2</td><td>−8 mm</td><td>−8 mm</td><td>Exact</td></tr>
    <tr><td>R at tick 11</td><td>+10 mm</td><td>+10 mm</td><td>Exact</td></tr>
    <tr><td>Distance between readouts</td><td>18 mm</td><td>18 mm</td><td>Exact</td></tr>
    <tr><td>Exported cabinet datums</td><td>800 × 500 × 400 mm XYZ</td><td>800 × 500 × 400 mm</td><td>0.05 mm</td></tr>
-   </tbody></table>
+   </tbody></table></div>
    <p><a href={d+'bio-x6-gen3.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender source</a> · <a href={d+'example-ruler.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached ruler VR targets</a> (no headset verification).</p>
   </section>
  </main>
@@ -47,4 +46,5 @@ const series='https://www.cellink.com/wp-content/uploads/2025/05/BIO-X-Series-Br
 </Layout>
 <style>
  .bx{max-width:81rem;margin:0 auto;padding-inline:1rem}.bx-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.bx-row{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.bx button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .6rem;cursor:pointer}.bx button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#bx-view{height:clamp(17rem,39vw,39rem);background:#2d3e42;overflow:hidden;touch-action:none;border-radius:.25rem}#bx-view :global(canvas){display:block;width:100%;height:100%}#bx-chart{display:block;width:100%;height:auto;border-radius:.2rem}.bx-card{border:1px solid currentColor;border-radius:.3rem;padding:.95rem}.bx table{border-collapse:collapse;width:100%}.bx td,.bx th{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .53rem}.bx section{margin-bottom:1.35rem}.bx figure{max-width:35rem;margin:1rem 0}.bx figure img{max-width:100%;height:auto}@media(max-width:730px){.bx-grid{grid-template-columns:1fr}}
+ .bx-table-scroll{display:block;min-width:0;max-width:100%;overflow-x:auto}
 </style>

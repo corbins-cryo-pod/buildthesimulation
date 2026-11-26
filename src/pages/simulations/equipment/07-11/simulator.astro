@@ -1,13 +1,13 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
 const d='/equipment/07-11/';
 const guide='https://www.moleculardevices.com/sites/default/files/en/assets/user-guide/br/spectramax-i3x-user-guide-5039228g.pdf';
 const photo='https://cdn.syngeneintl.com/wp-content/uploads/sites/5/2020/10/08094723/PectraMax-i3X.jpg';
 ---
 <Layout pageTitle="SpectraMax i3x exterior and independent abstract graphic" subtitle="" wide={true}>
-<link rel="stylesheet" href="/styles/equipment.css"/>
-<main class="equipment-page i3">
- <p><a href="/simulations/equipment/#equipment-07-11">↩ Equipment register · 07-11</a></p>
+<article class="equipment i3">
+ <nav class="eq-nav" aria-label="Equipment navigation"><a href="/simulations/equipment/07-11/">← Equipment 07-11</a><a href="/simulations/equipment/#equipment-07-11">Equipment register</a></nav>
  <h1>SpectraMax i3x · closed exterior</h1>
  <p>Orbit the <strong>unpowered, standalone SpectraMax i3x exterior</strong>. The separate green screen is a generic printed-chart comparison in arbitrary units, not an accessory, instrument screen or abstract assay.</p>
  <div class="i3-grid">
@@ -26,26 +26,26 @@ const photo='https://cdn.syngeneintl.com/wp-content/uploads/sites/5/2020/10/0809
   <h2>Reference sheet</h2>
   <p><a href={guide+'#page=171'}>Molecular Devices guide 5039228 G, p. 171, figures B-1 and B-2</a> establishes exterior dimensions and the angled front split. The <a href={photo}>Syngene CAPS front photo</a> shows the cobalt sides, cream panels, and dark header. The model represents the standalone case without the add-on, with functionally blank panels. Rear details are generic estimates. Source images are linked, not reproduced.</p>
   <figure><img src={d+'front-reference.webp'} width="595" height="410" alt="Original three-quarter render of the closed blue-and-ivory cabinet and physically separate chart reader" loading="lazy"/><figcaption>Original browser render. The angular cream fascia and cobalt shell are documentary; the green display is independent.</figcaption></figure>
-  <table><thead><tr><th>Item</th><th>Nominal</th><th>Evidence</th></tr></thead><tbody>
+  <div class="i3-table" role="region" aria-label="Device geometry and evidence" tabindex="0"><table><thead><tr><th>Item</th><th>Nominal</th><th>Evidence</th></tr></thead><tbody>
    <tr><td>Standalone cabinet envelope</td><td>392 × 605.5 × 325 mm W × D × H</td><td><a href={guide+'#page=169'}>5039228 G, p. 169, table A-6</a>; model width, depth and total height.</td></tr>
    <tr><td>Separate chart</td><td>50 a.u. display scale</td><td>Only an author-defined figure limit. It is not a device limit or calibration.</td></tr>
-  </tbody></table>
+  </tbody></table></div>
  </section>
  <section id="i3-proof">
   <h2>Independent checks</h2>
   <p>The four columns are fixed arbitrary categories and not time samples. The bar height is the smaller of the authored value and the display ceiling. Above-scale bars are marked, but the source values and source mean remain untouched. For an absent chart, JSON represents all values as <code>null</code>. There are no device settings, sample, protocol, biological input, acquisition or output data. The catalogue’s original assay acceptance is not included.</p>
-  <table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+  <div class="i3-table" role="region" aria-label="Verification cases" tabindex="0"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
    <tr><td>A ordinary chart</td><td>Mean 25; none above display</td><td>25 a.u.; zero above</td><td>Exact</td></tr>
    <tr><td>B above scale</td><td>Mean 48.25; two above display</td><td>48.25 a.u.; two flagged, raw 70 and 55 retained</td><td>Exact</td></tr>
    <tr><td>U absent chart</td><td>No values or average</td><td>JSON null</td><td>Exact</td></tr>
    <tr><td>Cabinet GLB</td><td>392 × 325 × 605.5 mm XYZ</td><td>Matches nominal</td><td>0.05 mm</td></tr>
-  </tbody></table>
+  </tbody></table></div>
   <p><a href={d+'spectramax-i3x.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender source</a> · <a href={d+'example-chart.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached chart VR ray action metadata</a> (headset untested).</p>
  </section>
-</main>
+</article>
 <script is:inline>window.i3Graphic=import('/equipment/07-11/chart.mjs');</script>
 <script>import '../../../../lib/equipment/07-11/client.mjs';</script>
 </Layout>
 <style>
- .i3{max-width:81rem;margin:0 auto;padding-inline:1rem}.i3-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.i3-btn{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.i3 button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .61rem;cursor:pointer}.i3 button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#i3-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#2a4147;touch-action:none}#i3-view :global(canvas){display:block;width:100%;height:100%}#i3-plot{display:block;width:100%;height:auto;border-radius:.2rem}.i3-box{border:1px solid currentColor;border-radius:.3rem;padding:.95rem}.i3 table{border-collapse:collapse;width:100%}.i3 td,.i3 th{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .53rem}.i3 section{margin-bottom:1.35rem}.i3 figure{max-width:36rem;margin:1.1rem 0}.i3 figure img{max-width:100%;height:auto}@media(max-width:730px){.i3-grid{grid-template-columns:1fr}}
+ .i3{max-width:81rem;margin:0 auto;padding-inline:1rem}.i3-grid > section{min-width:0}.i3-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.i3-btn{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.i3 button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .61rem;cursor:pointer}.i3 button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#i3-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#2a4147;touch-action:none}#i3-view :global(canvas){display:block;width:100%;height:100%}#i3-plot{display:block;width:100%;height:auto;border-radius:.2rem}.i3-box{border:1px solid currentColor;border-radius:.3rem;padding:.95rem}.i3-table{max-width:100%;overflow-x:auto}.i3 table{border-collapse:collapse;width:100%}.i3 td,.i3 th{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .53rem}.i3 section{margin-bottom:1.35rem}.i3 figure{max-width:36rem;margin:1.1rem 0}.i3 figure img{max-width:100%;height:auto}@media(max-width:730px){.i3-grid{grid-template-columns:minmax(0,1fr)}}
 </style>

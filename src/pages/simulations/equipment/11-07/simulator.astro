@@ -8,7 +8,6 @@ const family='https://media.thorlabs.com/contentassets/a7241f5937244c1c9923018ec
 const tcube='https://part2go.com/cdn/shop/files/16208-001jpg.jpg?v=1722863701&width=830';
 ---
 <Layout pageTitle="Thorlabs legacy LED module and T-Cube closed exteriors" subtitle="" wide={true}>
-<link rel="stylesheet" href="/styles/equipment.css"/>
 <main class="equipment-page tt">
  <p><a href="/simulations/equipment/#equipment-11-07">↩ Equipment register · 11-07</a></p>
  <h1>Thorlabs M470F1 + LEDD1B · closed exteriors</h1>
@@ -29,20 +28,20 @@ const tcube='https://part2go.com/cdn/shop/files/16208-001jpg.jpg?v=1722863701&wi
   <h2>Reference sheet</h2>
   <p><a href={archive}>Thorlabs archived M470F1 product document (2016)</a> identifies the legacy model and family thermal-block length (<a href={archivedCopy}>readable archived copy</a>). The <a href={family}>Thorlabs M430F1 family photo</a> shows the black finned family silhouette used for estimated widths and trim; it is not a photograph of the selected M470F1. The <a href={tcube}>actual LEDD1B exterior photograph</a> shows the black cube and printed rim. Other objects visible there are not part of this build. The original model omits openings, wiring, connectors and real controls.</p>
   <figure><img src={d+'front-reference.webp'} width="595" height="410" alt="Original angled render of the black bare T-Cube, capped finned housing and separate green unit card" loading="lazy"/><figcaption>Original browser render, left to right: bare T-Cube, capped family housing, independent length display.</figcaption></figure>
-  <table><thead><tr><th>Object</th><th>Nominal or estimated</th><th>Evidence</th></tr></thead><tbody>
+  <div class="tt-table-scroll" role="region" aria-label="Reference specifications" tabindex="0"><table><thead><tr><th>Object</th><th>Nominal or estimated</th><th>Evidence</th></tr></thead><tbody>
    <tr><td>LEDD1B bare case</td><td>60 × 60 × 47 mm W × D × H</td><td><a href={catalog}>Thorlabs catalog V21, printed p. 1329</a> and LEDD1B manual physical size. External operating features/baseplate excluded.</td></tr>
    <tr><td>M470F1 family block</td><td>34 mm nominal axial length, 32 mm estimated width, mounting foot estimated</td><td>Archived family block length; representative photo, not a measured M470F1.</td></tr>
-  </tbody></table>
+  </tbody></table></div>
  </section>
  <section id="tt-proof">
   <h2>Readout and checks</h2>
   <p>Toggle the display units of one of two preprinted example lengths. There are 1,000 nanometers in one micrometer; display changes do not change the canonical base value or card ID. An absent card exports null, not zero. There is no beam, power model, biological work, hardware calibration, or actual device workflow. The original optical coupling acceptance is not represented.</p>
-  <table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+  <div class="tt-table-scroll" role="region" aria-label="Verification results" tabindex="0"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
    <tr><td>Ordinary A</td><td>1,250 nm = 1.25 µm</td><td>1,250 nm and 1.25 µm</td><td>Exact authored conversion</td></tr>
    <tr><td>Small but nonzero B</td><td>0.75 nm = 0.00075 µm</td><td>0.75 nm and 0.00075 µm</td><td>Exact authored conversion</td></tr>
    <tr><td>Missing U</td><td>Unknown, no zero substitute</td><td>Null after either unit selection</td><td>Exact</td></tr>
    <tr><td>Checked GLB scale</td><td>Bare case and nominal axial stock above</td><td>Matched</td><td>0.05 mm</td></tr>
-  </tbody></table>
+  </tbody></table></div>
   <p><a href={d+'thorlabs-closed.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender source</a> · <a href={d+'example-units.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached length card VR anchors</a> (headset not tested).</p>
  </section>
 </main>
@@ -51,4 +50,5 @@ const tcube='https://part2go.com/cdn/shop/files/16208-001jpg.jpg?v=1722863701&wi
 </Layout>
 <style>
  .tt{max-width:81rem;margin:0 auto;padding-inline:1rem}.tt-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.tt-btn{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.tt button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .61rem;cursor:pointer}.tt button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#tt-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#2b4144;touch-action:none}#tt-view :global(canvas){display:block;width:100%;height:100%}#tt-plot{display:block;width:100%;height:auto;border-radius:.2rem}.tt-box{border:1px solid currentColor;border-radius:.3rem;padding:.95rem}.tt table{border-collapse:collapse;width:100%}.tt td,.tt th{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .53rem}.tt section{margin-bottom:1.35rem}.tt figure{max-width:36rem;margin:1.1rem 0}.tt figure img{max-width:100%;height:auto}@media(max-width:730px){.tt-grid{grid-template-columns:1fr}}
+ .tt-table-scroll{max-width:100%;overflow-x:auto}
 </style>

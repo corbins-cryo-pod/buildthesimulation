@@ -5,7 +5,6 @@ const gwu='https://nic.gwu.edu/leica-em-uc7-ultramicrotome';
 const leica='https://downloads.leica-microsystems.com/EM%20UC7/Brochure%20or%20Flyer/Leica%20EM%20UC7_FC7%20Brochure%20V2016-02%20Screen_EN_2022.11.02.pdf';
 ---
 <Layout pageTitle="Leica EM UC7 exterior and inert fiducial ruler" subtitle="" wide={true}>
- <link rel="stylesheet" href="/styles/equipment.css"/>
  <main class="equipment-page uc">
   <p><a href="/simulations/equipment/#equipment-13-07">↩ Equipment register · 13-07</a></p>
   <h1>Leica EM UC7 · exterior and fiducial ruler</h1>
@@ -26,21 +25,21 @@ const leica='https://downloads.leica-microsystems.com/EM%20UC7/Brochure%20or%20F
    <h2>Reference and declared scale</h2>
    <p><a href={gwu}>George Washington University installed EM UC7</a>: front three-quarter photo establishes the cream curved body, binocular housing and separate 10.4-inch console of the non-cryo configuration. <a href={leica+'#page=8'}>Leica EM UC7/FC7 brochure, 02/2016, Touchscreen Control spread</a> illustrates the advanced console and the basic 7-inch console; GWU documents the advanced display’s 10.4-inch diagonal. The cryo accessory shown on the brochure cover is excluded. The installed-system photo is linked, not reproduced.</p>
    <figure><img src={d+'front-reference.webp'} width="519" height="364" alt="Original model of the dormant UC7 and two detached displays" loading="lazy"/><figcaption>Original 3D render. The cream screen is a blank UC7 console prop; the green pad is a separate synthetic tool, not part of the UC7.</figcaption></figure>
-   <table><thead><tr><th>Part</th><th>Nominal</th><th>Source</th></tr></thead><tbody>
+   <div class="uc-table-wrap" role="region" tabindex="0" aria-label="Leica EM UC7 model specifications"><table><thead><tr><th>Part</th><th>Nominal</th><th>Source</th></tr></thead><tbody>
    <tr><td>Inactive advanced screen diagonal</td><td>10.4 in / 264.16 mm</td><td>GWU configuration specification and manufacturer enclosure reference. Estimated 4:3 display aspect.</td></tr>
    <tr><td>Base footprint estimate</td><td>415 × 505 mm</td><td>Original nominal; no dimension drawing or unit measured. Not valid for installation clearance. Rear geometry is illustrative.</td></tr>
    <tr><td>Inert calibration card</td><td>30 µm reference bar, 1× and 1.5× display magnification</td><td>Original synthetic geometry; not UC7 scale or accuracy.</td></tr>
-   </tbody></table>
+   </tbody></table></div>
   </section>
   <section id="uc-proof">
    <h2>Verification and result format</h2>
    <p>The input is a fixed pair ID and visual scale. Divide the reference’s 30 µm by its rendered length to get µm per display pixel, then multiply the pair’s Euclidean pixel distance by that scale. “Display px” means canvas-native pixels, not CSS or physical display pixels. Export preserves the fixed chart ID, immutable revision, zoom, coordinate frame, units, and measured pair. Nothing is cut or generated, so the original five-section collection acceptance is unsupported.</p>
-   <table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <div class="uc-table-wrap" role="region" tabindex="0" aria-label="Leica EM UC7 verification results"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
    <tr><td>A at 1×</td><td>300 display px → 75 µm (45–60–75 triangle)</td><td>300 px → 75 µm</td><td>10⁻⁸ µm</td></tr>
    <tr><td>A at 1.5×</td><td>450 px; 75 µm unchanged</td><td>450 px → 75 µm</td><td>10⁻⁸ µm</td></tr>
    <tr><td>B</td><td>50 µm (30–40–50 triangle)</td><td>50 µm</td><td>10⁻⁸ µm</td></tr>
    <tr><td>Exported blank advanced panel</td><td>264.16 mm diagonal</td><td>264.16 mm</td><td>0.03 mm</td></tr>
-   </tbody></table>
+   </tbody></table></div>
    <p><a href={d+'leica-uc7.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender model</a> · <a href={d+'example-gauge.json'}>Example data schema</a> · <a href={d+'xr.json'}>Metric VR interaction metadata</a> (headset not tested)</p>
   </section>
  </main>
@@ -48,5 +47,5 @@ const leica='https://downloads.leica-microsystems.com/EM%20UC7/Brochure%20or%20F
  <script>import '../../../../lib/equipment/13-07/client.mjs';</script>
 </Layout>
 <style>
- .uc{max-width:81rem;margin:0 auto;padding-inline:1rem}.uc-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.5rem;align-items:start}.uc-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.55rem 0}.uc button{background:transparent;color:inherit;border:1px solid currentColor;border-radius:.2rem;padding:.45rem .6rem;font:inherit;cursor:pointer}.uc button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#uc-view{height:clamp(17rem,39vw,39rem);background:#293939;border-radius:.25rem;overflow:hidden;touch-action:none}#uc-view :global(canvas){display:block;width:100%;height:100%}#uc-chart{display:block;width:100%;height:auto;border-radius:.2rem}.uc-pad{border:1px solid currentColor;border-radius:.3rem;padding:1rem}.uc table{border-collapse:collapse;width:100%}.uc td,.uc th{text-align:left;border-bottom:1px solid currentColor;padding:.4rem .55rem}.uc section{margin-bottom:1.3rem}.uc figure{margin:1.3rem 0;max-width:35rem}.uc figure img{max-width:100%;height:auto}@media(max-width:740px){.uc-grid{grid-template-columns:1fr}}
+ .uc{max-width:81rem;margin:0 auto;padding-inline:1rem}.uc-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.5rem;align-items:start}.uc-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.55rem 0}.uc button{background:transparent;color:inherit;border:1px solid currentColor;border-radius:.2rem;padding:.45rem .6rem;font:inherit;cursor:pointer}.uc button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#uc-view{height:clamp(17rem,39vw,39rem);background:#293939;border-radius:.25rem;overflow:hidden;touch-action:none}#uc-view :global(canvas){display:block;width:100%;height:100%}#uc-chart{display:block;width:100%;height:auto;border-radius:.2rem}.uc-pad{border:1px solid currentColor;border-radius:.3rem;padding:1rem}.uc table{border-collapse:collapse;width:100%}.uc td,.uc th{text-align:left;border-bottom:1px solid currentColor;padding:.4rem .55rem}.uc section{margin-bottom:1.3rem}.uc figure{margin:1.3rem 0;max-width:35rem}.uc figure img{max-width:100%;height:auto}@media(max-width:740px){.uc-grid{grid-template-columns:minmax(0,1fr)}.uc-grid>section{min-width:0}.uc-table-wrap{max-width:100%;overflow-x:auto}}
 </style>

@@ -33,12 +33,12 @@ const d='/equipment/15-13/';
  <section id="lf-proof">
   <h2>How the exercise works</h2>
   <p>Positive x/z are fixed in the gauge plane. The rectangle is 84 × 66 mm; the 18 mm wide relief is centered at x = +16 mm and ends at z = +44 mm. The two rectangles that form the block are rotated by exact quarter-turns. We compare the four signed limits of the main recess and test the tab against the matching relief or the unkeyed boundary. Negative margin means interference; zero is geometric contact, with no real-world tolerance guarantee. Placement is purely visual and excludes chamfer, deformation, friction and manufacturing variation.</p>
-  <table><thead><tr><th>Independent check</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+  <div class="l-table-scroll" tabindex="0" role="region" aria-label="Independent geometry verification"><table><thead><tr><th>Independent check</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
    <tr><td>80 × 62 mm block, aligned</td><td>+2 mm minimum</td><td>+2 mm, clear</td><td>Exact nominal geometry</td></tr>
    <tr><td>Same block, half-turn</td><td>−9 mm at unkeyed edge</td><td>−9 mm, not seated</td><td>Exact nominal geometry</td></tr>
    <tr><td>Exact dimensions, aligned</td><td>0 mm at mating faces</td><td>0 mm, touching</td><td>Exact nominal geometry</td></tr>
    <tr><td>Exported body and relief tip edges</td><td>See drawing; 2 mm nominal tip gap</td><td>Matched</td><td>0.05 mm</td></tr>
-  </tbody></table>
+  </tbody></table></div>
   <p>Output records the fictional gauge ID, revision, preset, angle, signed margins and verdict. The research register's stimulation and recruitment acceptance case is not implemented. There is no biological sample, pulse, electrode, sound, live electrical connection, or actual operating procedure.</p>
   <p><a href={d+'detached-locator.glb'} download>Editable geometry export (GLB)</a> · <a href={d+'build-model.py'} download>Blender generator</a> · <a href={d+'example-fit.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached-gauge VR anchors</a> (headset not tested).</p>
  </section>
@@ -48,4 +48,12 @@ const d='/equipment/15-13/';
 </Layout>
 <style>
 .w1513{max-width:82rem;margin:0 auto;padding-inline:1rem}.l-grid,.l-gallery{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.25rem;align-items:start}.l-gallery{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.l-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.w1513 button,.w1513 select{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .55rem;cursor:pointer}.w1513 select option{background:var(--background,#f1eee3);color:var(--text,#252621)}#lf-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#2c3e45;touch-action:none}#lf-view :global(canvas){display:block;width:100%;height:100%}.l-box{border:1px solid currentColor;border-radius:.3rem;padding:1rem}.w1513 table{border-collapse:collapse;width:100%}.w1513 th,.w1513 td{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .5rem}.w1513 section{margin-bottom:1.3rem}.l-gallery figure{margin:.4rem 0}.l-gallery img{max-width:100%;height:auto}@media(max-width:760px){.l-grid,.l-gallery{grid-template-columns:1fr}}
+
+/* Keep wide evidence scrollable within the device rather than the whole page. */
+@media (max-width: 760px) {
+  .l-grid,.l-gallery { grid-template-columns: minmax(0, 1fr); }
+  .w1513 section { min-inline-size: 0; }
+  .w1513 .l-table-scroll { min-inline-size: 0; max-inline-size: 100%; overflow-x: auto; }
+  .w1513 .l-table-scroll :is(th,td) { overflow-wrap: anywhere; }
+}
 </style>

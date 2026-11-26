@@ -5,7 +5,6 @@ const drawing='https://syringepump.com/download/NE-1000%20SINGLE%20SYRINGE%20PUM
 const photo='https://www.syringepump.com/download/NE-1000Brochure.pdf#page=1';
 ---
 <Layout pageTitle="New Era NE-1000 blank chassis and detached dimension card" subtitle="" wide={true}>
- <link rel="stylesheet" href="/styles/equipment.css"/>
  <main class="equipment-page ne">
   <p><a href="/simulations/equipment/#equipment-06-09">↩ Equipment register · 06-09</a></p>
   <h1>New Era NE-1000 · dormant chassis</h1>
@@ -26,22 +25,22 @@ const photo='https://www.syringepump.com/download/NE-1000Brochure.pdf#page=1';
    <h2>Reference sheet</h2>
    <p>The <a href={drawing}>New Era NE-1000 overall-dimensions drawing, Rev A, sheet 1</a> gives the body length, depth, height and foot offset. The <a href={photo}>manufacturer photo</a> establishes the red finish and slope of the front face. This model omits all top mechanisms and actual controls; its rear is a closed blank surface. The catalogue’s rounded dimensions for the complete assembly are not a substitute for the drawing’s bare-case datums. Source images are linked, not republished.</p>
    <figure><img src={d+'front-reference.webp'} width="520" height="363" alt="Original red sloping chassis beside a physically detached dimension-card reader" loading="lazy"/><figcaption>Original local browser render. The red shell and blank fascia follow the Rev A case outline; all data interactions take place on the separate green chart reader.</figcaption></figure>
-   <table><thead><tr><th>Datum</th><th>Drawing</th><th>Converted model dimension</th></tr></thead><tbody>
+   <div class="ne-table-scroll" role="region" aria-label="NE-1000 geometry dimensions" tabindex="0"><table><thead><tr><th>Datum</th><th>Drawing</th><th>Converted model dimension</th></tr></thead><tbody>
    <tr><td>Chassis length</td><td>8.75 in, top view</td><td>222.250 mm</td></tr>
    <tr><td>Chassis depth</td><td>5.74 in, side view</td><td>145.796 mm</td></tr>
    <tr><td>Sloped body maximum height</td><td>2.88 in, front view, excluding feet</td><td>73.152 mm</td></tr>
    <tr><td>Feet</td><td>0.29 in, front view</td><td>7.366 mm</td></tr>
-   </tbody></table>
+   </tbody></table></div>
   </section>
   <section id="ne-proof">
    <h2>What is verified</h2>
    <p>The chart compares preprinted rectangles centered in a 28 × 17 mm outline. The clearance on either side of an axis is (outline size − rectangle size) ÷ 2. Nothing moves or changes size. JSON preserves mark, revision, units and geometry. The original delivery/inventory acceptance and all pump workflows are not represented.</p>
-   <table><thead><tr><th>Case</th><th>Expected X/Y clearance per side</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <div class="ne-table-scroll" role="region" aria-label="NE-1000 clearance verification" tabindex="0"><table><thead><tr><th>Case</th><th>Expected X/Y clearance per side</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
    <tr><td>A · 24 × 15 mm</td><td>2 / 1 mm</td><td>2 / 1 mm; clear</td><td>Exact</td></tr>
    <tr><td>B · 28 × 17 mm</td><td>0 / 0 mm</td><td>0 / 0 mm; boundary</td><td>Exact</td></tr>
    <tr><td>C · 29 × 16 mm</td><td>−0.5 / 0.5 mm</td><td>−0.5 / 0.5 mm; interference</td><td>Exact</td></tr>
    <tr><td>Exported bare body</td><td>222.250 × 73.152 × 145.796 mm XYZ</td><td>Matched dimensions</td><td>0.05 mm</td></tr>
-   </tbody></table>
+   </tbody></table></div>
    <p><a href={d+'ne1000-chassis.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender source</a> · <a href={d+'example-card.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached chart VR action anchors</a> (headset not tested).</p>
   </section>
  </main>
@@ -50,4 +49,5 @@ const photo='https://www.syringepump.com/download/NE-1000Brochure.pdf#page=1';
 </Layout>
 <style>
  .ne{max-width:81rem;margin:0 auto;padding-inline:1rem}.ne-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.ne-row{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.ne button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .61rem;cursor:pointer}.ne button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#ne-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#25393e;touch-action:none}#ne-view :global(canvas){display:block;width:100%;height:100%}#ne-chart{display:block;width:100%;height:auto;border-radius:.2rem}.ne-box{border:1px solid currentColor;border-radius:.3rem;padding:.95rem}.ne table{width:100%;border-collapse:collapse}.ne td,.ne th{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .53rem}.ne section{margin-bottom:1.35rem}.ne figure{max-width:35rem;margin:1.1rem 0}.ne figure img{max-width:100%;height:auto}@media(max-width:730px){.ne-grid{grid-template-columns:1fr}}
+ .ne-table-scroll{display:block;min-width:0;max-width:100%;overflow-x:auto}
 </style>

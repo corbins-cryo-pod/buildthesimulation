@@ -7,7 +7,6 @@ const drPic='https://neuro.doriclenses.com/cdn/shop/files/LDMD_1_480x_128d8773-b
 const modPic='https://neuro.doriclenses.com/cdn/shop/files/CLDM_V02_480.jpg?v=1757428866&width=480';
 ---
 <Layout pageTitle="Doric external housings and independent shapes chart" subtitle="" wide={true}>
-<link rel="stylesheet" href="/styles/equipment.css"/>
 <main class="equipment-page di">
  <p><a href="/simulations/equipment/#equipment-11-02">↩ Equipment register · 11-02</a></p>
  <h1>Doric CLDM + LDMD-1 · capped exterior</h1>
@@ -28,20 +27,20 @@ const modPic='https://neuro.doriclenses.com/cdn/shop/files/CLDM_V02_480.jpg?v=17
   <h2>Exterior reference sheet</h2>
   <p>The <a href={drPic}>Doric LDMD-1 top/front photograph</a> establishes the black rectangular case, recessed blank-panel outline and silver cap silhouette. The <a href={modPic}>Doric CLDM exterior photograph</a> establishes the small block and flat mounting plate. Model side seams are estimates; all openings and cabling were omitted. The author’s original exterior below substitutes fixed solid caps for details. No product photos are reproduced.</p>
   <figure><img src={d+'front-reference.webp'} width="595" height="410" alt="Original render of the unpowered black Doric driver, capped module, and unconnected green chart display" loading="lazy"/><figcaption>Original browser render; the driver and capped module are the two dark objects at left. The large green reader is a separate abstract exercise.</figcaption></figure>
-  <table><thead><tr><th>Object</th><th>Nominal W × D × H</th><th>Source/limit</th></tr></thead><tbody>
+  <div class="di-table-scroll" role="region" aria-label="Reference specifications" tabindex="0"><table><thead><tr><th>Object</th><th>Nominal W × D × H</th><th>Source/limit</th></tr></thead><tbody>
    <tr><td>Standalone LDMD-1 outer case</td><td>175 × 105 × 50 mm</td><td><a href={dr}>Vendor LDMD product dimensions</a>, rearranged W/D/H. Not the integrated desktop source with a different enclosure.</td></tr>
    <tr><td>CLDM outer model envelope</td><td>64 × 56 × 22 mm, body 24.6 × 36.8 × 12 mm</td><td><a href={mod}>Vendor CLDM envelope and compact body</a>; no cable geometry shown.</td></tr>
-  </tbody></table>
+  </tbody></table></div>
  </section>
  <section id="di-proof">
   <h2>Detached chart verification</h2>
   <p>Each known tile is a fixed set of printed shapes. Compare the names to the reference legend; order does not matter. Missing and repeated shapes are reported separately. An absent tile exports null, not a mismatch. JSON contains only symbolic provenance and a fixed illustration ID. The original equipment acceptance for emissions is not represented.</p>
-  <table><thead><tr><th>Tile</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+  <div class="di-table-scroll" role="region" aria-label="Verification results" tabindex="0"><table><thead><tr><th>Tile</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
    <tr><td>A, all three once</td><td>Match despite reordering</td><td>Match</td><td>Exact</td></tr>
    <tr><td>B, triangle twice</td><td>Missing square, duplicate triangle</td><td>Missing square, duplicate triangle</td><td>Exact</td></tr>
    <tr><td>U, no tile</td><td>No result</td><td>JSON null</td><td>Exact</td></tr>
    <tr><td>GLB physical dimensions</td><td>Both exterior dimensions above</td><td>Matched nominal</td><td>0.05 mm</td></tr>
-  </tbody></table>
+  </tbody></table></div>
   <p><a href={d+'doric-closed.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender source</a> · <a href={d+'example-symbols.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached shapes XR action metadata</a> (headset unverified).</p>
  </section>
 </main>
@@ -50,4 +49,5 @@ const modPic='https://neuro.doriclenses.com/cdn/shop/files/CLDM_V02_480.jpg?v=17
 </Layout>
 <style>
  .di{max-width:81rem;margin:0 auto;padding-inline:1rem}.di-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.di-btn{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.di button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .61rem;cursor:pointer}.di button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#di-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#2a3d42;touch-action:none}#di-view :global(canvas){display:block;width:100%;height:100%}#di-chart{display:block;width:100%;height:auto;border-radius:.2rem}.di-box{border:1px solid currentColor;border-radius:.3rem;padding:.95rem}.di table{border-collapse:collapse;width:100%}.di td,.di th{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .53rem}.di section{margin-bottom:1.35rem}.di figure{max-width:36rem;margin:1.1rem 0}.di figure img{max-width:100%;height:auto}@media(max-width:730px){.di-grid{grid-template-columns:1fr}}
+ .di-table-scroll{max-width:100%;overflow-x:auto}
 </style>

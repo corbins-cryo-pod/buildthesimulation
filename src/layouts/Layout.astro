@@ -7,6 +7,7 @@ import NerveHero from "../components/NerveHero.astro";
 
 const {
   pageTitle,
+  documentTitle,
   subtitle,
   description =
     "A catalog of brain-computer interface companies, their work, and their technologies, with device briefs and interactive simulations.",
@@ -16,7 +17,8 @@ const {
 } = Astro.props;
 
 const siteTitle = "Build the Simulation";
-const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
+const metadataTitle = documentTitle ?? pageTitle;
+const fullTitle = metadataTitle ? `${metadataTitle} | ${siteTitle}` : siteTitle;
 
 const pathname = Astro.url?.pathname ?? "/";
 
