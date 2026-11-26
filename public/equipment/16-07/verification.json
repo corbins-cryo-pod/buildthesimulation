@@ -1,0 +1,109 @@
+{
+  "schema": "bts.thermal-bath.verification.v1",
+  "metrics": {
+    "bytes": 137424,
+    "triangles": 1254,
+    "draws": 77,
+    "nominalBodyHeightM": 0.2319999961182475,
+    "nominalTankXZM": [
+      0.30000001192092896,
+      0.15399999916553497
+    ]
+  },
+  "cases": [
+    {
+      "id": "one-tau-gap-fraction",
+      "expected": 0.6321205588285577,
+      "unit": "fraction",
+      "tolerance": 1e-12,
+      "actual": 0.6321205588285576,
+      "outcome": "PASS"
+    },
+    {
+      "id": "held-dummy-at-60",
+      "expected": 24.321205588285576,
+      "unit": "C",
+      "tolerance": 1e-10,
+      "actual": 24.321205588285576,
+      "outcome": "PASS"
+    },
+    {
+      "id": "held-bath-at-60",
+      "expected": 28,
+      "unit": "C",
+      "tolerance": 1e-12,
+      "actual": 28,
+      "outcome": "PASS"
+    },
+    {
+      "id": "initial-condition",
+      "expected": 18,
+      "unit": "C",
+      "tolerance": 1e-12,
+      "actual": 18,
+      "outcome": "PASS"
+    },
+    {
+      "id": "passive-cooling-at-60",
+      "expected": 30.207276647028657,
+      "unit": "C",
+      "tolerance": 1e-10,
+      "actual": 30.207276647028653,
+      "outcome": "PASS"
+    },
+    {
+      "id": "equal-tau-bath-at-60",
+      "expected": 25.4248439117999,
+      "unit": "C",
+      "tolerance": 1e-10,
+      "actual": 25.424843911799904,
+      "outcome": "PASS"
+    },
+    {
+      "id": "equal-tau-dummy-at-60",
+      "expected": 21.74604950008548,
+      "unit": "C",
+      "tolerance": 1e-9,
+      "actual": 21.74604950008548,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unloaded-blocked",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "open-lid-blocked",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "invalid-tau-blocked",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "body-width",
+      "expected": 0.355,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.35499998927116394,
+      "outcome": "PASS"
+    },
+    {
+      "id": "tank-opening-width",
+      "expected": 0.3,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.30000001192092896,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Exact ideal thermal response and geometry scale, not experimental validation, treatment, actual bath performance or headset support."
+}
