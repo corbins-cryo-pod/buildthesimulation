@@ -1,0 +1,104 @@
+{
+  "schema": "bts.pcb-inspection.verification.v1",
+  "metrics": {
+    "bytes": 271780,
+    "triangles": 3032,
+    "draws": 126,
+    "caseEnvelopeM": [
+      0.6800000071525574,
+      0.5600000023841858,
+      0.800000011920929
+    ]
+  },
+  "cases": [
+    {
+      "id": "isolated-intended-a",
+      "expected": "NET_A",
+      "unit": "net",
+      "actual": "NET_A",
+      "outcome": "PASS"
+    },
+    {
+      "id": "separate-connected-islands",
+      "expected": 2,
+      "unit": "component",
+      "actual": 2,
+      "outcome": "PASS"
+    },
+    {
+      "id": "cross-net-gap",
+      "expected": 0.35,
+      "unit": "mm",
+      "tolerance": 0.000001,
+      "actual": 0.35,
+      "outcome": "PASS"
+    },
+    {
+      "id": "oversize-gauge-blocked",
+      "expected": "too-narrow",
+      "unit": "classification",
+      "actual": "too-narrow",
+      "outcome": "PASS"
+    },
+    {
+      "id": "smaller-gauge-pass",
+      "expected": "width-available",
+      "unit": "classification",
+      "actual": "width-available",
+      "outcome": "PASS"
+    },
+    {
+      "id": "tangent-gauge-no-margin",
+      "expected": "zero-margin",
+      "unit": "classification",
+      "actual": "zero-margin",
+      "outcome": "PASS"
+    },
+    {
+      "id": "introduced-bridge-shorts-islands",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "broken-trace-opens-intended-net",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "diagonal-3-4-5",
+      "expected": 5,
+      "unit": "mm",
+      "tolerance": 0.000001,
+      "actual": 5,
+      "outcome": "PASS"
+    },
+    {
+      "id": "non-top-layer-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "metric-width",
+      "expected": 0.68,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.6800000071525574,
+      "outcome": "PASS"
+    },
+    {
+      "id": "metric-depth",
+      "expected": 0.8,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.800000011920929,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Exact geometry and ideal connectivity for inert rectangular coupon; no milling, hardware, headset or empirical validation."
+}

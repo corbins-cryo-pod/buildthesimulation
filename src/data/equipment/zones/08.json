@@ -198,7 +198,7 @@
   {
     "id": "08-11",
     "name": "PCB prototype fabrication",
-    "model": "LPKF ProtoMat S104 (candidate)",
+    "model": "LPKF ProtoMat S104 · enclosed with integrated vacuum table",
     "evidence": "C",
     "priority": "P2",
     "page": 29,
@@ -209,9 +209,14 @@
     "inputs": "Copper artwork, board outline, cutter diameter, layer identity and intended netlist",
     "outputs": "Board revision with milled copper geometry, connectivity and clearance errors",
     "acceptance": "Mill a test artwork with a separable copper island and an isolation gap narrower than the cutter. Recover the island's intended net and flag the inaccessible feature.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric GLB with referenced enclosure and inferred details",
+    "simulationStatus": "Single-layer inert copper connectivity and local clearance verified",
+    "integrationStatus": "Simulator with artwork import and inspection export; no machining or headset claim",
+    "simulator": "/simulations/equipment/08-11/simulator/",
+    "related": [
+      ["LPKF S104 manufacturer flyer", "https://www.lpkf.com/fileadmin/mediafiles/user_upload/products/pdf/DQ/flyer_lpkf_protomat_s104_en.pdf"],
+      ["LPKF S64/S104 manufacturer manual V1.0", "https://www.manualslib.com/manual/2570966/Lpkf-Protomat-S64.html?page=30"]
+    ]
   },
   {
     "id": "08-12",

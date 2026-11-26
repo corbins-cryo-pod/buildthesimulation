@@ -1,0 +1,187 @@
+{
+  "schema": "bts.pcb-inspection.report.v1",
+  "deviceId": "08-11",
+  "origin": "synthetic-geometry-only",
+  "sampleId": "BTS-08-11-INERT-001",
+  "sourceRevision": "coupon-r1",
+  "revision": 1,
+  "parentRevision": null,
+  "coordinateFrame": "top view; +x right, +y away; lower-left board origin",
+  "units": "mm",
+  "layer": "top-copper",
+  "gaugeDiameterMm": 0.8,
+  "asDesignedArtwork": {
+    "schema": "bts.pcb-inspection.artwork.v1",
+    "sampleId": "BTS-08-11-INERT-001",
+    "revision": "coupon-r1",
+    "units": "mm",
+    "layer": "top-copper",
+    "outlineMm": [
+      60,
+      45
+    ],
+    "rectangles": [
+      {
+        "id": "A1",
+        "padId": "A1",
+        "boundsMm": [
+          5,
+          5,
+          15,
+          12
+        ]
+      },
+      {
+        "id": "A_TRACE",
+        "boundsMm": [
+          14,
+          7.5,
+          37.8,
+          9.5
+        ]
+      },
+      {
+        "id": "A2",
+        "padId": "A2",
+        "boundsMm": [
+          36,
+          5,
+          44,
+          12
+        ]
+      },
+      {
+        "id": "B1",
+        "padId": "B1",
+        "boundsMm": [
+          44.35,
+          6,
+          53,
+          12
+        ]
+      },
+      {
+        "id": "B_TRACE",
+        "boundsMm": [
+          49,
+          11,
+          51,
+          35
+        ]
+      },
+      {
+        "id": "B2",
+        "padId": "B2",
+        "boundsMm": [
+          46,
+          34,
+          56,
+          42
+        ]
+      }
+    ],
+    "nets": [
+      {
+        "id": "NET_A",
+        "padIds": [
+          "A1",
+          "A2"
+        ]
+      },
+      {
+        "id": "NET_B",
+        "padIds": [
+          "B1",
+          "B2"
+        ]
+      }
+    ]
+  },
+  "netChecks": [
+    {
+      "netId": "NET_A",
+      "padIds": [
+        "A1",
+        "A2"
+      ],
+      "componentIds": [
+        "ISLAND-1"
+      ],
+      "status": "connected"
+    },
+    {
+      "netId": "NET_B",
+      "padIds": [
+        "B1",
+        "B2"
+      ],
+      "componentIds": [
+        "ISLAND-2"
+      ],
+      "status": "connected"
+    }
+  ],
+  "components": [
+    {
+      "componentId": "ISLAND-1",
+      "rectangleIds": [
+        "A1",
+        "A_TRACE",
+        "A2"
+      ],
+      "padIds": [
+        "A1",
+        "A2"
+      ],
+      "intendedNetIds": [
+        "NET_A"
+      ],
+      "status": "single-net"
+    },
+    {
+      "componentId": "ISLAND-2",
+      "rectangleIds": [
+        "B1",
+        "B_TRACE",
+        "B2"
+      ],
+      "padIds": [
+        "B1",
+        "B2"
+      ],
+      "intendedNetIds": [
+        "NET_B"
+      ],
+      "status": "single-net"
+    }
+  ],
+  "crossNetPairs": [
+    {
+      "componentIds": [
+        "ISLAND-1",
+        "ISLAND-2"
+      ],
+      "rectangleIds": [
+        "A2",
+        "B1"
+      ],
+      "netIds": [
+        "NET_A",
+        "NET_B"
+      ],
+      "clearanceMm": 0.35,
+      "closestPointsMm": [
+        [
+          44,
+          9
+        ],
+        [
+          44.35,
+          9
+        ]
+      ],
+      "status": "too-narrow"
+    }
+  ],
+  "scope": "Ideal closed-set copper contact and pairwise clearance only. No paths, material removal, fabrication output, electronics or process prediction."
+}
