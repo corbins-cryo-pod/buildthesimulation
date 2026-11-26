@@ -139,7 +139,7 @@
   {
     "id": "03-07",
     "name": "PECVD",
-    "model": "Oxford Plasmalab 80+",
+    "model": "Oxford Plasmalab 80 Plus PECVD cabinet / visual reference",
     "evidence": "B",
     "priority": "P1",
     "page": 13,
@@ -152,9 +152,10 @@
     "inputs": "Substrate geometry, calibrated deposition map, dielectric model and virtual deposition interval",
     "outputs": "Dielectric layer with thickness map and property provenance for electrical analysis",
     "acceptance": "Build two equal-area parallel-plate fixtures with dielectric thicknesses in a 1:2 ratio. With fixed permittivity and fringing disabled, predicted capacitances must have a 2:1 ratio.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB based on typical Oxford cabinet dimensions",
+    "simulationStatus": "View-only dry fit and static fictional reference maps; no plasma process",
+    "integrationStatus": "Read-only dry geometry and immutable map JSON",
+    "simulator": "/simulations/equipment/03-07/simulator/"
   },
   {
     "id": "03-08",

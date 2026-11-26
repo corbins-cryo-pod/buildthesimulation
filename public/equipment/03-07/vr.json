@@ -1,0 +1,75 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    1.102,
+    1.43,
+    0.79525
+  ],
+  "meshes": 59,
+  "triangles": 6905,
+  "bytes": 406308,
+  "interaction": {
+    "Hood_inspection_handle": {
+      "action": "inspect",
+      "boundsMinM": [
+        -0.0225,
+        1.18,
+        0.3165
+      ],
+      "boundsMaxM": [
+        0.0625,
+        1.206,
+        0.3315
+      ]
+    },
+    "Blue_chamber_hood": {
+      "action": "inspect",
+      "boundsMinM": [
+        -0.238,
+        1.188,
+        -0.13
+      ],
+      "boundsMaxM": [
+        0.19,
+        1.43,
+        0.322
+      ]
+    },
+    "Dry_120mm_reference": {
+      "action": "check",
+      "boundsMinM": [
+        -0.084,
+        1.184,
+        0.036
+      ],
+      "boundsMaxM": [
+        0.036,
+        1.186,
+        0.156
+      ]
+    },
+    "Reference_screen": {
+      "action": "check",
+      "boundsMinM": [
+        0.4395,
+        1.0105,
+        0.046
+      ],
+      "boundsMaxM": [
+        0.7385,
+        1.2215,
+        0.052
+      ]
+    }
+  },
+  "inspection": {
+    "node": "Inspection_cutaway_shell",
+    "viewOnlyDeltaM": [
+      0,
+      0.27,
+      0
+    ],
+    "nominalDryReferenceMm": 120
+  }
+}
