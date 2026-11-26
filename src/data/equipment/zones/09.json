@@ -219,9 +219,20 @@
     "inputs": "Input signal, phase reference, demodulation convention, filter and time constant",
     "outputs": "In-phase and quadrature traces, magnitude and phase with settling metadata",
     "acceptance": "Inject a reference-locked tone of declared RMS amplitude. In phase it must yield X equal to that amplitude and Y near zero after settling. A quarter-cycle shift must rotate the response to quadrature.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · specified cabinet, photo-inferred front and rear details",
+    "simulationStatus": "RMS dual-phase classic RC solver · analytic fixtures verified",
+    "integrationStatus": "Simulator with uniform voltage CSV handoff, trace and revision exports",
+    "simulator": "/simulations/equipment/09-11/simulator/",
+    "related": [
+      [
+        "SR860 reference renderings, source photos and specifications",
+        "/simulations/equipment/09-11/simulator/#evidence"
+      ],
+      [
+        "Verification cases and results",
+        "/simulations/equipment/09-11/simulator/#verification"
+      ]
+    ]
   },
   {
     "id": "09-12",
