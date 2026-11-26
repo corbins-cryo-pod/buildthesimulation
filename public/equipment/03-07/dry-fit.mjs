@@ -1,0 +1,10 @@
+// Inspect the static hardware and measure an arbitrary dry witness fixture, not a process.
+export const RADIUS_MM=60,STAGE_ORIGIN_MM=[-24,1186,96];
+export const initial=()=>({id:'OX80-DRY-WITNESS-01',revision:1,inspect:false,diamMm:100,xMm:0,zMm:0,mapId:'thin'});
+export const hits={Hood_inspection_handle:{action:'inspect',label:'Toggle schematic cutaway'},Blue_chamber_hood:{action:'inspect',label:'Toggle inspection cutaway'},Dry_120mm_reference:{action:'check',label:'Evaluate dry fixture fit in the reference boundary'},Reference_screen:{action:'check',label:'Show read-only dry fit result'}};
+const patterns=Object.freeze({thin:Object.freeze([398,401,399,402,400,398,397,400,401]),thick:Object.freeze([796,802,798,804,800,796,794,800,802])});
+export function setup(s,a){if(a==='inspect')return {...s,inspect:!s.inspect};if(a==='check'){if(!s.inspect)throw Error('Open the schematic cutaway before evaluating the model geometry.');return {...s,revision:s.revision+1}}throw Error('Unknown inspection action.')}
+export function fit(s){if(![60,100,140].includes(s.diamMm))throw Error('Choose a documented teaching dummy diameter.');for(const v of [s.xMm,s.zMm])if(!Number.isFinite(v)||Math.abs(v)>30)throw Error('Dry placement offsets must stay within ±30 mm.');if(!Object.hasOwn(patterns,s.mapId))throw Error('Unknown immutable reference map.');
+ const nearEdgeMm=s.diamMm/2+Math.hypot(s.xMm,s.zMm),remainingMm=RADIUS_MM-nearEdgeMm;
+ return {schema:'bts.static-coupon-inspection.v1',source:'simulated',instrumentId:'03-07',sampleId:s.id,revision:s.revision,analysis:'pure geometry; non-operational',axis:{units:'mm',originGlbMm:STAGE_ORIGIN_MM,x:'right',z:'toward operator'},geometry:{id:'dry-witness',diameterMm:s.diamMm,centerXZM:[s.xMm,s.zMm],ringRadiusMm:RADIUS_MM,remainingMm,fits:remainingMm>=-1e-10},map:{id:s.mapId,source:'immutable fictional teaching data; not as-built or deposited',unit:'nm',shape:[3,3],values:[...patterns[s.mapId]],nominalCenterNm:patterns[s.mapId][4]},processStateChanged:false};}
+export function areaRatio(){return patterns.thick[4]/patterns.thin[4]} // For fixed area/ε, analytic Cthin/Cthick = dthick/dthin.
