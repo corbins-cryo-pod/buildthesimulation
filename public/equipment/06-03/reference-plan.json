@@ -1,0 +1,38 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Read distance to origin in a fixed original abstract coordinate diagram. No output geometry or instrument state.",
+  "cases": [
+    {
+      "id": "3-4-5-point",
+      "point": "P-01",
+      "expected": {
+        "x": 3,
+        "y": 4,
+        "distance": 5
+      }
+    },
+    {
+      "id": "6-8-10-point",
+      "point": "P-02",
+      "expected": {
+        "x": -6,
+        "y": 8,
+        "distance": 10
+      }
+    },
+    {
+      "id": "axis-point",
+      "point": "P-03",
+      "expected": {
+        "x": 0,
+        "y": -9,
+        "distance": 9
+      }
+    },
+    {
+      "id": "invalid-point",
+      "point": "unknown",
+      "expected": "Choose a labeled drawing point."
+    }
+  ]
+}
