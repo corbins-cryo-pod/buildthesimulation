@@ -59,7 +59,7 @@ for z in (-206,-78,62,198):
 # Annotated 18–19 inch ambiguity is not faked as a physical measurement.
 slot('shield_hinge',(0,241,-106));slot('shield',(0,0,0),'shield_hinge')
 B('shield','dark',(0,6,168),(244,14,332))
-B('shield','dark',(0,-17,329),(244,62,18))
+B('shield','dark',(0,-17,329),(244,60,18))
 for x in (-119,119):B('shield','black',(x,-9,166),(6,22,335))
 for x in (-78,78):tube('shield','steel',(x-13,0,0),(x+13,0,0),7,n=18)
 slot('stage_xz',(0,-49,29))
