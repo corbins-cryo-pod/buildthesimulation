@@ -197,10 +197,14 @@
     "inputs": "Headstage configuration, electrode map, per-channel stimulus events, load model and reference signals",
     "outputs": "Channel-indexed voltage traces (V), delivered current events (A), impedance estimates (Ω) and timestamps",
     "acceptance": "Route one balanced biphasic command to a known resistive dummy channel. Integrated net charge should be zero within time-step error and the channel response should match I × R in the unclipped ideal fixture.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: metric 1U M4200 and static M4016/M4032 witnesses",
+    "simulationStatus": "First pass: verified read-only synthetic alignment; stimulation outside scope",
+    "integrationStatus": "Linked: channel picker, JSON/CSV and scope handoff",
     "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/10-09/simulator/"
+      ],
       [
         "Measured recording datasets",
         "/recordings/"
