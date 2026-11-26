@@ -1,0 +1,128 @@
+[
+  {
+    "test": "100 Ω constant-voltage acceptance",
+    "expected": "5 V, 50 mA, 0.25 W, CV",
+    "actual": "5.000000 V / 50.000 mA / 0.250000 W / CV",
+    "criterion": "±1 µV, ±1 µA, ±1 µW",
+    "outcome": "PASS"
+  },
+  {
+    "test": "10 Ω current-limit acceptance",
+    "expected": "1 V, 100 mA, 0.1 W, CC",
+    "actual": "1.000000 V / 100.000 mA / 0.100000 W / CC",
+    "criterion": "±1 µV, ±1 µA, ±1 µW",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Boundary at V/I = 50 Ω",
+    "expected": "CV/CC boundary between 49.99 Ω CC and 50.01 Ω CV",
+    "actual": "CC / CV/CC boundary / CV",
+    "criterion": "exact states",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Two-wire: divide 5 V over 100+2 Ω",
+    "expected": "4.901961 V at load, 49.019608 mA",
+    "actual": "4.901961 V, 49.019608 mA",
+    "criterion": "±1 µV / ±1 µA",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Four-wire restores load setpoint",
+    "expected": "5.000000 V load, 5.100000 V terminal",
+    "actual": "5.000000 V / 5.100000 V",
+    "criterion": "±1 µV",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Open load",
+    "expected": "OPEN / CV; 0 A",
+    "actual": "OPEN / CV; 0 A",
+    "criterion": "exact mode, ±1 µA",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Disabled",
+    "expected": "OFF; 0 A",
+    "actual": "OFF; 0 A",
+    "criterion": "exact mode, ±1 µA",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Short",
+    "expected": "CC; 0.1 A",
+    "actual": "CC; 0.1 A",
+    "criterion": "exact mode, ±1 µA",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Open sense lead",
+    "expected": "reject with reason",
+    "actual": "CH1: remote sense circuit open; reconnect sense and load or select local. Physical fallback behavior is not simulated.",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Out-of-range CH1 voltage",
+    "expected": "reject with reason",
+    "actual": "CH1 voltage (V) must be between 0 and 6",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Remote correction beyond equal-lead maximum",
+    "expected": "reject with reason",
+    "actual": "CH1: remote compensation exceeds 1 V per equal lead or the modeled rated terminal headroom. Reduce loop resistance or setpoint.",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Negative resistance",
+    "expected": "reject with reason",
+    "actual": "Load (Ω) must be between 0 and 10000000",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Three-output energy balance",
+    "expected": "0 W residual",
+    "actual": "1.1102e-16 W",
+    "criterion": "≤1 µW",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Load-step sample handoff (100/10/100 Ω)",
+    "expected": "5, 1, 5 V; 161 points @ 10 S/s",
+    "actual": "5, 1, 5 V; 161 points",
+    "criterion": "±1 µV, exact channels and clock",
+    "outcome": "PASS"
+  },
+  {
+    "test": "GLB net envelope",
+    "expected": "213 × 133 × 364 mm W/H/D",
+    "actual": "213.00 × 133.00 × 364.00 mm",
+    "criterion": "±1 mm, min/max vertex coordinates",
+    "outcome": "PASS"
+  },
+  {
+    "test": "GLB assembled instrument, without load bank",
+    "expected": "216 × 145 × 367 mm W/H/D",
+    "actual": "216.00 × 145.00 × 367.00 mm",
+    "criterion": "±1 mm, min/max vertex coordinates",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Active ray targets",
+    "expected": "three channels, six posts, two independent dials",
+    "actual": "6 binding posts",
+    "criterion": "exact semantics and topology",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Front-view alignment: positive banana sockets",
+    "expected": "35.3%, 62.7%, 80.9% of fascia width from left edge",
+    "actual": "35.3%, 62.7%, 80.9%",
+    "criterion": "±2% of fascia width; sourced from model-specific straight-on photo, a registration check rather than an independent dimensional measurement",
+    "outcome": "PASS"
+  }
+]
