@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+import {initial,act} from '../public/equipment/03-10/solver.mjs';
+import {assets,anchors} from '../public/equipment/03-10/geometry-source.mjs';
+import {build} from '../public/equipment/03-10/mesh-writer.mjs';
+test('Original shelf: baseline, quarter turn, oversize and closed view',()=>{assert.equal(act(initial(),'check').result,null);const r=act(initial(),'example');assert.deepEqual(r.result.clearance,{widthPerSideMm:30,depthPerSideMm:45,headroomMm:150,fits:true});assert.equal(act(act(r,'rotate'),'check').result.clearance.depthPerSideMm,10);assert.equal(act(act(r,'oversize'),'check').result.clearance.widthPerSideMm,-2.5);});
+test('Metric GLB only allows visualization/fit targets',()=>{const m=build(assets,anchors),x=readFileSync(new URL('../public/equipment/03-10/vulcan-3-1750.glb',import.meta.url));assert.ok(x.equals(Buffer.from(m.raw)));assert.ok(x.length<150000);assert.equal(m.metrics.unit,'m');const j=JSON.parse(x.subarray(20,20+x.readUInt32LE(12)));assert.equal(j.nodes.find(x=>x.name==='visual_door').extras.action,'view');assert.equal(j.nodes.find(x=>x.name==='front_panel').extras.action,undefined);});
