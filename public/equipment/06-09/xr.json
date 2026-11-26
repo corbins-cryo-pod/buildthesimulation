@@ -1,0 +1,125 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "06-09",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.111125,
+      0,
+      -0.072898
+    ],
+    "max": [
+      0.303,
+      0.163,
+      0.103
+    ]
+  },
+  "budget": {
+    "byteLength": 136440,
+    "nodes": 23,
+    "triangles": 2074
+  },
+  "actions": [
+    {
+      "node": "READ_A",
+      "action": "read",
+      "value": "A",
+      "label": "Read immutable chart outline A",
+      "boundsAtRestM": {
+        "min": [
+          0.157,
+          0.0445,
+          0.0385
+        ],
+        "max": [
+          0.189,
+          0.0575,
+          0.0435
+        ]
+      }
+    },
+    {
+      "node": "READ_B",
+      "action": "read",
+      "value": "B",
+      "label": "Read immutable chart outline B",
+      "boundsAtRestM": {
+        "min": [
+          0.205,
+          0.0445,
+          0.0385
+        ],
+        "max": [
+          0.237,
+          0.0575,
+          0.0435
+        ]
+      }
+    },
+    {
+      "node": "READ_C",
+      "action": "read",
+      "value": "C",
+      "label": "Read immutable chart outline C",
+      "boundsAtRestM": {
+        "min": [
+          0.253,
+          0.0445,
+          0.0385
+        ],
+        "max": [
+          0.285,
+          0.0575,
+          0.0435
+        ]
+      }
+    }
+  ],
+  "actionModule": "card.mjs",
+  "interactionNotes": "Apply optional synthetic chart texture to +Z face of DIMENSION_SCREEN. Exterior chassis is dormant; no picks belong to the actual device.",
+  "verification": [
+    {
+      "node": "CHASSIS_SKIN_DATUM",
+      "axis": "x",
+      "expectedMm": 222.25,
+      "actualMm": 222.25,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CHASSIS_SKIN_DATUM",
+      "axis": "z",
+      "expectedMm": 145.796,
+      "actualMm": 145.796,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CHASSIS_SKIN_DATUM",
+      "axis": "y",
+      "expectedMm": 73.152,
+      "actualMm": 73.152,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "RUBBER_FEET_DATUM",
+      "axis": "y",
+      "expectedMm": 7.366,
+      "actualMm": 7.366,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "NE1000_DORMANT_CHASSIS",
+      "axis": "y",
+      "expectedMm": 80.518,
+      "actualMm": 80.518,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "DIMENSION_SCREEN",
+      "axis": "x",
+      "expectedMm": 143,
+      "actualMm": 143.00001,
+      "toleranceMm": 0.05
+    }
+  ]
+}
