@@ -1,0 +1,38 @@
+{
+  "schema": "bts.probe-coupon.v1",
+  "sampleId": "coupon-1k-01",
+  "revision": 0,
+  "sizeM": [
+    0.008,
+    0.006
+  ],
+  "pads": [
+    {
+      "id": "DUT-HI",
+      "net": "a",
+      "xM": -0.0005,
+      "yM": 0,
+      "widthM": 0.0001,
+      "heightM": 0.0001
+    },
+    {
+      "id": "DUT-LO",
+      "net": "b",
+      "xM": 0.0005,
+      "yM": 0,
+      "widthM": 0.0001,
+      "heightM": 0.0001
+    }
+  ],
+  "resistors": [
+    {
+      "id": "R1",
+      "a": "a",
+      "b": "b",
+      "ohm": 1000
+    }
+  ],
+  "provenance": {
+    "kind": "synthetic passive test coupon; not machine calibration"
+  }
+}

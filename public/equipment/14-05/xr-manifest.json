@@ -1,0 +1,56 @@
+{
+  "device": "14-05",
+  "units": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "nominalWHdMm": [
+    120,
+    280,
+    150
+  ],
+  "namedControls": {
+    "approach_input": {
+      "label": "Teaching approach/retract hotspot",
+      "action": "approach",
+      "localBoundsM": {
+        "min": [
+          0.026,
+          0.198,
+          0.046
+        ],
+        "max": [
+          0.036,
+          0.208,
+          0.049
+        ]
+      }
+    },
+    "probe_carriage": {
+      "label": "Head and stage travel preview",
+      "action": "approach",
+      "localBoundsM": {
+        "min": [
+          -0.01,
+          0.049025,
+          -0.01
+        ],
+        "max": [
+          0.01,
+          0.152,
+          0.01
+        ]
+      }
+    }
+  },
+  "anchor": {
+    "stage": "xy_stage",
+    "probe": "probe_carriage",
+    "note": "Animation exaggerates millimeter appearance; solver travels are independent SI values."
+  },
+  "geometry": {
+    "bytes": 96788,
+    "triangles": 1618,
+    "draws": 27,
+    "nodes": 10
+  }
+}
