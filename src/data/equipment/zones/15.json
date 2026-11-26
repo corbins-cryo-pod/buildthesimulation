@@ -247,9 +247,10 @@
     "inputs": "Cochlear array geometry, conductive medium, pulse events, auditory fiber positions and place–frequency map",
     "outputs": "Per-fiber extracellular voltage and modeled recruitment indexed by cochlear place and frequency",
     "acceptance": "In an ideal homogeneous point-source fixture, compare voltage at two known distances with the analytic 1/r ratio. A zero-current trial must reproduce the unstimulated model baseline.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Unbuilt closed-enclosure study and separate gauge",
+    "simulationStatus": "Passive geometric fit only; research workflow not represented",
+    "integrationStatus": "Documentary exterior and geometric fit export wired",
+    "simulator": "/simulations/equipment/15-13/simulator/",
     "related": [
       [
         "Cochlear Implant Laboratory",
