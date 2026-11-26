@@ -35,9 +35,10 @@
     "inputs": "Voxel block ID, milling-plane pose, section increment and in-plane pixel spacing",
     "outputs": "Ordered slice images, anisotropic voxel spacing and block-to-image transform",
     "acceptance": "Sample a synthetic block containing a diagonal wire. Reconstructed endpoints should agree in physical coordinates with the original wire within one voxel along each axis.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass dormant standard Crossbeam 550 base exterior; separate invented diagram display",
+    "simulationStatus": "Verified locked synthetic 2D geometry inspection only; no acquisition, milling, or volume reconstruction",
+    "integrationStatus": "Interactive metric exterior, diagram selection, JSON export, room/VR action bounds",
+    "simulator": "/simulations/equipment/13-02/simulator/"
   },
   {
     "id": "13-03",

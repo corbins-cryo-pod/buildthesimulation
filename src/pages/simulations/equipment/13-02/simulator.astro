@@ -1,0 +1,53 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const root='/equipment/13-02/';
+const inst='https://manuals.plus/m/fe5b049240f41752f44e9d8a7ce4c41e57f22b61c495795179a68f99e412e6bf';
+const epfl='https://www.epfl.ch/research/facilities/cmi/wp-content/uploads/2023/01/Cover_System_preview.jpg';
+---
+<Layout pageTitle="ZEISS Crossbeam 550 exterior and inert diagram" subtitle="" wide={true}>
+ <link rel="stylesheet" href="/styles/equipment.css"/>
+ <main class="equipment-page cb">
+  <p><a href="/simulations/equipment/#equipment-13-02">↩ Equipment register · 13-02</a></p>
+  <h1>Crossbeam 550 · exterior and section geometry</h1>
+  <p>Inspect a <strong>dormant ZEISS Crossbeam 550 base enclosure</strong>, then choose a landmark on the separate display to read measurements in a fixed inert diagram. The display does not represent the instrument’s software or produce an image.</p>
+  <div class="cb-cols">
+   <section aria-label="Dormant housing">
+    <div class="cb-btn"><button type="button" id="cb-front">Reset orbit</button><button type="button" id="cb-rear">Rear exterior</button><button type="button" id="cb-panel">Inspector close-up</button></div>
+    <div id="cb-view" role="img" aria-label="Metric Crossbeam 550 dormant exterior beside an unconnected diagram display"></div>
+    <p id="cb-status">Loading metric GLB…</p>
+   </section>
+   <section class="cb-gauge">
+    <h2>Locked dry reference</h2>
+    <canvas id="cb-diagram" width="608" height="406" role="img" aria-label="Synthetic rectangle with a circular void, diagonal reference chord and 24 micrometer scale bar"></canvas>
+    <div class="cb-btn"><button type="button" id="cb-body">Outer body</button><button type="button" id="cb-void">Circular void</button><button type="button" id="cb-diagonal">Diagonal chord</button><button type="button" id="cb-save">Export JSON</button></div>
+    <p id="cb-result" role="status"></p>
+   </section>
+  </div>
+  <section id="cb-ref">
+   <h2>Model reference</h2>
+   <p><a href={epfl}>EPFL CMi installation photograph</a>: the front plinth seams, model badge, rounded closed chamber shroud and capped upper housing establish the visible silhouette. The installation shown includes equipment outside our base-only example. Compare “Reset orbit” with the source image. No source photograph is republished; the 3D model is the original illustration. Rear and small contours are generic estimates.</p>
+   <figure><img src={root+'front-reference.webp'} width="519" height="362" alt="Original model showing the off-white cabinet and the separate offline diagram screen" loading="lazy"/><figcaption>Original browser render, front three-quarter view. The photo establishes the shell’s stacked outline and seams; the unconnected screen is not ZEISS hardware.</figcaption></figure>
+   <table><thead><tr><th>Reference item</th><th>Nominal scale</th><th>Evidence</th></tr></thead><tbody>
+    <tr><td>Crossbeam 550 base plinth plus column</td><td>820 × 1083 × 1750 mm (W × D × H)</td><td><a href={inst}>ZEISS Installation Requirements, Rev. 10 #349500-8178-000, p. 29, §2.7.3</a>. Standard 550, not 550 L, Samplefab or an airlock variant.</td></tr>
+    <tr><td>Four base floor pads</td><td>80 mm diameter nominal</td><td>Rev. 10 p. 29. The pad positions shown are illustrative.</td></tr>
+    <tr><td>Dry diagram body / circular void</td><td>120 × 80 µm / 24 µm diameter</td><td>Author-specified inert geometry, not manufacturer performance.</td></tr>
+   </tbody></table>
+  </section>
+  <section id="cb-proof">
+   <h2>Inputs, output and verification</h2>
+   <p>Input is the selected region on a single pre-existing rectangle; its sample ID and coordinates stay fixed. The inspector evaluates area by subtraction and distance by the Euclidean norm. The handoff is a JSON record of dimensions, units, IDs, and synthetic provenance. No capture, sample handling, milling, beam, volume acquisition, serial stack, reconstruction or settings are implemented. The catalogue’s original three-dimensional wire acceptance remains unsupported.</p>
+   <table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <tr><td>Outer rectangle</td><td>9,600 µm²</td><td>9,600 µm²</td><td>Exact</td></tr>
+   <tr><td>24 µm void and subtraction</td><td>452.389 µm² / 9,147.611 µm² net</td><td>452.389 / 9,147.611 µm²</td><td>0.001 µm²</td></tr>
+   <tr><td>80–60–100 chord</td><td>100 µm</td><td>100 µm</td><td>Exact</td></tr>
+   <tr><td>Cabinet dimensions at GLB nominal datums</td><td>820 × 1750 × 1083 mm XYZ</td><td>820 × 1750 × 1083 mm</td><td>0.03 mm</td></tr>
+   </tbody></table>
+   <p><a href={root+'crossbeam550.glb'} download>Metric GLB</a> · <a href={root+'build-model.py'} download>Editable Blender source</a> · <a href={root+'example-section.json'}>Example data schema</a> · <a href={root+'xr.json'}>VR pick targets and metric bounds</a> (headset not verified)</p>
+  </section>
+ </main>
+ <script is:inline>window.cbSection=import('/equipment/13-02/section.mjs');</script>
+ <script>import '../../../../lib/equipment/13-02/client.mjs';</script>
+</Layout>
+<style>
+.cb{max-width:82rem;margin:0 auto;padding-inline:1rem}.cb-cols{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.5rem;align-items:start}.cb-btn{display:flex;gap:.48rem;align-items:center;flex-wrap:wrap;margin:.55rem 0}.cb button{font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.2rem;padding:.4rem .65rem;cursor:pointer}.cb button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#cb-view{height:clamp(17rem,39vw,40rem);background:#283a3e;border-radius:.25rem;overflow:hidden;touch-action:none}#cb-view :global(canvas){display:block;width:100%;height:100%}#cb-diagram{width:100%;height:auto;display:block;border-radius:.22rem}.cb-gauge{border:1px solid currentColor;border-radius:.3rem;padding:1rem}.cb section{margin-bottom:1.4rem}.cb figure{margin:1rem 0;max-width:34rem}.cb figure img{max-width:100%;height:auto}.cb table{border-collapse:collapse;width:100%}.cb td,.cb th{text-align:left;border-bottom:1px solid currentColor;padding:.45rem .5rem}@media(max-width:730px){.cb-cols{grid-template-columns:1fr}}
+</style>

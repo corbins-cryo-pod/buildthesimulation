@@ -1,0 +1,45 @@
+{
+  "schema": "bts.synthetic-section-summary.v1",
+  "sampleId": "DRY-SECTION-LOCK-01",
+  "revision": 1,
+  "sourceType": "synthetic 2D geometric diagram; not an image or material prediction",
+  "lockedPlane": "XY, fixed published diagram; origin lower left; no acquisition or spatial sampling",
+  "selected": "body",
+  "units": {
+    "length": "µm",
+    "area": "µm²",
+    "voidFraction": "%"
+  },
+  "bboxUm": {
+    "width": 120,
+    "height": 80
+  },
+  "grossAreaUm2": 9600,
+  "netAreaUm2": 9147.61065788307,
+  "void": {
+    "centerUm": [
+      45,
+      43
+    ],
+    "radiusUm": 12,
+    "diameterUm": 24,
+    "areaUm2": 452.3893421169302,
+    "percent": 4.71238898038469
+  },
+  "diagonal": {
+    "startUm": [
+      20,
+      15
+    ],
+    "endUm": [
+      100,
+      75
+    ],
+    "deltaUm": [
+      80,
+      60
+    ],
+    "lengthUm": 100
+  },
+  "scaleBarUm": 24
+}
