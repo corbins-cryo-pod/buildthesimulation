@@ -102,7 +102,7 @@
   {
     "id": "08-06",
     "name": "Bond pull / shear tester",
-    "model": "Nordson DAGE 4000",
+    "model": "Nordson DAGE legacy 4000 / WP100g cartridge",
     "evidence": "B",
     "priority": "P1",
     "page": 28,
@@ -115,9 +115,16 @@
     "inputs": "Bond ID, hook or shear contact, calibrated force trace and failure annotation",
     "outputs": "Destructive test event with peak force, failure class and post-test bond state",
     "acceptance": "Replay a trace with a known maximum and a labeled wire break. Recover the maximum and units, invalidate only the tested connection and retain the pre-test assembly revision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-scaled metric GLB · specimen, stage and pull hook",
+    "simulationStatus": "Unit-aware synthetic force replay with labeled failure and pre/post revision",
+    "integrationStatus": "Destructive test event and trace exports · VR semantic actions",
+    "simulator": "/simulations/equipment/08-06/simulator/",
+    "related": [
+      [
+        "Sources and independent fixture verification",
+        "/simulations/equipment/08-06/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "08-07",

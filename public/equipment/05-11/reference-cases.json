@@ -1,0 +1,13 @@
+{
+ "declaredBeforeImplementation":true,
+ "device":"05-11",
+ "cases":[
+ {"id":"decade","input":"S/B=0.1 in known band; S/B=1 elsewhere","expected":{"inBand":1,"outOfBand":0},"units":"base-10 absorbance","tolerance":1e-12},
+ {"id":"fft-cosine","input":"N=4096, ΔOPD=1/16000 cm; independent analytic cos 2π×1024×x","expected":{"peakCm":1023.4375,"bin":262,"atCenter":1},"units":"cm^-1; unitless interferogram","tolerance":"nearest FFT bin ±1 bin; on-bin oracle below"},
+ {"id":"fft-on-bin","input":"N=4096, ΔOPD=1/16000 cm; cos centered at bin 384 exactly","expected":{"peakCm":1500,"bin":384,"amplitude":2048},"units":"cm^-1, bin, unnormalized positive DFT amplitude","tolerance":1e-9},
+ {"id":"source-grid","input":"double-sided 4096 samples, ΔOPD=1/16000 cm","expected":{"nyquistCm":8000,"binPitchCm":3.90625,"maxAbsOpdCm":0.128},"units":"cm^-1, cm^-1, cm","tolerance":1e-12},
+ {"id":"window","input":"Hann vs rectangular, isolated on-bin line","expected":"Hann adjacent bin amplitude is one-half center; rectangular adjacent effectively zero","tolerance":"1e-10 ratio"},
+ {"id":"blank","input":"Same background and sample, no noise or baseline correction","expected":0,"units":"max |A|","tolerance":1e-12},
+ {"id":"interlock","input":"Unclamped synthetic sample or stale/missing background","expected":"Reject with no stale result","tolerance":"exact"}
+ ]
+}

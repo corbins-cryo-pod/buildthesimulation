@@ -1,0 +1,71 @@
+{
+  "triangles": 8792,
+  "draws": 45,
+  "nodes": 11,
+  "bytes": 549600,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "intro_cover": {
+      "at": [
+        0.734,
+        1.158,
+        0.673
+      ],
+      "extent": [
+        0.22,
+        0.17,
+        0.06
+      ],
+      "action": "door",
+      "label": "Open/close intro cover"
+    },
+    "transfer_arm": {
+      "at": [
+        0.96,
+        1.15,
+        0.51
+      ],
+      "extent": [
+        0.36,
+        0.11,
+        0.09
+      ],
+      "action": "transfer",
+      "label": "Move coupon between intro and analysis"
+    },
+    "sample_puck": {
+      "at": [
+        0.66,
+        1.12,
+        0.55
+      ],
+      "extent": [
+        0.04,
+        0.023,
+        0.04
+      ],
+      "action": "load",
+      "label": "Load/remove 25 mm carrier"
+    },
+    "host_panel": {
+      "at": [
+        -1.444,
+        1.322,
+        0.213
+      ],
+      "extent": [
+        0.52,
+        0.29,
+        0.03
+      ],
+      "action": "run",
+      "label": "Acquire spectra"
+    }
+  },
+  "motion": {
+    "introCoverRadians": 1.36,
+    "transferM": -0.23
+  }
+}

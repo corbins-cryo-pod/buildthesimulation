@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ideal inert tension trace",
+  "type": "object",
+  "required": [
+    "schema",
+    "deviceId",
+    "sampleId",
+    "inputRevision",
+    "revision",
+    "kind",
+    "geometry",
+    "units",
+    "points",
+    "fit",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.tensile-load-trace.v1"
+    },
+    "deviceId": {
+      "const": "14-01"
+    },
+    "kind": {
+      "const": "simulated"
+    },
+    "sampleId": {
+      "type": "string"
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timeS",
+          "crossheadM",
+          "gaugeM",
+          "forceN",
+          "engineeringStrain",
+          "engineeringStressPa",
+          "domainExceeded",
+          "overRange"
+        ],
+        "description": "SI values. Force and engineering stress null for overload or domain exceedance."
+      }
+    }
+  }
+}

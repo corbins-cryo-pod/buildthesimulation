@@ -1,0 +1,132 @@
+{
+  "deviceId": "05-11",
+  "scope": "Analytical/synthetic reference only. No hardware calibration, measured library or physical headset validation.",
+  "cases": [
+    {
+      "id": "known attenuation overall maximum error",
+      "expected": 0,
+      "actual": 0,
+      "unit": "base-10 absorbance",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "Nyquist",
+      "expected": 8000,
+      "actual": 8000,
+      "unit": "cm^-1",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "bin pitch",
+      "expected": 3.90625,
+      "actual": 3.90625,
+      "unit": "cm^-1",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "maximum OPD",
+      "expected": 0.128,
+      "actual": 0.128,
+      "unit": "cm",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "on-bin analytic tone",
+      "expected": 1500,
+      "actual": 1500,
+      "unit": "cm^-1",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "on-bin amplitude",
+      "expected": 2048,
+      "actual": 2047.999999999975,
+      "unit": "unnormalized DFT",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "off-bin nearest frequency",
+      "expected": 1023.4375,
+      "actual": 1023.4375,
+      "unit": "cm^-1",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "Hann nearest leakage",
+      "expected": 0.5,
+      "actual": 0.5000000000000111,
+      "unit": "normalized ratio",
+      "tolerance": 1e-10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "Rectangular nearest leakage",
+      "expected": 0,
+      "actual": 1.2742915080270969e-14,
+      "unit": "normalized ratio",
+      "tolerance": 1e-10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "identical blank",
+      "expected": 0,
+      "actual": 0,
+      "unit": "base-10 absorbance",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "synthetic PMMA option",
+      "expected": "PMMA",
+      "actual": "PMMA",
+      "unit": "label",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "PMMA imposed center",
+      "expected": 1728,
+      "actual": 1726.5625,
+      "unit": "cm^-1",
+      "tolerance": 3.90625,
+      "outcome": "PASS"
+    },
+    {
+      "id": "stale background rejection",
+      "expected": "explicit error and no export",
+      "actual": "Collect a fresh clean-crystal background for these settings.",
+      "unit": "status",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "native base width and depth",
+      "expected": [
+        603.123,
+        736.4984
+      ],
+      "actual": [
+        603.1230092048645,
+        736.4984154701233
+      ],
+      "unit": "mm W/D",
+      "tolerance": 0.75,
+      "outcome": "PASS"
+    },
+    {
+      "id": "VR stable glTF actions",
+      "expected": true,
+      "actual": true,
+      "unit": "names/asset size",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    }
+  ]
+}
