@@ -44,3 +44,9 @@ export function csv(r){if(!r)throw Error('No acquisition to export.');
  for(let k=0;k<ch.length;k++)fields.splice(1+3*k,3,ch[k].terminal+'_V',ch[k].terminal+'_signed_code',ch[k].terminal+'_overload');
  return [fields.join(','),...ch[0].codes.map((_,i)=>[r.t0S+i*r.dtS,...ch.flatMap(c=>[c.samples[i],c.codes[i],c.overload[i]])].join(','))].join('\n')+'\n'
 }
+// Selected-channel file for the station 09-04 scope's uniform-voltage CSV importer.
+// This is replay of a prior record, not a physical cable from a digitizer output.
+export function scopeReplay(r,k=0){
+ if(!r||!Number.isInteger(k)||!r.channels[k])throw Error('Choose an acquired channel for replay.');
+ const c=r.channels[k];return ['# sampleId: '+r.sampleId,'# contactId: '+c.id,'# revision: '+r.revision,'# source: 10-02 Digidata '+c.terminal,'# kind: simulated ADC trace replay','time_s,'+c.terminal+'_V',...c.samples.map((v,i)=>(r.t0S+i*r.dtS)+','+v)].join('\n')+'\n';
+}

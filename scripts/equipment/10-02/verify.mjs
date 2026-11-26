@@ -1,7 +1,7 @@
 // Reproduce downloadable engineering evidence from the actual GLB positions and simulator.
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
-import { state, act, digitize, LSB } from '../../../public/equipment/10-02/adc.mjs';
+import { state, act, digitize, LSB, scopeReplay } from '../../../public/equipment/10-02/adc.mjs';
 const dir=new URL('../../../public/equipment/10-02/',import.meta.url);
 export function report(){
  const read=n=>fs.readFileSync(new URL(n,dir)), glb=read('digidata-1550b.glb'), jsonSize=glb.readUInt32LE(12), asset=JSON.parse(glb.subarray(20,20+jsonSize)), start=28+jsonSize;
@@ -34,4 +34,4 @@ export function report(){
  add('MultiClamp-handoff',[131,0,'≤152.588 µV'],[n(u),over(u.channels[0]),peakResidual*1e6],'samples, overloads, peak absolute residual (µV)','0 counts; 0.5 LSB',n(u)===131&&over(u.channels[0])===0&&peakResidual<=LSB/2+1e-12);
  return {deviceId:'10-02',configuration:'Axon Digidata 1550B base, no ANC',reference:'Predeclared analytical cases and manufacturer envelope (5040237 C, pp. 33–34); empirical validation not performed.',cases};
 }
-if(process.argv[1]===fileURLToPath(import.meta.url)){const r=report();const w=(n,v)=>fs.writeFileSync(new URL(n,dir),JSON.stringify(v,null,2)+'\n');w('verification.json',r);const s=state();act(s,'source',JSON.parse(fs.readFileSync(new URL('multiclamp-input.json',dir))));w('example-output.json',act(s,'run'));console.table(r.cases.map(c=>({case:c.id,outcome:c.outcome,actual:JSON.stringify(c.actual)})));if(r.cases.some(c=>c.outcome!=='PASS'))process.exitCode=1}
+if(process.argv[1]===fileURLToPath(import.meta.url)){const r=report();const w=(n,v)=>fs.writeFileSync(new URL(n,dir),JSON.stringify(v,null,2)+'\n');w('verification.json',r);const s=state();act(s,'source',JSON.parse(fs.readFileSync(new URL('multiclamp-input.json',dir))));w('example-output.json',act(s,'run'));fs.writeFileSync(new URL('scope-replay.csv',dir),scopeReplay(s.result));console.table(r.cases.map(c=>({case:c.id,outcome:c.outcome,actual:JSON.stringify(c.actual)})));if(r.cases.some(c=>c.outcome!=='PASS'))process.exitCode=1}

@@ -1,7 +1,7 @@
 import * as T from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {act,state,csv,calibration} from '../../../../public/equipment/10-02/adc.mjs';
+import {act,state,csv,scopeReplay,calibration} from '../../../../public/equipment/10-02/adc.mjs';
 const base='/equipment/10-02/', $=id=>document.getElementById('dd-'+id);
 async function boot(){
  const s=state();let syncView=()=>{},sourceVersion=0;
@@ -25,7 +25,7 @@ async function boot(){
   for(const [name,key,n1,n2] of [['power','power','Power on','Power off'],['usb','usb','USB connected','USB disconnected'],['lead','connected','Source connected','Source disconnected']]){
    $(name).textContent=s[key]?n1:n2;$(name).setAttribute('aria-pressed',String(s[key]))
   }
-  const r=s.result;$('json').disabled=$('csv').disabled=$('i').disabled=$('ch').disabled=!r;
+  const r=s.result;$('json').disabled=$('csv').disabled=$('replay').disabled=$('i').disabled=$('ch').disabled=!r;
   $('map').value=String(s.firstInput);$('rate').value=Number.isFinite(s.rateHz)?String(s.rateHz):'';const w=s.input;
   $('input-note').textContent=w?w.sampleId+' · rev '+w.revision+' · '+w.channels.length+' channel(s) · '+w.channels[0].samples.length+' supplied samples per channel at '+Number((1/w.dtS).toPrecision(6))+' Hz.':'No valid waveform loaded.';
   $('ch').replaceChildren();if(r){
@@ -42,6 +42,7 @@ async function boot(){
  $('run').onclick=()=>dispatch('run');$('power').onclick=()=>dispatch('power');$('usb').onclick=()=>dispatch('usb');$('lead').onclick=()=>dispatch('connected');
  $('rate').oninput=e=>dispatch('rate',e.target.valueAsNumber);$('map').onchange=e=>dispatch('map',+e.target.value);$('i').oninput=$('ch').onchange=graph;
  $('json').onclick=()=>{if(s.result)save(JSON.stringify(s.result,null,2),'10-02-acquisition.json','application/json')};$('csv').onclick=()=>{if(s.result)save(csv(s.result),'10-02-samples.csv','text/csv')};
+ $('replay').onclick=()=>{if(s.result)save(scopeReplay(s.result,Number($('ch').value)||0),'10-02-scope-replay.csv','text/csv')};
  function clearInput(){s.input=null;s.result=null;sync()}
  $('file').onchange=async e=>{const v=++sourceVersion;clearInput();$('source').value='file';try{const f=e.target.files[0];if(!f||f.size>12000000)throw Error('Choose a JSON waveform below 12 MB.');const w=JSON.parse(await f.text());if(v===sourceVersion)dispatch('source',w)}catch(e){if(v===sourceVersion)status(e.message,true)}};
  $('source').onchange=async e=>{const v=++sourceVersion,src=e.target.value;clearInput();if(src==='file'){status('Choose a voltage waveform JSON file.');return}
@@ -63,8 +64,11 @@ async function viewer(s,dispatch,setSync){
  const hp=Object.entries(m.interactionNodes).map(([k,o])=>({k,act:o,box:new T.Box3(new T.Vector3(...o.boundsM.min),new T.Vector3(...o.boundsM.max))}));
  const rx=new T.Raycaster(),tmp=new T.Vector3(),mat=new T.Matrix4(),localRay=new T.Ray();
  function pick(ray){root.updateMatrixWorld(true);mat.copy(root.matrixWorld).invert();localRay.copy(ray).applyMatrix4(mat);let best=Infinity,target=null;
-  for(const h of hp){if((h.k==='signal_patch'&&!s.connected))continue;
-   const b=h.box.clone();if(h.k==='signal_patch')b.translate(node('signal_patch').position);b.expandByScalar(h.k.startsWith('AI')?.002:.001);if(!localRay.intersectBox(b,tmp))continue;const d=tmp.distanceTo(localRay.origin);if(d<best){best=d;target=h.act}}
+  for(const h of hp){if(h.k==='signal_patch'){
+    // A coiled lead's broad AABB spans other jacks; hit the actual plug/cable mesh instead.
+    if(s.connected){rx.ray.copy(ray);const hit=rx.intersectObject(node('signal_patch'),true)[0];if(hit&&hit.distance<best){best=hit.distance;target=h.act}}continue
+   }
+   const b=h.box.clone();b.expandByScalar(h.k.startsWith('AI')?.002:.001);if(!localRay.intersectBox(b,tmp))continue;const d=tmp.distanceTo(localRay.origin);if(d<best){best=d;target=h.act}}
   if(immersive&&screen){const hits=rx;hits.ray.copy(ray);const h=hits.intersectObject(screen)[0];if(h&&h.distance<best&&h.uv){const {x,y}=h.uv;if(y<.32){if(x<.33)dispatch('run');else if(x<.66)dispatch('rate',s.rateHz===1000?2000:1000);else dispatch('connected')}return}}
   if(target)dispatch(target.action,target.index);
  }

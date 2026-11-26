@@ -4,7 +4,7 @@ Set REFERENCE_OUTPUT to capture matching original renders to a directory.
 """
 from playwright.sync_api import sync_playwright
 from pathlib import Path
-import json,io,os,tempfile
+import json,io,os,tempfile,math
 url=os.environ.get('DEVICE_URL','http://127.0.0.1:4302/simulations/equipment/10-02/simulator/')
 out=os.environ.get('REFERENCE_OUTPUT')
 with sync_playwright() as p:
@@ -18,6 +18,17 @@ with sync_playwright() as p:
  pg.wait_for_function("document.querySelector('#dd-view-status')?.textContent.includes('3D asset loaded')",timeout=90000)
  print(q('view-status').inner_text(),flush=True)
  assert '13 samples/channel' in q('metrics').inner_text() and '2 input overload' in q('metrics').inner_text()
+ # Project the published metric GLB coordinates onto the straight-on front camera.
+ # This exercises ray picking against real WebGL geometry, including an attached lead.
+ def pick_front(x,y,z):
+  pg.get_by_role('button',name='Front',exact=True).click()
+  st=pg.locator('#dd-stage canvas');st.scroll_into_view_if_needed();box=st.bounding_box()
+  scale=box['height']/(2*math.tan(math.radians(17))*(.967-z))
+  st.click(position={'x':box['width']/2+x*scale,'y':box['height']/2-(y-.064)*scale})
+ pick_front(.1574,.045,.166);assert q('map').input_value()=='6'
+ q('run').click();assert 'AI6' in q('probe').inner_text()
+ pick_front(-.190,.043,.163);q('run').click();assert 'Not ready' in q('status').inner_text()
+ q('power').click();q('map').select_option('0');q('run').click()
  if out:
   from PIL import Image,ImageDraw,ImageFont
   path=Path(out);path.mkdir(exist_ok=True,parents=True)
@@ -48,12 +59,13 @@ with sync_playwright() as p:
  q('rate').fill('2000');q('run').click();assert '261 samples/channel' in q('metrics').inner_text()
  with tempfile.TemporaryDirectory() as td:
   results={}
-  for el,ext in [('json','json'),('csv','csv')]:
+  for el,ext in [('json','json'),('csv','csv'),('replay','replay.csv')]:
    with pg.expect_download() as e:q(el).click()
    file=Path(td)/('out.'+ext);e.value.save_as(str(file));results[ext]=file.read_text()
   r=json.loads(results['json']);assert r['provenance']['sourceProvenance']['source']=='10-01' and r['sampleId']=='PATCH1U-CH1' and r['parentRevision']==1 and r['revision']==2
   assert r['dtS']==.0005 and len(r['channels'][0]['codes'])==261 and r['channels'][0]['terminal']=='AI1'
   assert results['csv'].startswith('time_s,AI1_V,AI1_signed_code,AI1_overload\n') and len(results['csv'].splitlines())==262
+  assert '# sampleId: PATCH1U-CH1' in results['replay.csv'] and '# revision: 2' in results['replay.csv'] and '# contactId: CH1-CELL' in results['replay.csv']
   for control in ['usb','lead','power']:
    q(control).click();q('run').click();assert 'Not ready' in q('status').inner_text() and q('json').is_disabled();q(control).click()
   q('rate').fill('500001');q('run').click();assert '500,000' in q('status').inner_text() and q('json').is_disabled();q('rate').fill('1000')
