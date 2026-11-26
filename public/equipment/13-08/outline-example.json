@@ -1,0 +1,44 @@
+{
+  "schema": "bts.detached-outline-annotation.v1",
+  "artifactId": "TILE-A",
+  "sourceRevision": "A-geometric-1",
+  "revision": "TILE-A-annotation-1",
+  "parentAnnotation": null,
+  "scope": "Inert synthetic exhibit outline only. No equipment use, processing, compatibility, biology or measured material property.",
+  "provenance": "BuildTheSimulation authored geometry; coordinate differences and their Euclidean length.",
+  "annotation": "Outline dimensions recorded only.",
+  "coordinateFrame": {
+    "axes": [
+      "X right",
+      "Y up"
+    ],
+    "units": "mm",
+    "cells": "None; continuous authored corners per tile"
+  },
+  "cornersMm": [
+    [
+      10,
+      20
+    ],
+    [
+      70,
+      20
+    ],
+    [
+      70,
+      100
+    ],
+    [
+      10,
+      100
+    ]
+  ],
+  "edgesMm": [
+    60,
+    80,
+    60,
+    80
+  ],
+  "diagonalMm": 100,
+  "unobservedInterior": null
+}
