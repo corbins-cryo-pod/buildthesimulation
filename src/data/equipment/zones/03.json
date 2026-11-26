@@ -15,10 +15,14 @@
     "inputs": "Patterned substrate and mask height, source direction, material and calibrated deposited thickness",
     "outputs": "Directional metal-layer map and shadow boundaries on the sample",
     "acceptance": "Project a parallel oblique flux past a vertical mask edge of known height. The shadow length must match the geometric projection to one lateral grid cell.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: original metric BJD-1800 family enclosure and six-position carrier",
+    "simulationStatus": "First pass: passive carrier fit and geometric optical shadow analogy; deposition out of scope",
+    "integrationStatus": "Linked: interactive witness station and optical JSON",
     "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/03-01/simulator/"
+      ],
       [
         "Neural Interface Studio",
         "/simulations/neural-interface-studio/"
