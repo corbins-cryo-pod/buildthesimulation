@@ -1,0 +1,80 @@
+{
+  "triangles": 592,
+  "draws": 24,
+  "nodes": 9,
+  "bytes": 48644,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "drawing_display": {
+      "at": [
+        0.255,
+        0.261,
+        -0.009
+      ],
+      "extent": [
+        0.274,
+        0.187,
+        0.035
+      ],
+      "action": "view",
+      "label": "Read current locked geometric image"
+    },
+    "select_complete": {
+      "at": [
+        0.175,
+        0.089,
+        0.145
+      ],
+      "extent": [
+        0.06,
+        0.036,
+        0.063
+      ],
+      "action": "select:complete",
+      "label": "Show complete locked raster"
+    },
+    "select_cropped": {
+      "at": [
+        0.255,
+        0.089,
+        0.145
+      ],
+      "extent": [
+        0.06,
+        0.036,
+        0.063
+      ],
+      "action": "select:cropped",
+      "label": "Show cropped locked raster"
+    },
+    "select_blank": {
+      "at": [
+        0.335,
+        0.089,
+        0.145
+      ],
+      "extent": [
+        0.06,
+        0.036,
+        0.063
+      ],
+      "action": "select:blank",
+      "label": "Show blank locked raster"
+    },
+    "fixed_deck": {
+      "at": [
+        -0.218,
+        0.147,
+        -0.013
+      ],
+      "extent": [
+        0.4593,
+        0.038,
+        0.3744
+      ],
+      "label": "Blank exterior surface, no interaction"
+    }
+  }
+}
