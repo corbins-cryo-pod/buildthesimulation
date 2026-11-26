@@ -338,8 +338,15 @@
     "inputs": "Vessel configuration, construct ID, recorded rotation or flow, and tracer boundary conditions",
     "outputs": "Transport time course with vessel-frame coordinates and model assumptions",
     "acceptance": "For a declared closed-vessel conservative tracer fixture, require constant total tracer mass under rotation. Compare spatial redistribution separately with a measured tracer series for the chosen vessel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric RCCS-4D closed shell, sized from the brochure, with inferred covers and no working assemblies",
+    "simulationStatus": "Detached abstract polygon-area exhibit verified; no instrument operation, culture or transport behavior modeled",
+    "integrationStatus": "Documentary GLB viewer, independent outline selection and JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/07-15/simulator/",
+    "related": [
+      [
+        "Documentary scope and verification",
+        "/simulations/equipment/07-15/simulator/#rccs-checks"
+      ]
+    ]
   }
 ]

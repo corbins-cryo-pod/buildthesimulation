@@ -1,0 +1,38 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Independent geometric area of two original fixed polygons and a flat negative example.",
+  "cases": [
+    {
+      "id": "rectangle",
+      "outline": "rectangle",
+      "expected": {
+        "area": 48,
+        "status": "closed-region",
+        "vertexCount": 4
+      }
+    },
+    {
+      "id": "notched",
+      "outline": "notched",
+      "expected": {
+        "area": 44,
+        "status": "closed-region",
+        "vertexCount": 6
+      }
+    },
+    {
+      "id": "flat-edge",
+      "outline": "flat",
+      "expected": {
+        "area": null,
+        "status": "degenerate",
+        "vertexCount": 3
+      }
+    },
+    {
+      "id": "unknown-outline",
+      "outline": "unknown",
+      "expected": "Choose a stored geometric outline."
+    }
+  ]
+}
