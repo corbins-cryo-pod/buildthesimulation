@@ -1,0 +1,89 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import '../../../../lib/equipment/07-03/style.css';
+import research from '../../../../../public/equipment/07-03/research.json';
+import verification from '../../../../../public/equipment/07-03/verification.json';
+const base = '/equipment/07-03/';
+const fmt = (value) => typeof value === 'number' ? Number(value.toFixed(5)).toString() : String(value);
+---
+<Layout pageTitle="Inverted microscope laboratory" subtitle="" description="Operate a 3D Nikon ECLIPSE Ts2-FL and measure a stage micrometer at two magnifications.">
+<article class="equipment ts2">
+  <nav class="eq-nav" aria-label="Microscope navigation"><a href="/simulations/equipment/07-03/">← Equipment 07-03</a><a href="#references">Instrument references</a><a href="#verification">Verification</a></nav>
+  <header class="ts-mast"><div><p class="ts-label">Routine inverted microscope</p><h2>Nikon ECLIPSE Ts2-FL</h2></div><p>How far apart are two marks on the slide? Capture the micrometer at 10×, rotate the nosepiece to 20×, and compare the two measurements.</p></header>
+  <div class="ts-desk">
+    <section class="ts-bay" aria-label="3D instrument">
+      <header class="ts-strip"><h3>Instrument</h3><span id="ts-model-status" role="status">Loading 3D model…</span></header>
+      <div id="ts-model" aria-label="3D Nikon inverted microscope"><img src={base+'model-front.webp'} alt="Front view of the reconstructed Nikon Ts2-FL" /></div>
+      <div class="ts-tools ts-views">{[['whole','Reset view'],['stage','Slide holder'],['nosepiece','Objectives'],['camera','Camera port'],['rear','Rear']].map(([key,label])=><button data-ts-view={key} disabled>{label}</button>)}</div>
+      <p class="ts-small">Drag to orbit. Scroll or pinch to zoom.</p>
+    </section>
+    <section class="ts-bay" aria-label="Camera field">
+      <header class="ts-strip"><h3>Camera field</h3><span id="ts-image-state">Preparing slide…</span></header>
+      <div class="ts-image-well"><canvas id="ts-field" width="384" height="256" tabindex="0" aria-label="Camera image. Click two points to measure. Keyboard: use arrows to position a point and Enter to mark it."></canvas></div>
+      <dl class="ts-readings">
+        <div><dt>Field of view</dt><dd id="ts-fov">—</dd></div>
+        <div><dt>Sampling</dt><dd id="ts-sampling">—</dd></div>
+        <div><dt>Detected pitch</dt><dd id="ts-pitch">—</dd></div>
+      </dl>
+      <p class="ts-small" id="ts-ruler" role="status">Capture a field to measure between two points.</p>
+    </section>
+  </div>
+  <section class="ts-control-panel" aria-label="Acquisition controls">
+    <div><h3>Specimen</h3>
+      <label class="ts-field">Slide<select id="ts-fixture"><option value="micrometer">Stage micrometer · 10 µm divisions</option><option value="neurites">Labeled neurites · synthetic geometry</option><option value="raster">Calibrated specimen image</option></select></label>
+      <label class="ts-field">Sample ID<input id="ts-sample" value="MICROMETER-10UM" maxlength="64" spellcheck="false"/></label>
+      <div id="ts-import-area" hidden><label class="ts-field">Image (PNG or JPEG)<input id="ts-file" type="file" accept="image/png,image/jpeg" /></label>
+        <label class="ts-field">Source pixel size (µm/px)<input id="ts-input-pitch" type="number" min="0.01" max="100" value="0.5" step="any"/></label>
+        <label class="ts-field">Recorded channel<select id="ts-raster-channel"><option value="phase">Transmitted phase contrast</option><option value="fluorescence">Green fluorescence</option></select></label>
+      </div>
+      <button id="ts-mount">Unload slide</button>
+      <details class="ts-import-history"><summary>Use an incubator sample ID</summary><label class="ts-field">07-02 exposure JSON<input id="ts-custody" type="file" accept=".json,application/json"/></label><label class="ts-field" id="ts-custody-choice" hidden>Sample to observe<select id="ts-custody-sample"></select></label><p class="ts-small">Attach a matching calibrated image after selecting a sample from the exposure record.</p></details>
+    </div>
+    <div><h3>Optical path</h3>
+      <label class="ts-field">Objective<select id="ts-objective"><option value="10">10× · ADL 10XF / 0.25 Ph1</option><option value="20">20× · LWD ADL 20XF / 0.40 Ph1</option></select></label>
+      <label class="ts-field">Illumination<select id="ts-mode"><option value="phase">Transmitted · phase contrast</option><option value="fluorescence">Epi · green fluorescence</option></select></label>
+      <label class="ts-check"><input id="ts-epi" type="checkbox" checked/> 470 nm epi module installed</label>
+    </div>
+    <div><h3>Position &amp; focus</h3>
+      <label class="ts-field">Fine focus (µm from focal plane)<input id="ts-focus" type="number" min="-12" max="12" step="0.5" value="0"/></label>
+      <div class="ts-pair">{[['x','Field X (µm)'],['y','Field Y (µm)']].map(([id,label])=><label class="ts-field">{label}<input id={'ts-'+id} type="number" min="-150" max="150" step="any" value="0"/></label>)}</div>
+      <button id="ts-center">Center and refocus</button>
+    </div>
+  </section>
+  <div class="ts-run"><button id="ts-acquire" class="ts-primary" disabled>Capture field</button><span id="ts-status" role="status" aria-live="polite">Preparing microscope…</span></div>
+  <section id="observations">
+    <h2>Observation log</h2>
+    <div class="ts-over"><table><thead><tr><th>Sample / revision</th><th>Objective</th><th>Mode</th><th>Field width</th><th>Tick spacing</th><th>Physical pitch</th></tr></thead><tbody><tr><td colspan="6">Capture a field to record an observation.</td></tr></tbody></table></div>
+    <div class="ts-tools"><button id="ts-png" disabled>Export image (PNG)</button><button id="ts-json" disabled>Export acquisition (JSON)</button><button id="ts-clear" disabled>Clear ruler</button></div>
+    <details class="ts-handoff"><summary>Transfer an observed sample to the incubator</summary><p>Capture the neurite slide or an imported image. Save the reservation, then import it under <b>Import samples or a cabinet session</b> at station 07-02. Shelf 1 is reserved for the first 60 seconds of a new chamber clock. You can edit these values in the incubator. The reservation carries the sample identity, revision and acquisition history.</p>
+    <div class="ts-tools"><button id="ts-handoff" disabled>Save 07-02 reservation</button><a href="/simulations/equipment/07-02/simulator/">Open incubator 07-02 →</a></div></details>
+  </section>
+  <section id="references"><h2>Illustrated reference sheet</h2><p>{research.configuration}</p>
+    <div class="ts-plates">{research.views.map(v=><figure><a href={base+v.file}><img loading="lazy" src={base+v.file} alt={v.title+' · original labeled reconstruction'} /></a><figcaption><strong>{v.title}</strong>{v.caption} <a href={v.sourceUrl}>{v.sourceLabel}</a>{v.additionalSources?.map(s=><> · <a href={s.url}>{s.label || s.title}</a></>)}</figcaption></figure>)}</div>
+    <p class="ts-links"><a href={base+'model-source.py'} download>Editable model source</a><a href={base+'microscope.glb'} download>Download 3D instrument (GLB)</a><a href={base+'research.json'}>Research dossier</a></p>
+    <h3>Specifications and assumptions</h3><div class="ts-over"><table><thead><tr><th>Feature</th><th>Value</th><th>Role in the reconstruction or experiment</th><th>Source</th></tr></thead>
+      <tbody>{research.specs.map(s=><tr><th>{s.feature}</th><td>{s.value}</td><td>{s.use}</td><td><a href={s.sourceUrl}>{s.sourceLabel}</a></td></tr>)}</tbody></table></div>
+    <h3>Reconstruction limits</h3>{research.limits.map(note=><p>{note}</p>)}
+    <details><summary>Source documents and photographs</summary><ul>{research.sources.map(s=><li>{s.note} <a href={s.url}>{s.title}</a></li>)}</ul></details>
+  </section>
+  <section id="methods"><h2>From slide to image</h2>
+    <p>The camera samples a 384 × 256 pixel region. Its nominal 2.4 µm pixel pitch, the 0.63× relay and the installed objective set the specimen-plane pitch <i>p</i> = 2.4 / (0.63 × objective magnification) µm/px. The width is 384<i>p</i>. A physical distance therefore covers twice as many pixels at 20× as it does at 10×.</p>
+    <p>The calibration slide contains synthetic 10 µm divisions. The pitch detector reads the intensity pattern in the simulated camera image. Select the labeled neurites to compare transmitted contrast with idealized green emission from an original two-dimensional branching specimen. Fluorescence requires the installed epi module. The micrometer has no fluorescent label. When at least three complete minor divisions are visible, the pitch detector fits mark position against division number using the intensity-weighted center of each dark mark.</p>
+    <p>The synthetic targets are blurred with a Gaussian approximation to the central diffraction peak, with full width at half maximum 0.51λ/NA. Defocus adds a geometric blur in quadrature. The neurite phase view uses a local intensity and halo approximation. The fluorescence channel convolves relative emission with the point-spread function at 525 nm. The model omits photon statistics, scattering, bleaching and a full phase-ring wave-optics solution. For a recorded image it adds only the selected defocus after resampling, because the source already includes its acquisition optics.</p>
+    <h3>Input and output contract</h3>
+    <p>Field coordinates give the specimen location under the optical axis in micrometres. A positive field displacement moves the slide in the opposite direction. Image X points right and Y points down. The field center can move ±150 µm around the specimen origin, and fine focus spans ±12 µm. The default focus is the specimen plane. You can also upload a calibrated intensity image, select its recorded channel and supply its original pitch (0.01–100 µm/px). The importer accepts 8-bit PNG or JPEG intensities, 2–4,096 pixels per axis and up to 4,194,304 pixels total. The importer takes luminance for a transmitted image and the green component for a fluorescence image. Each output pixel samples the source by bilinear interpolation. A missing image, mismatched channel or invalid calibration blocks acquisition.</p>
+    <p>Each capture records the sample ID and revision, channel, objective, original source, focus, field origin, pixel size and scale bar. The exported PNG includes the scale bar and embeds the acquisition JSON under the PNG text key <code>bts.acquisition</code>. The separate JSON contains the same calibration and any two-point ruler measurement. A specimen transfer carries its observation metadata into the receiving station. No camera exposure time or fluorophore concentration is inferred.</p>
+    <p class="ts-links"><a href={base+'optics.mjs'}>Optical model source</a><a href={base+'output-schema.json'}>Acquisition schema</a><a href={base+'example-acquisition.json'}>Example acquisition (JSON)</a><a href={base+'example-acquisition.png'}>Paired example image (PNG)</a><a href={base+'example-reservation.json'}>Example incubator reservation</a></p>
+  </section>
+  <section id="verification"><h2>Verification</h2><p>{verification.basis}</p>
+    <div class="ts-over"><table><thead><tr><th>Test</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>
+      {verification.tests.map(r=><tr><th>{r.test}</th><td>{fmt(r.expected)}</td><td>{fmt(r.actual)}</td><td>{r.units}</td><td>{fmt(r.tolerance)}</td><td>{r.outcome}</td></tr>)}
+    </tbody></table></div><p>{verification.experimentalComparison}</p>
+    <p class="ts-links"><a href={base+'verification.json'}>Numerical results</a><a href={base+'geometry-verification.json'}>Geometry checks</a></p>
+  </section>
+</article></Layout>
+<script>
+import {start} from '../../../../lib/equipment/07-03/client.js';
+start().catch(error => {document.getElementById('ts-status').textContent = 'Unable to start the experiment. ' + error.message;});
+</script>

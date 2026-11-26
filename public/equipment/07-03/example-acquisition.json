@@ -1,0 +1,69 @@
+{
+  "schema": "bts.equipment.07-03.observation.v1",
+  "deviceId": "07-03",
+  "sampleId": "MICROMETER-10UM",
+  "parentRevision": 0,
+  "revision": 1,
+  "contactIds": [],
+  "history": [
+    {
+      "deviceId": "07-03",
+      "operation": "image-acquisition",
+      "sampleId": "MICROMETER-10UM",
+      "parentRevision": 0,
+      "revision": 1,
+      "fixture": "micrometer",
+      "objective": 10,
+      "mode": "phase",
+      "sourceKind": "synthetic"
+    }
+  ],
+  "source": {
+    "kind": "synthetic",
+    "name": "10 µm stage micrometer",
+    "fixtureVersion": 1
+  },
+  "acquisition": {
+    "fixture": "micrometer",
+    "variant": "Ts2-FL",
+    "mode": "phase",
+    "objective": 10,
+    "focusUm": 0,
+    "stageXUm": 0,
+    "stageYUm": 0,
+    "epiInstalled": true
+  },
+  "width": 384,
+  "height": 256,
+  "pixelSizeUm": 0.38095238095238093,
+  "fovUm": {
+    "width": 146.28571428571428,
+    "height": 97.52380952380952
+  },
+  "coordinateFrame": "Pixel centers indexed from (0,0) at upper left; specimen x points right, y down. Stage X/Y is the physical center of the field in µm.",
+  "scaleBar": {
+    "lengthUm": 20,
+    "lengthPx": 52.5
+  },
+  "optics": {
+    "objectiveName": "CFI Achromat ADL 10XF",
+    "na": 0.25,
+    "relay": 0.63,
+    "relayModel": "Nikon C-0.63X-TS2",
+    "detector": "Nikon DS-Fi3",
+    "sensorPitchUm": 2.4,
+    "wavelengthUm": 0.55,
+    "diffractionSigmaUm": 0.47643312101910834,
+    "defocusSigmaUm": 0,
+    "stand": "Ts2-FL"
+  },
+  "provenance": "Simulated acquisition; nominal calibration from detector pitch and optics. Display intensities are relative 8-bit values.",
+  "measurement": {
+    "pitchPx": 26.254931043455635,
+    "pitchUm": 10.001878492745004,
+    "markCount": 15
+  },
+  "imageFile": "example-acquisition.png",
+  "scaleBarBurnedIn": true,
+  "rulerMeasurement": null
+}

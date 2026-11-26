@@ -1,0 +1,44 @@
+[
+  {
+    "sampleId": "NEURITE-001",
+    "parentRevision": 1,
+    "history": [
+      {
+        "deviceId": "07-03",
+        "operation": "image-acquisition",
+        "sampleId": "NEURITE-001",
+        "parentRevision": 0,
+        "revision": 1,
+        "fixture": "neurites",
+        "objective": 10,
+        "mode": "fluorescence",
+        "sourceKind": "synthetic",
+        "source": {
+          "kind": "synthetic",
+          "name": "Original planar neurite morphology",
+          "fixtureVersion": 1
+        },
+        "acquisition": {
+          "fixture": "neurites",
+          "variant": "Ts2-FL",
+          "mode": "fluorescence",
+          "objective": 10,
+          "focusUm": 0,
+          "stageXUm": 0,
+          "stageYUm": 0,
+          "epiInstalled": true
+        },
+        "pixelSizeUm": 0.38095238095238093,
+        "fovUm": {
+          "width": 146.28571428571428,
+          "height": 97.52380952380952
+        },
+        "rulerMeasurement": null
+      }
+    ],
+    "contactIds": [],
+    "shelf": 1,
+    "enter_s": 0,
+    "leave_s": 60
+  }
+]

@@ -1,0 +1,206 @@
+{
+  "configuration": "Nikon ECLIPSE Ts2-FL routine inverted stand, CFI60 optics, TS2-W10X eyepieces, TS2-S-SM mechanical stage with C-S-HS slide holder, T1-SNCP precentered phase slider, 10XF and LWD 20XF ADL objectives, one 470 nm epi LED and C-LED470 cube. The optional TS2-P-CF side port carries a DS-Fi3 through the C-0.63X-TS2 relay.",
+  "views": [
+    {
+      "file": "ref-front.webp",
+      "title": "Operator view and camera",
+      "caption": "The oblique manual drawing places the lateral camera port beside the oculars, the coarse/fine knobs low on the base, and the DIA/EPI switches on its front. The DS-Fi3 head is the accessory selected for this reconstruction.",
+      "sourceLabel": "Nikon M700 E, p. 1, Ts2-FL with camera port",
+      "sourceUrl": "https://microscope.biokonvision.co.kr/exec/front/Board/download/?no=461&realname=f6a115bcf44041dada75ae5816653aa8.pdf&filename=nikon-eclipse-ts2-ts2-fl-inverted-microscope-manual.pdf#page=16",
+      "additionalSources": [
+        {
+          "label": "Nikon front-panel photograph",
+          "url": "https://downloads.microscope.healthcare.nikon.com/ms100th/imager/keyfeatures/Ts2/1292/Ts2_frontbutton_20c1ad2fb3e82075627c86561425a107.jpg"
+        },
+        {
+          "label": "Camera-port selection lever photograph",
+          "url": "https://www.nobic.sg/ABIF/Media/Manuals/NikonEclipse/Eye-cameraSwitch.jpg"
+        }
+      ]
+    },
+    {
+      "file": "ref-side.webp",
+      "title": "Lateral profile",
+      "caption": "The side drawing fixes the 200 mm stage elevation, the location of the coaxial focus control and the 45° viewing tube. The rear upright leans toward the optical axis, leaving the stage accessible.",
+      "sourceLabel": "Nikon 2CE-MPJH-9 (2407), p. 7, Ts2-FL side elevation",
+      "sourceUrl": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf#page=4",
+      "additionalSources": [
+        {
+          "label": "Manufacturer profile photographs, pp. 2–3",
+          "url": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf#page=2"
+        }
+      ]
+    },
+    {
+      "file": "ref-stage.webp",
+      "title": "Stage, slide and objective",
+      "caption": "The removable slide holder sits on the mechanical carriage. The optical axis passes through the objective below the slide and the ELWD condenser above. An installed Ph1 slider serves both selected objectives.",
+      "sourceLabel": "Nikon M700 E, p. 2, Ts2-FL component diagram",
+      "sourceUrl": "https://microscope.biokonvision.co.kr/exec/front/Board/download/?no=461&realname=f6a115bcf44041dada75ae5816653aa8.pdf&filename=nikon-eclipse-ts2-ts2-fl-inverted-microscope-manual.pdf#page=17",
+      "additionalSources": [
+        {
+          "label": "Mechanical-stage photograph",
+          "url": "https://downloads.microscope.healthcare.nikon.com/ms100th/imager/keyfeatures/Ts2/1296/Ts2-stage_20c1ad2fb3e82075627c86561425a107.jpg"
+        },
+        {
+          "label": "Photograph of C-S-HS slide holder",
+          "url": "https://www.nobic.sg/ABIF/Media/Manuals/NikonEclipse/StageInserts.jpg"
+        },
+        {
+          "label": "Nikon 10× objective drawing",
+          "url": "https://www.microscope.healthcare.nikon.com/images/diagrams/Optics/CFI-Achromat-Series-for-Apodized-Phase-Contrast/cfi_achromat_adl_10xf.svg"
+        },
+        {
+          "label": "Nikon 20× objective drawing",
+          "url": "https://www.microscope.healthcare.nikon.com/images/diagrams/Optics/CFI-Achromat-Series-for-Apodized-Phase-Contrast/cfi_achromat_lwd_dl_20xf_adl_20xf.svg"
+        }
+      ]
+    },
+    {
+      "file": "ref-rear.webp",
+      "title": "Rear housing and power inlet",
+      "caption": "The small rear view locates the AC inlet low on the housing. The right-side view identifies the fluorescence brightness control; the illumination source sits within the stand. Connector recesses and housing radii are inferred.",
+      "sourceLabel": "Nikon M700 E, p. 2, Ts2-FL rear and right-side views",
+      "sourceUrl": "https://microscope.biokonvision.co.kr/exec/front/Board/download/?no=461&realname=f6a115bcf44041dada75ae5816653aa8.pdf&filename=nikon-eclipse-ts2-ts2-fl-inverted-microscope-manual.pdf#page=17",
+      "additionalSources": [
+        {
+          "label": "Illumination and cube installation positions, p. 7",
+          "url": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf#page=4"
+        }
+      ]
+    }
+  ],
+  "specs": [
+    {
+      "feature": "Stand envelope",
+      "value": "236 × 564 × 471 mm (W × D × H)",
+      "use": "Nominal Ts2-FL stand; camera and sliding attachments extend beyond it.",
+      "sourceLabel": "Nikon Ts2 specifications, Ts2-FL column",
+      "sourceUrl": "https://www.microscope.healthcare.nikon.com/products/inverted-microscopes/eclipse-ts2/specifications"
+    },
+    {
+      "feature": "Stage height / focus-knob axis",
+      "value": "200 mm above bench / 102 mm behind front foot",
+      "use": "Dimensioned side elevation. The drawing’s 470 mm arm height and 234 mm front-view width are separate from the catalog envelope.",
+      "sourceLabel": "Nikon 2CE-MPJH-9, p. 7",
+      "sourceUrl": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf#page=4"
+    },
+    {
+      "feature": "Stage and carriage",
+      "value": "170 × 247 mm deck; 126 × 78 mm X/Y travel",
+      "use": "Plain-stage reference dimensions and optional mechanical stage travel. The virtual field controls cover a smaller region around the reference target.",
+      "sourceLabel": "Nikon 2CE-MPJH-9, back specification table",
+      "sourceUrl": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf#page=5"
+    },
+    {
+      "feature": "Viewing tube",
+      "value": "45° inclination; 10× eyepieces, FN 22 mm",
+      "use": "A TS2-P-CF selects either the eyepiece pair or the lateral camera port.",
+      "sourceLabel": "Nikon 2CE-MPJH-9, p. 7 and back table",
+      "sourceUrl": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf#page=4"
+    },
+    {
+      "feature": "Focusing mechanism",
+      "value": "+7 / −1.5 mm; fine feed 0.2 mm/rev",
+      "use": "Nosepiece translates relative to the stage. The acquisition exercise uses a ±12 µm interval near best focus.",
+      "sourceLabel": "Nikon Ts2 specifications",
+      "sourceUrl": "https://www.microscope.healthcare.nikon.com/products/inverted-microscopes/eclipse-ts2/specifications"
+    },
+    {
+      "feature": "Nosepiece / condenser",
+      "value": "5 indexed positions; NA 0.30, WD 75 mm",
+      "use": "Quintuple objective carrier below the sample and extra-long-working-distance condenser above.",
+      "sourceLabel": "Nikon Ts2 specifications",
+      "sourceUrl": "https://www.microscope.healthcare.nikon.com/products/inverted-microscopes/eclipse-ts2/specifications"
+    },
+    {
+      "feature": "CFI Achromat ADL 10XF",
+      "value": "10×; NA 0.25; WD 6.20 mm; Ph1",
+      "use": "Dry phase objective, 1.20 mm design cover thickness. Nikon drawing specifies a 25 mm barrel diameter.",
+      "sourceLabel": "Nikon 10XF specification and dimension drawing",
+      "sourceUrl": "https://www.microscope.healthcare.nikon.com/images/diagrams/Optics/CFI-Achromat-Series-for-Apodized-Phase-Contrast/cfi_achromat_adl_10xf.svg"
+    },
+    {
+      "feature": "CFI Achromat LWD ADL 20XF",
+      "value": "20×; NA 0.40; WD 3.10 mm; Ph1",
+      "use": "Dry phase objective, 1.20 mm design cover thickness. The IF/visible-light observation suitability of the objective is qualified by Nikon.",
+      "sourceLabel": "Nikon CFI ADL objective specifications",
+      "sourceUrl": "https://www.microscope.healthcare.nikon.com/products/optics/cfi-achromat-series-for-apodized-phase-contrast"
+    },
+    {
+      "feature": "Digital Sight DS-Fi3",
+      "value": "2880 × 2048 pixels; 6.91 × 4.92 mm",
+      "use": "Full sensor. Its physical dimensions give approximately 2.4 µm per pixel. The simulated camera returns a central 384 × 256 native-pixel crop.",
+      "sourceLabel": "Nikon DS-Fi3 specifications",
+      "sourceUrl": "https://www.microscope.healthcare.nikon.com/products/cameras/ds-fi3/specifications"
+    },
+    {
+      "feature": "Camera head / adapter",
+      "value": "100 × 66 × 65 mm; 0.63× C-mount relay",
+      "use": "DS-Fi3 housing with Nikon C-0.63X-TS2 relay on TS2-P-CF port. The receiver samples 0.381 µm/pixel at 10× and 0.190 µm/pixel at 20×.",
+      "sourceLabel": "Nikon camera / adapter chart, pp. 6–7",
+      "sourceUrl": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf#page=4"
+    },
+    {
+      "feature": "Single installed epi channel",
+      "value": "470 nm LED; EX 470/40, DM 500, BA 534/55 nm",
+      "use": "C-LED470 cube. Bandpass values denote center and full width. The 525 nm model emission is inside the nominal emission band.",
+      "sourceLabel": "Nikon 2CE-MPNH-4, p. 21",
+      "sourceUrl": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/Biological-Microscope_2206_spread-2CE-MPNH-4.pdf#page=11"
+    },
+    {
+      "feature": "Etched reference scale",
+      "value": "1 mm / 100 divisions = 10 µm/division",
+      "use": "Physical example of the calibration pattern. The simulated micrometer is a synthetic fixture with this exact pitch.",
+      "sourceLabel": "Edmund Optics stage micrometer",
+      "sourceUrl": "https://www.edmundoptics.com/p/1mm-100-divisions-stage-micrometer/4150"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Nikon ECLIPSE Ts2 and Ts2-FL",
+      "url": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/ECLIPSE_Ts2_2CE-MPJH-9-A.pdf",
+      "note": "2CE-MPJH-9 (2407), July 2024. Printed pp. 2–3 show stand and control photos, pp. 6–7 show camera accessories, system diagram and dimensions. The back page lists specifications."
+    },
+    {
+      "title": "Nikon ECLIPSE Ts2-FL / Ts2 Instructions",
+      "url": "https://microscope.biokonvision.co.kr/article/%EA%B8%B0%EC%88%A0-%EC%9E%90%EB%A3%8C%EC%8B%A4/7/461/",
+      "note": "Manual M700 E, 16.9.NF.3, distributor-hosted scan. Printed pp. 1–2 show component locations from both sides and the rear. The source plates remain linked at the publisher or hosting site."
+    },
+    {
+      "title": "Nikon apodized-phase objectives",
+      "url": "https://www.microscope.healthcare.nikon.com/products/optics/cfi-achromat-series-for-apodized-phase-contrast",
+      "note": "Manufacturer table lists NA, working distance, cover thickness and mode qualification. A separate dimension drawing is available for each lens."
+    },
+    {
+      "title": "Nikon DS-Fi3 camera",
+      "url": "https://www.microscope.healthcare.nikon.com/products/cameras/ds-fi3/specifications",
+      "note": "Sensor dimensions, pixel counts, C-mount, head envelope and interfaces."
+    },
+    {
+      "title": "Nikon filter-cube specifications",
+      "url": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Brochures/Biological-Microscope_2206_spread-2CE-MPNH-4.pdf#page=11",
+      "note": "Biological Microscope catalog, 2CE-MPNH-4, printed p. 21. The C-LED470 row specifies the excitation, dichroic and emission filters."
+    },
+    {
+      "title": "Nanyang Technological University ABIF, Nikon Ts2-FL",
+      "url": "https://www.nobic.sg/ABIF/NikonTs2_Manual.html",
+      "note": "Independent installed-system photographs show the slider, stage inserts, cube selector, camera lever and lighting controls. Its camera is a DS-Qi2; the modeled camera is the DS-Fi3 listed in the Nikon Ts2 brochure."
+    },
+    {
+      "title": "WMed Tissue Culture Laboratory",
+      "url": "https://wmed.edu/tissueculturelab",
+      "note": "Equipment-register source S25 identifies a Nikon Eclipse Ts2 at the facility. The particular FL stand and accessories on this page are a documented selection."
+    },
+    {
+      "title": "Edmund Optics stage micrometer",
+      "url": "https://www.edmundoptics.com/p/1mm-100-divisions-stage-micrometer/4150",
+      "note": "Commercial reference pattern for the calibration exercise; the synthetic data have no calibration certificate."
+    }
+  ],
+  "limits": [
+    "The register’s Ts2F designation is resolved to Nikon’s Ts2-FL routine model. The Ts2R-FL belongs to Nikon’s separately documented research series.",
+    "Published exterior dimensions constrain the stand. The drawings and product photographs supply component locations. Internal optical prescriptions, shell fillets, camera adapter length and small connector recesses are approximate.",
+    "The references establish the hardware and nominal sensor sampling. No calibrated physical acquisition was available to establish absolute contrast, focus response or fluorescence yield. The calculation places the specimen at an ideal object plane and omits cover-glass aberration. Nikon rates these ADL objectives primarily for phase contrast and identifies visible-light fluorescence as possible with a qualification; the synthetic signal does not characterize collection efficiency."
+  ]
+}
