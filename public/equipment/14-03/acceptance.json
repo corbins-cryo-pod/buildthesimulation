@@ -1,0 +1,15 @@
+{
+ "scope":"Independent closed-form arithmetic for a passive linear rheometer thought experiment, not measured DHR-2 calibration.",
+ "inputs":{"viscosityPaS":2,"frequenciesHz":[0.1,1,10],"rimStrainFraction":0.01,"radiusM":0.02,"gapMm":1},
+ "cases":[
+  {"id":"newtonian-storage","expected":0,"units":"Pa","tolerance":1e-12},
+  {"id":"loss-01hz","expected":1.2566370614359172,"units":"Pa","tolerance":1e-10},
+  {"id":"loss-1hz","expected":12.566370614359172,"units":"Pa","tolerance":1e-10},
+  {"id":"loss-10hz","expected":125.66370614359172,"units":"Pa","tolerance":1e-9},
+  {"id":"phase","expected":90,"units":"degree","tolerance":1e-12},
+  {"id":"angle","expected":0.0005,"units":"rad","tolerance":1e-12},
+  {"id":"torque","expected":0.0000015791367041742976,"units":"N m","tolerance":1e-13},
+  {"id":"maxwell-storage-wtau1","expected":50,"units":"Pa","tolerance":1e-9},
+  {"id":"maxwell-loss-wtau1","expected":50,"units":"Pa","tolerance":1e-9}
+ ]
+}
