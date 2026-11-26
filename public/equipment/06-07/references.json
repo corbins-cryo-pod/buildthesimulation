@@ -1,0 +1,10 @@
+{
+  "configuration":"Fluigent MFCS-EZ, standard four-position blue-front enclosure, no accessories or working connectors",
+  "references":[
+    {"title":"Fluigent MFCS-EZ manufacturer datasheet, page 2","url":"https://www.fluigent.com/resources-support/support-tools/downloads/technical-datasheets/mfcs-ez-datasheet/","caption":"Hardware dimensions ordered L × W × H = 160 × 230 × 63 mm, inherited by the authored casing."},
+    {"title":"Fluigent MFCS-series user manual, page 9","url":"https://www.fluigent.com/resources-support/support-tools/downloads/user-manuals/mfcs-series-user-manual/","caption":"Actual front and rear exterior images establish shell trim, upper blue band, inactive dark display and four circular front details. Rear appearance is a sealed silhouette. Photo-based positions are approximate."},
+    {"title":"Fluigent product gallery, MFCS series","url":"https://www.fluigent.com/research/instruments/pressure-flow-controllers/mfcs-series/","caption":"Identifies variants. This exhibit is the four-position EZ, not the EX, not a complete setup."}
+  ],
+  "dimensionsMm":{"width":230,"depth":160,"height":63,"scope":"authored nominal casing envelope; blind exterior caps modeled separately"},
+  "notes":"Current nominal 63 mm casing height retained. The 2013 MFCS-EZ manual lists 65 mm; it is not used to size this approximation. No actual unit measured. No working routing, internal assemblies, electrical or liquid control, pressure, or sample workflow."
+}
