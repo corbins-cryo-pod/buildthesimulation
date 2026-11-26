@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"04-10",
+  "asset":"protolaser-r4.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_floor_anchor","mount":"floor"},
+  "parts":{"cabinet":"protolaser_r4_dormant_enclosure","hood":"closed_hood_enclosure","window":"closed_opaque_olive_window","review":"detached_printed_chart_stand"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_chart_panel","label":"Cycle the detached preprinted chart","sizeM":[0.366,0.244,0.045],"range":[0,1],"mode":"read-only"}],
+  "vrEvidence":"Metric model and bounded action for authoring; no immersive runtime or headset validation"
+}

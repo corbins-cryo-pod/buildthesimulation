@@ -203,7 +203,7 @@
   },
   {
     "id": "04-10",
-    "name": "Femtosecond micromachining",
+    "name": "Picosecond micromachining (candidate)",
     "model": "LPKF ProtoLaser R4 (candidate)",
     "evidence": "C",
     "priority": "P3",
@@ -215,9 +215,10 @@
     "inputs": "Flexible substrate revision, programmed path, material-specific kerf and thermal calibration",
     "outputs": "Cut contour with kerf and heat-affected-zone estimate or unknown flag",
     "acceptance": "Cut one straight path using a constant-width fixture. The measured width must equal the specified kerf away from endpoints; a missing thermal calibration leaves the heat-affected width unknown.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric closed exterior; published cabinet envelope",
+    "simulationStatus": "Read-only preprinted chart widths; no kerf or thermal model",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/04-10/simulator/"
   },
   {
     "id": "04-11",

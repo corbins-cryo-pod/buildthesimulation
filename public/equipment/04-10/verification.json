@@ -1,0 +1,133 @@
+{
+  "scope": "Nominal closed documentary cabinet and width of fixed synthetic printed charts. Not instrument operation, processing or headset evidence.",
+  "rows": [
+    {
+      "id": "Chart A width, row 5",
+      "expected": 4.5,
+      "actual": 4.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart B width, row 5",
+      "expected": 6.5,
+      "actual": 6.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart difference, row 5",
+      "expected": 2,
+      "actual": 2,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart A width, row 18",
+      "expected": 4.5,
+      "actual": 4.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart B width, row 18",
+      "expected": 6.5,
+      "actual": 6.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart difference, row 18",
+      "expected": 2,
+      "actual": 2,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart A width, row 30",
+      "expected": 4.5,
+      "actual": 4.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart B width, row 30",
+      "expected": 6.5,
+      "actual": 6.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Chart difference, row 30",
+      "expected": 2,
+      "actual": 2,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank row 0",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank row 4",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank row 31",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank row 35",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Vendor closed cabinet W",
+      "expected": 910,
+      "actual": 910.0000262260437,
+      "unit": "mm",
+      "tolerance": 0.5,
+      "pass": true
+    },
+    {
+      "id": "Vendor closed cabinet H",
+      "expected": 1650,
+      "actual": 1650.000006891787,
+      "unit": "mm",
+      "tolerance": 0.5,
+      "pass": true
+    },
+    {
+      "id": "Vendor closed cabinet D",
+      "expected": 795,
+      "actual": 795.0000166893005,
+      "unit": "mm",
+      "tolerance": 0.5,
+      "pass": true
+    }
+  ]
+}
