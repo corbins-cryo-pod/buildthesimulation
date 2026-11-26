@@ -1,0 +1,61 @@
+{
+  "schema": "bts.octo.inert-shape-comparison.v1",
+  "equipment": "07-08",
+  "card": {
+    "id": "BTS-OCTO-SHAPES-01",
+    "revision": "1",
+    "circumradiusMm": 24
+  },
+  "units": {
+    "distance": "mm",
+    "area": "mm²",
+    "ratio": "%"
+  },
+  "provenance": "authored static shape illustration; no relation to shell geometry or instrument operation",
+  "comparison": {
+    "shape": "octagon",
+    "sides": 8,
+    "radiusMm": 24,
+    "diameterMm": 48,
+    "vertices": [
+      [
+        24,
+        0
+      ],
+      [
+        16.970562748477143,
+        16.97056274847714
+      ],
+      [
+        1.4695761589768238e-15,
+        24
+      ],
+      [
+        -16.97056274847714,
+        16.970562748477143
+      ],
+      [
+        -24,
+        2.9391523179536475e-15
+      ],
+      [
+        -16.970562748477143,
+        -16.97056274847714
+      ],
+      [
+        -4.408728476930472e-15,
+        -24
+      ],
+      [
+        16.970562748477136,
+        -16.970562748477143
+      ]
+    ],
+    "areaMm2": 1629.1740238538057,
+    "perimeterMm": 146.95043802819444,
+    "diskAreaMm2": 1809.5573684677208,
+    "uncoveredMm2": 180.38334461391514,
+    "coveragePct": 90.03163161571061,
+    "overlay": true
+  }
+}
