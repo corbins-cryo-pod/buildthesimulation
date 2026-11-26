@@ -115,9 +115,10 @@
     "inputs": "Archived cryo-EM image set or projection fixture, acquisition metadata, pixel size and orientation data where applicable",
     "outputs": "Indexed reference images, reconstruction volume when supported, voxel scale and source dataset provenance",
     "acceptance": "Reconstruct supplied projections of a phantom with known handed orientation. Check landmark spacings and handedness against the reference and preserve the source image IDs.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric GLB; cabinet dimensions inferred",
+    "simulationStatus": "Read-only synthetic image archive; index, scale and orientation verified",
+    "integrationStatus": "Dedicated simulator, source asset and example export linked",
+    "simulator": "/simulations/equipment/13-06/simulator/"
   },
   {
     "id": "13-07",

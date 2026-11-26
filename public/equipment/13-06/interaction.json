@@ -1,0 +1,12 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "equipmentId": "13-06",
+  "asset": "glacios2.glb",
+  "frame": {"unit": "m", "up": "+Y", "front": "+Z", "placementAnchor": "bts_floor_anchor", "mount": "floor"},
+  "parts": {"cabinet": "dormant_glacios2_cabinet", "scale": "cabinet_scale_reference", "detachedReview": "detached_archive_stand", "documentaryControl": "dark_left_display"},
+  "ports": [],
+  "actions": [
+    {"action":"next","node":"archive_image_panel","label":"Cycle the detached synthetic image archive","sizeM":[0.438,0.438,0.045],"range":[0,1],"mode":"read-only"}
+  ],
+  "vrEvidence": "Metric asset and ray/DOM semantic parity; no immersive runtime or headset verification."
+}

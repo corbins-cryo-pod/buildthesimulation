@@ -1,0 +1,77 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/03-04/verification.json';
+import stats from '../../../../../public/equipment/03-04/asset-metrics.json';
+const p='/equipment/03-04/';
+const utah='https://www.nanofab.utah.edu/wiki/denton-635-2/';
+const photograph='https://www.nanofab.utah.edu/wp-content/uploads/2025/11/Denton-635-Tool.png';
+const brochure='https://info.dentonvacuum.com/hubfs/Content%20Assets/Data%20Sheets/Discovery_635-785_brochure_web.pdf';
+const uc='https://nnci.net/tools/denton-discovery-635-sputter-system';
+---
+<Layout pageTitle="Discovery 635 witness inspection" description="Documentary Discovery 635 cabinet with inert dimensioned witness fit and read-only synthetic layer inspection." wide={true}>
+<article id="d635">
+<nav><a href="/simulations/equipment/03-04/">← Equipment 03-04</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#ds-evidence">References and checks</a></nav>
+<header><small>03-04 · NON-OPERATIONAL DOCUMENTARY MODEL</small><h2>Denton Discovery 635 witness inspector</h2><p>Inspect a scaled cabinet and the documented four-source layout, then grade whether an inert witness fits a virtual tray. Compare two already prepared synthetic layers and inspect their order at a selected point. The simulator does not operate the equipment.</p></header>
+<div class="bench">
+<section class="panel"><h3>Cabinet and inert carrier</h3>
+<div class="tools"><button data-ds-view="orbit">Reset view</button><button data-ds-view="front">Front view</button><button data-ds-view="tray">Practice tray</button><button data-ds-view="upper">Upper outline</button><button data-ds-view="rear">Rear view</button></div>
+<div id="ds-viewer"></div><p id="ds-model" role="status">Loading metric cabinet…</p>
+<div class="tools"><button id="ds-cutaway">Hide documentary panel</button></div>
+<p>Light-gray enclosure and right console are photo-based shapes. The distinct teal practice carrier is an invented passive fitting diagram, not the D635 loader. Documentary covers, viewport and blank rear connectors provide inspection views only. No immersive headset testing has been done.</p></section>
+<section class="panel"><h3>Grade the virtual witness fit</h3>
+<div class="tools"><button id="ds-example">Open ready inspection</button><button id="ds-reset">Reset example</button></div>
+<div class="tools"><button id="ds-cover">Open practice cover</button><button id="ds-tray">Extend passive tray</button><button id="ds-place">Place inert witness</button></div>
+<div class="fields">
+<label>Witness diameter (mm)<input id="ds-diameterMm" type="number" min="45" max="180" step="any"/></label>
+<label>Lateral witness offset (mm)<input id="ds-offsetMm" type="number" min="-35" max="35" step="any"/></label>
+<label>Cross-section X index<input id="ds-ix" type="number" min="0" max="4" step="1"/></label>
+<label>Cross-section Z index<input id="ds-iz" type="number" min="0" max="4" step="1"/></label>
+<label>Import read-only witness JSON<input id="ds-file" type="file" accept=".json,application/json"/></label>
+</div>
+<p id="ds-fit" aria-live="polite"></p><p id="ds-identity"></p>
+<div class="tools"><button id="ds-inspect">Inspect stored layer maps</button><button id="ds-export" disabled>Export inspection JSON</button></div>
+<p id="ds-status" aria-live="polite"></p></section>
+</div>
+<section class="panel"><h3>Stored thickness and section</h3>
+<p id="ds-result" aria-live="polite"></p>
+<canvas id="ds-plot" width="760" height="338" aria-label="Two read-only stored layer thickness maps and bottom-to-top cross-section."></canvas>
+<p><strong>Try it:</strong> Open the ready inspection to see 40 nm of synthetic A below 20 nm of synthetic B at the center (60 nm total). Move the cursor to a different grid location and inspect again. An exact 150 mm centered witness leaves the custom 2 mm radial clearance; the same fit check rejects 150.02 mm. This does not imply actual wafer or carrier compatibility.</p>
+</section>
+<section class="panel"><h3>Read-only algorithm and transmittable result</h3>
+<p>Preview clearance is tray radius minus witness radius minus the absolute lateral offset. The custom 154 mm seat applies a 2 mm minimum. The intended transferable data is a passive fit and a named inspection of two prerecorded arrays. At the selected grid index, preserve each thickness unchanged and add the preceding layer's thickness for the cumulative bounds. No interpolation or deposition calculation is used. In export, both source arrays, sample ID, revision and units remain intact.</p>
+<p><a href={p+'contract.json'}>I/O contract</a> · <a href={p+'example-witness.json'}>Stored synthetic witness input</a> · <a href={p+'example-inspection.json'}>Output example with both original maps</a>. No verified downstream station consumes this exact schema yet.</p></section>
+<section class="panel" id="ds-evidence"><h3>Reference geometry and checks</h3>
+<div class="refs">
+<figure><img loading="lazy" src={p+'cabinet-view.webp'} alt="Original whole-instrument rendering showing left chamber with circular viewport and right control cabinet"/><figcaption><strong>Complete cabinet, original render.</strong> Compare the <a href={photograph}>Utah Nanofab installation photograph</a>, <a href={utah}>installed equipment record</a>, and <a href={brochure}>Denton 635/785 brochure, cover and exterior views</a>. Exterior lengths and details are photo estimates, not a copy of a fabrication drawing.</figcaption></figure>
+<figure><img loading="lazy" src={p+'carrier-view.webp'} alt="Original dry practice tray with an inert circular witness in a teal seat"/><figcaption><strong>Virtual inert tray, original render.</strong> This deliberate visual addition has no direct physical equivalent. Record-derived 203.2 mm nominal stage is not the fit limit. The separate <a href={uc}>UC San Diego Nano3 Discovery 635 record</a> lists another variant and is not used to set dimensions here.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Evidence</th><th>Value</th><th>Scope</th></tr></thead><tbody>
+<tr><td>Selected facility configuration</td><td>Utah Nanofab D635, equipment record serial 69469; four confocal heads, 25° from vertical; nominal Ø203.2 mm stage</td><td>Utah facility equipment record. Head angles influence silhouette only; heads are static.</td></tr>
+<tr><td>Overall 3D envelope</td><td>{stats.envelopeMm.join(' × ')} mm W×H×D</td><td>Original photo-proportioned visual dimensions, not OEM specifications. Rear panels are passive depiction.</td></tr>
+<tr><td>Inert tray interface</td><td>Ø154 mm fictive seat, aim for ≥2 mm radial clearance; modeled 155 mm translation and 86° cover swing</td><td>Unmeasured original interaction fixture, not OEM mechanism travel or a physical fit recommendation.</td></tr>
+<tr><td>Download budget</td><td>{stats.bytes} bytes; {stats.triangles} triangles; {stats.primitives} primitives</td><td>Metric GLB with named software actions, no immersive app claim.</td></tr>
+</tbody></table></div>
+<p><a href={p+'discovery635.glb'}>Metric GLB</a> · <a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'interaction.json'}>Named targets and fit anchors</a> · <a href={p+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+</section>
+</article></Layout>
+<script>import '../../../../lib/equipment/03-04/client.mjs';</script>
+<style>
+#d635{max-width:1260px;margin:auto}
+#d635 header{margin:1.37rem 0 1rem}#d635 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem;margin:.42rem 0}
+.tools button,.fields input{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled,.fields input:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.18rem}.fields label:last-child{grid-column:1/-1}
+#ds-viewer{height:365px;margin:.72rem 0;background:#293941}#ds-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#ds-plot{max-width:760px;width:100%;height:auto;display:block}#ds-result{font-weight:bold}
+#ds-status[data-error=true],#ds-fit[data-error=true]{border-left:4px solid #a56542;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#ds-viewer{height:305px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#ds-viewer{height:260px}.tools button,.fields input{min-height:44px}}
+</style>
