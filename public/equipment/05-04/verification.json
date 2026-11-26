@@ -1,0 +1,126 @@
+{
+  "deviceId": "05-04",
+  "scope": "Synthetic independent characteristic matrix and nominal model geometry, no physical or headset validation.",
+  "cases": [
+    {
+      "id": "bare Fresnel s",
+      "expected": -0.2,
+      "actual": -0.2,
+      "units": "amplitude",
+      "tolerance": 1e-10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "bare Fresnel p",
+      "expected": 0.2,
+      "actual": 0.2,
+      "units": "amplitude",
+      "tolerance": 1e-10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "bare Ψ",
+      "expected": 45,
+      "actual": 45,
+      "units": "degrees",
+      "tolerance": 1e-10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "bare Δ",
+      "expected": 180,
+      "actual": 180,
+      "units": "degrees",
+      "tolerance": 1e-10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reference thickness",
+      "expected": 123.4,
+      "actual": 123.39999995042275,
+      "units": "nm",
+      "tolerance": 0.02,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reference RMS",
+      "expected": 0,
+      "actual": 9.860005692600097e-8,
+      "units": "degrees",
+      "tolerance": 0.00001,
+      "outcome": "PASS"
+    },
+    {
+      "id": "observation count",
+      "expected": 81,
+      "actual": 81,
+      "units": "positions",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "single datum optical order",
+      "expected": 268.48093652001535,
+      "actual": 268.4809384266357,
+      "units": "nm",
+      "tolerance": 0.02,
+      "outcome": "PASS"
+    },
+    {
+      "id": "single datum ambiguity",
+      "expected": "multiple-orders",
+      "actual": "multiple-orders",
+      "units": "status",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "matched light path",
+      "expected": "flat",
+      "actual": "flat",
+      "units": "status",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "phase wrapping +1 from 359",
+      "expected": 2,
+      "actual": 2,
+      "units": "degrees",
+      "tolerance": 1e-10,
+      "outcome": "PASS"
+    },
+    {
+      "id": "angle mismatch",
+      "expected": "reject",
+      "actual": "Both incidence-angle indexes must match.",
+      "units": "",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "nominal envelope",
+      "expected": [
+        480,
+        300,
+        310
+      ],
+      "actual": [
+        479.99998927116394,
+        300.00001192092896,
+        310.5099946260452
+      ],
+      "units": "mm W/H/D",
+      "tolerance": 0.75,
+      "outcome": "PASS"
+    },
+    {
+      "id": "VR named controls",
+      "expected": true,
+      "actual": true,
+      "units": "metric glTF and stable actions",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    }
+  ]
+}
