@@ -1,5 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import RevisedEquipmentCallout from '../../../components/equipment/RevisedEquipmentCallout.astro';
+import {revisionById,revisedDevicePath} from '../../../data/equipment-revisions.js';
 import {equipment, zones, sources, evidence, base, report, zoneId} from '../../../data/equipment';
 import '../../../styles/equipment.css';
 const statuses = [...new Set(equipment.map(row => row.geometryStatus))].sort();
@@ -7,6 +9,7 @@ const statuses = [...new Set(equipment.map(row => row.geometryStatus))].sort();
 <Layout pageTitle="Laboratory equipment register" subtitle="" description="Browse the neural interface laboratory's equipment, modeling plans, verification fixtures and integration roadmap.">
   <div class="equipment">
     <nav class="eq-nav" aria-label="Equipment resources"><a href="/simulations/">Simulations</a><a href={base+'roadmap/'}>Ecosystem build plan →</a><a href={report}>Reference volume (PDF)</a><a href={base+'catalogue.json'} download>Download register (JSON)</a></nav>
+    <RevisedEquipmentCallout context="register" />
     <p class="eq-lede">Find an instrument, see what it should do to a sample, and inspect the evidence needed to build and test it.</p>
     <dl class="eq-totals">{[[equipment.length,'equipment records'],[zones.length,'research zones'],[Object.keys(sources).length,'source references']].map(([value,label])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
     <form id="equipment-filter" aria-label="Filter equipment" hidden>
@@ -24,7 +27,7 @@ const statuses = [...new Set(equipment.map(row => row.geometryStatus))].sort();
     {zones.map(zone=><section class="eq-zone" data-zone={zone.id}>
       <header><span class="eq-meta">Zone {zone.id}</span><h2>{zone.name}</h2></header>
       <ul>{equipment.filter(r=>zoneId(r)===zone.id).map(r=><li id={'equipment-'+r.id} class="eq-row" data-id={r.id} data-priority={r.priority} data-evidence={r.evidence} data-geometry={r.geometryStatus} data-terms={[r.id,r.name,r.model,r.purpose,zone.name].join(' ').toLowerCase()}>
-        <span class="eq-meta">{r.id}</span><div><a href={base+r.id+'/'}>{r.name}</a><span class="eq-model">{r.model}</span></div><span class="eq-grade" aria-label={r.priority+', evidence '+r.evidence}>{r.priority} · {r.evidence}</span>
+        <span class="eq-meta">{r.id}</span><div><a href={base+r.id+'/'}>{r.name}</a><span class="eq-model">{r.model}</span>{revisionById[r.id] && <a class="eq-revision-inline" href={revisedDevicePath(r.id)}>{revisionById[r.id].status==='ready'?'Revised preview →':'Revision details →'}</a>}</div><span class="eq-grade" aria-label={r.priority+', evidence '+r.evidence}>{r.priority} · {r.evidence}</span>
       </li>)}</ul>
     </section>)}
     <p id="no-equipment" hidden>No records match these filters. Clear a filter or try a model number.</p>
@@ -66,3 +69,4 @@ const statuses = [...new Set(equipment.map(row => row.geometryStatus))].sort();
   form.addEventListener('submit', e => {e.preventDefault(); filter();});
   filter();
 </script>
+<style>.eq-revision-inline{font-size:.84rem;line-height:1.3;margin-top:.26rem;display:inline-block;text-underline-offset:.14em}</style>

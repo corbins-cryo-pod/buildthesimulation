@@ -1,0 +1,31 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import {equipment,zones,base,zoneId} from '../../../../data/equipment';
+import {revisionBase,revisionById,revisionKinds,previewHref} from '../../../../data/equipment-revisions.js';
+import '../../../../styles/equipment.css';
+import '../../../../styles/equipment-revisions.css';
+export function getStaticPaths(){
+ return equipment.filter(r=>revisionById[r.id]).map(r=>({params:{id:r.id},props:{r, row:revisionById[r.id]}}));
+}
+const {r,row}=Astro.props;
+const zone=zones.find(z=>z.id===zoneId(r)),d=revisionKinds[row.kind],launcher=previewHref(row);
+---
+<Layout pageTitle={`${r.id} · ${r.name} · Revised preview`} subtitle="" compactHeader={true} description={row.scope}>
+ <article class="equipment eq-sheet rev-pilot">
+  <nav class="eq-nav" aria-label="Revised device navigation"><a href={revisionBase}>← Revised equipment library</a><a href={base+r.id+'/'}>Original equipment record</a><a href={base}>Equipment register</a></nav>
+  <header class="rev-heading"><p class="rev-cap">Record {r.id} · Zone {zone.id} · {zone.name}</p>
+   <h1>{r.name}</h1>
+   <p class="rev-model">Original register model: {r.model}</p>
+   <div class="rev-badges"><span class="rev-badge" data-kind={row.kind}>{d.label}</span><span class="rev-badge" data-ready={String(!!launcher)}>{launcher?'Ready to open':'Not yet available'}</span></div>
+   <p>{row.scope}</p>
+  </header>
+  <div class="rev-actions">
+   {launcher && <a class="rev-button primary" data-preview-launch href={launcher}>Launch revised preview →</a>}
+   {r.simulator && <a class="rev-button" href={r.simulator}>Open original simulator</a>}
+  </div>
+  {!launcher && <p class="rev-page-note">This revision is indexed, but its browser preview is not yet available here. The original equipment record remains available.</p>}
+  {launcher && <p class="rev-note">The preview opens on a full page so its 3D controls and, where supported, immersive modes can work. Use your browser’s Back button to return here.</p>}
+  <section aria-labelledby="revised-scope"><h2 id="revised-scope">What this preview represents</h2><p>{d.description}</p><p>Software checks and software headset emulation do not certify physical equipment, clinical use, a real procedure or operation on a physical headset.</p></section>
+  <section class="rev-snapshot" aria-labelledby="revised-evidence"><h2 id="revised-evidence">Evidence recorded for this revision</h2><ul>{row.evidence.map(s=><li>{s}</li>)}</ul></section>
+ </article>
+</Layout>

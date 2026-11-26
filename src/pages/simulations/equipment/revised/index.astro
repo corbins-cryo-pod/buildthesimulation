@@ -1,0 +1,70 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import {equipment,zones,base,zoneId} from '../../../../data/equipment';
+import {revisionKinds,revisionRows,readyRevisions,revisedDevicePath} from '../../../../data/equipment-revisions.js';
+import '../../../../styles/equipment.css';
+import '../../../../styles/equipment-revisions.css';
+const registered = Object.fromEntries(equipment.map(r=>[r.id,r]));
+const documentary=revisionRows.filter(r=>r.kind==='documentary').length;
+---
+<Layout pageTitle="Revised equipment library" subtitle="" compactHeader={true} description="Browse revised Crystal Palace equipment by record ID, model, zone and what the preview actually represents.">
+ <section class="equipment rev-pilot" aria-labelledby="revised-intro">
+  <nav class="eq-nav" aria-label="Catalogue navigation"><a href={base}>← Equipment register</a><a href="/simulations/">Simulations</a></nav>
+  <header class="rev-heading">
+   <p class="rev-cap">Crystal Palace laboratory · second pass</p>
+   <h1 id="revised-intro">Revised equipment library</h1>
+   <p>Search by record ID, model or lab zone. Each preview has its own scope, evidence and link. The original equipment records and simulators are still available.</p>
+  </header>
+  <form id="revision-filter" class="rev-filter" aria-label="Find revised equipment" hidden>
+   <label for="rev-q">Find a device <input type="search" id="rev-q" name="q" placeholder="ID, model, or function" autocomplete="off" /></label>
+   <label for="rev-zone">Equipment zone <select id="rev-zone" name="zone"><option value="">All zones</option>{zones.map(z=><option value={z.id}>{z.id} · {z.name}</option>)}</select></label>
+   <label for="rev-kind">Preview scope <select id="rev-kind" name="kind"><option value="">All scopes</option><option value="documentary">Documentary model</option><option value="virtual">Bounded virtual exercise</option></select></label>
+   <label for="rev-status">Availability <select id="rev-status" name="status"><option value="">All availability</option><option value="ready">Ready to open</option><option value="unavailable">Not yet available</option></select></label>
+   <button type="reset">Clear filters</button>
+  </form>
+  <dl class="rev-counts">
+   <div><dt>Reviewed records</dt><dd>{revisionRows.length}</dd></div>
+   <div><dt>Ready to open</dt><dd>{readyRevisions}</dd></div>
+   <div><dt>Documentary models</dt><dd>{documentary}</dd></div>
+   <div><dt>Bounded virtual exercises</dt><dd>{revisionRows.length-documentary}</dd></div>
+  </dl>
+  <p class="rev-note"><strong>Documentary:</strong> inspect the instrument's appearance; any separate exercise does not operate it. <strong>Bounded virtual:</strong> use the specific simulated exercise described. Neither label means a complete or physically validated simulator.</p>
+  <p id="revision-count" class="rev-statusline" role="status" aria-live="polite">{revisionRows.length} of {revisionRows.length} devices</p>
+  <p id="revision-empty" class="rev-note" hidden>No devices match. Try an exact equipment ID, or clear the filters.</p>
+  <ul class="rev-grid" id="revision-list" aria-label="Revised equipment">
+  {revisionRows.map(row=>{
+   const r=registered[row.id],zone=zones.find(z=>z.id===zoneId(r)),title=r.name,link=revisedDevicePath(row.id),ready=row.status==='ready';
+   return <li class="rev-card" data-revision={row.id} data-zone={zone.id} data-kind={row.kind} data-status={ready?'ready':'unavailable'} data-search={[row.id,title,r.model,zone.name,r.purpose,row.scope].join(' ')}>
+    <div class="rev-id"><span>{row.id}</span><span>Zone {zone.id}</span></div>
+    <h2><a href={link}>{title}</a></h2>
+    <p class="rev-model">{r.model}</p>
+    <div class="rev-badges"><span class="rev-badge" data-kind={row.kind}>{revisionKinds[row.kind].label}</span><span class="rev-badge" data-ready={String(ready)}>{ready?'Ready to open':'Not yet available'}</span></div>
+    <p class="rev-scope">{row.scope}</p>
+    <a class="rev-link" href={link} aria-label={`${ready?'Open revised preview':'See revision details'} for ${title}, record ${row.id}`}>{ready?'Open revised preview':'See revision details'} →</a>
+   </li>;
+  })}
+  </ul>
+ </section>
+</Layout>
+<script>
+const f=document.querySelector<HTMLFormElement>('#revision-filter')!;
+const rows=[...document.querySelectorAll<HTMLElement>('[data-revision]')];
+const keys=['q','zone','kind','status'];
+const control=(k:string)=>f.elements.namedItem(k) as HTMLInputElement|HTMLSelectElement;
+const normalize=(s:string)=>s.normalize('NFKD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+function apply(updateUrl:boolean){
+ const terms=normalize(control('q').value.trim()).split(/\s+/).filter(Boolean);
+ let shown=0;
+ for(const row of rows){
+  const match=terms.every(t=>/^\d{2}-\d{2}$/.test(t)?row.dataset.revision===t:normalize(row.dataset.search!).includes(t))&&keys.slice(1).every(k=>!control(k).value||control(k).value===row.dataset[k]);
+  row.hidden=!match;shown+=Number(match);
+ }
+ document.querySelector('#revision-count')!.textContent=shown+' of '+rows.length+' devices';
+ document.querySelector<HTMLElement>('#revision-empty')!.hidden=shown!==0;
+ if(updateUrl){const u=new URL(location.href);for(const k of keys){const v=control(k).value.trim();v?u.searchParams.set(k,v):u.searchParams.delete(k);}history.replaceState(null,'',u);}
+}
+function restore(){const p=new URL(location.href).searchParams;for(const k of keys){control(k).value=p.get(k)||'';if(control(k) instanceof HTMLSelectElement&&!control(k).value)control(k).value='';}apply(false);}
+restore();f.hidden=false;
+f.addEventListener('input',()=>apply(true));f.addEventListener('change',()=>apply(true));f.addEventListener('submit',e=>{e.preventDefault();apply(true);});f.addEventListener('reset',()=>setTimeout(()=>apply(true),0));
+window.addEventListener('popstate',restore);
+</script>

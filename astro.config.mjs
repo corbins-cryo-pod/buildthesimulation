@@ -1,12 +1,29 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import preact from "@astrojs/preact";
+import { fileURLToPath } from "node:url";
+import { unpack as unpackEquipmentRevisions } from "./scripts/unpack-equipment-revisions.mjs";
 import remarkCompanyBriefs from "./src/lib/remark-company-briefs.mjs";
+
+// Materialize pinned revision assets even for hosts invoking Astro directly.
+const equipmentRevisions = {
+  name: "equipment-revisions-payload",
+  hooks: {
+    /** @type {NonNullable<import('astro').AstroIntegration['hooks']['astro:config:setup']>} */
+    "astro:config:setup": async ({ config, command }) => {
+      if (command !== "dev" && command !== "build") return;
+      await unpackEquipmentRevisions(
+        fileURLToPath(new URL("payloads/equipment-revised/", config.root)),
+        fileURLToPath(new URL("equipment-revised/", config.publicDir)),
+      );
+    },
+  },
+};
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://buildthesimulation.com",
-  integrations: [preact()],
+  integrations: [preact(), equipmentRevisions],
   // Bump this version when the formatter changes to invalidate cached Markdown.
   markdown: { remarkPlugins: [[remarkCompanyBriefs, { version: 1 }]] },
   redirects: {

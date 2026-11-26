@@ -1,0 +1,15 @@
+---
+import {revisionBase, revisionRows, readyRevisions} from '../../data/equipment-revisions.js';
+const {context = 'simulations'} = Astro.props;
+---
+<section class="revision-callout" aria-labelledby={`revision-callout-${context}`}>
+ <div><p class="cap">Crystal Palace laboratory · equipment revisions</p>
+ <h2 id={`revision-callout-${context}`}>Revised equipment library</h2>
+ <p>Find {revisionRows.length} revised equipment records, from documentary 3D references to bounded virtual exercises.</p></div>
+ <div class="revision-cta"><a href={revisionBase}>Browse revised equipment →</a><small>{readyRevisions} ready to open</small></div>
+</section>
+<style>
+.revision-callout{display:flex;align-items:center;justify-content:space-between;gap:1.1rem 1.8rem;margin:1.4rem 0 1.8rem;padding:1rem 1.25rem;border:1px solid var(--border);border-top:3px solid var(--accent, var(--text));background:var(--panel);color:var(--text)}
+.revision-callout h2{margin:.28rem 0 .25rem!important;font-size:clamp(1.32rem,3.5vw,1.8rem);line-height:1.14!important}.revision-callout p{margin:.15rem 0!important;line-height:1.4!important}.revision-callout .cap{font:700 .72rem var(--font-label,Arial,sans-serif);letter-spacing:.095em;text-transform:uppercase;color:var(--muted)}.revision-cta{display:grid;gap:.32rem;flex:0 0 auto}.revision-cta a{border:1px solid var(--border);padding:.47rem .7rem;color:var(--text);text-decoration:none;font-weight:700;background:var(--bg)}.revision-cta a:is(:hover,:focus-visible){outline:2px solid var(--accent,var(--text));outline-offset:2px}.revision-cta small{color:var(--muted)}
+@media(max-width:620px){.revision-callout{align-items:start;flex-direction:column;padding:.9rem}}
+</style>

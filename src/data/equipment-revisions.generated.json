@@ -1,0 +1,2767 @@
+{
+  "schema": "bts.equipment-revisions.public.v1",
+  "records": [
+    {
+      "id": "01-01",
+      "kind": "virtual",
+      "scope": "Custom CAD workstation: passive DRC continuity, raster vs vector and verified GDSII export",
+      "evidence": [
+        "primary software docs and UI/reference crosswalk",
+        "actual moving input deck, CRT and encoder",
+        "desktop and emulated immersive controller",
+        "independent gdstk datums and tamper/truncation rejection"
+      ],
+      "status": "ready",
+      "entry": "Mask-Console-Design-Review.html",
+      "sha256": "5688ab5e0caf39ade444038edcdfb961408475434de1a8c876c974152f9aa6aa"
+    },
+    {
+      "id": "01-02",
+      "kind": "virtual",
+      "scope": "Custom station and inert material resistivity lesson with guarded electrical contacts",
+      "evidence": [
+        "primary scientific/manual crosswalk",
+        "actual opposed contact and guard movements",
+        "desktop and Quest emulator",
+        "passive independent Decimal/flux checks, convergence and export"
+      ],
+      "status": "ready",
+      "entry": "Multiphysics-Ohmic-Slab.html",
+      "sha256": "132b56dd3356e9b999d36585142cfee23bf461e7b3fae9b11d7d5955852b7758"
+    },
+    {
+      "id": "01-03",
+      "kind": "virtual",
+      "scope": "Passive original workstation/volume-queue and synthetic memory/thermal exercise",
+      "evidence": [
+        "exact HMM/photo and card datasheet",
+        "real captive panel, latch and fan motion",
+        "desktop and Quest 3 immersive software emulator",
+        "independent exact memory/energy balance and typed handoff"
+      ],
+      "status": "ready",
+      "entry": "ThinkStation-P7-Volume-Queue.html",
+      "sha256": "fe9dfdfab704a01e4ac422f032997c4902a95fe7c20922ebdeccde3df42550a4"
+    },
+    {
+      "id": "01-04",
+      "kind": "virtual",
+      "scope": "Synthetic orthogonal tile review and tracing; no biological data or remote service",
+      "evidence": [
+        "primary annotation and viewport reference",
+        "working physical deck/trackball/dial and authored desk",
+        "desktop actual deck plus Quest 3 immersive software emulator",
+        "native/coarse coordinate/cell tests, schemas and tamper refusals"
+      ],
+      "status": "ready",
+      "entry": "Connectomics-Orthogonal-Review.html",
+      "sha256": "2db36e98e6c2267bdeeb3f9cd5b85ea8a7b629b9b83144f0be5150b45d6f529c"
+    },
+    {
+      "id": "01-05",
+      "kind": "virtual",
+      "scope": "Authored workstation for synthetic passive signal review and alignment",
+      "evidence": [
+        "primary software guides and source plot illustration",
+        "actual movable controls and dual displays",
+        "desktop and stereo Quest emulator",
+        "known event labels preserved, stable absolute samples, typed export and tamper refusal"
+      ],
+      "status": "ready",
+      "entry": "Synthetic-Signal-Review.html",
+      "sha256": "5cb22ee6b927c73ee61015b0962c35e9e612f5ad2887b034769c44169140fc34"
+    },
+    {
+      "id": "01-06",
+      "kind": "virtual",
+      "scope": "Custom dry rack and local synthetic artifact integrity, no networks or hardware commands",
+      "evidence": [
+        "primary mechanical component guides, custom platform labeled",
+        "authored door/caddy/nested motion with world-transform check",
+        "desktop and actual Quest software ray tracking",
+        "independent blind digest/byte and guarded replay"
+      ],
+      "status": "ready",
+      "entry": "Archive-Rack-Integrity.html",
+      "sha256": "de0775d885c8177d9911560f01a5ff2b2e7c543abf8c4bdc5d1dce214c28b287"
+    },
+    {
+      "id": "01-07",
+      "kind": "virtual",
+      "scope": "Original drafting bench with passive exact dimensions and geometric export",
+      "evidence": [
+        "actual catalog photo crosswalk, clearly original model",
+        "verified pinned world motion and real scales",
+        "desktop and actual Quest 3 software rays",
+        "1:1 SVG/JSON checked and pass into 01-06"
+      ],
+      "status": "ready",
+      "entry": "Drafting-Scale-Relay.html",
+      "sha256": "0317f1cf9a7b3a874df819b696fa120c2a446406b37b88c474b5e7ce136112dc"
+    },
+    {
+      "id": "02-01",
+      "kind": "virtual",
+      "scope": "inert mask setup, registration, guarded exposure and export",
+      "evidence": [
+        "manual/photo",
+        "movable operator assemblies",
+        "desktop and immersive software Quest controller",
+        "independent registration/dose reference"
+      ],
+      "status": "ready",
+      "entry": "MA6-Gen4-Rehearsal.html",
+      "sha256": "1bdc5e55e701a4e53fadee000827724428a2993ee66467214f01e54058c9f335"
+    },
+    {
+      "id": "02-02",
+      "kind": "virtual",
+      "scope": "manual fiducial alignment",
+      "evidence": [
+        "handbook and photo crosswalk",
+        "Blender travel and return",
+        "desktop 3D ray and export"
+      ],
+      "status": "ready",
+      "entry": "MJB3-Manual-Registration.html",
+      "sha256": "b8240b10dd2352275ae8e2102a3fef27efd1c6b186ed3e5d4534b5e0956584e6"
+    },
+    {
+      "id": "02-03",
+      "kind": "virtual",
+      "scope": "Small inert-substrate load, placement-aid interlock and modeled exposure",
+      "evidence": [
+        "manufacturer guide and fact sheet",
+        "Blender and GLB motion",
+        "desktop and synthetic ray path",
+        "phase seam and export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "de17d05aa870a7261dd6e45efa5801558a59fb59bae08d96c922c6a1496184a3"
+    },
+    {
+      "id": "02-04",
+      "kind": "virtual",
+      "scope": "Dry-only registration rehearsal with guarded carriage; not laser exposure",
+      "evidence": [
+        "exact NIST photo, sample datum and Cornell qualified closed-door motion",
+        "moving actual GLB door and carriage",
+        "desktop actual handler, parsed valid/tampered export and software XR controller",
+        "independent affine and dimensional checks"
+      ],
+      "status": "ready",
+      "entry": "DWL-2000-Dry-Registration.html",
+      "sha256": "6b19890b1271a38999c4cf57fd825c14545e8059c3b85c61cd0f904f52eb17e4"
+    },
+    {
+      "id": "02-05",
+      "kind": "virtual",
+      "scope": "Inert external carrier and geometric plane observation only; added stand needs in-room clearance confirmation",
+      "evidence": [
+        "exact UPenn SOP/photo and holder specification",
+        "actual rail/hinge/clip movement and stable room anchor",
+        "desktop full rehearsal and XR emulator partial",
+        "inert tilt measurement, carrier and guard QA"
+      ],
+      "status": "ready",
+      "entry": "EBPG5200-Dry-Carrier.html",
+      "sha256": "bf922cf203d4d137d5f622b314655050942a08e0addd56e14e2c3c256bb7114f"
+    },
+    {
+      "id": "02-06",
+      "kind": "virtual",
+      "scope": "Dry reticle/witness field registration, no source or irradiation",
+      "evidence": [
+        "exact NIST photos, annotated drawing and ASML variant record",
+        "physical assemblies and measured field travel, stable room anchor",
+        "desktop full rehearsal, Quest 3 soft emulator partial",
+        "5:1 datum checks and authored edge-field refusal"
+      ],
+      "status": "ready",
+      "entry": "PAS5500-Dry-Field-Witness.html",
+      "sha256": "8bc974fc593cef24fcdd3f24c8376e363cd2bce78ea0b9f2a5e3a113e2a83cc1"
+    },
+    {
+      "id": "02-07",
+      "kind": "virtual",
+      "scope": "manual bonnet/load/interlocks and coating operation",
+      "evidence": [
+        "manual and photo crosswalk",
+        "Blender bonnet and 199-module substitute",
+        "desktop model rays and export",
+        "software controller-ray path"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "7a34c7e9c657107efa917f4ebadf78805ab2bf445f6a0af7229a828d075bcdfe"
+    },
+    {
+      "id": "02-08",
+      "kind": "virtual",
+      "scope": "inert combination coat/transfer/bake rehearsal",
+      "evidence": [
+        "manual/photo",
+        "both lids, chuck and thermal stage",
+        "browser model pointer and synthetic XR rays",
+        "199-library room module substitution"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "93303f5aa2b4e38d5a039146b207eca96788448ca90ac4400a2dfad3fb9cb278"
+    },
+    {
+      "id": "02-09",
+      "kind": "virtual",
+      "scope": "Dry-only latch, cassette and inert coupon handling; compatible input to thermal bench",
+      "evidence": [
+        "primary photos and operator-manual references",
+        "Blender motion and unchanged room placement",
+        "browser pointer and synthetic controller rays",
+        "100mm inert coupon accepted into 02-08 flow"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "e646d90245606f7a2711bceb67859617b46c398c9403bb3a325d0261364e5075"
+    },
+    {
+      "id": "02-10",
+      "kind": "virtual",
+      "scope": "Dry cassette and fork handling, accepted inert registered wafer; exact model handbook not available",
+      "evidence": [
+        "manufacturer/facility photographs and exact equipment material; manual gap stays open",
+        "moving physical latch and cassette chuck",
+        "desktop browser true ray and synthetic controller select",
+        "02-01 handoff kept all 6400 cells and source hash",
+        "199-instance disposable room swap"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "93c7543bf5315ca1ab8a88c4005f28b9e3911aae74b369ffa0fe6832721edb53"
+    },
+    {
+      "id": "02-11",
+      "kind": "virtual",
+      "scope": "Dry guarded cassette/slot transfer of inert wafers",
+      "evidence": [
+        "same-model SUSS and EPFL operator sources",
+        "named moving rig and stable Blender placement",
+        "196 virtual swept segments and collision refusal",
+        "desktop full run and emulated Quest first pickup"
+      ],
+      "status": "ready",
+      "entry": "ACS200-Guarded-Dry-Transfer.html",
+      "sha256": "188c4c1cdd5df526c7d1412d79ed0965f877a1859c2f86f30fb9bc27ac358e21"
+    },
+    {
+      "id": "02-12",
+      "kind": "virtual",
+      "scope": "Inert reflected-light grating, two objectives, calibrated focus and stage motion",
+      "evidence": [
+        "manufacturer drawing and Stanford operating photos",
+        "Blender detents and focus clearances",
+        "desktop browser and emulated controller rays",
+        "40.000 µm consistently at both magnifications"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "bba945e6226e60e28e8821eca87271ebc8b9f6b6f081bf8e801fd99630b69f2a"
+    },
+    {
+      "id": "03-01",
+      "kind": "virtual",
+      "scope": "Dry guarded passive holder and geometry inspection only",
+      "evidence": [
+        "exact photo and institution manual, documented family carrier",
+        "real 3D actuated cover and tray, 199-device room-compatible swap",
+        "desktop pointer and synthetic controller selection",
+        "analytic upper cavity proxy/clearance, receipt verified"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9de24f668835d02e7b566f5ecbed821589e8fd830eb0c9c53df8654d3ab302bb"
+    },
+    {
+      "id": "03-02",
+      "kind": "virtual",
+      "scope": "Dry ordered lift/yaw and removable fixture clearance proxy",
+      "evidence": [
+        "exact institution photo and SOP with manual drawings",
+        "derived moving hoist and nominal profile/headroom tests",
+        "browser actual 3D ray and synthetic controller selection",
+        "room drop-in 199 reopened"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "3f18dac2f80b6a548789c1b44d8249da6f24951c4e138f3ec635533c9398e9c6"
+    },
+    {
+      "id": "03-03",
+      "kind": "virtual",
+      "scope": "Passive dry holder and clearance; exact WashU interior unverified, same-family surrogate with evidence gap",
+      "evidence": [
+        "exact WashU exterior, manufacturer manual and Duke/TAMU family references; wrong linked SOP excluded",
+        "actual rotating/withdrawn dry holder and verified static linked-room envelope",
+        "browser screen and handle rays, synthetic select and export",
+        "29 state/analytic/mesh checks; accepts 03-02 dry article safely"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "48bc167428c29973a882a9a5a4b458c4a0864ff5bed0bc6badf90f8454526a14"
+    },
+    {
+      "id": "03-04",
+      "kind": "virtual",
+      "scope": "Dry load-lock/rail and linked passive inspection only; updated dimensions need placement and door clearance",
+      "evidence": [
+        "exact installed serial photograph, arrangement and manual",
+        "working authentic hinge/dry fork/pallet motion",
+        "desktop and synthetic controller-select, not immersive",
+        "33 analytic/guard checks and typed 03-03 handoff"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "842f7aaa6d8041d80520a0020c98fa10f3deb5776686d499a0a903d4412b85d8"
+    },
+    {
+      "id": "03-05",
+      "kind": "documentary",
+      "scope": "Exact legacy configuration; inert external gauge and lid/cage inspection only",
+      "evidence": [
+        "same-model site photo and original OEM manual photos",
+        "moving removable cage and twin hinge, linked room names",
+        "desktop 3D rays and synthetic XR callback",
+        "known fit margins and exact previous portable receipt lineage"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "de519f9499d83ab55c2092e1f86d5736b2c76440b1a0edbf344f62ba938c8760"
+    },
+    {
+      "id": "03-06",
+      "kind": "documentary",
+      "scope": "Sealed documentary exact cabinet; independently articulated detached teaching gauge only; no real instrument operation",
+      "evidence": [
+        "exact version photos and family distinctions",
+        "fixed cabinet plus detached interactive 3D gauge",
+        "desktop and synthetic controller-select",
+        "inert typed geometry transfer and 199-link compatible cabinet"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "82a0e01100763d6ffc4eb93caac7fe861a0a1f2c2a3bcbd15ed685197a3aa523"
+    },
+    {
+      "id": "03-07",
+      "kind": "documentary",
+      "scope": "Documentary empty-head viewing movement and detached inert gauge (not an actual process simulator)",
+      "evidence": [
+        "exact installed image and Oxford enclosure drawing",
+        "separate head viewing motion, no process states",
+        "desktop pointer and synthetic XR input",
+        "typed receipt dry handoff and 199 linked compatibility only"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "db6d824c7cf4b6cb744674377e78756cf35a54cc6a04e548b8b3790210156c64"
+    },
+    {
+      "id": "03-08",
+      "kind": "documentary",
+      "scope": "Documentary fixed empty rack and separately measured inert witness, no chamber loading or processing",
+      "evidence": [
+        "exact manufacturer photos and institutional manual",
+        "3D lid and detached gauge motion",
+        "browser and synthetic XR controls",
+        "rest linked compatibility and independent geometry cases"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "4092da43fa8aba49dded076a0ef3bcb36e602dcdbced1024aa17f24793d38012"
+    },
+    {
+      "id": "03-09",
+      "kind": "documentary",
+      "scope": "Documentary cold opening and detached dry geometry-only gauge, no process tube installed",
+      "evidence": [
+        "exact OEM open/closed imagery and outline drawing",
+        "animated latch and lid, separated fixed bench",
+        "desktop real rays and synthetic WebXR callback",
+        "positive/zero/blocked geometry analytics and relative room swap"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "947cccebf45b6f775e969d7acff57cfae7fe2dc8fe071286c67b6717e727a59f"
+    },
+    {
+      "id": "03-10",
+      "kind": "documentary",
+      "scope": "Documentary cold rollback door and separate virtual shelf-fit gauge; no heating",
+      "evidence": [
+        "exact equipment photos and OEM drawing",
+        "authored constraint tested over 201 poses",
+        "desktop and synthetic controller-select",
+        "33 geometry and acceptance checks, linked envelope only"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "b3eeff3c6d7efb4e33254d2f2904e43253ae195955b554c21357549d8e0c45b4"
+    },
+    {
+      "id": "03-11",
+      "kind": "documentary",
+      "scope": "Cold documentary tray motion plus detached dry proxy; no heat or process",
+      "evidence": [
+        "exact NIST photo and OEM dimension/door and tray drawing",
+        "independent verified Blender world co-translation",
+        "real Chromium rays and synthetic XR handler",
+        "typed static dry fits and anchor-linked disposable room"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "6bb8173630c4625e7d9fa5a7dd584793ebad589d56a7debeba9027975e3d3edf"
+    },
+    {
+      "id": "03-12",
+      "kind": "documentary",
+      "scope": "Fixed sealed documentary cabinet and detached passive radius/footprint board; no actual process",
+      "evidence": [
+        "exact model sheet/photo distinction from 115 V family",
+        "verified all fixed/frozen cabinet, separate board movements in reopened native",
+        "actual browser desktop/mobile and synthetic controller",
+        "typed passive geometry and 199-link swap"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "b63f36c21e1dea558a7b8bded4bc64a70bb38514c773523887a767706b9bb07e"
+    },
+    {
+      "id": "04-01",
+      "kind": "documentary",
+      "scope": "Documentary passive opening and separate dry geometry comparator; no powered tool operation",
+      "evidence": [
+        "exact model photo/manual/drawings",
+        "reopened real native world hoist endpoints",
+        "actual desktop/mobile browser and synthetic XR handler",
+        "positive/interference/tangent fit and relative room link"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "ce8d3e213e1418ce401a54809460c030d8df29474e20d3abc2fb5c0828831604"
+    },
+    {
+      "id": "04-02",
+      "kind": "documentary",
+      "scope": "Exact ICP180 documentary cooler outer cover and disconnected dry gauge; no process or actuation",
+      "evidence": [
+        "exact installation photo and item mechanical source",
+        "native actual world cover/fixture movement and fixed case",
+        "desktop and synthetic controller rays",
+        "known positive/negative/tangent geometry and stable relative room link"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "2177e25d351c72a6e4d8106085bce5fc0932369faf161e0a4b5f288630ab2db1"
+    },
+    {
+      "id": "04-03",
+      "kind": "documentary",
+      "scope": "Cold sealed documentary tower with external cover preview and detached geometry-only comparator",
+      "evidence": [
+        "exact UCSD source photo and model technical manual",
+        "real world native action and fixed tower/rack",
+        "interactive desktop ray and synthetic controller",
+        "independent pair fit and stable baseline anchor"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9a3e5d33878560e7b750e43ca77e5c28b5bccb67b02d7a4cf0b70f63df33da4a"
+    },
+    {
+      "id": "04-04",
+      "kind": "documentary",
+      "scope": "Sealed static exact-style cabinet and physically separate dry spatial witness",
+      "evidence": [
+        "manufacturer exact variant catalogue and installed alternate comparison",
+        "actual Blender fixed geometry and independent solid-wall rays",
+        "browser desktop/mobile real picks and synthetic controller input",
+        "independent clearance, exactly zero and interference cases"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "301d0bebca3eecf774ec9e725ba5b4aa3169f13da110c192a2020ccd047ea88a"
+    },
+    {
+      "id": "04-05",
+      "kind": "documentary",
+      "scope": "Sealed static documented tabletop configuration and separate passive ground footprint board",
+      "evidence": [
+        "exact selected pictured manufacturer model",
+        "fixed actual native poses, independently moving inert chart geometry",
+        "desktop/mobile actual mesh clicks and synthetic controller",
+        "typed footprint area and positive/negative rotation, linked cabinet no attached chart"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "e6f7577604beafad17b99991c0c441ab359ee3a5bd79587be82bac8ac49aee8a"
+    },
+    {
+      "id": "04-06",
+      "kind": "documentary",
+      "scope": "Custom unverified-documentary wet bench and fully detached dry inert aperture comparisons",
+      "evidence": [
+        "exact authored inventory and acknowledged analogous OEM images",
+        "reopened fixed shell and separate actual synthetic pose",
+        "desktop/mobile real ray and software select",
+        "13 independent shape checks and authoritative relative anchor"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "bebccefe3f1108033119e872afad42d76d810c977060ead529651b8ca27744bc"
+    },
+    {
+      "id": "04-07",
+      "kind": "documentary",
+      "scope": "Exact sealed documentary case separate inert grid and realistic point marking only",
+      "evidence": [
+        "exact pictured variant and nominal OEM/institutional references",
+        "reopened native case invariance and independently measured detached points",
+        "desktop and synthetic controller actual select rays",
+        "independent 1,638 point pairs and typed legacy geometry"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9fb3920a5fefc7dafda9a3a72ffb35fb3acc3046eaa711b9825b9541310a2cda"
+    },
+    {
+      "id": "04-08",
+      "kind": "documentary",
+      "scope": "Sealed stationary documentary exact cabinet plus detached passive ruler demonstration",
+      "evidence": [
+        "primary exact manufacturer/institutional photos and size",
+        "actual reopened world invariant and measured separate series length",
+        "desktop/mobile real ray and synthetic callback",
+        "independent 601 calibration positions and typed retains legacy"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "839d4c27b843096b2ed306b46da7afc905892de418188d573d2409e5de48c390"
+    },
+    {
+      "id": "04-09",
+      "kind": "documentary",
+      "scope": "Sealed exact-style documentary silhouette and completely detached inert radial chart",
+      "evidence": [
+        "exact primary reference variant and nominal metric",
+        "native fixed shell, complete anchor and independent geometry",
+        "desktop/mobile mesh input and synthetic selected ray",
+        "independent signed radial marks and typed prior evidence untouched"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "e7c13d7221fd8de97fc2ad6409ae0286d39e5318c1086c07ad6b081d725d90d1"
+    },
+    {
+      "id": "04-10",
+      "kind": "documentary",
+      "scope": "Source-backed candidate sealed enclosure without serial claim, separate inert printed charts",
+      "evidence": [
+        "manufacturer exact primary and installed photos",
+        "complete exact anchor and native actual fixed world",
+        "interactive browser both sizes and synthetic controller callback",
+        "independent printed width/null and typed archives"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "b2d6462b440973b2ccb8c480d945a7c935a33f4b9147208da68c3b7339e005ca"
+    },
+    {
+      "id": "04-11",
+      "kind": "documentary",
+      "scope": "Inactive fixed documentary GX enclosure and separate art geometry only",
+      "evidence": [
+        "exact OEM compatible stand photo and specification",
+        "world-native closed stance and true unobstructed shelf, kit correctly linked",
+        "desk and mobile actual picks, synthetic controller",
+        "analytic circle and held-out independent D point with typed provenance"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "bdc1322ddf186eab7ad37e8daf6d5a6cea99ca5316e7b5df9a0bb66e4ade933b"
+    },
+    {
+      "id": "04-12",
+      "kind": "documentary",
+      "scope": "Permanent inactive documentary chamber/console and unrelated inert square overlay",
+      "evidence": [
+        "actual selected installation photo/manual",
+        "native actual detached arcs and stable complete anchored case",
+        "desktop and synthetic controller/browser 390px",
+        "independent elemental overlap/exclusion and typed report"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "7e4b6681aa603138def606732fa0f132e66da1d2c822f3849566ef6dece0191d"
+    },
+    {
+      "id": "05-01",
+      "kind": "virtual",
+      "scope": "inert witness scan",
+      "evidence": [
+        "handbook and photo crosswalk",
+        "Blender rig and documented travel",
+        "desktop ray, heights and exports"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9982be6059588ef909c0cffc9052d6f826188c80b3697c1240e6c6b8876497dd"
+    },
+    {
+      "id": "05-02",
+      "kind": "virtual",
+      "scope": "Guarded interferometry fringe setup, backscan, resolved/partial synthetic step map",
+      "evidence": [
+        "instrument photo and exact handbook",
+        "moving focus/tilt/fine scanner, fixed body",
+        "desktop and Quest 3 immersive software emulator",
+        "5.000 µm step and explicit short-window partial map"
+      ],
+      "status": "ready",
+      "entry": "ContourGT-K-Interactive.html",
+      "sha256": "ff0d6b8f559c08e0ed1b28843959f58506ee72330b8fa21f1fe8c2022fdbb446"
+    },
+    {
+      "id": "05-03",
+      "kind": "virtual",
+      "scope": "Manual AFM setup, guarded probe approach and ideal tip convolution on inert ridge",
+      "evidence": [
+        "Bruker manual and university photographs",
+        "independent rig and actual moving optics and chuck",
+        "desktop and Quest 3 immersive emulator",
+        "synthetic 4 nm-height ridge and two distinct tip convolution widths"
+      ],
+      "status": "ready",
+      "entry": "Dimension-Icon-Interactive.html",
+      "sha256": "e19e35fba050ce29e310961bb0a1ef286e0b14205c744b78ec68e79b5260fc37"
+    },
+    {
+      "id": "05-04",
+      "kind": "virtual",
+      "scope": "Indexed angle rehearsal, automatic Z alignment, synthetic fit and ambiguous control case",
+      "evidence": [
+        "primary manual and station photo",
+        "Blender and metric GLB moving Z, vacuum and indexers",
+        "desktop and Quest 3 emulator via actual trigger ray",
+        "123.40 nm fit and single-wavelength ambiguity refusal"
+      ],
+      "status": "ready",
+      "entry": "alpha-SE-Interactive.html",
+      "sha256": "ae00b939ecdc69f93897bececcddb7799fa7a9ee662b22d6b1e631a2285d7797"
+    },
+    {
+      "id": "05-05",
+      "kind": "virtual",
+      "scope": "manual sample/reference/background sequence",
+      "evidence": [
+        "manual and photo crosswalk",
+        "moving stage/optics and stationary body",
+        "desktop operation",
+        "software Quest 3 immersive test"
+      ],
+      "status": "ready",
+      "entry": "Filmetrics-F40-Interactive.html",
+      "sha256": "0592561e7a49755ed1cd201cad747d4dd9e3666b3fd5cb1db94c6c9259db71be"
+    },
+    {
+      "id": "05-06",
+      "kind": "virtual",
+      "scope": "Synthetic passive ring recipe and independent sheet resistance validation",
+      "evidence": [
+        "model 178 photo, family handbook and probe reference",
+        "actual Blender/GLB chuck two axes and a radial probe arm",
+        "browser synthetic controller rays and exports",
+        "100 ohms per square, independent analytic and NBS cases"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "f515c353d10f0e2a18ed1118ddc7e0d29fb95180b2451066de461e7ccc9ee048"
+    },
+    {
+      "id": "05-07",
+      "kind": "virtual",
+      "scope": "Manual loading and passive probe/resistor measurement with contact guards",
+      "evidence": [
+        "family photo and factory guide",
+        "moving rollout, separate platen and probe drives",
+        "desktop 3D workflow",
+        "analytic resistor, limit, open cases and 09-03 typed input"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "cf269c81316875266b7b8fdd3dbf3646a0f8d65c8e73d950569f0e2b10d4baa7"
+    },
+    {
+      "id": "05-08",
+      "kind": "virtual",
+      "scope": "Manual virtual pendant-to-coupon placement and contact-angle image fit",
+      "evidence": [
+        "manufacturer exact model photo/data and family guide with accessory caveat",
+        "corrected optical depth; working carriage/plunger and stage",
+        "actual browser control, export and synthetic controller rays",
+        "90° recovered within 0.004°, independent 60°/120°"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "4612518ec50e1f4f58d8f79d7b8e6d92817742577df6ee903dc29b8eaea54a60"
+    },
+    {
+      "id": "05-09",
+      "kind": "virtual",
+      "scope": "Dry holder and measured licensed data from different hardware, separately identified synthetic control",
+      "evidence": [
+        "exact unit photos and facility SOP",
+        "moving cap, fork and seat; guarded handoff",
+        "desktop and immersive emulator, mobile",
+        "authentic VAMAS replay labeled Kratos and independent synthetic cases"
+      ],
+      "status": "ready",
+      "entry": "PHI-VersaProbe-II-Interactive.html",
+      "sha256": "d3e06f4f42d482c3dcb26afb162f08a57b67a2de33748d8d93fb47ec9ddb3fed"
+    },
+    {
+      "id": "05-10",
+      "kind": "virtual",
+      "scope": "Synthetic standard and grating-bound calibration, guarded Raman map",
+      "evidence": [
+        "HORIBA manual and manufacturer/facility photos",
+        "actual carrier XY/fine Z, indexed optics and guarded shutter",
+        "desktop and immersive Quest emulator",
+        "synthetic map peaks and stale-calibration refusal"
+      ],
+      "status": "ready",
+      "entry": "LabRAM-HR-Evolution-Interactive.html",
+      "sha256": "4b7248af9184bf12fc0f55a49f7ef30072e6cf4666d95923b9a72f48a8374adf"
+    },
+    {
+      "id": "05-11",
+      "kind": "virtual",
+      "scope": "Inert ATR setup and independently checked spectral acquisition/FFT",
+      "evidence": [
+        "exact Thermo Fisher manual and installed photos",
+        "independently moving screw, swivel and removable plate",
+        "desktop model rays, simulated controller and exports",
+        "909 spectral rows and independent reference-tone amplitude"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "1a23ef01dd255bce4c90215871f702cf40bb0bb5d9dd2a01ceeecc6ba491ebbf"
+    },
+    {
+      "id": "05-12",
+      "kind": "virtual",
+      "scope": "Synthetic standard and safe θ–2θ diffraction comparison",
+      "evidence": [
+        "exact university variant/photos and specs; exact SOP gap recorded",
+        "independent moving axes/tracks and datum checks",
+        "desktop and emulated Quest",
+        "known peak center and broadening cases"
+      ],
+      "status": "ready",
+      "entry": "Rigaku-DMax-B-Interactive.html",
+      "sha256": "7b9837c789b51c8295c0a1f7967e5fc147a199f59ea259babc64dae241e9d981"
+    },
+    {
+      "id": "06-01",
+      "kind": "documentary",
+      "scope": "Sealed documentary enclosure (author proxy envelope) and disconnected synthetic pixel art only",
+      "evidence": [
+        "actual manufacturer and facility photo, older scale explicitly proxy",
+        "native achieved fixed room collection and separate geometry scene",
+        "desktop/mobile and synthetic input",
+        "independent sampled separation and typed archives"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "d3f2e57593080308b75d14cf9cb8053dd69ff33a8d86dee4b85ad9247428583b"
+    },
+    {
+      "id": "06-02",
+      "kind": "documentary",
+      "scope": "Inert static documented cabinet plus independent rotating abstract protractor only",
+      "evidence": [
+        "exact OEM and primary installation photo/model",
+        "actual Blender motion and exact linked room anchor",
+        "desktop/mobile and synthetic ray callback",
+        "independent 721 angular cases and typed output with stable lineage"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9b2509bbaa764c60de4bf2ae2d64b3669410128c0041e40c91a5dd202308eb3a"
+    },
+    {
+      "id": "06-03",
+      "kind": "documentary",
+      "scope": "Sealed static exact documented case with independent inert vector illustration",
+      "evidence": [
+        "actual authoritative source and primary current images",
+        "native exact nominal case dimensions and paired stable placement",
+        "browser actual picks, mobile and synthetic controller callback",
+        "independent 5/12/13 abstract endpoints, typed reports"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "a4d627201b1f220afa30cac6b92cae9d5c28d60b22822c4dcff5de5c7322bfee"
+    },
+    {
+      "id": "06-04",
+      "kind": "documentary",
+      "scope": "Inert sealed exact cabinet and completely separate original lattice geometry",
+      "evidence": [
+        "actual OEM front, rear and dimensional drawings",
+        "reopened stable room anchor, cabinet static and true shape meshes",
+        "desktop and synthetic XR callback",
+        "independent signed area by two methods and typed export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "17baeb1cb2c2675f3ab05ad75c4456131ca90eb3b0c39ed8019361166dedfbb3"
+    },
+    {
+      "id": "06-05",
+      "kind": "documentary",
+      "scope": "Exact sealed legacy-style cabinet and disconnected original centroid display only",
+      "evidence": [
+        "primary OEM exact photo/generation and conflicting revisions separated",
+        "reopened native geometry with stable collection and exact anchor",
+        "desktop/mobile rays and software XR callback",
+        "independent mathematical centroid and stable typed raw data"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "c7a42e527f5c5cac8422130bee757ff45bce4297f8af79b03f5048d75e21c6fd"
+    },
+    {
+      "id": "06-06",
+      "kind": "documentary",
+      "scope": "Sealed Elmarco NS LAB standalone cabinet documentary and unrelated decorative counting art",
+      "evidence": [
+        "Three OEM visual references; verified 1295×1045×2053 mm native enclosure",
+        "Independent 3:1 and 1:1 art ratios and nine poses; offline desktop/mobile ray picks and exports",
+        "Disposable exact 199-device relink with zero matrix delta; synthetic XR callback only"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "8837ca70bd4466586f696e09a9d95b223d5c534cf422a2b2d564e00750cd314c"
+    },
+    {
+      "id": "06-07",
+      "kind": "documentary",
+      "scope": "Sealed Fluigent MFCS-EZ documentary enclosure and detached hinged art triangle",
+      "evidence": [
+        "Inspected exact OEM exterior and manual p.9 front and rear then actual opaque ray checks",
+        "Reopened native geometry and 199-device disposable bench relink",
+        "Independent signed projections, true area, 15 real browser vertices and typed exports; synthetic XR callback only"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "0cffa1faecf621d5a7cd8be47d71cfad985e7919e0eb91bc57b1858c1527bad7"
+    },
+    {
+      "id": "06-08",
+      "kind": "documentary",
+      "scope": "Closed Fluigent LineUP Flow EZ documentary console and detached unrelated ellipse mosaic",
+      "evidence": [
+        "Inspected two OEM photos, datasheet p.2, manual p.2 and five actual opaque rays",
+        "Exact native size and 199-device disposable room relink; nine Blender poses",
+        "Independent area and actual browser vertices; desktop, mobile and schemas; synthetic XR callback only"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "84b351385df7c134db8b863900e87b3168f6d8f349ba13decfaa4c06894778f5"
+    },
+    {
+      "id": "06-09",
+      "kind": "documentary",
+      "scope": "New Era NE-1000 exact Rev A bare folded case only and unrelated margin artwork",
+      "evidence": [
+        "Exact OEM four-view CAD sheet and two inspected photos",
+        "60 reopened native frames, 2,640 clearance pairs and two GLB reimports",
+        "Independent signed margins and actual browser transforms, typed export, 390 px and software XR",
+        "Loaded software XR timing regression was fixed with real elapsed interpolation; reran real browser motion, software XR ray and mobile successfully."
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "a1c05d6ccc4298c5eccff73ee1a7fe746002e22229432f5ce083a514406104bf"
+    },
+    {
+      "id": "06-10",
+      "kind": "documentary",
+      "scope": "Custom dry sealed table documentary exterior from existing design source and unrelated art tile",
+      "evidence": [
+        "Checked exact original files and renderings; nominal 1524×762×914.4 mm",
+        "23 actual native checks across 182 poses and exact 106-mesh external relink",
+        "Actual offline desktop/mobile, typed JSON, independent signed margins and software Quest rays"
+      ],
+      "status": "ready",
+      "entry": "Custom-Dry-Table-06-10.html",
+      "sha256": "40bc4f9ba795267145b0b360119349c9db1f47e87768aa20c67142f12f955993"
+    },
+    {
+      "id": "06-11",
+      "kind": "documentary",
+      "scope": "Sealed Jeio Tech OF-12G documentary solid-door façade and independent projection board",
+      "evidence": [
+        "Exact legacy variant found in institutional photo with checked OEM dimensions",
+        "150 evaluated native poses, 52 case transforms fixed and 199 original placements exact",
+        "Independent 60° and 90° projections, actual typed export, desktop/mobile and stereo software XR rays"
+      ],
+      "status": "ready",
+      "entry": "OF12G-Exterior-and-Angle-Board.html",
+      "sha256": "6c38a9c9898d3bd20d1c56a939663eb005d43364b99f82cef345213d25405ca0"
+    },
+    {
+      "id": "06-12",
+      "kind": "documentary",
+      "scope": "Fixed CellScale MicroTester G2 single-camera exterior and detached macroscopic dry-compliance illustration, not a machine measurement",
+      "evidence": [
+        "Exact OEM portrait, brochure pp.1–2 and original 0.920m link; handbook not accessible",
+        "51 analytic and guard checks, 4,096 native clearances across 64 frames",
+        "Verified independent closed form and actual Chromium geometry, desktop, 390px, typed JSON/CSV and software XR ray"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "f3c9725696569ef047995cab39de2fb8e66d6d033a217533dce4af6e96a50731"
+    },
+    {
+      "id": "07-01",
+      "kind": "documentary",
+      "scope": "Exact static sealed exterior, independent detached triangle geometry only",
+      "evidence": [
+        "actual exact catalogue/source photos and dimension page",
+        "verified static native and accurate dry chart across 176 frame samples",
+        "authentic Chromium/browser pointer and immersive emulator",
+        "independent derived triangle cases and typed metadata"
+      ],
+      "status": "ready",
+      "entry": "Thermo-1305-07-01.html",
+      "sha256": "4ffd2139d1797f690e708daa80c9b88568c94010fb30c4333c61cfd4f44c7514"
+    },
+    {
+      "id": "07-02",
+      "kind": "documentary",
+      "scope": "Documentary sealed inactive enclosure and independent abstract quarter-turn board",
+      "evidence": [
+        "exact primary OEM and installation/nameplate source",
+        "reopened native link and 47 reality-bounded passive poses",
+        "desktop and mobile software rays",
+        "independent quarter-turn rigidity and typed provenance"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "77bb3a163d690568f223a001c81e1ed2c404e87c9c77826569bf88f83454185d"
+    },
+    {
+      "id": "07-03",
+      "kind": "documentary",
+      "scope": "Exact inert exterior and detached archived-pattern ruler only, no authentic source or specimen",
+      "evidence": [
+        "exact OEM photo/technical docs and accessory illustration",
+        "native world movement and invariant fixed cabinet plus complete link",
+        "actual offline browser and immersive emulated Quest3",
+        "independent byte-scale 50 µm recovered twice, verified checksum/typed export"
+      ],
+      "status": "ready",
+      "entry": "Nikon-Ts2FL-07-03.html",
+      "sha256": "0a6dad0274a3cbc1b7494e41a34aadb3245c2f8567ab360eed69123f33808d23"
+    },
+    {
+      "id": "07-04",
+      "kind": "documentary",
+      "scope": "Sealed documentary exact exterior and detached synthetic mask comparison",
+      "evidence": [
+        "exact archived generation photographs and metric drawings",
+        "reopened native complete link and raised graphic cells",
+        "actual offline browser and native Quest software tracked controller",
+        "independent pixel overlap and nil when empty, typed revision"
+      ],
+      "status": "ready",
+      "entry": "ECHO-Gen2-07-04.html",
+      "sha256": "b550f4fc4ec730b33b931bee683c16852715da0db395a066e76691a10819a5e7"
+    },
+    {
+      "id": "07-05",
+      "kind": "documentary",
+      "scope": "Exact sealed static exterior pair and separate purely synthetic mask archive",
+      "evidence": [
+        "actual OEM and installed primary photographs",
+        "native actual fixed cabinet and separate motion, original anchors",
+        "desktop mobile and synthetic controller callback",
+        "independent strict known/unknown/zero archive"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "3bb87cb9a6a37e4b7d74fd844def645c78ceef2bbd483987bedf568ef3c77ccc"
+    },
+    {
+      "id": "07-06",
+      "kind": "documentary",
+      "scope": "Sealed not operational exact exterior and detached inert centroid math",
+      "evidence": [
+        "actual exact primary documentation and photo",
+        "native independent chart and exact anchored stable cabinet",
+        "offline Chromium and true emulated Quest rays",
+        "independent known centroid math and typed browser exports"
+      ],
+      "status": "ready",
+      "entry": "Eppendorf-5810R-07-06.html",
+      "sha256": "57d42b310df6e02d133861c5ea0c5a6dd947757de969c9c0a61134381cdf270e"
+    },
+    {
+      "id": "07-07",
+      "kind": "documentary",
+      "scope": "Static sealed exact inactive case and unrelated arithmetic print chart",
+      "evidence": [
+        "exact primary owner docs and measured model file",
+        "actual linked anchors and 182 frame chart clearance",
+        "desktop and tracked emulated Quest two eyes",
+        "known A/B/zero-nil controls and typed JSON revision"
+      ],
+      "status": "ready",
+      "entry": "Countess-3FL-07-07.html",
+      "sha256": "54b00f3271b3962f080fc7e70adf119a034568bde7e7ec9d36ee176212b95348"
+    },
+    {
+      "id": "07-08",
+      "kind": "documentary",
+      "scope": "Exact sealed inactive cabinet and separate polygon/disk shape exhibit",
+      "evidence": [
+        "actual exact OEM stock code/catalogue/primary photos",
+        "reopened native world and exact link at original anchor",
+        "desktop touch and synthetic software XR rays",
+        "independent analytic and rendered area, explicit small discretization difference"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9eedab43d927468dccbc32341402e28a8643cfab5e951befbd4cc3aea6081236"
+    },
+    {
+      "id": "07-09",
+      "kind": "documentary",
+      "scope": "Sealed static documentary Lonza Core/X Variant C with detached inert drawing-coverage exercise only",
+      "evidence": [
+        "Exact OEM variant C manual p.9 photo plates and closed OEM geometry",
+        "48 linked native poses and 1,680 clearance checks; 36 actual occlusion rays",
+        "32 logic cases and independent geometric result; hidden dimensions remain null",
+        "Chromium desktop, 390 px touch and software XR with separate GLB and JSON output"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "5b42c48770cc6e2ed1657082aed6989ff5584996c355ebf988601858535a114c"
+    },
+    {
+      "id": "07-10",
+      "kind": "documentary",
+      "scope": "Sealed static documentary exact cabinet and unrelated inert paper geometry only",
+      "evidence": [
+        "actual primary model manual and matching photo",
+        "reopened native exact fixed case and 182 separate chart poses",
+        "desktop/mobile and tracked software Quest actual rays",
+        "independent topology counts and typed neutral export"
+      ],
+      "status": "ready",
+      "entry": "BD-FACSAria-II-07-10.html",
+      "sha256": "bba2eb4103f6448da501216f0a19441eae37d831a56a85b504ae241b2428a3a1"
+    },
+    {
+      "id": "07-11",
+      "kind": "documentary",
+      "scope": "Unpowered SpectraMax i3x closed documentary case and independent neutral triangle fixture",
+      "evidence": [
+        "OEM drawings B-1/B-2 p.171 and firsthand front photograph",
+        "31 analytic and 20 reopened native checks across 182 test poses; 96-mesh relink",
+        "Desktop/mobile export equality and four two-eye software Quest rays"
+      ],
+      "status": "ready",
+      "entry": "SpectraMax-i3x-07-11.html",
+      "sha256": "2f8e6151b4507cfa2ef401e1c76d26a89a7bbed2b2a12d30027f49a3bf4a34b3"
+    },
+    {
+      "id": "07-12",
+      "kind": "documentary",
+      "scope": "Sealed unpowered QuantStudio 3 A28137 appearance and entirely detached paper chord geometry",
+      "evidence": [
+        "Exact OEM photo, spec sheet p.1 and Rev G front outline p.17",
+        "29 analytic and 21 reopened native checks; 108 meshes exact placement",
+        "Offline Chromium verified scene coordinates against typed export; software Quest stereo rays only"
+      ],
+      "status": "ready",
+      "entry": "QuantStudio3-07-12.html",
+      "sha256": "973d96fc72877fb607d9c7c6c00aac692f51ded699b1479449988cc2b9bc33eb"
+    },
+    {
+      "id": "07-13",
+      "kind": "documentary",
+      "scope": "Sealed Worthington LS6000/CS100 inactive documentary exterior and detached planar poster-area fixture",
+      "evidence": [
+        "Directly inspected exact paired photograph plus successor exterior and OEM p.2 dimensions",
+        "45 numeric assertions, 65 reopened native frames and 780 clearances",
+        "Actual desktop/mobile/Quest software ray and typed export; independent 1,480 mm² union"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "8715800f2e562e101cb57423216ba24dbadacbabb955aba56b20cd24ea25bde6"
+    },
+    {
+      "id": "07-14",
+      "kind": "documentary",
+      "scope": "Sealed legacy Thermo Scientific TSX60086A documentary exterior and detached rectangle exhibit",
+      "evidence": [
+        "Inspected exact OEM p.3 elevations and exterior photographs; nominal 1006×960×1981 mm",
+        "49 math checks and 79 native frames with 3,792 clearance comparisons",
+        "Four actual desktop, touch and software XR typed export/ray cases with no errors"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "084de33b4a675ec12b03a99443e474e020c3af01215ad691425c7e4577a454c2"
+    },
+    {
+      "id": "07-15",
+      "kind": "documentary",
+      "scope": "Sealed Synthecon RCCS-4D documentary housings with entirely unrelated rectangle slider art",
+      "evidence": [
+        "Inspected exact OEM brochure photographs and dimensions",
+        "91-mesh exact relink, 28 analytic/GLB plus 22 reopened native checks",
+        "Offline actual desktop, mobile, typed download corner matches and software Quest two-eye rays"
+      ],
+      "status": "ready",
+      "entry": "Synthecon-RCCS4D-07-15.html",
+      "sha256": "d40965be3e2cde047b8374986a75430e2354e241a5818b2512b6676e6234b304"
+    },
+    {
+      "id": "08-01",
+      "kind": "virtual",
+      "scope": "Dry passive stencil/optic alignment, no wire or bonds",
+      "evidence": [
+        "exact installation image, OEM mechanism and exact size",
+        "8:1 linkage movement, jaws, focus and guard checks",
+        "desktop optical canvas and typed unchanged coupon",
+        "authoritative footprint correction; room reclearance"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "68b6325a18f5631c37070add0da3f0553947086c7ad8a7416d8654580b53330c"
+    },
+    {
+      "id": "08-02",
+      "kind": "virtual",
+      "scope": "Dry artwork/keepout and passive layout observation, no wire/control settings",
+      "evidence": [
+        "exact manual and installed/family reference distinction",
+        "spool head, gross stage and fine table differing real motions",
+        "desktop optical canvas and moving guards",
+        "independent positive/negative margins and safe exported footage"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "3c29ec28c14e28f5a8ec21e4d6b3ddcec8617fa3daf7fc8404696f2d69d03fe2"
+    },
+    {
+      "id": "08-03",
+      "kind": "virtual",
+      "scope": "Pure dry optical/collision survey, no bonding or material changes",
+      "evidence": [
+        "exact data sheet and actual installation photo",
+        "authentic cross-table/head mechanics and stop clearance",
+        "desktop ray/optics and export",
+        "independent residual/keepout guard regression"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "14c6b4263b9b1f5fa973a343de4344eec7b7cf41cee67090ce08ee0ca4d8aab2"
+    },
+    {
+      "id": "08-04",
+      "kind": "virtual",
+      "scope": "Optical dry alignment with guarded passive traverse; no bonding process",
+      "evidence": [
+        "primary legacy photo/manual and exact variant",
+        "controlled stage and 90 degree VAS/guard geometry",
+        "desktop real pointer and optical feedback",
+        "contactless gap and known four- and five-of-five targets"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "034506eef4102227e529fe69395861b19fd10b50faca3345f1720bfe7dca315f"
+    },
+    {
+      "id": "08-05",
+      "kind": "virtual",
+      "scope": "Dry virtual sight alignment and detached analytic sweep; no bonding or activation",
+      "evidence": [
+        "exact installed open photo and OEM catalog",
+        "physical independent carriages and 42 sampled positions",
+        "actual Chromium 3D motion/input and browser exports",
+        "known held-out fault and predicted overlap/guard"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "c44f799386dcaea499394ee82063b3e8831a4d020ac553af9b22e22d1d106e66"
+    },
+    {
+      "id": "08-06",
+      "kind": "virtual",
+      "scope": "Inert synthetic load/displacement comparison; no material validation",
+      "evidence": [
+        "primary legacy exact photo, brochure and clearly named related guide",
+        "reopened real world transforms across installed anchors",
+        "desktop exact trajectory and synthetic controller rays",
+        "force/guard and unchanged typed B3 lineage"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9ba4b960a52dd7de51502e43bb5559e929509561d844038164b530e90557aa47"
+    },
+    {
+      "id": "08-07",
+      "kind": "documentary",
+      "scope": "Inert load support geometry, detached witness/cradle; no material or actual activation",
+      "evidence": [
+        "exact unit images and source manual photo",
+        "working world transform and sample method with clearances",
+        "actual desktop and synthetic pointer checks",
+        "positive and negative optical/accommodation measures"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "8db9230286a3d206a81b489783884b8a442e07d243a47bd76d0e4256322379a5"
+    },
+    {
+      "id": "08-08",
+      "kind": "documentary",
+      "scope": "Sealed documentary enclosure with external ergonomic controls only, detached inert witness",
+      "evidence": [
+        "exact manufacturer photos and nominal size ambiguity",
+        "fixed native room envelope and separate pose-verified holder",
+        "desktop real rays and synthetic controller",
+        "quantitative ground-truth template/CSV fit"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "0ec4576572c620ead2251f5f74b7080ac171a3eed4a5ba1f7ab4049f06445f88"
+    },
+    {
+      "id": "08-09",
+      "kind": "virtual",
+      "scope": "Dry passive dummy standard and synthetic stability classification; no real vacuum system operated",
+      "evidence": [
+        "exact source guide/photo and installed variations",
+        "real native reopened cover/token motion in place and swept tests",
+        "browser and synthetic controller rays",
+        "known rate scale, near/unstable suppressions and CSV/JSON"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "ae9298cd8a72dbf7ee276e0a2e4dfce31e2b6c2cd62d2dd2b90abee75d2b2512"
+    },
+    {
+      "id": "08-10",
+      "kind": "documentary",
+      "scope": "Inert controller, separately modeled dry analytic height/volume map only",
+      "evidence": [
+        "actual primary exact hardware image and documented case",
+        "verified isolated pedal/witness/fixture motion in native",
+        "desktop 3D and synthetic software ray, mobile",
+        "primary geometric calculation and mask preservation, typed exports"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "065716a3de748e656198dac7c73957378ee0ab610ced1da0ec074795b7c61ec7"
+    },
+    {
+      "id": "08-11",
+      "kind": "virtual",
+      "scope": "Passive moving optical registration and geometry checks; no cutting",
+      "evidence": [
+        "manufacturer photos and S104 manual illustrations",
+        "actual motion and pose clearance checks",
+        "desktop model rays and simulated controller",
+        "corrected nominal and deliberate mismark cases, unchanged material export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "4063d84f3011915ccc8aee2b1b14a04cf94382ed83c230e4d819440f7801f258"
+    },
+    {
+      "id": "08-12",
+      "kind": "documentary",
+      "scope": "Cold static workbench and inert passive polarity card checks only",
+      "evidence": [
+        "exact OEM photo and manual",
+        "actual reopened guarded display and teaching system movement",
+        "desktop and synthetic controller verification",
+        "typed assembly schema + independently tested connected paths and failures"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "8f26d854f09c40e6333010acd9a16e8a033692de03ad28b9a381015327b11ef6"
+    },
+    {
+      "id": "09-01",
+      "kind": "virtual",
+      "scope": "Guarded dry reference-board and passive synthetic impedance/voltage replay",
+      "evidence": [
+        "exact plus model photomanual rather than legacy finish",
+        "independent rear rocker, DB25 screws and leads",
+        "desktop and stereo Quest 3 software rays",
+        "analytic RC and archived 09-04 trigger check"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "7973edfbbbfe51aab750f3da00e409002af0de75c3f6e66969f22d53f17cd927"
+    },
+    {
+      "id": "09-02",
+      "kind": "virtual",
+      "scope": "Passive guarded diode/resistor/capacitor analyzer models",
+      "evidence": [
+        "exact manual and photos",
+        "fixture, cables and physical panel controls",
+        "desktop/mobile and immersive Quest emulator",
+        "analytic diode compliance and capacitor results; typed export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "c123d7ed372035e20a0f31242ae50c14675516c47e9094f1b4556fb39c4f714c"
+    },
+    {
+      "id": "09-03",
+      "kind": "virtual",
+      "scope": "Passive two/four-wire load, source limit and optional sweep",
+      "evidence": [
+        "primary photo and guide",
+        "four individually moving plugs and front controls",
+        "desktop and immersive software Quest emulation",
+        "waveform accepted by archived 09-04 solver"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "28f13a30a55f462705ab842ab98db368a21daa0326335fd972ce8b45f18cbaf5"
+    },
+    {
+      "id": "09-04",
+      "kind": "virtual",
+      "scope": "trigger/cursor exercise",
+      "evidence": [
+        "handbook and photo crosswalk",
+        "rig with working controls",
+        "desktop ray and export",
+        "immersive software Quest 3 emulator control path"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "a05d88a32d79e2ef69d6a0a8d1fbda8376f1b8cdfbf23e680ee1e36c9b0d27e5"
+    },
+    {
+      "id": "09-05",
+      "kind": "virtual",
+      "scope": "Analog CRT and passive probe compensation/trigger workflow",
+      "evidence": [
+        "primary operator scan and exact model photo",
+        "physical cable/ground/dial motion and sweep interlock",
+        "desktop and Quest3 software emulator",
+        "300 mV/three divisions and 1 ms; loads prior 10-01 export"
+      ],
+      "status": "ready",
+      "entry": "Tektronix-465B.html",
+      "sha256": "f5bb27680ba087b05293ae7d49aba711ffc13ecfdfc38259bbdd907761b8d037"
+    },
+    {
+      "id": "09-06",
+      "kind": "virtual",
+      "scope": "Passive output-load comparison and waveform acquisition",
+      "evidence": [
+        "primary model photos, manual and controls",
+        "independent key/connector moves and catalog geometry",
+        "desktop and Quest 3 software immersive rays",
+        "archived scope consumes both loads and retains waveform lineage"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "b79adcea996e46723f60eb4fb8b2db501e02663008d48c256c8bdeb0f49f0393"
+    },
+    {
+      "id": "09-07",
+      "kind": "virtual",
+      "scope": "Passive LCR fixture and manual open/short correction with revisions",
+      "evidence": [
+        "manufacturer photos and manual",
+        "animated moving lever and exact short geometry, documented cabinet dimensions",
+        "desktop and immersive XR software rays",
+        "1110 to 1000 pF and stale correction refusal"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "178f1cab8d88fb458505585fcd3475e07d7243e8df40603034b531d064f91cbb"
+    },
+    {
+      "id": "09-08",
+      "kind": "virtual",
+      "scope": "Diagnostic passive two-port calibration/de-embedding comparison",
+      "evidence": [
+        "catalog photos distinguished from exact option diagram",
+        "independently moving jacks, fixture and readouts",
+        "desktop and Quest 3 software emulator rays",
+        "analytic passivity and group delay; accepted Touchstone by archived parser"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "c5145c319e8ebf21b89bc94f6c8687f3737cebd9d0057bfc40a117b10ede00a1"
+    },
+    {
+      "id": "09-09",
+      "kind": "virtual",
+      "scope": "Passive CV/CC fixture and remote sense comparison",
+      "evidence": [
+        "exact Keysight photos and manual",
+        "independently moving plugs, keys and encoders",
+        "desktop and Quest headset software emulator, mobile",
+        "independent voltage/current cases and 09-04 trace replay"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "4a0f998b75792883dfa2b9e7abd3ef13ccd83f9710560470130946d8a73abb16"
+    },
+    {
+      "id": "09-10",
+      "kind": "virtual",
+      "scope": "Passive A−B and filter/termination response, with true 2 s waveform origin",
+      "evidence": [
+        "actual manual/photo particular revision",
+        "individually moving BNC connectors, keys and panel",
+        "desktop and immersive emulator, mobile",
+        "analytic gain/filter and JSON/CSV transfer"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "d7b7bbc8b85b2199dcc87fdd1e3b86bd6d71a6668ece58ad930fb0b30f3fa479"
+    },
+    {
+      "id": "09-11",
+      "kind": "virtual",
+      "scope": "Coherent reference, phase, filter, settling and overload in synthetic relay",
+      "evidence": [
+        "manufacturer photos and manual",
+        "independently moving BNC/connectors/encoders",
+        "desktop and Quest 3 immersive emulator",
+        "scope CSV phase and revision lineage"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "585a3a7bd9caaafdb2155753fd6572bdca39d23d0ed453c3a7a57dfef47fb33f"
+    },
+    {
+      "id": "09-12",
+      "kind": "virtual",
+      "scope": "Authored dry circuit only, no chemistry; open and swapped leads guarded",
+      "evidence": [
+        "topology photo/manual, clearly custom teaching model",
+        "real clips/latch and lift, proper anchor",
+        "desktop/mobile and immersive emulator",
+        "passive impedance targets and archived trace confirmed"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "3d07b8898baf54534da2c6710a215e828654f5f3859279938b612e4246059edb"
+    },
+    {
+      "id": "10-01",
+      "kind": "virtual",
+      "scope": "Passive RC model-cell connector orientations and bench check",
+      "evidence": [
+        "primary manufacturer guide and pictures",
+        "independently verified connector geometry and motion",
+        "desktop and immersive software Quest emulation",
+        "waveform accepted by archived 10-02 solver"
+      ],
+      "status": "ready",
+      "entry": "MultiClamp-700B.html",
+      "sha256": "f058a7d114cc31c258f36b282c4e9c14923457e4b49a5ecc8141eb26bc955f13"
+    },
+    {
+      "id": "10-02",
+      "kind": "virtual",
+      "scope": "passive synthetic electrical loopback",
+      "evidence": [
+        "handbook and photo crosswalk",
+        "rigged connector",
+        "desktop ray and export",
+        "export read by baseline 09-04 solver"
+      ],
+      "status": "ready",
+      "entry": "10-02-Loopback.html",
+      "sha256": "6e73c22afd953443f03fc1602a0666832af55aed19ac19be8199b8b986e8c23e"
+    },
+    {
+      "id": "10-03",
+      "kind": "virtual",
+      "scope": "Passive bench electrode equivalent, gain/filter, and overload behavior",
+      "evidence": [
+        "actual panel image and manual crosswalk",
+        "actual pivot rotations, 3D plug and overload light",
+        "offline desktop + Quest immersive emulator",
+        "export consumed by archived 10-02"
+      ],
+      "status": "ready",
+      "entry": "Axopatch-200B.html",
+      "sha256": "ae658e0fb74da44c0d75737096cd015f6db2c8a719b1eb3ed108ebbd530b22bb"
+    },
+    {
+      "id": "10-04",
+      "kind": "virtual",
+      "scope": "Passive model-cell with real switch and C-fast/VC/CC checks",
+      "evidence": [
+        "manufacturer docs and imagery",
+        "3D headstage, connector and switch rig",
+        "desktop and Quest 3 immersive software emulator",
+        "exact passive scenarios and archived 10-02 waveform uptake"
+      ],
+      "status": "ready",
+      "entry": "HEKA-EPC-10.html",
+      "sha256": "6237f3d59b36ad770453e23d03c9da02e15eeee9019e1f889016052fd79518d2"
+    },
+    {
+      "id": "10-05",
+      "kind": "virtual",
+      "scope": "Dry synthetic optical alignment, shared microscope carrier with fixed front post",
+      "evidence": [
+        "exact manufacturer photos/manual/drawings",
+        "real corrected XY assembly plus guarded Z and coupon lift",
+        "desktop and stereo Quest software emulation, mobile",
+        "19 numeric tests; measured scale and preserved provenance"
+      ],
+      "status": "ready",
+      "entry": "SliceScope-10-05.html",
+      "sha256": "4aa4bad814cab09f7126f9c7660eb63ba30cd4dec709e5850efaafe1477b6f62"
+    },
+    {
+      "id": "10-06",
+      "kind": "documentary",
+      "scope": "Visible cold de-energized lid plus independent large dry teaching fit only",
+      "evidence": [
+        "exact primary cover/manual and hardware photos",
+        "native geometry and parts independence and final rear layout",
+        "final traced browser exact hashes and software IWER rays",
+        "nominal and shifted dry fit cases; no production"
+      ],
+      "status": "ready",
+      "entry": "Sutter-10-06.html",
+      "sha256": "21e59544776e91c0984e1a5dbdda3b6304c9890a452cb87a039df5b2dc967421"
+    },
+    {
+      "id": "10-07",
+      "kind": "virtual",
+      "scope": "Dry kinematic coordinate registration, hardware joystick distinct from ROE",
+      "evidence": [
+        "exact Sutter manual and metric controls",
+        "physical nested XYZ and stable frame/datum",
+        "desktop, mobile and stereo IWER headset software emulator",
+        "independent coordinate round-trip and mechanical range guards"
+      ],
+      "status": "ready",
+      "entry": "Sutter-10-07.html",
+      "sha256": "c60886f4e5072648c85dc5c8ca9cb66e177d44388f7e0aa4a918a4efa24f6e24"
+    },
+    {
+      "id": "10-08",
+      "kind": "documentary",
+      "scope": "Fixed exact equipment documentary view; moving inert facet annotation fixture separate",
+      "evidence": [
+        "exact OEM photo/manual, distinct variant",
+        "reopened actual world poses and immobile real-equipment replica",
+        "Chromium/A11Y mobile and immersive IWER controller",
+        "independent known angles/rotation stability, typed data"
+      ],
+      "status": "ready",
+      "entry": "Sutter-10-08.html",
+      "sha256": "2fe484a55511ac4c51fcf0ad9528772357996e0ee706657d018d27e132fe4065"
+    },
+    {
+      "id": "10-09",
+      "kind": "virtual",
+      "scope": "Read-only passive multichannel playback, no recording, mains or stimulus",
+      "evidence": [
+        "exact manufacturer hardware/photo and RHX documentation",
+        "dummy moving connectors and folding feet",
+        "desktop pointer, software immersive and data export",
+        "23 ms event and 3 ms interchannel timing, archived scope accepted IDs/rev"
+      ],
+      "status": "ready",
+      "entry": "Intan-RHS-10-09.html",
+      "sha256": "cad1697e5cd1de9d5c066071323d8b008854568dc38e966b4cb7282f42fc5bc8"
+    },
+    {
+      "id": "10-10",
+      "kind": "virtual",
+      "scope": "Passive synthetic playback, missing sample events and restored timing",
+      "evidence": [
+        "exact manufacturer documentation and matching photos",
+        "metric case and real independently moving plugs",
+        "desktop, mobile and immersive emulator",
+        "12 checks and 10 ms trigger transferred with revisions"
+      ],
+      "status": "ready",
+      "entry": "Open-Ephys-10-10.html",
+      "sha256": "c2509e3c5aefa140af639a1c3231b0bb1b20eded7ed0207e04b1f4ebffbd1b02"
+    },
+    {
+      "id": "10-11",
+      "kind": "virtual",
+      "scope": "Model-based passive MaxOne site mapping and synthetic replay",
+      "evidence": [
+        "exact documented hub/recorder and vendor photos",
+        "actuated ring, inert carrier, dummy cables and fine site visual",
+        "desktop and Quest software immersive actual pointer after recovery",
+        "9 checks; archived scope plug-in accepts exact exported replay"
+      ],
+      "status": "ready",
+      "entry": "MaxOne-10-11.html",
+      "sha256": "5b2f666e336c964f66de29ec091de7e0078d77373f8f8e432d7889491fe16436"
+    },
+    {
+      "id": "10-12",
+      "kind": "virtual",
+      "scope": "Passive empty MaxTwo site map; crosswell synthetic/revision handling",
+      "evidence": [
+        "real OEM photo and brochure, manual download unavailable",
+        "actual movable cover and fixed original plate model",
+        "complete desktop/390px and Quest 3 emulator",
+        "known synthetic event vs true zero and scope handoff"
+      ],
+      "status": "ready",
+      "entry": "MaxTwo-10-12.html",
+      "sha256": "e0b4d6e6d253b89c28e23dc36cafd1871bc40e9efd72875300425373104478ea"
+    },
+    {
+      "id": "10-13",
+      "kind": "virtual",
+      "scope": "Standard silicon-capped probe synthetic replay; model and electronics disconnected from any hardware",
+      "evidence": [
+        "manufacturer datasheet, photos and SEM references",
+        "fixed original 960 sites plus moving dummy fixture",
+        "desktop and software immersive rays",
+        "synthetic calibrated reference and parsed scoped export"
+      ],
+      "status": "ready",
+      "entry": "Neuropixels-10-13.html",
+      "sha256": "a959ba8174d0e635c92b195af9d12afa4dc6a8f24ffa5e31190c6c67a34a651e"
+    },
+    {
+      "id": "10-14",
+      "kind": "virtual",
+      "scope": "Original dry block fixture and passive clearance, no circuitry or equipment",
+      "evidence": [
+        "authored original reference dimensions",
+        "actual native world mechanics across 153 authored frames",
+        "exact shipped Chromium and immersive Quest software rays",
+        "known clear and rejected shifted fit, archive schema parity"
+      ],
+      "status": "ready",
+      "entry": "Dry-Fixture-10-14.html",
+      "sha256": "a892304e212ed6fd431dda36a84fae6f6739a5d4db4aafb9995df695b2f50649"
+    },
+    {
+      "id": "10-15",
+      "kind": "documentary",
+      "scope": "Exact fixed documentary cabinet and disconnected passive shape/label witness; no stimulation",
+      "evidence": [
+        "manufacturer manual/photo variant distinctions",
+        "actual world and 153-frame sweep on separate completely dry fixture",
+        "hash-tested desktop/mobile and immersive emulator",
+        "analytic comparisons and falsifying opposite case"
+      ],
+      "status": "ready",
+      "entry": "AM-2100-10-15.html",
+      "sha256": "87eb970d2734d43c18532762c6d87e560e8f15902e024ab8d03f3960808421a0"
+    },
+    {
+      "id": "10-16",
+      "kind": "documentary",
+      "scope": "Static documentary casing and fully separated synthetic dry fixture; no physical slicing",
+      "evidence": [
+        "primary Leica model photo and exact official manual",
+        "verified fixed cabinet, native 151 dry geometry frames",
+        "actual Chromium and IWER software Quest emulator",
+        "independent negative/positive landmarks and export"
+      ],
+      "status": "ready",
+      "entry": "Leica-VT1200S-10-16.html",
+      "sha256": "5b51bca636d193dd5147047e2ddef0c312ea0a0b23cbb33b15bee03980ad0ac3"
+    },
+    {
+      "id": "11-01",
+      "kind": "documentary",
+      "scope": "Static inactive Doric enclosure; detached abstract geometric count cards only",
+      "evidence": [
+        "actual primary one-knob photo and documented model dimensions",
+        "whole chassis fixed, separate native cards move independently",
+        "desktop and Quest 3 software real geometry input, 390px",
+        "count/proportion and nil-denominator independent conditions"
+      ],
+      "status": "ready",
+      "entry": "Doric-LEDD1-11-01.html",
+      "sha256": "7adc0f95ee31df0468238e095a43935071bf07c08a71bb1ccc13002a3d2ad2f5"
+    },
+    {
+      "id": "11-02",
+      "kind": "documentary",
+      "scope": "Static two Doric housings and disconnected independent printed shape logic board",
+      "evidence": [
+        "exact primary vendor photos/docs and size limits disclosed",
+        "verified actual native world over full motion while equipment static",
+        "desktop rays and XR software Quest, mobile",
+        "clear/missing/duplicate/nil cases and typed annotated report"
+      ],
+      "status": "ready",
+      "entry": "Doric-LDMD-CLDM-11-02.html",
+      "sha256": "35289cee2e884b1a72d5ae837ad7434ad75e72f5a2903581b9120598387b84da"
+    },
+    {
+      "id": "11-03",
+      "kind": "documentary",
+      "scope": "Sealed documentary controller and independently authored dry coordinate exhibit only",
+      "evidence": [
+        "exact OEM model photo and handbook",
+        "actual world 163 passive frames, correctly instanced default linked collection",
+        "tested browser/mobile/XR software and file handoff",
+        "clear independent states and a named typed coordinate export"
+      ],
+      "status": "ready",
+      "entry": "Doric-OTPG4-11-03.html",
+      "sha256": "c3f54333964f7f5b3df3ad6f3dfa2f357a198ab3e7d0c5833417b00452176db0"
+    },
+    {
+      "id": "11-04",
+      "kind": "documentary",
+      "scope": "Static capped twin equipment cases and detached rotated synthetic coordinate visualizer",
+      "evidence": [
+        "primary OEM NC500 with CAD and linked family diagram limitations",
+        "complete keyed passive native/linked world model inc 170 frames",
+        "browser 390px and tracked software Quest",
+        "independent rigid coordinate invariant and typed export"
+      ],
+      "status": "ready",
+      "entry": "Doric-NC500-G3-11-04.html",
+      "sha256": "aeaecfef8d64909e2cc2b210a21bdb67da150ddca4f18ac4f447064a05e0089a"
+    },
+    {
+      "id": "11-05",
+      "kind": "documentary",
+      "scope": "Unpowered PM100D physical stand and detached units arithmetic only",
+      "evidence": [
+        "exact owner manual/photos and display dimensions",
+        "native real moving kickstand and separate unit witness, correct links",
+        "hardware-agnostic browser/Quest 3 emulator",
+        "same quantity conversion, typed nil near zero"
+      ],
+      "status": "ready",
+      "entry": "Thorlabs-PM100D-11-05.html",
+      "sha256": "b228f8b4da3e94d3e5d2fbc01e3d24bc46262e0a5d96e3df570e006c3f63d20b"
+    },
+    {
+      "id": "11-06",
+      "kind": "virtual",
+      "scope": "Passive original dry tabletop true hole grid and guarded abstract mount placement",
+      "evidence": [
+        "exact passive model and dimensional drawings, related structural photo labeled",
+        "native all 1,080 grid holes measured, complete stable link",
+        "desktop, mobile and tracked software Quest rays",
+        "overhang/negative; kept last valid physical state and provenance"
+      ],
+      "status": "ready",
+      "entry": "Thorlabs-ScienceDesk-11-06.html",
+      "sha256": "f2b2a3af81bc5bdc6886c48a62c3ebb8fadbf84f5cb99060a0e0e0720cf8ec0a"
+    },
+    {
+      "id": "11-07",
+      "kind": "documentary",
+      "scope": "Static exact-style Thorlabs sealed modules and independently moving dry units chart",
+      "evidence": [
+        "primary exact one-variant manual and other dimension estimate disclosed",
+        "reopened native links and 161 whole animation samples",
+        "desktop and true stereo software controller workflow",
+        "independent positive/very small/null units and typed lineage"
+      ],
+      "status": "ready",
+      "entry": "Thorlabs-Legacy-11-07.html",
+      "sha256": "48a94c5d4ca40fe12d19ca11966215df9d5ddbc93f99e459966d6635c082ab67"
+    },
+    {
+      "id": "11-08",
+      "kind": "documentary",
+      "scope": "Sealed documentary camera and separate synthetic graphic/witness geometry",
+      "evidence": [
+        "exact OEM photo and metric owner drawing",
+        "true native 704 raster meshes and verified stable anchored form",
+        "desktop and Quest3 software rays with frame interlocks",
+        "independent graphic-cases null/zero/provenance and outputs"
+      ],
+      "status": "ready",
+      "entry": "Hamamatsu-ORCA-11-08.html",
+      "sha256": "3b6c40243bfd81e38eeac4c6a051b1b8adf9bb7c0e2e7554a96efd48ea77b37c"
+    },
+    {
+      "id": "11-09",
+      "kind": "documentary",
+      "scope": "Sealed documentary case and separate moving overlap/edge contact geometry",
+      "evidence": [
+        "exact OEM outline and similar family visual",
+        "actual native 153 world cases and stable baseline link",
+        "desktop and stereo software Quest rays",
+        "independent overlap/tangent and typed archived provenance"
+      ],
+      "status": "ready",
+      "entry": "Coherent-Monaco-11-09.html",
+      "sha256": "11509f84aff9d57a0e3164f235f4b501849257ea2d316dbf168f198da4857a1e"
+    },
+    {
+      "id": "11-10",
+      "kind": "documentary",
+      "scope": "Original nonfunctional custom figure and physically independent paper arithmetic exhibit",
+      "evidence": [
+        "original first-party archived project rendering, no OEM claim",
+        "native actual closed casing and separate guarded card movement",
+        "desktop and stereo emulator, 390px",
+        "independent ideal resistor/open contrast and nil typed provenance"
+      ],
+      "status": "ready",
+      "entry": "Custom-Fixture-11-10.html",
+      "sha256": "872ef70e72ae248d362190392ba4abc8bcd4bb8301915f4b587945e02f709468"
+    },
+    {
+      "id": "12-01",
+      "kind": "virtual",
+      "scope": "Manual stereo focus and authored two-target passive disparity measurement",
+      "evidence": [
+        "actual ZEISS manufacturer photo and exact modular components",
+        "motion/490 mm column and working gap measured in GLB",
+        "desktop 3D pointer and Quest emulator after workspace recovery",
+        "independent stereo measurements and typed export"
+      ],
+      "status": "ready",
+      "entry": "ZEISS-Discovery-V12-Interactive.html",
+      "sha256": "5656c6ce8a2ea93161d7fa74ac92788a2241dc6e06d9d41cf86ebf715992bcfa"
+    },
+    {
+      "id": "12-02",
+      "kind": "virtual",
+      "scope": "Inert optical scale and shared camera/eye path with park and objective selection",
+      "evidence": [
+        "primary Nikon single-layer dimension drawing/photo and manual",
+        "working pillar swing, motorized XY and indexer",
+        "offline desktop, mobile and immersive Quest 3 emulation",
+        "repeatable 36.50 µm across objectives, PNG and typed exports"
+      ],
+      "status": "ready",
+      "entry": "Nikon-Ti2-E-Interactive.html",
+      "sha256": "65c5dc7b8e9aa4b345672cf7a8d9d96355df1cb1db34e4616b457353bc7878ec"
+    },
+    {
+      "id": "12-03",
+      "kind": "virtual",
+      "scope": "Passive synthetic registered confocal stack replay, no live optical or biological procedure",
+      "evidence": [
+        "exact ZEISS config and primary installed photos/manual",
+        "working physical stage/sample and keypad, checked lens geometry",
+        "desktop, mobile and immersive Quest software emulator",
+        "known fine Z PSF, coarse sample and dark flags; JSON and PNG"
+      ],
+      "status": "ready",
+      "entry": "ZEISS-LSM-980-Interactive.html",
+      "sha256": "a49d0efaa639d24436c72a60206b51adb83a3e1b752c6478aa871d47dfe4dba5"
+    },
+    {
+      "id": "12-04",
+      "kind": "virtual",
+      "scope": "Passive inert synthetic dual-stack optics and park/turret procedure; no actual light source or experiments",
+      "evidence": [
+        "exact install photo and manufacturer specifications",
+        "actual moving/guarded stage and dry assembly",
+        "desktop and full emulated Quest3, mobile",
+        "resolution/undersampling controls and portable data"
+      ],
+      "status": "ready",
+      "entry": "Leica-STELLARIS-8-Interactive.html",
+      "sha256": "dfbd1f7481e822db6f2102bcf6686ce7f253ce3f67d5da2292704d8b473cfba3"
+    },
+    {
+      "id": "12-05",
+      "kind": "virtual",
+      "scope": "Inert time-exposure optical replay, passive park/tower/sample motion",
+      "evidence": [
+        "exact Nikon/Yokogawa configuration and primary illustrations",
+        "reopened actual native world-axis motion across landmarks",
+        "desktop and actual software Quest immersive rays",
+        "independently matched 27 analytic moving-point combinations"
+      ],
+      "status": "ready",
+      "entry": "CSU-W1-Ti-E-Interactive.html",
+      "sha256": "6b78345f083ba2bdc12d044594211adf288d6ad7e3c35d6bcc1f2185033827d1"
+    },
+    {
+      "id": "12-06",
+      "kind": "virtual",
+      "scope": "Inert passive synthetic depth and PSF, no live sources or specimens",
+      "evidence": [
+        "exact installed photo and manufacturer nominal variant",
+        "reopened actual physical world poses and dry dummy fixture",
+        "desktop, offline and Quest 3 emulator",
+        "fixed-depth synthetic comparison and below-threshold tracing"
+      ],
+      "status": "ready",
+      "entry": "ZEISS-LSM-980-NLO-Interactive.html",
+      "sha256": "d3818803c1f17fd674fc63c6f1dbec50bc9da9b8f399dd810d91257285c92b08"
+    },
+    {
+      "id": "12-07",
+      "kind": "virtual",
+      "scope": "Dry non-biological synthetic view registration and geometry fixture",
+      "evidence": [
+        "exact OEM and institutional photos/manual",
+        "measured separate actual world hatch/sample and axis",
+        "desktop and IWER Quest software whole flow",
+        "held-out trilinear/fused centroid measures and invalid marker guard"
+      ],
+      "status": "ready",
+      "entry": "ZEISS-Lightsheet-7-Interactive.html",
+      "sha256": "5308792ab6e9677ea27f9337f62b96c7a168bf3952bbd81de7782952873865ef"
+    },
+    {
+      "id": "12-08",
+      "kind": "virtual",
+      "scope": "Passive dry guarded slides and synthetic matched multiview/time result; no sources or specimens",
+      "evidence": [
+        "exact model figures/photos and truthful geometry",
+        "independent actual Blender world and exact complete placement collection",
+        "desktop actual rays, offline, mobile, IWER stereo",
+        "held-out registered loss and spatial residual, missing landmark refusal"
+      ],
+      "status": "ready",
+      "entry": "ZEISS-Lattice-Lightsheet-7-Interactive.html",
+      "sha256": "c166325c8f2cd5c6c0405b65a270af9b01114b606de8a2ab23ac80fcc6c3969e"
+    },
+    {
+      "id": "12-09",
+      "kind": "virtual",
+      "scope": "Passive inert synthetic two-orientation structured pattern reconstruction; no live sources",
+      "evidence": [
+        "primary exact model and installation image illustrative references",
+        "exact complete linked native collection, 12 world frames",
+        "Chromium, transfers, and IWER immersive software rays",
+        "analytically known stripe recovery and missing-phase rejection"
+      ],
+      "status": "ready",
+      "entry": "ZEISS-Elyra-7-Interactive.html",
+      "sha256": "1b657cfd5862adfc8e51e5612316859c858393e44e42ad86df72f84f0685a5a5"
+    },
+    {
+      "id": "12-10",
+      "kind": "virtual",
+      "scope": "Dry synthetic guarded exchange/XY and independent mosaic seam validation; no clinical acquisition",
+      "evidence": [
+        "exact model publication/manual and distinct option photo",
+        "native real articulated transforms and complete room-style collection",
+        "desktop mobile and tracked software Quest rays",
+        "synthetic shift/seam/landmark proof and stale reject"
+      ],
+      "status": "ready",
+      "entry": "Evident-VS200-Interactive.html",
+      "sha256": "7ef42ae9601c83bfc7950f42f9db8086295664a882b48454b2c6e64cfbc9807b"
+    },
+    {
+      "id": "12-11",
+      "kind": "documentary",
+      "scope": "Sealed exact documentary LMD7 and detached mapped archived annotation",
+      "evidence": [
+        "exact manufacturer images and mode-specific physical geometry",
+        "actual linked completeness and static world",
+        "desktop and actual Quest software selection on slate",
+        "independent synthetic exact/integer/fractional mask cases and typed lineage"
+      ],
+      "status": "ready",
+      "entry": "Leica-LMD7-Interactive.html",
+      "sha256": "724e7dc06a69e3f3bfeb8e244105f211f5b704ad174f43cf0b55bf7ab9d17c47"
+    },
+    {
+      "id": "13-01",
+      "kind": "documentary",
+      "scope": "Sealed documentary instrument and physically separate non-biological geometric projection teaching witness",
+      "evidence": [
+        "exact model photo and primary installation alternate photos",
+        "native actual world transform and completely independent scope geometry",
+        "browser real rays, mobile and synthetic controller input",
+        "typed projection known cases and tilt clearances"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "d1a5246a9cb60b6f540b9b0e0caf1a9852d8f70497206913ca331ab424717c6e"
+    },
+    {
+      "id": "13-02",
+      "kind": "documentary",
+      "scope": "Faithful sealed model and separate dry geometric projection only",
+      "evidence": [
+        "exact installed primary photos and OEM doc",
+        "actual native fixture and static cabinet link/room anchors",
+        "desktop and software emulator callback",
+        "independent projection dimensions and through-hole rays"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "db7b96bfdb9ceeb4235af1bbf8fd0afcd2bcf410943513ec9c1bdd0271ebf048"
+    },
+    {
+      "id": "13-03",
+      "kind": "documentary",
+      "scope": "Static documentary sealed cabinet and detached inert synthetic section comparison",
+      "evidence": [
+        "exact vendor/institutional photos, dimension limits",
+        "actual native independently moved separate witness and preserved case",
+        "browser real mesh interaction and synthetic controller",
+        "independent plane/void area and volume"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "c15bc4414c879e96da52b2585f04b636f6aabeede029d451c7452ebde55b7c00"
+    },
+    {
+      "id": "13-04",
+      "kind": "documentary",
+      "scope": "Static documentary exact model and detached synthetic geometric index witness",
+      "evidence": [
+        "exact OEM/institution primary source photos and dimensions",
+        "independent linked cabinet and moving witness actual native poses",
+        "desktop/mobile real rays and software controller",
+        "independent missing/null vs true zero, exact export provenance"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "c2b078b464c277171934a65e19e401d8a5723f910643a68d06b69eab7a278122"
+    },
+    {
+      "id": "13-05",
+      "kind": "documentary",
+      "scope": "Sealed documentary TEM and passive synthetic lattice measurement on disconnected archive display",
+      "evidence": [
+        "exact institution photos and OEM primary model drawing",
+        "actual native link/stationary cabinet and separate motion",
+        "desktop and direct Quest emulated pointer",
+        "independent all-pixel and spacing/recovery checks with provenance"
+      ],
+      "status": "ready",
+      "entry": "JEOL-JEM1400Plus-Interactive.html",
+      "sha256": "3ed4a7c160395848404474f2fddb0bcef3c3299a0790f422e3a0d864b494fa40"
+    },
+    {
+      "id": "13-06",
+      "kind": "documentary",
+      "scope": "Stationary documentary case plus detached synthetic rigid mirror archive exercise",
+      "evidence": [
+        "actual primary SKU and institution reference photos",
+        "static exact room bounds and independent authored world action",
+        "desktop and synthetic tracked controller callbacks, mobile",
+        "independent signed rectification, raw-versus-display guard"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "67dd72cdacaca01f84752cade0c283ba440799a6b5666d81cc802d5a4165788a"
+    },
+    {
+      "id": "13-07",
+      "kind": "documentary",
+      "scope": "Sealed stationary exact variant and detached archived dry measurement viewer",
+      "evidence": [
+        "primary exact unit and public owner technical reference",
+        "strict unchanged body and detached world motion",
+        "desktop and software Quest exact tracked rays",
+        "retained record spacing and typed global dimensions"
+      ],
+      "status": "ready",
+      "entry": "Leica-EM-UC7-Interactive.html",
+      "sha256": "30d2a297aa9d631c63412a15c5e1844d936c0bc4728700dcf76f5bbfeed4a9f2"
+    },
+    {
+      "id": "13-08",
+      "kind": "documentary",
+      "scope": "Sealed documentary system plus independent inert abstract planar geometry",
+      "evidence": [
+        "exact OEM and installation photo, nominal metric",
+        "native actual stationary world and guarded passive movement",
+        "desktop and synthetic controller targets",
+        "measured dry plate diagonals and clean per-artifact revisions"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "db44ebf870a4bf4e6aa3aa45715b357b91d0f804180d8d531754c3a3c95c6c8c"
+    },
+    {
+      "id": "13-09",
+      "kind": "documentary",
+      "scope": "Sealed documentary cart/AFS enclosure and disconnected geometric archive handoff only",
+      "evidence": [
+        "exact OEM/partner nominal and images",
+        "separate native dormant and actual linked complete world",
+        "desktop actual external upload and IWER software controller",
+        "13-08→13-09 exact tile geometry/provenance and dishonest refusal"
+      ],
+      "status": "ready",
+      "entry": "Leica-EM-AFS2-Interactive.html",
+      "sha256": "d2f5b2e3ea78df1884b86bf0ef4b47c065ee627324215e668440fbcaf55ea812"
+    },
+    {
+      "id": "13-10",
+      "kind": "documentary",
+      "scope": "Exact sealed documentary photo geometry and separate inert stored-step compare",
+      "evidence": [
+        "primary nominal envelope and actual institution photos",
+        "world-based mesh verification and independent gauge",
+        "actual Chromium and synthetic XR buttons",
+        "independently retained known step/null and original links"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "227c34de24d7a026e6338aa8f9b084812b32b3849e18076664ce4d60f3fd5e5d"
+    },
+    {
+      "id": "13-11",
+      "kind": "documentary",
+      "scope": "Static exact preserved documentary cabinet with independent passive geometry/similarity comparison",
+      "evidence": [
+        "primary exact variant and owner envelope/photo",
+        "reopened stable cabinet and verified complete native instance",
+        "offline/mobile/browser and immersive emulator rays",
+        "independent volume/scale calculations and typed outputs"
+      ],
+      "status": "ready",
+      "entry": "Leica-EM-CPD300-Interactive.html",
+      "sha256": "e371b3b6bc24b28f02da35d01fbd23390759e46339deebd519b16fc2d4bbe739"
+    },
+    {
+      "id": "13-12",
+      "kind": "documentary",
+      "scope": "Dormant exact casing and separated original abstract rotating metadata cards",
+      "evidence": [
+        "actual model OEM and installation photos",
+        "verified fixed room link and changing independently placed inert display",
+        "desktop/mobile and software-controller ray",
+        "known identity and concurrency preservation, typed data"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "adeb891fcd9d2f1393c80729f9581abf13ac1e12d27c30b13b7d30fda3c8a284"
+    },
+    {
+      "id": "13-13",
+      "kind": "documentary",
+      "scope": "Sealed static exact cabinet and detached inert fiducial measurement",
+      "evidence": [
+        "actual OEM IFU cover photo and dimension sheet",
+        "native actual anchors and all 155 complete linked meshes",
+        "desktop and tracked Quest software session",
+        "independent P/R/Q distances and true invalid witness rejection"
+      ],
+      "status": "ready",
+      "entry": "Leica-CM3050S-Interactive.html",
+      "sha256": "00268546c51abd0f99a1d3b443aefb3d94085f01bb654d8da78eb5b74226de32"
+    },
+    {
+      "id": "13-14",
+      "kind": "documentary",
+      "scope": "Static documentary microtome and separate two-axis dry immutable drawing",
+      "evidence": [
+        "actual exact OEM and facility primary images",
+        "native actual 47-world-frame footage and no movement of cabinet",
+        "desktop mobile and synthetic controller rays",
+        "verified area/length invariance under translation and typed export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "751c42a1e9354c7d87063d7558d18b806e36a070e18f9b945977393e4f27a3bd"
+    },
+    {
+      "id": "13-15",
+      "kind": "documentary",
+      "scope": "Sealed documentary micro-CT and corrected provenance of inert original voxel grid, no actual reconstruction",
+      "evidence": [
+        "exact operating model primary exterior only images and dimensions",
+        "native stable links and separate marker world motion",
+        "desktop and immersive software emulated Quest",
+        "independent saved positions and exact temporal missing vs zero, typed outputs"
+      ],
+      "status": "ready",
+      "entry": "Bruker-SkyScan1272-Interactive.html",
+      "sha256": "11558907234eb8eb6a28169a33feef43ce724a06d52b4de55b475bc4e62df7ba"
+    },
+    {
+      "id": "14-01",
+      "kind": "virtual",
+      "scope": "Passive synthetic tensile sample and virtual guard/limit; no hardware operation",
+      "evidence": [
+        "exact model photo and primary manufacturer drawings",
+        "actual native individually moving grips, load cell and pendant",
+        "desktop and final Quest immersive software emulation",
+        "checked independent load/strain and stop/range cases"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "43c9cb36a5e4bebaab8af0a4a195e659631e3460b8a25d3739aa8f47ab630c78"
+    },
+    {
+      "id": "14-02",
+      "kind": "virtual",
+      "scope": "Passive 3-point flexure synthetic reference with load-specific guards",
+      "evidence": [
+        "exact configuration and source photos/drawings",
+        "independent full 145 frame native model/grips and beam changes",
+        "desktop and emulated Quest actual ray interaction",
+        "analytical stiffness and stop-limit cases with typed export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "0c17ade2aae3ec32d3a0237c4c2ca04ffefa2c51f58d46b96cd8b92f88b1cfb1"
+    },
+    {
+      "id": "14-03",
+      "kind": "virtual",
+      "scope": "Passive synthetic rheology with guarded moving fixture and passive equivalent functions",
+      "evidence": [
+        "manufacturer exact tooling and primary institutional photos",
+        "world matrix motion and all 126 authored frames",
+        "interactive real desktop/phone and Quest3 software rays",
+        "known Newtonian/Maxwell analytic and clear stop conditions"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "8d0c25708e2fab6d0b822a8b4370fbfb3c679563134fc3e919aaa9e80765d8d7"
+    },
+    {
+      "id": "14-04",
+      "kind": "virtual",
+      "scope": "Guarded passive synthetic oscillating-friction witness, no real substances",
+      "evidence": [
+        "exact legacy model and primary fixture handbook/photo",
+        "world/native 126 frames and separate fixtures/rotor",
+        "desktop/mobile and Quest 3 stereo emulator",
+        "known analytic contact force, torque and explicit undefined zero-speed friction"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "b89858f62c346289336842bf505f5c1d9c970f0b5aeb08ec9bc4fe3d0c2af218"
+    },
+    {
+      "id": "14-05",
+      "kind": "virtual",
+      "scope": "Passive synthetic indentation and separated auxiliary companion, no real samples",
+      "evidence": [
+        "exact manufacturer optics reference and primary photos",
+        "native real calibrated relative displacement example with true dry guards",
+        "actual Chromium and stereo Quest emulator",
+        "analytical synthetic Hertz reference with true calibration-sensitivity capture"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "9523ff6587bea56b582b38970878c8e2d257f9c3ab20c55e562fbc7164b64c9a"
+    },
+    {
+      "id": "14-06",
+      "kind": "virtual",
+      "scope": "Passive dry synthetic oscillating reference film; no heater/process",
+      "evidence": [
+        "exact configuration and primary cutaway references",
+        "165 actual world frame checks and working physical guarded rig",
+        "desktop and tracked Quest emulator rays",
+        "independent complex modulus math and typed export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "c6216225dac2172f1fa0d27e34b646e9a2543caf5cb6c0ded863ee8f69b0a441"
+    },
+    {
+      "id": "14-07",
+      "kind": "documentary",
+      "scope": "Cold documentary geometry plus disconnected synthetic mass replay (not real heating)",
+      "evidence": [
+        "primary exact device model/variant and photos",
+        "native actual passive motion across 163 frames",
+        "desktop/audio-free and emulated Quest stereo interaction",
+        "independent 80% basis and distinct blank drift, typed export"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "30b5b373ea2e374400364355f13a58eccd3c7e868ad6b94de8694b6cae52e223"
+    },
+    {
+      "id": "14-08",
+      "kind": "documentary",
+      "scope": "Cold documentary exhibit and disconnected illustrative time-only heat flow; no settings or active operations",
+      "evidence": [
+        "exact variant images and primary manual",
+        "native captive passive lids/two seats over 241 frames with clearance",
+        "actual desktop/mobile and Quest software stereo",
+        "independent integral value/sign and explicit separate typed provenance"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "fb4d67fe727cf857a01094cb236149dec5b04d7396b4f8163b73645bac3ac762"
+    },
+    {
+      "id": "14-09",
+      "kind": "documentary",
+      "scope": "Inert exterior and disconnected synthetic radiance comparison only, no sensors or spatial deployment",
+      "evidence": [
+        "actual legacy variant reference photos and dimensions",
+        "verified native mechanical passive pieces and complete anchor",
+        "actual offline browser/mobile and software Quest tracked rays",
+        "known 40-degree display, split and masking independent cases"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "04735c58bce1f589440b01d80467b938e3b21f65ee036a94e0b5b3fbb56efa0b"
+    },
+    {
+      "id": "14-10",
+      "kind": "virtual",
+      "scope": "Original passive cyclic geometry and synthetic deterministic checkpoint/lineage transfer",
+      "evidence": [
+        "authored original fixture lineage, no physical manufacturer claim",
+        "native active deformation trajectory across 150 frames",
+        "actual browser and emulated stereo controller",
+        "legacy checkpoint unchanged and independent force/history boundaries"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "7e9b356038c6df8d401ea363b46909a6b45c2d01c63c02c6033c14161ba92a09"
+    },
+    {
+      "id": "14-11",
+      "kind": "documentary",
+      "scope": "Original static custom case, static read-only dry synthetic signed impedance archives; no actual processing/extrapolation",
+      "evidence": [
+        "original dimensioned artwork; not OEM or independent measurement",
+        "native complete 199 baseline links and raycast own support",
+        "offline browser and tracked software Quest",
+        "known selective sign/relative impedance and sanitized typed artifacts"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "eeb4601664b857b7e3dd2268bf7b29592fa08e540389e0c4e092e12ce3363885"
+    },
+    {
+      "id": "14-12",
+      "kind": "documentary",
+      "scope": "Exact inert static chamber and disconnected unitless archival example only",
+      "evidence": [
+        "exact primary drawings and two matching photos",
+        "actual 199 room support rays and complete exact link",
+        "desktop and real Quest software document rays",
+        "independent unitless 0.6321 fixed quantity, typed dataset remains disjoint"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "a573005c86618865543b21565cdcfd2698b7e932d1253a94cfa2e0307ae88cc4"
+    },
+    {
+      "id": "15-01",
+      "kind": "documentary",
+      "scope": "Static opaque documentary enclosure and separated abstract rigid coordinate exhibit; no surgery or physical calibration",
+      "evidence": [
+        "exact actual primary vendor photo and catalogue plate data",
+        "reopened exact baseline offset with unchanged 198 devices",
+        "software Quest tracking and mouse viewport, exports",
+        "integer affine and rejection of scaling/shear/source ambiguity"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "f33d4ed206fd5be99233c7fe702fa9fb7af8a5265897a2db711065eb2972e20a"
+    },
+    {
+      "id": "15-02",
+      "kind": "documentary",
+      "scope": "Inert stationary microscope exterior and unrelated passive synthetic coordinate ruler",
+      "evidence": [
+        "primary exact model/package docs and real facility photo",
+        "complete linked anchored and world reliable",
+        "Chromium both sizes and emulated tracked rays",
+        "independent equal scale/true zero and off-target/null guards"
+      ],
+      "status": "ready",
+      "entry": "Nikon-SMZ25-Interactive.html",
+      "sha256": "fce905e92db0ba6441f3511b8eeca63a0e11bcadd21ef55209060b4b32649017"
+    },
+    {
+      "id": "15-03",
+      "kind": "documentary",
+      "scope": "Noldus CatWalk XT 10.7 sealed exact documentary exterior with detached unitless diagram exercise",
+      "evidence": [
+        "OEM and firsthand photos; verified 1300×680×1520 mm",
+        "35 logic, 30 reopened native, 25 actual browser checks and 4 software Quest rays",
+        "199-device disposable room relink preserved all other poses"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "ffce86bbdc7c616822d310b86dd3d947456b6d67d12555119f58f181a6e1666a"
+    },
+    {
+      "id": "15-04",
+      "kind": "documentary",
+      "scope": "EthoVision XT is software; separate Dell P2422H documentary host with detached drawing gaps exercise",
+      "evidence": [
+        "Exact monitor manual and front/rear views; unrelated original desk",
+        "33 native, 44 independent drawing and 27 browser tests with four stereo Quest emulator rays",
+        "199-device disposable relink with no neighbor change; actual typed JSON/CSV"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "2049498de3764e407822d053cd5f341dbc2af7c467f6069afb371e202fdbabcb"
+    },
+    {
+      "id": "15-05",
+      "kind": "documentary",
+      "scope": "Sealed exact-style enclosure and detached geometric byte/image orientation only",
+      "evidence": [
+        "actual exact primary supplier and institution photo/drawings",
+        "reopened all 102 linked native meshes and protected fixed case",
+        "Chromium and software Quest actual chart rays",
+        "independent signed mapping and nil/refusal guard with typed data"
+      ],
+      "status": "ready",
+      "entry": "Bruker-BioSpec7030-Interactive.html",
+      "sha256": "b360f4d8a72d3a067e0d72e32a0299acc18b14d454ffe9030dfcf1822642f9e8"
+    },
+    {
+      "id": "15-06",
+      "kind": "documentary",
+      "scope": "Exact sealed scanner and independent passive synthetic shape layers; no acquisition/tomography",
+      "evidence": [
+        "actual OEM exact compact enclosure photos/dimensioned figure",
+        "verified native actual complete link fixed case and separate world motion",
+        "browser actual keys and emulated Quest ray",
+        "independent support/area and absent-vs-empty typed replay"
+      ],
+      "status": "ready",
+      "entry": "Bruker-SkyScan1276-Interactive.html",
+      "sha256": "66eb7daf0da9075562d746dd3f839adf99882d1e944f71ee4ed1c75fc8f2a317"
+    },
+    {
+      "id": "15-07",
+      "kind": "documentary",
+      "scope": "Legacy Vevo 3100 sealed cart documentary exterior and disconnected raster geometry ruler",
+      "evidence": [
+        "OEM launch image and manual p.717; 540×680 mm footprint, 1580 mm estimated upright height",
+        "84 linked meshes with native motion in detached fixture only",
+        "Independent 4.500 mm two-pitch result, typed exports, desktop/mobile and Quest emulator rays"
+      ],
+      "status": "ready",
+      "entry": "VisualSonics-Vevo3100-Interactive.html",
+      "sha256": "8c98ae0199e92e7fb38aa87ec121a8f9d2ba0c2d63d98bb34b44ceeacb2f1dcc"
+    },
+    {
+      "id": "15-08",
+      "kind": "documentary",
+      "scope": "Sealed Iconeus One lower cart with an explicitly estimated envelope and detached rectangle comparison",
+      "evidence": [
+        "Exact Augusta reference photo and OEM sizing proxy",
+        "48 actual native meshes; 45 fixed, 3 detached with seven Blender frames",
+        "Independent signed and null-reference cases; offline mobile, desktop and actual software Quest ray"
+      ],
+      "status": "ready",
+      "entry": "Iconeus-One-Interactive.html",
+      "sha256": "ef1e635d6535f0d88a221448f6c3538c1a8fb8b3deae421c1fa3b5d79e1e0864"
+    },
+    {
+      "id": "15-09",
+      "kind": "documentary",
+      "scope": "Closed classic IVIS Spectrum legacy non-CT cabinet and detached neutral mirror artwork",
+      "evidence": [
+        "Exact P/N 124262, OEM and firsthand front/right and install photos, rear figure 6.7",
+        "147 actual linked meshes and seven evaluated Blender motion frames; 146 stationary",
+        "Independent 14 geometry checks, four exports, actual desktop, mobile and emulated Quest ray"
+      ],
+      "status": "ready",
+      "entry": "Revvity-IVIS-Spectrum-Interactive.html",
+      "sha256": "4455a185a3e65ea686fe8f4bdf59428dbe301ec105cd367b597932aac3299399"
+    },
+    {
+      "id": "15-10",
+      "kind": "documentary",
+      "scope": "Sealed Leica/Bioptigen Envisu C2300 cart and opaque head; separate colored plane exhibit",
+      "evidence": [
+        "Visually inspected exact OEM pp.1/2 and p.9 dimensions",
+        "47 data assertions, 34 native actual checks and 26 browser/mobile export checks",
+        "Four software stereo Quest rays and actual disposable 199-device native relink"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "eaa1d601e0acfbb8425a3ec8e0985810ad4c8c0240c1f9c45eb7170333b46cc6"
+    },
+    {
+      "id": "15-11",
+      "kind": "documentary",
+      "scope": "Sealed dormant Diagnosys D315 and D125 exterior with fixed custom cradle and separate paper exhibit",
+      "evidence": [
+        "Inspected OEM photos and two exact manual references; documented envelopes, inferred rear",
+        "33 native checks and all 199 room links; eight feet and exact corners on worktop",
+        "49 data and 28 desktop/mobile/export results plus four software Quest stereo rays"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "7f4fc680f82a6cd208718ae5247cc563b5719fb99e30e76aa74b27bbb1cefd9d"
+    },
+    {
+      "id": "15-12",
+      "kind": "documentary",
+      "scope": "Sealed TDT RZ6 and RA4PA exterior documentary with unrelated square-edge montage",
+      "evidence": [
+        "OEM case photos and printed manual p.7 silhouettes; rack face dimensions verified, housing depth estimated",
+        "Five opaque ray hits, nine detached Blender poses and exact 199-library bench relink",
+        "Independent perimeter, actual desktop and 390 px touch, 32 live corners, typed exports and synthetic XR select callback only"
+      ],
+      "status": "ready",
+      "entry": "index.html",
+      "sha256": "28524a01a0a368ad7d11daa8fe5fc076c80eabc1e69e9cd53ad818320610f593"
+    },
+    {
+      "id": "15-13",
+      "kind": "documentary",
+      "scope": "Unbuilt custom sealed housing derived from original project design, with separate parallelogram art",
+      "evidence": [
+        "Original design render and dimension SVG verified; no OEM or physical reference is claimed",
+        "21 reopened Blender checks across 182 poses, exact 89-mesh link and intact 198 other room hierarchies",
+        "35 analytic checks and actual rays/rendered corners against typed downloads; desktop/mobile and Quest software stereo"
+      ],
+      "status": "ready",
+      "entry": "Custom-Sealed-Study-15-13.html",
+      "sha256": "e05ab0c46d800f5ee9ab5ac9122d667dd7d52a68c374f4d96e0006e7adab9a0a"
+    },
+    {
+      "id": "15-14",
+      "kind": "documentary",
+      "scope": "Unbuilt project concept exterior with detached unrelated rounded-tile fit gallery",
+      "evidence": [
+        "Archived source illustrations; explicitly not OEM or measured hardware",
+        "52 real linked native meshes across 13 reopened frames",
+        "12 independent analytic dimensions, 3 GLB tests, actual mesh rays and exports across desktop/mobile/software XR"
+      ],
+      "status": "ready",
+      "entry": "Retinal-Bench-Concept-Interactive.html",
+      "sha256": "c6370bd8a8506bfbbe6c5737286c75ca4f9e6ba3f65808f10f17709ab0ccee14"
+    },
+    {
+      "id": "16-01",
+      "kind": "virtual",
+      "scope": "Passive isolation geometry, fit and synthetic oscillator; no real pneumatic or pressure settings",
+      "evidence": [
+        "OEM model photos, dimensioned top and legs and handbook",
+        "actual animated true axes recorded with native rays",
+        "desktop/390px and actual software Quest tracked ray",
+        "independent nominal responses and untuned catalog comparison"
+      ],
+      "status": "ready",
+      "entry": "Isolation-Transfer-Lab.html",
+      "sha256": "0d4c1376e66ac666a6492df4aebdecc5da7ef248dda4df979251c8cf675d1627"
+    },
+    {
+      "id": "16-02",
+      "kind": "virtual",
+      "scope": "Original synthetic low-noise cabinet and passive recorded metric trace; not real protective performance",
+      "evidence": [
+        "separate generic commercial evidence, exact original authored",
+        "world concrete door/latch/dummy signal path checks",
+        "Chromium and stereo engine Quest emulator",
+        "typed captured file independently parsed and 09-04 accepted"
+      ],
+      "status": "ready",
+      "entry": "Shielded-Witness-Lab.html",
+      "sha256": "f72a9d901b01435228a8c0d0567afcd005d3191925d500ff7103add0ca8615b5"
+    },
+    {
+      "id": "16-03",
+      "kind": "virtual",
+      "scope": "Original working mechanical support/drawer and dry static reaction illustration only",
+      "evidence": [
+        "original equipment schedule and reference imagery",
+        "world Blender motion and actual 199-room floor rays",
+        "desktop and actual software Quest3 tracked rays",
+        "independent static reaction and typed bench anchors"
+      ],
+      "status": "ready",
+      "entry": "Precision-Bench-Review.html",
+      "sha256": "9dd8d1dc607fa3d805c7e49922357d2ef002bd6e8c43352e2cec6a73bee87b54"
+    },
+    {
+      "id": "16-04",
+      "kind": "virtual",
+      "scope": "Dry original virtual ledger, passive working dispenser stand and inert fit only",
+      "evidence": [
+        "exact manufacturer models and dimensioned owner manual",
+        "native metric accuracy and 8 actual feet at no-gap room contact",
+        "desktop mobile and Quest software actual ray",
+        "independent typed exact transfers and tamper refusal without physical water"
+      ],
+      "status": "ready",
+      "entry": "Milli-Q-Dry-Ledger.html",
+      "sha256": "6fd6a6e3ff766a2eb47c30bda0d6d348bebc124f248051736528d9db12ac3471"
+    },
+    {
+      "id": "16-05",
+      "kind": "documentary",
+      "scope": "Sealed documentary case, detached external clearance gauge only; no sterilization",
+      "evidence": [
+        "legacy exact OEM photo, optional variant distinguished",
+        "reopened native world and no-gap room anchor",
+        "desktop/mobile and software stereo rays",
+        "mathematical fit and typed read-only prior data"
+      ],
+      "status": "ready",
+      "entry": "3870EA-External-Tray-Witness.html",
+      "sha256": "badc50e2fd3304bfb31295db446e00a90d74aef72f62c5cb330235e93facfaf1"
+    },
+    {
+      "id": "16-06",
+      "kind": "virtual",
+      "scope": "Passive synthetic tare/net and virtual clear/unstable states; not hardware calibration",
+      "evidence": [
+        "actual exact OEM manual and model photos",
+        "native moving slides and room support checks",
+        "both browser inputs and true Quest software stereo rays",
+        "independent rational receipt checks for net, overload and instability"
+      ],
+      "status": "ready",
+      "entry": "AE100-Dry-Weighing-Lab.html",
+      "sha256": "e6180bdd9e26727a9e2fd140eb24024ff8a9b3e89f1c70bd3dceb74782ce9137"
+    },
+    {
+      "id": "16-07",
+      "kind": "documentary",
+      "scope": "Inactive documented cabinet and disconnected abstract relaxation reference only",
+      "evidence": [
+        "actual primary photo/drawing, exact model coverage",
+        "reopened cabinet native foot contacts and independent slider",
+        "desktop, 390px and emulated Quest real ray",
+        "independent unitless decay and conservation checks"
+      ],
+      "status": "ready",
+      "entry": "Isotemp-GPD05-Relaxation-Witness.html",
+      "sha256": "099465ba9013163f24cd3963596c76a2f4c16f889de004c49fa0acdaff52fc09"
+    },
+    {
+      "id": "16-08",
+      "kind": "documentary",
+      "scope": "Exact inactive handpiece documentary, detached solid length-fit only",
+      "evidence": [
+        "actual OEM primary photo and model number; length estimate labeled",
+        "native 160 world frames actual independent dry motion with stable bench anchors",
+        "Chromium and immersive software Quest tracked rays",
+        "known margin and failures, three typed native artifacts read back"
+      ],
+      "status": "ready",
+      "entry": "Research-Plus-Dry-Handle-Witness.html",
+      "sha256": "9ef50f7df8896039ecf948809b405364160e602e13712372c9757d40ef4c70b0"
+    },
+    {
+      "id": "16-09",
+      "kind": "documentary",
+      "scope": "Exact inert dry cabinet and completely detached mathematical angular footprint",
+      "evidence": [
+        "actual exact OEM primary photo/drawings",
+        "actual native independent card geometry all 185 poses & room support",
+        "desktop and stereo software emulation",
+        "independent angle clearances and typed guard"
+      ],
+      "status": "ready",
+      "entry": "IKA-HS7-Angular-Footprint-Witness.html",
+      "sha256": "d9761a48e3f5ac03d73aaa7c105e8a15f6cfd97349134fa3994ecbd3d5d03a2b"
+    },
+    {
+      "id": "16-10",
+      "kind": "documentary",
+      "scope": "Exact documentary idle enclosure and detached cold invented cage fit only",
+      "evidence": [
+        "actual primary OEM and matching owner photo",
+        "native actual 174 pose integrated world and preserved mount contact",
+        "desktop mobile with stereo software controller",
+        "independent true dry multidimensional confidence; no processes"
+      ],
+      "status": "ready",
+      "entry": "CPX1800H-Detached-Cage-Witness.html",
+      "sha256": "c328f42a9c48e7e4e855d8fa0fe5c6f3a6f2afe799670a9231bd144cadbc6882"
+    },
+    {
+      "id": "16-11",
+      "kind": "virtual",
+      "scope": "Original fictional dry marker bridge and exclusive position ledger, no physical operations",
+      "evidence": [
+        "original authored design and corroborating general component photos",
+        "actual 143 Blender frames and room support/complete link",
+        "desktop mobile and Quest software tracked rays",
+        "positive dry geometric fit and type-preserved atomic rollback"
+      ],
+      "status": "ready",
+      "entry": "Custody-Bridge.html",
+      "sha256": "59dcb8c9e23d232db8c3eb2e1980937892ed5b650e63897372c93bbd4bdc33e4"
+    },
+    {
+      "id": "16-12",
+      "kind": "virtual",
+      "scope": "Custom dry inert geometric index carrier and typed identity state, no workflows or wet lab",
+      "evidence": [
+        "primary dimensional top/side pattern, custom original design disclosed",
+        "reopened room support and 128 actual animated world poses",
+        "desktop and actual software Quest tracked ray workflow",
+        "independent tangency/overflow stable IDs and typed r3 replay"
+      ],
+      "status": "ready",
+      "entry": "Dry-Index-Plate.html",
+      "sha256": "cf803a27fbe30360868bba35ce8edd3571c4e14b932fc9832e0d5fdaae4c42f7"
+    },
+    {
+      "id": "16-13",
+      "kind": "virtual",
+      "scope": "Inert custom connector panel, offline mechanical fit and synthetic data handoff",
+      "evidence": [
+        "Exact Amphenol drawings and 163-node GLB",
+        "124 native poses and unchanged room matrices",
+        "Desktop, 390 px and software XR rays",
+        "Actual browser-exported r2 waveform parsed by existing 09-04 acquisition; 1.25 Vpp and 27 captured points"
+      ],
+      "status": "ready",
+      "entry": "Dry-Connector-Library.html",
+      "sha256": "df4af846932c4a06bee56f3c0b415112d4ff157c73a5ea4c1086ed29f32bd6c7"
+    },
+    {
+      "id": "16-14",
+      "kind": "documentary",
+      "scope": "Custom inert sealed utility exterior and unrelated dry dimensional clearance comparator",
+      "evidence": [
+        "Hammond handbook p.14 exterior inspiration; custom 910×465×542.5 mm envelope",
+        "161 native poses, 199 unchanged placements, four floor contacts",
+        "Actual desktop, mobile, stereo software XR and verifiable typed export"
+      ],
+      "status": "ready",
+      "entry": "Detached-Clearance-Comparator.html",
+      "sha256": "152915afaeada5b818ceab37e99612dd0f22d6aeb3bd6e1bf65c61ed4cd0fda2"
+    },
+    {
+      "id": "16-15",
+      "kind": "virtual",
+      "scope": "Custom archive cabinet, stool and lamp props; working inert drawer, door, fit and local virtual lighting",
+      "evidence": [
+        "Primary visual reference and custom proportions; 123 GLB nodes",
+        "204 actual Blender frames and 11 floor contacts; 199 room matrices unchanged",
+        "Persistence and oversize rejection, typed replay, actual light response and desktop/mobile/software XR"
+      ],
+      "status": "ready",
+      "entry": "Archive-Drawer-and-Lamp.html",
+      "sha256": "dbc2bbd656d9fed77f478d6ba93c60de3fc965c74b3a1d6442d99cd785433584"
+    }
+  ]
+}

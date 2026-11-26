@@ -29,3 +29,7 @@ pnpm-debug.log*
 # Regenerated raw Stage 1 field reference arrays; compact evidence is committed.
 docs/axon-interface/field-stage1-reference-input.json
 docs/axon-interface/field-stage1-reference.json
+
+# Materialized from the checksum-pinned revised equipment payload.
+/public/equipment-revised/
+/public/.bts-equipment-revised-*/
