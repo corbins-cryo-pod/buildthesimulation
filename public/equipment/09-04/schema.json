@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"BuildTheSimulation digital oscilloscope capture, v1",
+  "type":"object","required":["schema","device","sampleId","contactId","revision","parentRevision","source","kind","settings","sampling","measurements","timeRelativeS","voltageV"],
+  "properties":{
+    "schema":{"const":"bts.scope.capture.v1"},"device":{"const":"09-04"},"sampleId":{"type":"string"},"contactId":{"type":"string"},
+    "revision":{"type":"integer","minimum":1},"parentRevision":{"type":"integer","minimum":0},"source":{"type":"string"},"kind":{"type":"string"},
+    "settings":{"type":"object","description":"SI units; rate in S/s; secDiv in seconds; level, centerV and voltsDiv in indicated volts."},
+    "sampling":{"type":"object","required":["rateHz","intervalS","n","triggerIndex","firstSourceTimeS","triggerSourceTimeS"],"properties":{"rateHz":{"type":"number","exclusiveMinimum":0},"intervalS":{"type":"number","exclusiveMinimum":0},"n":{"type":"integer","minimum":16,"maximum":65536},"triggerIndex":{"type":"integer","minimum":0},"firstSourceTimeS":{"type":"number"},"triggerSourceTimeS":{"type":"number"}}},
+    "measurements":{"type":"object","description":"Peak-to-peak, RMS and LSB in volts. Period in seconds, null if no second matching edge."},
+    "timeRelativeS":{"type":"array","minItems":16,"maxItems":65536,"items":{"type":"number"},"description":"Seconds relative to sampled trigger; array length equals sampling.n."},
+    "voltageV":{"type":"array","minItems":16,"maxItems":65536,"items":{"type":"number"},"description":"Indicated volts referred to nominal probe tip; array length equals sampling.n."},
+    "cursors":{"type":"array","items":{"type":"integer","minimum":0},"minItems":2,"maxItems":2}
+  }
+}
