@@ -226,9 +226,10 @@
     "inputs": "Package ID, bath-condition time series, timestamped impedance spectra and optional calibrated ingress model",
     "outputs": "Condition history, frequency-specific impedance drift and linked observations by specimen",
     "acceptance": "Give two labeled packages identical baselines but change only one package's test-frequency magnitude by 10%. Recover that drift only for that package and frequency.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass custom dual-bath assembly · authored metric design",
+    "simulationStatus": "Verified package/contact/frequency-specific relative impedance drift; no lifetime extrapolation",
+    "integrationStatus": "Interactable witness logging, verified 09-01 EIS baseline replay and VR targets",
+    "simulator": "/simulations/equipment/14-11/simulator/"
   },
   {
     "id": "14-12",
