@@ -1,0 +1,48 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "10-14",
+  "asset": "/equipment/10-14/dry-fixture.glb",
+  "scale": "glTF in meters, +Y up, front +Z",
+  "metrics": {
+    "bytes": 79696,
+    "triangles": 848,
+    "draws": 36,
+    "baseXyzM": [
+      0.4099999964237213,
+      0.023000000044703484,
+      0.2199999988079071
+    ],
+    "solidBlockXyzM": [
+      0.06499999761581421,
+      0.014999999664723873,
+      0.07999999821186066
+    ]
+  },
+  "scope": "Display actions only; no connection or immersed specimen. No headset tested.",
+  "nodes": [
+    {
+      "node": "block_display_toggle",
+      "label": "Show or hide the solid display block",
+      "action": {
+        "type": "insert"
+      },
+      "boundsM": [
+        0.046,
+        0.006,
+        0.013
+      ]
+    },
+    {
+      "node": "tag_display_toggle",
+      "label": "Show or hide detached visual labels",
+      "action": {
+        "type": "tags"
+      },
+      "boundsM": [
+        0.046,
+        0.006,
+        0.013
+      ]
+    }
+  ]
+}

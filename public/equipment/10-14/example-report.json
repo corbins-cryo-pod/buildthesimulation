@@ -1,0 +1,46 @@
+{
+  "schema": "bts.dry-mount.inspection.v1",
+  "deviceId": "10-14",
+  "origin": "original-dry-display-mock",
+  "revision": 1,
+  "parentRevision": null,
+  "dimensionsUnit": "mm",
+  "frame": "fixture plane, +X right from operator, +Y away",
+  "insert": {
+    "sampleId": "BTS-SOLID-DRY-BLOCK",
+    "sampleRevision": "block-r1",
+    "kind": "inert rectangular display prop",
+    "widthMm": 65,
+    "depthMm": 80,
+    "heightMm": 15
+  },
+  "seat": {
+    "id": "BTS-DRY-SEAT-R1",
+    "widthMm": 85,
+    "depthMm": 120,
+    "heightMm": 19
+  },
+  "parameters": {
+    "xMm": 0,
+    "yMm": 0,
+    "leftTag": "TAG-A",
+    "rightTag": "TAG-B"
+  },
+  "marginMm": {
+    "left": 10,
+    "right": 10,
+    "front": 20,
+    "back": 20,
+    "vertical": 4
+  },
+  "fitStatus": "nominal-fit",
+  "labels": {
+    "left": "TAG-A",
+    "right": "TAG-B",
+    "expectedLeft": "TAG-A",
+    "expectedRight": "TAG-B",
+    "matchesReference": true,
+    "plugState": "detached and power-disconnected"
+  },
+  "scope": "Original non-operational visualization. No fluid, actual specimen, signals, circuitry, electrodes or physiological response."
+}
