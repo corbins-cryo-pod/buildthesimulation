@@ -149,7 +149,7 @@
   {
     "id": "14-07",
     "name": "Thermogravimetric analyzer",
-    "model": "TA Instruments TGA Q50",
+    "model": "TA Instruments Q50 TGA, standard vertical furnace",
     "evidence": "B",
     "priority": "P3",
     "page": 44,
@@ -162,9 +162,10 @@
     "inputs": "Pan tare, initial specimen mass, timestamped temperature and reference mass series",
     "outputs": "Tare-corrected mass fraction and mass-change curve versus temperature",
     "acceptance": "Replay a 10 mg sample ending at 8 mg with a constant 2 mg pan. Terminal retained mass must be 80% regardless of whether the pan offset is included before tare.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric editable chassis, furnace slide and hanging pan GLB",
+    "simulationStatus": "Verified synthetic gross/net tare and blank correction",
+    "integrationStatus": "Dedicated interactive replay with typed JSON and CSV",
+    "simulator": "/simulations/equipment/14-07/simulator/"
   },
   {
     "id": "14-08",

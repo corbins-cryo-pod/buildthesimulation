@@ -1,0 +1,4 @@
+{
+ "input":{"schema":"bts.tga-series.v1","classification":"synthetic","required":["sampleId","revision","panId","panMg","basis","points"],"basis":{"gross":"indicatedMg includes the constant pan","net":"pan has already been removed"},"row":{"timeS":"s, strictly increasing","temperatureC":"synthetic Celsius coordinate","indicatedMg":"mg","blankMg":"optional additive blank drift in mg"},"example":["example-gross.json","example-net.json"]},
+ "output":{"schema":"bts.tga-replay.v1","classification":"synthetic replay","lineage":["sampleId","sampleRevision","runRevision","panId","basis"],"rows":["timeS","temperatureC","indicatedMg","blankMg","correctedMg","retainedPercent"],"example":"example-replay.json"}
+}

@@ -1,0 +1,14 @@
+{
+ "scope":"Predeclared synthetic arithmetic, not a decomposition experiment or a real temperature procedure.",
+ "cases":[
+  {"id":"gross-initial","expected":10,"unit":"mg","tolerance":1e-10},
+  {"id":"gross-final","expected":8,"unit":"mg","tolerance":1e-10},
+  {"id":"gross-retained","expected":80,"unit":"%","tolerance":1e-9},
+  {"id":"net-retained","expected":80,"unit":"%","tolerance":1e-9},
+  {"id":"loss","expected":2,"unit":"mg","tolerance":1e-10},
+  {"id":"net-ignore-tare","expected":80,"unit":"%","tolerance":1e-9},
+  {"id":"blank-corrected","expected":80,"unit":"%","tolerance":1e-9},
+  {"id":"blank-ignored","expected":82,"unit":"%","tolerance":1e-9},
+  {"id":"missing-tare","expected":"tare","unit":"code"}
+ ]
+}
