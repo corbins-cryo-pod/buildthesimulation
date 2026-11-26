@@ -10,7 +10,7 @@ function geometry(s){
  const [x,y,z]=s.d.map(q=>q*.5);const p=[[-x,-y,-z],[x,-y,-z],[x,y,-z],[-x,y,-z],[-x,-y,z],[x,-y,z],[x,y,z],[-x,y,z]];
  for(const f of [[3,2,1,0],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]])faces.push(f.map(i=>add(s.p,p[i])));
  }else if(s.t==='chamfer'){
- const [x,y,z]=s.d.map(v=>v/2),e=s.bevel;
+ const [x,y,z]=s.d.map(v=>v/2),e=Math.min(s.bevel,x*.99,z*.99);
  const contour=[[-x+e,-z],[x-e,-z],[x,-z+e],[x,z-e],[x-e,z],[-x+e,z],[-x,z-e],[-x,-z+e]];
  const lo=contour.map(([x,z])=>add(s.p,[x*s.ba,-y,z*s.ba])),hi=contour.map(([x,z])=>add(s.p,[x,y,z]));
  faces.push(lo,hi.slice().reverse());for(let i=0;i<8;i++){const j=(i+1)%8;faces.push([lo[j],lo[i],hi[i],hi[j]]);}
