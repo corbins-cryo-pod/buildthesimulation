@@ -3,7 +3,7 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 const $=s=>document.querySelector(s),root=$('#afm'),u='/equipment/05-03/';
 async function setup(){
- const [{station,operate,cursorXY},{envelopeGrid,profileCsv},manifest]=await Promise.all([import(/* @vite-ignore */ u+'station.mjs'),import(/* @vite-ignore */ u+'solver.mjs'),fetch(u+'xr.json').then(r=>r.json())]);let s=station(),animateView=()=>{},cameraView=()=>{},epoch=0;
+ const [{station,operate,cursorXY},{envelopeGrid,profileCsv},manifest]=await window.afmModuleBundle;let s=station(),animateView=()=>{},cameraView=()=>{},epoch=0;
  const c=$('#maps'),cs=$('#slice'),cx=c.getContext('2d'),sx=cs.getContext('2d');const axis='#b5b9aa',light='#efd688',mint='#8be0cd';
  function text(x){$('#status').textContent=x}
  function draw(){const r=s.result;for(const [ctx,can] of [[cx,c],[sx,cs]]){ctx.fillStyle='#17262a';ctx.fillRect(0,0,can.width,can.height)}if(!r){cx.fillStyle=axis;cx.font='18px sans-serif';cx.fillText('Acquire a raster to compare the two surfaces.',20,55);$('#readings').textContent='No acquisition with these settings.';return}
