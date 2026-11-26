@@ -1,0 +1,108 @@
+{
+  "schema": "bts.facet-annotation.verification.v1",
+  "metrics": {
+    "bytes": 175508,
+    "triangles": 2516,
+    "draws": 45,
+    "nominalBaseXyzM": [
+      0.48260000348091125,
+      0.026000000536441803,
+      0.22859999537467957
+    ],
+    "nominalHeightAnchorM": 0.2031999984756112
+  },
+  "cases": [
+    {
+      "id": "3-4-5-angle",
+      "expected": 36.86989764584401,
+      "unit": "deg",
+      "tolerance": 1e-10,
+      "actual": 36.86989764584401,
+      "outcome": "PASS"
+    },
+    {
+      "id": "horizontal-residual",
+      "expected": 0,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "actual": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "inclined-residual",
+      "expected": 0,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "actual": 1.2560739669470201e-15,
+      "outcome": "PASS"
+    },
+    {
+      "id": "vertical-vs-diagonal",
+      "expected": 45,
+      "unit": "deg",
+      "tolerance": 1e-10,
+      "actual": 45.00000000000001,
+      "outcome": "PASS"
+    },
+    {
+      "id": "rigid-display-rotation-invariance",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reversed-node-order-invariance",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "coincident-track-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "isotropic-track-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "dormant-control-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "nominal-base-length",
+      "expected": 0.4826,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.48260000348091125,
+      "outcome": "PASS"
+    },
+    {
+      "id": "nominal-base-depth",
+      "expected": 0.2286,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.22859999537467957,
+      "outcome": "PASS"
+    },
+    {
+      "id": "nominal-height-anchor",
+      "expected": 0.2032,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.2031999984756112,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Fictitious 2D inspection and static documentary GLB only. No tip geometry, biological procedure, instrument operation or headset test."
+}

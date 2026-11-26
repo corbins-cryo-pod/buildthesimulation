@@ -163,7 +163,7 @@
   {
     "id": "10-08",
     "name": "Microelectrode beveler",
-    "model": "Sutter BV-10",
+    "model": "Sutter BV-10-D · stationary stereo-head documentary model",
     "evidence": "A",
     "priority": "P2",
     "page": 34,
@@ -176,9 +176,14 @@
     "inputs": "Pipette ID, initial tip geometry and a matched before/after bevel calibration set",
     "outputs": "Child tip revision, modeled bevel surface and estimated resistance (Ω)",
     "acceptance": "Replay a held-out tip pair. Compare estimated opening area and resistance change with measured before/after values and retain uncertainty for each quantity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric BV-10-D GLB; fixed surfaces only",
+    "simulationStatus": "Fictitious facet annotation only; no fabrication or resistance simulation",
+    "integrationStatus": "Static viewer and annotation export; original experimental acceptance not run",
+    "simulator": "/simulations/equipment/10-08/simulator/",
+    "related": [
+      ["Sutter BV-10 factory photograph", "https://www.sutter.com/hs-fs/hubfs/WEB%20-%20Product%20Images/BV-10_lg.jpg?height=1483&name=BV-10_lg.jpg&width=2000"],
+      ["Sutter BV-10 manual Rev. 3.00 cover", "https://www.sutter.com/hubfs/WEB%20-%20Manuals/BV-10_OpMan.pdf#page=1"]
+    ]
   },
   {
     "id": "10-09",

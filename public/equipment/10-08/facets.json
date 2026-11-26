@@ -1,0 +1,10 @@
+{
+  "schema":"bts.facet-annotation.fixture.v1",
+  "origin":"already-authored fictitious macro reference block, not an electrode",
+  "fixtureRevision":"drawn-facets-r1",
+  "units":"mm",
+  "fixtures":[
+    {"id":"WEDGE-A","label":"A · 3–4–5 reference","base":[[-32,0],[-24,0],[-16,0],[-8,0],[0,0]],"facet":[[0,0],[8,6],[16,12],[24,18],[32,24]]},
+    {"id":"WEDGE-B","label":"B · vertical and diagonal","base":[[-20,-20],[-15,-15],[-10,-10],[-5,-5],[0,0]],"facet":[[0,0],[0,5],[0,10],[0,15],[0,20]]}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "10-08",
+  "asset": "/equipment/10-08/bv10d-static.glb",
+  "scale": "glTF meter with +Y up +Z toward operator",
+  "metrics": {
+    "bytes": 175508,
+    "triangles": 2516,
+    "draws": 45,
+    "nominalBaseXyzM": [
+      0.48260000348091125,
+      0.026000000536441803,
+      0.22859999537467957
+    ],
+    "nominalHeightAnchorM": 0.2031999984756112
+  },
+  "scope": "Inspection-only named virtual badge; 3D equipment has no controls. No headset tested.",
+  "nodes": [
+    {
+      "node": "facet_selector_overlay",
+      "label": "Select a fictitious passive facet drawing",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.066,
+        0.007,
+        0.026
+      ]
+    }
+  ]
+}
