@@ -1,0 +1,66 @@
+{
+  "triangles": 1960,
+  "draws": 21,
+  "nodes": 9,
+  "bytes": 131516,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "visual_door": {
+      "at": [
+        0,
+        0.49,
+        0.243
+      ],
+      "extent": [
+        0.503,
+        0.334,
+        0.049
+      ],
+      "action": "view",
+      "label": "Change dry door depiction"
+    },
+    "shelf": {
+      "at": [
+        0,
+        0.228,
+        0.078
+      ],
+      "extent": [
+        0.31,
+        0.016,
+        0.27
+      ],
+      "action": "check",
+      "label": "Evaluate tray on source-scaled dry shelf"
+    },
+    "dry_tray": {
+      "at": [
+        0,
+        0.228,
+        0.078
+      ],
+      "extent": [
+        0.25,
+        0.045,
+        0.18
+      ],
+      "action": "check",
+      "label": "Check cold empty tray bounds"
+    },
+    "front_panel": {
+      "at": [
+        0,
+        0.09,
+        0.246
+      ],
+      "extent": [
+        0.6,
+        0.108,
+        0.027
+      ],
+      "label": "Decorative controls, no action"
+    }
+  }
+}
