@@ -69,8 +69,8 @@
   {
     "id": "07-03",
     "name": "Routine inverted microscope",
-    "model": "Nikon Eclipse Ts2 / Ts2F (choose fluorescence variant)",
-    "evidence": "B",
+    "model": "Nikon ECLIPSE Ts2-FL · DS-Fi3 camera, 0.63× relay",
+    "evidence": "A",
     "priority": "P1",
     "page": 24,
     "sources": [
@@ -83,9 +83,20 @@
     "inputs": "Sample image or geometry, calibrated pixel size, installed objective and imaging mode",
     "outputs": "Observation image with field of view, scale bar, sample ID and acquisition metadata",
     "acceptance": "Image a stage-micrometer fixture through two calibrated objectives. Recover the same physical spacing at both scales and expose fluorescence only for a configured fluorescence variant.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric stand and camera reconstruction with indexed nosepiece, focus and slide motion",
+    "simulationStatus": "Calibrated camera ROI, micrometer pitch measurement, phase contrast approximation and single-channel epi-fluorescence",
+    "integrationStatus": "Interactive instrument with calibrated raster import, PNG and acquisition JSON export, and sample handoff to 07-02",
+    "simulator": "/simulations/equipment/07-03/simulator/",
+    "related": [
+      [
+        "Illustrated configuration and specifications",
+        "/simulations/equipment/07-03/simulator/#references"
+      ],
+      [
+        "Micrometer calibration and geometry checks",
+        "/simulations/equipment/07-03/simulator/#verification"
+      ]
+    ]
   },
   {
     "id": "07-04",

@@ -1,0 +1,7 @@
+{
+ "schema":"bts.dc-supply-contract.v1",
+ "input":{"schema":"bts.dc-load-bank.v1","state":"sampleId (nonempty ≤150 chars), revision (integer 0..100000000), selected (0..2), channels in order CH1,CH2,CH3","channels":"id, setV (0..6/25/25 V), limitA (0..10/2/2 A), enabled, connected, loadOhm (0..1e7 Ω), leadOhm (0..100 Ω round trip, equal split), remote, senseIntact; flags boolean. No shared return or chassis earth implied."},
+ "outputs":{"bts.dc-supply-run.v1":"Each contact has regulation status, terminalV, loadV (null when physically open), meterV, currentA, supplyW, loadW, leadW; parentRevision and result revision=input revision+1; source config preserved.","csv":"One row per contact, comment header with sample ID, revision and simulated origin; unconnected load volts blank.","bts.analog-waveform.v1":"sampleId, revision, startS=0, dtS=0.1, channels[{id:'CHn_LOAD-HI_to_LOAD-LO',unit:'V',samples:161 values}], provenance with source settings and three steady-state input stages. Sample t in seconds from sequence start; volts of load HI relative to its own LO; no physical time-response claim."},
+ "failures":["invalid load-bank schema/ID, range or unit","open remote sense pair or missing load in remote mode","remote correction above 1 V per lead or conservative terminal headroom","load-step export requires enabled, connected positive resistance"],
+ "maxInputBytes":65536
+}

@@ -1,0 +1,1615 @@
+{
+  "schema": "bts.reflectance-spectrum.v1",
+  "equipmentId": "05-05",
+  "kind": "simulated steady-state optical counts and calibrated reflectance",
+  "sampleId": "oxide-Si-A",
+  "contactIds": [],
+  "parentRevision": 0,
+  "revision": 1,
+  "coordinate": {
+    "xMm": 0,
+    "zMm": 0,
+    "frame": "coupon center; x right, z toward operator",
+    "spotDiameterUm": 50
+  },
+  "optics": {
+    "ambientN": 1,
+    "model": "silicaSi",
+    "objective": 5,
+    "apertureUm": 250,
+    "band": "wide",
+    "normalIncidence": true
+  },
+  "transfer": {
+    "sourceSchema": null,
+    "sourceKind": "generated",
+    "sourceRevision": 0,
+    "substrateAssumption": null
+  },
+  "wavelengthUnit": "nm",
+  "reflectanceUnit": "fraction",
+  "samples": [
+    {
+      "wavelengthNm": 400,
+      "darkCounts": 88.42819459685467,
+      "referenceCounts": 1376.9855224120051,
+      "sampleCounts": 12019.67038706284,
+      "reflectance": 0.40737170248158194
+    },
+    {
+      "wavelengthNm": 402,
+      "darkCounts": 88.36045755821473,
+      "referenceCounts": 1379.0448108192877,
+      "sampleCounts": 12182.637825173328,
+      "reflectance": 0.41193350263032835
+    },
+    {
+      "wavelengthNm": 404,
+      "darkCounts": 88.29846820523215,
+      "referenceCounts": 1381.192889928492,
+      "sampleCounts": 12331.386057976704,
+      "reflectance": 0.415966799740765
+    },
+    {
+      "wavelengthNm": 406,
+      "darkCounts": 88.24225714867337,
+      "referenceCounts": 1383.4299794819024,
+      "sampleCounts": 12465.80397516573,
+      "reflectance": 0.41947088882799527
+    },
+    {
+      "wavelengthNm": 408,
+      "darkCounts": 88.19185214594253,
+      "referenceCounts": 1385.756271379756,
+      "sampleCounts": 12585.847169048928,
+      "reflectance": 0.4224475076252785
+    },
+    {
+      "wavelengthNm": 410,
+      "darkCounts": 88.14727808737467,
+      "referenceCounts": 1388.1719277651755,
+      "sampleCounts": 12691.521970709573,
+      "reflectance": 0.424900269995465
+    },
+    {
+      "wavelengthNm": 412,
+      "darkCounts": 88.10855698394474,
+      "referenceCounts": 1390.6770791228,
+      "sampleCounts": 12812.841419756047,
+      "reflectance": 0.42784184816795034
+    },
+    {
+      "wavelengthNm": 414,
+      "darkCounts": 88.07570795639843,
+      "referenceCounts": 1393.2718223927022,
+      "sampleCounts": 12920.64970389506,
+      "reflectance": 0.4302900493291124
+    },
+    {
+      "wavelengthNm": 416,
+      "darkCounts": 88.04874722581017,
+      "referenceCounts": 1395.956219101239,
+      "sampleCounts": 13015.08830287895,
+      "reflectance": 0.4322530819306045
+    },
+    {
+      "wavelengthNm": 418,
+      "darkCounts": 88.02768810557312,
+      "referenceCounts": 1398.7302935106557,
+      "sampleCounts": 13096.311627037268,
+      "reflectance": 0.43373967225394516
+    },
+    {
+      "wavelengthNm": 420,
+      "darkCounts": 88.01254099482486,
+      "referenceCounts": 1401.5940307892968,
+      "sampleCounts": 13164.481021863829,
+      "reflectance": 0.43475885519684626
+    },
+    {
+      "wavelengthNm": 422,
+      "darkCounts": 88.00331337331227,
+      "referenceCounts": 1404.5473752044027,
+      "sampleCounts": 13237.783376485975,
+      "reflectance": 0.43591728647613337
+    },
+    {
+      "wavelengthNm": 424,
+      "darkCounts": 88.00000979769794,
+      "referenceCounts": 1407.590228339557,
+      "sampleCounts": 13298.80484223573,
+      "reflectance": 0.4366379200340748
+    },
+    {
+      "wavelengthNm": 426,
+      "darkCounts": 88.00263189931013,
+      "referenceCounts": 1410.7224473388887,
+      "sampleCounts": 13347.731380092677,
+      "reflectance": 0.4369305967560921
+    },
+    {
+      "wavelengthNm": 428,
+      "darkCounts": 88.01117838333712,
+      "referenceCounts": 1413.943843180284,
+      "sampleCounts": 13384.743381015247,
+      "reflectance": 0.43680501990521203
+    },
+    {
+      "wavelengthNm": 430,
+      "darkCounts": 88.02564502946665,
+      "referenceCounts": 1417.2541789798438,
+      "sampleCounts": 13410.014206035887,
+      "reflectance": 0.43627070484393493
+    },
+    {
+      "wavelengthNm": 432,
+      "darkCounts": 88.04602469396991,
+      "referenceCounts": 1420.653168329977,
+      "sampleCounts": 13439.073263734874,
+      "reflectance": 0.4358384982203313
+    },
+    {
+      "wavelengthNm": 434,
+      "darkCounts": 88.07230731322922,
+      "referenceCounts": 1424.14047367348,
+      "sampleCounts": 13457.069967640444,
+      "reflectance": 0.4350242861862076
+    },
+    {
+      "wavelengthNm": 436,
+      "darkCounts": 88.10447990870745,
+      "referenceCounts": 1427.7157047161074,
+      "sampleCounts": 13464.171224522022,
+      "reflectance": 0.4338373185565253
+    },
+    {
+      "wavelengthNm": 438,
+      "darkCounts": 88.14252659335692,
+      "referenceCounts": 1431.3784168801108,
+      "sampleCounts": 13460.535411814279,
+      "reflectance": 0.43228659445931167
+    },
+    {
+      "wavelengthNm": 440,
+      "darkCounts": 88.18642857946458,
+      "referenceCounts": 1435.1281098012778,
+      "sampleCounts": 13446.312743280621,
+      "reflectance": 0.4303808729206165
+    },
+    {
+      "wavelengthNm": 442,
+      "darkCounts": 88.23616418792942,
+      "referenceCounts": 1438.964225872072,
+      "sampleCounts": 13429.70020726819,
+      "reflectance": 0.428387311242585
+    },
+    {
+      "wavelengthNm": 444,
+      "darkCounts": 88.29170885896788,
+      "referenceCounts": 1442.8861488334612,
+      "sampleCounts": 13403.018687541944,
+      "reflectance": 0.42606151069717924
+    },
+    {
+      "wavelengthNm": 446,
+      "darkCounts": 88.35303516424155,
+      "referenceCounts": 1446.893202418068,
+      "sampleCounts": 13366.406693711655,
+      "reflectance": 0.4234118050696503
+    },
+    {
+      "wavelengthNm": 448,
+      "darkCounts": 88.42011282040149,
+      "referenceCounts": 1450.984649047269,
+      "sampleCounts": 13319.997531377123,
+      "reflectance": 0.420446370626022
+    },
+    {
+      "wavelengthNm": 450,
+      "darkCounts": 88.49290870404234,
+      "referenceCounts": 1455.1596885849121,
+      "sampleCounts": 13263.920391241145,
+      "reflectance": 0.4171732575568107
+    },
+    {
+      "wavelengthNm": 452,
+      "darkCounts": 88.57138686805895,
+      "referenceCounts": 1459.4174571502901,
+      "sampleCounts": 13207.253028746656,
+      "reflectance": 0.41388283545218935
+    },
+    {
+      "wavelengthNm": 454,
+      "darkCounts": 88.65550855939723,
+      "referenceCounts": 1463.7570259930055,
+      "sampleCounts": 13141.389024364804,
+      "reflectance": 0.41030547112232
+    },
+    {
+      "wavelengthNm": 456,
+      "darkCounts": 88.74523223819071,
+      "referenceCounts": 1468.1774004323818,
+      "sampleCounts": 13066.457292092418,
+      "reflectance": 0.40644909377176536
+    },
+    {
+      "wavelengthNm": 458,
+      "darkCounts": 88.84051359827322,
+      "referenceCounts": 1472.6775188640177,
+      "sampleCounts": 12982.586917843439,
+      "reflectance": 0.4023216205701729
+    },
+    {
+      "wavelengthNm": 460,
+      "darkCounts": 88.94130558905754,
+      "referenceCounts": 1477.2562518360867,
+      "sampleCounts": 12889.908452523174,
+      "reflectance": 0.3979309907428876
+    },
+    {
+      "wavelengthNm": 462,
+      "darkCounts": 89.04755843876933,
+      "referenceCounts": 1481.9124011979172,
+      "sampleCounts": 12796.43743614502,
+      "reflectance": 0.3935292999298223
+    },
+    {
+      "wavelengthNm": 464,
+      "darkCounts": 89.15921967902476,
+      "referenceCounts": 1486.6446993233883,
+      "sampleCounts": 12694.617988630474,
+      "reflectance": 0.3888844982912627
+    },
+    {
+      "wavelengthNm": 466,
+      "darkCounts": 89.27623417073978,
+      "referenceCounts": 1491.4518084116012,
+      "sampleCounts": 12584.593828815203,
+      "reflectance": 0.38400473789611456
+    },
+    {
+      "wavelengthNm": 468,
+      "darkCounts": 89.39854413135816,
+      "referenceCounts": 1496.3323198672283,
+      "sampleCounts": 12466.514536931452,
+      "reflectance": 0.3788982968811402
+    },
+    {
+      "wavelengthNm": 470,
+      "darkCounts": 89.5260891633849,
+      "referenceCounts": 1501.2847537629216,
+      "sampleCounts": 12340.536789108995,
+      "reflectance": 0.37357360782080434
+    },
+    {
+      "wavelengthNm": 472,
+      "darkCounts": 89.65880628421093,
+      "referenceCounts": 1506.3075583860273,
+      "sampleCounts": 12213.701126372243,
+      "reflectance": 0.3682481184797174
+    },
+    {
+      "wavelengthNm": 474,
+      "darkCounts": 89.79662995721436,
+      "referenceCounts": 1511.3991098718575,
+      "sampleCounts": 12079.42836296616,
+      "reflectance": 0.3627238494931993
+    },
+    {
+      "wavelengthNm": 476,
+      "darkCounts": 89.93949212412296,
+      "referenceCounts": 1516.5577119255975,
+      "sampleCounts": 11937.90096492236,
+      "reflectance": 0.3570097212716391
+    },
+    {
+      "wavelengthNm": 478,
+      "darkCounts": 90.08732223862168,
+      "referenceCounts": 1521.781595634935,
+      "sampleCounts": 11789.312294521713,
+      "reflectance": 0.3511148825673149
+    },
+    {
+      "wavelengthNm": 480,
+      "darkCounts": 90.24004730118904,
+      "referenceCounts": 1527.0689193753103,
+      "sampleCounts": 11633.86759700704,
+      "reflectance": 0.3450487282824008
+    },
+    {
+      "wavelengthNm": 482,
+      "darkCounts": 90.39759189514467,
+      "referenceCounts": 1532.417768809663,
+      "sampleCounts": 11477.092502535526,
+      "reflectance": 0.33897892008160146
+    },
+    {
+      "wavelengthNm": 484,
+      "darkCounts": 90.5598782238907,
+      "referenceCounts": 1537.826156984386,
+      "sampleCounts": 11313.982935992764,
+      "reflectance": 0.33275822570068453
+    },
+    {
+      "wavelengthNm": 486,
+      "darkCounts": 90.72682614932816,
+      "referenceCounts": 1543.2920245230819,
+      "sampleCounts": 11144.78096860655,
+      "reflectance": 0.32639671361398903
+    },
+    {
+      "wavelengthNm": 488,
+      "darkCounts": 90.89835323142972,
+      "referenceCounts": 1548.813239919667,
+      "sampleCounts": 10969.743152428324,
+      "reflectance": 0.31990472841423867
+    },
+    {
+      "wavelengthNm": 490,
+      "darkCounts": 91.07437476894927,
+      "referenceCounts": 1554.3875999321385,
+      "sampleCounts": 10789.141062550148,
+      "reflectance": 0.3132928941187318
+    },
+    {
+      "wavelengthNm": 492,
+      "darkCounts": 91.25480384124776,
+      "referenceCounts": 1560.0128300782505,
+      "sampleCounts": 10611.021698483568,
+      "reflectance": 0.3067984259191836
+    },
+    {
+      "wavelengthNm": 494,
+      "darkCounts": 91.43955135121544,
+      "referenceCounts": 1565.6865852341984,
+      "sampleCounts": 10427.99335256768,
+      "reflectance": 0.30020621768857864
+    },
+    {
+      "wavelengthNm": 496,
+      "darkCounts": 91.62852606926842,
+      "referenceCounts": 1571.4064503372563,
+      "sampleCounts": 10240.366990270611,
+      "reflectance": 0.29352747470150664
+    },
+    {
+      "wavelengthNm": 498,
+      "darkCounts": 91.82163467839858,
+      "referenceCounts": 1577.1699411931386,
+      "sampleCounts": 10048.468996474112,
+      "reflectance": 0.2867736497080566
+    },
+    {
+      "wavelengthNm": 500,
+      "darkCounts": 92.01878182025413,
+      "referenceCounts": 1582.9745053887598,
+      "sampleCounts": 9852.64111001524,
+      "reflectance": 0.2799564299828391
+    },
+    {
+      "wavelengthNm": 502,
+      "darkCounts": 92.21987014222817,
+      "referenceCounts": 1588.8175233108545,
+      "sampleCounts": 9655.052318443893,
+      "reflectance": 0.27313947923554727
+    },
+    {
+      "wavelengthNm": 504,
+      "darkCounts": 92.42480034553213,
+      "referenceCounts": 1594.6963092707585,
+      "sampleCounts": 9454.269579450427,
+      "reflectance": 0.26628292053804087
+    },
+    {
+      "wavelengthNm": 506,
+      "darkCounts": 92.63347123423017,
+      "referenceCounts": 1600.608112735533,
+      "sampleCounts": 9250.676796050057,
+      "reflectance": 0.2593989735623457
+    },
+    {
+      "wavelengthNm": 508,
+      "darkCounts": 92.84577976521041,
+      "referenceCounts": 1606.5501196653706,
+      "sampleCounts": 9044.671410370174,
+      "reflectance": 0.25250000462996497
+    },
+    {
+      "wavelengthNm": 510,
+      "darkCounts": 93.06162109906829,
+      "referenceCounts": 1612.5194539570866,
+      "sampleCounts": 8836.663589117214,
+      "reflectance": 0.24559849657968189
+    },
+    {
+      "wavelengthNm": 512,
+      "darkCounts": 93.28088865187712,
+      "referenceCounts": 1618.5131789933432,
+      "sampleCounts": 8630.423759215528,
+      "reflectance": 0.23880067974215288
+    },
+    {
+      "wavelengthNm": 514,
+      "darkCounts": 93.50347414781977,
+      "referenceCounts": 1624.5282992969903,
+      "sampleCounts": 8423.043295897985,
+      "reflectance": 0.232024928068158
+    },
+    {
+      "wavelengthNm": 516,
+      "darkCounts": 93.72926767265619,
+      "referenceCounts": 1630.5617622898271,
+      "sampleCounts": 8214.959018302465,
+      "reflectance": 0.2252837257938944
+    },
+    {
+      "wavelengthNm": 518,
+      "darkCounts": 93.95815772799965,
+      "referenceCounts": 1636.6104601548027,
+      "sampleCounts": 8006.615643278434,
+      "reflectance": 0.2185895251907231
+    },
+    {
+      "wavelengthNm": 520,
+      "darkCounts": 94.1900312863755,
+      "referenceCounts": 1642.671231800558,
+      "sampleCounts": 7798.464281664493,
+      "reflectance": 0.21195470413516326
+    },
+    {
+      "wavelengthNm": 522,
+      "darkCounts": 94.42477384703491,
+      "referenceCounts": 1648.7408649269985,
+      "sampleCounts": 7594.450490774001,
+      "reflectance": 0.20548713279323974
+    },
+    {
+      "wavelengthNm": 524,
+      "darkCounts": 94.66226949249608,
+      "referenceCounts": 1654.816098190374,
+      "sampleCounts": 7391.529898713114,
+      "reflectance": 0.1991021410397226
+    },
+    {
+      "wavelengthNm": 526,
+      "darkCounts": 94.90240094578512,
+      "referenceCounts": 1660.8936234661694,
+      "sampleCounts": 7190.16035502651,
+      "reflectance": 0.1928115664529301
+    },
+    {
+      "wavelengthNm": 528,
+      "darkCounts": 95.14504962834819,
+      "referenceCounts": 1666.9700882079612,
+      "sampleCounts": 6990.79931380694,
+      "reflectance": 0.18662699912824463
+    },
+    {
+      "wavelengthNm": 530,
+      "darkCounts": 95.39009571860646,
+      "referenceCounts": 1673.0420979000892,
+      "sampleCounts": 6793.901893284224,
+      "reflectance": 0.18055973544388185
+    },
+    {
+      "wavelengthNm": 532,
+      "darkCounts": 95.63741821112473,
+      "referenceCounts": 1679.1062186019653,
+      "sampleCounts": 6601.778208177353,
+      "reflectance": 0.1746706494659714
+    },
+    {
+      "wavelengthNm": 534,
+      "darkCounts": 95.88689497636483,
+      "referenceCounts": 1685.1589795814823,
+      "sampleCounts": 6413.000519840991,
+      "reflectance": 0.16891965395403552
+    },
+    {
+      "wavelengthNm": 536,
+      "darkCounts": 96.13840282099399,
+      "referenceCounts": 1691.1968760349375,
+      "sampleCounts": 6228.003507265306,
+      "reflectance": 0.16331686598875514
+    },
+    {
+      "wavelengthNm": 538,
+      "darkCounts": 96.39181754871854,
+      "referenceCounts": 1697.2163718906297,
+      "sampleCounts": 6047.211653464867,
+      "reflectance": 0.1578719382873906
+    },
+    {
+      "wavelengthNm": 540,
+      "darkCounts": 96.64701402161289,
+      "referenceCounts": 1703.2139026931093,
+      "sampleCounts": 5871.0372666107305,
+      "reflectance": 0.1525940195982652
+    },
+    {
+      "wavelengthNm": 542,
+      "darkCounts": 96.9038662219135,
+      "referenceCounts": 1709.1858785649122,
+      "sampleCounts": 5702.276982475561,
+      "reflectance": 0.1475548536167024
+    },
+    {
+      "wavelengthNm": 544,
+      "darkCounts": 97.16224731424735,
+      "referenceCounts": 1715.1286872424116,
+      "sampleCounts": 5538.894234378333,
+      "reflectance": 0.14269831923010287
+    },
+    {
+      "wavelengthNm": 546,
+      "darkCounts": 97.42202970826402,
+      "referenceCounts": 1721.0386971822672,
+      "sampleCounts": 5381.2530922317,
+      "reflectance": 0.13803184829018517
+    },
+    {
+      "wavelengthNm": 548,
+      "darkCounts": 97.68308512164077,
+      "referenceCounts": 1726.9122607347408,
+      "sampleCounts": 5229.698512282324,
+      "reflectance": 0.1335622481392501
+    },
+    {
+      "wavelengthNm": 550,
+      "darkCounts": 97.94528464342919,
+      "referenceCounts": 1732.7457173800722,
+      "sampleCounts": 5084.5547785823765,
+      "reflectance": 0.12929567815111856
+    },
+    {
+      "wavelengthNm": 552,
+      "darkCounts": 98.20849879771234,
+      "referenceCounts": 1738.535397023855,
+      "sampleCounts": 4947.845519355469,
+      "reflectance": 0.1252821008748869
+    },
+    {
+      "wavelengthNm": 554,
+      "darkCounts": 98.47259760754073,
+      "referenceCounts": 1744.2776233472641,
+      "sampleCounts": 4818.116581233466,
+      "reflectance": 0.1214812358831921
+    },
+    {
+      "wavelengthNm": 556,
+      "darkCounts": 98.737450659116,
+      "referenceCounts": 1749.9687172078284,
+      "sampleCounts": 4695.623210574249,
+      "reflectance": 0.11789723454140677
+    },
+    {
+      "wavelengthNm": 558,
+      "darkCounts": 99.00292716619005,
+      "referenceCounts": 1755.6050000863004,
+      "sampleCounts": 4580.595380707447,
+      "reflectance": 0.11453355308830715
+    },
+    {
+      "wavelengthNm": 560,
+      "darkCounts": 99.26889603464811,
+      "referenceCounts": 1761.1827975750402,
+      "sampleCounts": 4473.236984855232,
+      "reflectance": 0.1113929500248204
+    },
+    {
+      "wavelengthNm": 562,
+      "darkCounts": 99.5352259272441,
+      "referenceCounts": 1766.698442903215,
+      "sampleCounts": 4374.915123975232,
+      "reflectance": 0.10850768757758637
+    },
+    {
+      "wavelengthNm": 564,
+      "darkCounts": 99.80178532845567,
+      "referenceCounts": 1772.1482804939935,
+      "sampleCounts": 4284.575985426797,
+      "reflectance": 0.10584838196751244
+    },
+    {
+      "wavelengthNm": 566,
+      "darkCounts": 100.06844260942758,
+      "referenceCounts": 1777.5286695488296,
+      "sampleCounts": 4202.342805343787,
+      "reflectance": 0.10341575155476415
+    },
+    {
+      "wavelengthNm": 568,
+      "darkCounts": 100.33506609297089,
+      "referenceCounts": 1782.8359876537816,
+      "sampleCounts": 4128.311424312694,
+      "reflectance": 0.10120985187701019
+    },
+    {
+      "wavelengthNm": 570,
+      "darkCounts": 100.60152411858607,
+      "referenceCounts": 1788.066634402782,
+      "sampleCounts": 4062.5503503015234,
+      "reflectance": 0.09923009284597341
+    },
+    {
+      "wavelengthNm": 572,
+      "darkCounts": 100.86768510747784,
+      "referenceCounts": 1793.217035032642,
+      "sampleCounts": 4006.7787632249515,
+      "reflectance": 0.09751714758325182
+    },
+    {
+      "wavelengthNm": 574,
+      "darkCounts": 101.1334176275297,
+      "referenceCounts": 1798.2836440645403,
+      "sampleCounts": 3959.3347445490417,
+      "reflectance": 0.09602708032149546
+    },
+    {
+      "wavelengthNm": 576,
+      "darkCounts": 101.39859045820593,
+      "referenceCounts": 1803.262948946657,
+      "sampleCounts": 3920.2090108121893,
+      "reflectance": 0.09475756277521634
+    },
+    {
+      "wavelengthNm": 578,
+      "darkCounts": 101.66307265534932,
+      "referenceCounts": 1808.1514736925642,
+      "sampleCounts": 3889.366843997959,
+      "reflectance": 0.09370572152264041
+    },
+    {
+      "wavelengthNm": 580,
+      "darkCounts": 101.92673361584222,
+      "referenceCounts": 1812.9457825099703,
+      "sampleCounts": 3866.748886344013,
+      "reflectance": 0.09286816859895734
+    },
+    {
+      "wavelengthNm": 582,
+      "darkCounts": 102.18944314209921,
+      "referenceCounts": 1817.6424834143443,
+      "sampleCounts": 3853.4000393745855,
+      "reflectance": 0.0922687790062164
+    },
+    {
+      "wavelengthNm": 584,
+      "darkCounts": 102.45107150635964,
+      "referenceCounts": 1822.238231821932,
+      "sampleCounts": 3848.0891027046746,
+      "reflectance": 0.09187539791675801
+    },
+    {
+      "wavelengthNm": 586,
+      "darkCounts": 102.71148951474804,
+      "referenceCounts": 1826.7297341167045,
+      "sampleCounts": 3850.690195532322,
+      "reflectance": 0.09168333595088574
+    },
+    {
+      "wavelengthNm": 588,
+      "darkCounts": 102.97056857107091,
+      "referenceCounts": 1831.1137511857155,
+      "sampleCounts": 3861.0570392055515,
+      "reflectance": 0.09168752570671804
+    },
+    {
+      "wavelengthNm": 590,
+      "darkCounts": 103.2281807403185,
+      "referenceCounts": 1835.3871019174017,
+      "sampleCounts": 3879.024209424491,
+      "reflectance": 0.09188255768839798
+    },
+    {
+      "wavelengthNm": 592,
+      "darkCounts": 103.4841988118399,
+      "referenceCounts": 1839.5466666573582,
+      "sampleCounts": 3905.5429842668987,
+      "reflectance": 0.09229025596778567
+    },
+    {
+      "wavelengthNm": 594,
+      "darkCounts": 103.73849636216053,
+      "referenceCounts": 1843.5893906161855,
+      "sampleCounts": 3939.2837965314166,
+      "reflectance": 0.09287707615497291
+    },
+    {
+      "wavelengthNm": 596,
+      "darkCounts": 103.99094781741098,
+      "referenceCounts": 1847.5122872239622,
+      "sampleCounts": 3980.033217667823,
+      "reflectance": 0.09363683870107935
+    },
+    {
+      "wavelengthNm": 598,
+      "darkCounts": 104.24142851533624,
+      "referenceCounts": 1851.3124414260851,
+      "sampleCounts": 4027.564061506301,
+      "reflectance": 0.09456316326582054
+    },
+    {
+      "wavelengthNm": 600,
+      "darkCounts": 104.48981476685464,
+      "referenceCounts": 1854.9870129151439,
+      "sampleCounts": 4081.636776713977,
+      "reflectance": 0.09564950256876482
+    },
+    {
+      "wavelengthNm": 602,
+      "darkCounts": 104.73598391713656,
+      "referenceCounts": 1858.5332392936768,
+      "sampleCounts": 4142.619711553024,
+      "reflectance": 0.09690402742367578
+    },
+    {
+      "wavelengthNm": 604,
+      "darkCounts": 104.97981440617214,
+      "referenceCounts": 1861.948439162668,
+      "sampleCounts": 4209.648078556866,
+      "reflectance": 0.0983053814069287
+    },
+    {
+      "wavelengthNm": 606,
+      "darkCounts": 105.22118582879837,
+      "referenceCounts": 1865.2300151308134,
+      "sampleCounts": 4282.453798647898,
+      "reflectance": 0.09984671706364162
+    },
+    {
+      "wavelengthNm": 608,
+      "darkCounts": 105.4599789941561,
+      "referenceCounts": 1868.3754567396059,
+      "sampleCounts": 4360.761797608871,
+      "reflectance": 0.10152114181832668
+    },
+    {
+      "wavelengthNm": 610,
+      "darkCounts": 105.69607598454722,
+      "referenceCounts": 1871.3823432994764,
+      "sampleCounts": 4444.291291020685,
+      "reflectance": 0.10332174512902112
+    },
+    {
+      "wavelengthNm": 612,
+      "darkCounts": 105.9293602136633,
+      "referenceCounts": 1874.2483466323279,
+      "sampleCounts": 4533.919897182938,
+      "reflectance": 0.1052692696177783
+    },
+    {
+      "wavelengthNm": 614,
+      "darkCounts": 106.15971648415662,
+      "referenceCounts": 1876.9712337159324,
+      "sampleCounts": 4628.207215846139,
+      "reflectance": 0.10732936851311094
+    },
+    {
+      "wavelengthNm": 616,
+      "darkCounts": 106.38703104452546,
+      "referenceCounts": 1879.548869225815,
+      "sampleCounts": 4726.863563807329,
+      "reflectance": 0.10949525266438204
+    },
+    {
+      "wavelengthNm": 618,
+      "darkCounts": 106.61119164528537,
+      "referenceCounts": 1881.9792179703807,
+      "sampleCounts": 4829.59811400105,
+      "reflectance": 0.11176020440654896
+    },
+    {
+      "wavelengthNm": 620,
+      "darkCounts": 106.83208759439876,
+      "referenceCounts": 1884.2603472152857,
+      "sampleCounts": 4936.11991579187,
+      "reflectance": 0.11411759601882475
+    },
+    {
+      "wavelengthNm": 622,
+      "darkCounts": 107.04960981193526,
+      "referenceCounts": 1886.3904288930926,
+      "sampleCounts": 5046.744134800858,
+      "reflectance": 0.1165751908733695
+    },
+    {
+      "wavelengthNm": 624,
+      "darkCounts": 107.2636508839363,
+      "referenceCounts": 1888.3677416945543,
+      "sampleCounts": 5160.5847361365295,
+      "reflectance": 0.11911245041374782
+    },
+    {
+      "wavelengthNm": 626,
+      "darkCounts": 107.47410511545675,
+      "referenceCounts": 1890.19067303801,
+      "sampleCounts": 5277.3561771318355,
+      "reflectance": 0.12172311994432856
+    },
+    {
+      "wavelengthNm": 628,
+      "darkCounts": 107.68086858275785,
+      "referenceCounts": 1891.8577209135542,
+      "sampleCounts": 5396.776205182075,
+      "reflectance": 0.12440109053833796
+    },
+    {
+      "wavelengthNm": 630,
+      "darkCounts": 107.88383918462547,
+      "referenceCounts": 1893.3674955988981,
+      "sampleCounts": 5518.566566159384,
+      "reflectance": 0.12714040926109976
+    },
+    {
+      "wavelengthNm": 632,
+      "darkCounts": 108.08291669278832,
+      "referenceCounts": 1894.7187212439944,
+      "sampleCounts": 5643.129615303853,
+      "reflectance": 0.12995115812278527
+    },
+    {
+      "wavelengthNm": 634,
+      "darkCounts": 108.27800280141145,
+      "referenceCounts": 1895.910237321765,
+      "sampleCounts": 5769.532010317481,
+      "reflectance": 0.13281208445595127
+    },
+    {
+      "wavelengthNm": 636,
+      "darkCounts": 108.46900117564026,
+      "referenceCounts": 1896.9409999424643,
+      "sampleCounts": 5897.511001834085,
+      "reflectance": 0.13571775095168204
+    },
+    {
+      "wavelengthNm": 638,
+      "darkCounts": 108.65581749917139,
+      "referenceCounts": 1897.8100830294486,
+      "sampleCounts": 6026.810028761177,
+      "reflectance": 0.1386629023757487
+    },
+    {
+      "wavelengthNm": 640,
+      "darkCounts": 108.8383595208267,
+      "referenceCounts": 1898.51667935434,
+      "sampleCounts": 6157.179136121916,
+      "reflectance": 0.14164246923322585
+    },
+    {
+      "wavelengthNm": 642,
+      "darkCounts": 109.01653710010754,
+      "referenceCounts": 1899.060101429871,
+      "sampleCounts": 6289.055082644353,
+      "reflectance": 0.14466748232480353
+    },
+    {
+      "wavelengthNm": 644,
+      "darkCounts": 109.19026225170673,
+      "referenceCounts": 1899.4397822588326,
+      "sampleCounts": 6421.531998692917,
+      "reflectance": 0.14771755223378222
+    },
+    {
+      "wavelengthNm": 646,
+      "darkCounts": 109.35944918895638,
+      "referenceCounts": 1899.6552759379135,
+      "sampleCounts": 6554.381561888866,
+      "reflectance": 0.15078817824818735
+    },
+    {
+      "wavelengthNm": 648,
+      "darkCounts": 109.52401436618985,
+      "referenceCounts": 1899.7062581153561,
+      "sampleCounts": 6687.383195466886,
+      "reflectance": 0.15387504945303573
+    },
+    {
+      "wavelengthNm": 650,
+      "darkCounts": 109.68387651999717,
+      "referenceCounts": 1899.592526301693,
+      "sampleCounts": 6820.324251402806,
+      "reflectance": 0.1569740438569078
+    },
+    {
+      "wavelengthNm": 652,
+      "darkCounts": 109.8389567093536,
+      "referenceCounts": 1899.3140000330332,
+      "sampleCounts": 6953.688969282966,
+      "reflectance": 0.16009734020449268
+    },
+    {
+      "wavelengthNm": 654,
+      "darkCounts": 109.98917835460102,
+      "referenceCounts": 1898.8707208866183,
+      "sampleCounts": 7086.60066003385,
+      "reflectance": 0.16322527949048535
+    },
+    {
+      "wavelengthNm": 656,
+      "darkCounts": 110.13446727526375,
+      "referenceCounts": 1898.2628523486433,
+      "sampleCounts": 7218.870937896563,
+      "reflectance": 0.16635429366142243
+    },
+    {
+      "wavelengthNm": 658,
+      "darkCounts": 110.27475172667911,
+      "referenceCounts": 1897.490679534594,
+      "sampleCounts": 7350.319686549042,
+      "reflectance": 0.16948099351166077
+    },
+    {
+      "wavelengthNm": 660,
+      "darkCounts": 110.40996243542567,
+      "referenceCounts": 1896.5546087625669,
+      "sampleCounts": 7480.775073299664,
+      "reflectance": 0.1726021651246788
+    },
+    {
+      "wavelengthNm": 662,
+      "darkCounts": 110.54003263353077,
+      "referenceCounts": 1895.4551669803393,
+      "sampleCounts": 7610.754418770637,
+      "reflectance": 0.17573071908856902
+    },
+    {
+      "wavelengthNm": 664,
+      "darkCounts": 110.66489809144107,
+      "referenceCounts": 1894.1930010471697,
+      "sampleCounts": 7739.428856996362,
+      "reflectance": 0.1788480178457963
+    },
+    {
+      "wavelengthNm": 666,
+      "darkCounts": 110.78449714973952,
+      "referenceCounts": 1892.7688768715846,
+      "sampleCounts": 7866.650994212665,
+      "reflectance": 0.18195134768188198
+    },
+    {
+      "wavelengthNm": 668,
+      "darkCounts": 110.89877074959325,
+      "referenceCounts": 1891.1836784066302,
+      "sampleCounts": 7992.281514603887,
+      "reflectance": 0.18503815251094566
+    },
+    {
+      "wavelengthNm": 670,
+      "darkCounts": 111.00766246191715,
+      "referenceCounts": 1889.4384065043178,
+      "sampleCounts": 8116.189085119151,
+      "reflectance": 0.18810602906207732
+    },
+    {
+      "wavelengthNm": 672,
+      "darkCounts": 111.11111851523901,
+      "referenceCounts": 1887.5341776312446,
+      "sampleCounts": 8238.271909254234,
+      "reflectance": 0.19115323150866173
+    },
+    {
+      "wavelengthNm": 674,
+      "darkCounts": 111.20908782225217,
+      "referenceCounts": 1885.472222447584,
+      "sampleCounts": 8358.392607679363,
+      "reflectance": 0.19417713882183824
+    },
+    {
+      "wavelengthNm": 676,
+      "darkCounts": 111.30152200504287,
+      "referenceCounts": 1883.253884251863,
+      "sampleCounts": 8476.443022052135,
+      "reflectance": 0.1971757751622343
+    },
+    {
+      "wavelengthNm": 678,
+      "darkCounts": 111.3883754189795,
+      "referenceCounts": 1880.8806172942213,
+      "sampleCounts": 8592.322453887838,
+      "reflectance": 0.20014729736434228
+    },
+    {
+      "wavelengthNm": 680,
+      "darkCounts": 111.46960517525228,
+      "referenceCounts": 1878.353984960972,
+      "sampleCounts": 8705.93750508894,
+      "reflectance": 0.20308998980605028
+    },
+    {
+      "wavelengthNm": 682,
+      "darkCounts": 111.54517116205209,
+      "referenceCounts": 1875.675657833606,
+      "sampleCounts": 8817.92677276689,
+      "reflectance": 0.20601941174790314
+    },
+    {
+      "wavelengthNm": 684,
+      "darkCounts": 111.61503606437783,
+      "referenceCounts": 1872.8474116254731,
+      "sampleCounts": 8927.491393402452,
+      "reflectance": 0.20891711111613143
+    },
+    {
+      "wavelengthNm": 686,
+      "darkCounts": 111.67916538246298,
+      "referenceCounts": 1869.8711249996722,
+      "sampleCounts": 9034.558482826023,
+      "reflectance": 0.2117817211329683
+    },
+    {
+      "wavelengthNm": 688,
+      "darkCounts": 111.73752744881169,
+      "referenceCounts": 1866.748777271806,
+      "sampleCounts": 9139.06174430809,
+      "reflectance": 0.21461198233772394
+    },
+    {
+      "wavelengthNm": 690,
+      "darkCounts": 111.79009344383648,
+      "referenceCounts": 1863.482446001454,
+      "sampleCounts": 9240.941279962737,
+      "reflectance": 0.2174067377543885
+    },
+    {
+      "wavelengthNm": 692,
+      "darkCounts": 111.83683741008952,
+      "referenceCounts": 1860.07430447642,
+      "sampleCounts": 9341.677123953246,
+      "reflectance": 0.22020151910063446
+    },
+    {
+      "wavelengthNm": 694,
+      "darkCounts": 111.8777362650806,
+      "referenceCounts": 1856.526619093921,
+      "sampleCounts": 9439.69520197723,
+      "reflectance": 0.2229590826381373
+    },
+    {
+      "wavelengthNm": 696,
+      "darkCounts": 111.91276981267544,
+      "referenceCounts": 1852.8417466431,
+      "sampleCounts": 9534.952838994777,
+      "reflectance": 0.2256785416994931
+    },
+    {
+      "wavelengthNm": 698,
+      "darkCounts": 111.94192075306864,
+      "referenceCounts": 1849.0221314933458,
+      "sampleCounts": 9627.412989955112,
+      "reflectance": 0.22835909393037798
+    },
+    {
+      "wavelengthNm": 700,
+      "darkCounts": 111.9651746913265,
+      "referenceCounts": 1845.0703026930591,
+      "sampleCounts": 9717.04404446582,
+      "reflectance": 0.23100001705189663
+    },
+    {
+      "wavelengthNm": 702,
+      "darkCounts": 111.98252014449525,
+      "referenceCounts": 1840.988870983639,
+      "sampleCounts": 9802.992211080205,
+      "reflectance": 0.23358072158240295
+    },
+    {
+      "wavelengthNm": 704,
+      "darkCounts": 111.99394854727153,
+      "referenceCounts": 1836.7805257335506,
+      "sampleCounts": 9886.062268625757,
+      "reflectance": 0.23612045355115274
+    },
+    {
+      "wavelengthNm": 706,
+      "darkCounts": 111.99945425623187,
+      "referenceCounts": 1832.4480317975024,
+      "sampleCounts": 9966.238188975434,
+      "reflectance": 0.2386187125396255
+    },
+    {
+      "wavelengthNm": 708,
+      "darkCounts": 111.99903455261955,
+      "referenceCounts": 1827.994226305754,
+      "sampleCounts": 10043.508589247462,
+      "reflectance": 0.24107506239927656
+    },
+    {
+      "wavelengthNm": 710,
+      "darkCounts": 111.99268964368706,
+      "referenceCounts": 1823.4220153888004,
+      "sampleCounts": 10117.866540532652,
+      "reflectance": 0.24348912768138273
+    },
+    {
+      "wavelengthNm": 712,
+      "darkCounts": 111.98042266259384,
+      "referenceCounts": 1818.7343708426233,
+      "sampleCounts": 10190.865633473748,
+      "reflectance": 0.24589855876980127
+    },
+    {
+      "wavelengthNm": 714,
+      "darkCounts": 111.96223966685903,
+      "referenceCounts": 1813.9343267398237,
+      "sampleCounts": 10260.953167906559,
+      "reflectance": 0.2482653765728009
+    },
+    {
+      "wavelengthNm": 716,
+      "darkCounts": 111.93814963537028,
+      "referenceCounts": 1809.0249759920453,
+      "sampleCounts": 10328.133743654425,
+      "reflectance": 0.2505893595638353
+    },
+    {
+      "wavelengthNm": 718,
+      "darkCounts": 111.9081644639499,
+      "referenceCounts": 1804.0094668690326,
+      "sampleCounts": 10392.41569217606,
+      "reflectance": 0.2528703342059508
+    },
+    {
+      "wavelengthNm": 720,
+      "darkCounts": 111.87229895948059,
+      "referenceCounts": 1798.8909994797996,
+      "sampleCounts": 10453.810898647675,
+      "reflectance": 0.25510817206064546
+    },
+    {
+      "wavelengthNm": 722,
+      "darkCounts": 111.83057083259371,
+      "referenceCounts": 1793.6728222213592,
+      "sampleCounts": 10512.388336148462,
+      "reflectance": 0.25730411575754386
+    },
+    {
+      "wavelengthNm": 724,
+      "darkCounts": 111.78300068892369,
+      "referenceCounts": 1788.35822820048,
+      "sampleCounts": 10568.11125943377,
+      "reflectance": 0.25945676069576656
+    },
+    {
+      "wavelengthNm": 726,
+      "darkCounts": 111.72961201893281,
+      "referenceCounts": 1782.9505516339239,
+      "sampleCounts": 10621.001144557682,
+      "reflectance": 0.26156609675439935
+    },
+    {
+      "wavelengthNm": 728,
+      "darkCounts": 111.67043118631143,
+      "referenceCounts": 1777.4531642326408,
+      "sampleCounts": 10671.082344883162,
+      "reflectance": 0.2636321486552166
+    },
+    {
+      "wavelengthNm": 730,
+      "darkCounts": 111.60548741495938,
+      "referenceCounts": 1771.8694715753477,
+      "sampleCounts": 10718.3819291427,
+      "reflectance": 0.2656549736719212
+    },
+    {
+      "wavelengthNm": 732,
+      "darkCounts": 111.53481277455514,
+      "referenceCounts": 1766.2029094768664,
+      "sampleCounts": 10763.692439249875,
+      "reflectance": 0.2676538290365313
+    },
+    {
+      "wavelengthNm": 734,
+      "darkCounts": 111.4584421647194,
+      "referenceCounts": 1760.4569403566184,
+      "sampleCounts": 10806.282315273003,
+      "reflectance": 0.26960977028511485
+    },
+    {
+      "wavelengthNm": 736,
+      "darkCounts": 111.37641329778164,
+      "referenceCounts": 1754.6350496125385,
+      "sampleCounts": 10846.185566945274,
+      "reflectance": 0.2715229365581844
+    },
+    {
+      "wavelengthNm": 738,
+      "darkCounts": 111.28876668015728,
+      "referenceCounts": 1748.7407420056838,
+      "sampleCounts": 10883.438318020415,
+      "reflectance": 0.2733934915560447
+    },
+    {
+      "wavelengthNm": 740,
+      "darkCounts": 111.19554559234551,
+      "referenceCounts": 1742.7775380606759,
+      "sampleCounts": 10918.07866246454,
+      "reflectance": 0.2752216217668887
+    },
+    {
+      "wavelengthNm": 742,
+      "darkCounts": 111.09679606755701,
+      "referenceCounts": 1736.748970487074,
+      "sampleCounts": 10950.139039988915,
+      "reflectance": 0.27700734351460643
+    },
+    {
+      "wavelengthNm": 744,
+      "darkCounts": 110.99256686898242,
+      "referenceCounts": 1730.6585806266805,
+      "sampleCounts": 10979.668823565715,
+      "reflectance": 0.2787510807782289
+    },
+    {
+      "wavelengthNm": 746,
+      "darkCounts": 110.88290946571283,
+      "referenceCounts": 1724.5099149316588,
+      "sampleCounts": 11006.711193003699,
+      "reflectance": 0.2804530787592017
+    },
+    {
+      "wavelengthNm": 748,
+      "darkCounts": 110.76787800732386,
+      "referenceCounts": 1718.3065214782523,
+      "sampleCounts": 11031.31075947688,
+      "reflectance": 0.2821135992415874
+    },
+    {
+      "wavelengthNm": 750,
+      "darkCounts": 110.64752929713633,
+      "referenceCounts": 1712.051946520793,
+      "sampleCounts": 11053.513440170294,
+      "reflectance": 0.2837329192476015
+    },
+    {
+      "wavelengthNm": 752,
+      "darkCounts": 110.52192276416638,
+      "referenceCounts": 1705.7497310905007,
+      "sampleCounts": 11074.151086998012,
+      "reflectance": 0.2853317531335379
+    },
+    {
+      "wavelengthNm": 754,
+      "darkCounts": 110.39112043377897,
+      "referenceCounts": 1699.4034076435476,
+      "sampleCounts": 11092.483662177452,
+      "reflectance": 0.28689004506264215
+    },
+    {
+      "wavelengthNm": 756,
+      "darkCounts": 110.25518689705936,
+      "referenceCounts": 1693.0164967625935,
+      "sampleCounts": 11108.560097647183,
+      "reflectance": 0.2884081077265569
+    },
+    {
+      "wavelengthNm": 758,
+      "darkCounts": 110.1141892789176,
+      "referenceCounts": 1686.5925039159793,
+      "sampleCounts": 11122.430178875104,
+      "reflectance": 0.28988626450468163
+    },
+    {
+      "wavelengthNm": 760,
+      "darkCounts": 109.96819720494179,
+      "referenceCounts": 1680.1349162785234,
+      "sampleCounts": 11134.14443756398,
+      "reflectance": 0.29132484845855416
+    },
+    {
+      "wavelengthNm": 762,
+      "darkCounts": 109.81728276701642,
+      "referenceCounts": 1673.6471996177468,
+      "sampleCounts": 11143.729228678923,
+      "reflectance": 0.2927235429444535
+    },
+    {
+      "wavelengthNm": 764,
+      "darkCounts": 109.66152048772302,
+      "referenceCounts": 1667.1327952491795,
+      "sampleCounts": 11151.2621939901,
+      "reflectance": 0.2940833803060569
+    },
+    {
+      "wavelengthNm": 766,
+      "darkCounts": 109.50098728354034,
+      "referenceCounts": 1660.59511706425,
+      "sampleCounts": 11156.7954904569,
+      "reflectance": 0.2954047173157112
+    },
+    {
+      "wavelengthNm": 768,
+      "darkCounts": 109.33576242686242,
+      "referenceCounts": 1654.0375486340583,
+      "sampleCounts": 11160.38162663316,
+      "reflectance": 0.2966879169531729
+    },
+    {
+      "wavelengthNm": 770,
+      "darkCounts": 109.16592750685341,
+      "referenceCounts": 1647.4634403921802,
+      "sampleCounts": 11162.073373067937,
+      "reflectance": 0.29793334767007573
+    },
+    {
+      "wavelengthNm": 772,
+      "darkCounts": 108.99156638915828,
+      "referenceCounts": 1640.8761068994563,
+      "sampleCounts": 11162.663302029214,
+      "reflectance": 0.2991614002586501
+    },
+    {
+      "wavelengthNm": 774,
+      "darkCounts": 108.81276517448936,
+      "referenceCounts": 1634.2788241935448,
+      "sampleCounts": 11161.461555791035,
+      "reflectance": 0.30035250875511915
+    },
+    {
+      "wavelengthNm": 776,
+      "darkCounts": 108.62961215610922,
+      "referenceCounts": 1627.6748272258224,
+      "sampleCounts": 11158.52107478612,
+      "reflectance": 0.30150705210218764
+    },
+    {
+      "wavelengthNm": 778,
+      "darkCounts": 108.44219777623086,
+      "referenceCounts": 1621.0673073880398,
+      "sampleCounts": 11153.894746680093,
+      "reflectance": 0.30262541227765477
+    },
+    {
+      "wavelengthNm": 780,
+      "darkCounts": 108.25061458135674,
+      "referenceCounts": 1614.4594101309328,
+      "sampleCounts": 11147.635333359534,
+      "reflectance": 0.3037079737637889
+    },
+    {
+      "wavelengthNm": 782,
+      "darkCounts": 108.05495717657868,
+      "referenceCounts": 1607.8542326768188,
+      "sampleCounts": 11139.820370355199,
+      "reflectance": 0.3047558128335196
+    },
+    {
+      "wavelengthNm": 784,
+      "darkCounts": 107.85532217886121,
+      "referenceCounts": 1601.2548218279908,
+      "sampleCounts": 11130.475828582008,
+      "reflectance": 0.30576859563689957
+    },
+    {
+      "wavelengthNm": 786,
+      "darkCounts": 107.65180816933145,
+      "referenceCounts": 1594.6641718725484,
+      "sampleCounts": 11119.653701044987,
+      "reflectance": 0.3067467113140034
+    },
+    {
+      "wavelengthNm": 788,
+      "darkCounts": 107.44451564459905,
+      "referenceCounts": 1588.0852225890974,
+      "sampleCounts": 11107.405595433105,
+      "reflectance": 0.30769054973274584
+    },
+    {
+      "wavelengthNm": 790,
+      "darkCounts": 107.2335469671304,
+      "referenceCounts": 1581.5208573515772,
+      "sampleCounts": 11093.782676786097,
+      "reflectance": 0.3086005011152117
+    },
+    {
+      "wavelengthNm": 792,
+      "darkCounts": 107.01900631470114,
+      "referenceCounts": 1574.9739013352505,
+      "sampleCounts": 11078.821709544402,
+      "reflectance": 0.30947656351717157
+    },
+    {
+      "wavelengthNm": 794,
+      "darkCounts": 106.80099962895265,
+      "referenceCounts": 1568.4471198247234,
+      "sampleCounts": 11062.587560958062,
+      "reflectance": 0.3103195396418442
+    },
+    {
+      "wavelengthNm": 796,
+      "darkCounts": 106.57963456307722,
+      "referenceCounts": 1561.9432166246809,
+      "sampleCounts": 11045.129743662175,
+      "reflectance": 0.31112981877286655
+    },
+    {
+      "wavelengthNm": 798,
+      "darkCounts": 106.35502042865826,
+      "referenceCounts": 1555.4648325737885,
+      "sampleCounts": 11026.497127807042,
+      "reflectance": 0.31190778929910323
+    },
+    {
+      "wavelengthNm": 800,
+      "darkCounts": 106.12726814169139,
+      "referenceCounts": 1549.0145441621116,
+      "sampleCounts": 11006.737898370244,
+      "reflectance": 0.3126538384603306
+    },
+    {
+      "wavelengthNm": 802,
+      "darkCounts": 105.89649016781348,
+      "referenceCounts": 1542.5948622521087,
+      "sampleCounts": 10986.620310954548,
+      "reflectance": 0.3133891126369715
+    },
+    {
+      "wavelengthNm": 804,
+      "darkCounts": 105.66280046676623,
+      "referenceCounts": 1536.2082309031723,
+      "sampleCounts": 10965.465655592334,
+      "reflectance": 0.3140932756386754
+    },
+    {
+      "wavelengthNm": 806,
+      "darkCounts": 105.42631443612217,
+      "referenceCounts": 1529.8570262994829,
+      "sampleCounts": 10943.319823705506,
+      "reflectance": 0.3147667085858398
+    },
+    {
+      "wavelengthNm": 808,
+      "darkCounts": 105.18714885430049,
+      "referenceCounts": 1523.5435557807307,
+      "sampleCounts": 10920.227884940417,
+      "reflectance": 0.3154097906649371
+    },
+    {
+      "wavelengthNm": 810,
+      "darkCounts": 104.94542182290108,
+      "referenceCounts": 1517.2700569751564,
+      "sampleCounts": 10896.234057493422,
+      "reflectance": 0.31602289895997926
+    },
+    {
+      "wavelengthNm": 812,
+      "darkCounts": 104.70125270838516,
+      "referenceCounts": 1511.0386970341501,
+      "sampleCounts": 10871.379255900043,
+      "reflectance": 0.316606336987991
+    },
+    {
+      "wavelengthNm": 814,
+      "darkCounts": 104.45476208313126,
+      "referenceCounts": 1504.8515719675147,
+      "sampleCounts": 10845.708532517914,
+      "reflectance": 0.31716055354732026
+    },
+    {
+      "wavelengthNm": 816,
+      "darkCounts": 104.20607166589583,
+      "referenceCounts": 1498.7107060783194,
+      "sampleCounts": 10819.263394932434,
+      "reflectance": 0.3176859185311773
+    },
+    {
+      "wavelengthNm": 818,
+      "darkCounts": 103.95530426170764,
+      "referenceCounts": 1492.618051496151,
+      "sampleCounts": 10792.084404905117,
+      "reflectance": 0.3181827991934038
+    },
+    {
+      "wavelengthNm": 820,
+      "darkCounts": 103.70258370122576,
+      "referenceCounts": 1486.5754878074108,
+      "sampleCounts": 10764.211160566834,
+      "reflectance": 0.3186515600449042
+    },
+    {
+      "wavelengthNm": 822,
+      "darkCounts": 103.4480347795913,
+      "referenceCounts": 1480.5848217811465,
+      "sampleCounts": 10735.679836985002,
+      "reflectance": 0.31909248941738283
+    },
+    {
+      "wavelengthNm": 824,
+      "darkCounts": 103.1917831948025,
+      "referenceCounts": 1474.6477871888242,
+      "sampleCounts": 10706.530731462028,
+      "reflectance": 0.3195060256703843
+    },
+    {
+      "wavelengthNm": 826,
+      "darkCounts": 102.9339554856444,
+      "referenceCounts": 1468.7660447162668,
+      "sampleCounts": 10676.80046251396,
+      "reflectance": 0.31989252454662176
+    },
+    {
+      "wavelengthNm": 828,
+      "darkCounts": 102.67467896920297,
+      "referenceCounts": 1462.9411819658994,
+      "sampleCounts": 10646.524635110314,
+      "reflectance": 0.32025233873096726
+    },
+    {
+      "wavelengthNm": 830,
+      "darkCounts": 102.41408167799517,
+      "referenceCounts": 1457.1747135473202,
+      "sampleCounts": 10615.73783319778,
+      "reflectance": 0.32058581779386053
+    },
+    {
+      "wavelengthNm": 832,
+      "darkCounts": 102.15229229674553,
+      "referenceCounts": 1451.4680812540792,
+      "sampleCounts": 10584.473143581905,
+      "reflectance": 0.32089329373854236
+    },
+    {
+      "wavelengthNm": 834,
+      "darkCounts": 101.88944009884081,
+      "referenceCounts": 1445.8226543245069,
+      "sampleCounts": 10552.763617572959,
+      "reflectance": 0.32117512571479456
+    },
+    {
+      "wavelengthNm": 836,
+      "darkCounts": 101.62565488249395,
+      "referenceCounts": 1440.2397297842658,
+      "sampleCounts": 10520.640748770704,
+      "reflectance": 0.3214316536781507
+    },
+    {
+      "wavelengthNm": 838,
+      "darkCounts": 101.3610669066487,
+      "referenceCounts": 1434.720532868271,
+      "sampleCounts": 10488.134997947276,
+      "reflectance": 0.3216632143145953
+    },
+    {
+      "wavelengthNm": 840,
+      "darkCounts": 101.095806826657,
+      "referenceCounts": 1429.2662175194978,
+      "sampleCounts": 10455.27579429105,
+      "reflectance": 0.32187014101732947
+    },
+    {
+      "wavelengthNm": 842,
+      "darkCounts": 100.83000562976036,
+      "referenceCounts": 1423.8778669621609,
+      "sampleCounts": 10422.767264047665,
+      "reflectance": 0.322073848440441
+    },
+    {
+      "wavelengthNm": 844,
+      "darkCounts": 100.56379457040758,
+      "referenceCounts": 1418.5564943466404,
+      "sampleCounts": 10389.956745726098,
+      "reflectance": 0.3222536007248875
+    },
+    {
+      "wavelengthNm": 846,
+      "darkCounts": 100.29730510544029,
+      "referenceCounts": 1413.3030434635048,
+      "sampleCounts": 10356.870662166293,
+      "reflectance": 0.3224097204063556
+    },
+    {
+      "wavelengthNm": 848,
+      "darkCounts": 100.03066882917875,
+      "referenceCounts": 1408.1183895238821,
+      "sampleCounts": 10323.534427218487,
+      "reflectance": 0.3225425267025806
+    },
+    {
+      "wavelengthNm": 850,
+      "darkCounts": 99.76401740843963,
+      "referenceCounts": 1403.0033400034495,
+      "sampleCounts": 10289.9724538414,
+      "reflectance": 0.3226523355120034
+    }
+  ]
+}

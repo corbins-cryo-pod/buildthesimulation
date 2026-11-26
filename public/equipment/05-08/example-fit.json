@@ -1,0 +1,70 @@
+{
+  "schema": "bts.sessile-drop-fit.v1",
+  "instrumentId": "05-08",
+  "model": "KRÜSS DSA100B Basic with CF04 and manual 500 µL glass syringe",
+  "sampleId": "WET-COUPON-01",
+  "contactId": "ZONE-A",
+  "parentRevision": 0,
+  "revision": 1,
+  "provenance": {
+    "image": {
+      "origin": "simulated",
+      "kind": "grayscale orthographic ray mask",
+      "cap": {
+        "radiusMm": 1.336504617571976,
+        "centerVMm": -8.183730509775888e-17,
+        "heightMm": 1.3365046175719757,
+        "diameterMm": 2.673009235143952,
+        "thetaDeg": 90,
+        "volumeUl": 5
+      },
+      "umPerPx": 15,
+      "noiseAmplitudeDn": 0,
+      "noiseSeed": "0x6c73fa35"
+    },
+    "method": "BTS grayscale threshold crossing + centered algebraic least-squares circle; shared symmetric arc",
+    "derivedGeometryOnly": true
+  },
+  "calibration": {
+    "widthPx": 424,
+    "heightPx": 284,
+    "pixelSizeUm": 15,
+    "baseline": {
+      "angleDeg": 0,
+      "yAtCenterPx": 210.5
+    },
+    "thresholdDn": 120
+  },
+  "angles": {
+    "leftDeg": 89.9966105916185,
+    "rightDeg": 89.9966105916185
+  },
+  "fit": {
+    "centerLocalPx": [
+      -2.1114411678726757e-15,
+      -0.005268257773856533
+    ],
+    "radiusPx": 89.05652610391628,
+    "radialRmsPx": 0.05796399486543676,
+    "edgeSamples": 352,
+    "leftContactPx": [
+      122.44347405190912,
+      210.5
+    ],
+    "rightContactPx": [
+      300.5565259480909,
+      210.5
+    ]
+  },
+  "geometry": {
+    "baseDiameterMm": 2.6716957784427264,
+    "heightMm": 1.3357688676921364,
+    "radiusMm": 1.3358478915587444
+  },
+  "uncertainty": {
+    "angleSpreadDeg": 0.6806698809351502,
+    "baselineOnePixelDeg": 0.6433779225038023,
+    "radialResidualProxyDeg": 0.03729195843134796,
+    "interpretation": "Conservative sensitivity to ±1 px uniform baseline fit offset plus angular residual proxy. Not statistical confidence, accuracy or bias calibration; image roll error is not included."
+  }
+}

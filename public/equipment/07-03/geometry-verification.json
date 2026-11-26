@@ -1,0 +1,141 @@
+{
+  "basis": "Dimensions measured from transformed GLB vertices in millimeters. The stand is evaluated without the detachable camera and stage accessories. The 2–5 mm envelope allowance is an engineering reconstruction tolerance for external fittings and published drawing/catalogue differences. The 0.1–0.2 mm limits check modeled datums and numeric assembly, not physical manufacturing tolerances.",
+  "tests": [
+    {
+      "test": "Stand width",
+      "expected": 236,
+      "actual": 237,
+      "units": "mm",
+      "tolerance": 3,
+      "outcome": "Pass"
+    },
+    {
+      "test": "Stand depth",
+      "expected": 564,
+      "actual": 564.134,
+      "units": "mm",
+      "tolerance": 5,
+      "outcome": "Pass"
+    },
+    {
+      "test": "Stand height",
+      "expected": 471,
+      "actual": 471,
+      "units": "mm",
+      "tolerance": 2,
+      "outcome": "Pass"
+    },
+    {
+      "test": "Plain stage width",
+      "expected": 170,
+      "actual": 170,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "Plain stage depth",
+      "expected": 247,
+      "actual": 247,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "Stage surface above bench",
+      "expected": 200,
+      "actual": 200,
+      "units": "mm",
+      "tolerance": 0.2,
+      "outcome": "Pass"
+    },
+    {
+      "test": "Ocular center spacing at illustrated setting",
+      "expected": 64,
+      "actual": 64,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "Height at top of eyeguards at 64 mm pupil spacing",
+      "expected": 406,
+      "actual": 405.934,
+      "units": "mm",
+      "tolerance": 1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "DS-Fi3 head width across its front face",
+      "expected": 100,
+      "actual": 100,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "DS-Fi3 head depth along the camera port",
+      "expected": 66,
+      "actual": 66,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "DS-Fi3 head height",
+      "expected": 65,
+      "actual": 65,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "10× maximum objective collar diameter",
+      "expected": 27,
+      "actual": 27,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "10× indexed objective axis offset from field center",
+      "expected": 0,
+      "actual": 0,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "10× working clearance to slide underside",
+      "expected": 6.2,
+      "actual": 6.2,
+      "units": "mm",
+      "tolerance": 0.15,
+      "outcome": "Pass"
+    },
+    {
+      "test": "20× maximum objective collar diameter",
+      "expected": 27,
+      "actual": 27,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "20× indexed objective axis offset from field center",
+      "expected": 0,
+      "actual": 0,
+      "units": "mm",
+      "tolerance": 0.1,
+      "outcome": "Pass"
+    },
+    {
+      "test": "20× working clearance to slide underside",
+      "expected": 3.1,
+      "actual": 3.1,
+      "units": "mm",
+      "tolerance": 0.15,
+      "outcome": "Pass"
+    }
+  ]
+}

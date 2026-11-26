@@ -1,0 +1,158 @@
+{
+  "source": "N5247B specifications, table 109, chassis and handles (nominal). Comparison with exported mesh dimensions, not measured hardware.",
+  "rows": [
+    {
+      "label": "Enclosure width",
+      "expectedMm": 425.6,
+      "actualMm": 425.59999227523804,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Enclosure height",
+      "expectedMm": 266.1,
+      "actualMm": 266.0999894142151,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Enclosure depth",
+      "expectedMm": 582.3,
+      "actualMm": 582.3000073432922,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Handle envelope width",
+      "expectedMm": 458.7,
+      "actualMm": 458.70001427829266,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Handle and rear guard depth",
+      "expectedMm": 649.6,
+      "actualMm": 649.5999759063125,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Feet to top of chassis (no vents)",
+      "expectedMm": 280,
+      "actualMm": 280.0000011920929,
+      "toleranceMm": 0.02,
+      "pass": true
+    }
+  ],
+  "asset": {
+    "unit": "m",
+    "up": "+Y",
+    "front": "+Z",
+    "bytes": 1840984,
+    "triangles": 28448,
+    "nodes": 384,
+    "minM": [
+      -0.22935,
+      0,
+      -0.3276
+    ],
+    "maxM": [
+      0.22935,
+      0.28027,
+      0.486
+    ]
+  },
+  "controls": [
+    {
+      "name": "POWER_key",
+      "minM": [
+        -0.2025,
+        0.0945,
+        0.292
+      ],
+      "maxM": [
+        -0.1915,
+        0.1075,
+        0.296
+      ]
+    },
+    {
+      "name": "DUT_module",
+      "minM": [
+        -0.0485,
+        0.005,
+        0.452
+      ],
+      "maxM": [
+        0.0485,
+        0.03925,
+        0.486
+      ]
+    },
+    {
+      "name": "CAL_key",
+      "minM": [
+        0.081,
+        0.1395,
+        0.2915
+      ],
+      "maxM": [
+        0.103,
+        0.1485,
+        0.2959
+      ]
+    },
+    {
+      "name": "SWEEP_key",
+      "minM": [
+        0.133,
+        0.1395,
+        0.2915
+      ],
+      "maxM": [
+        0.155,
+        0.1485,
+        0.2959
+      ]
+    },
+    {
+      "name": "PRESET_key",
+      "minM": [
+        0.107,
+        0.1395,
+        0.2915
+      ],
+      "maxM": [
+        0.129,
+        0.1485,
+        0.2959
+      ]
+    },
+    {
+      "name": "entry_knob",
+      "minM": [
+        0.1335,
+        0.2255,
+        0.2919
+      ],
+      "maxM": [
+        0.1625,
+        0.2545,
+        0.3031
+      ]
+    },
+    {
+      "name": "LCD_surface",
+      "minM": [
+        -0.1855,
+        0.0975,
+        0.2947
+      ],
+      "maxM": [
+        0.0715,
+        0.2565,
+        0.2959
+      ]
+    }
+  ]
+}

@@ -1,0 +1,516 @@
+{
+  "schema": "bts.ellipsometry-spectrum.v1",
+  "sampleId": "DIELECTRIC-REF-1234",
+  "revision": 0,
+  "stack": [
+    {
+      "name": "film",
+      "n": 1.46,
+      "k": 0,
+      "thicknessNm": 0
+    }
+  ],
+  "substrate": {
+    "name": "high-index standard",
+    "n": 3.85,
+    "k": 0.03
+  },
+  "rows": [
+    {
+      "wavelengthNm": 380,
+      "angleDeg": 65,
+      "psiDeg": 29.476500057991526,
+      "deltaDeg": 103.9666983135357
+    },
+    {
+      "wavelengthNm": 400,
+      "angleDeg": 65,
+      "psiDeg": 32.79583822625945,
+      "deltaDeg": 99.95512310386856
+    },
+    {
+      "wavelengthNm": 420,
+      "angleDeg": 65,
+      "psiDeg": 36.50611599338169,
+      "deltaDeg": 97.93037398474073
+    },
+    {
+      "wavelengthNm": 440,
+      "angleDeg": 65,
+      "psiDeg": 40.800375288781716,
+      "deltaDeg": 97.58815322045005
+    },
+    {
+      "wavelengthNm": 460,
+      "angleDeg": 65,
+      "psiDeg": 45.86943128431686,
+      "deltaDeg": 98.80451532795632
+    },
+    {
+      "wavelengthNm": 480,
+      "angleDeg": 65,
+      "psiDeg": 51.85495471427554,
+      "deltaDeg": 101.68371911538311
+    },
+    {
+      "wavelengthNm": 500,
+      "angleDeg": 65,
+      "psiDeg": 58.76052701604344,
+      "deltaDeg": 106.75604268808176
+    },
+    {
+      "wavelengthNm": 520,
+      "angleDeg": 65,
+      "psiDeg": 66.2927790672885,
+      "deltaDeg": 115.57713549515631
+    },
+    {
+      "wavelengthNm": 540,
+      "angleDeg": 65,
+      "psiDeg": 73.54287752432154,
+      "deltaDeg": 132.52298233807124
+    },
+    {
+      "wavelengthNm": 560,
+      "angleDeg": 65,
+      "psiDeg": 78.1681612193236,
+      "deltaDeg": 166.67491830861852
+    },
+    {
+      "wavelengthNm": 580,
+      "angleDeg": 65,
+      "psiDeg": 77.01778878253864,
+      "deltaDeg": 208.5679015755681
+    },
+    {
+      "wavelengthNm": 600,
+      "angleDeg": 65,
+      "psiDeg": 72.07597491352955,
+      "deltaDeg": 232.5427584935436
+    },
+    {
+      "wavelengthNm": 620,
+      "angleDeg": 65,
+      "psiDeg": 66.54607344251741,
+      "deltaDeg": 244.305735293039
+    },
+    {
+      "wavelengthNm": 640,
+      "angleDeg": 65,
+      "psiDeg": 61.489134132698965,
+      "deltaDeg": 250.8544938542948
+    },
+    {
+      "wavelengthNm": 660,
+      "angleDeg": 65,
+      "psiDeg": 57.123435806650285,
+      "deltaDeg": 254.9219773853791
+    },
+    {
+      "wavelengthNm": 680,
+      "angleDeg": 65,
+      "psiDeg": 53.42487268022115,
+      "deltaDeg": 257.6220782917859
+    },
+    {
+      "wavelengthNm": 700,
+      "angleDeg": 65,
+      "psiDeg": 50.3036442351266,
+      "deltaDeg": 259.4770958427591
+    },
+    {
+      "wavelengthNm": 720,
+      "angleDeg": 65,
+      "psiDeg": 47.66167883254137,
+      "deltaDeg": 260.76424114839995
+    },
+    {
+      "wavelengthNm": 740,
+      "angleDeg": 65,
+      "psiDeg": 45.41113278152945,
+      "deltaDeg": 261.646109606213
+    },
+    {
+      "wavelengthNm": 760,
+      "angleDeg": 65,
+      "psiDeg": 43.47882664421429,
+      "deltaDeg": 262.22596286464113
+    },
+    {
+      "wavelengthNm": 780,
+      "angleDeg": 65,
+      "psiDeg": 41.80566838682823,
+      "deltaDeg": 262.57363533661555
+    },
+    {
+      "wavelengthNm": 800,
+      "angleDeg": 65,
+      "psiDeg": 40.344557054784666,
+      "deltaDeg": 262.73874521007224
+    },
+    {
+      "wavelengthNm": 820,
+      "angleDeg": 65,
+      "psiDeg": 39.058091661884866,
+      "deltaDeg": 262.75793373355447
+    },
+    {
+      "wavelengthNm": 840,
+      "angleDeg": 65,
+      "psiDeg": 37.91653821441601,
+      "deltaDeg": 262.6590865852042
+    },
+    {
+      "wavelengthNm": 860,
+      "angleDeg": 65,
+      "psiDeg": 36.89616378000436,
+      "deltaDeg": 262.4639325322367
+    },
+    {
+      "wavelengthNm": 880,
+      "angleDeg": 65,
+      "psiDeg": 35.977920056035146,
+      "deltaDeg": 262.1897206236157
+    },
+    {
+      "wavelengthNm": 900,
+      "angleDeg": 65,
+      "psiDeg": 35.14642068265638,
+      "deltaDeg": 261.8503480309133
+    },
+    {
+      "wavelengthNm": 380,
+      "angleDeg": 70,
+      "psiDeg": 31.469913756318697,
+      "deltaDeg": 82.22691004108209
+    },
+    {
+      "wavelengthNm": 400,
+      "angleDeg": 70,
+      "psiDeg": 35.29161313664383,
+      "deltaDeg": 80.03550560367789
+    },
+    {
+      "wavelengthNm": 420,
+      "angleDeg": 70,
+      "psiDeg": 39.46898922022404,
+      "deltaDeg": 79.36698841836183
+    },
+    {
+      "wavelengthNm": 440,
+      "angleDeg": 70,
+      "psiDeg": 44.30628688239504,
+      "deltaDeg": 79.89153716934324
+    },
+    {
+      "wavelengthNm": 460,
+      "angleDeg": 70,
+      "psiDeg": 50.08989509965361,
+      "deltaDeg": 81.36191889034187
+    },
+    {
+      "wavelengthNm": 480,
+      "angleDeg": 70,
+      "psiDeg": 57.039448148741016,
+      "deltaDeg": 83.60129556185163
+    },
+    {
+      "wavelengthNm": 500,
+      "angleDeg": 70,
+      "psiDeg": 65.20998057695073,
+      "deltaDeg": 86.56661109981025
+    },
+    {
+      "wavelengthNm": 520,
+      "angleDeg": 70,
+      "psiDeg": 74.37058446890859,
+      "deltaDeg": 90.69027316692957
+    },
+    {
+      "wavelengthNm": 540,
+      "angleDeg": 70,
+      "psiDeg": 83.93002825850654,
+      "deltaDeg": 100.36909641655267
+    },
+    {
+      "wavelengthNm": 560,
+      "angleDeg": 70,
+      "psiDeg": 86.3399402384068,
+      "deltaDeg": 251.25125040618644
+    },
+    {
+      "wavelengthNm": 580,
+      "angleDeg": 70,
+      "psiDeg": 77.95548234700716,
+      "deltaDeg": 267.26103029345165
+    },
+    {
+      "wavelengthNm": 600,
+      "angleDeg": 70,
+      "psiDeg": 70.61256176008186,
+      "deltaDeg": 271.418987117135
+    },
+    {
+      "wavelengthNm": 620,
+      "angleDeg": 70,
+      "psiDeg": 64.46530455772124,
+      "deltaDeg": 273.96094619810935
+    },
+    {
+      "wavelengthNm": 640,
+      "angleDeg": 70,
+      "psiDeg": 59.40268449435526,
+      "deltaDeg": 275.8204481648526
+    },
+    {
+      "wavelengthNm": 660,
+      "angleDeg": 70,
+      "psiDeg": 55.24784511387803,
+      "deltaDeg": 277.250405264837
+    },
+    {
+      "wavelengthNm": 680,
+      "angleDeg": 70,
+      "psiDeg": 51.82355281059374,
+      "deltaDeg": 278.36002252703923
+    },
+    {
+      "wavelengthNm": 700,
+      "angleDeg": 70,
+      "psiDeg": 48.977113161278034,
+      "deltaDeg": 279.2128460138447
+    },
+    {
+      "wavelengthNm": 720,
+      "angleDeg": 70,
+      "psiDeg": 46.58552816590849,
+      "deltaDeg": 279.8532706489506
+    },
+    {
+      "wavelengthNm": 740,
+      "angleDeg": 70,
+      "psiDeg": 44.55275366100336,
+      "deltaDeg": 280.31553721440355
+    },
+    {
+      "wavelengthNm": 760,
+      "angleDeg": 70,
+      "psiDeg": 42.80475032509479,
+      "deltaDeg": 280.6273854191446
+    },
+    {
+      "wavelengthNm": 780,
+      "angleDeg": 70,
+      "psiDeg": 41.284613741782486,
+      "deltaDeg": 280.81182451002195
+    },
+    {
+      "wavelengthNm": 800,
+      "angleDeg": 70,
+      "psiDeg": 39.94850171771601,
+      "deltaDeg": 280.8881581413147
+    },
+    {
+      "wavelengthNm": 820,
+      "angleDeg": 70,
+      "psiDeg": 38.762450270041846,
+      "deltaDeg": 280.87267449347985
+    },
+    {
+      "wavelengthNm": 840,
+      "angleDeg": 70,
+      "psiDeg": 37.69995987774143,
+      "deltaDeg": 280.77916204690916
+    },
+    {
+      "wavelengthNm": 860,
+      "angleDeg": 70,
+      "psiDeg": 36.74018998043083,
+      "deltaDeg": 280.61931889252696
+    },
+    {
+      "wavelengthNm": 880,
+      "angleDeg": 70,
+      "psiDeg": 35.86661404180944,
+      "deltaDeg": 280.4030875828281
+    },
+    {
+      "wavelengthNm": 900,
+      "angleDeg": 70,
+      "psiDeg": 35.0660166628323,
+      "deltaDeg": 280.13893294880376
+    },
+    {
+      "wavelengthNm": 380,
+      "angleDeg": 75,
+      "psiDeg": 34.734351865765596,
+      "deltaDeg": 60.78463811297224
+    },
+    {
+      "wavelengthNm": 400,
+      "angleDeg": 75,
+      "psiDeg": 38.43630193368181,
+      "deltaDeg": 60.04367428210854
+    },
+    {
+      "wavelengthNm": 420,
+      "angleDeg": 75,
+      "psiDeg": 42.4987747662782,
+      "deltaDeg": 60.14479002974462
+    },
+    {
+      "wavelengthNm": 440,
+      "angleDeg": 75,
+      "psiDeg": 47.2696634965138,
+      "deltaDeg": 60.69505696388873
+    },
+    {
+      "wavelengthNm": 460,
+      "angleDeg": 75,
+      "psiDeg": 53.045336011347956,
+      "deltaDeg": 61.11151654186528
+    },
+    {
+      "wavelengthNm": 480,
+      "angleDeg": 75,
+      "psiDeg": 59.97580403242645,
+      "deltaDeg": 60.35595054006064
+    },
+    {
+      "wavelengthNm": 500,
+      "angleDeg": 75,
+      "psiDeg": 67.84519712917867,
+      "deltaDeg": 56.133190704940624
+    },
+    {
+      "wavelengthNm": 520,
+      "angleDeg": 75,
+      "psiDeg": 75.58592828199987,
+      "deltaDeg": 41.95704761267127
+    },
+    {
+      "wavelengthNm": 540,
+      "angleDeg": 75,
+      "psiDeg": 79.83494287639168,
+      "deltaDeg": 3.3768413826644474
+    },
+    {
+      "wavelengthNm": 560,
+      "angleDeg": 75,
+      "psiDeg": 76.84221443327966,
+      "deltaDeg": 323.3101595480028
+    },
+    {
+      "wavelengthNm": 580,
+      "angleDeg": 75,
+      "psiDeg": 70.86002491588326,
+      "deltaDeg": 307.56129852258783
+    },
+    {
+      "wavelengthNm": 600,
+      "angleDeg": 75,
+      "psiDeg": 65.06706018764355,
+      "deltaDeg": 301.950585400696
+    },
+    {
+      "wavelengthNm": 620,
+      "angleDeg": 75,
+      "psiDeg": 60.1206096611921,
+      "deltaDeg": 299.86879646693836
+    },
+    {
+      "wavelengthNm": 640,
+      "angleDeg": 75,
+      "psiDeg": 56.038041674041956,
+      "deltaDeg": 299.1831967539137
+    },
+    {
+      "wavelengthNm": 660,
+      "angleDeg": 75,
+      "psiDeg": 52.69023978712794,
+      "deltaDeg": 299.0875358732009
+    },
+    {
+      "wavelengthNm": 680,
+      "angleDeg": 75,
+      "psiDeg": 49.931365111841394,
+      "deltaDeg": 299.2346005412328
+    },
+    {
+      "wavelengthNm": 700,
+      "angleDeg": 75,
+      "psiDeg": 47.63461591827066,
+      "deltaDeg": 299.46313567262723
+    },
+    {
+      "wavelengthNm": 720,
+      "angleDeg": 75,
+      "psiDeg": 45.69871346077747,
+      "deltaDeg": 299.69599262005414
+    },
+    {
+      "wavelengthNm": 740,
+      "angleDeg": 75,
+      "psiDeg": 44.045415640423776,
+      "deltaDeg": 299.8968824824395
+    },
+    {
+      "wavelengthNm": 760,
+      "angleDeg": 75,
+      "psiDeg": 42.61499275488201,
+      "deltaDeg": 300.05022555132285
+    },
+    {
+      "wavelengthNm": 780,
+      "angleDeg": 75,
+      "psiDeg": 41.36192030752725,
+      "deltaDeg": 300.15113125248
+    },
+    {
+      "wavelengthNm": 800,
+      "angleDeg": 75,
+      "psiDeg": 40.25137236098623,
+      "deltaDeg": 300.20019017658467
+    },
+    {
+      "wavelengthNm": 820,
+      "angleDeg": 75,
+      "psiDeg": 39.25653508209969,
+      "deltaDeg": 300.20069038658403
+    },
+    {
+      "wavelengthNm": 840,
+      "angleDeg": 75,
+      "psiDeg": 38.356601259667165,
+      "deltaDeg": 300.15710872702607
+    },
+    {
+      "wavelengthNm": 860,
+      "angleDeg": 75,
+      "psiDeg": 37.53528787728304,
+      "deltaDeg": 300.0742936602648
+    },
+    {
+      "wavelengthNm": 880,
+      "angleDeg": 75,
+      "psiDeg": 36.77974209126797,
+      "deltaDeg": 299.95703104833655
+    },
+    {
+      "wavelengthNm": 900,
+      "angleDeg": 75,
+      "psiDeg": 36.07973152123321,
+      "deltaDeg": 299.8098245194763
+    }
+  ],
+  "provenance": {
+    "kind": "synthetic independent reference",
+    "method": "separate Python complex characteristic-matrix implementation",
+    "knownThicknessNm": 123.4,
+    "acceptanceIntervalNm": [
+      123.38,
+      123.42
+    ],
+    "warning": "Synthetic optical constants; not traceable hardware or measured wafer."
+  }
+}

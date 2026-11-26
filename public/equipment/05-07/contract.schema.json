@@ -1,0 +1,19 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://buildthesimulation.com/equipment/05-07/contract.schema.json",
+ "title":"Summit probe contact, coupon and passive voltage sweep",
+ "description":"Coordinates in m: die centered x right, y away, gap up. thetaRad positive counterclockwise in the plane. Pad rectangles must not overlap; netlist and contact mapping validated by station.mjs. Output sample revision equals parentRevision + 1.",
+ "oneOf":[{"$ref":"#/$defs/coupon"},{"$ref":"#/$defs/result"}],
+ "$defs":{
+  "id":{"type":"string","pattern":"^[a-zA-Z0-9_.-]{1,80}$"},
+  "pad":{"type":"object","required":["id","net","xM","yM","widthM","heightM"],"properties":{"id":{"$ref":"#/$defs/id"},"net":{"$ref":"#/$defs/id"},"xM":{"type":"number"},"yM":{"type":"number"},"widthM":{"type":"number","minimum":0.00002,"maximum":0.002},"heightM":{"type":"number","minimum":0.00002,"maximum":0.002}}},
+  "resistor":{"type":"object","required":["id","a","b","ohm"],"properties":{"id":{"$ref":"#/$defs/id"},"a":{"$ref":"#/$defs/id"},"b":{"$ref":"#/$defs/id"},"ohm":{"type":"number","minimum":1,"maximum":100000000}}},
+  "coupon":{"type":"object","required":["schema","sampleId","revision","sizeM","pads","resistors"],"properties":{"schema":{"const":"bts.probe-coupon.v1"},"sampleId":{"$ref":"#/$defs/id"},"revision":{"type":"integer","minimum":0},"sizeM":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"number","minimum":0.001,"maximum":0.025}},"pads":{"type":"array","minItems":2,"maxItems":32,"items":{"$ref":"#/$defs/pad"}},"resistors":{"type":"array","maxItems":80,"items":{"$ref":"#/$defs/resistor"}}}},
+  "result":{"type":"object","required":["schema","deviceId","sampleId","parentRevision","revision","contacts","stage","topology","dutOhm","terminalOhm","continuity","rows","units","provenance"],"properties":{
+   "schema":{"const":"bts.probe-contact-sweep.v1"},"deviceId":{"const":"05-07"},"sampleId":{"$ref":"#/$defs/id"},"parentRevision":{"type":"integer","minimum":0},"revision":{"type":"integer","minimum":1},
+   "topology":{"enum":["open-contact","open-netlist","short","conducting"]},"dutOhm":{"type":["number","null"]},"terminalOhm":{"type":["number","null"]},"continuity":{"type":"boolean"},
+   "contacts":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"object","required":["tipId","padId","status","gapM","die"],"properties":{"tipId":{"enum":["HI","LO"]},"padId":{"type":["string","null"]},"status":{"enum":["contact","raised-tip","missed-pad","load-position","no-coupon"]},"gapM":{"type":"number","minimum":0},"die":{"type":"object","required":["xM","yM"]}}}},
+   "rows":{"type":"array","minItems":2,"maxItems":201,"items":{"type":"object","required":["i","timeS","requestedV","terminalV","currentA","dutV","compliance"],"properties":{"i":{"type":"integer"},"timeS":{"type":"number","minimum":0},"requestedV":{"type":"number"},"terminalV":{"type":"number"},"currentA":{"type":"number"},"dutV":{"type":["number","null"]},"compliance":{"type":"boolean"}}}}
+  }}
+ }
+}

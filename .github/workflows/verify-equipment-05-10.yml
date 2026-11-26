@@ -1,0 +1,28 @@
+name: Verify HORIBA LabRAM HR Evolution
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/05-10/**'
+      - 'src/lib/equipment/05-10/**'
+      - 'src/pages/simulations/equipment/05-10/**'
+      - 'scripts/equipment/05-10/**'
+      - 'tests/equipment-05-10*.mjs'
+      - '.github/workflows/verify-equipment-05-10.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-05-10*.mjs
