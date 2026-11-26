@@ -1,0 +1,81 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.5765,
+    0.597,
+    0.3255
+  ],
+  "meshes": 73,
+  "triangles": 9734,
+  "bytes": 533128,
+  "interaction": {
+    "Test_port_target": {
+      "action": "load",
+      "boundsMinM": [
+        -0.1475,
+        0.53,
+        -0.0025
+      ],
+      "boundsMaxM": [
+        -0.0865,
+        0.538,
+        0.0585
+      ]
+    },
+    "Port_inner_shadow": {
+      "action": "load",
+      "boundsMinM": [
+        -0.1365,
+        0.5375,
+        0.0085
+      ],
+      "boundsMaxM": [
+        -0.0975,
+        0.5385,
+        0.0475
+      ]
+    },
+    "Fixture_cap": {
+      "action": "load",
+      "boundsMinM": [
+        -0.1375,
+        0.587,
+        0.0075
+      ],
+      "boundsMaxM": [
+        -0.0965,
+        0.597,
+        0.0485
+      ]
+    },
+    "Key_Cal": {
+      "action": "blank",
+      "boundsMinM": [
+        0.168,
+        0.365,
+        0.183
+      ],
+      "boundsMaxM": [
+        0.186,
+        0.385,
+        0.189
+      ]
+    },
+    "Key_Replay": {
+      "action": "replay",
+      "boundsMinM": [
+        0.168,
+        0.393,
+        0.183
+      ],
+      "boundsMaxM": [
+        0.186,
+        0.413,
+        0.189
+      ]
+    }
+  },
+  "geometryAuthority": "Nominal model dimensions inferred from Balzers photographs and line drawing; manufacturer outer dimensions unverified",
+  "fixturePivot": "Virtual_fixture_mount"
+}

@@ -162,7 +162,7 @@
   {
     "id": "08-09",
     "name": "Helium leak detector",
-    "model": "HLT-160 leak detector (manufacturer/revision to verify)",
+    "model": "Balzers HLT 160 (guide BG 800 387 BE/B)",
     "evidence": "B",
     "priority": "P2",
     "page": 29,
@@ -175,9 +175,10 @@
     "inputs": "Package revision, blank baseline, calibrated leak signal, units and acceptance limit",
     "outputs": "Leak-rate measurement and threshold decision linked to the tested package",
     "acceptance": "Replay two calibrated leak standards bracketing the declared threshold. Baseline-corrected readings must match their values within fixture uncertainty and fall on opposite sides of the decision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with visually inferred cabinet dimensions",
+    "simulationStatus": "Synthetic calibrated flow replay, blank and uncertainty decision",
+    "integrationStatus": "Revisioned package report and trace export",
+    "simulator": "/simulations/equipment/08-09/simulator/"
   },
   {
     "id": "08-10",
