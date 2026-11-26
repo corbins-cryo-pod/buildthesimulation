@@ -30,7 +30,7 @@
   {
     "id": "11-02",
     "name": "Laser diode module",
-    "model": "Doric CLD + LDD driver",
+    "model": "Doric CLDM + LDMD-1 (capped exteriors)",
     "evidence": "A",
     "priority": "P2",
     "page": 36,
@@ -43,9 +43,10 @@
     "inputs": "Laser/driver configuration ID, gate events, calibrated spectrum, output power and divergence",
     "outputs": "Time-stamped optical-source state, wavelength (m), power (W) and beam envelope",
     "acceptance": "Toggle the emission-enable state while gate pulses continue. The disabled interval should contain zero emitted power and the enabled interval should follow the selected reference pulse and spectrum.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric LDMD-1 and CLDM shape; inactive opaque cases",
+    "simulationStatus": "Detached abstract shapes inspection only; no source operation or signals",
+    "integrationStatus": "Interactive dormant exterior, disconnected card, JSON and metric room anchors",
+    "simulator": "/simulations/equipment/11-02/simulator/"
   },
   {
     "id": "11-03",
