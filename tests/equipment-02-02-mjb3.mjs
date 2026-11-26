@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {defaults,exposure,pose,fit,transform,inverse,solveAlignment,overlay} from '../public/equipment/02-02/solver.mjs';
+import {defaults,exposure,pose,fit,transform,inverse,solveAlignment,overlay,checkCouponMarks,stageScenePose,sceneGeometryMm} from '../public/equipment/02-02/solver.mjs';
 const near=(a,b,t=1e-9)=>assert.ok(Math.abs(a-b)<=t, a+' != '+b);
 const mask={id:'SQUARE-REFERENCE',revision:0,clear:[{id:'open',x:0,y:0,w:2,h:2}],fiducials:[{id:'left',x:-5,y:5},{id:'right',x:5,y:5}]};
 const square={...defaults,mask,pitchMm:.1};
@@ -28,3 +28,7 @@ test('Out-of-travel alignment rejects rather than clipping; invalid marks and fi
  assert.equal(solveAlignment({...square,couponFiducials:null}).code,'no-marks');const o=exposure({...square,couponFiducials:null}).sampleRevision;assert.equal(o.fiducials.length,0);assert.equal(o.alignment.status,'not-evaluated');assert.equal(o.alignment.rmsMm,null);assert.equal(o.statistics.exposedPixels,400);
 });
 test('Boolean interlocks are strict and explicit mark coordinates survive JSON export',()=>{assert.equal(exposure({...square,contact:'false'}).code,'interlock');const s={...square,couponFiducials:mask.fiducials.map(f=>({...f,x:f.x+.1}))};const r=exposure(s).sampleRevision;near(r.fiducials[0].couponMarkLocalMm[0],-4.9);near(r.alignment.rmsMm,.1);assert.equal(r.exposure.nominalWavelengthNm,405)});
+
+test('Independent loading validates coupon marks without requiring a photomask',()=>{const marks=[{id:'a',x:-3,y:1},{id:'b',x:3,y:1}];assert.ok(checkCouponMarks({...square,mask:null,couponFiducials:marks}).ok);assert.equal(checkCouponMarks({...square,couponFiducials:[marks[0],{...marks[1],x:9}]}).code,'fiducials');assert.ok(checkCouponMarks({...square,couponFiducials:null}).ok)});
+test('Model-stage frame conversion, contact and 100/150 µm alignment separation',()=>{const s={...defaults,xMm:1,yMm:-2,thetaDeg:6};const p=stageScenePose(s,{engaged:true,contact:true,separationUm:100});assert.ok(p.ok);near(p.positionM[0],.001);near(p.positionM[2],.002);near(p.rotationRad,Math.PI/30);near(p.modelGapUm,0);near(p.positionM[1],.0013);for(const d of [100,150]){const q=stageScenePose(s,{engaged:true,contact:false,separationUm:d});near(q.modelGapUm,d);near(p.positionM[1]-q.positionM[1],d/1e6)}assert.equal(stageScenePose(s,{engaged:false,contact:true,separationUm:100}).code,'mechanical');assert.equal(stageScenePose(s,{engaged:true,contact:false,separationUm:151}).code,'mechanical');
+ const source=JSON.parse(readFileSync(new URL('../public/equipment/02-02/model-source.json',import.meta.url)));const n=Object.fromEntries(source.nodes.map(x=>[x.name,x]));near(n.transport.p[1],sceneGeometryMm.transportY);near(n.chuck.p[1]+n.chuck.size[1]/2,sceneGeometryMm.chuckSurfaceY);near(n.mask_holder.p[1]+n.mask_glass.p[1]-n.mask_glass.size[1]/2,sceneGeometryMm.maskBottomY)});

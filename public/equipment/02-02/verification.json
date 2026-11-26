@@ -104,8 +104,22 @@
       {
         "name": "Boolean interlocks are strict and explicit mark coordinates survive JSON export",
         "outcome": "PASS"
+      },
+      {
+        "name": "Independent loading validates coupon marks without requiring a photomask",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Model-stage frame conversion, contact and 100/150 µm alignment separation",
+        "outcome": "PASS"
       }
     ],
-    "limitations": "Two-point least-squares rigid registration; no optical metrology or resist validation. Separation stroke is modeled as a geometric interlock only."
+    "limitations": "Two-point least-squares rigid registration; no optical metrology or resist validation. Separation stroke is modeled as a geometric interlock only.",
+    "mechanical": {
+      "zeroContactGapUm": 0,
+      "alignmentGapUm": 100.00000000000009,
+      "maxAlignmentGapUm": 149.99999999999991,
+      "scope": "Source-coordinate analytical consistency; actual GLB world-transform gap checked by Chromium test."
+    }
   }
 }

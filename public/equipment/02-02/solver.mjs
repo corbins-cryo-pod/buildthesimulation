@@ -26,10 +26,8 @@ export function checkMask(m){if(!m||typeof m.id!=="string"||!m.id.trim()||!Numbe
  if(Math.hypot(m.fiducials[0].x-m.fiducials[1].x,m.fiducials[0].y-m.fiducials[1].y)<.01)return fail("mask","Fiducials must be distinct.");return {ok:true}}
 // Coupon marks are independent of the photomask. Omission is legacy nominal
 // correspondence; explicit null is a first-level exposure without alignment.
-export function checkAlignment(s){
- const m=checkMask(s.mask);if(!m.ok)return m;
- if(s.couponFiducials===null)return fail("no-marks","First-level specimen has no alignment marks.");
- const marks=s.couponFiducials===undefined?s.mask.fiducials:s.couponFiducials;
+export function checkCouponMarks(s,marks=s.couponFiducials){
+ if(marks===null)return {ok:true,marks:[]};
  if(!Array.isArray(marks)||marks.length!==2)return fail("fiducials","Enter exactly two coupon-local marks or null for first-level exposure.");
  if(![s.widthMm,s.heightMm].every(finite)||s.widthMm<=0||s.heightMm<=0)return fail("sample","Invalid coupon dimensions.");
  const seen=new Set();
@@ -38,9 +36,16 @@ export function checkAlignment(s){
   seen.add(f.id);
   if(Math.abs(f.x)>s.widthMm/2||Math.abs(f.y)>s.heightMm/2)return fail("fiducials","A coupon mark lies outside the coupon.");
  }
+ if(Math.hypot(marks[1].x-marks[0].x,marks[1].y-marks[0].y)<.01)return fail("fiducials","Coupon marks must be separated by at least 0.01 mm.");
+ return {ok:true,marks};
+}
+export function checkAlignment(s){
+ const m=checkMask(s.mask);if(!m.ok)return m;
+ if(s.couponFiducials===null)return fail("no-marks","First-level specimen has no alignment marks.");
+ const marks=s.couponFiducials===undefined?s.mask.fiducials:s.couponFiducials;
+ const local=checkCouponMarks(s,marks);if(!local.ok)return local;
  const pairs=s.mask.fiducials.map(f=>({mask:f,coupon:marks.find(c=>c.id===f.id)}));
  if(pairs.some(p=>!p.coupon))return fail("fiducials","Coupon and mask mark IDs must match.");
- if(Math.hypot(pairs[1].coupon.x-pairs[0].coupon.x,pairs[1].coupon.y-pairs[0].coupon.y)<.01)return fail("fiducials","Coupon marks must be separated by at least 0.01 mm.");
  if(pairs.some(p=>Math.hypot(p.mask.x,p.mask.y)>limits.apertureDiameterMm/2))return fail("fiducials","A mask mark is outside the modeled inspection/exposure aperture.");
  return {ok:true,pairs,source:s.couponFiducials===undefined?"legacy-nominal":"explicit-coupon-marks"};
 }
@@ -61,6 +66,16 @@ export function solveAlignment(s){
  const valid=pose(requested);if(!valid.ok)return {...valid,requested};
  const marks=overlay({...s,...requested}),rmsMm=Math.sqrt(marks.reduce((sum,f)=>sum+f.delta[0]**2+f.delta[1]**2,0)/marks.length);
  return {ok:true,pose:requested,marks,rmsMm,baselineMismatchMm:Math.hypot(mx,my)-Math.hypot(dx,dy)};
+}
+// Scene coordinate conversion: model Y up and Z toward operator; specimen y points away.
+// Values below are from the editable model source, not measured instrument dimensions.
+export const sceneGeometryMm=Object.freeze({transportY:178,chuckSurfaceY:9,maskBottomY:188.8,releaseSlideX:120});
+export function stageScenePose(s,{engaged,contact,separationUm}){
+ const v=pose(s);if(!v.ok)return v;
+ if(!finite(s.thicknessUm)||s.thicknessUm<100||s.thicknessUm>1000||!finite(separationUm)||separationUm<1||separationUm>150||typeof engaged!=="boolean"||typeof contact!=="boolean"||contact&&!engaged)return fail("mechanical","Invalid stage thickness, separation or lever state.");
+ const g=sceneGeometryMm,t=s.thicknessUm/1000;
+ const stageY=engaged?g.maskBottomY-g.transportY-g.chuckSurfaceY-t-(contact?0:separationUm/1000):0;
+ return {ok:true,positionM:[s.xMm/1000,stageY/1000,-s.yMm/1000],rotationRad:s.thetaDeg*Math.PI/180,modelGapUm:(g.maskBottomY-g.transportY-g.chuckSurfaceY-t-stageY)*1000};
 }
 export function exposure(s){
  for(const f of [fit(s),pose(s),checkMask(s.mask)])if(!f.ok)return f;

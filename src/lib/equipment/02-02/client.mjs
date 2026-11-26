@@ -4,7 +4,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 const asset='/equipment/02-02/';
 const $=id=>document.getElementById('mjb-'+id);
 async function main(){
- const {defaults,demoMask,exposure,fit,pose,overlay,checkMask,checkAlignment,solveAlignment,inverse}=await import(/* @vite-ignore */ (asset+'solver.mjs'));
+ const {defaults,demoMask,exposure,fit,pose,overlay,checkMask,checkAlignment,checkCouponMarks,solveAlignment,inverse,stageScenePose}=await import(/* @vite-ignore */ (asset+'solver.mjs'));
  const form=$('fields'),field=k=>form.elements.namedItem(k),keys=Object.keys(defaults).filter(k=>!['mask','loaded','clamped','contact'].includes(k));
  let inserted=true,loaded=true,clamped=true,engaged=false,contact=false,busy=false,cut=false,result=null,applied={xMm:0,yMm:0,thetaDeg:0},root=null,render=()=>{},couponTexture=null,maskTexture=null;
  const number=k=>field(k).value.trim()===''?NaN:Number(field(k).value);
@@ -35,19 +35,23 @@ async function main(){
  drawOverlay();if(!root)return;const s=read(),transport=modelNode('transport'),stage=modelNode('stage_pose'),coupon=modelNode('coupon'),holder=modelNode('mask_holder'),microscope=modelNode('microscope'),head=modelNode('exposure_head'),lever=modelNode('contact_lever'),sep=modelNode('separation_lever');
  transport.position.x=-.095+(inserted?0:.12);
  const t=Number.isFinite(s.thicknessUm)?s.thicknessUm/1e6:.0005;
- stage.position.set(applied.xMm/1000,engaged?.1888-.178-.009-t-(contact?0:Number($('gap').value)/1e6):0,-applied.yMm/1000);stage.rotation.y=applied.thetaDeg*Math.PI/180;
+ const mech=stageScenePose({...s,...applied},{engaged,contact,separationUm:Number($('gap').value)});
+ if(mech.ok){stage.position.fromArray(mech.positionM);stage.rotation.y=mech.rotationRad;}
+ else if(!engaged){stage.position.set(applied.xMm/1000,0,-applied.yMm/1000);stage.rotation.y=applied.thetaDeg*Math.PI/180;}
  coupon.visible=loaded;if(fit(s).ok){coupon.scale.set(s.widthMm/1000,t,s.heightMm/1000);coupon.position.y=.009+t/2;}
  holder.position.x=-.095-(clamped?0:.12);microscope.visible=!cut;microscope.position.z=.121+(busy?.10:0);head.position.z=-.03+(busy?.10:0);
  lever.rotation.x=engaged?Math.PI:0;sep.rotation.x=engaged&&!contact?-.45:0;
  $('cut').setAttribute('aria-pressed',String(cut));
  if(couponTexture){const plane=couponTexture;plane.visible=loaded&&!!result;plane.position.y=.009+t+.00012;if(fit(s).ok)plane.scale.set(s.widthMm/1000,s.heightMm/1000,1);if(result){const g=result.grid,c=plane.material.map.image,ctx=c.getContext('2d');c.width=g.nx;c.height=g.ny;const image=ctx.createImageData(g.nx,g.ny);for(let j=0;j<g.ny;j++)for(let i=0;i<g.nx;i++){const k=4*((g.ny-1-j)*g.nx+i);image.data.set(g.values[j*g.nx+i]>0?[235,191,78,255]:[53,70,90,255],k)}ctx.putImageData(image,0,0);plane.material.map.needsUpdate=true;}}
  if(maskTexture){const c=maskTexture.material.map.image,ctx=c.getContext('2d');ctx.clearRect(0,0,256,256);const m=s.mask;if(checkMask(m).ok){ctx.fillStyle='rgba(35,48,55,0.48)';ctx.fillRect(0,0,256,256);ctx.globalCompositeOperation='destination-out';for(const f of m.clear)ctx.fillRect((f.x-f.w/2+38.1)*256/76.2,(38.1-f.y-f.h/2)*256/76.2,f.w*256/76.2,f.h*256/76.2);ctx.globalCompositeOperation='source-over';}maskTexture.material.map.needsUpdate=true;}
+ // Independently measure the rendered geometry rather than echoing the solver target.
+ const readout=$('geometry-gap');if(loaded&&inserted&&clamped&&mech.ok){root.updateMatrixWorld(true);const glass=modelNode('mask_glass'),a=new THREE.Vector3(),b=new THREE.Vector3();const top=coupon.getWorldPosition(a).y+coupon.getWorldScale(b).y/2;const bottom=glass.getWorldPosition(a).y-glass.getWorldScale(b).y/2;const gap=(bottom-top)*1e6;readout.dataset.gapUm=String(gap);readout.textContent='Modeled mask–coupon gap: '+Math.max(0,gap).toFixed(1)+' µm (scene geometry; not measured hardware).';}else{delete readout.dataset.gapUm;readout.textContent='Modeled gap unavailable until coupon and mask are in position.';}
  render();
  }
  function apply(){const s=read(),v=pose(s);if(!v.ok){clear();status(v.code+': '+v.message+' Last valid pose retained; no new revision.',true);return false}applied={xMm:s.xMm,yMm:s.yMm,thetaDeg:s.thetaDeg};clear('Stage pose applied.');return true}
  $('apply').onclick=apply;$('align').onclick=()=>{const a=solveAlignment(read());if(!a.ok){clear();status(a.code+': '+a.message+' Last valid pose retained.',true);return}for(const k of ['xMm','yMm','thetaDeg'])field(k).value=String(a.pose[k]);apply();status('Two-mark rigid fit: '+(a.rmsMm*1000).toFixed(3)+' µm RMS residual. '+(Math.abs(a.baselineMismatchMm)>1e-9?'Baseline mismatch cannot be removed by a rigid stage. ':'')+'Return to contact and expose.')};
  $('slide').onclick=()=>{if(engaged||busy)return;inserted=!inserted;clear(inserted?'Slide inserted.':'Slide withdrawn; specimen can be exchanged.')};
- $('load').onclick=()=>{if(inserted||engaged||busy)return;if(loaded){loaded=false;clear('Coupon removed. Incoming revision preserved.');return}const v=fit(read());if(!v.ok){status(v.code+': '+v.message,true);return}const s=read();if(s.couponFiducials!==null){const a=checkAlignment(s);if(!a.ok){status(a.code+': '+a.message,true);return}}loaded=true;clear('Coupon fits virtual chuck and covers assumed vacuum holes.')};
+ $('load').onclick=()=>{if(inserted||engaged||busy)return;if(loaded){loaded=false;clear('Coupon removed. Incoming revision preserved.');return}const v=fit(read());if(!v.ok){status(v.code+': '+v.message,true);return}const a=checkCouponMarks(read());if(!a.ok){status(a.code+': '+a.message,true);return}loaded=true;clear('Coupon fits virtual chuck and covers assumed vacuum holes.')};
  $('clamp').onclick=()=>{if(engaged||busy)return;if(!clamped){const v=checkMask(read().mask);if(!v.ok){status(v.code+': '+v.message,true);return}}clamped=!clamped;clear(clamped?'Mask clamped.':'Mask withdrawn. Edit or import artwork.')};
  $('contact').onclick=()=>{if(busy)return;if(engaged){engaged=contact=false;clear('Contact lever released; slide can be withdrawn.');return}if(!apply())return;const f=fit(read()),m=checkMask(read().mask),gap=Number($('gap').value);if(!f.ok||!m.ok||!Number.isFinite(gap)||gap<1||gap>150){status(!f.ok?f.message:!m.ok?m.message:'Separation stroke must be 1–150 µm in this model.',true);return}engaged=contact=true;sync();status('Contact lever engaged. Separate to align, or expose in contact.')};
  $('separate').onclick=()=>{if(!engaged||busy)return;if(contact){contact=false;clear('Separation lever pulled; stage is clear for X/Y/θ alignment.');return}if(!apply())return;contact=true;sync();status('Separation lever returned to contact. Expose when ready.')};
