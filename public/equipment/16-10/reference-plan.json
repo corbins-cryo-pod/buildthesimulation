@@ -1,0 +1,37 @@
+{
+  "fixtureScope": "Dry geometry and purely digital audit examples, not OEM measurements or cleaning instructions.",
+  "declaredBeforeImplementation": true,
+  "cases": [
+    {
+      "id": "centered",
+      "expected": {
+        "widthPerSideMm": 14,
+        "depthPerSideMm": 21,
+        "headroomMm": 49,
+        "fit": true
+      }
+    },
+    {
+      "id": "oversize",
+      "expected": {
+        "widthPerSideMm": -2,
+        "fit": false
+      }
+    },
+    {
+      "id": "lid-guard",
+      "expected": {
+        "raised": false,
+        "result": null
+      }
+    },
+    {
+      "id": "register-audit",
+      "expected": {
+        "elapsedVirtualS": 20,
+        "status": "interrupted",
+        "completedCycleEntries": 0
+      }
+    }
+  ]
+}
