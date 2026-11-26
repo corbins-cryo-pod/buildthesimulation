@@ -1,0 +1,68 @@
+{
+  "schema": "bts.tdt.offline-peak-comparison.v1",
+  "equipment": "15-12",
+  "source": {
+    "id": "BTS-OFFLINE-PEAK-COMPARISON-01",
+    "revision": "1",
+    "kind": "authored static numerical example",
+    "sampleIntervalMs": 0.05,
+    "referenceIndex": 32,
+    "sampleCount": 128,
+    "window": [
+      62,
+      102
+    ],
+    "clipOrder": [
+      "L1",
+      "L2",
+      "L3",
+      "L4"
+    ]
+  },
+  "units": {
+    "amplitude": "mV",
+    "time": "ms",
+    "index": "unitless"
+  },
+  "rule": "first fixed file record whose maximum in the inclusive analysis window meets the threshold; earliest index breaks a tie",
+  "result": {
+    "thresholdMv": 5,
+    "first": {
+      "id": "L3",
+      "windowMaxMv": 6,
+      "qualifies": true,
+      "peakIndex": 76,
+      "peakOffsetMs": 2.2
+    },
+    "clips": [
+      {
+        "id": "L1",
+        "windowMaxMv": 0,
+        "qualifies": false,
+        "peakIndex": null,
+        "peakOffsetMs": null
+      },
+      {
+        "id": "L2",
+        "windowMaxMv": 2,
+        "qualifies": false,
+        "peakIndex": null,
+        "peakOffsetMs": null
+      },
+      {
+        "id": "L3",
+        "windowMaxMv": 6,
+        "qualifies": true,
+        "peakIndex": 76,
+        "peakOffsetMs": 2.2
+      },
+      {
+        "id": "L4",
+        "windowMaxMv": 8,
+        "qualifies": true,
+        "peakIndex": 76,
+        "peakOffsetMs": 2.2
+      }
+    ]
+  }
+}

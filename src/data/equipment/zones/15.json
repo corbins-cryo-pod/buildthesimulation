@@ -216,7 +216,7 @@
   {
     "id": "15-12",
     "name": "Auditory electrophysiology",
-    "model": "Tucker-Davis RZ6 + Medusa system",
+    "model": "Tucker-Davis RZ6-A-P1 + RA4PA Medusa (exterior)",
     "evidence": "A",
     "priority": "P2",
     "page": 48,
@@ -229,9 +229,16 @@
     "inputs": "Stimulus level and trigger times, calibrated auditory response epochs, peak windows and detection rule",
     "outputs": "Averaged ABR traces, latency estimates and rule-defined threshold with stimulus units",
     "acceptance": "Create a noise-free level series with a fixed-latency peak appearing only above a known test level. The detector should select the first positive level and recover latency within one sample.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documented rack face and estimated disconnected cases",
+    "simulationStatus": "Verified offline synthetic peak index; no stimulation or acquisition",
+    "integrationStatus": "Standalone exhibit and fixed-file trace JSON/CSV",
+    "simulator": "/simulations/equipment/15-12/simulator/",
+    "related": [
+      [
+        "Case geometry references and offline verification",
+        "/simulations/equipment/15-12/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "15-13",
