@@ -118,7 +118,7 @@
   {
     "id": "14-06",
     "name": "Dynamic mechanical analyzer",
-    "model": "TA Instruments DMA Q800",
+    "model": "TA Instruments DMA Q800 / standard furnace / film tension",
     "evidence": "B",
     "priority": "P2",
     "page": 44,
@@ -131,9 +131,20 @@
     "inputs": "Specimen dimensions, clamp geometry, oscillation frequency, stress and strain channels, temperature",
     "outputs": "Storage modulus, loss modulus and phase lag indexed by frequency and temperature",
     "acceptance": "Replay equal-frequency sinusoids with known amplitude ratio and phase lag. Recover their ratio times cosine and sine of the lag as storage and loss moduli.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metre envelope, movable furnace and tension clamp GLB",
+    "simulationStatus": "Inert harmonic replay and viscoelastic frequency/temperature response · analytic checks",
+    "integrationStatus": "Interactive trace, frequency sweep, JSON / CSV exports and VR adapter",
+    "simulator": "/simulations/equipment/14-06/simulator/",
+    "related": [
+      [
+        "References and limits",
+        "/simulations/equipment/14-06/simulator/#evidence"
+      ],
+      [
+        "Verification",
+        "/simulations/equipment/14-06/simulator/#verification"
+      ]
+    ]
   },
   {
     "id": "14-07",
