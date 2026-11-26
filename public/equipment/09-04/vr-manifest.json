@@ -1,0 +1,314 @@
+{
+  "schema": "bts.scope.vr-manifest.v1",
+  "units": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "stand": "floor at y=0; mount bench with floor origin on work surface",
+  "boundsBareM": {
+    "min": [
+      -0.22700000583951782,
+      0,
+      -0.09999999776482582
+    ],
+    "max": [
+      0.22700000583951782,
+      0.3710000105202198,
+      0.10509999671921832
+    ]
+  },
+  "hitBoundsAtRest": {
+    "Flex_1_recess": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        -0.16850000340491533,
+        0.024000002071261406,
+        0.08950000023469329
+      ],
+      "maxM": [
+        -0.1435000030323863,
+        0.06200000084936619,
+        0.09450000012293458
+      ]
+    },
+    "Flex_1_smart_contacts": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        -0.16350000305101275,
+        0.053000001702457666,
+        0.09429999638814479
+      ],
+      "maxM": [
+        -0.14850000338628888,
+        0.05900000175461173,
+        0.0962999964831397
+      ]
+    },
+    "Flex_1_barrel": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        -0.16350000305101275,
+        0.03149999935999454,
+        0.09250000144243181
+      ],
+      "maxM": [
+        -0.14850000338628888,
+        0.04650000224933087,
+        0.10150000427961409
+      ]
+    },
+    "Flex_1_dielectric": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        -0.1610000031068921,
+        0.03400000017744771,
+        0.1011999997021938
+      ],
+      "maxM": [
+        -0.15100000333040953,
+        0.0440000014318777,
+        0.10220000122763866
+      ]
+    },
+    "Flex_1_center": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        -0.15720000327564776,
+        0.037800000519255694,
+        0.10189999716099962
+      ],
+      "maxM": [
+        -0.15480000316165388,
+        0.040200001090069715,
+        0.10289999766531721
+      ]
+    },
+    "Trigger_level": {
+      "action": "threshold",
+      "label": "Trigger threshold in volts",
+      "minM": [
+        0.18750000558793545,
+        0.22549999151068362,
+        0.0929999977319184
+      ],
+      "maxM": [
+        0.20050000585615635,
+        0.23849999513787595,
+        0.10500000119519799
+      ]
+    },
+    "Trigger_level_index": {
+      "action": "threshold",
+      "label": "Trigger threshold in volts",
+      "minM": [
+        0.19340000569354743,
+        0.23349499620962888,
+        0.10489999672427075
+      ],
+      "maxM": [
+        0.19460000575054437,
+        0.2370049961609766,
+        0.10509999671921832
+      ]
+    },
+    "Vertical_scale": {
+      "action": "vertical",
+      "label": "Vertical volts per division",
+      "minM": [
+        0.14999999478459358,
+        0.14399999551102444,
+        0.09299999739602133
+      ],
+      "maxM": [
+        0.1679999940097332,
+        0.16199999876692966,
+        0.10500000153109507
+      ]
+    },
+    "Vertical_scale_index": {
+      "action": "vertical",
+      "label": "Vertical volts per division",
+      "minM": [
+        0.15839999436866492,
+        0.15506999869830906,
+        0.10489999672427075
+      ],
+      "maxM": [
+        0.15959999442566186,
+        0.15992999891750515,
+        0.10509999671921832
+      ]
+    },
+    "Timebase_scale": {
+      "action": "timebase",
+      "label": "Horizontal seconds per division",
+      "minM": [
+        0.15199999418109655,
+        0.0879999968451751,
+        0.09299999766473896
+      ],
+      "maxM": [
+        0.16599999461323023,
+        0.10200000077063912,
+        0.10500000126237743
+      ]
+    },
+    "Timebase_scale_index": {
+      "action": "timebase",
+      "label": "Horizontal seconds per division",
+      "minM": [
+        0.15839999436866492,
+        0.09660999849438667,
+        0.10489999672427075
+      ],
+      "maxM": [
+        0.15959999442566186,
+        0.1003899984061718,
+        0.10509999671921832
+      ]
+    },
+    "Run_key": {
+      "action": "single",
+      "label": "Acquire a single waveform",
+      "minM": [
+        0.14850000757724047,
+        0.26499999361112714,
+        0.09199999668635428
+      ],
+      "maxM": [
+        0.16750000696629286,
+        0.27299999399110675,
+        0.09599999687634408
+      ]
+    },
+    "Run_key_text": {
+      "action": "single",
+      "label": "Acquire a single waveform",
+      "minM": [
+        0.15547930751927197,
+        0.2681965936292858,
+        0.09619999666148434
+      ],
+      "maxM": [
+        0.160525907529518,
+        0.2699931940466964,
+        0.09619999690287348
+      ]
+    },
+    "Single_key": {
+      "action": "single",
+      "label": "Acquire a single waveform",
+      "minM": [
+        0.1845000060275197,
+        0.26499999361112714,
+        0.09199999668635428
+      ],
+      "maxM": [
+        0.2035000054165721,
+        0.27299999399110675,
+        0.09599999687634408
+      ]
+    },
+    "Single_key_text": {
+      "action": "single",
+      "label": "Acquire a single waveform",
+      "minM": [
+        0.1899193054996431,
+        0.2681965936292858,
+        0.09619999666148434
+      ],
+      "maxM": [
+        0.19810930592939258,
+        0.2700165939951889,
+        0.09619999690601748
+      ]
+    },
+    "Probe_CH1_TekVPI": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        -0.16800000332295895,
+        0.02500000223517418,
+        0.10150000173598528
+      ],
+      "maxM": [
+        -0.1440000031143427,
+        0.061000000685453415,
+        0.12850000243633986
+      ]
+    },
+    "Probe_CH1_lead": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        -0.1593334972858429,
+        0.002765974262729287,
+        0.12287065386772156
+      ],
+      "maxM": [
+        0.15271595120429993,
+        0.03470934182405472,
+        0.20584507286548615
+      ]
+    },
+    "Probe_CH1_barrel": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        0.14599479734897614,
+        0.0271174106746912,
+        0.1139947921037674
+      ],
+      "maxM": [
+        0.1790052056312561,
+        0.05188258737325668,
+        0.14700520038604736
+      ]
+    },
+    "Probe_CH1_tip": {
+      "action": "connect",
+      "label": "Connect or disconnect channel one",
+      "minM": [
+        0.1753377616405487,
+        0.04708641394972801,
+        0.09821249544620514
+      ],
+      "maxM": [
+        0.1996622383594513,
+        0.061913587152957916,
+        0.11778750270605087
+      ]
+    }
+  },
+  "hitBoundsNote": "Model-space AABBs in metres before knob rotation or external cable routing. Use visible world-transformed mesh for exact dynamic ray hits.",
+  "complexity": {
+    "glbBytes": 1426312,
+    "nodes": 185,
+    "meshes": 185,
+    "triangles": 26563
+  },
+  "adapter": "vr-adapter.mjs",
+  "stableNames": [
+    "Single_key",
+    "Run_key",
+    "Flex_1_barrel",
+    "Probe_CH1_TekVPI",
+    "Vertical_scale",
+    "Timebase_scale",
+    "Trigger_level",
+    "Display_active"
+  ],
+  "actions": [
+    "single",
+    "connect",
+    "vertical",
+    "timebase",
+    "threshold"
+  ],
+  "controller": "Raycast visible meshes; dispatch hitAction(mesh.name), pass direction ±1 for a dial, repeat per detent. Avoid grabbing or translating scope when adjusting a dial. Mount render-only output to Display_active. Probe removal is visual state, not mechanically calibrated travel. Never expose an immersive workflow without hardware QA.",
+  "questVerified": false
+}

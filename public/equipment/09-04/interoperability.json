@@ -1,0 +1,151 @@
+{
+  "evidence": "Local fixture handoff; all examples are simulated, not experimental laboratory measurements.",
+  "runs": [
+    {
+      "from": "09-03",
+      "to": "09-04",
+      "fixture": "/equipment/09-03/example-waveform.json",
+      "sha256": "e1288d927f9105f73e5ebd82aa825c3f1d8bce1d0d3add5fd5e1c8e748120c4e",
+      "expected": "50% ramp crossing at 0.5 s within 1 sample; no period",
+      "actual": {
+        "sourceSampleId": "coupon-1k-01",
+        "sourceContactId": "DUT-HI_to_DUT-LO_voltage",
+        "parentRevision": 1,
+        "captureRevision": 2,
+        "sourceRateHz": 10,
+        "acquisitionRateHz": 64,
+        "triggerSourceTimeS": 0.5,
+        "peakToPeakV": 0.4062881562881563,
+        "rmsV": 0.6214204203213047,
+        "periodS": null,
+        "clipCount": 0
+      },
+      "outcome": "PASS",
+      "scopeSettings": {
+        "source": "import",
+        "sinePeakV": 1,
+        "connected": true,
+        "rate": 64,
+        "secDiv": 0.04,
+        "voltsDiv": 0.125,
+        "centerV": 0.5,
+        "level": 0.5,
+        "edge": "rising",
+        "coupling": "DC",
+        "factor": 10
+      }
+    },
+    {
+      "from": "09-06",
+      "to": "09-04",
+      "fixture": "/equipment/09-06/example-waveform.json",
+      "sha256": "b70b50af4b8a8648e3e79c777fe639999e0c6f17c3a1a9132891c0fb45fa36b7",
+      "expected": "1.000 Vpp within 1 code, 1 ms period within 1 sample",
+      "actual": {
+        "sourceSampleId": "33622A-BENCH",
+        "sourceContactId": "CH1",
+        "parentRevision": 1,
+        "captureRevision": 2,
+        "sourceRateHz": 256000,
+        "acquisitionRateHz": 256000,
+        "triggerSourceTimeS": 0.002,
+        "peakToPeakV": 1,
+        "rmsV": 0.35370320839684927,
+        "periodS": 0.001,
+        "clipCount": 0
+      },
+      "outcome": "PASS",
+      "scopeSettings": {
+        "source": "import",
+        "sinePeakV": 1,
+        "connected": true,
+        "rate": 256000,
+        "secDiv": 0.0005,
+        "voltsDiv": 0.125,
+        "centerV": 0,
+        "level": 0,
+        "edge": "rising",
+        "coupling": "DC",
+        "factor": 10
+      }
+    },
+    {
+      "from": "10-01",
+      "to": "09-04",
+      "fixture": "/equipment/10-01/primary-example.json",
+      "sha256": "29976a1ddf9ab740e8a5d95ed4f441ee0293601d9f455d3410cfc04a2a4ee4a5",
+      "expected": "50 mV rising crossing between 15–17 ms; no period",
+      "actual": {
+        "sourceSampleId": "PATCH1U-CH1",
+        "sourceContactId": "CH1-CELL",
+        "parentRevision": 1,
+        "captureRevision": 2,
+        "sourceRateHz": 1000,
+        "acquisitionRateHz": 100000,
+        "triggerSourceTimeS": 0.0158,
+        "peakToPeakV": 0.04942612942612942,
+        "rmsV": 0.06281487948015774,
+        "periodS": null,
+        "clipCount": 0
+      },
+      "outcome": "PASS",
+      "scopeSettings": {
+        "source": "import",
+        "sinePeakV": 1,
+        "connected": true,
+        "rate": 100000,
+        "secDiv": 0.002,
+        "voltsDiv": 0.02,
+        "centerV": 0.05,
+        "level": 0.05,
+        "edge": "rising",
+        "coupling": "DC",
+        "factor": 10
+      }
+    },
+    {
+      "from": "09-11",
+      "to": "09-04",
+      "fixture": "/equipment/09-11/example-signal.csv",
+      "sha256": "3f33a44f83532828f19a4ffcfcfa43f1701fa08c8be376d83b6557d63d71c854",
+      "expected": "100 µV RMS within 1 µV; 1 ms period within 1 sample",
+      "actual": {
+        "sourceSampleId": "Imported trace",
+        "sourceContactId": "voltage_V",
+        "parentRevision": 0,
+        "captureRevision": 1,
+        "sourceRateHz": 64000,
+        "acquisitionRateHz": 64000,
+        "triggerSourceTimeS": 0.005921875,
+        "peakToPeakV": 0.0002826617826617827,
+        "rmsV": 0.0000999521421887206,
+        "periodS": 0.001,
+        "clipCount": 0
+      },
+      "outcome": "PASS",
+      "scopeSettings": {
+        "source": "import",
+        "sinePeakV": 1,
+        "connected": true,
+        "rate": 64000,
+        "secDiv": 0.002,
+        "voltsDiv": 0.00005,
+        "centerV": 0,
+        "level": 0,
+        "edge": "rising",
+        "coupling": "DC",
+        "factor": 10
+      }
+    },
+    {
+      "from": "09-04",
+      "to": "09-11",
+      "fixture": "/equipment/09-04/example-lockin-capture.csv",
+      "sha256": "0e98d5af9158a478f1e1e9fbc1604ec78e47af3a014873b9b7891e441f780e98",
+      "expected": "1.414214 mV RMS ±0.002 mV",
+      "actual": "1.414442 mV RMS",
+      "test": "Independent SR860 station imported the actual CSV fixture",
+      "outcome": "PASS"
+    }
+  ]
+}

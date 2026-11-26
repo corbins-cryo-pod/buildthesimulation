@@ -1,0 +1,119 @@
+{
+  "measurementType": "analytic/synthetic verification; not measured",
+  "cases": [
+    {
+      "id": "I",
+      "fixture": "100 µV RMS sine, 1000 Hz, phase=0°, 4 × 10 ms RC, sampled at 64 kS/s for 0.2 s, zero initial state",
+      "expected": [
+        100,
+        0
+      ],
+      "units": "µV (X,Y)",
+      "absoluteTolerance": 0.05,
+      "actual": [
+        99.9996796786893,
+        0.000002268174672763867
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q",
+      "fixture": "identical with signal phase +90°",
+      "expected": [
+        0,
+        100
+      ],
+      "units": "µV (X,Y)",
+      "absoluteTolerance": 0.05,
+      "actual": [
+        0.0000022681753350846175,
+        99.99968086408411
+      ],
+      "pass": true
+    },
+    {
+      "id": "PHASE",
+      "fixture": "100 µV at +30° and a +30° reference",
+      "expected": [
+        100,
+        0
+      ],
+      "units": "µV (X,Y)",
+      "absoluteTolerance": 0.05,
+      "actual": [
+        99.99968193933475,
+        0.0000016473783389606509
+      ],
+      "pass": true
+    },
+    {
+      "id": "TAU",
+      "fixture": "DC unit step, one RC, t=τ",
+      "expected": 0.6321205588285577,
+      "units": "fraction",
+      "absoluteTolerance": 1e-10,
+      "actual": 0.6321205588285571,
+      "pass": true
+    },
+    {
+      "id": "ENBW",
+      "fixture": "Classic single-pole ENBW at τ=0.01 s",
+      "expected": 25,
+      "units": "Hz",
+      "absoluteTolerance": 1e-10,
+      "actual": 25,
+      "pass": true
+    },
+    {
+      "id": "BEAT",
+      "fixture": "1.05 kHz signal, 1 kHz reference, 100 µV RMS, two 10 ms RC stages; mean R in steady state",
+      "expected": 9.199966835037523,
+      "units": "µV",
+      "absoluteTolerance": 0.05,
+      "actual": 9.19997465750131,
+      "pass": true
+    },
+    {
+      "id": "RANGE",
+      "fixture": "20 mV peak at 10 mV peak range",
+      "expected": "overload",
+      "actual": "overload",
+      "pass": true
+    },
+    {
+      "id": "OPEN",
+      "fixture": "signal A disconnected",
+      "expected": "disconnected",
+      "actual": "disconnected",
+      "pass": true
+    },
+    {
+      "id": "BODY",
+      "kind": "Geometric specification",
+      "fixture": "GLB Enclosure_17in world dimensions, independently specified by SRS manual p. ix; ignore feet, panel and connector projections.",
+      "expected": [
+        431.8,
+        133.35,
+        431.8
+      ],
+      "units": "mm (W,H,D)",
+      "absoluteTolerance": 0.01,
+      "actual": [
+        431.8,
+        133.35,
+        431.8
+      ],
+      "pass": true
+    },
+    {
+      "id": "SCOPE",
+      "kind": "Cross-station numerical check",
+      "fixture": "Real simulator export from equipment 09-04 (simulated 1 kHz, 2 mV peak sine, 12-bit digitization) at the 10 mV A input range, 10 ms × 2 poles and 200 ms. Compare R to 2000/√2. 2 µV allows acquisition quantization plus RC image leakage.",
+      "expected": 1414.2135623730949,
+      "units": "µV RMS",
+      "absoluteTolerance": 2,
+      "actual": 1414.4421845601694,
+      "pass": true
+    }
+  ]
+}

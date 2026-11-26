@@ -1,0 +1,43 @@
+name: Equipment 09-04 oscilloscope
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/equipment-09-04.yml'
+      - 'public/equipment/09-04/**'
+      - 'scripts/equipment/09-04/**'
+      - 'src/lib/equipment/09-04/**'
+      - 'src/pages/simulations/equipment/09-04/**'
+      - 'tests/equipment-09-04-scope.mjs'
+permissions:
+  contents: read
+jobs:
+  scope:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-09-04-scope.mjs
+      - run: npm run build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install playwright==1.56.0
+      - name: Select the runner Chrome or install a supported Chromium
+        run: |
+          if command -v google-chrome >/dev/null; then
+            echo "CHROME_BIN=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          else
+            python -m playwright install --with-deps chromium
+          fi
+      - name: Open static output, run the experiment and check desktop/mobile exports
+        run: |
+          python -m http.server 4304 --bind 127.0.0.1 --directory dist >/tmp/scope-http.log 2>&1 &
+          srv=$!
+          trap 'kill "$srv" || true' EXIT
+          for i in {1..30}; do curl -fsS http://127.0.0.1:4304/simulations/equipment/09-04/ >/dev/null && break || sleep 1; done
+          python scripts/equipment/09-04/smoke.py

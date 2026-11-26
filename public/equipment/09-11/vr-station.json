@@ -1,0 +1,189 @@
+{
+  "schema": "bts.station.sr860.v1",
+  "equipmentId": "09-11",
+  "module": "./station.mjs",
+  "factory": "createStation",
+  "adapter": {
+    "dispatch": "dispatch(action, payload) → state",
+    "state": "read() → {config,input,result,error}",
+    "rayHit": "hit(stableMeshName) → state | null. May walk from hit mesh to named parent.",
+    "actions": [
+      "configure",
+      "loadWaveform",
+      "toggleCable",
+      "phase90",
+      "phaseMinus90",
+      "tauUp",
+      "tauDown",
+      "cyclePoles",
+      "acquire",
+      "defaults"
+    ]
+  },
+  "model": "./sr860.glb",
+  "units": "m",
+  "orientation": "+Y up, +Z front, origin middle of cabinet footprint at lower case face; rubber feet reach y=-0.010",
+  "cabinetDimensionsM": [
+    0.4318,
+    0.13335,
+    0.4318
+  ],
+  "interactionTargets": [
+    {
+      "node": "Front_A_socket",
+      "action": "toggleCable",
+      "label": "Connect input A",
+      "boundsM": {
+        "min": [
+          -0.197088,
+          0.015477,
+          0.22685
+        ],
+        "max": [
+          -0.190188,
+          0.022377,
+          0.22745
+        ]
+      }
+    },
+    {
+      "node": "Input_A_plug",
+      "action": "toggleCable",
+      "label": "Disconnect input A (hit visible BNC_plug or Strain_relief)",
+      "boundsM": {
+        "min": [
+          -0.199638,
+          0.012927,
+          0.2259
+        ],
+        "max": [
+          -0.187638,
+          0.024927,
+          0.2699
+        ]
+      }
+    },
+    {
+      "node": "Knob_phase",
+      "action": "phase90",
+      "label": "Step reference +90°",
+      "boundsM": {
+        "min": [
+          0.140754,
+          0.10297,
+          0.2162
+        ],
+        "max": [
+          0.150754,
+          0.11297,
+          0.2255
+        ]
+      }
+    },
+    {
+      "node": "Key_phase_down",
+      "action": "phaseMinus90",
+      "label": "Step reference −90°",
+      "boundsM": {
+        "min": [
+          0.140333,
+          0.07572,
+          0.2162
+        ],
+        "max": [
+          0.150333,
+          0.08172,
+          0.2192
+        ]
+      }
+    },
+    {
+      "node": "Key_tau_up",
+      "action": "tauUp",
+      "label": "Longer time constant",
+      "boundsM": {
+        "min": [
+          -0.169235,
+          0.089485,
+          0.2162
+        ],
+        "max": [
+          -0.159235,
+          0.095485,
+          0.2192
+        ]
+      }
+    },
+    {
+      "node": "Key_tau_down",
+      "action": "tauDown",
+      "label": "Shorter time constant",
+      "boundsM": {
+        "min": [
+          -0.169235,
+          0.081312,
+          0.2162
+        ],
+        "max": [
+          -0.159235,
+          0.087312,
+          0.2192
+        ]
+      }
+    },
+    {
+      "node": "Key_slope",
+      "action": "cyclePoles",
+      "label": "Cycle RC filter slope",
+      "boundsM": {
+        "min": [
+          -0.146973,
+          0.091635,
+          0.2162
+        ],
+        "max": [
+          -0.136973,
+          0.097635,
+          0.2192
+        ]
+      }
+    },
+    {
+      "node": "Key_start",
+      "action": "acquire",
+      "label": "Acquire",
+      "boundsM": {
+        "min": [
+          0.118491,
+          0.035715,
+          0.2162
+        ],
+        "max": [
+          0.128491,
+          0.041715,
+          0.2192
+        ]
+      }
+    }
+  ],
+  "physicalProjection": "Bounds in the station-local metre frame at the default pose, including child geometry. For raycast visibility, ignore hidden plug meshes. Controller comfort padding may enlarge hits, but must not change dimensions or physics.",
+  "verification": "Geometry/state adapter tested, desktop/mobile Chromium tested separately. No immersive headset session claimed.",
+  "deviceBoundsM": {
+    "min": [
+      -0.2167,
+      -0.01,
+      -0.22818
+    ],
+    "max": [
+      0.2167,
+      0.13335,
+      0.2699
+    ]
+  },
+  "complexity": {
+    "nodes": 296,
+    "uniqueMeshes": 16,
+    "renderedTriangles": 14514,
+    "bytes": 105800
+  }
+}
