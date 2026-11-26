@@ -1,0 +1,44 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "06-04",
+  "asset": "/equipment/06-04/form4-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Independent teaching display mm logical axes X width, Y depth, Z height.",
+  "metrics": {
+    "bytes": 84512,
+    "triangles": 796,
+    "draws": 45,
+    "instrumentXYZM": [
+      0.39800000190734863,
+      0.5540000051259995,
+      0.36700001370627433
+    ]
+  },
+  "scope": "Detached position-display action, not printer control. No headset tested.",
+  "nodes": [
+    {
+      "node": "detached_position_switch",
+      "label": "Cycle detached block display positions",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.079,
+        0.016,
+        0.039
+      ]
+    },
+    {
+      "node": "detached_demo_block",
+      "label": "Passive block driven exclusively by display state",
+      "boundsM": [
+        0.106,
+        0.088,
+        0.072
+      ],
+      "translationXOffsetM": [
+        0,
+        0.014
+      ]
+    }
+  ]
+}

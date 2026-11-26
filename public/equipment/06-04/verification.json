@@ -1,0 +1,96 @@
+{
+  "schema": "bts.detached-clearance-demo.verification.v1",
+  "metrics": {
+    "bytes": 84512,
+    "triangles": 796,
+    "draws": 45,
+    "instrumentXYZM": [
+      0.39800000190734863,
+      0.5540000051259995,
+      0.36700001370627433
+    ]
+  },
+  "cases": [
+    {
+      "id": "width",
+      "expected": 0.398,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.39800000190734863,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 0.554,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.5540000051259995,
+      "outcome": "PASS"
+    },
+    {
+      "id": "depth",
+      "expected": 0.367,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.36700001370627433,
+      "outcome": "PASS"
+    },
+    {
+      "id": "left-centered",
+      "expected": 11,
+      "unit": "mm",
+      "actual": 11,
+      "outcome": "PASS"
+    },
+    {
+      "id": "right-tangent",
+      "expected": 0,
+      "unit": "mm",
+      "actual": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "right-offset",
+      "expected": -3,
+      "unit": "mm",
+      "actual": -3,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unchanged-depth",
+      "expected": 12,
+      "unit": "mm",
+      "actual": 12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unchanged-height",
+      "expected": 16,
+      "unit": "mm",
+      "actual": 16,
+      "outcome": "PASS"
+    },
+    {
+      "id": "combined-gap",
+      "expected": 22,
+      "unit": "mm",
+      "actual": 22,
+      "outcome": "PASS"
+    },
+    {
+      "id": "classifies-three-states",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "physical-action-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Nominal stationary closed exterior and independent authored box clearance, not Form 4 build capacity or operation."
+}

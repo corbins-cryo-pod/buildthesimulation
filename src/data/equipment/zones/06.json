@@ -79,9 +79,10 @@
     "inputs": "Fixture mesh, build orientation, layer spacing, support geometry and documented build envelope",
     "outputs": "Sliced build job, support intersections and out-of-envelope flags",
     "acceptance": "Slice an axis-aligned rectangular block of height exactly ten layers. Recover ten occupied slices and flag the same block when translated past a build boundary.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: stationary standard Form 4 exterior, nominal size verified",
+    "simulationStatus": "First pass: passive detached clearance only; actual production acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable metric GLB, detached VR action and JSON example",
+    "simulator": "/simulations/equipment/06-04/simulator/"
   },
   {
     "id": "06-05",
