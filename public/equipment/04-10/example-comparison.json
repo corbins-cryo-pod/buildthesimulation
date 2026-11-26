@@ -1,0 +1,41 @@
+{
+  "schema": "bts.synthetic-chart-comparison.v1",
+  "kind": "synthetic-documentary-replay",
+  "sampleId": "CAL-R4-PRINTED-PAIR-001",
+  "revision": 1,
+  "provenance": "BuildTheSimulation authorial inert preprinted chart rasters, no instrument acquisition",
+  "shapePx": [
+    54,
+    36
+  ],
+  "pixelSizeMm": 0.25,
+  "row": 18,
+  "displayChartId": "R4-EXHIBIT-A",
+  "measurements": [
+    {
+      "chartId": "R4-EXHIBIT-A",
+      "row": 18,
+      "edgeIntervalPx": [
+        18,
+        36
+      ],
+      "widthPx": 18,
+      "widthMm": 4.5
+    },
+    {
+      "chartId": "R4-EXHIBIT-B",
+      "row": 18,
+      "edgeIntervalPx": [
+        14,
+        40
+      ],
+      "widthPx": 26,
+      "widthMm": 6.5
+    }
+  ],
+  "differenceBMinusAMm": 2,
+  "thermalWidth": {
+    "value": null,
+    "status": "not-applicable to preprinted charts"
+  }
+}
