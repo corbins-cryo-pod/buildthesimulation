@@ -46,18 +46,18 @@
       "type": "object",
       "required": [
         "kind",
-        "modelVersion",
         "source",
-        "fit",
-        "heldOut",
-        "mapMetrics"
+        "fit"
       ],
       "properties": {
         "kind": {
           "const": "simulated"
         },
         "modelVersion": {
-          "const": "2.0"
+          "enum": [
+            "1.0",
+            "2.0"
+          ]
         },
         "source": {
           "type": "string"
