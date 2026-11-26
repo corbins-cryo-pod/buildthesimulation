@@ -1,0 +1,52 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const d='/equipment/07-05/';
+const spec='https://www.sartorius.com/download/930502/incucyte-s3-technical-specification-sheet-8000-0527-c00-en-s-1--data.pdf#page=1';
+const photo='https://www.bostonind.com/image/cache/catalog/products_2024/SKU-57146-%281%29-800x600w.jpg.webp';
+---
+<Layout pageTitle="Sartorius Incucyte S3 exterior and independent graphic review" subtitle="" wide={true}>
+<link rel="stylesheet" href="/styles/equipment.css"/>
+<main class="equipment-page s3">
+ <p><a href="/simulations/equipment/#equipment-07-05">↩ Equipment register · 07-05</a></p>
+ <h1>Incucyte S3 · closed exterior</h1>
+ <p>Explore the <strong>unpowered S3 microscope and separate blank controller</strong>. A third, unconnected screen shows an original printed-style graphic and fixed pixel regions. It is not an instrument accessory or a model of image acquisition, biological change, or equipment operation.</p>
+ <div class="s3-grid">
+  <section aria-label="3D model">
+   <div class="s3-row"><button id="s3-front" type="button">Reset orbit</button><button id="s3-rear" type="button">Rear exterior</button><button id="s3-graphic" type="button">Graphic reader close-up</button></div>
+   <div id="s3-view" role="img" aria-label="Closed light-gray microscope and controller beside a separate graphic reader"></div><p id="s3-status">Loading original metric enclosures…</p>
+  </section>
+  <section class="s3-card">
+   <h2>Static printed graphic</h2>
+   <canvas id="s3-chart" width="608" height="400" role="img" aria-label="A static nonbiological pixel graphic with marked and blank regions"></canvas>
+   <div class="s3-row"><button id="s3-A" type="button">Read A</button><button id="s3-B" type="button">Read B</button><button id="s3-U" type="button">Read U</button><button id="s3-save" type="button">Export JSON</button></div>
+   <p id="s3-result" role="status"></p>
+  </section>
+ </div>
+ <section id="s3-ref">
+  <h2>Reference sheet</h2>
+  <p>The <a href={spec}>Sartorius S3 technical specification sheet, 8000-0527, p. 1</a> gives dimensions and a three-quarter photograph. The <a href={photo}>Boston Industries closed front photograph</a> establishes the split black fascia, low-left diagonal, silver-white skin and distinct controller shape. The authored GLB keeps both objects unpowered and opaque; seams and the backside are approximate. Photos are linked, not reproduced.</p>
+  <figure><img src={d+'front-reference.webp'} width="595" height="410" alt="Original render of the two dormant Sartorius enclosures and separate green graphic reader" loading="lazy"/><figcaption>Original browser render (left to right): closed microscope, inactive controller, detached synthetic viewer.</figcaption></figure>
+  <table><thead><tr><th>Object</th><th>Declared W × D × H</th><th>Evidence/use</th></tr></thead><tbody>
+   <tr><td>S3 microscope</td><td>450 × 478 × 320 mm</td><td>Sartorius sheet p. 1, post-May 2021 published configuration, nominal envelope</td></tr>
+   <tr><td>Separate blank controller</td><td>432 × 577 × 140 mm</td><td>Same source and scope; no actual controller interfaces</td></tr>
+   <tr><td>Synthetic graphic</td><td>40 × 24 px, 0.25 mm per pixel</td><td>Original printed geometry only, not an imaging specification</td></tr>
+  </tbody></table>
+ </section>
+ <section id="s3-proof">
+  <h2>Review rules and known results</h2>
+  <p>Choose a fixed region. When its reference mask is present, count the marked pixels, divide by the total, and multiply by pixel area for the marked area. The mask is an authored rectangular graphic, not an inferred segmentation. If the reference mask is missing, the count, fraction and area are exported as <code>null</code>, not zero. No other image can be loaded, and the catalogue’s original longitudinal acceptance is not implemented.</p>
+  <table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <tr><td>A: 8 × 6 marked within 16 × 16 pixels</td><td>48 of 256, 18.75%, 3.00 mm²</td><td>48 of 256, 18.75%, 3.00 mm²</td><td>Exact</td></tr>
+   <tr><td>B: known blank</td><td>0 of 256, 0%</td><td>0 of 256, 0%</td><td>Exact</td></tr>
+   <tr><td>U: reference mask absent</td><td>No claim about any mark</td><td>JSON null, display unknown</td><td>Exact</td></tr>
+   <tr><td>GLB physical datums</td><td>Both nominal cabinets as above</td><td>Six matching dimensions</td><td>0.05 mm</td></tr>
+  </tbody></table>
+  <p><a href={d+'incucyte-s3.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender source</a> · <a href={d+'example-review.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached graphic viewer VR pick targets</a> (headset untested).</p>
+ </section>
+</main>
+<script is:inline>window.s3Graphic=import('/equipment/07-05/graphic.mjs');</script>
+<script>import '../../../../lib/equipment/07-05/client.mjs';</script>
+</Layout>
+<style>
+ .s3{max-width:81rem;margin:0 auto;padding-inline:1rem}.s3-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.s3-row{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.s3 button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .61rem;cursor:pointer}.s3 button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#s3-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#294045;touch-action:none}#s3-view :global(canvas){display:block;width:100%;height:100%}#s3-chart{display:block;width:100%;height:auto;border-radius:.2rem}.s3-card{border:1px solid currentColor;border-radius:.3rem;padding:.95rem}.s3 table{border-collapse:collapse;width:100%}.s3 td,.s3 th{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .53rem}.s3 section{margin-bottom:1.35rem}.s3 figure{max-width:36rem;margin:1.1rem 0}.s3 figure img{max-width:100%;height:auto}@media(max-width:730px){.s3-grid{grid-template-columns:1fr}}
+</style>
