@@ -1,0 +1,100 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "06-02",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.4,
+      0,
+      -0.2
+    ],
+    "max": [
+      0.8005,
+      0.5,
+      0.2615
+    ]
+  },
+  "budget": {
+    "byteLength": 198552,
+    "nodes": 30,
+    "triangles": 2778
+  },
+  "actions": [
+    {
+      "node": "CARD_LEFT",
+      "action": "read",
+      "value": "L",
+      "label": "Read fixed abstract tick L",
+      "boundsAtRestM": {
+        "min": [
+          0.51,
+          0.129,
+          0.1865
+        ],
+        "max": [
+          0.574,
+          0.149,
+          0.1935
+        ]
+      }
+    },
+    {
+      "node": "CARD_RIGHT",
+      "action": "read",
+      "value": "R",
+      "label": "Read fixed abstract tick R",
+      "boundsAtRestM": {
+        "min": [
+          0.69,
+          0.129,
+          0.1865
+        ],
+        "max": [
+          0.754,
+          0.149,
+          0.1935
+        ]
+      }
+    }
+  ],
+  "actionModule": "ruler.mjs",
+  "interactionNotes": "Closed exterior is nonfunctional. Actions are only on the detached generic immutable ruler; use +Z face of RULER_SCREEN for the chart texture.",
+  "verification": [
+    {
+      "node": "TOP_SIZE_DATUM",
+      "axis": "x",
+      "expectedMm": 800,
+      "actualMm": 800.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "TOP_SIZE_DATUM",
+      "axis": "z",
+      "expectedMm": 400,
+      "actualMm": 400.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "BIO_X6_GEN3_CLOSED",
+      "axis": "y",
+      "expectedMm": 500,
+      "actualMm": 500.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "RULER_SCREEN",
+      "axis": "x",
+      "expectedMm": 302,
+      "actualMm": 301.99999,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "RULER_SCREEN",
+      "axis": "y",
+      "expectedMm": 156,
+      "actualMm": 156,
+      "toleranceMm": 0.05
+    }
+  ]
+}
