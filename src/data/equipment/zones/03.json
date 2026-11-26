@@ -112,9 +112,15 @@
     "inputs": "Substrate surface, material ID, cycle count and fitted growth-per-cycle data",
     "outputs": "Barrier-layer thickness and cycle history with stated coverage assumptions",
     "acceptance": "Use an ideal saturated constant-growth fixture with no incubation. Doubling the cycle count must double thickness; zero cycles leave the initial surface unchanged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: original metric S100 exterior and separate inert gauge",
+    "simulationStatus": "First pass: dry circular fit verified; process model out of scope",
+    "integrationStatus": "Linked: carrier clearance gauge and geometry JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/03-05/simulator/"
+      ]
+    ]
   },
   {
     "id": "03-06",
