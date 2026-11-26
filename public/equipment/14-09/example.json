@@ -1,0 +1,67 @@
+{
+  "schema": "bts.thermal-map.v1",
+  "source": "simulated",
+  "instrument": "14-09 / E95 24°",
+  "sampleId": "E95-INERT-PLATE-01",
+  "revision": 1,
+  "settings": {
+    "mode": "split",
+    "plateC": 60,
+    "surroundC": 20,
+    "reflectedC": 20,
+    "emissivity": 0.95,
+    "distanceM": 0.5,
+    "palette": "iron",
+    "revision": 1,
+    "sampleId": "E95-INERT-PLATE-01"
+  },
+  "units": {
+    "radiance": "W m^-2 sr^-1",
+    "temperature": "degC",
+    "pitch": "mm"
+  },
+  "frame": {
+    "width": 116,
+    "height": 87,
+    "rawSensor": [
+      464,
+      348
+    ],
+    "binning": [
+      4,
+      4
+    ],
+    "origin": "top-left, x right, y down",
+    "pitchXmm": 1.8323841523277766,
+    "pitchYmm": 1.8205108083280033
+  },
+  "patches": [
+    {
+      "id": "left",
+      "trueEmissivity": 0.95,
+      "radianceWm2Sr": 92.9564006331954,
+      "inferredC": 60.00000000698492,
+      "status": "in-range"
+    },
+    {
+      "id": "right",
+      "trueEmissivity": 0.22,
+      "radianceWm2Sr": 62.37653135941402,
+      "inferredC": 30.606209051329643,
+      "status": "in-range"
+    }
+  ],
+  "rowEncoding": [
+    {
+      "xStart": 0,
+      "xEndExclusive": 58,
+      "patch": "left"
+    },
+    {
+      "xStart": 58,
+      "xEndExclusive": 116,
+      "patch": "right"
+    }
+  ],
+  "note": "Repeat rowEncoding on each of the 87 rows; null temperature is an invalid masked pixel. Simulated reference plane fills field."
+}

@@ -174,7 +174,7 @@
   {
     "id": "14-09",
     "name": "Infrared thermal camera",
-    "model": "FLIR E95",
+    "model": "FLIR E95 / 24° lens (78502-0301)",
     "evidence": "B",
     "priority": "P2",
     "page": 45,
@@ -187,9 +187,10 @@
     "inputs": "Surface radiance image, emissivity, reflected-temperature assumption, pixel scale and calibration",
     "outputs": "Surface-temperature map with units, spatial scale and emissivity metadata",
     "acceptance": "Feed a uniform synthetic blackbody frame at the calibration reference with emissivity one. Every valid pixel should recover the assigned temperature within calibration tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · catalog envelope, inferred controls and lens",
+    "simulationStatus": "Band-integrated surface radiometry on a synthetic reference plate",
+    "integrationStatus": "Revisioned thermal map JSON and pixel CSV",
+    "simulator": "/simulations/equipment/14-09/simulator/"
   },
   {
     "id": "14-10",
