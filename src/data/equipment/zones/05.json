@@ -43,9 +43,11 @@
     "inputs": "Reflecting surface and validity mask, vertical scan range and objective calibration",
     "outputs": "Areal height map, missing-pixel mask and roughness statistics",
     "acceptance": "Image a tilted flat with one prescribed signal dropout. Recover the input tilt and flag the missing region; the roughness calculation must exclude invalid pixels.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/05-02/simulator/",
+    "related": [["Bruker ContourGT-K datasheet", "https://www.m3.tuc.gr/EQUIPMENT/CONTOUR%20GT-K/Datasheet.pdf"]],
+    "geometryStatus": "Metric enclosure and functional stage",
+    "simulationStatus": "Verified ideal coherence scan and masks",
+    "integrationStatus": "Interactive; JSON/CSV height maps"
   },
   {
     "id": "05-03",
