@@ -215,14 +215,15 @@
     "inputs": "Emitter coordinates, per-site drive waveform, emission and thermal calibrations, optical tissue and opsin models",
     "outputs": "Per-emitter optical power, local irradiance, temperature rise and photocurrent with separate model IDs",
     "acceptance": "Switch one emitter on in a symmetric homogeneous synthetic medium. Compare optical and thermal maps at mirrored points, then disable opsin expression and verify that photocurrent vanishes while both physical fields persist.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "First pass: original unbuilt nonoperational nominal enclosure; no measured dimensions",
+    "simulationStatus": "First pass: detached ideal passive series card only; original optical acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR display action and JSON example",
     "related": [
       [
         "Optogenetics Laboratory",
         "/simulations/optogenetics/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/11-10/simulator/"
   }
 ]
