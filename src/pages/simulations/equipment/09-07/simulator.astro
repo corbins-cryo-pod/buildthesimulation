@@ -1,0 +1,114 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import verification from '../../../../../public/equipment/09-07/verification.json';
+const asset='/equipment/09-07/';
+const manual='https://www.cmc.ca/wp-content/uploads/2019/07/E4980A-User-Guide.pdf';
+const data='https://go.keysight.com/us/en/assets/7018-01355/data-sheets/5989-4435.pdf';
+const fixture='https://www.keysight.com/us/en/product/16034E/test-fixture-smd-components.html';
+const official='https://www.keysight.com/us/en/product/E4980A/precision-lcr-meter-20-hz-2-mhz.html';
+const specs=[
+ ['E4980A standard generation','20 Hz–2 MHz instrument; not E4980AL','Data sheet Table 4. Teaching subset uses 100 Hz–200 kHz.',data],
+ ['Meter enclosure','375 × 105 × 390 mm (W × H × D, nominal)','Data sheet General Characteristics. No open-unit CAD or derived internals.',data],
+ ['Front measurement terminals','4-terminal pair, four coaxial ports','User’s Guide pp. 32–36. LCUR, LPOT, HPOT, HCUR.',manual+'#page=32'],
+ ['Mounted accessory','16034E-style SMD fixture; standard E4980A listed compatible','Keysight fixture page; the contacts and installed travel shown here are reference-informed.',fixture],
+ ['Correction capability','Open/short/load with frequencies and correction modes','User’s Guide pp. 112–117. This build uses only open/short on the exact simulated sweep grid.',manual+'#page=112'],
+ ['Experiment signal','0.05–1.00 V RMS declared simulation range','Teaching limit, not the full E4980A hardware envelope or calibration. DC-source option is depicted only.',data],
+];
+---
+<Layout pageTitle="Precision LCR meter" subtitle="" description="Passive AC impedance and open/short correction on a virtual E4980A." wide={true}>
+<article id="lcr4980">
+<nav><a href="/simulations/equipment/09-07/">← Equipment 09-07</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#lcr-evidence">Evidence &amp; verification</a></nav>
+<header><small>09-07 · ELECTRICAL INSTRUMENTATION · VIRTUAL BENCH</small><h2>Keysight E4980A + 16034E</h2><p>Measure a passive component before and after removing fixture error. The illustrated 2 MHz E4980A has the front Option 001 faceplate shown in the official photograph and rear interface blanks. This bench implements AC impedance only; the depicted isolated DC-source hardware is inactive.</p></header>
+<div class="work">
+<section class="panel">
+<h3>3D meter and fixture</h3>
+<div class="tools"><button data-lcr-view="orbit">Reset view</button><button data-lcr-view="front">Front panel</button><button data-lcr-view="rear">Rear panel</button><button data-lcr-view="fixture">Fixture close-up</button></div>
+<div id="lcr-viewer"></div><p id="lcr-model" role="status">Loading metric instrument model…</p>
+<p>The trigger, preset, power, display/correction and fixture controls use the same state as the form. The fixture mount cycles OPEN, SHORT and DUT. Drag to orbit, pinch to zoom. Spatial bindings are prepared for later integration; this simulator has not been tested on a headset.</p>
+</section>
+<section class="panel">
+<h3>Mount and measure</h3>
+<div class="tools"><button id="lcr-power">Standby</button><button id="lcr-reset">Reset example</button></div>
+<div class="fields">
+<label>Mounted specimen<select id="lcr-mount"><option value="open">OPEN · empty jaws</option><option value="short">SHORT · ideal shim</option><option value="dut">DUT · passive device</option></select></label>
+<label>Equivalent display<select id="lcr-mode"><option value="series">Cs–Rs series</option><option value="parallel">Cp–Rp parallel</option></select></label>
+<label>Sweep frequencies · Hz<input id="lcr-freq" value="100, 1000, 10000, 100000"/></label>
+<label>AC stimulus · V RMS<input type="number" id="lcr-voltage" min=".05" max="1" step="any" value=".2"/></label>
+<label>Fixture series residual · Ω<input type="number" id="lcr-stray-r" min="0" max="25" step="any" value="15"/></label>
+<label>Fixture shunt stray · pF<input type="number" id="lcr-stray-c" min="0" max="1000" step="any" value="110"/></label>
+<label>Sample ID<input id="lcr-dut-id" maxlength="48" value="CAL-C1000PF"/></label>
+<label>Passive topology<select id="lcr-topology"><option value="series-rc">Series RC</option><option value="parallel-rc">Parallel RC</option><option value="r">Resistor only</option></select></label>
+<label>DUT resistance · Ω<input id="lcr-dut-r" type="number" min="0" max="1000000" step="any" value="27"/></label>
+<label>DUT capacitance · pF<input id="lcr-dut-c" type="number" min="10" max="1000000" step="any" value="1000"/></label>
+</div>
+<div class="tools"><label class="check"><input id="lcr-correct" type="checkbox"/> Apply open and short</label><button id="lcr-trigger">Store OPEN standard</button></div>
+<p id="lcr-standards" aria-live="polite"></p><p id="lcr-status" aria-live="polite"></p>
+</section>
+</div>
+<section class="panel">
+<h3>Sweep result</h3><p id="lcr-result" aria-live="polite">No current measurement.</p>
+<div class="tools"><button id="lcr-json" disabled>Export JSON</button><button id="lcr-csv" disabled>Export CSV</button></div>
+<div class="scroll"><table><thead><tr><th>Hz</th><th>Raw R · Ω</th><th>Raw X · Ω</th><th>Reported R · Ω</th><th>Reported X · Ω</th><th>Phase · degrees</th><th id="lcr-cap-heading">Cs · pF</th><th id="lcr-r-heading">Rs · Ω</th></tr></thead><tbody id="lcr-rows"></tbody></table></div>
+<p><strong>Try it:</strong> Store OPEN with the default empty mount. Switch to SHORT and store it. Mount DUT and measure raw. Enable correction and measure again: the nominal 1,000 pF and 27 Ω series component is recovered across the sweep. Changing the frequency grid or fixture parasitics clears the old standards. At low frequency the model exaggerates stray error to make the difference obvious; these are teaching values, not E4980A/16034E specifications.</p>
+<p><a href={asset+'example-impedance.json'}>Example export</a> · <a href={asset+'impedance-schema.json'}>Output schema</a>. Signed complex impedance is exported in Ω and frequencies in Hz, with sample ID, topology, standard revisions and source model. No downstream importer has been verified for this new file format.</p>
+</section>
+<section class="panel">
+<h3>Equivalent circuit and limits</h3>
+<p>The raw meter input is <code>Zₘ = Rₛ + 1/(jωCₛ + 1/Zₓ)</code>: a series fixture residual then stray shunt capacitance at the test plane. The short returns <code>Zshort = Rₛ</code>; the open provides <code>Yopen = 1/(Zopen − Zshort)</code>. Remove the residual and shunt admittance from the reading: <code>Zₓ = 1/[1/(Zₘ − Zshort) − Yopen]</code>. A zero-shunt open is represented as infinite impedance without a numeric JSON infinity. AC voltage simply defines a hypothetical ideal RMS current <code>I = V/|Z|</code>; no closed-loop source dynamics are included.</p>
+<p>Series capacitance follows signed capacitive reactance (<code>Cs = −1/(ω Im Z)</code>); parallel capacitance is <code>Im(1/Z)/ω</code>. An unresolvable equivalent is shown as a dash. Only ideal R, series RC and parallel RC are implemented. No inductance standards, real guarding, phase/reference noise, cable delay, hardware accuracy/error floor, load-standard correction, DC bias or vendor firmware. The corrected result is known to match the same two-term model, not independently measured hardware accuracy.</p>
+</section>
+<section id="lcr-evidence" class="panel">
+<h3>Model references and test evidence</h3>
+<p>Original renderings from editable geometry. Device dimensions are nominal manufacturer values; accessory footprint, contact details and jaw travel are not measurements of an installed instrument.</p>
+<div class="views">
+<figure><img src={asset+'front-view.webp'} loading="lazy" alt="Original front three-quarter view of the Keysight E4980A and 16034E model"/><figcaption><strong>Panel and case.</strong> Bumpers, left LCD, right four coaxial terminals and central keypad. Compare the <a href="https://www.keysight.com/content/dam/keysight/en/img/migrated/scene7/products/wn/PROD-715495-01.png">Keysight front photo (Option 001 populated)</a>.</figcaption></figure>
+<figure><img src={asset+'fixture-detail.webp'} loading="lazy" alt="Original close view of the virtual 16034E SMD fixture jaws and component"/><figcaption><strong>Accessory.</strong> Opposing jaws hold a modeled passive chip; compare the <a href="https://www.newark.com/productimages/large/en_US/95H8351-40.jpg">16034E photograph</a> and <a href={fixture}>instrument compatibility</a>. Clamp travel and test chip are illustrative.</figcaption></figure>
+<figure><img src={asset+'rear-view.webp'} loading="lazy" alt="Original rear view of the E4980A, fan and connectors"/><figcaption><strong>Rear.</strong> GPIB, USB, LAN, IEC, trigger, fan slots and option blanks. Compare <a href={manual+'#page=37'}>User’s Guide Figure 2-2, pp. 37–39</a>.</figcaption></figure>
+</div>
+<dl class="specs">{specs.map(([key,value,desc,url])=><div><dt>{key}</dt><dd><strong>{value}</strong> · <a href={url}>{desc}</a></dd></div>)}</dl>
+<p><a href={official}>Official E4980A product page</a> · <a href={asset+'e4980a.glb'}>Download metric GLB</a> · <a href={asset+'build-model.py'}>Editable Blender generator</a> · <a href={asset+'interaction.json'}>Spatial control manifest</a> · <a href={asset+'asset-metrics.json'}>Geometry metrics</a> · <a href={asset+'solver.mjs'}>Numerical solver</a></p>
+<h3>Verification results</h3>
+<p>{verification.origin}</p>
+<div class="scroll"><table><thead><tr><th>Case</th><th>Expected</th><th>Simulated</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verification.rows.map(x=><tr><td>{x.description}</td><td>{x.expected} {x.unit}</td><td>{typeof x.actual==='number'?Number(x.actual.toPrecision(9)):x.actual}</td><td>{x.tolerance??'Exact code'}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={asset+'verification.json'}>Download verification</a> · <a href={asset+'acceptance.json'}>Predeclared fixtures</a></p>
+</section>
+</article>
+</Layout>
+<script>
+import '../../../../lib/equipment/09-07/client.mjs';
+</script>
+<style>
+#lcr4980 {max-width: 1280px; margin:auto; color:inherit;}
+#lcr4980 header {margin:1.4rem 0 1rem;}
+#lcr4980 header h2 {margin:.25rem 0 0;}
+#lcr4980 header p {max-width:85ch;}
+.work {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem;}
+.panel {border:1px solid color-mix(in srgb,currentColor 32%,transparent);padding:clamp(.8rem,2vw,1.4rem);margin:.6rem 0;border-radius:.33rem;min-width:0;}
+.panel h3 {margin:0 0 .85rem;}
+.tools {display:flex;gap:.4rem;flex-wrap:wrap;}
+.tools button {border:1px solid currentColor;background:transparent;color:inherit;min-height:38px;padding:.45rem .7rem;border-radius:.24rem;cursor:pointer;font:inherit;}
+.tools button[aria-pressed=true] {background:#d6bd73;color:#151b1a;}
+.tools button:disabled {opacity:.46;cursor:not-allowed;}
+#lcr-viewer {height:350px;margin:.75rem 0 0;background:#263439;}
+#lcr-viewer :global(canvas) {display:block;max-width:100%;touch-action:none;}
+.fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin:.8rem 0;}
+.fields label {display:flex;flex-direction:column;gap:.18rem;font-size:.9rem;}
+.fields input,.fields select {min-width:0;width:100%;min-height:38px;box-sizing:border-box;font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.2rem;padding:.26rem;}
+.fields option {color:#151b1a;background:#faf5e8;}
+#lcr-actual,#lcr-result {font-weight:700;margin:.7rem 0;}
+#lcr-status[data-error=true] {color:inherit;border-left:4px solid #d16246;padding-left:.6rem;font-weight:600;}
+#lcr-trace {display:block;width:min(100%,760px);height:auto;max-width:100%;border-radius:.2rem;}
+.views {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;}
+.views figure {margin:0;}
+.views img {display:block;width:100%;height:auto;}
+.views figcaption {margin:.35rem 0 1rem;font-size:.92rem;}
+.specs div {border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);padding:.55rem 0;}
+.specs dd {margin:.15rem 0;}
+.specs dt {font-weight:bold;}
+.scroll {overflow-x:auto;}
+table {border-collapse:collapse;width:100%;}
+th,td {text-align:left;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent);padding:.44rem;}
+@media(max-width:900px) {.work {grid-template-columns:1fr;} #lcr-viewer {height:310px;}}
+@media(max-width:550px) {.views {grid-template-columns:1fr;} #lcr-viewer {height:265px;} .tools button,.fields input,.fields select{min-height:44px;}}
+.check {display:inline-flex;align-items:center;gap:.45rem;padding:0 .55rem;}
+</style>

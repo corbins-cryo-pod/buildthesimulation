@@ -1,0 +1,119 @@
+{
+  "equipment": "16-11",
+  "basis": "Map test before implementation: wafer W100-01 starts in staging, its diameter is 100 mm and orientation is +30° about +Y measured from +Z toward +X. The 100 mm cassette accepts that size and is empty at A02. The 75 mm carrier is 25 mm too small. A matching slot already occupied by another wafer also rejects.",
+  "scope": "Exact nominal compatibility and metric scene verification, not physical tracking or collision physics.",
+  "checks": [
+    {
+      "id": "Source before move",
+      "expected": "staging-100",
+      "actual": "staging-100",
+      "unit": "fixture",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Matching cassette destination",
+      "expected": "cassette-100-A02",
+      "actual": "cassette-100-A02",
+      "unit": "fixture",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Insufficient diameter",
+      "expected": 25,
+      "actual": 25,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Custody after rejected placement",
+      "expected": "cassette-100-A02",
+      "actual": "cassette-100-A02",
+      "unit": "fixture",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Only successful placement changes ledger",
+      "expected": 1,
+      "actual": 1,
+      "unit": "records",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Unique wafer ID",
+      "expected": 1,
+      "actual": 1,
+      "unit": "copies",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Datum preserved",
+      "expected": 30,
+      "actual": 30,
+      "unit": "deg",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "100 mm wafer model scale",
+      "expected": [
+        0.1,
+        0.000525,
+        0.1
+      ],
+      "actual": [
+        0.1,
+        0.0005250000000000001,
+        0.1
+      ],
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "150 mm wafer model scale",
+      "expected": [
+        0.15,
+        0.000675,
+        0.15
+      ],
+      "actual": [
+        0.15,
+        0.000675,
+        0.15
+      ],
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Destination pose matches slot datum",
+      "expected": [
+        -0.177,
+        0.028399999999999998,
+        -0.089
+      ],
+      "actual": [
+        -0.177,
+        0.028399999999999998,
+        -0.089
+      ],
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named hit targets",
+      "expected": 12,
+      "actual": 12,
+      "unit": "targets",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

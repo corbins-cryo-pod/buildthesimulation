@@ -1,0 +1,26 @@
+{
+  "classification": "Simulated wire-format handoff executed through the three actual simulator implementations; not hardware data.",
+  "generatorVpp": 1,
+  "preampVpp": 2,
+  "preampParent": {
+    "source": "09-06 Keysight 33622A",
+    "sampleId": "33622A-BENCH",
+    "revision": 1
+  },
+  "scopeSettings": {
+    "source": "import",
+    "level": 0,
+    "voltsDiv": 0.25,
+    "centerV": 0,
+    "rate": 256000,
+    "secDiv": 0.0005
+  },
+  "scope": {
+    "peakToPeakV": 2,
+    "rmsV": 0.7074064167936985,
+    "secondEdgeIndex": 576,
+    "periodS": 0.001,
+    "clipCount": 0,
+    "lsbV": 0.0006105006105006105
+  }
+}

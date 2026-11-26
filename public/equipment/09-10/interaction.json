@@ -1,0 +1,25 @@
+{
+ "schema":"bts.instrument-bindings.preview.v1","deviceId":"09-10",
+ "frame":{"unit":"m","handedness":"right","up":"+Y","operatorFront":"+Z","placementAnchor":"bts_bench_anchor","kind":"bench","enclosureXYZ":[0.206375,0.0889,0.377825],"modelToleranceM":0.0015},
+ "controls":[
+  {"id":"power","node":"front_power","label":"Power","action":"power","targetSizeM":[0.014,0.009,0.004]},
+  {"id":"source","node":"front_source","label":"Cycle A, A−B, B","action":"cycle-source","targetSizeM":[0.010,0.011,0.004]},
+  {"id":"coupling","node":"front_coupling","label":"Cycle DC, AC, GND","action":"cycle-coupling","targetSizeM":[0.010,0.011,0.004]},
+  {"id":"rolloff","node":"front_rolloff","label":"Cycle RC filter mode","action":"cycle-filter","targetSizeM":[0.010,0.011,0.004]},
+  {"id":"invert","node":"front_invert","label":"Invert output","action":"invert","targetSizeM":[0.010,0.011,0.004]},
+  {"id":"gain-plus","node":"front_gain_up","label":"Increase gain","action":"gain-up","targetSizeM":[0.010,0.011,0.004]},
+  {"id":"gain-minus","node":"front_gain_down","label":"Decrease gain","action":"gain-down","targetSizeM":[0.010,0.011,0.004]},
+  {"id":"highpass-minus","node":"front_hp_down","label":"Decrease high-pass frequency","action":"step-hp","value":-1,"targetSizeM":[0.010,0.011,0.004]},
+  {"id":"highpass-plus","node":"front_hp_up","label":"Increase high-pass frequency","action":"step-hp","value":1,"targetSizeM":[0.010,0.011,0.004]},
+  {"id":"lowpass-minus","node":"front_lp_down","label":"Decrease low-pass frequency","action":"step-lp","value":-1,"targetSizeM":[0.010,0.011,0.004]},
+  {"id":"lowpass-plus","node":"front_lp_up","label":"Increase low-pass frequency","action":"step-lp","value":1,"targetSizeM":[0.010,0.011,0.004]},
+  {"id":"reset","node":"front_reset","label":"Clear virtual overload indication","action":"acknowledge","targetSizeM":[0.010,0.011,0.004]}
+ ],
+ "ports":[
+  {"id":"input-a","node":"input_a","label":"A input, floating","unit":"V","type":"BNC","direction":"input","normal":[0,0,1]},
+  {"id":"input-b","node":"input_b","label":"B input, floating","unit":"V","type":"BNC","direction":"input","normal":[0,0,1]},
+  {"id":"out-600","node":"output_600","label":"600 Ω output","unit":"V","type":"BNC","direction":"output","seriesOhm":600,"normal":[0,0,1]},
+  {"id":"out-50","node":"output_50","label":"50 Ω output","unit":"V","type":"BNC","direction":"output","seriesOhm":50,"normal":[0,0,1]},
+  {"id":"blank","node":"rear_blanking","label":"TTL blanking (not simulated)","type":"BNC","direction":"input","normal":[0,0,-1]}
+ ]
+}

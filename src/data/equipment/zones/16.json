@@ -199,9 +199,16 @@
     "inputs": "Wafer ID and diameter, holder slot size, tool attachment and custody state",
     "outputs": "Holder/slot occupancy and sample-custody transfer event",
     "acceptance": "Move a 100 mm wafer into a matching slot, then attempt insertion into an undersized carrier. Only the first placement should change custody; the wafer ID must remain unique.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Built",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/16-11/simulator/",
+    "related": [
+      [
+        "Original layout, sources and verification",
+        "/simulations/equipment/16-11/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "16-12",

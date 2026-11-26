@@ -1,0 +1,39 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import verification from '../../../../../public/equipment/16-11/verification.json';
+const a='/equipment/16-11/';
+---
+<Layout pageTitle="Cleanroom sample handling" subtitle="" description="Move an inert wafer into a matching cassette while keeping its ID and orientation." wide={true}>
+<article class="equipment wh1611">
+<nav class="eq-nav"><a href="/simulations/equipment/16-11/">← Equipment 16-11</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">References & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">16-11 / Virtual cleanroom fixtures</span><h2>BTS-HANDLING Mk I · Wafer custody</h2><p>Transfer a 100 mm wafer into cassette slot A02, then try an undersized 75 mm carrier. The first placement should change custody; the blocked attempt should leave the wafer, its notch orientation and its history alone.</p></header>
+<div class="wh-grid">
+<section class="wh-card"><h3>Handling station</h3><div class="wh-bar"><button data-camera="overview">Whole bench</button><button data-camera="slots">Cassette slots</button><button data-camera="trays">Trays & wand</button><button data-camera="plan">Top</button><button id="camera-reset">Reset camera</button></div>
+<div class="wh-camera"><canvas id="handling-model" aria-label="Cleanroom wafer handling fixtures with 100 mm and 150 mm cassettes, wafers, wand, and tray"></canvas></div>
+<p id="asset" class="wh-note" role="status">Loading metre-scale GLB…</p><p class="wh-note">Drag or pinch to inspect. Select a wafer by clicking the disc; click a white slot tab, the gold wand key, or the undersized carrier tab to try that destination.</p></section>
+<section class="wh-card"><h3>Transfer and check</h3><label>Virtual wafer <select id="wafer-select"></select></label>
+<div class="wh-bar"><button id="place-fit" class="primary">Place in 100 mm slot A02</button><button id="place-small">Try 75 mm carrier</button><button id="reset">Reset sample</button></div>
+<div class="wh-bar"><label>Other destination <select id="slot-select"></select></label><button id="transfer">Transfer selected wafer</button><button id="empty-source">Check empty A03 pickup</button></div>
+<p id="status" role="status" aria-live="polite">W100-01 starts in the staging tray with a 30° datum.</p>
+<div class="wh-table"><table><thead><tr><th>Wafer</th><th>Diameter</th><th>Custody</th><th>Datum</th></tr></thead><tbody id="wafers"></tbody></table></div>
+<p id="ledger" class="wh-note">Custody ledger revision 0 · no successful moves.</p>
+<div class="wh-bar"><button id="export">Export custody JSON</button><a href={a+'example-custody.json'}>Example result</a></div>
+</section>
+</div>
+<section id="evidence"><h3>Original fixture layout and verification</h3>
+<figure class="wh-figure"><img src={a+'reference-layout.svg'} alt="Original overhead plan, with labeled 100 and 150 mm cassettes, staging tray, 75 mm carrier, wand and tweezers." loading="lazy"/><figcaption>Original labeled plan. Commercial references establish open-sided rails and nominal wafer sizes, not dimensions or interoperability of the virtual cassette.</figcaption></figure>
+<p>Sample geometry uses nominal <b>100 × 0.525 mm</b> and <b>150 × 0.675 mm</b> round silicon wafers (diameter × thickness). The notches are exaggerated visual datums, not a notch/flat manufacturing standard. The <b>680 × 450 × 12 mm</b> worktop, three demonstration slots per cassette at <b>12 mm pitch</b>, and intentionally incompatible 75 mm carrier are original dimensions; none is measured from a manufactured fixture.</p>
+<p><a href="https://www.waferworld.com/post/silicon-wafer-silicon-wafer-and-its-different-diameters">Wafer World: typical substrate dimensions</a> · <a href="https://www.entegris.com/shop/en/USD/products/wafer-handling/wafer-processing/100-mm-wafer-processing/100-mm-Wafer-Carriers/p/100MMWaferCarriers">Entegris: illustrated 100 mm carrier family</a> · <a href="https://www.entegris.com/shop/en/USD/products/wafer-handling/wafer-processing/150-mm-wafer-processing/150-mm-Transport-Carriers/p/150MMTransportCarriers">Entegris: illustrated 150 mm transport carriers</a>.</p>
+<p>The transfer accepts one selected wafer and a known unoccupied fixture ID. Trays and slots require an exact nominal diameter class; the virtual wand accepts both wafers but only one at a time. A successful placement updates one wafer record at a time, preserving ID, diameter, thickness, top face and polar datum (+Y rotation, +Z toward +X). Undersized, occupied, and empty-source attempts do not change custody revision or its transfer ledger. This checks fit classes and custody, not contact, tolerances, vacuum flow, or a dynamic collision trajectory. Tweezers are visible props only.</p>
+<div class="wh-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verification.checks.map(c=><tr><th>{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model generator</a> · <a href={a+'handling-station.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Specifications and sources</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'handling.mjs'}>Independent custody logic</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p>
+</section>
+</article></Layout><script>import '../../../../lib/equipment/16-11/client.mjs';</script>
+<style>
+.wh1611{--wh-line:color-mix(in srgb,currentColor 27%,transparent);max-width:1270px;margin:auto}.wh-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:1rem}.wh-card{min-width:0;border:1px solid var(--wh-line);padding:.85rem;margin:.8rem 0}.wh-card h3{margin:.21rem 0 .62rem}
+.wh-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.43rem;margin:.52rem 0}.wh-bar,.wh-note,.wh1611 label,.wh-figure figcaption{font:.86rem/1.42 system-ui,sans-serif}.wh1611 button,.wh1611 select{font:inherit;padding:.39rem;color:inherit;background:var(--panel,Canvas);border:1px solid var(--wh-line);border-radius:3px;min-height:36px;cursor:pointer;max-width:100%}.wh1611 .primary{background:#34594f;color:#fff}
+.wh-camera{aspect-ratio:1.48;background:#273940}.wh-camera canvas{width:100%;height:100%;display:block;touch-action:none}
+.wh-table{overflow:auto}.wh-table table{width:100%;border-collapse:collapse}.wh-table :is(td,th){border-bottom:1px solid var(--wh-line);padding:.41rem;text-align:left}.wh1611 .error{color:#9f3f27}:global(html[data-theme=dark]) .wh1611 .error{color:#ffc2a0}.wh-figure{margin:1rem 0;max-width:615px}.wh-figure img{display:block;width:100%;height:auto}.wh-figure figcaption{margin:.38rem 0}
+@media(max-width:830px){.wh-grid{grid-template-columns:1fr}}
+</style>

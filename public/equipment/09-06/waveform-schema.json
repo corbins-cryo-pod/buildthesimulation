@@ -1,0 +1,15 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "description":"Uniform signed load voltage: sample i at t0S+i*dtS. Channel extras document settings, summaries and ideal events; not physical calibration.",
+ "type":"object","required":["schema","sampleId","revision","dtS","t0S","channels"],
+ "properties":{
+   "schema":{"const":"bts.analog-waveform.v1"},
+   "sampleId":{"type":"string","minLength":1},
+   "revision":{"type":"integer","minimum":1},
+   "dtS":{"type":"number","exclusiveMinimum":0},
+   "t0S":{"const":0},
+   "sourceOhms":{"const":50},
+   "kind":{"const":"simulated"},
+   "channels":{"type":"array","minItems":1,"maxItems":2,"items":{"type":"object","required":["id","unit","samples"],"properties":{"id":{"enum":["CH1","CH2"]},"unit":{"const":"V"},"samples":{"type":"array","minItems":16,"maxItems":65536,"items":{"type":"number"}}}}}
+ }
+}
