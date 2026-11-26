@@ -64,9 +64,10 @@
     "inputs": "Channel-state sequence or reference trace, unitary conductance (S), driving voltage (V), filter and noise settings",
     "outputs": "Filtered current (A), associated state timestamps when synthetic, noise bandwidth",
     "acceptance": "Feed closed, open and closed intervals longer than the filter settling time. With noise disabled the open plateau should differ from baseline by conductance × driving voltage.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Metric Axopatch 200B 2U rack and CV203BU reference geometry",
+    "simulationStatus": "Verified inert conductance steps through ideal Bessel output chain",
+    "integrationStatus": "Interactive volt/current output, waveform JSON and named VR targets",
+    "simulator": "/simulations/equipment/10-03/simulator/",
     "related": [
       [
         "Cortex Laboratory",

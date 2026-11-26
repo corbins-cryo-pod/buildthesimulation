@@ -1,0 +1,6 @@
+import os,sys,json
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+ b=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH') or p.chromium.executable_path,args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']);g=b.new_page(viewport={'width':820,'height':760},accept_downloads=True);errors=[];g.on('pageerror',lambda e:errors.append(str(e)));g.goto(sys.argv[1].rstrip('/')+'/simulations/equipment/10-03/');g.get_by_role('link',name='Open simulator').click();g.wait_for_selector('#ax-view[data-ready=true]',timeout=30000);g.click('#ax-head');g.click('#ax-run');assert '6.0000 pA step · 120.000 mV' in g.inner_text('#ax-result')
+ with g.expect_download() as d:g.click('#ax-wave')
+ w=json.loads(d.value.path().read_text());assert w['channels'][0]['unit']=='V' and len(w['channels'][0]['samples'])==2201;g.click('#ax-connect');g.click('#ax-run');assert 'connect the inert' in g.inner_text('#ax-status');g.click('#ax-reset');g.select_option('#ax-fcHz','5000');g.click('#ax-run');assert '6.0000 pA' in g.inner_text('#ax-result');assert not errors,errors;print('PASS: GLB, 6 pA/120 mV, voltage waveform export, disconnect gate and settled filter response');b.close()
