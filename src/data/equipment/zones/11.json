@@ -163,7 +163,7 @@
   {
     "id": "11-08",
     "name": "High-speed fluorescence camera",
-    "model": "Hamamatsu ORCA-Flash4.0 (variant pending)",
+    "model": "Hamamatsu ORCA-Flash4.0 V3 C13440-20CU (exterior reference)",
     "evidence": "B",
     "priority": "P2",
     "page": 37,
@@ -177,9 +177,10 @@
     "inputs": "Photon arrival field, pixel calibration, exposure window, frame clock and camera noise parameters",
     "outputs": "Timestamped image frames, pixel size, digital counts, saturation mask and acquisition metadata",
     "acceptance": "Render a uniform static field at two exposure durations below saturation. After dark subtraction, the expected mean signal should scale with exposure and the frame timestamps should follow the input clock.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented C13440-20CU metric exterior GLB",
+    "simulationStatus": "Inert camera and physically separate fixed graphic ruler",
+    "integrationStatus": "Standalone viewer; no camera or image-acquisition connection",
+    "simulator": "/simulations/equipment/11-08/simulator/"
   },
   {
     "id": "11-09",
