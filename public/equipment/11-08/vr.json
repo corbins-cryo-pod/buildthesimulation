@@ -1,0 +1,41 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.229,
+    0.0935,
+    0.13611
+  ],
+  "meshes": 87,
+  "triangles": 14004,
+  "bytes": 808752,
+  "interaction": {
+    "Offline_scale_legend": {
+      "action": "next",
+      "label": "Switch the independent illustrated ruler span",
+      "boundsMinM": [
+        0.1375,
+        0.0307,
+        0.0535
+      ],
+      "boundsMaxM": [
+        0.1585,
+        0.0347,
+        0.0625
+      ]
+    }
+  },
+  "modelPrimaryBodyM": [
+    0.08515,
+    0.0935,
+    0.12561
+  ],
+  "citedPrimaryBodyMm": [
+    85,
+    93.5,
+    125
+  ],
+  "sideCapsMeasuredSeparately": true,
+  "hardwareActions": 0,
+  "dataIndependent": true
+}
