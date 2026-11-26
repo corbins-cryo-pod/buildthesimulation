@@ -1,0 +1,63 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "14-10",
+  "model": "/equipment/14-10/cyclic-bend.glb",
+  "scale": {
+    "unit": "m",
+    "coordinateSystem": "glTF right-handed, +Y up, +Z operator/front"
+  },
+  "metrics": {
+    "bytes": 142068,
+    "triangles": 1748,
+    "draws": 55,
+    "baseGltfXyzM": [
+      0.3199999928474426,
+      0.017999999225139618,
+      0.2199999988079071
+    ]
+  },
+  "implementation": "Desktop click and UI share DOM-independent action(); future WebXR client can use the same action. Physical headset not tested.",
+  "nodes": [
+    {
+      "name": "jog_input",
+      "label": "Jog coupon between flat and 90°",
+      "action": {
+        "type": "jog"
+      },
+      "nominalCenterM": [
+        0.071,
+        0.076,
+        0.048
+      ],
+      "diameterM": 0.022
+    },
+    {
+      "name": "bend_arm",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "travelDegrees": [
+        0,
+        90
+      ],
+      "positionM": [
+        -0.025,
+        0.084,
+        0.018
+      ]
+    },
+    {
+      "name": "moving_grip",
+      "coordinateFrame": "mandrel tangent in XZ; neutral-axis arc and remaining straight length"
+    },
+    {
+      "name": "replaceable_mandrel",
+      "radiusM": [
+        0.002,
+        0.015
+      ]
+    }
+  ]
+}

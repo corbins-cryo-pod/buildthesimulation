@@ -57,11 +57,12 @@ export async function dispatch(s,a,v){
   return ok({...s,module:{id:'compute',u:v.u,heightU:1,depthMm:390,w:v.w,pf:.8}},'Compute sled mounted at U'+v.u+'.');
  }
  if(a==='remove')return s.door&&!s.pull?ok({...s,module:null},'Compute sled removed.'):fail(s,'Open the door and seat the NAS tray to remove the module.');
- if(a==='damage')return s.pack?ok({...s,result:null,pack:{...s.pack,objects:s.pack.objects.map(o=>o.type==='trace'?{...o,text:o.text.replace('0.5','0.6')}:o)}},'One trace value changed; stored digest retained.'):fail(s,'Archive the example run first.');
+ if(a==='damage')return s.pack?ok({...s,result:null,pack:{...s.pack,objects:s.pack.objects.map(o=>o.type==='trace'?{...o,text:(o.text.includes('0.5')?o.text.replace('0.5','0.6'):o.text+'!')}:o)}},'One trace value changed; stored digest retained.'):fail(s,'Archive the example run first.');
  if(!['archive','restore','import'].includes(a))return fail(s,'Unknown action.');
  if(!s.power||!loadFor(s).within||s.pull)return fail(s,'Storage work blocked: UPS must be on, within W and VA limits, and the NAS tray seated.');
  if(a==='archive')return ok({...s,pack:await archive(),result:null},'Inert mask and trace archived with their original IDs and digests.');
  if(a==='restore'||a==='import'){
+  if(a==='import'&&v?.schema==='bts.rack-run-input.v1')return ok({...s,pack:await archive(v),result:null},'Imported and archived the supplied mask and trace.');
   const pack=a==='import'?v:s.pack;if(!pack)return fail(s,'Archive or import the example first.');
   const result=await restore(pack);return {ok:result.ok,state:result.ok?{...s,pack,result}:{...s,result},message:result.message};
  }
