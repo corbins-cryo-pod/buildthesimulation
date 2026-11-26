@@ -1,0 +1,45 @@
+{
+  "schema": "bts.inert-stereo-grid.v1",
+  "deviceId": "12-01",
+  "kind": "simulated geometry",
+  "sampleId": "manufactured-grid-01",
+  "revision": 1,
+  "parentRevision": 0,
+  "zoomFactor": 0.8,
+  "eyepieceFactor": 10,
+  "visualMagnification": 8,
+  "frame": {
+    "widthPx": 480,
+    "heightPx": 320,
+    "horizontalFieldMm": 28.999999999999996,
+    "pixelsPerMm": 16.551724137931036,
+    "axes": "X right, Y away/up in image; Z physical height"
+  },
+  "calibration": {
+    "gridPitchMm": 1,
+    "gridSpacingPx": 16.551724137931046,
+    "scaleBarMm": 1,
+    "scaleBarPx": 16.551724137931036,
+    "halfAngleDeg": 6,
+    "assumedStereoGeometry": true
+  },
+  "fiducial": {
+    "sampleMm": {
+      "xMm": 2,
+      "yMm": -1.5,
+      "zMm": 2
+    },
+    "left": {
+      "xPx": 276.58276089155345,
+      "yPx": 184.82758620689657
+    },
+    "right": {
+      "xPx": 269.62413566017074,
+      "yPx": 184.82758620689657
+    },
+    "raisedDisparityPx": 6.958625231382712,
+    "floorDisparityPx": 0
+  },
+  "pointerSampleMm": null,
+  "source": "Published 29 mm nominal horizontal field at 0.8×, inverse zoom scale; simplified symmetric projections. Not a calibrated optical transfer or measured depth."
+}

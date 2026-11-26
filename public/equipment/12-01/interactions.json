@@ -1,0 +1,66 @@
+{
+  "triangles": 5216,
+  "draws": 32,
+  "nodes": 14,
+  "bytes": 328472,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "zoom_control": {
+      "at": [
+        0.089,
+        0.214,
+        0.094
+      ],
+      "extent": [
+        0.043,
+        0.014,
+        0.009
+      ],
+      "action": "cycle",
+      "label": "Cycle virtual zoom settings"
+    },
+    "oculars": {
+      "at": [
+        0,
+        0.333,
+        0.122
+      ],
+      "extent": [
+        0.103,
+        0.051,
+        0.062
+      ],
+      "action": "view",
+      "label": "Read ideal binocular image pair"
+    },
+    "ruler": {
+      "at": [
+        0,
+        0.062,
+        0.079
+      ],
+      "extent": [
+        0.014,
+        0.005,
+        0.01
+      ],
+      "action": "center",
+      "label": "Set pointer at inert ruler origin"
+    },
+    "focus_collar": {
+      "at": [
+        -0.084,
+        0.226,
+        0.043
+      ],
+      "extent": [
+        0.05,
+        0.048,
+        0.047
+      ],
+      "label": "Fixed outline of the focus collar"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "declaredBeforeImplementation": true,
+  "fixture": "Ideal orthographic stereo of a 1 mm pitch manufactured ruler with a 2 mm elevated fiducial. Manufacturer anchored horizontal field; illustrative stereo half-angle 6°.",
+  "cases": [
+    {
+      "id": "wide-scale",
+      "zoom": 0.8,
+      "expected": {
+        "gridSpacingPx": 16.551724137931,
+        "scaleBarPx": 16.551724137931,
+        "raisedPositive": true,
+        "floorDisparityPx": 0
+      }
+    },
+    {
+      "id": "double-scale",
+      "zoom": 1.6,
+      "expected": {
+        "gridSpacingPx": 33.103448275862,
+        "scaleBarPx": 33.103448275862,
+        "raisedPositive": true,
+        "floorDisparityPx": 0
+      }
+    },
+    {
+      "id": "pointer-center",
+      "zoom": 0.8,
+      "expected": {
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0
+      }
+    },
+    {
+      "id": "bad-zoom",
+      "zoom": 11,
+      "expected": "Choose an offered zoom setting."
+    }
+  ],
+  "tolerancePx": 1e-8
+}
