@@ -64,9 +64,10 @@
     "inputs": "Sample topography, specified tip geometry, XY raster and calibration",
     "outputs": "Apparent height image and roughness metrics with tip and sample provenance",
     "acceptance": "Image a narrow isolated ridge using two spherical probe radii with ideal tracking. The broader probe widens its apparent base while preserving peak height above the flat background.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built · metric AVH-1000, legacy Icon SPM, NanoScope V and RTESP-300",
+    "simulationStatus": "Verified synthetic rigid-surface AFM raster; ideal hemisphere only",
+    "integrationStatus": "Interactive station, heightmap/CSV exchange and metric VR action targets",
+    "simulator": "/simulations/equipment/05-03/simulator/"
   },
   {
     "id": "05-04",
