@@ -1,0 +1,84 @@
+[
+  {
+    "id": "centered-clear",
+    "expected": {
+      "status": "clear",
+      "minimumClearanceMm": 22,
+      "marginsMm": {
+        "left": 42,
+        "right": 42,
+        "rear": 22,
+        "front": 22
+      }
+    },
+    "actual": {
+      "status": "clear",
+      "minimumClearanceMm": 22,
+      "marginsMm": {
+        "left": 42,
+        "right": 42,
+        "rear": 22,
+        "front": 22
+      }
+    },
+    "tolerance": "exact in mm for predeclared fixed geometry",
+    "pass": true
+  },
+  {
+    "id": "one-edge-tangent",
+    "expected": {
+      "status": "touching",
+      "minimumClearanceMm": 0,
+      "marginsMm": {
+        "left": 76,
+        "right": 8,
+        "rear": 44,
+        "front": 0
+      }
+    },
+    "actual": {
+      "status": "touching",
+      "minimumClearanceMm": 0,
+      "marginsMm": {
+        "left": 76,
+        "right": 8,
+        "rear": 44,
+        "front": 0
+      }
+    },
+    "tolerance": "exact in mm for predeclared fixed geometry",
+    "pass": true
+  },
+  {
+    "id": "two-edge-overrun",
+    "expected": {
+      "status": "outside",
+      "minimumClearanceMm": -9,
+      "marginsMm": {
+        "left": 92,
+        "right": -8,
+        "rear": 53,
+        "front": -9
+      }
+    },
+    "actual": {
+      "status": "outside",
+      "minimumClearanceMm": -9,
+      "marginsMm": {
+        "left": 92,
+        "right": -8,
+        "rear": 53,
+        "front": -9
+      }
+    },
+    "tolerance": "exact in mm for predeclared fixed geometry",
+    "pass": true
+  },
+  {
+    "id": "unknown-pose",
+    "expected": "Choose a stored dry gauge position.",
+    "actual": "Choose a stored dry gauge position.",
+    "tolerance": "exact in mm for predeclared fixed geometry",
+    "pass": true
+  }
+]
