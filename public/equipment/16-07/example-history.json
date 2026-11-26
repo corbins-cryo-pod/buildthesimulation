@@ -1,0 +1,644 @@
+{
+  "schema": "bts.thermal-bath.history.v1",
+  "deviceId": "16-07",
+  "origin": "synthetic-lumped-model",
+  "specimen": {
+    "sampleId": "BTS-INERT-DUMMY-16-07",
+    "sampleRevision": "dummy-r1",
+    "type": "uniform-temperature inert virtual mass"
+  },
+  "revision": 1,
+  "parentRevision": null,
+  "parameters": {
+    "mode": "held",
+    "setC": 28,
+    "bath0C": 21,
+    "dummy0C": 18,
+    "tauBathS": 60,
+    "tauDummyS": 60,
+    "durationS": 180
+  },
+  "units": {
+    "timeS": "s",
+    "bathC": "degree Celsius",
+    "dummyC": "degree Celsius"
+  },
+  "simulationClock": {
+    "startS": 0,
+    "exposureStartS": 0,
+    "exposureEndS": 180,
+    "basis": "relative simulated time; no wall-clock dependence"
+  },
+  "history": [
+    {
+      "timeS": 0,
+      "bathC": 28,
+      "dummyC": 18
+    },
+    {
+      "timeS": 1.5,
+      "bathC": 28,
+      "dummyC": 18.246900879716673
+    },
+    {
+      "timeS": 3,
+      "bathC": 28,
+      "dummyC": 18.48770575499286
+    },
+    {
+      "timeS": 4.5,
+      "bathC": 28,
+      "dummyC": 18.722565136714472
+    },
+    {
+      "timeS": 6,
+      "bathC": 28,
+      "dummyC": 18.951625819640405
+    },
+    {
+      "timeS": 7.5,
+      "bathC": 28,
+      "dummyC": 19.175030974154048
+    },
+    {
+      "timeS": 9,
+      "bathC": 28,
+      "dummyC": 19.392920235749422
+    },
+    {
+      "timeS": 10.5,
+      "bathC": 28,
+      "dummyC": 19.605429792307927
+    },
+    {
+      "timeS": 12,
+      "bathC": 28,
+      "dummyC": 19.81269246922018
+    },
+    {
+      "timeS": 13.5,
+      "bathC": 28,
+      "dummyC": 20.014837812406228
+    },
+    {
+      "timeS": 15,
+      "bathC": 28,
+      "dummyC": 20.21199216928595
+    },
+    {
+      "timeS": 16.5,
+      "bathC": 28,
+      "dummyC": 20.404278767750316
+    },
+    {
+      "timeS": 18,
+      "bathC": 28,
+      "dummyC": 20.59181779318282
+    },
+    {
+      "timeS": 19.5,
+      "bathC": 28,
+      "dummyC": 20.774726463579277
+    },
+    {
+      "timeS": 21,
+      "bathC": 28,
+      "dummyC": 20.953119102812867
+    },
+    {
+      "timeS": 22.5,
+      "bathC": 28,
+      "dummyC": 21.12710721209028
+    },
+    {
+      "timeS": 24,
+      "bathC": 28,
+      "dummyC": 21.296799539643608
+    },
+    {
+      "timeS": 25.5,
+      "bathC": 28,
+      "dummyC": 21.462302148701525
+    },
+    {
+      "timeS": 27,
+      "bathC": 28,
+      "dummyC": 21.62371848378227
+    },
+    {
+      "timeS": 28.5,
+      "bathC": 28,
+      "dummyC": 21.7811494353498
+    },
+    {
+      "timeS": 30,
+      "bathC": 28,
+      "dummyC": 21.934693402873666
+    },
+    {
+      "timeS": 31.5,
+      "bathC": 28,
+      "dummyC": 22.08444635633185
+    },
+    {
+      "timeS": 33,
+      "bathC": 28,
+      "dummyC": 22.230501896195133
+    },
+    {
+      "timeS": 34.5,
+      "bathC": 28,
+      "dummyC": 22.372951311930443
+    },
+    {
+      "timeS": 36,
+      "bathC": 28,
+      "dummyC": 22.511883639059736
+    },
+    {
+      "timeS": 37.5,
+      "bathC": 28,
+      "dummyC": 22.6473857148101
+    },
+    {
+      "timeS": 39,
+      "bathC": 28,
+      "dummyC": 22.77954223238984
+    },
+    {
+      "timeS": 40.5,
+      "bathC": 28,
+      "dummyC": 22.908435793924507
+    },
+    {
+      "timeS": 42,
+      "bathC": 28,
+      "dummyC": 23.034146962085906
+    },
+    {
+      "timeS": 43.5,
+      "bathC": 28,
+      "dummyC": 23.156754310446374
+    },
+    {
+      "timeS": 45,
+      "bathC": 28,
+      "dummyC": 23.276334472589852
+    },
+    {
+      "timeS": 46.5,
+      "bathC": 28,
+      "dummyC": 23.392962190010344
+    },
+    {
+      "timeS": 48,
+      "bathC": 28,
+      "dummyC": 23.506710358827785
+    },
+    {
+      "timeS": 49.5,
+      "bathC": 28,
+      "dummyC": 23.617650075350507
+    },
+    {
+      "timeS": 51,
+      "bathC": 28,
+      "dummyC": 23.725850680512732
+    },
+    {
+      "timeS": 52.5,
+      "bathC": 28,
+      "dummyC": 23.831379803214915
+    },
+    {
+      "timeS": 54,
+      "bathC": 28,
+      "dummyC": 23.934303402594008
+    },
+    {
+      "timeS": 55.5,
+      "bathC": 28,
+      "dummyC": 24.03468580925007
+    },
+    {
+      "timeS": 57,
+      "bathC": 28,
+      "dummyC": 24.132589765454988
+    },
+    {
+      "timeS": 58.5,
+      "bathC": 28,
+      "dummyC": 24.22807646436843
+    },
+    {
+      "timeS": 60,
+      "bathC": 28,
+      "dummyC": 24.321205588285576
+    },
+    {
+      "timeS": 61.5,
+      "bathC": 28,
+      "dummyC": 24.412035345940485
+    },
+    {
+      "timeS": 63,
+      "bathC": 28,
+      "dummyC": 24.500622508888448
+    },
+    {
+      "timeS": 64.5,
+      "bathC": 28,
+      "dummyC": 24.587022446990062
+    },
+    {
+      "timeS": 66,
+      "bathC": 28,
+      "dummyC": 24.671289163019203
+    },
+    {
+      "timeS": 67.5,
+      "bathC": 28,
+      "dummyC": 24.753475326416503
+    },
+    {
+      "timeS": 69,
+      "bathC": 28,
+      "dummyC": 24.833632306209466
+    },
+    {
+      "timeS": 70.5,
+      "bathC": 28,
+      "dummyC": 24.911810203119803
+    },
+    {
+      "timeS": 72,
+      "bathC": 28,
+      "dummyC": 24.988057880877978
+    },
+    {
+      "timeS": 73.5,
+      "bathC": 28,
+      "dummyC": 25.062422996764674
+    },
+    {
+      "timeS": 75,
+      "bathC": 28,
+      "dummyC": 25.1349520313981
+    },
+    {
+      "timeS": 76.5,
+      "bathC": 28,
+      "dummyC": 25.205690317785926
+    },
+    {
+      "timeS": 78,
+      "bathC": 28,
+      "dummyC": 25.274682069659875
+    },
+    {
+      "timeS": 79.5,
+      "bathC": 28,
+      "dummyC": 25.341970409110733
+    },
+    {
+      "timeS": 81,
+      "bathC": 28,
+      "dummyC": 25.407597393541085
+    },
+    {
+      "timeS": 82.5,
+      "bathC": 28,
+      "dummyC": 25.471604041952535
+    },
+    {
+      "timeS": 84,
+      "bathC": 28,
+      "dummyC": 25.534030360583934
+    },
+    {
+      "timeS": 85.5,
+      "bathC": 28,
+      "dummyC": 25.594915367916578
+    },
+    {
+      "timeS": 87,
+      "bathC": 28,
+      "dummyC": 25.654297119062022
+    },
+    {
+      "timeS": 88.5,
+      "bathC": 28,
+      "dummyC": 25.712212729547776
+    },
+    {
+      "timeS": 90,
+      "bathC": 28,
+      "dummyC": 25.768698398515703
+    },
+    {
+      "timeS": 91.5,
+      "bathC": 28,
+      "dummyC": 25.82378943134767
+    },
+    {
+      "timeS": 93,
+      "bathC": 28,
+      "dummyC": 25.87752026173257
+    },
+    {
+      "timeS": 94.5,
+      "bathC": 28,
+      "dummyC": 25.929924473188475
+    },
+    {
+      "timeS": 96,
+      "bathC": 28,
+      "dummyC": 25.981034820053445
+    },
+    {
+      "timeS": 97.5,
+      "bathC": 28,
+      "dummyC": 26.03088324795806
+    },
+    {
+      "timeS": 99,
+      "bathC": 28,
+      "dummyC": 26.079500913792458
+    },
+    {
+      "timeS": 100.5,
+      "bathC": 28,
+      "dummyC": 26.12691820518043
+    },
+    {
+      "timeS": 102,
+      "bathC": 28,
+      "dummyC": 26.17316475947265
+    },
+    {
+      "timeS": 103.5,
+      "bathC": 28,
+      "dummyC": 26.218269482271015
+    },
+    {
+      "timeS": 105,
+      "bathC": 28,
+      "dummyC": 26.26226056549555
+    },
+    {
+      "timeS": 106.5,
+      "bathC": 28,
+      "dummyC": 26.3051655050053
+    },
+    {
+      "timeS": 108,
+      "bathC": 28,
+      "dummyC": 26.347011117784135
+    },
+    {
+      "timeS": 109.5,
+      "bathC": 28,
+      "dummyC": 26.387823558702234
+    },
+    {
+      "timeS": 111,
+      "bathC": 28,
+      "dummyC": 26.427628336863723
+    },
+    {
+      "timeS": 112.5,
+      "bathC": 28,
+      "dummyC": 26.466450331550714
+    },
+    {
+      "timeS": 114,
+      "bathC": 28,
+      "dummyC": 26.50431380777365
+    },
+    {
+      "timeS": 115.5,
+      "bathC": 28,
+      "dummyC": 26.541242431437727
+    },
+    {
+      "timeS": 117,
+      "bathC": 28,
+      "dummyC": 26.577259284134865
+    },
+    {
+      "timeS": 118.5,
+      "bathC": 28,
+      "dummyC": 26.612386877570447
+    },
+    {
+      "timeS": 120,
+      "bathC": 28,
+      "dummyC": 26.646647167633873
+    },
+    {
+      "timeS": 121.5,
+      "bathC": 28,
+      "dummyC": 26.680061568121697
+    },
+    {
+      "timeS": 123,
+      "bathC": 28,
+      "dummyC": 26.71265096412196
+    },
+    {
+      "timeS": 124.5,
+      "bathC": 28,
+      "dummyC": 26.74443572506803
+    },
+    {
+      "timeS": 126,
+      "bathC": 28,
+      "dummyC": 26.77543571747018
+    },
+    {
+      "timeS": 127.5,
+      "bathC": 28,
+      "dummyC": 26.805670317332805
+    },
+    {
+      "timeS": 129,
+      "bathC": 28,
+      "dummyC": 26.83515842226503
+    },
+    {
+      "timeS": 130.5,
+      "bathC": 28,
+      "dummyC": 26.86391846329236
+    },
+    {
+      "timeS": 132,
+      "bathC": 28,
+      "dummyC": 26.89196841637666
+    },
+    {
+      "timeS": 133.5,
+      "bathC": 28,
+      "dummyC": 26.919325813651707
+    },
+    {
+      "timeS": 135,
+      "bathC": 28,
+      "dummyC": 26.946007754381355
+    },
+    {
+      "timeS": 136.5,
+      "bathC": 28,
+      "dummyC": 26.972030915647135
+    },
+    {
+      "timeS": 138,
+      "bathC": 28,
+      "dummyC": 26.997411562771962
+    },
+    {
+      "timeS": 139.5,
+      "bathC": 28,
+      "dummyC": 27.0221655594865
+    },
+    {
+      "timeS": 141,
+      "bathC": 28,
+      "dummyC": 27.046308377844504
+    },
+    {
+      "timeS": 142.5,
+      "bathC": 28,
+      "dummyC": 27.069855107893364
+    },
+    {
+      "timeS": 144,
+      "bathC": 28,
+      "dummyC": 27.092820467105874
+    },
+    {
+      "timeS": 145.5,
+      "bathC": 28,
+      "dummyC": 27.115218809579126
+    },
+    {
+      "timeS": 147,
+      "bathC": 28,
+      "dummyC": 27.137064135006295
+    },
+    {
+      "timeS": 148.5,
+      "bathC": 28,
+      "dummyC": 27.158370097426896
+    },
+    {
+      "timeS": 150,
+      "bathC": 28,
+      "dummyC": 27.179150013761014
+    },
+    {
+      "timeS": 151.5,
+      "bathC": 28,
+      "dummyC": 27.199416872132794
+    },
+    {
+      "timeS": 153,
+      "bathC": 28,
+      "dummyC": 27.21918333998847
+    },
+    {
+      "timeS": 154.5,
+      "bathC": 28,
+      "dummyC": 27.238461772013896
+    },
+    {
+      "timeS": 156,
+      "bathC": 28,
+      "dummyC": 27.25726421785666
+    },
+    {
+      "timeS": 157.5,
+      "bathC": 28,
+      "dummyC": 27.275602429657486
+    },
+    {
+      "timeS": 159,
+      "bathC": 28,
+      "dummyC": 27.293487869395705
+    },
+    {
+      "timeS": 160.5,
+      "bathC": 28,
+      "dummyC": 27.310931716053375
+    },
+    {
+      "timeS": 162,
+      "bathC": 28,
+      "dummyC": 27.3279448726025
+    },
+    {
+      "timeS": 163.5,
+      "bathC": 28,
+      "dummyC": 27.344537972819758
+    },
+    {
+      "timeS": 165,
+      "bathC": 28,
+      "dummyC": 27.360721387932923
+    },
+    {
+      "timeS": 166.5,
+      "bathC": 28,
+      "dummyC": 27.376505233103266
+    },
+    {
+      "timeS": 168,
+      "bathC": 28,
+      "dummyC": 27.39189937374782
+    },
+    {
+      "timeS": 169.5,
+      "bathC": 28,
+      "dummyC": 27.40691343170561
+    },
+    {
+      "timeS": 171,
+      "bathC": 28,
+      "dummyC": 27.421556791251614
+    },
+    {
+      "timeS": 172.5,
+      "bathC": 28,
+      "dummyC": 27.43583860496223
+    },
+    {
+      "timeS": 174,
+      "bathC": 28,
+      "dummyC": 27.44976779943593
+    },
+    {
+      "timeS": 175.5,
+      "bathC": 28,
+      "dummyC": 27.4633530808727
+    },
+    {
+      "timeS": 177,
+      "bathC": 28,
+      "dummyC": 27.476602940515676
+    },
+    {
+      "timeS": 178.5,
+      "bathC": 28,
+      "dummyC": 27.489525659958456
+    },
+    {
+      "timeS": 180,
+      "bathC": 28,
+      "dummyC": 27.502129316321362
+    }
+  ],
+  "oneTauReference": {
+    "timeS": 60,
+    "gapClosedFraction": 0.6321205588285577,
+    "initialGapC": 10
+  }
+}

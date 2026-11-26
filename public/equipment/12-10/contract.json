@@ -1,0 +1,7 @@
+{
+ "equipmentId":"12-10",
+ "input":{"schema":"bts.vs200-inert-mosaic-input.v1","source":"immutable eight preauthored synthetic 32×24-pixel tiles for CAL-VS200-GRID-001 revision 1; no upload","scale":"0.5 mm per synthetic pixel, +X along slide, +Z across it; stage outer-corner convention. Indexed pixel center = tile origin + (index+0.5)×pixel spacing","interaction":"current tile plus indexed pixel (X 0–31, Z 0–23)"},
+ "output":{"schema":"bts.vs200-inert-mosaic.v1","fields":"slide ID/revision, stage origins in mm, merged 116×44 intensity grid, overlap match metrics, fiducial centroids and source SHA-256; separate fiducial CSV, mosaic PNG preview"},
+ "failure":["Wrong source fingerprint, unsupported geometry, tile-offset residual or disagreement in overlap rejects the comparison entirely."],
+ "limits":["Read-only fixed mosaic. No real acquisition, focus model, pyramid, optical resolution, illumination, automation, data measured by Evident, biological tissue or processing workflow."],"downstream":"No verified importer of the complete mosaic schema."
+}

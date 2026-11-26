@@ -1,0 +1,11 @@
+{
+  "instrument": "BTS-ANALYSIS Mk I",
+  "case": "Manually labeled 40-sample two-channel toy waveform at 2000 samples/s with reference at sample 20",
+  "independentBasis": "Read known generator labels directly: sample 12→A, 16→B, 28→A, 32→B. Subtract sample 20 independently to obtain -8, -4, +8, +12 samples; times are -4, -2, +4, +6 ms. Second trigger at 21 moves every offset by -1 sample. Known centers are -60 µV on A and -45 µV on B, from constructed five-sample pulses.",
+  "eventCounts": {"A": 2,"B": 2},
+  "eventIds": ["spk-a1","spk-b1","spk-a2","spk-b2"],
+  "sampleOffsets": [-8,-4,8,12],
+  "timeOffsetsMs": [-4,-2,4,6],
+  "meanWaveformUV": {"A": [0,-15,-60,-15,0],"B": [0,-12,-45,-12,0]},
+  "tolerance": "Exact integer sample offsets; within one sample (0.5 ms) for exported alignment. At most 1e-10 ms and µV for ideal deterministic fixture."
+}

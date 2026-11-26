@@ -1,0 +1,41 @@
+{
+  "schema": "bts.dry-transfer-ledger.v1",
+  "source": "simulated",
+  "instrumentId": "16-08",
+  "sampleId": "DRY-PIPETTE-PHANTOM-01",
+  "revision": 3,
+  "units": {
+    "volume": "uL-equivalent dry displacement",
+    "travel": "mm (illustrative)"
+  },
+  "vessels": {
+    "DRY-SOURCE-01": 75,
+    "DRY-RECEIVER-01": 25
+  },
+  "tip": {
+    "attached": true,
+    "fitClass": "matched",
+    "uses": 1
+  },
+  "settingUl": 25,
+  "illustratedStrokeMm": 2.2777777777777777,
+  "events": [
+    {
+      "revision": 2,
+      "action": "attach",
+      "tip": "TRAINING-TIP-01"
+    },
+    {
+      "revision": 3,
+      "action": "dry-ledger-move",
+      "sourceId": "DRY-SOURCE-01",
+      "destinationId": "DRY-RECEIVER-01",
+      "parentSampleId": "DRY-PIPETTE-PHANTOM-01",
+      "childSampleId": "DRY-PIPETTE-PHANTOM-01-CHILD-R3",
+      "debitUl": 25,
+      "creditUl": 25,
+      "tip": "TRAINING-TIP-01"
+    }
+  ],
+  "note": "Atomic metadata movement only; no wet process or physical dispensing validation."
+}

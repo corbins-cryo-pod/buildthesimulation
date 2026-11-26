@@ -1,0 +1,147 @@
+{
+  "equipment": "01-05",
+  "basis": "Read known generator labels directly: sample 12→A, 16→B, 28→A, 32→B. Subtract sample 20 independently to obtain -8, -4, +8, +12 samples; times are -4, -2, +4, +6 ms. Second trigger at 21 moves every offset by -1 sample. Known centers are -60 µV on A and -45 µV on B, from constructed five-sample pulses.",
+  "scope": "Synthetic software and nominal geometry checks only, no device or data benchmarking.",
+  "checks": [
+    {
+      "id": "A/B event counts",
+      "expected": [
+        2,
+        2
+      ],
+      "actual": [
+        2,
+        2
+      ],
+      "unit": "events",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "A/B/A/B IDs",
+      "expected": [
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "actual": [
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "unit": "channels",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Trigger alignment",
+      "expected": [
+        -4,
+        -2,
+        4,
+        6
+      ],
+      "actual": [
+        -4,
+        -2,
+        4,
+        6
+      ],
+      "unit": "ms",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Waveform means A then B",
+      "expected": [
+        0,
+        -15,
+        -60,
+        -15,
+        0,
+        0,
+        -12,
+        -45,
+        -12,
+        0
+      ],
+      "actual": [
+        0,
+        -15,
+        -60,
+        -15,
+        0,
+        0,
+        -12,
+        -45,
+        -12,
+        0
+      ],
+      "unit": "µV",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Trigger change -1 sample",
+      "expected": [
+        -9,
+        -5,
+        7,
+        11
+      ],
+      "actual": [
+        -9,
+        -5,
+        7,
+        11
+      ],
+      "unit": "samples",
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "id": "Export and reload vs independent offsets",
+      "expected": [
+        -8,
+        -4,
+        8,
+        12
+      ],
+      "actual": [
+        -8,
+        -4,
+        8,
+        12
+      ],
+      "unit": "samples",
+      "tolerance": 1,
+      "pass": true
+    },
+    {
+      "id": "Metric tabletop",
+      "expected": [
+        1.1,
+        0.031,
+        0.62
+      ],
+      "actual": [
+        1.1,
+        0.031,
+        0.62
+      ],
+      "unit": "m",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "VR named scene targets",
+      "expected": 5,
+      "actual": 5,
+      "unit": "targets",
+      "tolerance": "exact",
+      "pass": true
+    }
+  ]
+}
