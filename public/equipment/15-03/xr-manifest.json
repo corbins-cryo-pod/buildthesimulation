@@ -1,0 +1,39 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "15-03",
+  "asset": "/equipment/15-03/catwalk-xt-107-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Detached graph uses unrelated paper mm.",
+  "metrics": {
+    "bytes": 117464,
+    "triangles": 1372,
+    "draws": 49,
+    "instrumentXYZM": [
+      1.2999999523162842,
+      1.519999997360759,
+      0.6800000090152025
+    ]
+  },
+  "scope": "Passive detached graphic and selection only; no headset tested.",
+  "nodes": [
+    {
+      "node": "separate_stamp_cycle_badge",
+      "label": "Cycle detached geometric marks",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.101,
+        0.017,
+        0.046
+      ]
+    },
+    {
+      "node": "ink_card_display_anchor",
+      "label": "Unrelated drawing display",
+      "boundsM": [
+        0.341,
+        0.233
+      ]
+    }
+  ]
+}

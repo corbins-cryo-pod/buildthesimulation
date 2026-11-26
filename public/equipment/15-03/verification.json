@@ -1,0 +1,103 @@
+{
+  "schema": "bts.detached-geometric-stamp.verification.v1",
+  "metrics": {
+    "bytes": 117464,
+    "triangles": 1372,
+    "draws": 49,
+    "instrumentXYZM": [
+      1.2999999523162842,
+      1.519999997360759,
+      0.6800000090152025
+    ]
+  },
+  "cases": [
+    {
+      "id": "length",
+      "expected": 1.3,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 1.2999999523162842,
+      "outcome": "PASS"
+    },
+    {
+      "id": "depth",
+      "expected": 0.68,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.6800000090152025,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 1.52,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 1.519999997360759,
+      "outcome": "PASS"
+    },
+    {
+      "id": "rectangle-area",
+      "expected": 384,
+      "unit": "mm²",
+      "actual": 384,
+      "outcome": "PASS"
+    },
+    {
+      "id": "rectangle-perimeter",
+      "expected": 80,
+      "unit": "mm",
+      "actual": 80,
+      "outcome": "PASS"
+    },
+    {
+      "id": "diamond-area",
+      "expected": 300,
+      "unit": "mm²",
+      "actual": 300,
+      "outcome": "PASS"
+    },
+    {
+      "id": "diamond-centroid-x",
+      "expected": 6,
+      "unit": "mm",
+      "actual": 6,
+      "outcome": "PASS"
+    },
+    {
+      "id": "diamond-centroid-y",
+      "expected": 4,
+      "unit": "mm",
+      "actual": 4,
+      "outcome": "PASS"
+    },
+    {
+      "id": "collinear-zero",
+      "expected": 0,
+      "unit": "mm²",
+      "actual": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "collinear-no-centroid",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "source-immutable",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unsupported-command-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Nominal equipment envelope and independent authored polygon geometry only, not real data or operation."
+}
