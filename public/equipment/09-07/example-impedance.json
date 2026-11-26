@@ -1,0 +1,164 @@
+{
+  "schema": "bts.impedance-sweep.v1",
+  "source": "09-07 Keysight E4980A",
+  "sampleId": "CAL-C1000PF",
+  "revision": 3,
+  "kind": "simulated",
+  "model": "09-07 E4980A ideal passive fixture v1",
+  "phasor": "exp(+jωt), R + jX in Ω",
+  "voltsRms": 0.2,
+  "mode": "series",
+  "corrected": true,
+  "dut": {
+    "id": "CAL-C1000PF",
+    "topology": "series-rc",
+    "resistanceOhm": 27,
+    "capacitancePf": 1000
+  },
+  "fixture": {
+    "seriesOhm": 15,
+    "shuntPf": 110
+  },
+  "correction": {
+    "openRevision": 1,
+    "shortRevision": 2,
+    "openOhm": [
+      [
+        15,
+        -14468631.190172303
+      ],
+      [
+        15,
+        -1446863.1190172306
+      ],
+      [
+        15,
+        -144686.31190172303
+      ],
+      [
+        15,
+        -14468.631190172306
+      ]
+    ],
+    "shortOhm": [
+      [
+        15,
+        0
+      ],
+      [
+        15,
+        0
+      ],
+      [
+        15,
+        0
+      ],
+      [
+        15,
+        0
+      ]
+    ]
+  },
+  "rows": [
+    {
+      "frequencyHz": 100,
+      "raw": {
+        "realOhm": 36.913805697527536,
+        "imagOhm": -1433828.316180042,
+        "magnitudeOhm": 1433828.3166552137,
+        "phaseDeg": -89.99852492432468,
+        "seriesResistanceOhm": 36.913805697527536,
+        "seriesCapacitancePf": 1109.9999999714796,
+        "parallelResistanceOhm": 55693624723.71751,
+        "parallelCapacitancePf": 1109.9999992357702
+      },
+      "impedance": {
+        "realOhm": 26.999999999999986,
+        "imagOhm": -1591549.430918953,
+        "magnitudeOhm": 1591549.4311479747,
+        "phaseDeg": -89.9990280000001,
+        "seriesResistanceOhm": 26.999999999999986,
+        "seriesCapacitancePf": 1000.0000000000002,
+        "parallelResistanceOhm": 93815910806.94238,
+        "parallelCapacitancePf": 999.9999997122026
+      },
+      "idealDutCurrentRmsA": 1.256637061255089e-7,
+      "fixtureInputCurrentRmsA": 1.3948671376957687e-7
+    },
+    {
+      "frequencyHz": 1000,
+      "raw": {
+        "realOhm": 36.913805691395865,
+        "imagOhm": -143382.8319827299,
+        "magnitudeOhm": 143382.83673444603,
+        "phaseDeg": -89.98524924360952,
+        "seriesResistanceOhm": 36.913805691395865,
+        "seriesCapacitancePf": 1109.999997147951,
+        "parallelResistanceOhm": 556936286.7077333,
+        "parallelCapacitancePf": 1109.9999235770147
+      },
+      "impedance": {
+        "realOhm": 27,
+        "imagOhm": -159154.94309189531,
+        "magnitudeOhm": 159154.94538211633,
+        "phaseDeg": -89.99028000009325,
+        "seriesResistanceOhm": 27,
+        "seriesCapacitancePf": 1000.0000000000002,
+        "parallelResistanceOhm": 938159134.7994235,
+        "parallelCapacitancePf": 999.9999712202348
+      },
+      "idealDutCurrentRmsA": 0.0000012566370433530573,
+      "fixtureInputCurrentRmsA": 0.0000013948670883838942
+    },
+    {
+      "frequencyHz": 10000,
+      "raw": {
+        "realOhm": 36.913805078227604,
+        "imagOhm": -14338.286845529665,
+        "magnitudeOhm": 14338.334362599246,
+        "phaseDeg": -89.85249279870064,
+        "seriesResistanceOhm": 36.913805078227604,
+        "seriesCapacitancePf": 1109.9997147951888,
+        "parallelResistanceOhm": 5569402.337635293,
+        "parallelCapacitancePf": 1109.9923577556672
+      },
+      "impedance": {
+        "realOhm": 26.999999999999993,
+        "imagOhm": -15915.494309189531,
+        "magnitudeOhm": 15915.5172113835,
+        "phaseDeg": -89.90280009324628,
+        "seriesResistanceOhm": 26.999999999999993,
+        "seriesCapacitancePf": 1000.0000000000001,
+        "parallelResistanceOhm": 9381618.077994237,
+        "parallelCapacitancePf": 999.9971220316396
+      },
+      "idealDutCurrentRmsA": 0.000012566352531537644,
+      "fixtureInputCurrentRmsA": 0.000013948621572230104
+    },
+    {
+      "frequencyHz": 100000,
+      "raw": {
+        "realOhm": 36.9137437615748,
+        "imagOhm": -1433.8651570166337,
+        "magnitudeOhm": 1434.3402361311737,
+        "phaseDeg": -88.52529043666843,
+        "seriesResistanceOhm": 36.9137437615748,
+        "seriesCapacitancePf": 1109.9714803241368,
+        "parallelResistanceOhm": 55733.493906039446,
+        "parallelCapacitancePf": 1109.2363173200656
+      },
+      "impedance": {
+        "realOhm": 26.999999999999993,
+        "imagOhm": -1591.5494309189535,
+        "magnitudeOhm": 1591.7784365477642,
+        "phaseDeg": -89.0280932303449,
+        "seriesResistanceOhm": 26.999999999999993,
+        "seriesCapacitancePf": 1000,
+        "parallelResistanceOhm": 93842.91077994241,
+        "parallelCapacitancePf": 999.7122851393293
+      },
+      "idealDutCurrentRmsA": 0.0001256456271852497,
+      "fixtureInputCurrentRmsA": 0.00013943693062634657
+    }
+  ]
+}

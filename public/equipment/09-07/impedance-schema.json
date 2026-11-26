@@ -1,0 +1,12 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "description":"Ideal passive AC impedance sweep. Complex pairs use R + jX in ohms. Frequency is in Hz. No biological, vendor or measurement calibration claims.",
+ "type":"object",
+ "required":["schema","sampleId","revision","kind","model","voltsRms","rows"],
+ "properties":{
+  "schema":{"const":"bts.impedance-sweep.v1"},"sampleId":{"type":"string","maxLength":48},
+  "revision":{"type":"integer","minimum":1},"kind":{"const":"simulated"},"voltsRms":{"type":"number","minimum":0.05,"maximum":1},
+  "rows":{"type":"array","minItems":1,"maxItems":32,"items":{"type":"object","required":["frequencyHz","raw","impedance"],"properties":{"frequencyHz":{"type":"number","minimum":100,"maximum":200000},"raw":{"$ref":"#/$defs/complex"},"impedance":{"$ref":"#/$defs/complex"}}}}
+ },
+ "$defs":{"complex":{"type":"object","required":["realOhm","imagOhm"],"properties":{"realOhm":{"type":"number"},"imagOhm":{"type":"number"}}}}
+}
