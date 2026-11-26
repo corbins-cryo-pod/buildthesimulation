@@ -1,0 +1,109 @@
+{
+  "scope": "Analytical and independent differential-equation checks, finite state and original metric geometry. No measurements of the selected hardware, physical safety certification, material-calibration data or headset testing.",
+  "rows": [
+    {
+      "id": "Equilibrium maximum deviation",
+      "expected": 0,
+      "actual": 0,
+      "unit": "°C",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Agitation on",
+      "expected": 300,
+      "actual": 300,
+      "unit": "rpm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Agitation off",
+      "expected": 0,
+      "actual": 0,
+      "unit": "rpm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Plate at 100 virtual s",
+      "expected": 59.3040057222281,
+      "actual": 59.3040057222281,
+      "unit": "°C",
+      "tol": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Probe at 100 virtual s",
+      "expected": 41.59277307323755,
+      "actual": 41.59277307323756,
+      "unit": "°C",
+      "tol": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Residual after virtual standby",
+      "expected": "HOT",
+      "actual": "HOT",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Residual after virtual cooldown",
+      "expected": "Not above threshold",
+      "actual": "Not above threshold",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Metric chassis axis X",
+      "expected": 220,
+      "actual": 221.1799956858158,
+      "unit": "mm",
+      "tol": 2,
+      "pass": true
+    },
+    {
+      "id": "Metric chassis axis Y",
+      "expected": 105,
+      "actual": 105.00000324100256,
+      "unit": "mm",
+      "tol": 2,
+      "pass": true
+    },
+    {
+      "id": "Metric chassis axis Z",
+      "expected": 335,
+      "actual": 335.00000735512003,
+      "unit": "mm",
+      "tol": 2,
+      "pass": true
+    },
+    {
+      "id": "Ceramic plate span X",
+      "expected": 180,
+      "actual": 180.00000715255737,
+      "unit": "mm",
+      "tol": 0.05,
+      "pass": true
+    },
+    {
+      "id": "Ceramic plate span Z",
+      "expected": 180,
+      "actual": 180.00000715255737,
+      "unit": "mm",
+      "tol": 0.05,
+      "pass": true
+    },
+    {
+      "id": "Generic probe lift",
+      "expected": 65,
+      "actual": 65,
+      "unit": "mm",
+      "tol": 0.00001,
+      "pass": true
+    }
+  ]
+}

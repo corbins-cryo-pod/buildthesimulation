@@ -1,0 +1,19 @@
+{
+  "schema": "bts.two-terminal-fixture.v1",
+  "kind": "capacitor",
+  "sampleId": "C-CAL-1NF",
+  "revision": 1,
+  "contacts": [
+    {
+      "id": "PAD_A",
+      "role": "HI"
+    },
+    {
+      "id": "PAD_B",
+      "role": "LO"
+    }
+  ],
+  "value": 1e-9,
+  "unit": "F",
+  "provenance": "Ideal BuildTheSimulation passive coupon"
+}

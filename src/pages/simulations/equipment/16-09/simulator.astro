@@ -1,0 +1,77 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/16-09/verification.json';
+import stats from '../../../../../public/equipment/16-09/asset-metrics.json';
+const p='/equipment/16-09/';
+const photo='https://www.ika.com/ika/product_art/images/3581200_1.jpg';
+const tech='https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/C-MAG-HS-7-3581200/Technical-Data-cptd.html';
+const manual='https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/C-MAG-HS-7-3581200/Downloads-cpdl.html';
+const service='https://www.ika.com/ika/product_art/spareparts/3581201.pdf';
+---
+<Layout pageTitle="IKA C-MAG HS 7 hotplate and stirrer" description="Interactive metric hotplate with an inert temperature and agitation phantom, virtual heater and residual indicator." wide={true}>
+<article id="ika16">
+<nav><a href="/simulations/equipment/16-09/">← Equipment 16-09</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#ik-evidence">References and checks</a></nav>
+<header><small>16-09 · INERT BENCH PHANTOM · SIMULATION ONLY</small><h2>IKA C-MAG HS 7 hotplate / stirrer</h2><p>Test the heater, probe, agitation state and residual heat indicator with a synthetic vessel. In the default equilibrium case, stirring changes without changing temperature.</p></header>
+<div class="bench">
+<section class="panel"><h3>Instrument and witness</h3>
+<div class="tools"><button data-ik-view="orbit">Reset view</button><button data-ik-view="front">Front controls</button><button data-ik-view="plate">Plate close-up</button><button data-ik-view="rear">Rear connectors</button></div>
+<div id="ik-viewer"></div><p id="ik-model" role="status">Loading metric instrument…</p>
+<p>Click the left heat knob, right stir knob, rear standby, or the inert witness. The probe and vessel are generic synthetic fixtures, not modeled IKA accessories. The displayed stir-bar rotation is slowed; it does not depict measured fluid motion. Headset operation has not been tested.</p></section>
+<section class="panel"><h3>Run a virtual phantom</h3>
+<div class="tools"><button id="ik-power">Virtual standby</button><button id="ik-load">Remove inert vessel</button><button id="ik-probe">Retract virtual probe</button><button id="ik-reset">Reset example</button></div>
+<div class="fields">
+<label>Mode (starts a new history)<select id="ik-mode"><option value="equilibrium">Equilibrium: no thermal exchange</option><option value="transfer">Synthetic heat transfer</option></select></label>
+<label>Equilibrium or room (°C)<input id="ik-ambient" type="number" min="15" max="35" step="any"/></label>
+<label>Virtual plate boundary (°C)<input id="ik-setC" type="number" min="50" max="80" step="5"/></label>
+<label>Stir speed (rpm)<input id="ik-rpm" type="number" min="100" max="1500" step="1"/></label>
+<label>Segment duration (virtual s)<input id="ik-durationS" type="number" min="1" max="300" step="1"/></label>
+<label>Import inert phantom JSON<input id="ik-file" type="file" accept=".json,application/json"/></label>
+</div>
+<div class="tools"><button id="ik-heat">Turn simulated heat on</button><button id="ik-stir">Turn stirring on</button><button id="ik-run">Calculate next segment</button><button id="ik-export" disabled>Export temperature and agitation</button></div>
+<p id="ik-status" aria-live="polite"></p><p id="ik-meta"></p></section>
+</div>
+<section class="panel"><h3>Temperature and agitation history</h3>
+<p id="ik-temperature" aria-live="polite"></p><p id="ik-flag"></p>
+<canvas id="ik-plot" width="800" height="410" aria-label="Predicted hotplate and probe temperature versus virtual time, with an agitation indicator."></canvas>
+<p><strong>Ready example:</strong> Turn stirring on and calculate a segment. Turn it off and calculate another. Agitation is first 300 rpm, then zero; temperature remains at 22 °C in both. The heat toggle is rejected in this mode. In transfer mode, the example instead shows the plate responding faster than the inert phantom and a residual indicator after the virtual boundary is removed.</p>
+</section>
+<section class="panel"><h3>What the calculation means</h3>
+<p>Transfer mode uses two linear first-order thermal states: dT<sub>plate</sub>/dt = (T<sub>boundary</sub> − T<sub>plate</sub>)/25 s and dT<sub>phantom</sub>/dt = (T<sub>plate</sub> − T<sub>phantom</sub>)/100 s. The exact exponential step solution joins segments continuously at each setpoint change. The virtual heat boundary returns to ambient when disabled; equilibrium mode disables heat exchange altogether. The removable ideal probe reads the phantom state. Agitation does not affect heat transfer or imply fluid motion.</p>
+<p>The 25 s and 100 s constants are chosen teaching values, not measured for this model. It does not predict controller behavior, overheating, safe handling, real heating times, viscosity, or sample preparation. HOT reflects a modeled plate above 50 °C, not proof of safety, and the browser preserves the value in virtual standby. No physical operation or procedures are implied.</p>
+<p><a href={p+'contract.json'}>I/O contract</a> · <a href={p+'example-input.json'}>Inert phantom input</a> · <a href={p+'example-history.json'}>Stir-on/stir-off equilibrium history</a></p>
+</section>
+<section class="panel" id="ik-evidence"><h3>Reference geometry and checks</h3>
+<div class="refs">
+<figure><img loading="lazy" src={p+'front-view.webp'} alt="Original front rendering with ceramic top, two knobs and small setpoint display"/><figcaption><strong>Front and ceramic plate, original render.</strong> Compare the <a href={photo}>manufacturer HS 7 product photo</a> and <a href={tech}>technical data</a>. Controls and corner radii are simplified; the envelope, ceramic panel and knob diameters are source-based.</figcaption></figure>
+<figure><img loading="lazy" src={p+'rear-view.webp'} alt="Original rear rendering showing rear controls and generic inert sample vessel"/><figcaption><strong>Rear and generic instrumented vessel, original render.</strong> See <a href={manual}>IKA C-MAG HS/HP/MS operating manual, Fig. 1 and p. 5</a>, and <a href={service}>3581201 S1 parts sheet, 16 Apr 2020, pp. 1–2</a>. Locations and rear details are approximate. This is not the HS 7 digital or control model.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Parameter</th><th>Value</th><th>Scope</th></tr></thead><tbody>
+<tr><td>Configuration</td><td>IKA C-MAG HS 7 IKAMAG S1, 3581201; US 120 V variant</td><td>Manufacturer part sheet. Bare machine plus a virtual inert accessory.</td></tr>
+<tr><td>Envelope / ceramic</td><td>220 × 105 × 335 mm W×H×D; 180 × 180 mm square ceramic</td><td>Manufacturer technical data. Governs only outer geometry.</td></tr>
+<tr><td>Front operating knobs</td><td>33.3 mm nominal diameter</td><td>Parts sheet, item 51 p. 2. Visual approximate travel; left heat, right stir.</td></tr>
+<tr><td>Manufacturer range and indication</td><td>100–1500 rpm; 50–500 °C plate target; 5 K adjustment; HOT above 50 °C after heating</td><td>Technical data and manual. Simulator's inert boundary restricted to 50–80 °C. No physical safety claim.</td></tr>
+<tr><td>Metric asset</td><td>{stats.bytes} bytes; {stats.triangles} triangles; {stats.primitives} primitives</td><td>Named action targets and an editable source; immersive session untested.</td></tr>
+</tbody></table></div>
+<p><a href={p+'ika-hs7.glb'}>Metric GLB</a> · <a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'interaction.json'}>Named actions and anchors</a> · <a href={p+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/16-09/client.mjs';</script>
+<style>
+#ika16{max-width:1260px;margin:auto}
+#ika16 header{margin:1.37rem 0 1rem}#ika16 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled,.fields input:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.18rem}.fields input[type=file]{width:100%}.fields option{background:#f5f1e6;color:#151b1a}
+#ik-viewer{height:365px;margin:.72rem 0;background:#293941}#ik-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#ik-plot{max-width:800px;width:100%;height:auto;display:block}#ik-temperature{font-weight:bold}
+#ik-status[data-error=true],#ik-flag[data-hot=true]{border-left:4px solid #a56542;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#ik-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#ik-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

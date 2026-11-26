@@ -1,0 +1,73 @@
+{
+  "schema": "bts.rheology-sweep.v1",
+  "classification": "simulated",
+  "instrument": "TA Instruments Discovery HR-2",
+  "sampleId": "VIRTUAL-N2",
+  "sampleRevision": 1,
+  "runRevision": 1,
+  "material": {
+    "schema": "bts.rheology-material.v1",
+    "sampleId": "VIRTUAL-N2",
+    "revision": 1,
+    "material": "ideal Newtonian liquid",
+    "viscosityPaS": 2
+  },
+  "geometry": {
+    "kind": "parallel plate",
+    "diameterMm": 40,
+    "gapMm": 1,
+    "temperatureC": 25,
+    "volumeAssumingFullFillMl": 1.2566370614359172
+  },
+  "inputs": {
+    "rimStrainPct": 1,
+    "startHz": 0.1,
+    "stopHz": 10,
+    "points": 3
+  },
+  "units": {
+    "frequencyHz": "Hz",
+    "omegaRadS": "rad/s",
+    "storagePa": "Pa",
+    "lossPa": "Pa",
+    "imposedAngleRad": "rad",
+    "torqueAmplitudeNm": "N m"
+  },
+  "fit": {
+    "method": "unweighted diagnostic fit of G″=ηω through zero, even for a non-Newtonian witness",
+    "viscosityPaS": 2,
+    "lossRMSEPa": 0
+  },
+  "points": [
+    {
+      "frequencyHz": 0.1,
+      "omegaRadS": 0.6283185307179586,
+      "storagePa": 0,
+      "lossPa": 1.2566370614359172,
+      "phaseDegrees": 90,
+      "rimStressPa": 0.012566370614359173,
+      "imposedAngleRad": 0.0005,
+      "torqueAmplitudeNm": 1.5791367041742976e-7
+    },
+    {
+      "frequencyHz": 1,
+      "omegaRadS": 6.283185307179586,
+      "storagePa": 0,
+      "lossPa": 12.566370614359172,
+      "phaseDegrees": 90,
+      "rimStressPa": 0.12566370614359174,
+      "imposedAngleRad": 0.0005,
+      "torqueAmplitudeNm": 0.0000015791367041742976
+    },
+    {
+      "frequencyHz": 10,
+      "omegaRadS": 62.83185307179586,
+      "storagePa": 0,
+      "lossPa": 125.66370614359172,
+      "phaseDegrees": 90,
+      "rimStressPa": 1.2566370614359172,
+      "imposedAngleRad": 0.0005,
+      "torqueAmplitudeNm": 0.000015791367041742975
+    }
+  ]
+}
