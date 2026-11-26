@@ -1,0 +1,68 @@
+{
+  "schema": "bts.detached-dot-grid-inspection.v1",
+  "revision": 1,
+  "posterId": "DETACHED-DOT-POSTER-01",
+  "sourceRevision": "poster-original-1",
+  "positiveAxes": [
+    "X right",
+    "Y up"
+  ],
+  "units": "mm",
+  "selected": {
+    "index": [
+      2,
+      1
+    ],
+    "centerMm": [
+      10,
+      23
+    ],
+    "marker": "A"
+  },
+  "posterGrid": {
+    "size": [
+      9,
+      7
+    ],
+    "datumMm": [
+      -18,
+      12
+    ],
+    "spacingMm": [
+      14,
+      11
+    ]
+  },
+  "vector": {
+    "markers": [
+      {
+        "index": [
+          2,
+          1
+        ],
+        "centerMm": [
+          10,
+          23
+        ],
+        "marker": "A"
+      },
+      {
+        "index": [
+          7,
+          5
+        ],
+        "centerMm": [
+          80,
+          67
+        ],
+        "marker": "B"
+      }
+    ],
+    "deltaMm": [
+      70,
+      44
+    ],
+    "lengthMm": 82.68010643437755
+  },
+  "provenance": "Fictitious standalone mathematical poster; not a machine coordinate frame, physical tool or process output."
+}

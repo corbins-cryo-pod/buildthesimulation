@@ -157,9 +157,10 @@
     "inputs": "Parent wafer revision, die layout, cut paths and blade kerf",
     "outputs": "Child die IDs, parent links, kerf geometry and damaged-die flags",
     "acceptance": "Run two perpendicular centerline cuts through a rectangular blank. Create four child dies and reconcile die area plus the union of both kerfs with the starting area.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: dormant metric DAD321 cabinet; nominal exterior verified, accessories inferred",
+    "simulationStatus": "First pass: detached printed-grid inspection only; material separation acceptance deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, named detached action and JSON example",
+    "simulator": "/simulations/equipment/04-07/simulator/"
   },
   {
     "id": "04-08",
