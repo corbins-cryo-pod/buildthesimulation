@@ -135,9 +135,10 @@
     "inputs": "Fluorescent specimen, illumination and detection poses, view transforms and voxel spacing",
     "outputs": "Per-view stacks, registered volume and transforms to the specimen frame",
     "acceptance": "Acquire a fiducial phantom from two simulated orientations. After registration corresponding beads should co-locate within the declared resampling tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric dormant main module and a separate visual replay display",
+    "simulationStatus": "Verified offline synthetic inert plane coordinates and scale only; no acquisition or registration",
+    "integrationStatus": "Interactive enclosure, plane replay, export and stable metric room/VR actions",
+    "simulator": "/simulations/equipment/12-07/simulator/"
   },
   {
     "id": "12-08",
