@@ -1,0 +1,27 @@
+{
+  "schema": "bts.flex-fatigue.checkpoint.v1",
+  "sample": {
+    "sampleId": "BTS-14-10-SYN-001",
+    "sampleRevision": "coupon-r1",
+    "contactIds": [
+      "J1",
+      "J2"
+    ],
+    "kind": "synthetic-surface-trace"
+  },
+  "settings": {
+    "radiusMm": 4.95,
+    "couponThicknessUm": 100,
+    "lengthMm": 20,
+    "widthMm": 1,
+    "sheetOhm": 0.5,
+    "cycles": 120,
+    "referenceLife": 1000,
+    "exponent": 2,
+    "driftAtLimit": 0.5,
+    "frequencyHz": 2,
+    "injectedOpen": 100
+  },
+  "completedCycles": 60,
+  "revision": 1
+}

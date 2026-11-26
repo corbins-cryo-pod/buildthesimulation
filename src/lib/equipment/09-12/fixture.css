@@ -1,0 +1,23 @@
+.cell-fixture{--fixture-rule:color-mix(in srgb,currentColor 29%,transparent);max-width:1310px;margin:auto}
+.cell-fixture .fixture-stack{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:1rem}
+.cell-fixture h3{font-size:1.43rem;margin:.35rem 0 .65rem}
+.cell-fixture .fixture-panel{border:1px solid var(--fixture-rule);padding:1rem;min-width:0;margin:.85rem 0}
+.cell-fixture .fixture-kicker,.cell-fixture .fixture-small,.cell-fixture label,.cell-fixture .fixture-tools{font:.88rem/1.43 system-ui,sans-serif}
+.cell-fixture .fixture-kicker{letter-spacing:.11em;text-transform:uppercase;opacity:.72}
+.cell-fixture .fixture-tools{display:flex;gap:.35rem .55rem;align-items:center;flex-wrap:wrap;margin:.55rem 0}
+.cell-fixture button,.cell-fixture select,.cell-fixture input{border:1px solid var(--fixture-rule);border-radius:3px;color:inherit;background:var(--panel,Canvas);font:inherit;padding:.4rem}
+.cell-fixture button{min-height:36px;cursor:pointer}.cell-fixture button:disabled{opacity:.47;cursor:default}
+.cell-fixture button.primary{background:#255746;color:white}
+.cell-fixture .cell-viewport{background:#263936;aspect-ratio:1.52}
+.cell-fixture canvas{width:100%;height:100%;display:block}.cell-fixture .cell-viewport canvas{touch-action:none}
+.cell-fixture .cell-trace{height:220px;background:#263936}
+.cell-fixture #controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.42rem .6rem}.cell-fixture label{display:grid;gap:.15rem}
+.cell-fixture :where(select,input){width:100%;min-width:0;box-sizing:border-box}.cell-fixture input[type=range]{min-width:130px}
+.cell-fixture .fixture-meters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;margin:.8rem 0}
+.cell-fixture .fixture-meters :is(small,strong){display:block}.cell-fixture .fixture-meters strong{font:600 clamp(1rem,2.25vw,1.6rem)/1.4 monospace}
+.cell-fixture .fixture-sheet{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}.cell-fixture .fixture-sheet figure{margin:0}.cell-fixture .fixture-sheet img{width:100%;height:auto}.cell-fixture .fixture-sheet figcaption{font-size:.94rem}
+.cell-fixture .fixture-table{overflow:auto}.cell-fixture .fixture-table table{width:100%;border-collapse:collapse}.cell-fixture .fixture-table :is(td,th){padding:.5rem;border-bottom:1px solid var(--fixture-rule);text-align:left}
+.cell-fixture #status{min-height:3em}.cell-fixture .problem{color:#ac503f}.cell-fixture details{margin:.75rem 0}
+.cell-fixture .section-drawing{margin:1rem 0}.cell-fixture .section-drawing img{width:100%;max-width:810px;display:block}.cell-fixture .section-drawing figcaption{font-size:.9rem}
+@media (max-width:840px){.cell-fixture .fixture-stack,.cell-fixture .fixture-sheet{grid-template-columns:1fr}.cell-fixture .fixture-meters{grid-template-columns:repeat(2,minmax(0,1fr))}.cell-fixture .cell-trace{height:159px}}
+@media (max-width:425px){.cell-fixture .fixture-panel{padding:.55rem}.cell-fixture .fixture-small{font-size:.8rem}}

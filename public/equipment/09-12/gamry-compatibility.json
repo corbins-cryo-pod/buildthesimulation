@@ -1,0 +1,29 @@
+{
+  "validation": "Headless numerical interoperation with the pinned staged 09-01 solver; not a claim of live receiver, devices or calibration.",
+  "receiver": "https://github.com/corbins-cryo-pod/buildthesimulation/blob/415fb75df1887a7c09629800a88555dd5ed5742a/public/equipment/09-01/solver.mjs",
+  "sha256": "ed76c8a65a344a32e92e3a49b04de1a6de43b1f85635ccf810ebdcb725174779",
+  "cases": [
+    {
+      "test": "uniform slab",
+      "expectedMaxAbsComplexDifferenceOhm": 0,
+      "actualMaxAbsComplexDifferenceOhm": 0,
+      "toleranceOhm": 1e-9,
+      "points": 49,
+      "inputRevision": 1,
+      "outputRevision": 2,
+      "sourceContactId": "WE-01",
+      "pass": true
+    },
+    {
+      "test": "slab + parallel interface RC",
+      "expectedMaxAbsComplexDifferenceOhm": 0,
+      "actualMaxAbsComplexDifferenceOhm": 2.842170943040401e-14,
+      "toleranceOhm": 1e-9,
+      "points": 49,
+      "inputRevision": 8,
+      "outputRevision": 9,
+      "sourceContactId": "RING-07",
+      "pass": true
+    }
+  ]
+}

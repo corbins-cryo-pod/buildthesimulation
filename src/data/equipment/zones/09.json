@@ -262,8 +262,19 @@
     "inputs": "Working, counter and reference port assignments, exposed area, bath geometry and electrolyte conductivity",
     "outputs": "Cell boundary-condition record and circuit terminals for the potentiostat",
     "acceptance": "In an ideal uniform-slab fixture, compare solution resistance with L/(σA). Doubling conductivity must halve resistance and removing the reference lead must prevent a three-electrode measurement.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original Mk I parametric fixture · metric GLB, moving probes and cartridge",
+    "simulationStatus": "Passive three-terminal slab and optional RC · analytic cases verified",
+    "integrationStatus": "Circuit JSON / EIS CSV · 09-01 solver interop verified (headless)",
+    "simulator": "/simulations/equipment/09-12/simulator/",
+    "related": [
+      [
+        "Original geometry and source reference images",
+        "/simulations/equipment/09-12/simulator/#evidence"
+      ],
+      [
+        "Numerical verification and interlocks",
+        "/simulations/equipment/09-12/simulator/#verification"
+      ]
+    ]
   }
 ]

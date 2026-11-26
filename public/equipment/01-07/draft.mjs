@@ -55,3 +55,13 @@ export function file(s){
  return {schema:'bts.dimensioned-sheet.v1',equipmentId:'01-07',drawingId:p.drawingId,sampleId:p.sampleId,revision:p.parentRevision+1,parentRevision:p.parentRevision,units:'mm',paper:{widthMm:420,heightMm:297},physicalScale:'1:1',datum:p.datum,
  outline:p.vertices,annotations:dimensionRows(p),specimenOverlay:{visible:s.overlay,translationMm:[p.datum.xMm,p.datum.yMm],rotationDeg:0,scale:1},view:{...s.view},provenance:'drawing-space measurement, not screen or physical metrology'};
 }
+// Portable drawing preserves physical sheet scale irrespective of the inspection view.
+export function svgSheet(s){
+ const doc=file(s),points=doc.outline.map(v=>[v.xMm+doc.datum.xMm,v.yMm+doc.datum.yMm]);
+ const poly=points.map(p=>p.join(',')).join(' ');
+ const measures=doc.annotations.map(t=>{
+  const [[x1,y1],[x2,y2]]=t.sheetEndpointsMm;
+  return `<g data-from="${t.anchorVertexIds[0]}" data-to="${t.anchorVertexIds[1]}"><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#32745e" stroke-dasharray="1 1"/><text x="${(x1+x2)/2}" y="${(y1+y2)/2-2}" font-size="3" text-anchor="middle" fill="#333">${Number(t.lengthMm.toFixed(4))} mm</text></g>`;
+ }).join('');
+ return `<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="-210 -148.5 420 297"><title>${doc.drawingId} rev ${doc.revision}</title><rect x="-210" y="-148.5" width="420" height="297" fill="white"/><rect x="-200" y="-138.5" width="400" height="277" fill="none" stroke="#777" stroke-width=".35"/><polygon points="${poly}" fill="${doc.specimenOverlay.visible?'#cde2d6':'none'}" stroke="#263b41" stroke-width=".35"/>${measures}<text x="-190" y="130" font-size="5">BTS-DRAFT · 1:1 source geometry · ${doc.sampleId}</text></svg>\n`;
+}
