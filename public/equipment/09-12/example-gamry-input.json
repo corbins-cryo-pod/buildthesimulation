@@ -1,0 +1,39 @@
+{
+  "config": {
+    "sampleId": "BTS-3E-DEMO",
+    "rsOhm": 0,
+    "rpOhm": 100,
+    "cF": 0,
+    "pure": false,
+    "mode": "eis",
+    "fLo": 1,
+    "fHi": 10000,
+    "n": 49,
+    "vRms": 0.01,
+    "currentRangeA": 0.6
+  },
+  "nextParentRevision": 1,
+  "inputMetadata": {
+    "sourceDeviceId": "09-12",
+    "sampleId": "BTS-3E-DEMO",
+    "contactId": "WE-01",
+    "sourceTerminals": {
+      "working": {
+        "id": "BTS-CELL-WE",
+        "role": "WE",
+        "function": "source current and voltage sense positive"
+      },
+      "reference": {
+        "id": "BTS-CELL-RE",
+        "role": "RE",
+        "function": "ideal voltage sense negative; zero current"
+      },
+      "counter": {
+        "id": "BTS-CELL-CE",
+        "role": "CE",
+        "function": "return current; counter impedance not modeled"
+      }
+    },
+    "note": "WE–RE electrical equivalence only. Keep source contact/terminal identities with the receipt; this solver uses dummy-board terminal IDs."
+  }
+}
