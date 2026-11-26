@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"06-11",
+  "asset":"of-12g.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","mount":"bench"},
+  "parts":{"cabinet":"of12g_dormant_enclosure","door":"closed_solid_door","display":"blank_inactive_controller","exhibit":"detached_projection_exhibit"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_projection_panel","label":"Switch the detached synthetic drawing projection","sizeM":[0.347,0.218,0.045],"range":[0,1],"mode":"read-only"}],
+  "vrEvidence":"Metric model and semantic detached target; no immersive or headset verification."
+}

@@ -1,0 +1,117 @@
+{
+  "scope": "Vendor solid-door external dimensions and ideal synthetic projection of fixed read-only cards. No equipment function, material workflow, heating/cure or immersive evidence.",
+  "rows": [
+    {
+      "id": "CARD-NEAR parallel width",
+      "expected": 40,
+      "actual": 40,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "CARD-NEAR parallel height",
+      "expected": 30,
+      "actual": 30,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "CARD-FAR parallel width",
+      "expected": 40,
+      "actual": 40,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "CARD-FAR parallel height",
+      "expected": 30,
+      "actual": 30,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Parallel near/far ratio",
+      "expected": 1,
+      "actual": 1,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "CARD-NEAR projected width",
+      "expected": 16,
+      "actual": 16,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "CARD-NEAR projected height",
+      "expected": 12,
+      "actual": 12,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "CARD-FAR projected width",
+      "expected": 8,
+      "actual": 8,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "CARD-FAR projected height",
+      "expected": 6,
+      "actual": 6,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "Perspective near/far ratio",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Invalid state retained",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "OEM external width",
+      "expected": 657,
+      "actual": 657.0000052452087,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "OEM external height",
+      "expected": 870,
+      "actual": 870.0000010430813,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "OEM external depth",
+      "expected": 692,
+      "actual": 692.0000195968896,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    }
+  ]
+}
