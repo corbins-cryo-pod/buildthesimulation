@@ -1,0 +1,146 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "11-02",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.1425,
+      0,
+      -0.0525
+    ],
+    "max": [
+      0.2495,
+      0.135,
+      0.0975
+    ]
+  },
+  "budget": {
+    "byteLength": 232436,
+    "nodes": 37,
+    "triangles": 3312
+  },
+  "actions": [
+    {
+      "node": "SYMBOL_A",
+      "action": "read",
+      "value": "A",
+      "label": "Read disconnected generic tile A",
+      "boundsAtRestM": {
+        "min": [
+          0.1215,
+          0.038,
+          0.0515
+        ],
+        "max": [
+          0.1505,
+          0.05,
+          0.0585
+        ]
+      }
+    },
+    {
+      "node": "SYMBOL_B",
+      "action": "read",
+      "value": "B",
+      "label": "Read disconnected generic tile B",
+      "boundsAtRestM": {
+        "min": [
+          0.1635,
+          0.038,
+          0.0515
+        ],
+        "max": [
+          0.1925,
+          0.05,
+          0.0585
+        ]
+      }
+    },
+    {
+      "node": "SYMBOL_U",
+      "action": "read",
+      "value": "U",
+      "label": "Read disconnected generic tile U",
+      "boundsAtRestM": {
+        "min": [
+          0.2055,
+          0.038,
+          0.0515
+        ],
+        "max": [
+          0.2345,
+          0.05,
+          0.0585
+        ]
+      }
+    }
+  ],
+  "actionModule": "symbols.mjs",
+  "interactionNotes": "Attach the abstract shapes chart to +Z of SYMBOL_SCREEN. All actions are confined to the unrelated card viewer. No hardware interfaces are exposed.",
+  "verification": [
+    {
+      "node": "DORIC_LDMD1_DORMANT",
+      "axis": "x",
+      "expectedMm": 175,
+      "actualMm": 175,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "DORIC_LDMD1_DORMANT",
+      "axis": "z",
+      "expectedMm": 105,
+      "actualMm": 105,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "DORIC_LDMD1_DORMANT",
+      "axis": "y",
+      "expectedMm": 50,
+      "actualMm": 50,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "DORIC_CLDM_CAPPED",
+      "axis": "x",
+      "expectedMm": 64,
+      "actualMm": 64,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "DORIC_CLDM_CAPPED",
+      "axis": "z",
+      "expectedMm": 56,
+      "actualMm": 56,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "DORIC_CLDM_CAPPED",
+      "axis": "y",
+      "expectedMm": 22,
+      "actualMm": 22,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "HEAD_NOMINAL_BODY",
+      "axis": "x",
+      "expectedMm": 24.6,
+      "actualMm": 24.6,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "HEAD_NOMINAL_BODY",
+      "axis": "z",
+      "expectedMm": 36.8,
+      "actualMm": 36.8,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "HEAD_NOMINAL_BODY",
+      "axis": "y",
+      "expectedMm": 12,
+      "actualMm": 12,
+      "toleranceMm": 0.05
+    }
+  ]
+}

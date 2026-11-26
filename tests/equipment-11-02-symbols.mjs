@@ -1,0 +1,4 @@
+import{test}from'node:test';import assert from'node:assert/strict';import{station,read,act}from'../public/equipment/11-02/symbols.mjs';
+test('A matches all individually known symbols exactly once, regardless of order',()=>{const a=read(station());assert.equal(a.matches,true);assert.deepEqual(a.shapes,['square','triangle','circle']);assert.deepEqual(a.missing,[]);assert.deepEqual(a.duplicates,[])});
+test('B flags absent square and duplicates without inferring a match',()=>{const b=read(act(station(),'read','B'));assert.equal(b.matches,false);assert.deepEqual(b.missing,['square']);assert.deepEqual(b.duplicates,['triangle'])});
+test('unavailable tile distinct from mismatch; arbitrary device actions invalid',()=>{const u=read(act(station(),'read','U'));assert.equal(u.matches,null);assert.equal(u.missing,null);assert.equal(u.shapes,null);assert.equal(u.artifactId,'BTS-GENERIC-SYMBOL-CARD-01');assert.throws(()=>act(station(),'run',true),RangeError)});
