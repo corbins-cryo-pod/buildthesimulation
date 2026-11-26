@@ -1,0 +1,164 @@
+{
+  "deviceId": "05-06",
+  "scope": "Analytical/NBS published reference numbers and extracted model coordinates. No empirical hardware or XR test.",
+  "cases": [
+    {
+      "id": "infinite",
+      "expected": 22.0635600152652,
+      "actual": 22.06356001526516,
+      "units": "mV",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "material",
+      "expected": 100,
+      "actual": 100,
+      "units": "Ω/sq",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "radial",
+      "expected": 4.49925,
+      "actual": 4.499245461790033,
+      "units": "Ω/sq per Ω",
+      "tolerance": 0.000006,
+      "outcome": "PASS"
+    },
+    {
+      "id": "tangential",
+      "expected": 4.49961,
+      "actual": 4.4996082147625485,
+      "units": "Ω/sq per Ω",
+      "tolerance": 0.000006,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reversal",
+      "expected": 0,
+      "actual": 0,
+      "units": "V",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "offset",
+      "expected": 0.0005,
+      "actual": 0.0005000000000000004,
+      "units": "V",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "resistance under reversal",
+      "expected": 100,
+      "actual": 99.99999999999999,
+      "units": "Ω/sq",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "edge-check",
+      "expected": true,
+      "actual": true,
+      "units": "more voltage at edge; corrected R unchanged",
+      "tolerance": "exact direction; 1e-9 Ω/sq",
+      "outcome": "PASS"
+    },
+    {
+      "id": "coverage",
+      "expected": "Rejection",
+      "actual": "P4 falls outside the usable film (0.2 mm teaching guard).",
+      "units": "",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "overload",
+      "expected": "Rejection",
+      "actual": "Sense input overload at ±1 V. Reduce virtual drive current.",
+      "units": "",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "mechanical",
+      "expected": "Rejection",
+      "actual": "Load specimen, close shield and lower probe before acquiring.",
+      "units": "",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "motion-probe-down",
+      "expected": "Rejection",
+      "actual": "Raise the probe before moving the stage.",
+      "units": "",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "motion unchanged",
+      "expected": {
+        "xM": 0,
+        "yM": 0
+      },
+      "actual": {
+        "xM": 0,
+        "yM": 0
+      },
+      "units": "m",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "inferred voltage map",
+      "expected": 7,
+      "actual": 7,
+      "units": "sites; same sample ID, one revision increment",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "metric",
+      "expected": [
+        304.8,
+        254,
+        482.6
+      ],
+      "actual": [
+        305.0000071525574,
+        255.00000043213367,
+        482.73999989032745
+      ],
+      "units": "mm, chassis and closed lid",
+      "tolerance": 0.6,
+      "outcome": "FAIL"
+    },
+    {
+      "id": "physical-pitch",
+      "expected": [
+        1,
+        1,
+        1
+      ],
+      "actual": [
+        1,
+        1,
+        1
+      ],
+      "units": "mm",
+      "tolerance": 0.001,
+      "outcome": "PASS"
+    },
+    {
+      "id": "XR anchors",
+      "expected": true,
+      "actual": true,
+      "units": "present; binary size matches",
+      "tolerance": 0,
+      "outcome": "PASS"
+    }
+  ]
+}
