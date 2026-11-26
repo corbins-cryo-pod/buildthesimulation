@@ -1,0 +1,109 @@
+{
+  "schema": "bts.enclosure-footprint.verification.v1",
+  "metrics": {
+    "bytes": 158168,
+    "triangles": 2076,
+    "draws": 51,
+    "nominalHousingXyzM": [
+      0.2540000081062317,
+      0.2159000039100647,
+      0.20319999754428864
+    ]
+  },
+  "cases": [
+    {
+      "id": "centered-x-side",
+      "expected": 13,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": 13,
+      "outcome": "PASS"
+    },
+    {
+      "id": "centered-y-side",
+      "expected": 13.4,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": 13.400000000000006,
+      "outcome": "PASS"
+    },
+    {
+      "id": "quarter-turn-width",
+      "expected": 203.2,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": 203.20000000000002,
+      "outcome": "PASS"
+    },
+    {
+      "id": "quarter-turn-depth",
+      "expected": 254,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": 254,
+      "outcome": "PASS"
+    },
+    {
+      "id": "quarter-turn-y-interference",
+      "expected": -12,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": -12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "rotated-45-projection",
+      "expected": 323.2892203584895,
+      "unit": "mm",
+      "tolerance": 1e-9,
+      "actual": 323.2892203584895,
+      "outcome": "PASS"
+    },
+    {
+      "id": "touch-reserve",
+      "expected": "zero-reserve",
+      "unit": "status",
+      "actual": "zero-reserve",
+      "outcome": "PASS"
+    },
+    {
+      "id": "offset-interference",
+      "expected": "interference-in-gauge",
+      "unit": "status",
+      "actual": "interference-in-gauge",
+      "outcome": "PASS"
+    },
+    {
+      "id": "invalid-negative-gauge-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "exterior-width",
+      "expected": 0.254,
+      "unit": "m",
+      "tolerance": 0.000001,
+      "actual": 0.2540000081062317,
+      "outcome": "PASS"
+    },
+    {
+      "id": "exterior-height",
+      "expected": 0.2159,
+      "unit": "m",
+      "tolerance": 0.000001,
+      "actual": 0.2159000039100647,
+      "outcome": "PASS"
+    },
+    {
+      "id": "exterior-depth",
+      "expected": 0.2032,
+      "unit": "m",
+      "tolerance": 0.000001,
+      "actual": 0.20319999754428864,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Nominal shell dimensions and synthetic external rectangular gauge only. No real equipment installation, treatment, or process state."
+}
