@@ -82,8 +82,8 @@
   {
     "id": "09-05",
     "name": "Analog aesthetic oscilloscope",
-    "model": "Tektronix 465B (legacy candidate)",
-    "evidence": "C",
+    "model": "Tektronix 465B cabinet / standard CRT",
+    "evidence": "A",
     "priority": "P1",
     "page": 31,
     "sources": [],
@@ -93,9 +93,14 @@
     "inputs": "Shared analog signal, vertical sensitivity, sweep time per division and trigger level",
     "outputs": "CRT trace projection and graticule coordinates tied to the source waveform",
     "acceptance": "Display a 2 V peak-to-peak, 1 kHz sine at 1 V/div and 0.2 ms/div. The graticule must show two vertical divisions peak-to-peak and five horizontal divisions per cycle.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with physical CRT graticule, editable geometry and original views",
+    "simulationStatus": "Numerically verified analog A sweep, trigger, probe scaling and screen clipping",
+    "integrationStatus": "Dedicated analog CRT simulator, compatible voltage import; headset testing pending",
+    "simulator": "/simulations/equipment/09-05/simulator/",
+    "related": [
+      ["Tektronix 465B official manual record", "https://www.tek.com/en/manual/465b-instruction-manual"],
+      ["Tektronix 465B Operator Manual", "https://w140.com/tekwiki/images/7/72/070-2756-00.pdf"]
+    ]
   },
   {
     "id": "09-06",
