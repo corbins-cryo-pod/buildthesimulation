@@ -238,9 +238,15 @@
     "inputs": "Event table, channel units, gate polygons and parent population ID",
     "outputs": "Event membership, counts and virtual daughter-population records",
     "acceptance": "Apply a rectangular gate to a hand-labeled point cloud containing boundary points. Match expected event IDs under the documented boundary rule and deduplicate overlapping gates in the union.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: source-dimensioned dormant FACSAria II shell",
+    "simulationStatus": "First pass: detached immutable triangle only; acquisition and population selection excluded",
+    "integrationStatus": "Linked: documentary viewer and abstract length JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/07-10/simulator/"
+      ]
+    ]
   },
   {
     "id": "07-11",

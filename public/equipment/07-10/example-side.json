@@ -1,0 +1,24 @@
+{
+  "schema": "bts.abstract-segment-length.v1",
+  "deviceId": "07-10",
+  "sourceId": "inert-triangle-01",
+  "sourceRevision": 0,
+  "readRevision": 1,
+  "kind": "detached immutable diagram",
+  "side": "CA",
+  "from": {
+    "id": "C",
+    "x": 5,
+    "y": -2
+  },
+  "to": {
+    "id": "A",
+    "x": -3,
+    "y": 4
+  },
+  "dx": -8,
+  "dy": 6,
+  "length": 10,
+  "units": "abstract drawing units",
+  "deviceStateModeled": false
+}
