@@ -157,9 +157,10 @@
     "inputs": "Virtual specimen ID, prior state and preservation-method record",
     "outputs": "Preserved-specimen revision, timestamp, method and provenance",
     "acceptance": "Apply a preservation event to a labeled specimen. The new revision should cite the input and method while preserving coordinates and leaving unspecified ultrastructure unknown.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric dormant exterior with published overall body and station envelope",
+    "simulationStatus": "First pass: detached inert outline annotation only; preservation acceptance deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, named exhibit action and annotation example",
+    "simulator": "/simulations/equipment/13-08/simulator/"
   },
   {
     "id": "13-09",

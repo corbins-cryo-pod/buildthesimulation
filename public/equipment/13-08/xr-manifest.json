@@ -1,0 +1,49 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "13-08",
+  "asset": "/equipment/13-08/leica-em-ice-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator; detached outline uses separate, authored mm coordinates.",
+  "metrics": {
+    "bytes": 106448,
+    "triangles": 1256,
+    "draws": 42,
+    "instrumentXYZM": [
+      1.1600000262260437,
+      1.2849999599161281,
+      0.7900000046938658
+    ]
+  },
+  "scope": "Detached-exhibit view action only, no headset tested.",
+  "nodes": [
+    {
+      "node": "detached_display_badge",
+      "label": "Switch detached exhibit tile",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.1,
+        0.025,
+        0.053
+      ]
+    },
+    {
+      "node": "detached_tile_a",
+      "label": "Detached example A",
+      "boundsM": [
+        0.06,
+        0.01,
+        0.08
+      ]
+    },
+    {
+      "node": "detached_tile_b",
+      "label": "Detached example B",
+      "boundsM": [
+        0.12,
+        0.01,
+        0.05
+      ]
+    }
+  ]
+}

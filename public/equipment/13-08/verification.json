@@ -1,0 +1,100 @@
+{
+  "schema": "bts.detached-outline-annotation.verification.v1",
+  "metrics": {
+    "bytes": 106448,
+    "triangles": 1256,
+    "draws": 42,
+    "instrumentXYZM": [
+      1.1600000262260437,
+      1.2849999599161281,
+      0.7900000046938658
+    ]
+  },
+  "cases": [
+    {
+      "id": "width",
+      "expected": 1.16,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 1.1600000262260437,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 1.285,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 1.2849999599161281,
+      "outcome": "PASS"
+    },
+    {
+      "id": "depth",
+      "expected": 0.79,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.7900000046938658,
+      "outcome": "PASS"
+    },
+    {
+      "id": "card-a",
+      "expected": 100,
+      "tolerance": 1e-10,
+      "unit": "mm",
+      "actual": 100,
+      "outcome": "PASS"
+    },
+    {
+      "id": "card-b",
+      "expected": 130,
+      "tolerance": 1e-10,
+      "unit": "mm",
+      "actual": 130,
+      "outcome": "PASS"
+    },
+    {
+      "id": "card-a-edge",
+      "expected": 60,
+      "tolerance": 1e-10,
+      "unit": "mm",
+      "actual": 60,
+      "outcome": "PASS"
+    },
+    {
+      "id": "card-b-edge",
+      "expected": 120,
+      "tolerance": 1e-10,
+      "unit": "mm",
+      "actual": 120,
+      "outcome": "PASS"
+    },
+    {
+      "id": "keeps-corners",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "interior-stays-unknown",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "wrong-object-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "physical-action-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Nominal outer envelope and synthetic corner arithmetic only. No model fit against measured internals, pressure or process validation."
+}
