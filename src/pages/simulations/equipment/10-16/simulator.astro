@@ -1,0 +1,53 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const root='/equipment/10-16/';
+const ifu='https://www.leicabiosystems.com/sites/default/files/media_product-download/2021-03/Leica_VT1200S_IFU_1v7J_en.pdf';
+const brochure='https://www.leicabiosystems.com/sites/default/files/media_product-download/2021-03/95.8539_Brochure_Vibratome_Series_EN.pdf';
+---
+<Layout pageTitle="VT1200 S exterior and dry fit gauge" subtitle="" wide={true}>
+ <link rel="stylesheet" href="/styles/equipment.css"/>
+ <main class="equipment-page vt">
+  <p><a href="/simulations/equipment/#equipment-10-16">↩ Equipment register · 10-16</a></p>
+  <h1>VT1200 S exterior &amp; dry fit gauge</h1>
+  <p>Explore the shape of a dormant Leica VT1200 S beside a <strong>separate, invented bench gauge</strong>. Inspect an inert marked coupon and check whether its proposed position clears the tray walls. The two objects are not connected. The original tissue operation, cutting, preparation and slice-tracking acceptance are not simulated.</p>
+  <div class="vt-grid">
+   <section aria-label="3D explorer">
+    <div class="vt-buttons"><button type="button" id="vt-all">Reset orbit</button><button type="button" id="vt-tray">Gauge close-up</button><button type="button" id="vt-rear">Rear enclosure</button></div>
+    <div id="vt-view" role="img" aria-label="Orbitable dormant Leica VT1200 S exterior and separate teal inert tray"></div><p id="vt-model">Loading original metric model…</p>
+   </section>
+   <section class="fit-box" aria-labelledby="vt-gauge">
+    <h2 id="vt-gauge">Dry coupon · DRY-TEAL-01</h2>
+    <p>Nominal opening 54 × 34 mm. Coupon 48 × 28 × 4 mm. Required gap: 0.5 mm at each wall.</p>
+    <div class="vt-buttons"><button type="button" id="vt-rotate">Rotate coupon 90°</button><output id="vt-angle">0°</output></div>
+    <label for="vt-offset">X offset: <output id="vt-offset-text">0 mm</output></label><input id="vt-offset" type="range" min="-12" max="12" step="1" value="0"/>
+    <label for="vt-mark">Inspect landmark</label><select id="vt-mark"><option>P1</option><option>P2</option></select>
+    <p id="vt-point"></p>
+    <div class="vt-buttons"><button type="button" id="vt-verify">Verify clearance</button><button type="button" id="vt-reset">Reset gauge</button><button type="button" id="vt-save" disabled>Export JSON</button></div>
+    <p id="vt-result" role="status">Ready. Verify the proposed fit.</p>
+   </section>
+  </div>
+  <section id="vt-refs">
+   <h2>Geometric reference</h2>
+   <p><a href={brochure+'#page=3'}>Leica Research Solutions, brochure 95.8539, p. 3</a>: three-quarter VT1200 S photograph shows the sloped upper shell, dark lower base, shallow front lip and off-body console. Compare with browser “Reset orbit.” <a href={ifu+'#page=9'}>Instructions for Use, v1.7 Rev J, p. 9</a>: dimensions of the base and external controller; the latter is photographed separately and shown here as an inactive visual prop. The rear view was not used for a measured backside reconstruction: rear details here are intentionally generic. Source photographs are linked and not reproduced.</p>
+   <table><thead><tr><th>Part</th><th>Declared size</th><th>Evidence</th></tr></thead><tbody><tr><td>Base without optics</td><td>600 mm length × 250 mm width × 230 mm height</td><td>IFU p. 9, turned in scene so long axis is front-to-rear</td></tr><tr><td>Controller datum</td><td>190 × 150 × 72 mm</td><td>IFU p. 9, folded bases; blank key shapes illustrative</td></tr><tr><td>Dry gauge / coupon</td><td>54 × 34 mm opening / 48 × 28 × 4 mm</td><td>Original nominal CAD; not Leica accessory measurements</td></tr></tbody></table>
+   <figure><svg viewBox="0 0 540 140" role="img" aria-labelledby="vt-diag" width="540" style="max-width:100%;height:auto;border:1px solid currentColor"><title id="vt-diag">Original side silhouette of dormant instrument, and tray top plan</title><g fill="none" stroke="currentColor" stroke-width="2"><path d="M25 99V77H103L122 42Q141 27 183 27H290L304 35V102H25Z M25 92H304 M57 75H103"/><path d="M26 117H303m-273 -4l-5 4 5 4m268 -8l5 4-5 4"/><path d="M346 25H512V113H346Z M359 34H499V104H359Z M367 41H491V97H367Z"/><path d="M391 74v-8m-4 4h8m68 13v-8m-4 4h8"/></g><g fill="currentColor" font-family="sans-serif" font-size="11"><text x="104" y="133">600 mm · case datum</text><text x="352" y="127">Synthetic tray · plan</text><text x="337" y="17">54 mm clear opening</text></g></svg><figcaption>Original diagram, not a Leica drawing. Inactive skin at left; detached dry gauge at right. Diagrams are not drawn to the same scale.</figcaption></figure>
+  </section>
+  <section id="vt-proof">
+   <h2>What is verified</h2>
+   <p>For each axis, compute half the difference between the opening and the rotated coupon dimension, then add or subtract the proposed offset from the opposite walls. Negative means geometric interference. Positive Y is up and positive Z faces the front. Rotate the coupon’s label about +Y before applying the X offset. Units are millimeters; input rotation is 0° or 90°. The gauge does not move or drive the instrument.</p>
+   <table><thead><tr><th>Verification</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+    <tr><td>Centered 0°</td><td>+3 mm at each wall, pass</td><td>+3 mm at each wall, pass</td><td>1 µm</td></tr>
+    <tr><td>Centered 90°</td><td>−7 mm on both Z walls, fail</td><td>−7 mm on both Z walls, fail</td><td>1 µm</td></tr>
+    <tr><td>P1, 90° and +2 mm offset</td><td>(9, 4, 15) mm</td><td>(9, 4, 15) mm</td><td>1 µm</td></tr>
+    <tr><td>Enclosure size in glTF</td><td>250 × 230 × 600 mm XYZ</td><td>250 × 230 × 600 mm XYZ</td><td>0.03 mm</td></tr>
+   </tbody></table>
+   <p>These are independent nominal geometry checks, not validations against measured hardware or experiments. No hardware protocol, cutting path, tissue preparation, section output, physiology model or hardware connection is available.</p>
+   <ul><li><a href={root+'vt1200s-reference.glb'} download>Original metric GLB</a> · <a href={root+'build-model.py'} download>editable Blender source</a></li><li><a href={root+'example-fit.json'}>Example output and schema fields</a> · <a href={root+'fit.mjs'}>headless action and geometry module</a></li><li><a href={root+'xr.json'}>VR pick names, interaction bounds and action IDs</a> · headset session not tested</li></ul>
+  </section>
+ </main>
+ <script is:inline>window.trayFit=import('/equipment/10-16/fit.mjs');</script>
+ <script>import '../../../../lib/equipment/10-16/client.mjs';</script>
+</Layout>
+<style>
+ .vt{max-width:79rem;margin:0 auto;padding-inline:1rem}.vt-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.vt-buttons{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;margin:.55rem 0}.vt button,.vt select{font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.18rem;padding:.4rem .65rem}.vt button:not(:disabled){cursor:pointer}.vt button:disabled{opacity:.5}.vt input{display:block;width:95%}.vt label{display:block;margin-top:.75rem}.fit-box{border:1px solid currentColor;padding:1rem;border-radius:.35rem}#vt-view{height:clamp(16rem,36vw,36rem);background:#263239;border-radius:.2rem;overflow:hidden;touch-action:none}#vt-view :global(canvas){display:block;width:100%;height:100%}.vt table{width:100%;border-collapse:collapse}.vt th,.vt td{border-bottom:1px solid currentColor;text-align:left;padding:.36rem .5rem}.vt figure{margin:1.2rem 0}.vt figcaption{max-width:44rem}.vt section{margin-bottom:1.5rem}@media(max-width:700px){.vt-grid{grid-template-columns:1fr}}
+</style>

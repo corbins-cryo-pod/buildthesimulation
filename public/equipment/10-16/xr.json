@@ -1,0 +1,162 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "10-16",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.338,
+      0,
+      -0.3
+    ],
+    "max": [
+      0.285,
+      0.23,
+      0.3
+    ]
+  },
+  "budget": {
+    "byteLength": 353260,
+    "nodes": 61,
+    "triangles": 5250
+  },
+  "actions": [
+    {
+      "node": "COUPON_POSE",
+      "action": "rotate",
+      "label": "Rotate virtual witness",
+      "boundsAtRestM": {
+        "min": [
+          0.219,
+          0.01,
+          0.062
+        ],
+        "max": [
+          0.267,
+          0.0149,
+          0.09
+        ]
+      }
+    },
+    {
+      "node": "LANDMARK_P1",
+      "action": "landmark",
+      "label": "Read P1 label",
+      "value": "P1",
+      "boundsAtRestM": {
+        "min": [
+          0.225538,
+          0.014,
+          0.0805
+        ],
+        "max": [
+          0.230462,
+          0.0149,
+          0.0855
+        ]
+      }
+    },
+    {
+      "node": "LANDMARK_P2",
+      "action": "landmark",
+      "label": "Read P2 label",
+      "value": "P2",
+      "boundsAtRestM": {
+        "min": [
+          0.255538,
+          0.014,
+          0.0665
+        ],
+        "max": [
+          0.260462,
+          0.0149,
+          0.0715
+        ]
+      }
+    },
+    {
+      "node": "WITNESS_TRAY",
+      "action": "verify",
+      "label": "Verify geometric clearance",
+      "boundsAtRestM": {
+        "min": [
+          0.201,
+          0,
+          0.046
+        ],
+        "max": [
+          0.285,
+          0.018,
+          0.106236
+        ]
+      }
+    }
+  ],
+  "actionModule": "fit.mjs",
+  "salientNote": "Static unused Leica exterior; all interaction is confined to a separate inert match-fit demonstration. Use live pick transforms for a rotated/offset coupon. No headset runtime verified.",
+  "verification": [
+    {
+      "node": "BASE_LENGTH_DATUM",
+      "axis": "x",
+      "expectedMm": 250,
+      "actualMm": 250,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "VT1200S_EXTERNAL",
+      "axis": "y",
+      "expectedMm": 230,
+      "actualMm": 230,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "BASE_LENGTH_DATUM",
+      "axis": "z",
+      "expectedMm": 600,
+      "actualMm": 600,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "CONTROLLER_DATUM",
+      "axis": "x",
+      "expectedMm": 150,
+      "actualMm": 150,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "CONTROLLER_DATUM",
+      "axis": "y",
+      "expectedMm": 72,
+      "actualMm": 72,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "CONTROLLER_DATUM",
+      "axis": "z",
+      "expectedMm": 190,
+      "actualMm": 190,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "COUPON_DATUM",
+      "axis": "x",
+      "expectedMm": 48,
+      "actualMm": 48,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "COUPON_DATUM",
+      "axis": "y",
+      "expectedMm": 4,
+      "actualMm": 4,
+      "toleranceMm": 0.03
+    },
+    {
+      "node": "COUPON_DATUM",
+      "axis": "z",
+      "expectedMm": 28,
+      "actualMm": 28,
+      "toleranceMm": 0.03
+    }
+  ]
+}

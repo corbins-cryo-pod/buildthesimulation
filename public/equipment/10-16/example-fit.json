@@ -1,0 +1,41 @@
+{
+  "schema": "bts.inert-fit-check.v1",
+  "sampleId": "DRY-TEAL-01",
+  "revision": 0,
+  "provenance": "Author-designed dry gauge. Not part of Leica hardware; no biological or operating data.",
+  "axes": "glTF +Y up; +Z toward viewer from instrument rear; local mm relative to tray inner floor",
+  "units": "mm",
+  "openingMm": [
+    54,
+    34
+  ],
+  "couponMm": [
+    48,
+    28,
+    4
+  ],
+  "requiredMm": 0.5,
+  "rotationDeg": 0,
+  "offsetXmm": 0,
+  "marginsMm": {
+    "−X": 3,
+    "+X": 3,
+    "−Z": 3,
+    "+Z": 3
+  },
+  "minMm": 3,
+  "fits": true,
+  "landmark": {
+    "id": "P1",
+    "couponPositionMm": [
+      -15,
+      4,
+      7
+    ],
+    "trayPositionMm": [
+      -15,
+      4,
+      7
+    ]
+  }
+}
