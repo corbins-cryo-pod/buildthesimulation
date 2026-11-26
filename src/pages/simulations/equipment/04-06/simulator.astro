@@ -1,0 +1,28 @@
+---
+import Layout from '../../../../layouts/Layout.astro';import '../../../../styles/equipment.css';
+const d='/equipment/04-06/',photo='https://www.nist.gov/system/files/documents/2017/05/09/Manual_6ft_WetChem_Bench.pdf#page=1';
+---
+<Layout pageTitle="Dry benchtop reference and separate footprint puzzle" description="Orbit the inactive conceptual enclosure and turn a detached fictional footprint tile." wide={true}>
+<article class="equipment" id="wetbench"><nav class="eq-nav"><a href="/simulations/equipment/04-06/">← Equipment 04-06</a><a href="/simulations/equipment/">Register</a><a href="#wet-evidence">Evidence</a></nav>
+<header class="eq-mast"><p class="eq-meta">04-06 / DOCUMENTARY ENCLOSURE · DETACHED GEOMETRY</p><h2>Inspect the cabinet and test a rectangle fit</h2><p class="eq-lede">The deactivated cabinet uses general visual cues from a Reynolds Tech six-foot installation. The independent teaching frame checks projected footprints only.</p></header>
+<div class="wet-cols"><section><h3>Nominal non-operational enclosure</h3><canvas id="wet-model" aria-label="Orbitable nominal cabinet and independent rectangle puzzle"></canvas><p id="wet-viewstatus" role="status">Loading metric GLB…</p><button id="wet-front">Reset overview</button><button id="wet-rear">Rear exterior</button><button id="wet-board">Puzzle close-up</button></section>
+<section><h3>Footprint test on the separate stand</h3><p>The teaching opening is 160 × 110 mm. Compare the aligned dimensions of the gold tile first, then turn the tile 90°. The gauge is not part of, or a clearance chart for, the cabinet.</p>
+<button id="wet-turn">Turn the tile 90°</button><button id="wet-reset">Restore default orientation</button><p id="wet-label" role="status"></p>
+<table><thead><tr><th>Projected tile W × D</th><th>Total clearance W / D</th></tr></thead><tbody><tr><td id="wet-footprint"></td><td id="wet-margin"></td></tr></tbody></table><p>Negative clearance means a projected overlap. Positive clearance is the total difference, not clearance on one side. This does not model a path or collision during rotation.</p>
+<button id="wet-export">Download footprint result</button><p><a href={d+'example-footprint.json'}>Example report at 90°</a>.</p></section></div>
+<section id="wet-evidence"><h3>Reference and dimensions</h3>
+<div class="wet-cols"><figure><img src={d+'station.webp'} alt="Original dry enclosure with inactive fascia and unrelated tile stand"/><figcaption>Original front angle. <a href={photo}>NIST/CNST photo, cover only</a> establishes the broad white enclosure, blue accent band, solid lower door outline, clear-sheet silhouette and fascia. The reference is a six-foot class, not identification of this register’s exact unit.</figcaption></figure>
+<figure><img src={d+'board.webp'} alt="Original separate teaching frame and gold planar tile"/><figcaption>Original detached footprint puzzle and no specimen. None of the cabinet parts can move or accept any input.</figcaption></figure></div>
+<table><thead><tr><th>Quantity or case</th><th>Expected</th><th>Actual / source</th></tr></thead><tbody>
+<tr><td>Nominal modeled cabinet W × H × D</td><td>1,828.8 × 1,680 × 880 mm</td><td>Six-foot nominal styling anchor; H/D and subgeometry inferred, no vendor dimensions beyond nominal class. Export matches this authored envelope within 2 mm.</td></tr>
+<tr><td>Default tile 105 × 145 mm</td><td>+55 / −35 mm; outside</td><td>Exact</td></tr><tr><td>Turned tile 145 × 105 mm</td><td>+15 / +5 mm; fits outline</td><td>Exact</td></tr></tbody></table>
+<p>Only rectangle geometry is modeled. No chemistry, process selection, material interaction, compatibility, exhaust or plumbing operation, sample state, or equipment controls are implemented. The original undercut and material-compatibility test is not supported.</p>
+<p><a href={d+'build-model.py'}>Editable Blender source</a> · <a href={d+'wet-bench.glb'}>Metric GLB</a> · <a href={d+'footprint.mjs'}>Offline footprint actions and report</a> · <a href={d+'vr.json'}>VR action bounds</a>. Headset use not verified.</p></section></article></Layout>
+<script>import '../../../../lib/equipment/04-06/client.mjs';</script>
+<style is:global>
+#wetbench .wet-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem}#wetbench section{margin:1rem 0;padding:1rem;border:1px solid var(--border);min-width:0}
+#wetbench button{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:.4rem;margin:.2rem .25rem .2rem 0;max-width:100%;cursor:pointer}#wetbench button:focus-visible{outline:2px solid #b28d5e}
+#wet-model{width:100%;height:354px;display:block;touch-action:none}#wetbench figure{margin:.5rem 0}#wetbench figure img{width:100%}
+#wetbench table{width:100%;font-size:.94rem;border-collapse:collapse;text-align:left}#wetbench td,#wetbench th{border-bottom:1px solid var(--border);padding:.35rem}
+@media(max-width:850px){#wetbench .wet-cols{grid-template-columns:minmax(0,1fr)}#wet-model{height:282px}}
+</style>
