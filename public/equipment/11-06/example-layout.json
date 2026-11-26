@@ -1,0 +1,78 @@
+{
+  "schema": "bts.breadboard-placement.v1",
+  "deviceId": "11-06",
+  "kind": "simulated rigid envelope",
+  "revision": 1,
+  "frame": "B7590A: +X right, +Y up, +Z toward operator; origin center at surface",
+  "units": {
+    "length": "mm",
+    "volume": "mm^3"
+  },
+  "indices": "zero-based columns increasing +X, rows increasing +Z",
+  "hardware": "SDPM7590+B7590A",
+  "grid": {
+    "width": 900,
+    "depth": 750,
+    "pitch": 25,
+    "columns": 36,
+    "rows": 30,
+    "border": 12.5,
+    "originX": -437.5,
+    "originZ": -362.5
+  },
+  "mounts": {
+    "A": {
+      "id": "dry-base-A",
+      "hole": {
+        "col": 12,
+        "row": 14
+      },
+      "center": {
+        "x": -137.5,
+        "y": 0,
+        "z": -12.5
+      },
+      "size": {
+        "width": 80,
+        "depth": 60,
+        "height": 35
+      }
+    },
+    "B": {
+      "id": "dry-base-B",
+      "hole": {
+        "col": 16,
+        "row": 14
+      },
+      "center": {
+        "x": -37.5,
+        "y": 0,
+        "z": -12.5
+      },
+      "size": {
+        "width": 70,
+        "depth": 50,
+        "height": 30
+      }
+    }
+  },
+  "centerDistanceMm": 100,
+  "edgeGapMm": 25,
+  "overlapMm3": 0,
+  "overhangA": {
+    "left": 0,
+    "right": 0,
+    "rear": 0,
+    "front": 0
+  },
+  "overhangB": {
+    "left": 0,
+    "right": 0,
+    "rear": 0,
+    "front": 0
+  },
+  "collision": false,
+  "touching": false,
+  "fit": true,
+  "status": "clear"
+}
