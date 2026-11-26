@@ -1,0 +1,58 @@
+{
+  "schema": "bts.inert-slice-ruler.v1",
+  "kind": "synthetic-inert-geometry-replay",
+  "sampleId": "BTS-CAL-TWO-BEAD-001",
+  "revision": 1,
+  "provenance": "BuildTheSimulation analytic inert geometry; each saved plane is a direct sample of two ideal spheres, no real scan or reconstruction",
+  "shapeVox": [
+    48,
+    44,
+    17
+  ],
+  "spacingMm": [
+    0.1,
+    0.1,
+    0.2
+  ],
+  "originMm": [
+    0,
+    0,
+    0
+  ],
+  "coordinateConvention": "Voxel centers; +column right, +row down, +index in slice order; no patient frame",
+  "index": 8,
+  "sliceId": "CT-TOY-Z08",
+  "zMm": 1.6,
+  "coverage": "stored",
+  "beads": [
+    {
+      "id": "A",
+      "voxelsInPlane": 69,
+      "centroidIndex": [
+        11,
+        18,
+        8
+      ],
+      "centroidMm": [
+        1.1,
+        1.8,
+        1.6
+      ]
+    },
+    {
+      "id": "B",
+      "voxelsInPlane": 49,
+      "centroidIndex": [
+        35,
+        28,
+        8
+      ],
+      "centroidMm": [
+        3.5,
+        2.8000000000000003,
+        1.6
+      ]
+    }
+  ],
+  "distanceMm": 2.5999999999999996
+}
