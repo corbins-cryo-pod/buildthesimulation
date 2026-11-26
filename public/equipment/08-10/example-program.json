@@ -1,0 +1,38 @@
+{
+  "schema": "bts.dispense-raster.v1",
+  "plateId": "FLAT-MASK-12x8",
+  "revision": 0,
+  "widthMm": 12,
+  "depthMm": 8,
+  "pitchMm": 1,
+  "totalNL": 460,
+  "calibrationId": "VIRTUAL-VOLUME-UNITY",
+  "openings": [
+    {
+      "id": "J1",
+      "cells": [
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "id": "J2",
+      "cells": [
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ]
+      ]
+    }
+  ]
+}

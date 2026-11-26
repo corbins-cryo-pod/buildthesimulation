@@ -137,9 +137,10 @@
     "inputs": "Substrate surface IDs, compatible material rules and treatment event metadata",
     "outputs": "Surface revision with activation state, timestamp and bond eligibility",
     "acceptance": "Activate one face of a two-sided coupon. Only that face may satisfy an activation prerequisite, and activation alone must leave bond strength unmeasured.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric original GLB · cited wafer size; enclosure visually inferred",
+    "simulationStatus": "Face-specific activation eligibility logic; no physical process simulation",
+    "integrationStatus": "Revisioned surface ID and event JSON, strength unmeasured",
+    "simulator": "/simulations/equipment/08-07/simulator/"
   },
   {
     "id": "08-08",
@@ -162,7 +163,7 @@
   {
     "id": "08-09",
     "name": "Helium leak detector",
-    "model": "HLT-160 leak detector (manufacturer/revision to verify)",
+    "model": "Balzers HLT 160 (guide BG 800 387 BE/B)",
     "evidence": "B",
     "priority": "P2",
     "page": 29,
@@ -175,14 +176,15 @@
     "inputs": "Package revision, blank baseline, calibrated leak signal, units and acceptance limit",
     "outputs": "Leak-rate measurement and threshold decision linked to the tested package",
     "acceptance": "Replay two calibrated leak standards bracketing the declared threshold. Baseline-corrected readings must match their values within fixture uncertainty and fall on opposite sides of the decision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with visually inferred cabinet dimensions",
+    "simulationStatus": "Synthetic calibrated flow replay, blank and uncertainty decision",
+    "integrationStatus": "Revisioned package report and trace export",
+    "simulator": "/simulations/equipment/08-09/simulator/"
   },
   {
     "id": "08-10",
     "name": "Dispensing / encapsulation",
-    "model": "Nordson EFD Ultimus V (candidate)",
+    "model": "Nordson EFD Ultimus V · 7012590",
     "evidence": "C",
     "priority": "P2",
     "page": 29,
@@ -193,9 +195,10 @@
     "inputs": "Assembly surface, dispenser path, deposition volume and material or calibration ID",
     "outputs": "Encapsulation revision with coverage, remaining exposed surfaces and cure state",
     "acceptance": "Dispense onto an ideal flat rectangular area at uniform modeled thickness. Recover the input volume from the thickness map and preserve deliberately masked contact openings.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric 7012590 controller, accessory and stage set",
+    "simulationStatus": "Verified virtual-volume integration and exposed contact preservation; no chemistry",
+    "integrationStatus": "Workholder/trigger actions, encoded shot program and coated height map export",
+    "simulator": "/simulations/equipment/08-10/simulator/"
   },
   {
     "id": "08-11",

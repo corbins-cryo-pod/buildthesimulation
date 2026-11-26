@@ -1,0 +1,109 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    1.725,
+    1.939,
+    0.8125
+  ],
+  "meshes": 134,
+  "triangles": 19096,
+  "bytes": 1155392,
+  "interaction": {
+    "Chamber_lid": {
+      "action": "lid",
+      "boundsMinM": [
+        -0.251,
+        0.967,
+        -0.047
+      ],
+      "boundsMaxM": [
+        0.019,
+        1.035,
+        0.223
+      ]
+    },
+    "Lid_upper_ring": {
+      "action": "lid",
+      "boundsMinM": [
+        -0.2255,
+        1.028,
+        -0.0215
+      ],
+      "boundsMaxM": [
+        -0.0065,
+        1.046,
+        0.1975
+      ]
+    },
+    "Lid_seal_ring": {
+      "action": "lid",
+      "boundsMinM": [
+        -0.251,
+        0.946,
+        -0.047
+      ],
+      "boundsMaxM": [
+        0.019,
+        0.968,
+        0.223
+      ]
+    },
+    "Wafer_face_A": {
+      "action": "flip",
+      "boundsMinM": [
+        -0.19095,
+        0.96562,
+        0.01305
+      ],
+      "boundsMaxM": [
+        -0.04105,
+        0.96572,
+        0.16295
+      ]
+    },
+    "Wafer_face_B": {
+      "action": "flip",
+      "boundsMinM": [
+        -0.19095,
+        0.96428,
+        0.01305
+      ],
+      "boundsMaxM": [
+        -0.04105,
+        0.96438,
+        0.16295
+      ]
+    },
+    "Monitor_screen": {
+      "action": "record",
+      "boundsMinM": [
+        0.291,
+        1.257,
+        0.2545
+      ],
+      "boundsMaxM": [
+        0.679,
+        1.523,
+        0.2595
+      ]
+    }
+  },
+  "travel": {
+    "head": {
+      "node": "Chamber_head_slide",
+      "openDeltaM": [
+        0,
+        0.22,
+        0
+      ],
+      "source": "inferred teaching travel"
+    },
+    "face": {
+      "node": "Wafer_flip_pivot",
+      "axis": "X",
+      "angleRad": 3.141592653589793
+    },
+    "bounds": "closed chamber, face A up"
+  }
+}
