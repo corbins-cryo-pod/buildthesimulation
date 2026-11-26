@@ -1,0 +1,29 @@
+---
+import Layout from '../../../../layouts/Layout.astro';import '../../../../styles/equipment.css';
+const d='/equipment/13-05/',jeol='https://docs.research.missouri.edu/emc/JEOL-JEM-1400Plus.pdf#page=11',mfg='https://www.jeol.com/products/scientific/tem/JEM-1400Plus.php',eth='https://scopem.ethz.ch/center/instruments-alphabetical/JEOL-JEM1400Plus.html';
+---
+<Layout pageTitle="JEOL JEM-1400Plus static reference and offline lattice viewer" description="Orbit the dormant JEOL JEM-1400Plus HC exterior and compare two authored lattice references." wide={true}>
+<article class="equipment" id="jem1400"><nav class="eq-nav"><a href="/simulations/equipment/13-05/">← Equipment 13-05</a><a href="/simulations/equipment/">Register</a><a href="#jem-evidence">References and checks</a></nav>
+<header class="eq-mast"><p class="eq-meta">13-05 / DORMANT EXTERIOR · DISCONNECTED DATA</p><h2>Compare two fixed lattice pitches</h2><p class="eq-lede">Orbit a static JEM-1400Plus HC main unit. The separate display board compares two made-up dot patterns with declared scale labels, not real microscopy images.</p></header>
+<div class="j-cols"><section><h3>JEM-1400Plus HC exterior</h3><canvas id="jem-model" aria-label="Orbitable static transmission electron microscope and separate display board"></canvas><p id="jem-viewstatus" role="status">Loading metric GLB…</p><button id="jem-front">Reset overview</button><button id="jem-column">Column close-up</button><button id="jem-board">Offline board close-up</button></section>
+<section><h3>Immutable offline reference</h3><label>Pattern <select id="jem-plate"><option value="fine">A · Fine dot pitch</option><option value="coarse">B · Coarse dot pitch</option></select></label><button id="jem-compare">Switch lattice</button>
+<svg id="jem-pattern" viewBox="0 0 192 112" role="img" aria-label="Synthetic dot array with marker across four intervals"><rect width="192" height="112" fill="#152731"/><g id="jem-dots"/><g id="jem-mark"/></svg>
+<p id="jem-result" role="status"></p><p>The gold bracket spans exactly four center-to-center intervals. Both grids have an authored 0.01 nm per pixel. The color, scale and shapes don't predict material structure or instrument resolution.</p>
+<button id="jem-export">Download comparison JSON</button><p><a href={d+'example-lattice.json'}>Example JSON for A</a>. The file records only the reference ID, authored units and scalar result; nothing is connected to the instrument.</p></section></div>
+<section id="jem-evidence"><h3>Model and reference views</h3>
+<div class="j-cols"><figure><img src={d+'station.webp'} alt="Original 3D render of the tall ivory instrument, curved desk, and unrelated lattice board"/><figcaption>Original overview. The <a href={jeol}>JEOL brochure, p. 11</a> supplies the photo, floor-plan silhouette and main unit dimensions. Side units and external accessory racks are outside this reconstruction.</figcaption></figure>
+<figure><img src={d+'column.webp'} alt="Original exterior close-up of the JEOL instrument column with static capped features"/><figcaption>Original closer angle. The <a href={mfg}>JEOL product page</a> identifies the high-contrast (HC) version, and the <a href={eth}>ETH facility listing</a> corroborates the family. Column subdivisions, cap details, support and side panels are inferred.</figcaption></figure></div>
+<table><thead><tr><th>Quantity</th><th>Value</th><th>Provenance</th></tr></thead><tbody><tr><td>Geometry: main instrument + desk</td><td>2,160 × 2,490 × 1,760 mm (W × H × D)</td><td>JEOL brochure, p. 11. Export checked against the published envelope within 0.5 mm per axis.</td></tr><tr><td>Offline plate</td><td>192 × 112 px; 0.01 nm/px</td><td>Fictional metric labels only, not traceable measurement.</td></tr></tbody></table>
+<h3>Analytical unit check</h3><p>Compute pitch by multiplying pixel span by declared nm/px, dividing by four, and converting to ångströms using 1 nm = 10 Å.</p>
+<table><thead><tr><th>Check</th><th>Known expected pitch</th><th>Actual</th></tr></thead><tbody><tr><td>A: 92 px / 4 gaps</td><td>0.23 nm / 2.3 Å</td><td>0.23 nm / 2.3 Å (within 10⁻¹² nm)</td></tr><tr><td>B: 164 px / 4 gaps</td><td>0.41 nm / 4.1 Å</td><td>0.41 nm / 4.1 Å (within 10⁻¹² nm)</td></tr></tbody></table>
+<p>There is no beam, aperture, specimen, contrast simulation or image formation. The register's layer-projection test is not implemented; the authored distance check is verified only as a mathematical exercise.</p><p><a href={d+'build-model.py'}>Editable Blender source</a> · <a href={d+'jem1400plus.glb'}>Metric GLB</a> · <a href={d+'lattice.mjs'}>Read-only fixtures and report schema</a> · <a href={d+'vr.json'}>VR bounds and action ID</a>. No headset test.</p></section></article></Layout>
+<script>import '../../../../lib/equipment/13-05/client.mjs';</script>
+<style is:global>
+#jem1400 .j-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem}#jem1400 section{margin:1rem 0;padding:1rem;border:1px solid var(--border);min-width:0}
+#jem1400 :is(button,select){font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:.4rem;margin:.2rem .25rem .2rem 0;max-width:100%}
+#jem1400 button{cursor:pointer}#jem1400 :is(button,select):focus-visible{outline:2px solid #b28d5e}
+#jem-model{width:100%;height:360px;display:block;touch-action:none}#jem-pattern{display:block;width:min(100%,400px);margin:.55rem auto}
+#jem1400 figure{margin:.5rem 0}#jem1400 figure img{width:100%}
+#jem1400 table{width:100%;font-size:.91rem;border-collapse:collapse;text-align:left}#jem1400 td,#jem1400 th{border-bottom:1px solid var(--border);padding:.35rem}
+@media(max-width:850px){#jem1400 .j-cols{grid-template-columns:minmax(0,1fr)}#jem-model{height:282px}}
+</style>

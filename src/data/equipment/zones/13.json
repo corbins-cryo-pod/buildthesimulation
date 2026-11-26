@@ -95,9 +95,10 @@
     "inputs": "Thin-section volume or reference TEM image, section pose, pixel pitch and contrast model",
     "outputs": "Projection image, dimensional scale, contrast-model ID and source section ID",
     "acceptance": "Under a declared linear projection approximation, two identical overlapping synthetic density layers should double the projected density compared with one layer. Check lateral dimensions against the phantom.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric static main-instrument GLB/source",
+    "simulationStatus": "Dormant exterior and read-only offline lattice pitch comparison",
+    "integrationStatus": "Standalone asset viewer; no acquisition or instrument connection",
+    "simulator": "/simulations/equipment/13-05/simulator/"
   },
   {
     "id": "13-06",
