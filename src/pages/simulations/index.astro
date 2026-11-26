@@ -4,7 +4,7 @@ import RevisedEquipmentCallout from '../../components/equipment/RevisedEquipment
 import { simulationGroups as groups } from '../../data/simulations.js';
 ---
 <Layout pageTitle="Simulations" subtitle="" description="Explore neural-interface laboratories, cell electrophysiology, tissue mechanics and anatomical models.">
-  <p class="manual-intro">Explore neural interfaces from membrane currents to complete anatomical pathways. The laboratories below are grouped by scale and purpose, with the principal interface and cortex tools first.</p>
+  <p class="manual-intro">Explore neural interfaces from membrane currents to complete anatomical pathways. The laboratories below are grouped by scale and purpose, with the principal interface and cortex tools first. <a href="/simulations/shared-virtual-lab/">Open the shared virtual lab</a> to try three connected routes.</p>
   <RevisedEquipmentCallout context="simulations" />
   <div class="manual-index">
     {groups.map((group, index) => <section class="manual-group" aria-labelledby={`simulation-group-${index}`}>
