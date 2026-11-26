@@ -174,7 +174,7 @@
   {
     "id": "06-09",
     "name": "Syringe pump",
-    "model": "New Era NE-1000 (confirm exact pump model)",
+    "model": "New Era NE-1000 Rev A (bare chassis)",
     "evidence": "B",
     "priority": "P1",
     "page": 23,
@@ -187,9 +187,10 @@
     "inputs": "Syringe bore, plunger travel, remaining volume and connection to a virtual channel",
     "outputs": "Dispense event with delivered volume, remaining inventory and line status",
     "acceptance": "Advance a cylindrical syringe by a known displacement. Delivered volume must equal bore area times travel until empty, and repeated requests cannot dispense more than the initial inventory.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric NE-1000 bare enclosure only",
+    "simulationStatus": "Detached inert rectangle comparison; no pump operation or delivery",
+    "integrationStatus": "Interactive exterior and detached immutable dimension export",
+    "simulator": "/simulations/equipment/06-09/simulator/"
   },
   {
     "id": "06-10",
