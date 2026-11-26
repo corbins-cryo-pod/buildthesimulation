@@ -1,0 +1,60 @@
+{
+  "schema": "bts.ftir-intensity.v1",
+  "sampleId": "DECIMAL-ATTENUATION",
+  "revision": 0,
+  "rows": [
+    {
+      "wavenumberCm": 600,
+      "background": 2,
+      "sample": 2
+    },
+    {
+      "wavenumberCm": 780,
+      "background": 2,
+      "sample": 2
+    },
+    {
+      "wavenumberCm": 900,
+      "background": 2,
+      "sample": 0.2
+    },
+    {
+      "wavenumberCm": 1000,
+      "background": 2,
+      "sample": 0.2
+    },
+    {
+      "wavenumberCm": 1200,
+      "background": 2,
+      "sample": 0.2
+    },
+    {
+      "wavenumberCm": 1500,
+      "background": 2,
+      "sample": 0.2
+    },
+    {
+      "wavenumberCm": 2000,
+      "background": 2,
+      "sample": 2
+    },
+    {
+      "wavenumberCm": 2800,
+      "background": 2,
+      "sample": 2
+    },
+    {
+      "wavenumberCm": 3200,
+      "background": 2,
+      "sample": 2
+    },
+    {
+      "wavenumberCm": 3800,
+      "background": 2,
+      "sample": 2
+    }
+  ],
+  "provenance": {
+    "kind": "synthetic independent ratio fixture"
+  }
+}

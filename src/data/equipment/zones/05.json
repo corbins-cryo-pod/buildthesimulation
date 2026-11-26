@@ -243,7 +243,7 @@
   {
     "id": "05-11",
     "name": "FTIR spectrometer",
-    "model": "Thermo Scientific Nicolet iS50",
+    "model": "Thermo Scientific Nicolet iS50 · built-in diamond ATR, no ABX",
     "evidence": "B",
     "priority": "P2",
     "page": 20,
@@ -256,9 +256,10 @@
     "inputs": "Reference and sample intensity spectra, wavenumber axis and baseline model",
     "outputs": "Absorbance spectrum and reference-library match with preprocessing history",
     "acceptance": "Feed sample intensity equal to one tenth of the reference in a test band and equal elsewhere. Ideal absorbance must be one in the band and zero elsewhere.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric Blender/GLB; articulated hatch and ATR assembly",
+    "simulationStatus": "Synthetic OPD/FFT with independent ratio and spectral tests",
+    "integrationStatus": "Interactive measurement, import/export and VR adapter; headset not tested",
+    "simulator": "/simulations/equipment/05-11/simulator/"
   },
   {
     "id": "05-12",
