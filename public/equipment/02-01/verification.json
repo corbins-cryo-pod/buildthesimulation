@@ -1,6 +1,6 @@
 {
   "configuration": "SUSS MA/BA6 Gen4 standard 150 mm mask-aligner, UV400 365 nm TSA, 178 mm mask holder",
-  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate. Revision 2: analytic area, translated/rotated area, subpixel line, circular aperture and proximity energy checks executed against revised source. Old tests retained; no experimental calibration. Revision 2 geometry supplement: seating is computed from source chuck/wafer faces; 9 combinations of selected thickness and gap verify the kinematic plane equation (not measured device motion).",
+  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate. Revision 2: analytic area, translated/rotated area, subpixel line, circular aperture and proximity energy checks executed against revised source. Old tests retained; no experimental calibration. Revision 2 geometry supplement: seating is computed from source chuck/wafer faces; 9 combinations of selected thickness and gap verify the kinematic plane equation (not measured device motion). Rotated proximity audit: prior 4×4 quadrature missed steep transitions at 1 µm gap; replaced with Gaussian integral over each clipped vertical slice and adaptive 8-point Gauss quadrature split at geometric/optical edges. Dense midpoint references are independent spatial integration of the same Gaussian surrogate, not experimental wave-optics validation.",
   "checks": [
     {
       "name": "F1 translation X",
@@ -360,6 +360,78 @@
       "actual": 82060,
       "unit": "bytes",
       "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.044 mm (400² midpoint ref)",
+      "expected": 0.8759157115456205,
+      "actual": 0.8759157115418712,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.046 mm (400² midpoint ref)",
+      "expected": 0.7506104745197175,
+      "actual": 0.7506104745202926,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.048 mm (400² midpoint ref)",
+      "expected": 0.6253052372598454,
+      "actual": 0.6253052372601462,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.05 mm (400² midpoint ref)",
+      "expected": 0.49999999999997613,
+      "actual": 0.49999999999999956,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.052 mm (400² midpoint ref)",
+      "expected": 0.37469476274001484,
+      "actual": 0.3746947627398535,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.054 mm (400² midpoint ref)",
+      "expected": 0.2493895254796567,
+      "actual": 0.24938952547970708,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated 16 µm proximity cell, 1 µm gap, x=0.056 mm (400² midpoint ref)",
+      "expected": 0.12408428845348851,
+      "actual": 0.12408428845812844,
+      "unit": "dose fraction",
+      "tolerance": 0.00002,
+      "pass": true
+    },
+    {
+      "name": "Rotated aperture-edge proximity cell (600² midpoint ref)",
+      "expected": 0.24401602425361452,
+      "actual": 0.24401283583589187,
+      "unit": "dose fraction",
+      "tolerance": 0.0003,
+      "pass": true
+    },
+    {
+      "name": "Rotated proximity integrated dose at min gap",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000037,
+      "unit": "mm²",
+      "tolerance": 2e-7,
       "pass": true
     }
   ]

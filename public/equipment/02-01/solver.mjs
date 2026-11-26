@@ -43,6 +43,40 @@ export function circlePolygonArea(p,R=75){
 export function pixelPolygon(x,y,dx,c,t){const h=dx/2;return [[-h,-h],[h,-h],[h,h],[-h,h]].map(([u,v])=>[x+c*u-t*v,y+t*u+c*v]);}
 export function gaussianPrimitive(x,s){const z=x/s;if(z>9)return x;if(z< -9)return 0;return x*.5*(1+erf(z/Math.SQRT2))+s/Math.sqrt(2*Math.PI)*Math.exp(-z*z/2);}
 export function gaussianInterval(a,b,l,r,s){return Math.max(0,Math.min(1,(gaussianPrimitive(b-l,s)-gaussianPrimitive(a-l,s)-gaussianPrimitive(b-r,s)+gaussianPrimitive(a-r,s))/(b-a)))}
+export function gauss8(fn,a,b){
+ const h=(b-a)/2,m=(b+a)/2,nodes=[.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights=[.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763];let v=0;
+ for(let i=0;i<4;i++)v+=weights[i]*(fn(m-h*nodes[i])+fn(m+h*nodes[i]));return h*v;
+}
+export function integrateAdaptive(fn,a,b,tol,depth=0,coarse=null){
+ const v=coarse??gauss8(fn,a,b),m=(a+b)/2,l=gauss8(fn,a,m),r=gauss8(fn,m,b);
+ if(depth>=9||Math.abs(l+r-v)<=tol)return l+r;
+ return integrateAdaptive(fn,a,m,tol/2,depth+1,l)+integrateAdaptive(fn,m,b,tol/2,depth+1,r);
+}
+export function proximityCell(x,y,dx,c,t,rects,sigma,allInside){
+ const R=75,poly=pixelPolygon(x,y,dx,c,t),minX=Math.max(-R,Math.min(...poly.map(p=>p[0]))),maxX=Math.min(R,Math.max(...poly.map(p=>p[0])));
+ if(maxX<=minX)return 0;
+ const edges=poly.map((a,i)=>[a,poly[(i+1)%poly.length]]);
+ const base=poly.map(p=>p[0]);
+ if(!allInside){for(const [a,b] of edges){const u=b[0]-a[0],v=b[1]-a[1],A=u*u+v*v,B=2*(a[0]*u+a[1]*v),C=a[0]*a[0]+a[1]*a[1]-R*R,D=B*B-4*A*C;if(A>0&&D>0){for(const k of [(-B-Math.sqrt(D))/(2*A),(-B+Math.sqrt(D))/(2*A)])if(k>0&&k<1)base.push(a[0]+k*u)}}}
+ const slice=xx=>{let lo=Infinity,hi=-Infinity;for(const [a,b] of edges){if(Math.abs(b[0]-a[0])<1e-15)continue;const q=(xx-a[0])/(b[0]-a[0]);if(q>=-1e-12&&q<=1+1e-12){const yy=a[1]+q*(b[1]-a[1]);lo=Math.min(lo,yy);hi=Math.max(hi,yy)}}if(!allInside){const z=Math.sqrt(Math.max(0,(R-xx)*(R+xx)));lo=Math.max(lo,-z);hi=Math.min(hi,z)}return [lo,hi]};
+ let total=0;
+ for(const f of rects){
+  const l=f.x-f.w/2,r=f.x+f.w/2,b=f.y-f.h/2,u=f.y+f.h/2;
+  const points=[...base,minX,maxX];
+  // Place breakpoints at rectangle edges and their Gaussian transition regions.
+  for(const off of [-8,-3,-1,0,1,3,8]){
+   for(const xx of [l+off*sigma,r+off*sigma])points.push(xx);
+   for(const yy of [b+off*sigma,u+off*sigma]){
+    for(const [a,z] of edges){if(Math.abs(z[1]-a[1])<1e-15)continue;const q=(yy-a[1])/(z[1]-a[1]);if(q>0&&q<1)points.push(a[0]+q*(z[0]-a[0]))}
+    if(!allInside&&Math.abs(yy)<R){const xx=Math.sqrt((R-yy)*(R+yy));points.push(xx,-xx)}
+   }
+  }
+  const sorted=points.filter(p=>p>=minX&&p<=maxX).sort((a,b)=>a-b).filter((p,i,a)=>i===0||p-a[i-1]>dx*1e-10);
+  const fcn=xx=>{const [lo,hi]=slice(xx);if(!(hi>lo))return 0;const a=.5*(erf((xx-l)/(Math.SQRT2*sigma))-erf((xx-r)/(Math.SQRT2*sigma)));return Math.max(0,a)*gaussianInterval(lo,hi,b,u,sigma)*(hi-lo)};
+  for(let i=1;i<sorted.length;i++){const a=sorted[i-1],b=sorted[i];if(b>a)total+=integrateAdaptive(fcn,a,b,1e-7*dx*(b-a)/rects.length)}
+ }
+ return Math.max(0,Math.min(1,total/(dx*dx)));
+}
 export function cellAverage(x,y,dx,c,t,rects,sigma){
  const h=dx/2,extent=h*(Math.abs(c)+Math.abs(t)),distance=Math.hypot(x,y),radius=75;
  if(distance-dx/Math.SQRT2>=radius)return 0;
@@ -62,10 +96,9 @@ export function cellAverage(x,y,dx,c,t,rects,sigma){
  if(allInside&&Math.abs(t)<1e-12){
   let sum=0;for(const f of candidates)sum+=gaussianInterval(x-h,x+h,f.x-f.w/2,f.x+f.w/2,sigma)*gaussianInterval(y-h,y+h,f.y-f.h/2,f.y+f.h/2,sigma);return Math.max(0,Math.min(1,sum));
  }
- // Rotated or aperture-edge cells: deterministic Gauss–Legendre quadrature. Not a convergence guarantee.
- const nodes=[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights=[.34785484513745385,.6521451548625461,.6521451548625461,.34785484513745385];
- let sum=0;for(let i=0;i<4;i++)for(let j=0;j<4;j++){const u=h*nodes[i],v=h*nodes[j],a=x+c*u-t*v,b=y+t*u+c*v;if(a*a+b*b<=radius*radius)sum+=weights[i]*weights[j]*transmission(a,b,candidates,sigma)/4}
- return Math.max(0,Math.min(1,sum));
+ // Deep-interior uniform transmission is within Gaussian 8-sigma tails of unity.
+ if(candidates.some(f=>Math.abs(x-f.x)+extent+8*sigma<=f.w/2&&Math.abs(y-f.y)+extent+8*sigma<=f.h/2))return allInside?1:circlePolygonArea(pixelPolygon(x,y,dx,c,t),radius)/(dx*dx);
+ return proximityCell(x,y,dx,c,t,candidates,sigma,allInside);
 }
 export function exposure(s){for(const check of [fit(s),pose(s),maskCheck(s)])if(!check.ok)return check;
  if(s.loaded!==true||s.clamped!==true||s.engaged!==true)return fail("interlock","Load wafer, clamp mask and engage exposure mode before running.");
@@ -76,7 +109,7 @@ export function exposure(s){for(const check of [fit(s),pose(s),maskCheck(s)])if(
  const dx=s.pitchUm/1000,n=Math.round(size/dx),ox=s.roiX-size/2,oy=s.roiY-size/2,dose=s.intensity*s.seconds,sigma=sigmaMm(s.mode,s.gapUm);
  const angle=s.thetaDeg*Math.PI/180,cos=Math.cos(angle),sin=Math.sin(angle);const [cx,cy]=transform(s.roiX,s.roiY,s),extent=size/2*(Math.abs(cos)+Math.abs(sin))+8*sigma;const local=s.mask.clear.filter(f=>Math.abs(cx-f.x)<=f.w/2+extent&&Math.abs(cy-f.y)<=f.h/2+extent);const values=new Array(n*n);let max=0,integral=0;for(let j=0;j<n;j++)for(let i=0;i<n;i++){const x=ox+(i+.5)*dx,y=oy+(j+.5)*dx,u=cos*x-sin*y+s.xMm,v=sin*x+cos*y+s.yMm;const z=Number((dose*cellAverage(u,v,dx,cos,sin,local,sigma)).toFixed(9));values[j*n+i]=z;max=Math.max(max,z);integral+=z*dx*dx;}
  const a=s.thetaDeg*Math.PI/180,c=Math.cos(a),t=Math.sin(a),[ix,iy]=inverse(0,0,s);
- return {ok:true,code:"ok",message:"Exposure calculated; incoming wafer revision unchanged.",sampleRevision:{schema:"bts.lithography.latent-dose.v1",equipmentId:"02-01",provenance:"Simulated; area-weighted ideal hard contact or Gaussian proximity surrogate; circular illumination aperture; not calibrated resist or measured tool performance.",sampleId:s.sampleId,parentRevision:s.revision,revision:s.revision+1,sample:{diameterMm:150,widthMm:150,heightMm:150,thicknessUm:s.thicknessUm},mask:JSON.parse(JSON.stringify(s.mask)),waferMarks:JSON.parse(JSON.stringify(s.waferMarks)),pose:{xMm:s.xMm,yMm:s.yMm,thetaDeg:s.thetaDeg},maskToCoupon:[[c,t,ix],[-t,c,iy],[0,0,1]],fiducials:overlay(s),exposure:{mode:s.mode,wavelengthNm:365,intensityMwCm2:s.intensity,seconds:s.seconds,gapUm:s.mode==="hard"?0:s.gapUm,sigmaUm:sigma*1000,peakDoseMjCm2:dose,illuminationDiameterMm:150},grid:{sampling:"cell-average",integration:s.mode==="hard"?"exact rectangle/pixel/circular-aperture overlap (floating-point)":"separable Gaussian integration or 4x4 quadrature",coverage:"local-roi",outsideRoi:"unknown",frame:"wafer-centered +x right +y away from operator; row 0 minimum y; local ROI, not whole wafer",originMm:[ox,oy],spacingMm:[dx,dx],nx:n,ny:n,unit:"mJ/cm2",order:"row-major",values},statistics:{maxDoseMjCm2:max,integratedDoseTimesAreaMjCm2Mm2:integral,equivalentClearAreaMm2:integral/dose}}}
+ return {ok:true,code:"ok",message:"Exposure calculated; incoming wafer revision unchanged.",sampleRevision:{schema:"bts.lithography.latent-dose.v1",equipmentId:"02-01",provenance:"Simulated; area-weighted ideal hard contact or Gaussian proximity surrogate; circular illumination aperture; not calibrated resist or measured tool performance.",sampleId:s.sampleId,parentRevision:s.revision,revision:s.revision+1,sample:{diameterMm:150,widthMm:150,heightMm:150,thicknessUm:s.thicknessUm},mask:JSON.parse(JSON.stringify(s.mask)),waferMarks:JSON.parse(JSON.stringify(s.waferMarks)),pose:{xMm:s.xMm,yMm:s.yMm,thetaDeg:s.thetaDeg},maskToCoupon:[[c,t,ix],[-t,c,iy],[0,0,1]],fiducials:overlay(s),exposure:{mode:s.mode,wavelengthNm:365,intensityMwCm2:s.intensity,seconds:s.seconds,gapUm:s.mode==="hard"?0:s.gapUm,sigmaUm:sigma*1000,peakDoseMjCm2:dose,illuminationDiameterMm:150},grid:{sampling:"cell-average",integration:s.mode==="hard"?"exact rectangle/pixel/circular-aperture overlap (floating-point)":"separable Gaussian integration or adaptive edge-aware slice quadrature",coverage:"local-roi",outsideRoi:"unknown",frame:"wafer-centered +x right +y away from operator; row 0 minimum y; local ROI, not whole wafer",originMm:[ox,oy],spacingMm:[dx,dx],nx:n,ny:n,unit:"mJ/cm2",order:"row-major",values},statistics:{maxDoseMjCm2:max,integratedDoseTimesAreaMjCm2Mm2:integral,equivalentClearAreaMm2:integral/dose}}}
 }
 
 export function stageGeometry(transportY,stageNominalY,seatY,maskHolderY,maskPlateY,maskPlateThickness,waferThickness,gapMm,engaged){

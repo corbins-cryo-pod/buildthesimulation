@@ -24,11 +24,11 @@
     "order": "row-major",
     "originMm": "lower left edge of ROI",
     "spacingMm": "[dx,dy]",
-    "values": "nx*ny area-averaged doses in mJ/cm² (for proximity rotated/edge cells, numerical quadrature)",
+    "values": "nx*ny area-averaged doses in mJ/cm²",
     "sampling": "cell-average",
     "coverage": "local-roi",
     "outsideRoi": "unknown",
-    "integration": "hard contact: polygon area and circular aperture intersection; proximity: integrated Gaussian or quadrature"
+    "integration": "hard contact: exact polygon area and circular aperture intersection; proximity: analytic Gaussian integration or edge-aware adaptive slice quadrature"
   },
   "provenance": "simulation, not measurements",
   "example": "example-result.json",
