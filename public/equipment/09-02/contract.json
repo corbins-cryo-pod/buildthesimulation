@@ -1,0 +1,21 @@
+{
+  "input": {
+    "schema": "bts.two-terminal-fixture.v1",
+    "required": ["schema","kind","sampleId","revision","contacts","value","unit"],
+    "kinds": {"resistor":{"unit":"ohm","min":100,"max":100000},"capacitor":{"unit":"F","min":1e-10,"max":1e-8}},
+    "contactRoles": ["HI","LO"],
+    "contactRule": "Exactly two unique contact IDs. One maps to HI and one to LO. Physical coverage is the original fixture's two fixed pads.",
+    "identifiers": "ASCII letters, digits, underscores and hyphens, 1–60 characters; revision is a positive integer.",
+    "examples": ["resistor-coupon.json","capacitor-coupon.json"]
+  },
+  "output": {
+    "schema": "bts.parametric-sweep.v1",
+    "classification": "simulated",
+    "axes": "Programmed points in commanded bias order. V = HI − LO. Signed current positive into HI.",
+    "required": ["schema","instrument","mode","module","classification","sampleId","sampleRevision","parent","measurementId","revision","contacts","units","settings","complianceCount","points"],
+    "pointFieldsIV": {"index":"unitless zero-based","commandV":"V","terminalV":"V","currentA":"A","flag":"OK | COMPLIANCE"},
+    "pointFieldsCV": {"index":"unitless zero-based","commandV":"V","terminalV":"V","capacitanceF":"F","susceptanceS":"S","acCurrentArms":"A RMS","phaseDegrees":"deg","dcCurrentA":"A","flag":"OK"},
+    "examples": ["example-iv.json","example-cv.json"],
+    "handoff": "Typed output for a future station or offline analysis. This ordered sweep is not a uniform time series for an oscilloscope."
+  }
+}

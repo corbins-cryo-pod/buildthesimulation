@@ -1,0 +1,114 @@
+{
+  "schema": "bts.parametric-sweep.v1",
+  "mode": "IV",
+  "classification": "simulated",
+  "instrument": "Keysight B1500A",
+  "module": "B1517A HRSMU",
+  "sampleId": "R-CAL-1K",
+  "sampleRevision": 1,
+  "parent": {
+    "schema": "bts.two-terminal-fixture.v1",
+    "kind": "resistor",
+    "sampleId": "R-CAL-1K",
+    "revision": 1,
+    "contacts": [
+      {
+        "id": "PAD_A",
+        "role": "HI"
+      },
+      {
+        "id": "PAD_B",
+        "role": "LO"
+      }
+    ],
+    "value": 1000,
+    "unit": "ohm",
+    "provenance": "Ideal BuildTheSimulation passive coupon"
+  },
+  "measurementId": "R-CAL-1K-IV-1",
+  "revision": 1,
+  "contacts": {
+    "HI": "PAD_A",
+    "LO": "PAD_B"
+  },
+  "signConvention": "V = HI − LO and positive I enters HI. Row order is programmed bias sequence, not time.",
+  "units": {
+    "commandV": "V",
+    "terminalV": "V",
+    "currentA": "A"
+  },
+  "model": "ideal resistor + ideal symmetric source current limit",
+  "settings": {
+    "startV": -0.4,
+    "stopV": 0.4,
+    "points": 9,
+    "complianceA": 0.00025
+  },
+  "complianceCount": 4,
+  "summary": "4 of 9 points limited",
+  "points": [
+    {
+      "index": 0,
+      "commandV": -0.4,
+      "terminalV": -0.25,
+      "currentA": -0.00025,
+      "flag": "COMPLIANCE"
+    },
+    {
+      "index": 1,
+      "commandV": -0.30000000000000004,
+      "terminalV": -0.25,
+      "currentA": -0.00025,
+      "flag": "COMPLIANCE"
+    },
+    {
+      "index": 2,
+      "commandV": -0.2,
+      "terminalV": -0.2,
+      "currentA": -0.0002,
+      "flag": "OK"
+    },
+    {
+      "index": 3,
+      "commandV": -0.09999999999999998,
+      "terminalV": -0.09999999999999998,
+      "currentA": -0.00009999999999999998,
+      "flag": "OK"
+    },
+    {
+      "index": 4,
+      "commandV": 0,
+      "terminalV": 0,
+      "currentA": 0,
+      "flag": "OK"
+    },
+    {
+      "index": 5,
+      "commandV": 0.09999999999999998,
+      "terminalV": 0.09999999999999998,
+      "currentA": 0.00009999999999999998,
+      "flag": "OK"
+    },
+    {
+      "index": 6,
+      "commandV": 0.20000000000000007,
+      "terminalV": 0.20000000000000007,
+      "currentA": 0.00020000000000000006,
+      "flag": "OK"
+    },
+    {
+      "index": 7,
+      "commandV": 0.30000000000000004,
+      "terminalV": 0.25,
+      "currentA": 0.00025,
+      "flag": "COMPLIANCE"
+    },
+    {
+      "index": 8,
+      "commandV": 0.4,
+      "terminalV": 0.25,
+      "currentA": 0.00025,
+      "flag": "COMPLIANCE"
+    }
+  ]
+}
