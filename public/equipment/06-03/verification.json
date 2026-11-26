@@ -1,0 +1,54 @@
+[
+  {
+    "id": "3-4-5-point",
+    "point": "P-01",
+    "expected": {
+      "x": 3,
+      "y": 4,
+      "distance": 5
+    },
+    "actual": {
+      "x": 3,
+      "y": 4,
+      "distance": 5
+    },
+    "pass": true
+  },
+  {
+    "id": "6-8-10-point",
+    "point": "P-02",
+    "expected": {
+      "x": -6,
+      "y": 8,
+      "distance": 10
+    },
+    "actual": {
+      "x": -6,
+      "y": 8,
+      "distance": 10
+    },
+    "pass": true
+  },
+  {
+    "id": "axis-point",
+    "point": "P-03",
+    "expected": {
+      "x": 0,
+      "y": -9,
+      "distance": 9
+    },
+    "actual": {
+      "x": 0,
+      "y": -9,
+      "distance": 9
+    },
+    "pass": true
+  },
+  {
+    "id": "invalid-point",
+    "point": "unknown",
+    "expected": "Choose a labeled drawing point.",
+    "actual": "Choose a labeled drawing point.",
+    "pass": true
+  }
+]

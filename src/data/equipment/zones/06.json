@@ -61,9 +61,15 @@
     "inputs": "Binary slice masks, layer spacing, virtual exposure-response curve and carrier ID",
     "outputs": "Construct revision with predicted solid mask per layer and spatial resolution",
     "acceptance": "Expose a three-layer resolution staircase with an all-dark control layer. Its three footprints must match the input at the ideal threshold and the dark layer must remain empty.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: nominal metric LUMEN X Gen 3 dormant enclosure",
+    "simulationStatus": "First pass: detached abstract readout; fabrication outside scope",
+    "integrationStatus": "Linked: documentary viewer and diagram JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/06-03/simulator/"
+      ]
+    ]
   },
   {
     "id": "06-04",
