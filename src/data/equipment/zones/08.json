@@ -35,9 +35,10 @@
     "inputs": "Pad map, wedge orientation, ribbon or wire cross-section and keep-out geometry",
     "outputs": "Assembly revision with directional bond footprints, wire envelope and clearance report",
     "acceptance": "Route a ribbon over a known obstacle. A loop below the clearance threshold must intersect the obstacle and a raised reference loop must clear it.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/08-02/simulator/",
+    "geometryStatus": "First-pass metric 4523D bench",
+    "simulationStatus": "Verified ribbon clearance and footprints",
+    "integrationStatus": "Interactive package study and assembly exports"
   },
   {
     "id": "08-03",
