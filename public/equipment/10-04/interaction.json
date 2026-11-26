@@ -1,0 +1,15 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"10-04","model":"HEKA EPC 10 USB 2.0 Single with Red Star",
+ "frame":{"units":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor"},
+ "parts":{"cabinet":"main_cabinet","headstage":"headstage_body","dummy":"dummy_slider","host":"generic_host","runLed":"run_light","clippingLed":"clip_light"},
+ "ports":["probe_port","rear_power","rear_usb","rear_digital","fixture_tip"],
+ "actions":[
+  {"id":"main-power","node":"power_switch","action":"power","label":"Set virtual amplifier power","sizeM":[0.027,0.032,0.036]},
+  {"id":"electronic-load","node":"fixture_tip","action":"connect","label":"Connect or disconnect inert resistor-capacitor dummy","sizeM":[0.049,0.044,0.055]},
+  {"id":"host-link","node":"software_usb","action":"host","label":"Toggle virtual host control","sizeM":[0.034,0.040,0.028]},
+  {"id":"software-run","node":"software_run","action":"run","label":"Capture the passive dummy trace","sizeM":[0.036,0.041,0.029]},
+  {"id":"mode-toggle","node":"software_mode","action":"mode","label":"Change electronic measurement mode","sizeM":[0.034,0.041,0.029]}
+ ],
+ "motion":{"dummyDisconnectZ":0.038},
+ "assessment":"The laptop and dummy are original diagrammatic accessories. No physical device connected. Static budget and names support future controller binding, not immersive testing."
+}

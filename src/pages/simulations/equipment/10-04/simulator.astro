@@ -1,0 +1,80 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/10-04/verification.json';
+import stats from '../../../../../public/equipment/10-04/asset-metrics.json';
+const p='/equipment/10-04/';
+const manual='https://www.heka.com/downloads/hardware/manual/m_epc10.pdf';
+const product='https://www.heka.com/products/physiol/epc10usb_single.html';
+const spec='https://www.heka.com/sales/brochures_down/bro_epc10usb.pdf';
+---
+<Layout pageTitle="HEKA EPC 10 USB passive clamp bench" description="Metric HEKA EPC 10 USB Single and Red Star headstage with a shared passive electronic acquisition model." wide={true}>
+<article id="epc10">
+<nav><a href="/simulations/equipment/10-04/">← Equipment 10-04</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#ep-evidence">References and checks</a></nav>
+<header><small>10-04 · ACQUISITION · PASSIVE ELECTRONIC DUMMY</small><h2>HEKA EPC 10 USB Single</h2><p>Connect a virtual resistor-capacitor dummy and observe its response using a simplified HEKA-style control panel. This is an inert electronics experiment, not a living sample or device calibration.</p></header>
+<div class="bench">
+<section class="panel"><h3>Main unit, headstage and software host</h3>
+<div class="tools"><button data-ep-view="orbit">Reset view</button><button data-ep-view="front">Front connectors</button><button data-ep-view="head">Headstage and load</button><button data-ep-view="rear">Rear connectors</button></div>
+<div id="ep-viewer"></div><p id="ep-model" role="status">Loading metric EPC 10 bench…</p>
+<p>The real amplifier puts clamp settings on the computer, not physical knobs. Click the virtual host buttons, front power switch or inert load. The laptop, cable route and RC plug are generic reconstructions. Headset operation has not been tested.</p></section>
+<section class="panel"><h3>Electronic dummy acquisition</h3>
+<div class="tools"><button id="ep-power">Virtual standby</button><button id="ep-host">Disconnect virtual host</button><button id="ep-connect">Disconnect electronic dummy</button><button id="ep-reset">Reset shared example</button></div>
+<p id="ep-links"></p><p id="ep-identity"></p>
+<div class="fields">
+<label>Clamp command<select id="ep-mode"><option value="IC">Current command, voltage response</option><option value="VC">Voltage command, current response</option></select></label>
+<label>VC current range<select id="ep-range"><option value="low">Low gain ±2 µA</option><option value="medium">Medium gain ±20 nA</option><option value="high">High gain ±200 pA</option></select></label>
+<label><span>Holding (<span id="ep-holdUnit">pA</span>)</span><input id="ep-holding" type="number" step="any"/></label>
+<label><span>Step (<span id="ep-stepUnit">pA</span>)</span><input id="ep-step" type="number" step="any"/></label>
+<label>Duration (ms)<input id="ep-durationMs" type="number" min="1" max="500" step="any"/></label>
+<label>Series resistance (MΩ)<input id="ep-rsMOhm" type="number" min="0" max="50" step="any"/></label>
+<label>Load resistance (MΩ)<input id="ep-rlMOhm" type="number" min="10" max="1000" step="any"/></label>
+<label>Load capacitance (pF)<input id="ep-cPf" type="number" min="1" max="250" step="any"/></label>
+<label>Import passive fixture JSON<input id="ep-file" type="file" accept=".json,application/json"/></label>
+</div>
+<p id="ep-range-note"></p>
+<div class="tools"><button id="ep-run">Acquire passive trace</button><button id="ep-full" disabled>Export full SI trace</button><button id="ep-monitor" disabled>Export monitor volts</button></div>
+<p id="ep-status" aria-live="polite"></p></section>
+</div>
+<section class="panel"><h3>Command response</h3>
+<p id="ep-result" aria-live="polite"></p><p id="ep-details"></p><canvas id="ep-plot" width="790" height="412" aria-label="Model primary voltage or current response, with orange clipped-monitor values when relevant."></canvas>
+<p><strong>Ready example:</strong> Apply the shared +20 pA command to a 10 MΩ series resistor and a 500 MΩ ∥ 33 pF load. The ideal settled monitored-node voltage is 10.2 mV and the time constant is 16.5 ms. In voltage mode the passive transient is different: the default +10 mV step initially draws 1 nA. High gain visibly clips just the virtual monitor, not the ideal equivalent circuit.</p>
+</section>
+<section class="panel"><h3>Equivalent circuit and compatible export</h3>
+<p>A passive series resistor R<sub>s</sub> feeds R<sub>L</sub> in parallel with C. Under an ideal current step, capacitor voltage approaches I·R<sub>L</sub> with τ = R<sub>L</sub> C; the upstream voltage includes I·R<sub>s</sub>. Under an ideal voltage step, τ = (R<sub>s</sub> ∥ R<sub>L</sub>) C and steady current is V/(R<sub>s</sub> + R<sub>L</sub>). The adapter reuses the <a href="/simulations/equipment/10-01/simulator/">10-01 passive mathematical solver</a> and uniform 100 kSa/s sample clock; both adapters' ideal SI traces agree on the same input. Acquisition omits real analog filters, compensation, component tolerances and noise.</p>
+<p>The virtual monitor is a voltage encoding. VC clipping uses documented current ranges and first gain settings; IC uses an explicit teaching scale of 10 V per physical V. None of the traces are calibrated or measured. Two known synthetic transfer cases and a verified scope import are reported below.</p>
+<p><a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-dummy.json'}>Passive dummy JSON</a> · <a href={p+'example-summary.json'}>Example summary JSON</a> · <a href={p+'example-monitor.json'} download>20 ms monitor witness JSON</a> · <a href="/simulations/equipment/09-04/simulator/">Open Tektronix 09-04 scope</a>. On the scope, open “Import a simulation trace” and load the monitor witness. Auto import captures the rising response without clipping. One step has no repetition period.</p></section>
+<section class="panel" id="ep-evidence"><h3>Reference geometry and checks</h3>
+<div class="refs">
+<figure><img loading="lazy" src={p+'bench-view.webp'} alt="Original rendered HEKA front panel, metric headstage, passive RC dummy and laptop"/><figcaption><strong>Front face, original render.</strong> See <a href={manual+'#page=16'}>HEKA March 2023 manual Fig. 3.2, printed p. 10</a>. Connector details are simplified and laptop visuals are original.</figcaption></figure>
+<figure><img loading="lazy" src={p+'rear-view.webp'} alt="Original rear rendering showing six connector groups, ventilation and rack ears"/><figcaption><strong>Rear face, original render.</strong> See <a href={manual+'#page=18'}>manual Fig. 3.3, printed p. 12</a>. Ports are visual placeholders, not a real connection diagram.</figcaption></figure>
+<figure><img loading="lazy" src={p+'headstage-view.webp'} alt="Original close-up of the thin Red Star headstage and an inert passive plug"/><figcaption><strong>Headstage, original render.</strong> See <a href={manual+'#page=15'}>manual Fig. 3.1, printed p. 9</a> and <a href={product}>Single configuration</a>. The generic RC plug represents the shared fixture, not a manufacturer MC-10 geometry reconstruction.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Parameter</th><th>Value</th><th>Source and scope</th></tr></thead><tbody>
+<tr><td>Selected variant</td><td>Legacy EPC 10 USB 2.0 Single, one Red Star headstage and LIH 8+8 host interface</td><td>HEKA Single product record. No claim about newer USB 3.0 variants.</td></tr>
+<tr><td>Main unit dimensions</td><td>483 × 145 × 311 mm W×H×D; 19-inch rack</td><td><a href={spec}>EPC 10 USB family specification, “Dimensions Main Unit”</a>. Extrusions and reach inferred; connector projections may extend from envelope.</td></tr>
+<tr><td>Red Star housing</td><td>17 × 14.5 × 90 mm W×H×D</td><td>Same catalog. Cable, holder and generic dummy motion are not scanned dimensions.</td></tr>
+<tr><td>VC current ranges</td><td>±2 µA, ±20 nA, ±200 pA</td><td>Same catalog, Voltage Clamp specifications. Gates virtual monitor clipping only.</td></tr>
+<tr><td>Metric asset</td><td>{stats.bytes} bytes; {stats.triangles} triangles; {stats.primitives} primitives</td><td>Original low-burden model with named actions; no immersive app assurance.</td></tr>
+</tbody></table></div>
+<p><a href={p+'epc10.glb'}>Metric GLB</a> · <a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'interaction.json'}>Actions and component anchors</a> · <a href={p+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/10-04/client.mjs';</script>
+<style>
+#epc10{max-width:1260px;margin:auto}
+#epc10 header{margin:1.37rem 0 1rem}#epc10 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled,.fields select:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.18rem}.fields input[type=file]{width:100%}.fields option{background:#f5f1e6;color:#151b1a}
+#ep-viewer{height:365px;margin:.72rem 0;background:#293941}#ep-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#ep-plot{max-width:790px;width:100%;height:auto;display:block}#ep-result{font-weight:bold}
+#ep-status[data-error=true]{border-left:4px solid #a56542;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#ep-viewer{height:310px}}
+@media(max-width:650px){.refs{grid-template-columns:1fr}#ep-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

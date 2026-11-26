@@ -247,8 +247,15 @@
     "inputs": "Specimen ID, displacement history, indenter geometry and force calibration",
     "outputs": "Measurement record with force–displacement, creep trace when available and stiffness estimate",
     "acceptance": "Load a virtual linear spring of known stiffness. After contact, recover the slope within the declared sensor tolerance and report zero load before contact.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, nominal metric G2 model with synthetic dry fixture",
+    "simulationStatus": "Verified ideal dry spring contact and beam compensation; no creep model",
+    "integrationStatus": "Standalone viewer and dry force/displacement JSON/CSV",
+    "simulator": "/simulations/equipment/06-12/simulator/",
+    "related": [
+      [
+        "G2 references and independent spring checks",
+        "/simulations/equipment/06-12/simulator/#evidence"
+      ]
+    ]
   }
 ]
