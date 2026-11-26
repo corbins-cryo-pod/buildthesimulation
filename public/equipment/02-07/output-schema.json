@@ -43,7 +43,35 @@
       "type": "string"
     },
     "provenance": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "kind",
+        "source",
+        "fit"
+      ],
+      "properties": {
+        "kind": {
+          "const": "simulated"
+        },
+        "modelVersion": {
+          "enum": [
+            "1.0",
+            "2.0"
+          ]
+        },
+        "source": {
+          "type": "string"
+        },
+        "fit": {
+          "type": "object"
+        },
+        "heldOut": {
+          "type": "object"
+        },
+        "mapMetrics": {
+          "type": "string"
+        }
+      }
     },
     "wafer": {
       "type": "object"
@@ -55,7 +83,44 @@
       "type": "object"
     },
     "metrics": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "central_um",
+        "min_um",
+        "max_um",
+        "mean_um",
+        "range_um"
+      ],
+      "properties": {
+        "central_um": {
+          "type": "number",
+          "minimum": 0
+        },
+        "min_um": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_um": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mean_um": {
+          "type": "number",
+          "minimum": 0
+        },
+        "range_um": {
+          "type": "number",
+          "minimum": 0
+        },
+        "edgeExcluded3mm_oppositePointDifference_um": {
+          "type": "number",
+          "minimum": 0
+        },
+        "edgeExcluded3mm_radius_mm": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
     },
     "grid": {
       "type": "object",

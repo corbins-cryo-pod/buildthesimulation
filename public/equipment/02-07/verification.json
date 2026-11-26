@@ -1,7 +1,15 @@
 {
   "numerical": [
     {
-      "test": "Held-out Merck graph point (not raw measured data)",
+      "test": "AZ 1505 held-out Merck graph point",
+      "expected": 0.6,
+      "actual": 0.5689688455840416,
+      "unit": "µm",
+      "tolerance": 0.15,
+      "pass": true
+    },
+    {
+      "test": "AZ 1512 held-out Merck graph point",
       "expected": 1.35,
       "actual": 1.326260058535491,
       "unit": "µm",
@@ -9,7 +17,23 @@
       "pass": true
     },
     {
-      "test": "Independent Montana State published recipe (reported ±0.476 µm; uncertainty type unspecified)",
+      "test": "AZ 1518 held-out Merck graph point",
+      "expected": 1.85,
+      "actual": 1.8776831817752198,
+      "unit": "µm",
+      "tolerance": 0.15,
+      "pass": true
+    },
+    {
+      "test": "AZ 1529 held-out Merck graph point",
+      "expected": 3.2,
+      "actual": 3.2024128515982353,
+      "unit": "µm",
+      "tolerance": 0.2,
+      "pass": true
+    },
+    {
+      "test": "Independent Montana State recipe (uncertainty type unspecified)",
       "expected": 1.3,
       "actual": 1.326260058535491,
       "unit": "µm",
@@ -25,7 +49,7 @@
       "pass": true
     },
     {
-      "test": "Uniform centered film, edge bead off",
+      "test": "Uniform centered film, bead off",
       "expected": 0,
       "actual": 0,
       "unit": "µm",
@@ -33,7 +57,23 @@
       "pass": true
     },
     {
-      "test": "Center point unaffected by edge at 150 mm",
+      "test": "Analytic area mean, bead off",
+      "expected": 1.326260058535491,
+      "actual": 1.326260058535491,
+      "unit": "µm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "test": "Center exactly equals fit at 150 mm",
+      "expected": 1.326260058535491,
+      "actual": 1.32626,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "test": "Center exactly equals fit at 50 mm and maximum bead width",
       "expected": 1.326260058535491,
       "actual": 1.32626,
       "unit": "µm",
@@ -49,11 +89,35 @@
       "pass": true
     },
     {
+      "test": "Analytic area mean vs independent midpoint radial quadrature",
+      "expected": 1.6614641247213244,
+      "actual": 1.661464126055079,
+      "unit": "µm",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "test": "Opposite-point offset asymmetry sign",
+      "expected": 0.07161804316091652,
+      "actual": 0.07161804316091658,
+      "unit": "µm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
       "test": "Recipe time: spread 20 + coat 35 + total ramp 8",
       "expected": 63,
       "actual": 63,
       "unit": "s",
       "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "test": "Equal speed stages omit zero-length ramp",
+      "expected": 0,
+      "actual": 0,
+      "unit": "segments",
+      "tolerance": 0,
       "pass": true
     },
     {
@@ -89,7 +153,7 @@
       "pass": true
     },
     {
-      "test": "Insufficient dose",
+      "test": "Insufficient dispense",
       "expected": 1,
       "actual": 1,
       "unit": "rejected",
@@ -98,6 +162,22 @@
     },
     {
       "test": "Wrong calibration",
+      "expected": 1,
+      "actual": 1,
+      "unit": "rejected",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Mismatched resist",
+      "expected": 1,
+      "actual": 1,
+      "unit": "rejected",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Duplicate contacts",
       "expected": 1,
       "actual": 1,
       "unit": "rejected",
@@ -129,10 +209,109 @@
       "unit": "mm",
       "tolerance": 0.000001,
       "pass": true
+    },
+    {
+      "test": "Desktop nominal closed width (15 in, approximate bounding box)",
+      "expected": 381,
+      "actual": 381,
+      "unit": "mm",
+      "tolerance": 2,
+      "pass": true
+    },
+    {
+      "test": "Desktop nominal closed height (11.6 in, accessories excluded)",
+      "expected": 294.64,
+      "actual": 294.64,
+      "unit": "mm",
+      "tolerance": 2,
+      "pass": true
+    },
+    {
+      "test": "Desktop nominal depth (16.7 in, estimated drain assembly)",
+      "expected": 424.18,
+      "actual": 424.18,
+      "unit": "mm",
+      "tolerance": 5,
+      "pass": true
+    },
+    {
+      "test": "Desktop opening angle (drawing callout)",
+      "expected": 75,
+      "actual": 75,
+      "unit": "degrees",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Upper lid skirt is child of hinge",
+      "expected": 1,
+      "actual": 1,
+      "unit": "boolean",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Chuck remains on base, not lid",
+      "expected": 1,
+      "actual": 1,
+      "unit": "boolean",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Desktop nominal open height (20 in, approximate bounding box)",
+      "expected": 508,
+      "actual": 508.14709846901127,
+      "unit": "mm",
+      "tolerance": 2,
+      "pass": true
     }
   ],
-  "limitations": [
-    "Graph readings only; raw measured holdout and measurement uncertainty not available.",
-    "No dimensional metrology or validated spatial film uniformity."
-  ]
+  "limits": [
+    "All graph points are visual estimates, not raw measured data. The independent AZ 1512 result has unspecified uncertainty type.",
+    "No dimensional metrology, collision/clearance qualification, fluid dynamics or validated spatial uniformity. Desktop bounding-box checks use mesh-local boxes; opened height is approximate, not a manufacturing tolerance."
+  ],
+  "geometryEnvelope_mm": {
+    "closed": {
+      "min": [
+        -127,
+        -6,
+        -266.68
+      ],
+      "max": [
+        254,
+        288.64,
+        157.5
+      ],
+      "extent": [
+        381,
+        294.64,
+        424.18
+      ]
+    },
+    "opened": {
+      "min": [
+        -127,
+        -6,
+        -266.68
+      ],
+      "max": [
+        254,
+        502.14709846901127,
+        157.5
+      ],
+      "extent": [
+        381,
+        508.14709846901127,
+        424.18
+      ]
+    },
+    "reference": {
+      "width": 381,
+      "closedHeight": 294.64,
+      "depth": 424.18,
+      "openHeight": 508
+    },
+    "source": "https://www.laurell.com/literature/dimensions/WS-650-23B.pdf#page=1"
+  }
 }
