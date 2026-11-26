@@ -33,9 +33,10 @@
     "inputs": "Scaled virtual specimen, camera calibration, zoom state and implant pose",
     "outputs": "Inspection view and annotated positions/distances in specimen coordinates",
     "acceptance": "Measure a synthetic 1 mm fiducial at two zoom levels. Its pixel separation should change with zoom while calibrated physical distance remains 1 mm within rounding.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Nikon motorized SMZ25 documented metric exterior",
+    "simulationStatus": "Dormant instrument and independent fixed-chart scaling",
+    "integrationStatus": "Standalone viewer; no specimen, optical or hardware link",
+    "simulator": "/simulations/equipment/15-02/simulator/"
   },
   {
     "id": "15-03",
