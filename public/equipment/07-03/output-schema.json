@@ -1,0 +1,407 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://buildthesimulation.com/equipment/07-03/output-schema.json",
+  "title": "Nikon ECLIPSE Ts2-FL virtual observation record, version 1",
+  "description": "Coordinate unit µm at the sample plane; calibration is nominal. Paired PNG is an annotated relative-intensity image. Null pitch means the fixture, channel or visible features do not support the adjacent-mark calculation.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "bts.equipment.07-03.observation.v1"
+    },
+    "deviceId": {
+      "const": "07-03"
+    },
+    "sampleId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "parentRevision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "contactIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "acquisition": {
+      "$ref": "#/$defs/acquisition"
+    },
+    "width": {
+      "const": 384
+    },
+    "height": {
+      "const": 256
+    },
+    "pixelSizeUm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "fovUm": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "minimum": 0
+        },
+        "height": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "coordinateFrame": {
+      "type": "string"
+    },
+    "scaleBar": {
+      "type": "object",
+      "properties": {
+        "lengthUm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "lengthPx": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "lengthUm",
+        "lengthPx"
+      ],
+      "additionalProperties": false
+    },
+    "optics": {
+      "type": "object",
+      "properties": {
+        "objectiveName": {
+          "type": "string"
+        },
+        "na": {
+          "type": "number",
+          "minimum": 0
+        },
+        "relay": {
+          "const": 0.63
+        },
+        "relayModel": {
+          "type": "string"
+        },
+        "detector": {
+          "const": "Nikon DS-Fi3"
+        },
+        "sensorPitchUm": {
+          "const": 2.4
+        },
+        "wavelengthUm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "diffractionSigmaUm": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "defocusSigmaUm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "stand": {
+          "enum": [
+            "Ts2-FL",
+            "Ts2"
+          ]
+        }
+      },
+      "required": [
+        "objectiveName",
+        "na",
+        "relay",
+        "relayModel",
+        "detector",
+        "sensorPitchUm",
+        "wavelengthUm",
+        "diffractionSigmaUm",
+        "defocusSigmaUm",
+        "stand"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "measurement": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/pitch"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rulerMeasurement": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ruler"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "imageFile": {
+      "type": "string",
+      "pattern": "\\.png$"
+    },
+    "scaleBarBurnedIn": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema",
+    "deviceId",
+    "sampleId",
+    "parentRevision",
+    "revision",
+    "contactIds",
+    "history",
+    "source",
+    "acquisition",
+    "width",
+    "height",
+    "pixelSizeUm",
+    "fovUm",
+    "coordinateFrame",
+    "scaleBar",
+    "optics",
+    "provenance",
+    "measurement"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "acquisition": {
+      "type": "object",
+      "properties": {
+        "fixture": {
+          "enum": [
+            "micrometer",
+            "neurites",
+            "raster"
+          ]
+        },
+        "variant": {
+          "enum": [
+            "Ts2-FL",
+            "Ts2"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "phase",
+            "fluorescence"
+          ]
+        },
+        "objective": {
+          "enum": [
+            10,
+            20
+          ]
+        },
+        "focusUm": {
+          "type": "number",
+          "minimum": -12,
+          "maximum": 12
+        },
+        "stageXUm": {
+          "type": "number",
+          "minimum": -150,
+          "maximum": 150
+        },
+        "stageYUm": {
+          "type": "number",
+          "minimum": -150,
+          "maximum": 150
+        },
+        "epiInstalled": {
+          "type": "boolean"
+        },
+        "lampPercent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Relative synthetic lamp intensity at fixed exposure. Imported rasters retain their source intensities at 100%."
+        }
+      },
+      "required": [
+        "fixture",
+        "variant",
+        "mode",
+        "objective",
+        "focusUm",
+        "stageXUm",
+        "stageYUm",
+        "epiInstalled",
+        "lampPercent"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "synthetic"
+            },
+            "name": {
+              "type": "string"
+            },
+            "fixtureVersion": {
+              "const": 1
+            }
+          },
+          "required": [
+            "kind",
+            "name",
+            "fixtureVersion"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "calibrated-raster-resample"
+            },
+            "name": {
+              "type": "string"
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 4096
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 4096
+            },
+            "pixelSizeUm": {
+              "type": "number",
+              "minimum": 0.01,
+              "maximum": 100
+            },
+            "channel": {
+              "enum": [
+                "phase",
+                "fluorescence"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "name",
+            "width",
+            "height",
+            "pixelSizeUm",
+            "channel"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "point": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 383
+        },
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "ruler": {
+      "type": "object",
+      "properties": {
+        "startPx": {
+          "$ref": "#/$defs/point"
+        },
+        "endPx": {
+          "$ref": "#/$defs/point"
+        },
+        "distancePx": {
+          "type": "number",
+          "minimum": 0
+        },
+        "distanceUm": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "startPx",
+        "endPx",
+        "distancePx",
+        "distanceUm"
+      ],
+      "additionalProperties": false
+    },
+    "pitch": {
+      "type": "object",
+      "properties": {
+        "pitchPx": {
+          "type": "number",
+          "minimum": 0
+        },
+        "pitchUm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "markCount": {
+          "type": "integer",
+          "minimum": 3
+        }
+      },
+      "required": [
+        "pitchPx",
+        "pitchUm",
+        "markCount"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "bts.analog-waveform.v1",
+  "sampleId": "coupon-1k-01",
+  "parentRevision": 0,
+  "revision": 1,
+  "t0S": 0,
+  "dtS": 0.1,
+  "channels": [
+    {
+      "id": "HI-LO",
+      "unit": "V",
+      "samples": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1
+      ]
+    }
+  ],
+  "provenance": {
+    "deviceId": "05-07",
+    "type": "simulated settled DC voltage points; no transients",
+    "contacts": [
+      {
+        "tipId": "HI",
+        "status": "contact",
+        "die": {
+          "xM": -0.0005,
+          "yM": 0
+        },
+        "padId": "DUT-HI",
+        "net": "a",
+        "gapM": 0
+      },
+      {
+        "tipId": "LO",
+        "status": "contact",
+        "die": {
+          "xM": 0.0005,
+          "yM": 0
+        },
+        "padId": "DUT-LO",
+        "net": "b",
+        "gapM": 0
+      }
+    ],
+    "topology": "conducting",
+    "upstream": {
+      "sampleId": "coupon-1k-01",
+      "revision": 1,
+      "deviceId": "09-03",
+      "contactIds": [
+        "DUT-HI",
+        "DUT-LO"
+      ]
+    }
+  }
+}
