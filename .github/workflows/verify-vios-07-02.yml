@@ -1,0 +1,29 @@
+name: Verify HERAcell equipment 07-02
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/07-02/**'
+      - 'src/lib/equipment/07-02/**'
+      - 'src/pages/simulations/equipment/07-02/**'
+      - 'scripts/equipment/07-02/**'
+      - 'tests/equipment-07-02-vios.mjs'
+      - 'src/data/equipment/zones/07.json'
+      - '.github/workflows/verify-vios-07-02.yml'
+  workflow_dispatch:
+jobs:
+  chamber:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-07-02-vios.mjs tests/equipment-register.mjs
+      - run: npx astro build
+      - name: Operate the instrument and read both downloaded files
+        run: |
+          npx astro preview --host 127.0.0.1 --port 4382 > /tmp/vios-preview.log 2>&1 &
+          node scripts/equipment/07-02/browser.mjs
