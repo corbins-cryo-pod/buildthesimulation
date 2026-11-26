@@ -1,0 +1,21 @@
+{
+  "schema": "bts.dry-dummy-fit.v1",
+  "kind": "simulated geometry",
+  "deviceId": "03-05",
+  "fixtureId": "s100-external-witness-gauge",
+  "dummyId": "dry-disc-01",
+  "revision": 1,
+  "parentRevision": 0,
+  "configuration": {
+    "dummyId": "dry-disc-01",
+    "diameterMm": 100,
+    "offsetXmm": 3,
+    "offsetZmm": 4
+  },
+  "gaugeDiameterMm": 112,
+  "offsetMm": 5,
+  "marginMm": 1,
+  "fits": true,
+  "cabinetState": "de-energized visual only",
+  "resultScope": "Centered circular planar containment; no machine access or material change. The gauge is an original model."
+}
