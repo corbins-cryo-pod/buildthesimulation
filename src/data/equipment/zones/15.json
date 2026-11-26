@@ -191,9 +191,10 @@
     "inputs": "OCT B-scan, axial tissue-distance calibration, retinal boundaries and implant annotations",
     "outputs": "Layer thickness profile, annotated cross section and implant-to-layer offsets",
     "acceptance": "Supply two parallel boundaries five pixels apart on a scan calibrated to 4 µm per axial pixel in tissue. Recover 20 µm across valid columns and flag missing boundaries.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-grounded inactive metric cart and sealed head exterior",
+    "simulationStatus": "Dormant exhibit and detached graphic scale with missing-mark guard",
+    "integrationStatus": "Standalone viewer; no optics, clinical data or hardware linkage",
+    "simulator": "/simulations/equipment/15-10/simulator/"
   },
   {
     "id": "15-11",
