@@ -1,0 +1,18 @@
+{
+  "method":"Locked independently by counting inclusive integer box spans and translating voxel edges with origin + index × spacing. Monitor extents computed separately from the vendor's 24-inch active diagonal and 16:10 aspect.",
+  "cases":[
+    {"id":"prism-count","expected":288,"unit":"voxels"},
+    {"id":"step-count","expected":165,"unit":"voxels"},
+    {"id":"prism-volume","expected":69.12,"tolerance":1e-9,"unit":"µm³"},
+    {"id":"step-volume","expected":39.6,"tolerance":1e-9,"unit":"µm³"},
+    {"id":"step-z-extent","expected":8.4,"tolerance":1e-9,"unit":"µm"},
+    {"id":"prism-label-center","expected":17,"unit":"label"},
+    {"id":"step-label-center","expected":35,"unit":"label"},
+    {"id":"known-coordinate-z","expected":9,"tolerance":1e-9,"unit":"µm"},
+    {"id":"after-gap-coordinate-z","expected":15,"tolerance":1e-9,"unit":"µm"},
+    {"id":"missing-not-zero","expected":true,"unit":"boolean"},
+    {"id":"step-observed-with-gap","expected":150,"unit":"voxels"},
+    {"id":"display-width","expected":0.5169397661215017,"tolerance":0.000001,"unit":"m"},
+    {"id":"display-height","expected":0.32308735382593856,"tolerance":0.000001,"unit":"m"}
+  ]
+}

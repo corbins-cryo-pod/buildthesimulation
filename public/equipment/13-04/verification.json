@@ -1,0 +1,109 @@
+{
+  "schema": "bts.toy-volume-inspection.verification.v1",
+  "metrics": {
+    "bytes": 90416,
+    "triangles": 936,
+    "draws": 44
+  },
+  "cases": [
+    {
+      "id": "prism-count",
+      "expected": 288,
+      "unit": "voxels",
+      "actual": 288,
+      "outcome": "PASS"
+    },
+    {
+      "id": "step-count",
+      "expected": 165,
+      "unit": "voxels",
+      "actual": 165,
+      "outcome": "PASS"
+    },
+    {
+      "id": "prism-volume",
+      "expected": 69.12,
+      "tolerance": 1e-9,
+      "unit": "µm³",
+      "actual": 69.12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "step-volume",
+      "expected": 39.6,
+      "tolerance": 1e-9,
+      "unit": "µm³",
+      "actual": 39.6,
+      "outcome": "PASS"
+    },
+    {
+      "id": "step-z-extent",
+      "expected": 8.4,
+      "tolerance": 1e-9,
+      "unit": "µm",
+      "actual": 8.4,
+      "outcome": "PASS"
+    },
+    {
+      "id": "prism-label-center",
+      "expected": 17,
+      "unit": "label",
+      "actual": 17,
+      "outcome": "PASS"
+    },
+    {
+      "id": "step-label-center",
+      "expected": 35,
+      "unit": "label",
+      "actual": 35,
+      "outcome": "PASS"
+    },
+    {
+      "id": "known-coordinate-z",
+      "expected": 9,
+      "tolerance": 1e-9,
+      "unit": "µm",
+      "actual": 9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "after-gap-coordinate-z",
+      "expected": 15,
+      "tolerance": 1e-9,
+      "unit": "µm",
+      "actual": 15,
+      "outcome": "PASS"
+    },
+    {
+      "id": "missing-not-zero",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "step-observed-with-gap",
+      "expected": 150,
+      "unit": "voxels",
+      "actual": 150,
+      "outcome": "PASS"
+    },
+    {
+      "id": "display-width",
+      "expected": 0.5169397661215017,
+      "tolerance": 0.000001,
+      "unit": "m",
+      "actual": 0.5169397592544556,
+      "outcome": "PASS"
+    },
+    {
+      "id": "display-height",
+      "expected": 0.32308735382593856,
+      "tolerance": 0.000001,
+      "unit": "m",
+      "actual": 0.3230873644351959,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Previously authored shapes and index/world transform; 24-inch screen geometry only. No measured console dimensions, equipment operation, registration or real samples."
+}
