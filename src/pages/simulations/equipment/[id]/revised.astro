@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import {updateById, scopes, updatePath} from '../../../../data/crystal-update.js';
 import {equipment,zones,base,zoneId} from '../../../../data/equipment';
 import {revisionBase,revisionById,revisionKinds,previewHref} from '../../../../data/equipment-revisions.js';
 import '../../../../styles/equipment.css';
@@ -8,6 +9,7 @@ export function getStaticPaths(){
  return equipment.filter(r=>revisionById[r.id]).map(r=>({params:{id:r.id},props:{r, row:revisionById[r.id]}}));
 }
 const {r,row}=Astro.props;
+const update=updateById[r.id];
 const zone=zones.find(z=>z.id===zoneId(r)),d=revisionKinds[row.kind],launcher=previewHref(row);
 ---
 <Layout pageTitle={`${r.id} · ${r.name} · Revised preview`} subtitle="" compactHeader={true} description={row.scope}>
@@ -19,6 +21,7 @@ const zone=zones.find(z=>z.id===zoneId(r)),d=revisionKinds[row.kind],launcher=pr
    <div class="rev-badges"><span class="rev-badge" data-kind={row.kind}>{d.label}</span><span class="rev-badge" data-ready={String(!!launcher)}>{launcher?'Ready to open':'Not yet available'}</span></div>
    <p>{row.scope}</p>
   </header>
+  {update && <aside class="rev-page-note"><strong>New release: {scopes[update.fidelity].label}.</strong> {update.scope}<div class="rev-actions"><a class="rev-button primary" href={update.href}>Open updated preview →</a><a href={updatePath}>All lab updates</a></div></aside>}
   <div class="rev-actions">
    {launcher && <a class="rev-button primary" data-preview-launch href={launcher}>Launch revised preview →</a>}
    {r.simulator && <a class="rev-button" href={r.simulator}>Open original simulator</a>}

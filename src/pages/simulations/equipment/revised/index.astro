@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import {updateById} from '../../../../data/crystal-update.js';
 import {equipment,zones,base,zoneId} from '../../../../data/equipment';
 import {revisionKinds,revisionRows,readyRevisions,revisedDevicePath} from '../../../../data/equipment-revisions.js';
 import '../../../../styles/equipment.css';
@@ -9,7 +10,7 @@ const documentary=revisionRows.filter(r=>r.kind==='documentary').length;
 ---
 <Layout pageTitle="Revised equipment library" subtitle="" compactHeader={true} description="Browse revised Crystal Palace equipment by record ID, model, zone and what the preview actually represents.">
  <section class="equipment rev-pilot" aria-labelledby="revised-intro">
-  <nav class="eq-nav" aria-label="Catalogue navigation"><a href={base}>← Equipment register</a><a href="/simulations/">Simulations</a><a href="/simulations/shared-virtual-lab/">Shared virtual lab (3 connected routes)</a></nav>
+  <nav class="eq-nav" aria-label="Catalogue navigation"><a href={base}>← Equipment register</a><a href="/simulations/">Simulations</a><a href="/simulations/shared-virtual-lab/">Shared virtual lab (3 connected routes)</a><a href="/simulations/equipment/updates/">Latest lab updates</a></nav>
   <header class="rev-heading">
    <p class="rev-cap">Crystal Palace laboratory · second pass</p>
    <h1 id="revised-intro">Revised equipment library</h1>
@@ -40,6 +41,7 @@ const documentary=revisionRows.filter(r=>r.kind==='documentary').length;
     <p class="rev-model">{r.model}</p>
     <div class="rev-badges"><span class="rev-badge" data-kind={row.kind}>{revisionKinds[row.kind].label}</span><span class="rev-badge" data-ready={String(ready)}>{ready?'Ready to open':'Not yet available'}</span></div>
     <p class="rev-scope">{row.scope}</p>
+    {updateById[row.id] && <a class="rev-link" data-crystal-latest href={updateById[row.id].href}>Open latest preview →</a>}
     <a class="rev-link" href={link} aria-label={`${ready?'Open revised preview':'See revision details'} for ${title}, record ${row.id}`}>{ready?'Open revised preview':'See revision details'} →</a>
    </li>;
   })}

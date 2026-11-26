@@ -1,0 +1,7 @@
+.crystal-update .crystal-panel { margin: 1.1rem 0; padding: clamp(1rem,3vw,1.65rem); border: 1px solid currentColor; border-radius: .45rem; }
+.crystal-update .crystal-panel h2,.crystal-update .crystal-devices h2 { margin-block: .2rem .55rem; }
+.crystal-update .crystal-panel img { display: block; max-width: 100%; height: auto; margin: .9rem 0; }
+.crystal-update .rev-card { min-width: 0; overflow-wrap: anywhere; }
+.crystal-update .rev-card h3 { margin-block: .4rem; font-size: 1.2rem; line-height: 1.3; }
+.crystal-update .rev-card[hidden] { display: none; }
+.crystal-update .crystal-devices { margin-top: 1.6rem; }

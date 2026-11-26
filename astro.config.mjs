@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import preact from "@astrojs/preact";
 import { fileURLToPath } from "node:url";
 import { unpack as unpackEquipmentRevisions } from "./scripts/unpack-equipment-revisions.mjs";
+import { unpack as unpackPhase4 } from "./scripts/unpack-phase4-static.mjs";
 import remarkCompanyBriefs from "./src/lib/remark-company-briefs.mjs";
 
 // Materialize pinned revision assets even for hosts invoking Astro directly.
@@ -15,6 +16,10 @@ const equipmentRevisions = {
       await unpackEquipmentRevisions(
         fileURLToPath(new URL("payloads/equipment-revised/", config.root)),
         fileURLToPath(new URL("equipment-revised/", config.publicDir)),
+      );
+      await unpackPhase4(
+        fileURLToPath(new URL("payloads/phase4-static/", config.root)),
+        fileURLToPath(config.publicDir),
       );
     },
   },

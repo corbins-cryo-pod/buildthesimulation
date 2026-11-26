@@ -1,0 +1,93 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import {equipment, base} from '../../../data/equipment';
+import {revisedDevicePath} from '../../../data/equipment-revisions.js';
+import {updates,scopes,workflows,room} from '../../../data/crystal-update.js';
+import '../../../styles/equipment.css';
+import '../../../styles/equipment-revisions.css';
+import '../../../styles/crystal-update.css';
+
+const registered=Object.fromEntries(equipment.map(row=>[row.id,row]));
+const counts=Object.fromEntries(Object.keys(scopes).map(key=>[key,updates.filter(r=>r.fidelity===key).length]));
+---
+<Layout pageTitle="Crystal Palace lab updates" subtitle="" compactHeader={true} description="Open the latest equipment experiments, data handoffs, and room review files from the Crystal Palace virtual laboratory.">
+ <section class="equipment rev-pilot crystal-update" aria-labelledby="update-title">
+  <nav class="eq-nav" aria-label="Lab navigation"><a href={base}>← Equipment register</a><a href="/simulations/equipment/revised/">Revised equipment library</a><a href="/simulations/shared-virtual-lab/">Shared virtual lab</a></nav>
+  <header class="rev-heading">
+   <p class="rev-cap">Crystal Palace virtual laboratory</p>
+   <h1 id="update-title">Lab updates</h1>
+   <p>Open the newest virtual equipment previews, run a verified station-to-station workflow, or inspect the updated Blender room. The earlier previews and the original room remain unchanged.</p>
+  </header>
+  <dl class="rev-counts" aria-label="Equipment preview scope">
+   {Object.entries(scopes).map(([key,s])=><div><dt>{s.label}</dt><dd>{counts[key]}</dd></div>)}
+  </dl>
+  <section class="crystal-panel" aria-labelledby="workflow-heading">
+   <p class="rev-cap">Original 100-foot floor plan</p>
+   <h2 id="workflow-heading">Connected workflows</h2>
+   <p>Choose highlighted equipment on the plan to run built-in virtual examples. Each workflow keeps its own specimens, measurements and receipts.</p>
+   <div class="rev-actions">{workflows && <a class="rev-button primary" href={workflows.href}>Open verified workflow map →</a>}<a class="rev-button" href="/simulations/shared-virtual-lab/">Open the earlier shared lab</a></div>
+   <p class="rev-note">A map and separate browser stations, not a full-room VR walkthrough.</p>
+  </section>
+  {room && <section class="crystal-panel" aria-labelledby="room-heading">
+   <p class="rev-cap">Optional native Blender review</p>
+   <h2 id="room-heading">Four equipment updates in the room</h2>
+   <p>The Nikon SMZ25, FLIR E95, Ney Vulcan and freezer were checked in one separate copy. Only the Vulcan changed position. The original room is untouched.</p>
+   {room.image && <img src={room.image} alt="Overhead Blender view of the Crystal Palace showing the four updated equipment positions" width="880" height="880" loading="lazy" />}
+   <div class="rev-actions"><a class="rev-button" href={room.href} download>Download Blender overlay</a></div>
+   <p class="rev-note">Requires the linked <code>models/</code> folder from the original Crystal Palace Modular Lab archive. It is not a standalone room download. The included guide explains where the folder goes.</p>
+  </section>}
+  <section class="crystal-devices" aria-labelledby="new-devices">
+   <h2 id="new-devices">Equipment previews</h2>
+   <p class="rev-note">All measurements are from virtual fixtures, stored examples or synthetic data. A browser test or headset emulator does not establish real instrument accuracy, safety or physical headset performance.</p>
+   <form id="crystal-filter" class="rev-filter" hidden>
+    <label>Find a device<input type="search" name="q" placeholder="Record ID, model, or function" autocomplete="off" /></label>
+    <label>Preview scope<select name="scope"><option value="">All scopes</option>{Object.entries(scopes).map(([key,s])=><option value={key}>{s.label}</option>)}</select></label>
+    <button type="reset">Clear filters</button>
+   </form>
+   <p class="rev-statusline" id="crystal-count" aria-live="polite">{updates.length} previews</p>
+   <ul class="rev-grid" aria-label="Latest equipment previews">
+   {updates.map(r=>{const device=registered[r.id];const scope=scopes[r.fidelity];return (
+    <li class="rev-card" id={'update-'+r.id} data-crystal-device={r.id} data-scope={r.fidelity} data-search={[r.id,device.name,device.model,r.scope].join(' ')}>
+      <div class="rev-id"><span>{r.id}</span></div>
+      <h3><a data-crystal-launch href={r.href}>{device.name}</a></h3>
+      <p class="rev-model">{device.model}</p>
+      <div class="rev-badges"><span class="rev-badge" data-kind={r.fidelity==='bounded_simulation'?'virtual':'documentary'}>{scope.label}</span></div>
+      <p class="rev-scope">{r.scope}</p>
+      <a class="rev-link" href={r.href}>Open updated preview →</a>
+      <a href={revisedDevicePath(r.id)}>Earlier preview and references</a>
+    </li>
+   );})}
+   </ul>
+  </section>
+ </section>
+</Layout>
+<script>
+const form = document.querySelector<HTMLFormElement>('#crystal-filter');
+const status = document.querySelector<HTMLElement>('#crystal-count');
+const cards = [...document.querySelectorAll<HTMLElement>('[data-crystal-device]')];
+if(form && status){
+ const search=(form.elements.namedItem('q') as HTMLInputElement);
+ const scope=(form.elements.namedItem('scope') as HTMLSelectElement);
+ const searchKey=(s:string)=>s.normalize('NFKD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+ const params=new URLSearchParams(location.search);
+ search.value=params.get('q')??'';
+ const selected=params.get('scope')??'';
+ if([...scope.options].some(o=>o.value===selected))scope.value=selected;
+ function apply(updateUrl:boolean){
+  const terms=searchKey(search.value.trim()).split(/\s+/).filter(Boolean);
+  let count=0;
+  for(const card of cards){
+    const label=searchKey(card.dataset.search??'');
+    const match=(!scope.value||card.dataset.scope===scope.value)&&terms.every(p=>/^\d{2}-\d{2}$/.test(p)?p===card.dataset.crystalDevice:label.includes(p));
+    card.hidden=!match; if(match)count++;
+  }
+  status!.textContent=count===0?'No previews match those filters.':`${count} of ${cards.length} previews`;
+  if(updateUrl){const u=new URL(location.href);for(const [k,v] of [['q',search.value.trim()],['scope',scope.value]]){if(v)u.searchParams.set(k,v);else u.searchParams.delete(k);}history.replaceState(null,'',u);}
+ }
+ apply(false);form.hidden=false;
+ form.addEventListener('input',()=>apply(true));
+ form.addEventListener('change',()=>apply(true));
+ form.addEventListener('submit',e=>{e.preventDefault();apply(true);});
+ form.addEventListener('reset',()=>setTimeout(()=>apply(true),0));
+}
+</script>
