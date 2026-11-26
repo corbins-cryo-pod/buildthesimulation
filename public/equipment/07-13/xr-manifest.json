@@ -1,0 +1,39 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "07-13",
+  "asset": "/equipment/07-13/worthington-ls6000-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Poster frame is authored millimeters.",
+  "metrics": {
+    "bytes": 250848,
+    "triangles": 12024,
+    "draws": 16,
+    "instrumentXYZM": [
+      0.6830000281333923,
+      0.9909999966621399,
+      0.6830000281333923
+    ]
+  },
+  "scope": "Unrelated desktop views only; no headset.",
+  "nodes": [
+    {
+      "node": "detached_packing_switch",
+      "label": "Switch fixed abstract poster layout",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.098,
+        0.019,
+        0.043
+      ]
+    },
+    {
+      "node": "packing_display_anchor",
+      "label": "Detached drawing texture",
+      "boundsM": [
+        0.328,
+        0.222
+      ]
+    }
+  ]
+}
