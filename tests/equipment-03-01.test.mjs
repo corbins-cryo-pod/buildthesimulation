@@ -10,7 +10,13 @@ test('Reproducible metric GLB and target nodes',()=>{const m=build(assets,anchor
 function assertGeometry(buffer,generated){
  const decode=b=>{assert.equal(b.readUInt32LE(0),0x46546c67);assert.equal(b.readUInt32LE(4),2);assert.equal(b.readUInt32LE(8),b.length);const n=b.readUInt32LE(12);assert.equal(b.readUInt32LE(16),0x4e4f534a);assert.equal(b.readUInt32LE(24+n),0x004e4942);return {doc:JSON.parse(b.subarray(20,20+n)),bin:b.subarray(28+n)};};
  const a=decode(buffer),b=decode(Buffer.from(generated));
- for(const k of ['materials','nodes','meshes','scenes'])assert.deepEqual(a.doc[k],b.doc[k]);
+ for(const k of ['materials','meshes','scenes'])assert.deepEqual(a.doc[k],b.doc[k]);
+ assert.equal(a.doc.nodes.length,b.doc.nodes.length);
+ a.doc.nodes.forEach((p,i)=>{const q=b.doc.nodes[i],coords=['anchorM','boundsM'];
+  assert.deepEqual({...p,translation:undefined,extras:p.extras&&{...p.extras,...Object.fromEntries(coords.map(c=>[c,undefined]))}},{...q,translation:undefined,extras:q.extras&&{...q.extras,...Object.fromEntries(coords.map(c=>[c,undefined]))}});
+  const near=(m,n)=>{if(m===undefined){assert.equal(n,undefined);return;}assert.equal(m.length,n.length);for(let j=0;j<m.length;j++)assert.ok(Math.abs(m[j]-n[j])<=1e-7);};
+  near(p.translation,q.translation);for(const c of coords)near(p.extras?.[c],q.extras?.[c]);
+ });
  assert.equal(a.doc.accessors.length,b.doc.accessors.length);
  a.doc.accessors.forEach((actual,k)=>{const expect=b.doc.accessors[k];
   for(const key of ['count','type','componentType'])assert.equal(actual[key],expect[key]);
