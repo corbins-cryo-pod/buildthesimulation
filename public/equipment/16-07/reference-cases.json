@@ -1,0 +1,18 @@
+{
+  "schema":"bts.thermal-bath.reference-cases.v1",
+  "basis":"Preimplementation closed-form references for an inert lumped temperature proxy; no instrument measurements or environmental calibration.",
+  "cases":[
+    {"id":"one-tau-gap-fraction","expected":0.6321205588285577,"unit":"fraction","tolerance":1e-12},
+    {"id":"held-dummy-at-60","expected":24.321205588285576,"unit":"C","tolerance":1e-10},
+    {"id":"held-bath-at-60","expected":28,"unit":"C","tolerance":1e-12},
+    {"id":"initial-condition","expected":18,"unit":"C","tolerance":1e-12},
+    {"id":"passive-cooling-at-60","expected":30.207276647028655,"unit":"C","tolerance":1e-10},
+    {"id":"equal-tau-bath-at-60","expected":25.424843911799902,"unit":"C","tolerance":1e-10},
+    {"id":"equal-tau-dummy-at-60","expected":21.74604950008548,"unit":"C","tolerance":1e-9},
+    {"id":"unloaded-blocked","expected":true,"unit":"boolean"},
+    {"id":"open-lid-blocked","expected":true,"unit":"boolean"},
+    {"id":"invalid-tau-blocked","expected":true,"unit":"boolean"},
+    {"id":"body-width","expected":0.355,"unit":"m","tolerance":1e-5},
+    {"id":"tank-opening-width","expected":0.300,"unit":"m","tolerance":1e-5}
+  ]
+}

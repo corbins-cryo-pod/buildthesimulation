@@ -1,0 +1,60 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "16-07",
+  "asset": "/equipment/16-07/isotemp-gpd05.glb",
+  "scale": "glTF meter, +Y up and +Z toward operator",
+  "metrics": {
+    "bytes": 137424,
+    "triangles": 1254,
+    "draws": 77,
+    "nominalBodyHeightM": 0.2319999961182475,
+    "nominalTankXZM": [
+      0.30000001192092896,
+      0.15399999916553497
+    ]
+  },
+  "implementation": "DOM and 3D pointer use action(state, action); no immersive/browser hardware certification",
+  "nodes": [
+    {
+      "node": "lid_handle",
+      "label": "Toggle clear hinged lid",
+      "action": {
+        "type": "lid"
+      },
+      "boundsM": [
+        0.11,
+        0.015,
+        0.015
+      ]
+    },
+    {
+      "node": "gable_lid",
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "pivotM": [
+        0,
+        0.235,
+        -0.104
+      ],
+      "travelDeg": [
+        -90,
+        0
+      ]
+    },
+    {
+      "node": "inert_dummy",
+      "label": "Virtual inert reference dummy"
+    },
+    {
+      "node": "display_texture_anchor",
+      "label": "Live output temperature and set point",
+      "boundsM": [
+        0.066,
+        0.033
+      ]
+    }
+  ]
+}

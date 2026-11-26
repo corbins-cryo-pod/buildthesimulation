@@ -120,7 +120,7 @@
   {
     "id": "16-07",
     "name": "Water bath",
-    "model": "Fisher Scientific Isotemp water bath (model pending)",
+    "model": "Fisher Scientific Isotemp GPD 05 · 5 L 15375877, clear gable cover",
     "evidence": "B",
     "priority": "P2",
     "page": 50,
@@ -133,9 +133,13 @@
     "inputs": "Bath set point and initial state, sample IDs, thermal time constants and simulation clock",
     "outputs": "Bath and sample temperature histories with exposure timestamps",
     "acceptance": "Start a colder virtual sample in a constant-temperature bath. Under a first-order model the sample should close 63.2% of the initial temperature gap in one time constant.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric GPD 05 with referenced envelope and inferred details",
+    "simulationStatus": "Inert held/relaxing bath histories with verified one-time-constant response",
+    "integrationStatus": "Simulator, revisioned JSON and CSV temperature histories; headset not tested",
+    "simulator": "/simulations/equipment/16-07/simulator/",
+    "related": [
+      ["Fisher Isotemp GPD family brochure", "https://www.fishersci.de/content/dam/fssite/eu/brands/f/22640_fisherbrand/11475_Fisherbrand_Isotemp_water_baths_EN.pdf"]
+    ]
   },
   {
     "id": "16-08",
