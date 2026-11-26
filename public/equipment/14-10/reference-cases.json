@@ -1,0 +1,19 @@
+{
+  "schema":"bts.flex-fatigue.reference-cases.v1",
+  "independence":"Preimplementation, from direct arc-length ratio and hand-derived resistor arithmetic; no device readings or curve fitting.",
+  "cases":[
+    {"id":"neutral-curvature","expected":200,"unit":"m^-1","tolerance":1e-9},
+    {"id":"outside-strain","expected":0.01,"unit":"1","tolerance":1e-12},
+    {"id":"20-trace-squares","expected":10,"unit":"ohm","tolerance":1e-12},
+    {"id":"cycle-99-flat-resistance","expected":10.495,"unit":"ohm","tolerance":1e-12},
+    {"id":"injected-first-event","expected":100,"unit":"cycle","tolerance":0},
+    {"id":"restart-60-identical-rows","expected":true,"unit":"boolean"},
+    {"id":"open-event-once","expected":1,"unit":"event","tolerance":0},
+    {"id":"post-open-null","expected":true,"unit":"boolean"},
+    {"id":"double-neutral-radius-reduces-damage-fourfold","expected":0.25,"unit":"1","tolerance":1e-12},
+    {"id":"calibrated-life-threshold","expected":4,"unit":"cycle","tolerance":0},
+    {"id":"reject-tampered-checkpoint","expected":true,"unit":"boolean"},
+    {"id":"reject-incompatible-trace-length","expected":true,"unit":"boolean"},
+    {"id":"nominal-base-width","expected":0.32,"unit":"m","tolerance":0.00001}
+  ]
+}

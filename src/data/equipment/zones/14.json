@@ -207,9 +207,15 @@
     "inputs": "Trace geometry, mandrel radius, bend-cycle schedule, resistance or continuity model, checkpoint",
     "outputs": "Cycle-indexed curvature and resistance, continuity events and resumable job revision",
     "acceptance": "Insert a synthetic open circuit on cycle 100. An interrupted run resumed at cycle 60 must reproduce the uninterrupted resistance history and report failure exactly once at 100.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass nominal custom metric GLB; original design, no measured hardware",
+    "simulationStatus": "Working synthetic cyclic-fatigue example; checkpoint and cycle-100 open verified",
+    "integrationStatus": "Simulator route and checkpoint/JSON/CSV exports linked",
+    "simulator": "/simulations/equipment/14-10/simulator/",
+    "related": [
+      ["Case Western Reserve University flex tester", "https://engineering.case.edu/research/centers/ammrc/fatigue_ductility_flex_tester"],
+      ["Kim et al. bending strain and fatigue", "https://doi.org/10.3390/ma12152490"],
+      ["IPC-TM-650 method 2.4.3.1C", "https://www.ipc.org/sites/default/files/test_methods_docs/2.4.3.1c.pdf"]
+    ]
   },
   {
     "id": "14-11",
