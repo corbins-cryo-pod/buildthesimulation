@@ -1,0 +1,96 @@
+{
+  "schema": "bts.detached-art-layout.verification.v1",
+  "metrics": {
+    "bytes": 250848,
+    "triangles": 12024,
+    "draws": 16,
+    "instrumentXYZM": [
+      0.6830000281333923,
+      0.9909999966621399,
+      0.6830000281333923
+    ]
+  },
+  "cases": [
+    {
+      "id": "diameter-x",
+      "expected": 0.683,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.6830000281333923,
+      "outcome": "PASS"
+    },
+    {
+      "id": "diameter-z",
+      "expected": 0.683,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.6830000281333923,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 0.991,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.9909999966621399,
+      "outcome": "PASS"
+    },
+    {
+      "id": "separate-union",
+      "expected": 1600,
+      "unit": "mm²",
+      "actual": 1600,
+      "outcome": "PASS"
+    },
+    {
+      "id": "touching-union",
+      "expected": 1600,
+      "unit": "mm²",
+      "actual": 1600,
+      "outcome": "PASS"
+    },
+    {
+      "id": "overlap-union",
+      "expected": 1480,
+      "unit": "mm²",
+      "actual": 1480,
+      "outcome": "PASS"
+    },
+    {
+      "id": "overlap-area",
+      "expected": 120,
+      "unit": "mm²",
+      "actual": 120,
+      "outcome": "PASS"
+    },
+    {
+      "id": "outside-margin",
+      "expected": -7,
+      "unit": "mm",
+      "actual": -7,
+      "outcome": "PASS"
+    },
+    {
+      "id": "touch-not-overlap",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "case-ids-stable",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unsupported-action-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Closed LS6000 outline and disconnected art-board arithmetic. No apparatus, real storage, use, or headset verification."
+}

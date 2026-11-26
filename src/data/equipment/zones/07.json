@@ -298,9 +298,10 @@
     "inputs": "Archive inventory, unique vial and batch IDs, rack positions and logged temperature",
     "outputs": "Storage or retrieval event with address, time and environmental history",
     "acceptance": "Store two labeled vials, retrieve one and replay that event. Only its location should change and each vial must retain its original batch identity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: sealed standalone non-AT LS6000 shell; manufacturer diameter and height verified; CS100 pairing not modeled",
+    "simulationStatus": "First pass: unrelated fixed abstract artwork diagram; original storage acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable metric GLB, passive named XR action and example JSON",
+    "simulator": "/simulations/equipment/07-13/simulator/"
   },
   {
     "id": "07-14",
