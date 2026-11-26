@@ -140,15 +140,20 @@
     "inputs": "Chip channel graph, hydraulic resistances, pressure boundary values and reservoir volumes",
     "outputs": "Run record with pressure, branch flow and volume-based residence time",
     "acceptance": "Use two identical parallel channels between fixed-pressure reservoirs. Each must carry half the total flow, satisfy Q = Δp/R and give equal residence times.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built, documented nominal MFCS-EZ enclosure",
+    "simulationStatus": "Detached inert drafting comparison; no flow or control model",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
     "related": [
       [
         "Biohybrid Neural Interface Laboratory",
         "/simulations/biohybrid-interface/"
+      ],
+      [
+        "Documentary exterior and drawing checks",
+        "/simulations/equipment/06-07/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/06-07/simulator/"
   },
   {
     "id": "06-08",

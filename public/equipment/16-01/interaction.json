@@ -1,0 +1,13 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"16-01","model":"Newport M-RS2000-46-8 on S-2000A-428 ×4",
+ "frame":{"units":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","datum":"floor at base center; table-local surface Y is zero in exported coordinates"},
+ "parts":{"translation":"table_translation","floating":"floating_platform","witness":"two_hole_witness","leftPin":"mount_first_pin","rightPin":"mount_second_pin","payload":"centered_dummy_mass","grid":"metric_25mm_hole_grid"},"ports":["port_air"],
+ "actions":[
+  {"id":"attach","node":"snap_target","action":"snap","label":"Snap the selected two-hole mount","sizeM":[0.09,0.07,0.055]},
+  {"id":"lift","node":"mount_bridge","action":"release","label":"Release the installed mount","sizeM":[0.085,0.045,0.065]},
+  {"id":"mass","node":"load_target","action":"load","label":"Add or remove 60 kg centered equivalent mass","sizeM":[0.09,0.07,0.055]},
+  {"id":"translate","node":"shift_target","action":"shift","label":"Shift or restore table placement","sizeM":[0.09,0.07,0.055]}
+ ],
+ "motion":{"translationMmEachAxis":500,"nominalSupportTravelMm":[-6.4,27.7],"supportActuated":false},
+ "assessment":"Metric asset and named bounds for future headset controller binding. Viewer controls are browser-only; immersion not tested."
+}

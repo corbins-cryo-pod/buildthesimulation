@@ -1,0 +1,6 @@
+{
+  "device":"Fluigent MFCS-EZ four-position enclosure; classic photographed blue-front revision, unpowered and visually capped",
+  "dimensionBasis":"MFCS-EZ datasheet p.2 lists L×W×H 160×230×63 mm, used as the authored shell envelope. Early manual specifies 65 mm high; do not treat difference as unit uncertainty or swap variants. Decorative closures project beyond the shell.",
+  "photoCheck":"Estimated absolute X centers from manual p.9 front image with visible shell from x116 to x363 on a 1000-px page image (scaled width 707 px). Four circles are centered at roughly 215, 252, 288 and 324 px, i.e. 40.1%, 55.1%, 69.6%, 84.2% from the apparent left edge. Accept authored normalized X centers within ±0.025. This is a rough photo proportion check, not measured or dimensioned machining.",
+  "geometryBenchmark":"Decorative drawing datum X=75 mm, equal dot center coordinates 30,60,90,120 mm and Y=37.5 mm. The first pick A→B gives 30 mm, A→D gives 90 mm, A→A gives 0 mm. The mirror maps X to 150−X. Signed delta changes sign; distance, datum and source revision do not."
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "bts.optical-table-output.v1",
+  "equipmentId": "16-01",
+  "sampleId": "two-hole-inert-witness",
+  "revision": 1,
+  "runSequence": 1,
+  "provenance": "Analytic passive rigid-body vertical model; modal reference anchored to catalog nominal 1 Hz/10 dB; synthetic base tone.",
+  "coordinates": {
+    "axes": "right-handed +Y up, +Z front",
+    "units": "mm",
+    "tableOriginWorldMm": [
+      0,
+      914.2,
+      0
+    ],
+    "fixtureOriginWorldMm": [
+      -62.5,
+      914.2,
+      287.5
+    ],
+    "fixtureOriginTableMm": [
+      -62.5,
+      0,
+      287.5
+    ],
+    "fixtureQuaternionXYZW": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "occupied": [
+      {
+        "id": "X32-Z35",
+        "ix": 32,
+        "iz": 35,
+        "xMm": -87.5,
+        "yMm": 0,
+        "zMm": 287.5,
+        "worldMm": [
+          -87.5,
+          914.2,
+          287.5
+        ]
+      },
+      {
+        "id": "X34-Z35",
+        "ix": 34,
+        "iz": 35,
+        "xMm": -37.5,
+        "yMm": 0,
+        "zMm": 287.5,
+        "worldMm": [
+          -37.5,
+          914.2,
+          287.5
+        ]
+      }
+    ]
+  },
+  "excitation": {
+    "frequencyHz": 5,
+    "basePeakUm": 10,
+    "addedCenteredMassKg": 0
+  },
+  "response": {
+    "massKg": 300,
+    "kNPerM": 11843.52528130723,
+    "cNsPerM": 628.3185307179585,
+    "naturalHz": 1,
+    "zeta": 0.16666666666666666,
+    "crossoverHz": 1.4142135623730951,
+    "ratio": 0.08079086905672611,
+    "gainDb": -21.85275440390442,
+    "phaseDeg": -116.99126059132288,
+    "tablePeakUm": 0.8079086905672611,
+    "fixturePeakUm": 0.8079086905672611
+  }
+}

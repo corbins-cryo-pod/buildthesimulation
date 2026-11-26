@@ -1,0 +1,8 @@
+{
+ "equipmentId":"16-01",
+ "input":{"schema":"bts.optical-table-input.v1","fixture":"Named inert sample revision with two holes along +X. Indexes ix=0–71, iz=0–47; L=25–150 mm, ±0.05 mm match tolerance.","pose":"World X and Z independently in ±500 mm. Local frame +Y up, +Z front; tabletop surface local Y=0 mm.","vibration":"One vertical base tone, 0–25 Hz, peak 0–100 µm. Added centered effective mass 0–100 kg."},
+ "output":{"schema":"bts.optical-table-output.v1","registration":"World and local origins in mm, rigid XYZW quaternion, occupied hole IDs and world coordinates, input sample ID, sample revision, run sequence.","vibration":"Peak displacement µm, phase degrees, ratio and dB, stiffness N/m, damping N·s/m, reference-model natural and crossover frequencies in Hz. Mounted fixture inherits platform motion."},
+ "failures":["Incompatible pin spacing, out-of-grid index, or wrong input schema rejected. Changing a fit parameter clears attachment.","Without a fixture the table still solves; fixture response is null. Invalid mass, amplitude or frequency rejected."],
+ "limitations":["Rigid heave only; no rocking, leveling action, pressure control, table flexure, fastener load, broadband PSD, measured response or calibration. Mass beyond the baseline modeled as centered with fixed equivalent linear stiffness and damping."],
+ "fixtures":["example-input.json","example-output.json"]
+}

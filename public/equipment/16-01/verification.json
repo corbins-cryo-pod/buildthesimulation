@@ -1,0 +1,133 @@
+{
+  "scope": "Closed-form and independent force-balance verification, registration, and actual GLB geometry. Manufacturer isolation points are comparisons only; no instrument measurements, room PSD or headset data.",
+  "rows": [
+    {
+      "id": "Static gain",
+      "expected": 1,
+      "actual": 1,
+      "unit": "ratio",
+      "tol": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "1 Hz nominal natural frequency",
+      "expected": 3.1622776601683795,
+      "actual": 3.1622776601683795,
+      "unit": "ratio",
+      "tol": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "Isolation crossover",
+      "expected": 1,
+      "actual": 0.9999999999999998,
+      "unit": "ratio",
+      "tol": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "5 Hz vertical displacement ratio",
+      "expected": 0.08079086905672611,
+      "actual": 0.08079086905672611,
+      "unit": "ratio",
+      "tol": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "5 Hz expected table peak for 10 μm base",
+      "expected": 0.8079086905672611,
+      "actual": 0.8079086905672611,
+      "unit": "µm",
+      "tol": 1e-11,
+      "pass": true
+    },
+    {
+      "id": "60 kg mass shifts baseline natural frequency",
+      "expected": 0.9128709291752769,
+      "actual": 0.9128709291752769,
+      "unit": "Hz",
+      "tol": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "Adjacent mounting-grid pitch",
+      "expected": 25,
+      "actual": 25,
+      "unit": "mm",
+      "tol": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Two-hole witness distance",
+      "expected": 50,
+      "actual": 50,
+      "unit": "mm",
+      "tol": 1e-10,
+      "pass": true
+    },
+    {
+      "id": "Local mount position after translation",
+      "expected": "Unchanged",
+      "actual": "Unchanged",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Incompatible 60 mm mount",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "GLB grid long axis",
+      "expected": 1800,
+      "actual": 1799.9999523162842,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "id": "GLB grid short axis",
+      "expected": 1200,
+      "actual": 1200.0000476837158,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "id": "GLB tabletop datum above floor",
+      "expected": 914.2,
+      "actual": 914.2000079154968,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "id": "Metric witness pin separation",
+      "expected": 50,
+      "actual": 49.99999701976776,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "id": "Drawn grid openings",
+      "expected": 3456,
+      "actual": 3456,
+      "unit": "holes",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "GLB witness follows root motion",
+      "expected": 0.25,
+      "actual": 0.25,
+      "unit": "m",
+      "tol": 1e-9,
+      "pass": true
+    }
+  ]
+}
