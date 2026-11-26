@@ -1,0 +1,6 @@
+import os,sys,json
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+ b=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH') or p.chromium.executable_path,args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']);g=b.new_page(viewport={'width':820,'height':760},accept_downloads=True);errors=[];g.on('pageerror',lambda e:errors.append(str(e)));g.goto(sys.argv[1].rstrip('/')+'/simulations/equipment/03-08/');g.get_by_role('link',name='Open simulator').click();g.wait_for_selector('#scs-view[data-ready=true]',timeout=30000);g.click('#scs-coupon');g.click('#scs-scan');assert '2.500 µm · side 2.500 µm · P1 open' in g.inner_text('#scs-result')
+ with g.expect_download() as d:g.click('#scs-save')
+ r=json.loads(d.value.path().read_text());assert [f['offsetUm'] for f in r['faces']]==[2.5,2.5,0] and r['faces'][2]['contactOpen'];g.select_option('#scs-fixture','contact-mark');g.select_option('#scs-face','P1');g.click('#scs-scan');assert 'P1 unexpected offset' in g.inner_text('#scs-result');assert not errors,errors;print('PASS: GLB, cutaway, original top/side/contact offsets, skin tag fault and JSON');b.close()
