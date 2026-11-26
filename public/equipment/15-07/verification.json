@@ -1,0 +1,102 @@
+{
+  "schema": "bts.vevo3100.documentary-geometry.verification.v1",
+  "scope": "Documented cart footprint and fixed drawing ruler only, not device metrology",
+  "checks": [
+    {
+      "id": "Manual p. 717 console width",
+      "expected": 0.54,
+      "actual": 0.54,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Manual p. 717 console depth",
+      "expected": 0.68,
+      "actual": 0.68,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Authored upright top estimate (not folded height)",
+      "expected": 1.58,
+      "actual": 1.5799999999999998,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Ancillary and movable equipment omitted",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Graphic axial pitch",
+      "expected": 0.125,
+      "actual": 0.125,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Known separation (within one row)",
+      "expected": 4.5,
+      "actual": 4.5,
+      "unit": "mm",
+      "tolerance": 0.125,
+      "pass": true
+    },
+    {
+      "id": "Known exact integer row difference",
+      "expected": 36,
+      "actual": 36,
+      "unit": "rows",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reversed signed ruler reading",
+      "expected": -4.5,
+      "actual": -4.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reversal preserves distance",
+      "expected": 4.5,
+      "actual": 4.5,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Coincident ruler endpoints",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Out-of-bounds rows rejected",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Detached progression ray targets present",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}
