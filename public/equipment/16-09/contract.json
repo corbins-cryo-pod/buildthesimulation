@@ -1,0 +1,7 @@
+{
+ "equipmentId":"16-09","input":{"schema":"bts.hotplate-phantom.v1","fixture":"inert virtual vessel ID and revision, equilibrium or transfer mode, 15–35 °C synthetic baseline","settings":"virtual forcing boundary 50–80 °C in 5 °C increments, speed 100–1500 rpm when on, 1–300 virtual s per segment","state":"heat enable, stir toggle, standby, vessel placement, modeled ideal probe"},
+ "output":{"schema":"bts.hotplate-history.v1","units":"s, degC, rpm","records":"time-ordered segments on a common simulation clock; plate temperature, optional phantom temperature/probe, agitation and disabled/active boundary, modeled hot-top flag. A segment boundary can have two equal timestamps to encode an instantaneous control change.","identity":"vessel ID and revision are preserved across all segments"},
+ "failure":["Equilibrium mode rejects heater commands.","Stir or heat cannot start in virtual standby or without a vessel.","A missing vessel or probe yields null, not fabricated readings.","Invalid input or action reports an error without changing state."],
+ "limits":["No thermal safety prediction, calibration, actual device operation, fluids, chemical/biological preparation, viscosity or flow/mixing information. RPM is agitation state only. Color and viewport rotation are illustrative."],
+ "fixtures":["example-input.json","example-history.json"]
+}
