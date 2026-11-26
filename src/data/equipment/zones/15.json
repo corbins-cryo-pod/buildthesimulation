@@ -53,9 +53,10 @@
     "inputs": "Timestamped paw-contact masks, paw identity and calibrated walkway coordinates",
     "outputs": "Footfall table with contact intervals, stance durations and same-paw stride lengths",
     "acceptance": "Replay two same-paw contacts 30 mm apart, each lasting 0.1 s. Recover the two stance intervals and one 30 mm stride within sampling resolution.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: stationary CatWalk XT 10.7 exterior, documented frame envelope verified",
+    "simulationStatus": "First pass: unrelated abstract polygon mark inspection; original gait acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR action and JSON example",
+    "simulator": "/simulations/equipment/15-03/simulator/"
   },
   {
     "id": "15-04",

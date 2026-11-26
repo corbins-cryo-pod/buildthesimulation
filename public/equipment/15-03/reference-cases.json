@@ -1,0 +1,17 @@
+{
+  "method":"Noldus CatWalk XT 10.7 documented external 1.30×0.68×1.52 m. Detached ink stamp A is an exact 24×16 mm rectangle; B is a centered diagonal-product diamond (30×20)/2; collinear C has zero area and no areal centroid.",
+  "cases":[
+    {"id":"length","expected":1.30,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":0.68,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":1.52,"tolerance":0.00001,"unit":"m"},
+    {"id":"rectangle-area","expected":384,"unit":"mm²"},
+    {"id":"rectangle-perimeter","expected":80,"unit":"mm"},
+    {"id":"diamond-area","expected":300,"unit":"mm²"},
+    {"id":"diamond-centroid-x","expected":6,"unit":"mm"},
+    {"id":"diamond-centroid-y","expected":4,"unit":"mm"},
+    {"id":"collinear-zero","expected":0,"unit":"mm²"},
+    {"id":"collinear-no-centroid","expected":true,"unit":"boolean"},
+    {"id":"source-immutable","expected":true,"unit":"boolean"},
+    {"id":"unsupported-command-rejected","expected":true,"unit":"boolean"}
+  ]
+}

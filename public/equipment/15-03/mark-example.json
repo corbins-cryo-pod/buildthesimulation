@@ -1,0 +1,40 @@
+{
+  "schema": "bts.detached-geometric-stamp.v1",
+  "revision": 1,
+  "mode": "rectangle",
+  "sheetId": "ABSTRACT-INK-SHEET-01",
+  "sourceRevision": "INK-MARKS-CONCEPT-A",
+  "units": {
+    "coordinates": "mm",
+    "area": "mm²",
+    "perimeter": "mm"
+  },
+  "axis": "X right; Y up",
+  "markId": "INK-RECT-A",
+  "verticesMm": [
+    [
+      -12,
+      -8
+    ],
+    [
+      12,
+      -8
+    ],
+    [
+      12,
+      8
+    ],
+    [
+      -12,
+      8
+    ]
+  ],
+  "areaMm2": 384,
+  "perimeterMm": 80,
+  "centroidMm": [
+    0,
+    0
+  ],
+  "status": "filled-polygon",
+  "provenance": "Fictitious authored geometric ink marks, not footprints, behavior, measurements, or hardware outputs."
+}
