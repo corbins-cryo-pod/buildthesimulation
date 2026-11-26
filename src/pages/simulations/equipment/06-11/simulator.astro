@@ -1,0 +1,88 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const p='/equipment/06-11/';
+const maker='https://www.jeiotech.com/eng/product/product.php?ptype=view&prdcode=1601060005&catcode=101800';
+const nist='https://www.nist.gov/image/jeiotechovenjpg';
+const family='https://www.chen-hui.com/en/OF12Gganzaoxiang.html';
+const refs=[
+ ['front-elevation.webp','Front elevation: solid door, recessed right-hand teal pull, lower panel and inactive blank display.',nist,'NIST photograph of its OF-12G'],
+ ['front-quarter.webp','Right-front view: top and right-side profile. Detail dimensions and rear are inferred.',family,'Chen-Hui photo labeled solid-door OF-G / OF-12G']
+];
+const checks=[
+ ['Parallel near/far size','40 × 30 mm each','40 × 30 mm each','Exact'],
+ ['Perspective near size','16 × 12 mm','16 × 12 mm','Within 10⁻¹² mm'],
+ ['Perspective far size','8 × 6 mm','8 × 6 mm','Within 10⁻¹² mm'],
+ ['Near/far width ratio','2:1','2:1','Exact'],
+ ['Zero-depth or unknown view','Rejected','Rejected','Exact'],
+ ['Enclosure W × D × H','657 × 692 × 870 mm','657 × 692 × 870 mm','0.1 mm, geometry only']
+];
+---
+<Layout title="Jeio Tech OF-12G · Closed documentary model and projection exhibit" description="Reference-based solid-door OF-12G documentary geometry and an independent inert perspective exercise. No equipment operation.">
+ <main id="of11-exhibit">
+  <p><a href="/simulations/equipment/06-11/">← Equipment record 06-11</a></p>
+  <p class="series">LABORATORY EQUIPMENT / 06-11 / DOCUMENTARY EXHIBIT</p>
+  <h1>Jeio Tech OF-12G</h1>
+  <p class="lead">Inspect the closed solid-door cabinet. Then compare how a parallel drawing and a perspective drawing show two identical cards. It demonstrates why the cabinet dimensions came from published specifications, not from counting pixels in a photograph.</p>
+  <div class="duo">
+   <section class="card">
+    <h2>Dormant metric enclosure</h2>
+    <div id="of11-view" class="viewer"></div><p id="of11-model" role="status">Loading solid-door enclosure…</p>
+    <div class="actions" aria-label="3D viewpoints">
+     <button type="button" data-of11-view="orbit">Reset orbit</button><button type="button" data-of11-view="front">Front</button><button type="button" data-of11-view="side">Right flank</button><button type="button" data-of11-view="archive">Detached exhibit</button>
+    </div>
+    <p>Drag to orbit and scroll or pinch to zoom. Tap the detached display to switch drawings. Nothing on the cabinet operates or opens.</p>
+   </section>
+   <section class="card">
+    <h2>Detached size and perspective study</h2>
+    <canvas id="of11-diagram" width="560" height="360" aria-label="Two abstract identically sized cards with different apparent widths in perspective."></canvas>
+    <div class="actions"><button id="of11-next" type="button" disabled>Switch projection</button><button id="of11-reset" type="button">Reset parallel view</button><button id="of11-export" type="button" disabled>Export comparison JSON</button></div>
+    <p id="of11-status" role="status" aria-live="polite">Loading fixed projection exhibit…</p>
+    <p id="of11-result" class="readout"></p>
+   </section>
+  </div>
+  <section>
+   <h2>Documented configuration and reference views</h2>
+   <p>Jeio Tech's Lab Companion <strong>OF-12G</strong> is the legacy general-series forced-convection enclosure. This model reflects its solid-door <strong>AAH12166U</strong> listing, not the window-door OF-12GW, the natural-convection ON series or a vacuum chamber. Cabinet trim is documented visually, not measured from an exact serial. No interior, working parts or accessory pieces are included.</p>
+   <div class="refs">
+    {refs.map(([f,label,href,source])=><figure><img src={p+f} alt={label} width="780" height="580" loading="lazy" /><figcaption><strong>Original reference-based rendering.</strong> {label} <a href={href}>{source} (original)</a>.</figcaption></figure>)}
+   </div>
+   <div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th><th>Source / role</th></tr></thead><tbody>
+    <tr><td>Exterior W × D × H</td><td>657 × 692 × 870 mm</td><td><a href={maker}>Jeio Tech OF-series specifications</a>, solid-door OF-12G column. Published overall dimensions, not measured trim or installation guidance.</td></tr>
+    <tr><td>Closed front relief</td><td>Ivory solid door, teal recessed pull and lower control insert</td><td><a href={nist}>NIST photograph</a>, with controls unlit and identification details simplified in the model.</td></tr>
+    <tr><td>Detached reference sizes</td><td>40 × 30 mm per card; nominal 200 and 400 mm depths in the synthetic diagram</td><td><a href={p+'exhibit.json'}>Authorial abstract fixture</a>, not equipment measurement.</td></tr>
+   </tbody></table></div>
+  </section>
+  <section>
+   <h2>What the exhibit computes</h2>
+   <p>Both cards are parallel to the view plane. In the parallel view both retain the same 40 × 30 mm size at 1:1. In the ideal pinhole illustration their scale is <code>f / z</code>; the fixed projection plane is at <code>f = 80 mm</code>, and the card depths are 200 and 400 mm. Doubling depth halves the apparent linear size. The measurement arrows and JSON report show the projected widths, source sizes, card IDs, fixture revision and width ratio.</p>
+   <p>This is a synthetic exercise about view-dependent dimensions, not a camera calibration or a test of the instrument. There is no heating, curing, vacuum, materials, sample workflow or equipment setting. The metric asset has a stable detached control for VR authoring; immersive hardware operation is unverified.</p>
+  </section>
+  <section>
+   <h2>Focused verification</h2>
+   <div class="tablewrap"><table><thead><tr><th>Test</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.map(([name,x,y,t])=><tr><td>{name}</td><td>{x}</td><td>{y}</td><td>{t}</td><td>Pass</td></tr>)}</tbody></table></div>
+   <p><a href={p+'verification.json'}>Verification results</a> · <a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-projection.json'}>Example comparison</a> · <a href={p+'exhibit.json'}>Editable synthetic fixture</a></p>
+   <p><a href={p+'build-model.py'}>Editable Blender model source</a> · <a href={p+'of-12g.glb'} download>Download metric GLB</a> · <a href={p+'interaction.json'}>Interaction manifest</a> · <a href={p+'asset-metrics.json'}>GLB metrics</a></p>
+  </section>
+ </main>
+</Layout>
+<script>
+import '../../../../lib/equipment/06-11/client.mjs';
+</script>
+<style>
+main{max-width:1100px;margin:auto;padding:1.2rem clamp(.9rem,2.5vw,2rem) 3rem}
+.series,.readout,table,input,select,button{font-family:var(--font-label,system-ui,sans-serif)}
+.series{font-size:.78rem;letter-spacing:.13em}.lead{max-width:72ch}
+.duo,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.card{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:1rem;border-radius:.25rem}
+.viewer{height:clamp(23rem,45vw,32rem);overflow:hidden;background:#263949}
+.viewer :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+#of11-diagram{display:block;width:min(100%,26rem);height:auto;background:#263949;margin:.5rem auto 1rem}
+.actions,.inputs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+button,input,select{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 50%,transparent);border-radius:.2rem;padding:.5rem;font-size:.91rem;min-height:2.6rem}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input{width:min(18rem,55vw)}label{display:grid;font-size:.86rem;gap:.25rem}
+figure{margin:0}figure img{width:100%;height:auto;display:block}figcaption{font-size:.92rem;margin:.45rem 0}
+section{margin:1.5rem 0}.duo section{margin:0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent);text-align:left;padding:.5rem;vertical-align:top}
+[data-error=true]{font-weight:bold;color:var(--accent,currentColor)}
+@media(max-width:770px){.duo,.refs{grid-template-columns:1fr}.viewer{height:22rem}}
+</style>

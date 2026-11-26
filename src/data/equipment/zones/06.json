@@ -227,9 +227,10 @@
     "inputs": "Cast-part ID, logged chamber temperature, initial part temperature and optional material calibration",
     "outputs": "Thermal history linked to the casting and a cure-state estimate when calibration exists",
     "acceptance": "Replay a constant chamber-temperature step with a first-order thermal fixture. Match its analytic time constant and leave quantitative cure unknown when the material curve is absent.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed solid-door documentary GLB; vendor envelope checked",
+    "simulationStatus": "Detached synthetic projection exercise only; no heating or cure model",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/06-11/simulator/"
   },
   {
     "id": "06-12",
