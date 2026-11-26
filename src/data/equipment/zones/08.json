@@ -182,7 +182,7 @@
   {
     "id": "08-10",
     "name": "Dispensing / encapsulation",
-    "model": "Nordson EFD Ultimus V (candidate)",
+    "model": "Nordson EFD Ultimus V · 7012590",
     "evidence": "C",
     "priority": "P2",
     "page": 29,
@@ -193,9 +193,10 @@
     "inputs": "Assembly surface, dispenser path, deposition volume and material or calibration ID",
     "outputs": "Encapsulation revision with coverage, remaining exposed surfaces and cure state",
     "acceptance": "Dispense onto an ideal flat rectangular area at uniform modeled thickness. Recover the input volume from the thickness map and preserve deliberately masked contact openings.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric 7012590 controller, accessory and stage set",
+    "simulationStatus": "Verified virtual-volume integration and exposed contact preservation; no chemistry",
+    "integrationStatus": "Workholder/trigger actions, encoded shot program and coated height map export",
+    "simulator": "/simulations/equipment/08-10/simulator/"
   },
   {
     "id": "08-11",
