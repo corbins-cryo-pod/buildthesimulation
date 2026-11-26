@@ -1,0 +1,61 @@
+{
+  "triangles": 2208,
+  "draws": 19,
+  "nodes": 9,
+  "bytes": 134712,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "lid": {
+      "at": [
+        0,
+        0.195,
+        0.044
+      ],
+      "extent": [
+        0.194,
+        0.067,
+        0.176
+      ],
+      "action": "lid",
+      "label": "Remove or replace dry lid"
+    },
+    "basket": {
+      "at": [
+        0,
+        0.1,
+        0.044
+      ],
+      "extent": [
+        0.151,
+        0.078,
+        0.115
+      ],
+      "action": "basket",
+      "label": "Lift or lower basket"
+    },
+    "coupon": {
+      "at": [
+        0,
+        0.1,
+        0.044
+      ],
+      "extent": [
+        0.1,
+        0.025,
+        0.07
+      ],
+      "action": "fit",
+      "label": "Check the inert coupon fit"
+    }
+  },
+  "motion": {
+    "lidParkTranslationM": [
+      -0.236,
+      -0.179,
+      0
+    ],
+    "basketLiftM": 0.125
+  }
+}
