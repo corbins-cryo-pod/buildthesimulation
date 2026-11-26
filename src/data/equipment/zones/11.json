@@ -64,9 +64,10 @@
     "inputs": "Train duration and intervals (s), trigger mode, input edge times and shared clock ID",
     "outputs": "Clock-tagged TTL edges, pulse indices and synchronization markers",
     "acceptance": "Schedule ten equally spaced pulses after a trigger. Check all twenty transitions against the analytical times to within one scheduler tick, including the final falling edge.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Catalog-grounded metric OTPG_4 exterior only",
+    "simulationStatus": "Inactive enclosure and detached coordinate readout",
+    "integrationStatus": "Standalone viewer only; no signals, timing or hardware linkage",
+    "simulator": "/simulations/equipment/11-03/simulator/",
     "related": [
       [
         "Optogenetics Laboratory",

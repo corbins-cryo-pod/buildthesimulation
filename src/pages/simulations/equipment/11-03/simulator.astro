@@ -1,0 +1,27 @@
+---
+import Layout from '../../../../layouts/Layout.astro';import '../../../../styles/equipment.css';
+const d='/equipment/11-03/',photo='https://neuro.doriclenses.com/cdn/shop/files/otpg4_v2_480x_8c93d904-eb8e-40ec-b92f-f5b34169c380.jpg?v=1757428888';
+---
+<Layout pageTitle="Doric OTPG_4 inert case and independent coordinate readout" description="Inspect the inactive Doric OTPG_4 exterior and compare distances on a separate fictional grid." wide={true}>
+<article class="equipment" id="otpg"><nav class="eq-nav"><a href="/simulations/equipment/11-03/">← Equipment 11-03</a><a href="/simulations/equipment/">Register</a><a href="#ot-evidence">References and checks</a></nav>
+<header class="eq-mast"><p class="eq-meta">11-03 / INERT EXTERIOR · DETACHED COORDINATE CARD</p><h2>Two ways to measure a distance on a grid</h2><p class="eq-lede">Orbit the inactive Doric OTPG_4 case. The separate classroom pad compares a straight-line distance with a path along the grid axes.</p></header>
+<div class="ot-cols"><section><h3>Doric OTPG_4 exterior</h3><canvas id="ot-model" aria-label="Orbitable inactive Doric case and physically separate coordinate pad"></canvas><p id="ot-viewstatus" role="status">Loading metric GLB…</p><button id="ot-front">Reset overview</button><button id="ot-case">Case close-up</button><button id="ot-board">Detached pad</button></section>
+<section><h3>Offline coordinate readout</h3><label>Fixed mark<select id="ot-mark"><option value="diagonal">A · diagonal (4, 3)</option><option value="left">B · horizontal (−3, 0)</option><option value="origin">C · origin (0, 0)</option></select></label><button id="ot-next">Next mark</button>
+<svg id="ot-diagram" viewBox="0 0 160 105" role="img" aria-label="Static grid with two geometric paths from its origin to a chosen mark"><defs><pattern id="ot-pattern" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#41626c" stroke-width=".5"/></pattern></defs><rect width="160" height="105" fill="#20343a"/><rect width="160" height="105" fill="url(#ot-pattern)"/><path id="ot-axis" fill="none" stroke="#6ed0ba" stroke-width="2"/><path id="ot-direct" fill="none" stroke="#ddaf72" stroke-width="2" stroke-dasharray="3 1.5"/><circle cx="80" cy="50" r="2.3" fill="#e3efda"/><circle id="ot-point" r="3.5" fill="#f2c880"/></svg>
+<p id="ot-readout" role="status"></p><p>Gold dashes show the direct line. Teal follows two grid axes. All numbers are unit-free drawing coordinates, not device readings.</p>
+<button id="ot-export">Download geometry summary</button><p><a href={d+'example-readout.json'}>Example for mark A</a>. No device relationship.</p></section></div>
+<section id="ot-evidence"><h3>Exterior references and checks</h3><div class="ot-cols">
+<figure><img src={d+'station.webp'} alt="Original Doric OTPG_4 inert case and disconnected coordinate pad"/><figcaption>Original exterior and separate pad. <a href={photo}>Doric manufacturer photo of the four-position OTPG_4</a> establishes the black outer shell, pale top marking and silver exterior collars.</figcaption></figure>
+<figure><img src={d+'case.webp'} alt="Original closer view of the Doric case with blind decorative caps"/><figcaption>Original close-up. Nominal envelope is from Doric manual v1.2.1, printed p. 14, Table 3.1, “Dimensions” row only. Cap shapes, marking, part positions and rear details are inferred. All are static.</figcaption></figure>
+</div><table><thead><tr><th>Check</th><th>Expected</th><th>Actual / tolerance</th></tr></thead><tbody>
+<tr><td>Case W × H × D</td><td>135 × 21 × 58 mm including the collars</td><td>Modeled within 0.5 mm</td></tr><tr><td>(4, 3) diagonal</td><td>Direct 5; along axes 7</td><td>Exact</td></tr><tr><td>(−3, 0) single axis</td><td>Both 3</td><td>Exact</td></tr><tr><td>(0, 0) origin</td><td>Both 0</td><td>Exact</td></tr>
+</tbody></table>
+<p>The separate figure compares the square-root distance with abs(column) + abs(row). Nothing in this exhibit models equipment control, light, tissue, signals, timings or an event workflow. The register’s original equipment acceptance is unsupported.</p><p><a href={d+'build-model.py'}>Editable Blender source</a> · <a href={d+'otpg4.glb'}>Metric GLB</a> · <a href={d+'readout.mjs'}>Geometry actions and summary contract</a> · <a href={d+'vr.json'}>VR card hit bounds</a>. Headset use not verified.</p></section></article></Layout>
+<script>import '../../../../lib/equipment/11-03/client.mjs';</script>
+<style is:global>
+#otpg .ot-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem}#otpg section{margin:1rem 0;padding:1rem;border:1px solid var(--border);min-width:0}
+#otpg :is(button,select){font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:.4rem;margin:.2rem .25rem .2rem 0;max-width:100%}#otpg button{cursor:pointer}#otpg :is(button,select):focus-visible{outline:2px solid #b28d5e}
+#ot-model{width:100%;height:354px;display:block;touch-action:none}#ot-diagram{width:min(100%,340px);display:block;margin:.45rem auto}#otpg figure{margin:.5rem 0}#otpg figure img{width:100%}
+#otpg table{width:100%;font-size:.94rem;border-collapse:collapse;text-align:left}#otpg td,#otpg th{border-bottom:1px solid var(--border);padding:.35rem}
+@media(max-width:850px){#otpg .ot-cols{grid-template-columns:minmax(0,1fr)}#ot-model{height:282px}}
+</style>
