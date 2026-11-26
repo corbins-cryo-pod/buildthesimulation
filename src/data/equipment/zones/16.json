@@ -49,9 +49,10 @@
     "inputs": "Bench geometry, load footprint, anchor and drawer state, tray inventory",
     "outputs": "Occupied anchor map, drawer transforms and tray locations",
     "acceptance": "Move a tray into an open drawer and close it. The tray must retain its ID and drawer-relative pose, while another object cannot claim its occupied slot.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original 1800 × 750 × 900 mm metric steel bench, cream storage, drawer and trays",
+    "simulationStatus": "Verified static slot fit, occupancy and drawer-relative identity/pose",
+    "integrationStatus": "Interactive placement, anchor export and VR actions",
+    "simulator": "/simulations/equipment/16-03/simulator/"
   },
   {
     "id": "16-04",

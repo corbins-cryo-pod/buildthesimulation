@@ -1,6 +1,6 @@
 // Original authored furniture. All physical distances are glTF metres, +Y up, +Z toward operator.
 export const bench=Object.freeze({id:'BTS-STEEL-1800',dimensions:[1.8,.9,.75],drawer:{offsetM:.340,origin:[-.550,.688,.015]},clearanceM:[.005,.005,.005]});
-export const anchors={left:{parent:'bench',position:[-.440,.900,.082],interior:[.550,.220,.540]},right:{parent:'bench',position:[.448,.900,.082],interior:[.550,.220,.540]},side:{parent:'bench',position:[.020,.900,-.210],interior:[.490,.190,.260]},drawer:{parent:'DRAWER_SLIDE',position:[0,0,0],interior:[.340,.076,.420]}};
+export const anchors={left:{parent:'bench',position:[-.440,.900,.135],interior:[.550,.220,.435]},right:{parent:'bench',position:[.448,.900,.135],interior:[.550,.220,.435]},side:{parent:'bench',position:[.020,.900,-.219],interior:[.490,.190,.260]},drawer:{parent:'DRAWER_SLIDE',position:[0,0,0],interior:[.340,.076,.420]}};
 export const inventory={TRAY_A:{dims:[.280,.042,.340]},TRAY_B:{dims:[.300,.047,.380]},CASE_C:{dims:[.420,.056,.230]}};
 const ck=(x,m)=>{if(!x)throw Error(m)};
 export const station=()=>({schema:'bts.lab-bench-state.v1',benchId:bench.id,revision:0,drawerOpen:false,holding:null,mounts:{TRAY_A:'left',TRAY_B:'right',CASE_C:'side'}});
