@@ -1,0 +1,86 @@
+{
+  "schema": "bts.equipment.07-01.sash-input.v1",
+  "deviceId": "07-01",
+  "modelNumber": "1305",
+  "sessionId": "VIOS-EXAMPLE-TRANSFER",
+  "durationS": 630,
+  "initialSashMm": 203.2,
+  "events": [
+    {
+      "timeS": 0,
+      "type": "load",
+      "sampleId": "VIOS-A",
+      "sampleKind": "sealed-token"
+    },
+    {
+      "timeS": 30,
+      "type": "remove",
+      "sampleId": "VIOS-A",
+      "sampleKind": "sealed-token"
+    },
+    {
+      "timeS": 600,
+      "type": "load",
+      "sampleId": "VIOS-B",
+      "sampleKind": "sealed-token"
+    },
+    {
+      "timeS": 630,
+      "type": "remove",
+      "sampleId": "VIOS-B",
+      "sampleKind": "sealed-token"
+    }
+  ],
+  "incubatorSource": {
+    "schema": "bts.incubator.exposure.v1",
+    "deviceId": "07-02",
+    "provenance": {
+      "kind": "digitized-replay",
+      "label": "VIOS 160i · TC180 CO₂",
+      "source": "https://knowledge1.thermofisher.com/Lab_Equipment/CO2_Incubators/Thermo_Scientific_Heraeus_CO2_Incubators/Thermo_Scientific_Heraeus_Operator_Manuals/Recovery_and_Gas_Consumption_Graphs",
+      "sourceDocument": "Recovery and Gas consumption, 2018-08-15",
+      "page": 5,
+      "sourceFile": "tc180-co2.csv",
+      "doorTiming": "30 s reported; switch edges placed at first visible departure, not logged",
+      "interpolation": "Piecewise linear between digitized graph points; each graph has its own time origin"
+    },
+    "cabinetZeroAtIncubator_s": 600,
+    "plannedVisit_s": 30,
+    "samples": [
+      {
+        "sampleId": "VIOS-A",
+        "revision": 1,
+        "parentRevision": 0,
+        "leave_s": 600,
+        "contactIds": [],
+        "history": [
+          {
+            "deviceId": "07-02",
+            "operation": "attach-chamber-history",
+            "parentRevision": 0,
+            "revision": 1,
+            "enter_s": 0,
+            "leave_s": 600
+          }
+        ]
+      },
+      {
+        "sampleId": "VIOS-B",
+        "revision": 1,
+        "parentRevision": 0,
+        "leave_s": 1200,
+        "contactIds": [],
+        "history": [
+          {
+            "deviceId": "07-02",
+            "operation": "attach-chamber-history",
+            "parentRevision": 0,
+            "revision": 1,
+            "enter_s": 900,
+            "leave_s": 1200
+          }
+        ]
+      }
+    ]
+  }
+}
