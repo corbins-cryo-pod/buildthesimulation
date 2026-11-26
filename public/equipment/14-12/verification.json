@@ -1,0 +1,54 @@
+[
+  {
+    "id": "catalogue-one-tau",
+    "input": "20°C initial, ideal 40°C step, tau=120 s; evaluate at 120 s",
+    "expected": {
+      "temperatureC": 32.64241117657115,
+      "fraction": 0.6321205588285577
+    },
+    "tolerance": 1e-10,
+    "actual": {
+      "temperatureC": 32.64241117657115,
+      "fraction": 0.6321205588285577
+    },
+    "pass": true
+  },
+  {
+    "id": "zero-time",
+    "input": "Evaluate at t=0 s",
+    "expected": {
+      "temperatureC": 20
+    },
+    "tolerance": 1e-12,
+    "actual": {
+      "temperatureC": 20
+    },
+    "pass": true
+  },
+  {
+    "id": "matched-setpoint",
+    "input": "Initial and air both 40°C",
+    "expected": {
+      "temperatureC": 40
+    },
+    "tolerance": 1e-12,
+    "actual": {
+      "temperatureC": 40
+    },
+    "pass": true
+  },
+  {
+    "id": "bad-profile",
+    "input": "Request 90°C controlled-humidity step at 60% RH",
+    "expected": "OUTSIDE_PROFILE",
+    "actual": "OUTSIDE_PROFILE",
+    "pass": true
+  },
+  {
+    "id": "door-open",
+    "input": "Command run with the chamber door open",
+    "expected": "DOOR_OPEN",
+    "actual": "DOOR_OPEN",
+    "pass": true
+  }
+]

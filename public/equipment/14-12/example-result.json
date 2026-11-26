@@ -1,0 +1,783 @@
+{
+  "schema": "bts.chamber-phantom.v1",
+  "deviceId": "14-12",
+  "model": "ESPEC SH-262 / solid door / 22.5 L",
+  "kind": "simulated",
+  "sampleId": "inert-package-01",
+  "inputRevision": 0,
+  "revision": 1,
+  "configuration": {
+    "sampleId": "inert-package-01",
+    "initialC": 20,
+    "stepC": 40,
+    "rhPercent": 65,
+    "tauS": 120,
+    "holdS": 480
+  },
+  "units": {
+    "tS": "s",
+    "airC": "°C",
+    "phantomC": "°C",
+    "targetRH": "% RH",
+    "fraction": "1"
+  },
+  "schedule": {
+    "initialAirC": 20,
+    "segments": [
+      {
+        "startS": 0,
+        "durationS": 480,
+        "setpointC": 40,
+        "targetRH": 65
+      }
+    ],
+    "interpretation": "Ideal instantaneous change of air, not measured chamber ramp"
+  },
+  "points": [
+    {
+      "tS": 0,
+      "airC": 40,
+      "phantomC": 20,
+      "targetRH": 65
+    },
+    {
+      "tS": 4,
+      "airC": 40,
+      "phantomC": 20.655677990359884,
+      "targetRH": 65
+    },
+    {
+      "tS": 8,
+      "airC": 40,
+      "phantomC": 21.289860299367646,
+      "targetRH": 65
+    },
+    {
+      "tS": 12,
+      "airC": 40,
+      "phantomC": 21.903251639280807,
+      "targetRH": 65
+    },
+    {
+      "tS": 16,
+      "airC": 40,
+      "phantomC": 22.49653361914105,
+      "targetRH": 65
+    },
+    {
+      "tS": 20,
+      "airC": 40,
+      "phantomC": 23.07036550218772,
+      "targetRH": 65
+    },
+    {
+      "tS": 24,
+      "airC": 40,
+      "phantomC": 23.625384938440362,
+      "targetRH": 65
+    },
+    {
+      "tS": 28,
+      "airC": 40,
+      "phantomC": 24.162208673264367,
+      "targetRH": 65
+    },
+    {
+      "tS": 32,
+      "airC": 40,
+      "phantomC": 24.681433232707025,
+      "targetRH": 65
+    },
+    {
+      "tS": 36,
+      "airC": 40,
+      "phantomC": 25.183635586365643,
+      "targetRH": 65
+    },
+    {
+      "tS": 40,
+      "airC": 40,
+      "phantomC": 25.669373788524215,
+      "targetRH": 65
+    },
+    {
+      "tS": 44,
+      "airC": 40,
+      "phantomC": 26.13918759827117,
+      "targetRH": 65
+    },
+    {
+      "tS": 48,
+      "airC": 40,
+      "phantomC": 26.593599079287216,
+      "targetRH": 65
+    },
+    {
+      "tS": 52,
+      "airC": 40,
+      "phantomC": 27.033113179969806,
+      "targetRH": 65
+    },
+    {
+      "tS": 56,
+      "airC": 40,
+      "phantomC": 27.458218294538877,
+      "targetRH": 65
+    },
+    {
+      "tS": 60,
+      "airC": 40,
+      "phantomC": 27.869386805747332,
+      "targetRH": 65
+    },
+    {
+      "tS": 64,
+      "airC": 40,
+      "phantomC": 28.267075609799363,
+      "targetRH": 65
+    },
+    {
+      "tS": 68,
+      "airC": 40,
+      "phantomC": 28.651726624059926,
+      "targetRH": 65
+    },
+    {
+      "tS": 72,
+      "airC": 40,
+      "phantomC": 29.02376727811947,
+      "targetRH": 65
+    },
+    {
+      "tS": 76,
+      "airC": 40,
+      "phantomC": 29.38361098875972,
+      "targetRH": 65
+    },
+    {
+      "tS": 80,
+      "airC": 40,
+      "phantomC": 29.73165761934816,
+      "targetRH": 65
+    },
+    {
+      "tS": 84,
+      "airC": 40,
+      "phantomC": 30.06829392417181,
+      "targetRH": 65
+    },
+    {
+      "tS": 88,
+      "airC": 40,
+      "phantomC": 30.393893978204012,
+      "targetRH": 65
+    },
+    {
+      "tS": 92,
+      "airC": 40,
+      "phantomC": 30.708819592781772,
+      "targetRH": 65
+    },
+    {
+      "tS": 96,
+      "airC": 40,
+      "phantomC": 31.01342071765557,
+      "targetRH": 65
+    },
+    {
+      "tS": 100,
+      "airC": 40,
+      "phantomC": 31.308035829858436,
+      "targetRH": 65
+    },
+    {
+      "tS": 104,
+      "airC": 40,
+      "phantomC": 31.592992309826364,
+      "targetRH": 65
+    },
+    {
+      "tS": 108,
+      "airC": 40,
+      "phantomC": 31.868606805188016,
+      "targetRH": 65
+    },
+    {
+      "tS": 112,
+      "airC": 40,
+      "phantomC": 32.13518558262803,
+      "targetRH": 65
+    },
+    {
+      "tS": 116,
+      "airC": 40,
+      "phantomC": 32.39302486821483,
+      "targetRH": 65
+    },
+    {
+      "tS": 120,
+      "airC": 40,
+      "phantomC": 32.64241117657115,
+      "targetRH": 65
+    },
+    {
+      "tS": 124,
+      "airC": 40,
+      "phantomC": 32.88362162925316,
+      "targetRH": 65
+    },
+    {
+      "tS": 128,
+      "airC": 40,
+      "phantomC": 33.116924262691754,
+      "targetRH": 65
+    },
+    {
+      "tS": 132,
+      "airC": 40,
+      "phantomC": 33.34257832603841,
+      "targetRH": 65
+    },
+    {
+      "tS": 136,
+      "airC": 40,
+      "phantomC": 33.56083456924648,
+      "targetRH": 65
+    },
+    {
+      "tS": 140,
+      "airC": 40,
+      "phantomC": 33.771935521708045,
+      "targetRH": 65
+    },
+    {
+      "tS": 144,
+      "airC": 40,
+      "phantomC": 33.976115761755956,
+      "targetRH": 65
+    },
+    {
+      "tS": 148,
+      "airC": 40,
+      "phantomC": 34.17360217733058,
+      "targetRH": 65
+    },
+    {
+      "tS": 152,
+      "airC": 40,
+      "phantomC": 34.36461421810083,
+      "targetRH": 65
+    },
+    {
+      "tS": 156,
+      "airC": 40,
+      "phantomC": 34.54936413931975,
+      "targetRH": 65
+    },
+    {
+      "tS": 160,
+      "airC": 40,
+      "phantomC": 34.72805723768546,
+      "targetRH": 65
+    },
+    {
+      "tS": 164,
+      "airC": 40,
+      "phantomC": 34.9008920794698,
+      "targetRH": 65
+    },
+    {
+      "tS": 168,
+      "airC": 40,
+      "phantomC": 35.06806072116787,
+      "targetRH": 65
+    },
+    {
+      "tS": 172,
+      "airC": 40,
+      "phantomC": 35.22974892291395,
+      "targetRH": 65
+    },
+    {
+      "tS": 176,
+      "airC": 40,
+      "phantomC": 35.38613635490074,
+      "targetRH": 65
+    },
+    {
+      "tS": 180,
+      "airC": 40,
+      "phantomC": 35.537396797031406,
+      "targetRH": 65
+    },
+    {
+      "tS": 184,
+      "airC": 40,
+      "phantomC": 35.683698332026204,
+      "targetRH": 65
+    },
+    {
+      "tS": 188,
+      "airC": 40,
+      "phantomC": 35.82520353219841,
+      "targetRH": 65
+    },
+    {
+      "tS": 192,
+      "airC": 40,
+      "phantomC": 35.96206964010689,
+      "targetRH": 65
+    },
+    {
+      "tS": 196,
+      "airC": 40,
+      "phantomC": 36.094448743286286,
+      "targetRH": 65
+    },
+    {
+      "tS": 200,
+      "airC": 40,
+      "phantomC": 36.222487943248765,
+      "targetRH": 65
+    },
+    {
+      "tS": 204,
+      "airC": 40,
+      "phantomC": 36.34632951894531,
+      "targetRH": 65
+    },
+    {
+      "tS": 208,
+      "airC": 40,
+      "phantomC": 36.46611108486806,
+      "targetRH": 65
+    },
+    {
+      "tS": 212,
+      "airC": 40,
+      "phantomC": 36.581965743969505,
+      "targetRH": 65
+    },
+    {
+      "tS": 216,
+      "airC": 40,
+      "phantomC": 36.69402223556827,
+      "targetRH": 65
+    },
+    {
+      "tS": 220,
+      "airC": 40,
+      "phantomC": 36.802405078406125,
+      "targetRH": 65
+    },
+    {
+      "tS": 224,
+      "airC": 40,
+      "phantomC": 36.9072347090149,
+      "targetRH": 65
+    },
+    {
+      "tS": 228,
+      "airC": 40,
+      "phantomC": 37.0086276155473,
+      "targetRH": 65
+    },
+    {
+      "tS": 232,
+      "airC": 40,
+      "phantomC": 37.106696467220104,
+      "targetRH": 65
+    },
+    {
+      "tS": 236,
+      "airC": 40,
+      "phantomC": 37.20155023951381,
+      "targetRH": 65
+    },
+    {
+      "tS": 240,
+      "airC": 40,
+      "phantomC": 37.293294335267746,
+      "targetRH": 65
+    },
+    {
+      "tS": 244,
+      "airC": 40,
+      "phantomC": 37.382030701805114,
+      "targetRH": 65
+    },
+    {
+      "tS": 248,
+      "airC": 40,
+      "phantomC": 37.46785794421832,
+      "targetRH": 65
+    },
+    {
+      "tS": 252,
+      "airC": 40,
+      "phantomC": 37.55087143494036,
+      "targetRH": 65
+    },
+    {
+      "tS": 256,
+      "airC": 40,
+      "phantomC": 37.631163419723926,
+      "targetRH": 65
+    },
+    {
+      "tS": 260,
+      "airC": 40,
+      "phantomC": 37.70882312014625,
+      "targetRH": 65
+    },
+    {
+      "tS": 264,
+      "airC": 40,
+      "phantomC": 37.78393683275333,
+      "targetRH": 65
+    },
+    {
+      "tS": 268,
+      "airC": 40,
+      "phantomC": 37.856588024953865,
+      "targetRH": 65
+    },
+    {
+      "tS": 272,
+      "airC": 40,
+      "phantomC": 37.92685742776944,
+      "targetRH": 65
+    },
+    {
+      "tS": 276,
+      "airC": 40,
+      "phantomC": 37.994823125543924,
+      "targetRH": 65
+    },
+    {
+      "tS": 280,
+      "airC": 40,
+      "phantomC": 38.0605606427119,
+      "targetRH": 65
+    },
+    {
+      "tS": 284,
+      "airC": 40,
+      "phantomC": 38.124143027722475,
+      "targetRH": 65
+    },
+    {
+      "tS": 288,
+      "airC": 40,
+      "phantomC": 38.18564093421175,
+      "targetRH": 65
+    },
+    {
+      "tS": 292,
+      "airC": 40,
+      "phantomC": 38.24512269951411,
+      "targetRH": 65
+    },
+    {
+      "tS": 296,
+      "airC": 40,
+      "phantomC": 38.30265442059965,
+      "targetRH": 65
+    },
+    {
+      "tS": 300,
+      "airC": 40,
+      "phantomC": 38.35830002752202,
+      "targetRH": 65
+    },
+    {
+      "tS": 304,
+      "airC": 40,
+      "phantomC": 38.412121354458435,
+      "targetRH": 65
+    },
+    {
+      "tS": 308,
+      "airC": 40,
+      "phantomC": 38.464178208420634,
+      "targetRH": 65
+    },
+    {
+      "tS": 312,
+      "airC": 40,
+      "phantomC": 38.51452843571332,
+      "targetRH": 65
+    },
+    {
+      "tS": 316,
+      "airC": 40,
+      "phantomC": 38.56322798621373,
+      "targetRH": 65
+    },
+    {
+      "tS": 320,
+      "airC": 40,
+      "phantomC": 38.610330975543974,
+      "targetRH": 65
+    },
+    {
+      "tS": 324,
+      "airC": 40,
+      "phantomC": 38.655889745205,
+      "targetRH": 65
+    },
+    {
+      "tS": 328,
+      "airC": 40,
+      "phantomC": 38.69995492073931,
+      "targetRH": 65
+    },
+    {
+      "tS": 332,
+      "airC": 40,
+      "phantomC": 38.742575467986654,
+      "targetRH": 65
+    },
+    {
+      "tS": 336,
+      "airC": 40,
+      "phantomC": 38.78379874749564,
+      "targetRH": 65
+    },
+    {
+      "tS": 340,
+      "airC": 40,
+      "phantomC": 38.8236705671514,
+      "targetRH": 65
+    },
+    {
+      "tS": 344,
+      "airC": 40,
+      "phantomC": 38.86223523307797,
+      "targetRH": 65
+    },
+    {
+      "tS": 348,
+      "airC": 40,
+      "phantomC": 38.89953559887185,
+      "targetRH": 65
+    },
+    {
+      "tS": 352,
+      "airC": 40,
+      "phantomC": 38.93561311322157,
+      "targetRH": 65
+    },
+    {
+      "tS": 356,
+      "airC": 40,
+      "phantomC": 38.970507865965985,
+      "targetRH": 65
+    },
+    {
+      "tS": 360,
+      "airC": 40,
+      "phantomC": 39.00425863264272,
+      "targetRH": 65
+    },
+    {
+      "tS": 364,
+      "airC": 40,
+      "phantomC": 39.03690291757607,
+      "targetRH": 65
+    },
+    {
+      "tS": 368,
+      "airC": 40,
+      "phantomC": 39.06847699555233,
+      "targetRH": 65
+    },
+    {
+      "tS": 372,
+      "airC": 40,
+      "phantomC": 39.099015952128845,
+      "targetRH": 65
+    },
+    {
+      "tS": 376,
+      "airC": 40,
+      "phantomC": 39.12855372262157,
+      "targetRH": 65
+    },
+    {
+      "tS": 380,
+      "airC": 40,
+      "phantomC": 39.15712312981447,
+      "targetRH": 65
+    },
+    {
+      "tS": 384,
+      "airC": 40,
+      "phantomC": 39.18475592043268,
+      "targetRH": 65
+    },
+    {
+      "tS": 388,
+      "airC": 40,
+      "phantomC": 39.21148280041985,
+      "targetRH": 65
+    },
+    {
+      "tS": 392,
+      "airC": 40,
+      "phantomC": 39.237333469059095,
+      "targetRH": 65
+    },
+    {
+      "tS": 396,
+      "airC": 40,
+      "phantomC": 39.262336651975204,
+      "targetRH": 65
+    },
+    {
+      "tS": 400,
+      "airC": 40,
+      "phantomC": 39.28652013305495,
+      "targetRH": 65
+    },
+    {
+      "tS": 404,
+      "airC": 40,
+      "phantomC": 39.309910785320994,
+      "targetRH": 65
+    },
+    {
+      "tS": 408,
+      "airC": 40,
+      "phantomC": 39.33253460079348,
+      "targetRH": 65
+    },
+    {
+      "tS": 412,
+      "airC": 40,
+      "phantomC": 39.35441671937281,
+      "targetRH": 65
+    },
+    {
+      "tS": 416,
+      "airC": 40,
+      "phantomC": 39.37558145677538,
+      "targetRH": 65
+    },
+    {
+      "tS": 420,
+      "airC": 40,
+      "phantomC": 39.39605233155363,
+      "targetRH": 65
+    },
+    {
+      "tS": 424,
+      "airC": 40,
+      "phantomC": 39.41585209123011,
+      "targetRH": 65
+    },
+    {
+      "tS": 428,
+      "airC": 40,
+      "phantomC": 39.43500273757486,
+      "targetRH": 65
+    },
+    {
+      "tS": 432,
+      "airC": 40,
+      "phantomC": 39.45352555105415,
+      "targetRH": 65
+    },
+    {
+      "tS": 436,
+      "airC": 40,
+      "phantomC": 39.47144111447754,
+      "targetRH": 65
+    },
+    {
+      "tS": 440,
+      "airC": 40,
+      "phantomC": 39.48876933586985,
+      "targetRH": 65
+    },
+    {
+      "tS": 444,
+      "airC": 40,
+      "phantomC": 39.50552947059322,
+      "targetRH": 65
+    },
+    {
+      "tS": 448,
+      "airC": 40,
+      "phantomC": 39.521740142743894,
+      "targetRH": 65
+    },
+    {
+      "tS": 452,
+      "airC": 40,
+      "phantomC": 39.53741936584767,
+      "targetRH": 65
+    },
+    {
+      "tS": 456,
+      "airC": 40,
+      "phantomC": 39.55258456287669,
+      "targetRH": 65
+    },
+    {
+      "tS": 460,
+      "airC": 40,
+      "phantomC": 39.567252585610134,
+      "targetRH": 65
+    },
+    {
+      "tS": 464,
+      "airC": 40,
+      "phantomC": 39.58143973336017,
+      "targetRH": 65
+    },
+    {
+      "tS": 468,
+      "airC": 40,
+      "phantomC": 39.59516177108391,
+      "targetRH": 65
+    },
+    {
+      "tS": 472,
+      "airC": 40,
+      "phantomC": 39.60843394690174,
+      "targetRH": 65
+    },
+    {
+      "tS": 476,
+      "airC": 40,
+      "phantomC": 39.621271009041166,
+      "targetRH": 65
+    },
+    {
+      "tS": 480,
+      "airC": 40,
+      "phantomC": 39.63368722222532,
+      "targetRH": 65
+    }
+  ],
+  "oneTau": {
+    "tS": 120,
+    "temperatureC": 32.64241117657115,
+    "fraction": 0.6321205588285577
+  },
+  "provenance": {
+    "simulated": "ideal imposed air and lumped inert thermal phantom",
+    "deviceEnvelope": "conservative educational subwindow, not factory operating limits",
+    "humidity": "programmed RH only; no moisture dynamics",
+    "measuredHardware": false,
+    "history": [
+      {
+        "deviceId": "14-12",
+        "operation": "virtual step/hold",
+        "parentRevision": 0,
+        "resultRevision": 1
+      }
+    ]
+  }
+}
