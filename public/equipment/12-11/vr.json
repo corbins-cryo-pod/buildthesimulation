@@ -1,0 +1,40 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.8025,
+    0.6496,
+    0.618
+  ],
+  "meshes": 77,
+  "triangles": 12595,
+  "bytes": 697232,
+  "interaction": {
+    "Synthetic_grid_panel": {
+      "action": "example",
+      "label": "Read the offline example rectangle",
+      "boundsMinM": [
+        0.3335,
+        0.0355,
+        0.2005
+      ],
+      "boundsMaxM": [
+        0.5265,
+        0.0405,
+        0.3515
+      ]
+    }
+  },
+  "modeledStandM": [
+    0.512,
+    0.6496,
+    0.5965
+  ],
+  "publishedStandMm": [
+    512,
+    649.6,
+    596.5
+  ],
+  "activeDeviceControls": false,
+  "gridCalibrationToScene": false
+}

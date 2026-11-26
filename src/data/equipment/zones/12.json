@@ -216,8 +216,9 @@
     "inputs": "Registered section image, parent section ID, physical scale and closed ROI polygon",
     "outputs": "Derived virtual sample ID, ROI mask, physical area and parent-to-ROI transform",
     "acceptance": "Select a rectangle on a synthetic calibrated section. The reported area should match its width × height within rasterization error and the child mask should map to the same parent pixels.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric static exterior GLB with editable source",
+    "simulationStatus": "Dormant instrument; independent fictional polygon area board",
+    "integrationStatus": "Standalone browser station; no hardware or specimen connection",
+    "simulator": "/simulations/equipment/12-11/simulator/"
   }
 ]
