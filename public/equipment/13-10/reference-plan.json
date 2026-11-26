@@ -1,0 +1,5 @@
+{
+  "configuration": "Leica EM ACE600 base instrument, closed standard bench cabinet without room-side transfer modules",
+  "independentBasis": "Leica EM ACE600 TDS 10/20 p. 4 gives approximate basic W/D/H 300/540/640 mm. Build to those nominal bounds. Artificial coupon is 20×12 mm, with grid centres 0.25+0.50i mm. At y=6.25 mm the rectangular step starts at x=6 mm and ends at x=14 mm; exactly 16 of 40 bins sit at 36 nm, and 24 are at 0 nm. At y=1.25 mm all 40 bins are 0 nm. Border indices on the middle row: x=5.75 → 0, x=6.25 → 36, x=13.75 → 36, x=14.25 → 0.",
+  "tolerance": "Exact digital counts and height values; 1e-7 m numerical tolerance for 3D cabinet bounds, not an OEM dimensional tolerance."
+}
