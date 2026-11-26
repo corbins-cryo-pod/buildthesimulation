@@ -1,0 +1,51 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const d='/equipment/15-13/';
+---
+<Layout pageTitle="Custom bench enclosure and detached geometry gauge · 15-13" subtitle="" wide={true}>
+<main class="equipment-page w1513">
+ <p><a href="/simulations/equipment/#equipment-15-13">↩ Equipment register · 15-13</a></p>
+ <h1>Custom bench enclosure · closed design study</h1>
+ <p>This is an original unbuilt enclosure concept, not commercial or working hardware. The separate keyed geometry gauge checks whether a generic solid block can fit its outline. It has no connection to the enclosure or to any biological, electrical or acoustic system.</p>
+ <div class="l-grid">
+  <section aria-label="3D viewer">
+   <div class="l-bar"><button id="lf-front" type="button">Reset orbit</button><button id="lf-gauge" type="button">Gauge close-up</button><button id="lf-rear" type="button">Rear exterior</button></div>
+   <div id="lf-view" role="img" aria-label="Closed box concept beside a detached geometric locator"></div><p id="lf-status">Loading the model…</p>
+  </section>
+  <section class="l-box">
+   <h2>Detached keyed-fit exercise</h2>
+   <p>Compare the aligned nominal block with a quarter- or half-turn, or choose a boundary-sized block.</p>
+   <label for="lf-select">Virtual block</label>
+   <select id="lf-select"><option value="NOMINAL">Nominal</option><option value="ZERO">Exact contact</option><option value="LARGE">Oversized</option></select>
+   <div class="l-bar"><button id="lf-rotate" type="button">Turn 90°</button><button id="lf-check" type="button">Check fit</button><button id="lf-reset" type="button">Reset example</button><button id="lf-save" type="button">Export JSON</button></div>
+   <p id="lf-result" role="status"></p>
+   <table aria-label="Computed directional clearances"><thead><tr><th>Boundary</th><th>Margin (mm)</th></tr></thead><tbody id="lf-margins"></tbody></table>
+  </section>
+ </div>
+ <section id="lf-refs">
+  <h2>Drawing and scale</h2>
+  <p>The record identifies an unbuilt custom bench, so there is no vendor, revision photo, or measured existing unit. Dimensions are original nominal values. The enclosure is 280 × 198 × 95 mm (W × D × H), with a sealed fascia and no connectors, interior or electrical features. The <a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#coordinate-system-and-units">glTF 2.0 coordinate specification</a> supplies the meter-based export convention.</p>
+  <div class="l-gallery">
+   <figure><img src={d+'dimensional-reference.svg'} alt="Original engineering dimension marks on the gauge and inert locating block" width="760" height="350" loading="lazy"/><figcaption>Original drawing BTS-1513-G01 Rev 1: geometry, millimeter units and datum. The keyed relief and block are not parts of the depicted enclosure.</figcaption></figure>
+   <figure><img src={d+'overview.webp'} alt="Original browser render: closed dark blue box beside an amber key block and green tray" width="595" height="410" loading="lazy"/><figcaption>Original 3D reference render. Painted material styling is conceptual, not measured or photographed.</figcaption></figure>
+  </div>
+ </section>
+ <section id="lf-proof">
+  <h2>How the exercise works</h2>
+  <p>Positive x/z are fixed in the gauge plane. The rectangle is 84 × 66 mm; the 18 mm wide relief is centered at x = +16 mm and ends at z = +44 mm. The two rectangles that form the block are rotated by exact quarter-turns. We compare the four signed limits of the main recess and test the tab against the matching relief or the unkeyed boundary. Negative margin means interference; zero is geometric contact, with no real-world tolerance guarantee. Placement is purely visual and excludes chamfer, deformation, friction and manufacturing variation.</p>
+  <table><thead><tr><th>Independent check</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <tr><td>80 × 62 mm block, aligned</td><td>+2 mm minimum</td><td>+2 mm, clear</td><td>Exact nominal geometry</td></tr>
+   <tr><td>Same block, half-turn</td><td>−9 mm at unkeyed edge</td><td>−9 mm, not seated</td><td>Exact nominal geometry</td></tr>
+   <tr><td>Exact dimensions, aligned</td><td>0 mm at mating faces</td><td>0 mm, touching</td><td>Exact nominal geometry</td></tr>
+   <tr><td>Exported body and relief tip edges</td><td>See drawing; 2 mm nominal tip gap</td><td>Matched</td><td>0.05 mm</td></tr>
+  </tbody></table>
+  <p>Output records the fictional gauge ID, revision, preset, angle, signed margins and verdict. The research register's stimulation and recruitment acceptance case is not implemented. There is no biological sample, pulse, electrode, sound, live electrical connection, or actual operating procedure.</p>
+  <p><a href={d+'detached-locator.glb'} download>Editable geometry export (GLB)</a> · <a href={d+'build-model.py'} download>Blender generator</a> · <a href={d+'example-fit.json'}>Example JSON</a> · <a href={d+'xr.json'}>Detached-gauge VR anchors</a> (headset not tested).</p>
+ </section>
+</main>
+<script is:inline>window.locatorFit=import('/equipment/15-13/fit.mjs');</script>
+<script>import '../../../../lib/equipment/15-13/client.mjs';</script>
+</Layout>
+<style>
+.w1513{max-width:82rem;margin:0 auto;padding-inline:1rem}.l-grid,.l-gallery{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(16rem,1fr);gap:1.25rem;align-items:start}.l-gallery{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.l-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0}.w1513 button,.w1513 select{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.42rem .55rem;cursor:pointer}.w1513 select option{background:var(--background,#f1eee3);color:var(--text,#252621)}#lf-view{height:clamp(17rem,39vw,40rem);overflow:hidden;border-radius:.25rem;background:#2c3e45;touch-action:none}#lf-view :global(canvas){display:block;width:100%;height:100%}.l-box{border:1px solid currentColor;border-radius:.3rem;padding:1rem}.w1513 table{border-collapse:collapse;width:100%}.w1513 th,.w1513 td{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .5rem}.w1513 section{margin-bottom:1.3rem}.l-gallery figure{margin:.4rem 0}.l-gallery img{max-width:100%;height:auto}@media(max-width:760px){.l-grid,.l-gallery{grid-template-columns:1fr}}
+</style>
