@@ -1,0 +1,119 @@
+{
+  "triangles": 2108,
+  "draws": 36,
+  "nodes": 13,
+  "bytes": 156712,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "slide_x": {
+      "at": [
+        0.12,
+        0.035,
+        -0.041
+      ],
+      "extent": [
+        0.102,
+        0.021,
+        0.112
+      ],
+      "label": "Local X mover"
+    },
+    "slide_xy": {
+      "at": [
+        0.12,
+        0.078,
+        -0.041
+      ],
+      "extent": [
+        0.102,
+        0.124,
+        0.127
+      ],
+      "label": "Local XY carriage"
+    },
+    "slide_z": {
+      "at": [
+        0.12,
+        0.126,
+        -0.041
+      ],
+      "extent": [
+        0.188,
+        0.073,
+        0.109
+      ],
+      "label": "XYZ carriage with inert pointer"
+    },
+    "controller": {
+      "at": [
+        -0.165,
+        0.055,
+        0.118
+      ],
+      "extent": [
+        0.406,
+        0.096,
+        0.273
+      ],
+      "label": "Original tabletop controller replica"
+    },
+    "joy_xy": {
+      "at": [
+        0.015,
+        0.066,
+        0.166
+      ],
+      "extent": [
+        0.038,
+        0.07,
+        0.038
+      ],
+      "action": "move",
+      "label": "Apply requested virtual pose"
+    },
+    "joy_x": {
+      "at": [
+        0.049,
+        0.035,
+        0.176
+      ],
+      "extent": [
+        0.018,
+        0.008,
+        0.018
+      ],
+      "action": "nudge:X",
+      "label": "Nudge local X by +1 mm"
+    },
+    "joy_y": {
+      "at": [
+        0.049,
+        0.035,
+        0.149
+      ],
+      "extent": [
+        0.018,
+        0.008,
+        0.018
+      ],
+      "action": "nudge:Y",
+      "label": "Nudge local Y by +1 mm"
+    },
+    "joy_z": {
+      "at": [
+        -0.012,
+        0.035,
+        0.129
+      ],
+      "extent": [
+        0.018,
+        0.008,
+        0.018
+      ],
+      "action": "nudge:Z",
+      "label": "Nudge local Z by +1 mm"
+    }
+  }
+}
