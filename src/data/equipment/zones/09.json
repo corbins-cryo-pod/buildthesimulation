@@ -64,7 +64,7 @@
   {
     "id": "09-04",
     "name": "Digital oscilloscope",
-    "model": "Tektronix MSO64B (candidate)",
+    "model": "Tektronix MSO64B / 6-BW-1000 with CH1 TPP1000",
     "evidence": "C",
     "priority": "P1",
     "page": 30,
@@ -75,9 +75,20 @@
     "inputs": "Timestamped analog trace, sample clock, probe scaling, coupling and trigger definition",
     "outputs": "Sampled waveform record with channel units, trigger index and timebase",
     "acceptance": "Acquire a known periodic pulse with its edge on a sample instant. Cursor separation must recover the period to one sample and the trigger must align to the specified edge.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · documented envelope, inferred enclosure details",
+    "simulationStatus": "Single-channel sampled acquisition · analytic fixtures",
+    "integrationStatus": "Simulator, Cortex CSV import and voltage capture export",
+    "simulator": "/simulations/equipment/09-04/simulator/",
+    "related": [
+      [
+        "6 Series B MSO datasheet (Tektronix)",
+        "https://www.tek.com/en/datasheet/6series-b-mso-mixed-signal-oscilloscope-datasheet"
+      ],
+      [
+        "Cortex Laboratory signals",
+        "/cortex/"
+      ]
+    ]
   },
   {
     "id": "09-05",

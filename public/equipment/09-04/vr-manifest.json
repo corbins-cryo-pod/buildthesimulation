@@ -1,0 +1,45 @@
+{
+  "schema": "bts.scope.vr-manifest.v1",
+  "units": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "stand": "floor at y=0; mount bench with floor origin on work surface",
+  "boundsBareM": {
+    "min": [
+      -0.22700000583951782,
+      0,
+      -0.09999999776482582
+    ],
+    "max": [
+      0.22700000583951782,
+      0.3710000105202198,
+      0.10509999671921832
+    ]
+  },
+  "complexity": {
+    "glbBytes": 1426312,
+    "nodes": 185,
+    "meshes": 185,
+    "triangles": 26563
+  },
+  "adapter": "vr-adapter.mjs",
+  "stableNames": [
+    "Single_key",
+    "Run_key",
+    "Flex_1_barrel",
+    "Probe_CH1_TekVPI",
+    "Vertical_scale",
+    "Timebase_scale",
+    "Trigger_level",
+    "Display_active"
+  ],
+  "actions": [
+    "single",
+    "connect",
+    "vertical",
+    "timebase",
+    "threshold"
+  ],
+  "controller": "Raycast visible meshes; dispatch hitAction(mesh.name), pass direction ±1 for a dial, repeat per detent. Avoid grabbing or translating scope when adjusting a dial. Mount render-only output to Display_active. Probe removal is visual state, not mechanically calibrated travel. Never expose an immersive workflow without hardware QA.",
+  "questVerified": false
+}
