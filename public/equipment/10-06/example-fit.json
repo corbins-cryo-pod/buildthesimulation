@@ -1,0 +1,38 @@
+{
+  "schema": "bts.inert-gauge-fit.v1",
+  "source": "simulated",
+  "sampleId": "P1000-INERT-GAUGE-01",
+  "revision": 2,
+  "instrumentId": "10-06",
+  "state": "non-operational-visualization",
+  "units": "mm",
+  "coverOpen": true,
+  "geometry": {
+    "rodLengthMm": 120,
+    "rodDiameterMm": 6,
+    "rodCenterMm": 0,
+    "rodIntervalMm": [
+      -60,
+      60
+    ],
+    "bandIntervalsMm": [
+      [
+        -55,
+        -41
+      ],
+      [
+        41,
+        55
+      ]
+    ],
+    "minOverlapMm": 8,
+    "overlapMm": [
+      14,
+      14
+    ],
+    "gaugeDiameterMm": 7,
+    "diametricalMarginMm": 1,
+    "fits": true
+  },
+  "note": "All test dimensions are invented for an oversized dry solid reference. No clamp force, processing, tool motion or resulting shape is represented."
+}
