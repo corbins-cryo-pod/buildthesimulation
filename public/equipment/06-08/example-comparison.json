@@ -1,0 +1,24 @@
+{
+  "schema": "bts.inert-rectangle-comparison.v1",
+  "deviceId": "06-08",
+  "kind": "immutable synthetic drawing",
+  "sourceId": "detached-outline-01",
+  "sourceRevision": 0,
+  "readRevision": 1,
+  "frameId": "roomy",
+  "witness": {
+    "id": "inert-inner-outline",
+    "widthMm": 72,
+    "depthMm": 92
+  },
+  "frame": {
+    "label": "Roomy outline",
+    "widthMm": 84,
+    "depthMm": 102
+  },
+  "marginXMm": 6,
+  "marginZMm": 5,
+  "contained": true,
+  "coordinateFrame": "centered drawing, X horizontal and Z vertical, millimetres",
+  "relatedToPhysicalFit": false
+}
