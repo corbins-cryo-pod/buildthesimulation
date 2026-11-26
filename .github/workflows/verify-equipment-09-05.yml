@@ -13,7 +13,7 @@ permissions:
   contents: read
 jobs:
   full:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
       ASTRO_TELEMETRY_DISABLED: '1'
