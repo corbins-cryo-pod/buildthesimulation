@@ -1,0 +1,46 @@
+{
+  "schema": "bts.detached-circle-inspection.v1",
+  "revision": 1,
+  "sourceRevision": "RING-DEMO-001",
+  "mode": "nominal",
+  "drawingId": "UNRELATED-CIRCLE-DRAWING",
+  "coordinateFrame": {
+    "axis": [
+      "X right",
+      "Y up"
+    ],
+    "units": "mm"
+  },
+  "referencePointIds": [
+    "A",
+    "B",
+    "C"
+  ],
+  "referencePointsMm": [
+    [
+      66,
+      -12
+    ],
+    [
+      16,
+      38
+    ],
+    [
+      -34,
+      -12
+    ]
+  ],
+  "heldOutPointId": "D",
+  "centerMm": [
+    16,
+    -12
+  ],
+  "radiusMm": 50,
+  "heldOutPointMm": [
+    16,
+    -62
+  ],
+  "heldOutRadiusMm": 50,
+  "radialResidualMm": 0,
+  "provenance": "Immutable synthetic mathematical drawing, not a physical fixture, machine workpiece or process output."
+}

@@ -235,9 +235,10 @@
     "inputs": "Stock solid, fixture coordinate frame, cutter profile and toolpath",
     "outputs": "Machined solid, swept-volume record and fixture-interference flags",
     "acceptance": "Sweep a flat-ended cylindrical tool along a straight slot. Compare its simulated plan area with a radius-ended analytic slot, and its depth with the commanded plunge.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: closed opaque free-standing GX enclosure, nominal outer dimensions verified",
+    "simulationStatus": "First pass: detached immutable circle CAD reading only; machining acceptance deferred",
+    "integrationStatus": "First pass: simulator route, asset, named detached action and example JSON",
+    "simulator": "/simulations/equipment/04-11/simulator/"
   },
   {
     "id": "04-12",
