@@ -1,0 +1,26 @@
+---
+import Layout from '../../../../layouts/Layout.astro';import '../../../../styles/equipment.css';
+const d='/equipment/04-12/',brochure='https://www.evgroup.com/fileadmin/media/products/bonding/Permanent_Bonding/EVG501_-_EVG510_Flyer_23_01.pdf';
+---
+<Layout pageTitle="EVG 501 static exhibit and disconnected square comparison" description="Orbit an inactive EVG 501 visual exhibit and compare two unit squares on an unrelated display board." wide={true}>
+<article class="equipment" id="evgpassive"><nav class="eq-nav"><a href="/simulations/equipment/04-12/">← Equipment 04-12</a><a href="/simulations/equipment/">Register</a><a href="#evg-evidence">Evidence</a></nav>
+<header class="eq-mast"><p class="eq-meta">04-12 / STATIC EXHIBIT · SEPARATE GEOMETRY</p><h2>Inspect the exterior and compare two squares</h2><p class="eq-lede">The EVG 501 is a closed, unpowered visual reference. The detached board is a unit-square overlap exercise, not an instrument or material model.</p></header>
+<div class="e-cols"><section><h3>Dormant EVG 501 exterior</h3><canvas id="evg-model" aria-label="Orbitable static EVG 501 exterior and separate square board"></canvas><p id="evg-viewstatus" role="status">Loading metric GLB…</p><button id="evg-front">Reset overview</button><button id="evg-shell">Housing close-up</button><button id="evg-board">Detached board view</button></section>
+<section><h3>Compare two unit squares on the standalone board</h3>
+<svg id="evg-chart" viewBox="0 0 150 100" role="img" aria-label="Two unrelated mathematical unit squares and their shared region"><rect width="150" height="100" fill="#20343a"/><rect x="15" y="18" width="60" height="60" fill="#54a8a4" fill-opacity=".64" stroke="#92d7cd"/><rect id="evg-moving" x="15" y="18" width="60" height="60" fill="#d4a64f" fill-opacity=".51" stroke="#ffd18a"/><rect id="evg-shared" x="15" y="18" width="60" height="60" fill="#e5deaf" fill-opacity=".49"/></svg>
+<label>Horizontal offset, in side lengths <select id="evg-offset"><option value="0">0 · aligned</option><option value="0.5">0.5 · half a side</option><option value="1">1 · edge to edge</option></select></label><button id="evg-next">Next comparison</button><p id="evg-readout" role="status"></p><p>This is a dimensionless plane drawing only; the shaded area is mathematical intersection, not a material outcome.</p>
+<button id="evg-export">Download math result</button><p><a href={d+'example-overlap.json'}>Example at half a side</a>.</p></section></div>
+<section id="evg-evidence"><h3>Enclosure and evidence</h3><div class="e-cols">
+<figure><img src={d+'station.webp'} alt="Original EVG 501 exterior render and separate square board"/><figcaption>Original full view alongside the <a href={brochure+'#page=1'}>EV Group catalog cover photograph, EVG501/510 family</a>. Left graphite case, round metal silhouette and independent console follow the visual reference; no individual installed configuration is known.</figcaption></figure>
+<figure><img src={d+'housing.webp'} alt="Original closed round exterior housing close-up"/><figcaption>Original dormant close-up. Monitor, caps and faceplates show only external shape. The catalog image does not provide a dimensional assembly drawing; scale and hidden surfaces are inferred.</figcaption></figure></div>
+<table><thead><tr><th>Check</th><th>Expected</th><th>Actual / evidence</th></tr></thead><tbody><tr><td>Estimated W × H × D</td><td>About 980 × 1,540 × 707 mm</td><td>Authored exterior only. Not a manufacturer or installation specification.</td></tr><tr><td>Unit-square offset 0</td><td>100% shared area</td><td>Exact</td></tr><tr><td>Half-side offset</td><td>50% shared area</td><td>Exact</td></tr><tr><td>Edge to edge</td><td>0% shared area</td><td>Exact</td></tr></tbody></table>
+<p>In the diagram, the overlap width is max(0, 1−offset) and height is one. No equipment actions, frequencies, energies, setup, material effects, specimen inputs or assembly state are represented. The original equipment acceptance is not implemented.</p>
+<p><a href={d+'build-model.py'}>Editable Blender source</a> · <a href={d+'evg501.glb'}>Metric GLB</a> · <a href={d+'overlap.mjs'}>Geometry actions and result schema</a> · <a href={d+'vr.json'}>VR target and travel bounds</a>. Headset use not verified.</p></section></article></Layout>
+<script>import '../../../../lib/equipment/04-12/client.mjs';</script>
+<style is:global>
+#evgpassive .e-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem}#evgpassive section{margin:1rem 0;padding:1rem;border:1px solid var(--border);min-width:0}
+#evgpassive :is(button,select){font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:.4rem;margin:.2rem .25rem .2rem 0;max-width:100%}#evgpassive button{cursor:pointer}#evgpassive :is(button,select):focus-visible{outline:2px solid #b28d5e}
+#evg-model{width:100%;height:354px;display:block;touch-action:none}#evg-chart{display:block;width:min(100%,340px);margin:.4rem auto}#evgpassive figure{margin:.5rem 0}#evgpassive figure img{width:100%}
+#evgpassive table{width:100%;font-size:.94rem;border-collapse:collapse;text-align:left}#evgpassive td,#evgpassive th{border-bottom:1px solid var(--border);padding:.35rem}
+@media(max-width:850px){#evgpassive .e-cols{grid-template-columns:minmax(0,1fr)}#evg-model{height:282px}}
+</style>

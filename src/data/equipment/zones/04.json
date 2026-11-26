@@ -255,8 +255,9 @@
     "inputs": "Two wafer revisions, face orientation, alignment transform, bondable masks and void map",
     "outputs": "Assembly revision with both parents, bonded area and interfacial void regions",
     "acceptance": "Offset two identical square bond pads by half their width along one axis. Their bonded area must halve in the void-free fixture; adding a known nonoverlapping void inside it subtracts its area.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass original metric exterior; dimensions inferred",
+    "simulationStatus": "Dormant reference and detached unit-square comparison",
+    "integrationStatus": "Standalone viewer only; no equipment or material linkage",
+    "simulator": "/simulations/equipment/04-12/simulator/"
   }
 ]

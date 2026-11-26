@@ -1,0 +1,40 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    1.502,
+    1.54,
+    0.7305
+  ],
+  "meshes": 59,
+  "triangles": 9690,
+  "bytes": 560176,
+  "interaction": {
+    "Offline_gold_square": {
+      "action": "next",
+      "label": "Compare the detached unit squares",
+      "initialBoundsMinM": [
+        0.689,
+        0.825,
+        0.123
+      ],
+      "initialBoundsMaxM": [
+        0.809,
+        0.837,
+        0.243
+      ],
+      "translationXM": [
+        0,
+        0.06,
+        0.12
+      ]
+    }
+  },
+  "modelMainUnitM": [
+    0.98,
+    1.54,
+    0.707
+  ],
+  "dimensionsProvenance": "Author-estimated based on non-metric EVG501/510 catalog photographs",
+  "physicalStationActions": false
+}
