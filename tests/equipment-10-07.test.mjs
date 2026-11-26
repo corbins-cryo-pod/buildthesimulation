@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+import {initial,act,solve} from '../public/equipment/10-07/solver.mjs';
+import {assets,anchors} from '../public/equipment/10-07/geometry-source.mjs';
+import {build} from '../public/equipment/10-07/mesh-writer.mjs';
+test('Independent 90-degree transforms, axis bounds and invalid domain',()=>{const r=act(initial(),'move');assert.deepEqual(r.result.sample.tipSampleMm,[4,1,1]);assert.deepEqual(r.result.sample.tipSampleM,[.004,.001,.001]);const q=act(r,'limit');assert.deepEqual(q.result.local.appliedStageMm,[12.5,0,0]);assert.deepEqual(q.result.local.blockedAxes,['X']);assert.deepEqual(q.result.sample.tipSampleMm,[4,10.5,1]);assert.throws(()=>solve({xMm:101,yMm:0,zMm:0,yawDeg:0}),/requests/);});
+test('Three source-scale stage components and original virtual targets',()=>{const m=build(assets,anchors),x=readFileSync(new URL('../public/equipment/10-07/sutter-mp285.glb',import.meta.url));assert.ok(x.equals(Buffer.from(m.raw)));assert.ok(x.length<175000);assert.equal(m.metrics.unit,'m');const j=JSON.parse(x.subarray(20,20+x.readUInt32LE(12)));for(const k of ['x','y','z'])assert.equal(j.nodes.find(x=>x.name==='joy_'+k).extras.action,'nudge:'+k.toUpperCase());for(const k of ['slide_x','slide_xy','slide_z'])assert.ok(j.nodes.find(x=>x.name===k));});
