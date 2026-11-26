@@ -1,0 +1,6 @@
+{
+ "basis":"Defined before implementation. Equal real 50 Ω reference at each port. Checked against matched power-wave identities, a series divider and a propagation phasor, not measured hardware data.",
+ "cases":[
+ ["lossless_thru","Ideal matched through |S11|",0,1e-12,"ratio"],["thru_forward","Ideal matched through |S21|",1,1e-12,"ratio"],["thru_reverse","Ideal matched through |S12|",1,1e-12,"ratio"],["delay_im","1 ns delay @ 250 MHz: Im(S21)",-1,1e-11,"ratio"],["slope","1 ns delay, 100–200 MHz change in phase",-36,1e-8,"deg"],["delay_ns","Group delay recovered near 250 MHz",1,1e-8,"ns"],["series_r","100 Ω series in 50 Ω: forward voltage wave",0.5,1e-12,"ratio"],["series_gamma","100 Ω series: reflected voltage wave",0.5,1e-12,"ratio"],["pad_power","20 dB matched pad: transmitted power fraction",0.01,1e-12,"ratio"],["thru_norm","THRU normalization removes matched fixture's 90° rotation",0,1e-10,"deg"],["ref_native","A response THRU does NOT remove reflection phase at the instrument plane",-90,1e-8,"deg"],["active_rejected","Non-passive input rejected",1,0,"true"],["band_rejected","Refuse extrapolation from trace",1,0,"true"]
+ ]
+}
