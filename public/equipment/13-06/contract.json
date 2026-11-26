@@ -1,0 +1,9 @@
+{
+  "equipmentId":"13-06",
+  "configuration":"Thermo Scientific Glacios 2 exterior depicted in BR0158 and DS0491; internal accessories are outside the model",
+  "scope":"Dormant exterior and detached read-only archive, no connection to real device",
+  "input":{"schema":"bts.synthetic-image-archive.v1","source":"Immutable authorial inert symbol fixture with native and mirror-x rasters","frame":"56x56 pixel centers; zero-based column and row from top-left, +column right, +row down, row-major","pixelSizeNm":2.5,"contrastLimitsADU":[0,255]},
+  "output":{"schema":"bts.synthetic-image-review.v1","fields":"Sample ID, revision, original/archive image IDs, original metadata and frame, inspected pixel index and synthetic coordinate, raw ADU, marked landmark spacing and signed determinant, display limits","physicalClaim":false},
+  "failures":["Unsupported archive schema or raster count","Inconsistent mirror or incorrect coordinate scale","Out-of-bounds pixel or index","Inverted or empty display window"],
+  "limits":["Fixture metadata and images are synthetic","No reconstruction or imaging performance claims","No acquisition, hardware controls, cryogenic steps, sample workflow or biological data"]
+}
