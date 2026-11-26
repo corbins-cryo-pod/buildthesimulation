@@ -271,14 +271,23 @@
     "inputs": "Retinal layer geometry, implant pose, pixel illumination or current map and response model",
     "outputs": "Layer-indexed drive and model response maps, registered to implant pixels",
     "acceptance": "Illuminate one pixel in a symmetric synthetic phantom, then mirror the input. The drive map must mirror accordingly; a zero-drive control must reproduce the unstimulated baseline.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Original unbuilt inert cabinet concept, not physical hardware; independent authored metric gauge",
+    "simulationStatus": "Verified detached dry geometric clearances only; no retinal, electrical, optical, or operating model",
+    "integrationStatus": "Metric GLB, 3D/2D gauge viewer and JSON export; browser and headset verification pending",
     "related": [
       [
         "Retina Laboratory",
         "/simulations/retinal-implant/"
+      ],
+      [
+        "Original geometry and scope",
+        "/simulations/equipment/15-14/simulator/#dry-references"
+      ],
+      [
+        "Detached gauge verification",
+        "/simulations/equipment/15-14/simulator/#dry-checks"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/15-14/simulator/"
   }
 ]
