@@ -6,20 +6,28 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 export async function makeViewer(host) {
   const scene=new THREE.Scene();
   scene.background=new THREE.Color(0xe4e0d5);
-  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=1.28;
+  let renderer,software=false;
+  try {
+    renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure=1.28;
+  }catch{
+    const {softwareRenderer}=await import('./software.js');
+    renderer=softwareRenderer();software=true;
+  }
   host.append(renderer.domElement);
   const camera=new THREE.PerspectiveCamera(36,1,.015,14);
   const controls=new OrbitControls(camera,renderer.domElement);
   controls.minDistance=.24;controls.maxDistance=3.7;
   controls.maxPolarAngle=Math.PI*.9;
-  const pmrem=new THREE.PMREMGenerator(renderer);
+  if(!software){
+    const pmrem=new THREE.PMREMGenerator(renderer);
   const room=new RoomEnvironment();
   const env=pmrem.fromScene(room,.04);
   scene.environment=env.texture;
-  room.dispose();pmrem.dispose();
+    room.dispose();pmrem.dispose();
+  }
   const sky=new THREE.HemisphereLight(0xffffff,0xc1aa84,1.35);
   const key=new THREE.DirectionalLight(0xfff6e9,1.8);
   key.position.set(-2,4,3);scene.add(sky,key);
@@ -93,5 +101,6 @@ export async function makeViewer(host) {
   }
   go(view);
   host.dataset.model='loaded';
-  return {go,sync};
+  host.dataset.renderer=software?'software':'webgl';
+  return {go,sync,software};
 }

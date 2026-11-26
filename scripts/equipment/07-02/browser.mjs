@@ -10,7 +10,7 @@ const origin=process.env.VIOS_ORIGIN||'http://127.0.0.1:4382';
 const chrome=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(existsSync);
 assert.ok(chrome,'Chrome required');
 const profile=mkdtempSync(join(tmpdir(),'vios-browser-')),downloads=mkdtempSync(join(tmpdir(),'vios-exports-'));
-const browser=spawn(chrome,['--headless=new','--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
+const browser=spawn(chrome,['--headless=new',...(process.env.VIOS_SOFTWARE?['--disable-webgl']:[]),'--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
 let socket,next=0;
 const pending=new Map();
 const errors=[];
@@ -48,8 +48,13 @@ try{
   const uri='/simulations/equipment/07-02/simulator/';
   await until(async()=>{const r=await fetch(origin+uri);return r.ok&&(await r.text()).includes('vios-run');},'Built route unavailable');
   await send('Page.navigate',{url:origin+uri});
-  await until(async()=>await textOf('model-msg')==='3D model loaded · metres','GLB and viewer must load');
+  await until(async()=>(await textOf('model-msg')).startsWith('3D model loaded · metres'),'GLB and viewer must load');
   assert.equal(await evaluate(el('view')+'.querySelector("canvas").width>0'),true);
+  assert.equal(await evaluate(el('view')+'.dataset.renderer'),process.env.VIOS_SOFTWARE?'software':'webgl');
+  if(process.env.VIOS_SOFTWARE){
+    const colorCount=await evaluate('(()=>{const c=document.querySelector("#vios-view canvas"),d=c.getContext("2d").getImageData(0,0,c.width,c.height);return new Set(new Uint32Array(d.data.buffer)).size})()');
+    assert.ok(colorCount>40,'Software renderer drew the instrument');
+  }
   await click('glass');assert.equal(await textOf('door-state'),'Glass open');
   assert.equal(await evaluate(el('outer')+'.disabled'),true);
   await evaluate('document.querySelector("[data-camera=rear]").click()');

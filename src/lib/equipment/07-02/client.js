@@ -166,7 +166,7 @@ export async function init() {
   try {
     const {makeViewer}=await import('./viewer.js');
     viewer=await makeViewer($('view'));
-    $('model-msg').textContent='3D model loaded · metres';
+    $('model-msg').textContent='3D model loaded · metres'+(viewer.software?' · software rendering':'');
     for(const b of document.querySelectorAll('[data-camera]')){
       b.disabled=false;b.onclick=()=>{viewer.go(b.dataset.camera);
         if(!result){if(b.dataset.camera==='controller')inspection={outerOpen:false,glassOpen:false};

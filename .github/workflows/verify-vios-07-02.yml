@@ -27,3 +27,4 @@ jobs:
         run: |
           npx astro preview --host 127.0.0.1 --port 4382 > /tmp/vios-preview.log 2>&1 &
           node scripts/equipment/07-02/browser.mjs
+          VIOS_SOFTWARE=1 node scripts/equipment/07-02/browser.mjs
