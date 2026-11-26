@@ -50,6 +50,30 @@
       "pass": true
     },
     {
+      "name": "100 mm coupon bottom seated on slot 2",
+      "expected": 0,
+      "actual": 0,
+      "units": "m",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "150 mm coupon bottom seated on slot 2",
+      "expected": 0,
+      "actual": 0,
+      "units": "m",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Comparison coupon bottom seated on tray",
+      "expected": 0,
+      "actual": 2.7755575615628914e-17,
+      "units": "m",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
       "name": "Selected coupon primer events",
       "expected": 1,
       "actual": 1,

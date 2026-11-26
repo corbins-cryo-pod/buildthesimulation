@@ -12,7 +12,7 @@
     "height": 0.3048,
     "depth": 0.3366
   },
-  "assumptions": "Nominal enclosure from YES brochure p2; external tower and connector protrusions excluded. Internal offsets, travel, cassette, service panel, controls and module allocation inferred. Rear not surveyed. Virtual tray outside oven is not manufacturer hardware.",
+  "assumptions": "Nominal enclosure from YES brochure p2; external tower and connector protrusions excluded. Internal offsets, travel, cassette, service panel, controls and module allocation inferred. Rear not surveyed. Virtual tray outside oven is not manufacturer hardware. Cassette stands on a separate raised comparison bench at idle; bench is virtual. The modeled sample is seated on an inferred cassette rail. Cabinet dimensions exclude the virtual bench.",
   "groups": [
     {
       "name": "door_hinge",
@@ -25,33 +25,33 @@
     {
       "name": "carrier",
       "position": [
-        0.068,
-        0.2216,
-        0.0433
+        -0.78,
+        0.221,
+        0.4
       ]
     },
     {
       "name": "coupon_A",
       "position": [
-        -0.083,
-        0.038,
-        0.44
+        -0.55,
+        0.2155,
+        0.4
       ]
     },
     {
       "name": "coupon_B",
       "position": [
-        0.083,
-        0.038,
-        0.44
+        -0.37,
+        0.2155,
+        0.4
       ]
     },
     {
       "name": "bench",
       "position": [
-        0,
-        0.01,
-        0.44
+        -0.59,
+        0.195,
+        0.4
       ]
     }
   ],
@@ -2116,9 +2116,9 @@
         0
       ],
       "size": [
-        0.34,
+        0.6,
         0.02,
-        0.19
+        0.22
       ],
       "parent": "bench"
     },
@@ -2127,14 +2127,14 @@
       "material": "dark",
       "shape": "box",
       "position": [
-        -0.154,
-        -0.005,
-        -0.081
+        -0.278,
+        -0.0975,
+        -0.091
       ],
       "size": [
-        0.019,
-        0.01,
-        0.019
+        0.025,
+        0.195,
+        0.025
       ],
       "parent": "bench"
     },
@@ -2143,14 +2143,14 @@
       "material": "dark",
       "shape": "box",
       "position": [
-        -0.154,
-        -0.005,
-        0.081
+        -0.278,
+        -0.0975,
+        0.091
       ],
       "size": [
-        0.019,
-        0.01,
-        0.019
+        0.025,
+        0.195,
+        0.025
       ],
       "parent": "bench"
     },
@@ -2159,14 +2159,14 @@
       "material": "dark",
       "shape": "box",
       "position": [
-        0.154,
-        -0.005,
-        -0.081
+        0.278,
+        -0.0975,
+        -0.091
       ],
       "size": [
-        0.019,
-        0.01,
-        0.019
+        0.025,
+        0.195,
+        0.025
       ],
       "parent": "bench"
     },
@@ -2175,14 +2175,14 @@
       "material": "dark",
       "shape": "box",
       "position": [
-        0.154,
-        -0.005,
-        0.081
+        0.278,
+        -0.0975,
+        0.091
       ],
       "size": [
-        0.019,
-        0.01,
-        0.019
+        0.025,
+        0.195,
+        0.025
       ],
       "parent": "bench"
     },

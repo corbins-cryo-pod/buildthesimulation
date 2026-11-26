@@ -6,3 +6,5 @@ test('02-09 geometry dimensions and named pivots',()=>{const m=read('model.json'
 test('02-09 example output reproducible',()=>{const b={...defaultSample,id:'CP-B',history:[]};assert.deepEqual(runBatch({coupons:[defaultSample,b],loadedId:'CP-A',doorClosed:true,recipe:'prime'}),read('example-output.json'));});
 
 test('public solver and bundled solver remain identical',()=>assert.equal(readFileSync(new URL('../src/lib/equipment/02-09/solver.mjs',import.meta.url),'utf8'),readFileSync(new URL('../public/equipment/02-09/solver.mjs',import.meta.url),'utf8')));
+
+test('static GLB matches glTF JSON and binary',()=>{const g=read('yes310ta.gltf'),b=readFileSync(new URL('../public/equipment/02-09/yes310ta.glb',import.meta.url));assert.equal(b.readUInt32LE(0),0x46546c67);assert.equal(b.readUInt32LE(8),b.length);const jn=b.readUInt32LE(12),j=JSON.parse(b.subarray(20,20+jn).toString('utf8'));assert.deepEqual(j.nodes,g.nodes);assert.equal(j.buffers[0].uri,undefined);const len=b.readUInt32LE(20+jn);assert.deepEqual(b.subarray(28+jn,28+jn+g.buffers[0].byteLength),Buffer.from(g.buffers[0].uri.split(',')[1],'base64'));assert.ok(len>=g.buffers[0].byteLength);});
