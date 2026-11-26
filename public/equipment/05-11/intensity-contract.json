@@ -1,0 +1,13 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://buildthesimulation.com/equipment/05-11/intensity-contract.json",
+ "title":"Nicolet iS50 teaching FTIR data",
+ "description":"Ascending unique 450–4000 cm^-1 axis. Background and sample intensities share an arbitrary positive scale. Absorbance is base 10; output revision equals parentRevision+1 and attaches processing provenance.",
+ "oneOf":[{"$ref":"#/$defs/pairs"},{"$ref":"#/$defs/absorbance"}],
+ "$defs":{
+  "identity":{"type":"object","required":["schema","sampleId","revision","rows"],"properties":{"sampleId":{"type":"string","pattern":"^[a-zA-Z0-9_.-]{1,80}$"},"revision":{"type":"integer","minimum":0}}},
+  "row":{"type":"object","required":["wavenumberCm","background","sample"],"properties":{"wavenumberCm":{"type":"number","minimum":450,"maximum":4000},"background":{"type":"number","exclusiveMinimum":0},"sample":{"type":"number","exclusiveMinimum":0}}},
+  "pairs":{"allOf":[{"$ref":"#/$defs/identity"},{"type":"object","properties":{"schema":{"const":"bts.ftir-intensity.v1"},"rows":{"type":"array","minItems":8,"maxItems":4000,"items":{"$ref":"#/$defs/row"}}}}]},
+  "absorbance":{"allOf":[{"$ref":"#/$defs/identity"},{"type":"object","required":["deviceId","parentRevision","matches","comparison","provenance"],"properties":{"schema":{"const":"bts.ftir-absorbance.v1"},"deviceId":{"const":"05-11"},"parentRevision":{"type":"integer","minimum":0},"matches":{"type":"array"},"comparison":{"type":"string"},"provenance":{"type":"object","required":["kind","source","history"]},"rows":{"type":"array","minItems":8,"maxItems":4000,"items":{"allOf":[{"$ref":"#/$defs/row"},{"required":["transmittance","rawAbsorbance","absorbance"],"properties":{"transmittance":{"type":"number","exclusiveMinimum":0},"rawAbsorbance":{"type":"number"},"absorbance":{"type":"number"}}}]}}}}]}
+ }
+}

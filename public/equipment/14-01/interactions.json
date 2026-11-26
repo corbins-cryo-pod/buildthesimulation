@@ -1,0 +1,86 @@
+{
+  "triangles": 2188,
+  "draws": 29,
+  "nodes": 10,
+  "bytes": 151900,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "upper_grip": {
+      "at": [
+        0,
+        0.392,
+        0.144
+      ],
+      "extent": [
+        0.145,
+        0.12,
+        0.09
+      ],
+      "action": "upper",
+      "label": "Open/close upper grip"
+    },
+    "lower_grip": {
+      "at": [
+        0,
+        0.308,
+        0.144
+      ],
+      "extent": [
+        0.145,
+        0.12,
+        0.09
+      ],
+      "action": "lower",
+      "label": "Open/close lower grip"
+    },
+    "coupon": {
+      "at": [
+        0,
+        0.338,
+        0.144
+      ],
+      "extent": [
+        0.037,
+        0.074,
+        0.036
+      ],
+      "action": "load",
+      "label": "Load/remove inert coupon"
+    },
+    "pendant": {
+      "at": [
+        0.163,
+        0.566,
+        0.208
+      ],
+      "extent": [
+        0.143,
+        0.13,
+        0.067
+      ],
+      "action": "zero",
+      "label": "Zero displacement datum"
+    },
+    "host_panel": {
+      "at": [
+        -0.56,
+        0.77,
+        0.19
+      ],
+      "extent": [
+        0.31,
+        0.2,
+        0.022
+      ],
+      "action": "run",
+      "label": "Run tensile measurement"
+    }
+  },
+  "motion": {
+    "crossheadAxis": "+Y",
+    "upperJawTravelM": 0.009,
+    "lowerJawTravelM": 0.009
+  }
+}

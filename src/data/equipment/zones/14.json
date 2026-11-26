@@ -15,9 +15,10 @@
     "inputs": "Coupon geometry and gauge length, elastic material model, displacement series, load-cell range",
     "outputs": "Force–displacement trace (N, m), engineering stress–strain series and range flags",
     "acceptance": "Extend a uniform linear-elastic coupon. Its fitted initial force slope must equal EA/L within the declared solver tolerance, and an over-range force must be flagged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "simulator": "/simulations/equipment/14-01/simulator/",
+    "geometryStatus": "First-pass metric Instron load frame",
+    "simulationStatus": "Verified ideal coupon and range flags",
+    "integrationStatus": "Interactive tensile example, SI export",
     "related": [
       [
         "Tissue Mechanics Laboratory",

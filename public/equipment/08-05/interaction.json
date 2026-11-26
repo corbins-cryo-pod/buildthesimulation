@@ -1,0 +1,14 @@
+{
+ "schema":"bts.device-interaction.v1","device":"08-05",
+ "frame":{"units":"m","up":"+Y","forward":"+Z","placementAnchor":"bts_bench_anchor"},
+ "parts":{"head":"pickup_head","guard":"guard_hinge","subject":"sample_witness","receiver":"receiver_motion","emitterAxis":"emitter_axis","receiverAxis":"receiver_axis"},
+ "motion":{"guardOpenDeg":-72,"headApproachM":0.0295,"offsetMetersPerUm":1e-6},
+ "ports":["port_motion","port_control","port_power"],
+ "actions":[
+  {"node":"guard_handle","action":"cover","sizeM":[0.063,0.116,0.050],"label":"Open or close virtual guard"},
+  {"node":"head_key","action":"head","sizeM":[0.055,0.037,0.046],"label":"Lower or park pickup head"},
+  {"node":"load_key","action":"load","sizeM":[0.052,0.040,0.045],"label":"Load or remove inert die"},
+  {"node":"run_key","action":"sweep","sizeM":[0.052,0.040,0.045],"label":"Sweep the lateral alignment"},
+  {"node":"power_key","action":"power","sizeM":[0.047,0.038,0.039],"label":"Toggle standby"}
+ ]
+}

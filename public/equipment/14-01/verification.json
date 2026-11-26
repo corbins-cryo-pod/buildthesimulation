@@ -1,0 +1,113 @@
+[
+  {
+    "id": "catalog-slope",
+    "setup": "E=2 GPa, width 5 mm, t=1 mm, L=25 mm, rigid load train; x=0.10 mm.",
+    "expected": {
+      "areaM2": 0.000005,
+      "stiffnessNPerM": 400000,
+      "endForceN": 40,
+      "endStressPa": 8000000,
+      "endStrain": 0.004,
+      "modulusPa": 2000000000
+    },
+    "tolerances": {
+      "areaM2": 1e-15,
+      "stiffnessNPerM": 1e-7,
+      "endForceN": 1e-10,
+      "endStressPa": 0.00001,
+      "endStrain": 1e-12,
+      "modulusPa": 0.001
+    },
+    "actual": {
+      "areaM2": 0.0000049999999999999996,
+      "stiffnessNPerM": 399999.99999999994,
+      "endForceN": 40,
+      "endStressPa": 8000000.000000001,
+      "endStrain": 0.004,
+      "modulusPa": 2000000000.0000005
+    },
+    "pass": true
+  },
+  {
+    "id": "series-frame",
+    "setup": "Same coupon, K_frame=400 kN/m in series, x=0.10 mm.",
+    "expected": {
+      "stiffnessNPerM": 200000,
+      "endForceN": 20,
+      "endGaugeM": 0.00005,
+      "modulusPa": 2000000000
+    },
+    "tolerances": {
+      "stiffnessNPerM": 1e-7,
+      "endForceN": 1e-10,
+      "endGaugeM": 1e-12,
+      "modulusPa": 0.001
+    },
+    "actual": {
+      "stiffnessNPerM": 199999.9999999999,
+      "endForceN": 19.999999999999996,
+      "endGaugeM": 0.00004999999999999999,
+      "modulusPa": 2000000000.0000005
+    },
+    "pass": true
+  },
+  {
+    "id": "double-area",
+    "setup": "Increase width to 10 mm; same E/t/L, no frame compliance; x=0.10 mm.",
+    "expected": {
+      "areaM2": 0.00001,
+      "endForceN": 80,
+      "stiffnessNPerM": 800000
+    },
+    "tolerances": {
+      "areaM2": 1e-15,
+      "endForceN": 1e-10,
+      "stiffnessNPerM": 1e-7
+    },
+    "actual": {
+      "areaM2": 0.000009999999999999999,
+      "endForceN": 80,
+      "stiffnessNPerM": 799999.9999999999
+    },
+    "pass": true
+  },
+  {
+    "id": "sensor-over-range",
+    "setup": "Original specimen, 50 N cell range, x=0.20 mm; peak force demand 80 N.",
+    "expected": {
+      "idealEndForceN": 80,
+      "endForceN": null,
+      "overRange": true
+    },
+    "tolerances": {
+      "idealEndForceN": 1e-10
+    },
+    "actual": {
+      "idealEndForceN": 80,
+      "endForceN": null,
+      "overRange": true
+    },
+    "pass": true
+  },
+  {
+    "id": "bounded-strain",
+    "setup": "Original specimen at x=1.0 mm, expected 4% strain beyond 2% training domain.",
+    "expected": {
+      "physicalForceWithheld": true,
+      "domainExceeded": true
+    },
+    "tolerances": {},
+    "actual": {
+      "physicalForceWithheld": true,
+      "domainExceeded": true
+    },
+    "pass": true
+  },
+  {
+    "id": "open-upper",
+    "setup": "Acquire with upper jaws open.",
+    "expected": "Close both virtual grips before measuring.",
+    "actual": "Close both virtual grips before measuring.",
+    "pass": true
+  }
+]

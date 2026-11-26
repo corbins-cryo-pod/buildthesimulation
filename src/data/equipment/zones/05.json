@@ -43,9 +43,11 @@
     "inputs": "Reflecting surface and validity mask, vertical scan range and objective calibration",
     "outputs": "Areal height map, missing-pixel mask and roughness statistics",
     "acceptance": "Image a tilted flat with one prescribed signal dropout. Recover the input tilt and flag the missing region; the roughness calculation must exclude invalid pixels.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/05-02/simulator/",
+    "related": [["Bruker ContourGT-K datasheet", "https://www.m3.tuc.gr/EQUIPMENT/CONTOUR%20GT-K/Datasheet.pdf"]],
+    "geometryStatus": "Metric enclosure and functional stage",
+    "simulationStatus": "Verified ideal coherence scan and masks",
+    "integrationStatus": "Interactive; JSON/CSV height maps"
   },
   {
     "id": "05-03",
@@ -212,9 +214,10 @@
     "inputs": "Referenced spectrum versus binding energy, energy calibration and sensitivity factors",
     "outputs": "Fitted component areas and relative composition with explicit reference factors",
     "acceptance": "Feed two nonoverlapping synthetic peaks of equal integrated area with identical response factors and zero background. The inferred composition must divide equally between those two components.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/05-09/simulator/",
+    "geometryStatus": "Meter model; 25 mm holder verified",
+    "simulationStatus": "Verified isolated reference-line fit",
+    "integrationStatus": "Interactive; calibrated spectrum and component exports"
   },
   {
     "id": "05-10",
@@ -240,7 +243,7 @@
   {
     "id": "05-11",
     "name": "FTIR spectrometer",
-    "model": "Thermo Scientific Nicolet iS50",
+    "model": "Thermo Scientific Nicolet iS50 · built-in diamond ATR, no ABX",
     "evidence": "B",
     "priority": "P2",
     "page": 20,
@@ -253,14 +256,15 @@
     "inputs": "Reference and sample intensity spectra, wavenumber axis and baseline model",
     "outputs": "Absorbance spectrum and reference-library match with preprocessing history",
     "acceptance": "Feed sample intensity equal to one tenth of the reference in a test band and equal elsewhere. Ideal absorbance must be one in the band and zero elsewhere.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric Blender/GLB; articulated hatch and ATR assembly",
+    "simulationStatus": "Synthetic OPD/FFT with independent ratio and spectral tests",
+    "integrationStatus": "Interactive measurement, import/export and VR adapter; headset not tested",
+    "simulator": "/simulations/equipment/05-11/simulator/"
   },
   {
     "id": "05-12",
     "name": "X-ray diffractometer",
-    "model": "Rigaku D-Max-B",
+    "model": "Rigaku D/Max-B / UNL Co Kα Bragg–Brentano variant",
     "evidence": "B",
     "priority": "P3",
     "page": 20,
@@ -273,8 +277,19 @@
     "inputs": "Reference lattice spacings, incident wavelength, angular grid and line-broadening model",
     "outputs": "Intensity versus 2θ with fitted peak positions and candidate phase labels",
     "acceptance": "Use a single ideal first-order reflection of known spacing and wavelength. Recover the angle from Bragg's law; symmetric broadening should increase width without shifting the centroid.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · 185 mm goniometer radius; photo-proportional cabinet",
+    "simulationStatus": "Synthetic Bragg peak profile and Gaussian width fit; published Si spacing comparison",
+    "integrationStatus": "Interactive virtual scan with spectrum CSV and analysis JSON; VR adapter",
+    "simulator": "/simulations/equipment/05-12/simulator/",
+    "related": [
+      [
+        "Source views and specifications",
+        "/simulations/equipment/05-12/simulator/#evidence"
+      ],
+      [
+        "Verification",
+        "/simulations/equipment/05-12/simulator/#verification"
+      ]
+    ]
   }
 ]

@@ -1,0 +1,58 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/05-12/references.json';
+import v from '../../../../../public/equipment/05-12/verification.json';
+import {defaults as d,bounds} from '../../../../../public/equipment/05-12/diffraction.mjs';
+const a='/equipment/05-12/',r=refs.links;
+const fields=[['wavelengthA','Wavelength (Å)',.0000001],['dA','Single line d-spacing (Å)',.001],['startDeg','Start 2θ (°)',.1],['endDeg','End 2θ (°)',.1],['stepDeg','Grid step (°)',.001],['instrumentFwhmDeg','Instrument FWHM (°)',.01],['sampleFwhmDeg','Additional Gaussian FWHM (°)',.01],['backgroundAu','Background (a.u.)',.1]];
+---
+<Layout pageTitle="Powder diffraction laboratory" subtitle="" description="Inspect the Rigaku D/Max-B goniometer and compare ideal silicon peaks with a virtual diffraction sweep." wide={true}>
+<article id="xrd512" class="equipment">
+<nav class="eq-nav"><a href="/simulations/equipment/05-12/">← Equipment 05-12</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">References & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">05-12 / Materials characterization</span><h2>Rigaku D/Max-B diffraction bench</h2><p>A virtual model of the Nebraska–Lincoln D/Max-B with cobalt Kα, a flat vertical specimen, a diffracted-beam graphite monochromator and a point detector. Run an ideal silicon reference sweep, then broaden an isolated line and compare its width and center. This page never connects to or controls a real instrument.</p></header>
+<div class="bench-grid">
+<section class="rp"><h3>Instrument and goniometer</h3><div class="bt">{[['outside','Cabinet'],['inside','Goniometer'],['rear','Rear']].map(([key,label])=><button data-view={key}>{label}</button>)}<button id="reset-view">Reset</button></div>
+<div class="canvas-wrap"><canvas id="xr-model" aria-label="Interactive Rigaku D-Max B cabinet and sample goniometer"></canvas></div><p class="small" id="model-status" role="status">Loading metric GLB…</p>
+<div class="bt"><button id="door">Open virtual cabinet</button><button id="specimen">Remove reference sample</button></div>
+<label>Goniometer inspection position <strong id="angular">35.00° 2θ</strong><input aria-label="Goniometer inspection position" type="range" id="angle" min="10" max="150" step=".01" value="35"/></label>
+<p class="small">Orbit, zoom or select a detail. Click the cabinet grip, sample holder, scan key or angle knob in 3D, or use the page controls. The amber overlay illustrates geometric rays only, not emitted radiation.</p></section>
+<section class="rp"><h3>Virtual profile settings</h3>
+<form id="xrd-setup" onsubmit="return false;">
+<label>Reference<select name="source"><option value="silicon">Silicon / NIST SRM 640f basis</option><option value="single">Ideal isolated reflection</option><option value="import">Imported reference list</option></select></label>
+<label>Sample ID<input name="sampleId" value={d.sampleId} maxlength="80"/></label><label>Specimen site ID<input name="siteId" value={d.siteId} maxlength="80"/></label>
+<label>Parent revision<input name="parentRevision" type="number" value={0} min="0" max="99999999"/></label>
+{fields.map(([k,n,s])=><label>{n}<input name={k} min={bounds[k][0]} max={bounds[k][1]} step={s} type="number" value={d[k]}/></label>)}
+</form>
+<div class="bt"><button id="scan" class="primary">Run virtual scan</button><button id="ideal">Load 60° example</button><button id="clear">Reset silicon</button></div>
+<p id="status" role="status" aria-live="polite">Silicon reference is seated and ready.</p>
+<label>Load reference CSV (local)<input id="import" type="file" accept="text/csv,.csv"/></label><p><a href={a+'example-reflections.csv'}>Example input CSV</a></p>
+</section>
+</div>
+<section class="rp"><h3>Simulated diffraction profile</h3><div class="plot"><canvas id="profile" width="1100" height="288" aria-label="Relative simulated intensity versus diffraction angle"></canvas></div>
+<p class="small">Click the plot or a peak angle to move both kinematic pivots. Output intensity is arbitrary units, not counts. Phase names are reference labels, not a search match.</p>
+<div class="columns"><table><thead><tr><th>Reference line</th><th>d (Å)</th><th>Predicted 2θ (°)</th><th>Fitted center (°)</th><th>FWHM (°)</th></tr></thead><tbody id="peaks"></tbody></table></div>
+<div class="bt"><button id="export-json" disabled>Export scan JSON</button><button id="export-csv" disabled>Export intensity CSV</button><a href={a+'output-schema.json'}>Output schema</a></div></section>
+<section id="evidence"><h3>Sources and assumptions</h3>
+<div class="sources">{[['outside','Cabinet','UNL photo of the selected cobalt variant; window frame, console and green lower panels.',r.unlPhoto],['inside','Goniometer','UNL describes vertical specimen, graphite monochromator, point detector and θ/2θ motion. Outer bracket dimensions and drive placement are inferred.',r.unl],['rear','Rear and nonfunctional connectors','No rear angle of the selected unit was available. The rear silhouette and connector block are explicitly illustrative. Compare the legacy family in Rigaku’s period advertisement.',r.period]].map(([key,title,caption,url])=><figure><img src={a+key+'.png'} alt={'Original '+title+' rendering'} loading="lazy"/><figcaption><b>{title}.</b> {caption} <a href={url}>Reference</a></figcaption></figure>)}</div>
+<p><a href={r.history}>Rigaku timeline (D/Max-B series)</a> · <a href={r.washu}>WashU copper variant (register reference, not selected)</a> · <a href={r.silicon}>NIST 640f certificate</a> · <a href={r.nistStudy}>NIST article, Table II</a></p>
+<div class="columns"><table><thead><tr><th>Basis</th><th>Value</th><th>Use</th></tr></thead><tbody><tr><th>Detector/source circle radius</th><td>185 mm</td><td>UNL detailed specifications, p. 1; documented kinematic geometry. <a href={r.unlDetailed}>Specifications</a></td></tr><tr><th>Effective cobalt wavelength</th><td>1.7903 Å</td><td>Weighted Co Kα line used as one peak, not an emission spectrum. <a href={r.unl}>UNL description</a></td></tr><tr><th>Silicon lattice constant</th><td>5.431144 Å at 22.5 °C</td><td>NIST SRM 640f certification; sets reference d-spacings, not simulated intensities.</td></tr><tr><th>External enclosure</th><td>Approx. 1260 × 1900 × 770 mm (W × H × D)</td><td>Photo-proportional estimate, not manufacturer or measured CAD. Door motion is illustrative.</td></tr></tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable Python model</a> · <a href={a+'dmax-b.glb'} download>GLB</a> · <a href={a+'vr-station.json'}>VR adapter and target bounds</a> · <a href={a+'station.mjs'}>Headless station actions</a></p>
+<details><summary>Algorithm, input contract and limitations</summary><p>For first order, 2θ = 2 asin(λ/(2d)), with λ and d in Å; silicon d = a/√(h²+k²+l²). Intensity is a sum of Gaussians with constant baseline. For independent Gaussian contributions W = √(Wᵢ²+Wₛ²). A local log-quadratic peak fit and linear half-height crossings estimate sampled center and FWHM; near-edge or strongly overlapping peaks are not fitted. Grid steps require at least six intervals per FWHM.</p><p>CSV input contains 1–25 rows with <code>label,phase,d_A,height_au</code>. Export retains sample/site IDs and revision. No measured counts, Rietveld refinement, phase identification, real wave spectrum, crystallite size inference, shielding, dose or hardware controls. The reference material and all specimen interactions are virtual.</p></details></section>
+<section id="verification"><h3>Verification</h3><p>Published silicon checks use Cu Kα for direct comparison with NIST Table II informational angles; the documented Nebraska variant defaults to cobalt. All other output is synthetic.</p>
+<div class="columns"><table><thead><tr><th>Check</th><th>Expected</th><th>Observed</th><th>Unit</th><th>Result</th></tr></thead><tbody>{v.cases.map(c=><tr><th title={c.basis}>{c.id}</th><td>{String(c.expected)}</td><td>{Array.isArray(c.actual)?c.actual.map(x=>x.toFixed(5)).join(', '):typeof c.actual==='number'?c.actual.toPrecision(6):c.actual}</td><td>{c.unit}{c.tol?' ± '+c.tol:''}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div><p><a href={a+'verification.json'}>Verification data</a> · <a href={a+'verify.mjs'}>Reproduce checks</a>. Controller-independent actions are available; no headset session is claimed.</p></section></article>
+</Layout>
+<script>import '../../../../lib/equipment/05-12/client.mjs';</script>
+<style>
+#xrd512{--rule:color-mix(in srgb,currentColor 27%,transparent);max-width:1300px;margin:auto}
+.bench-grid{display:grid;grid-template-columns:minmax(0,1.17fr) minmax(0,1fr);gap:1rem}.rp{min-width:0;border:1px solid var(--rule);padding:.9rem;margin:.8rem 0}
+.rp h3{margin:.25rem 0 .7rem}.bt{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;margin:.55rem 0}.bt,.small,#xrd512 label{font: .88rem/1.4 system-ui,sans-serif}
+#xrd512 :is(input,button,select){background:var(--panel,Canvas);color:inherit;font:inherit;border:1px solid var(--rule);border-radius:3px;padding:.38rem;box-sizing:border-box}#xrd512 :is(input,select){min-width:0;width:100%}#xrd512 button{min-height:36px;cursor:pointer}#xrd512 button.primary{background:#386050;color:#fff}#xrd512 button:disabled{opacity:.5}#xrd512 label{display:grid;gap:.14rem}
+#xrd-setup{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem .6rem}
+.canvas-wrap{background:#263039;aspect-ratio:1.5}canvas{width:100%;height:100%;display:block}.canvas-wrap canvas{touch-action:none}.plot{height:230px;background:#253633}.plot canvas{cursor:crosshair}
+.columns{overflow:auto}.columns table{border-collapse:collapse;width:100%}.columns :is(th,td){border-bottom:1px solid var(--rule);padding:.42rem;text-align:left}
+.sources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}.sources figure{margin:0}.sources img{width:100%;height:auto}.sources figcaption{font-size:.91rem}
+#xrd512 .err{color:#a1432f}
+@media(max-width:840px){.bench-grid,.sources{grid-template-columns:1fr}.plot{height:165px}}
+@media(max-width:420px){.rp{padding:.5rem}}
+</style>

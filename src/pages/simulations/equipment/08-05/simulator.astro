@@ -1,0 +1,67 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/08-05/verification.json';
+import g from '../../../../../public/equipment/08-05/asset-metrics.json';
+const a='/equipment/08-05/';
+const davis='https://cnm2.ucdavis.edu/equipment/ficontec-fl-300-optoelectronicflip-chip-die-bonder';
+const catalog='https://pdf.directindustry.com/pdf/ficontec-service-gmbh/fl300/127043-788571.html';
+---
+<Layout pageTitle="Optoelectronic die bonder" description="Virtual ficonTEC FL300 with inert pickup, staged optical-axis overlap and projected pad comparison." wide={true}>
+<article id="fl300">
+<nav><a href="/simulations/equipment/08-05/">← Equipment 08-05</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#fl-evidence">References and checks</a></nav>
+<header><small>08-05 · OPTICAL PACKAGING · VIRTUAL FIXTURE</small><h2>ficonTEC FL-300 alignment bench</h2><p>Compare two inert optical axes on a virtual stage. Sweep the lateral offset, locate the symmetric peak, and inspect geometric overlap between the projected pads. No bonding process is run.</p></header>
+<div class="bench"><section class="panel"><h3>Pick head, cameras and central chuck</h3>
+<div class="tools"><button data-fl-view="orbit">Reset view</button><button data-fl-view="front">Front controls</button><button data-fl-view="stage">Stage close-up</button><button data-fl-view="rear">Rear view</button></div>
+<div id="fl-viewer"></div><p id="fl-model" role="status">Loading metric assembly model…</p>
+<p>Orbit, zoom and click the drawn controls. The clear guard is a virtual interlock, not an assertion about the UC Davis machine. Clearances and exact cabinet dimensions are inferred. Physical headset testing has not been done.</p></section>
+<section class="panel"><h3>Register the virtual witness</h3>
+<div class="tools"><button id="fl-cover">Open virtual guard</button><button id="fl-load">Remove witness</button><button id="fl-head">Lower pickup head</button><button id="fl-power">Standby</button><button id="fl-reset">Restore example</button></div>
+<p id="fl-sample"></p>
+<div class="fields"><label>Stage lateral X (µm)<input id="fl-dx" type="number" min="-25" max="25" step="any"/></label><label>Stage transverse Y (µm)<input id="fl-dy" type="number" min="-25" max="25" step="any"/></label>
+<label>Import synthetic fixture<input id="fl-file" type="file" accept=".json,application/json"/></label></div>
+<div class="tools"><button id="fl-center">Move to registered axes</button><button id="fl-sweep">Run lateral sweep</button><button id="fl-json" disabled>Export pose and sweep JSON</button><button id="fl-csv" disabled>Export sweep CSV</button></div>
+<p id="fl-status" aria-live="polite"></p></section></div>
+<section class="panel"><h3>Overlap and projected pads</h3>
+<p id="fl-result" aria-live="polite"></p><p id="fl-pads"></p>
+<canvas id="fl-plot" width="700" height="445" aria-label="Coupled power fraction versus X at chosen Y, with the selected position highlighted."></canvas>
+<p><strong>Try it:</strong> The ready −5 µm pose couples 29.43% of the reference power. At +5 µm the result is the same. Move to the registered center and sweep to find 80% with full geometric pad overlap. Offset Y by 5 µm and the sweep's best X remains centered, but its peak drops to 29.43%.</p></section>
+<section class="panel"><h3>Model and file contract</h3>
+<p>The two Gaussian field modes share radius w and parallel axes. For registered transverse difference (Δx, Δy), modeled coupled power fraction is η₀ exp[−(Δx²+Δy²)/w²]. The default w is 5 µm and η₀ is 0.8; these are declared virtual values, not a vendor-calibrated loss map. The X sweep evaluates 41 samples across ±20 µm of the calculated optical center at the selected Y. Pose controls separately support ±25 µm. Any movement on the instrument is drawn at 1 µm per 10⁻⁶ m.</p>
+<p>Pad output is the projected intersection of two equal axis-aligned rectangles, with a 75% candidate threshold. It is not a verified electrical connection, actual bonding yield or an optical power measurement. Tilt, focus, mode mismatch, force, cure, temperature, kinematics calibration and proprietary internals are omitted. No hardware process settings are provided.</p>
+<p><a href={a+'contract.json'}>Input/output contract</a> · <a href={a+'example-fixture.json'}>Fixture JSON</a> · <a href={a+'example-alignment.json'}>Output pose and sweep</a>. Exports retain identity, reference axes, pose, sample and run revisions and units.</p></section>
+<section class="panel" id="fl-evidence"><h3>Reference geometry and checks</h3>
+<div class="refs">
+<figure><img loading="lazy" src={a+'instrument-view.webp'} alt="Original open-deck FL300 and workstation from front above"/><figcaption><strong>FL300 UC Davis–style cell and monitor stand.</strong> Compare the <a href={davis}>UC Davis photograph and capability record</a>. The model's metre-scaled cabinet is photo-informed; no OEM envelope is claimed.</figcaption></figure>
+<figure><img loading="lazy" src={a+'stage-view.webp'} alt="Original view of FL300 deck with cameras, receiver fixture and independent pick head"/><figcaption><strong>Optical station.</strong> Stage, camera and gripper roles from <a href={catalog}>manufacturer FL300 catalog pp. 3–4</a>. The enclosure, virtual swing guard and internal dimensions are inferred.</figcaption></figure>
+</div>
+<p>GLB main cell closed geometry {g.modeledEnclosureM.map(v=>(v*1000).toFixed(1)).join(' × ')} mm X×Y×Z (model bounds only); designed synthetic witness 4 × 4 mm. Detector displacement is drawn at metric scale; the plot makes micrometre-scale changes visible.</p>
+<p><a href={a+'fl300.glb'}>Metric GLB</a> · <a href={a+'build-model.py'}>Editable Blender source</a> · <a href={a+'interaction.json'}>Motion and action anchors</a> · <a href={a+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected} {x.unit}</td><td>{x.actual}</td><td>{x.tol??'Exact flag'}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/08-05/client.mjs';</script>
+<style>
+#fl300{max-width:1260px;margin:auto}
+#fl300 header{margin:1.37rem 0 1rem} #fl300 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}
+.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;flex-direction:column;font-size:.9rem;gap:.18rem}
+.fields option{background:#f5f1e6;color:#151b1a}
+#fl-viewer{height:350px;margin:.72rem 0;background:#293941}
+#fl-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#fl-plot{width:min(100%,700px);height:auto;display:block}
+#fl-result{font-weight:bold}
+#fl-status[data-error=true]{border-left:4px solid #7d4e30;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:.45rem 0}
+th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#fl-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#fl-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>
