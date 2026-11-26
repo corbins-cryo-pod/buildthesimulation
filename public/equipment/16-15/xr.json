@@ -1,0 +1,258 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/16-15/lab-support.glb",
+  "model": "/equipment/16-15/kit.mjs",
+  "constructor": "station()",
+  "dispatch": "act(state, action, value); report(state) returns scene anchors and poses",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "floor at cabinet centre",
+  "authored": {
+    "cabinet": {
+      "dimsM": [
+        0.62,
+        1.18,
+        0.51
+      ]
+    },
+    "stool": {
+      "seatRadiusM": 0.173,
+      "lowM": 0.485,
+      "highM": 0.635
+    },
+    "glazing": {
+      "widthM": 0.55,
+      "heightM": 1.62,
+      "thicknessM": 0.008
+    },
+    "lamp": {
+      "positionM": [
+        0.245,
+        1.615,
+        0.102
+      ],
+      "targetM": [
+        -0.045,
+        1.184,
+        0.075
+      ],
+      "lightColor": "#ffd9a2",
+      "coneDeg": 52
+    },
+    "drawer": {
+      "originM": [
+        0,
+        0.672,
+        0.005
+      ],
+      "travelM": 0.285,
+      "slotLocalM": [
+        0,
+        0,
+        0
+      ]
+    },
+    "door": {
+      "pivotM": [
+        -0.278,
+        0.923,
+        0.254
+      ],
+      "openDeg": 105
+    },
+    "item": {
+      "id": "PPE-CASE-01",
+      "mesh": "PPE_CASE_01",
+      "topPositionM": [
+        -0.12,
+        1.18,
+        0.111
+      ],
+      "dimsM": [
+        0.18,
+        0.038,
+        0.09
+      ]
+    }
+  },
+  "controls": [
+    {
+      "mesh": "SUPPORT_DRAWER_HANDLE",
+      "action": "drawer",
+      "label": "Open or close case drawer",
+      "value": null,
+      "minM": [
+        -0.08,
+        0.7215,
+        0.256
+      ],
+      "maxM": [
+        0.08,
+        0.7365,
+        0.282
+      ]
+    },
+    {
+      "mesh": "SUPPORT_DOOR_HANDLE",
+      "action": "door",
+      "label": "Swing upper cabinet door",
+      "value": null,
+      "minM": [
+        0.2185,
+        0.8985,
+        0.2545
+      ],
+      "maxM": [
+        0.2355,
+        1.0315,
+        0.2855
+      ]
+    },
+    {
+      "mesh": "PPE_CASE_01",
+      "action": "grab",
+      "label": "Grab labeled case",
+      "value": null,
+      "minM": [
+        -0.21,
+        1.18,
+        0.066
+      ],
+      "maxM": [
+        -0.03,
+        1.21812,
+        0.156
+      ]
+    },
+    {
+      "mesh": "DRAWER_BED",
+      "action": "place",
+      "label": "Move held case into open drawer",
+      "value": "drawer",
+      "minM": [
+        -0.28,
+        0.658,
+        -0.21
+      ],
+      "maxM": [
+        0.28,
+        0.672,
+        0.22
+      ]
+    },
+    {
+      "mesh": "CABINET_CROWN",
+      "action": "place",
+      "label": "Return held case to cabinet top",
+      "value": "top",
+      "minM": [
+        -0.31,
+        1.138,
+        -0.255
+      ],
+      "maxM": [
+        0.31,
+        1.18,
+        0.255
+      ]
+    },
+    {
+      "mesh": "TASK_LAMP_SWITCH",
+      "action": "lamp",
+      "label": "Switch task illumination",
+      "value": null,
+      "minM": [
+        0.256,
+        1.198,
+        0.13
+      ],
+      "maxM": [
+        0.27,
+        1.206,
+        0.144
+      ]
+    }
+  ],
+  "assetGeometry": {
+    "rows": [
+      {
+        "label": "cabinet width",
+        "expectedMm": 620,
+        "actualMm": 620.0000047683716,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "cabinet depth",
+        "expectedMm": 510,
+        "actualMm": 509.99999046325684,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "cabinet top",
+        "expectedMm": 1180,
+        "actualMm": 1180.000038817525,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "case width",
+        "expectedMm": 180,
+        "actualMm": 180.00000715255737,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "stool seat diameter",
+        "expectedMm": 346,
+        "actualMm": 345.99998593330383,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "stool low seat height",
+        "expectedMm": 485,
+        "actualMm": 485.0000161677599,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "amber pane glass width",
+        "expectedMm": 550,
+        "actualMm": 550.000011920929,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "amber pane thickness",
+        "expectedMm": 8,
+        "actualMm": 8.00000037997961,
+        "toleranceMm": 0.06,
+        "pass": true
+      },
+      {
+        "label": "partition frame height",
+        "expectedMm": 1620,
+        "actualMm": 1620.0000047683716,
+        "toleranceMm": 0.06,
+        "pass": true
+      }
+    ],
+    "minM": [
+      -0.858748,
+      0,
+      -0.255
+    ],
+    "maxM": [
+      0.969,
+      1.6685,
+      0.437428
+    ],
+    "nodes": 68,
+    "bytes": 447204,
+    "triangles": 6493
+  },
+  "note": "Glazing is decorative; lamp intensity normalized; no PPE, optical barrier, workspace illumination, structural or physical headset validation."
+}
