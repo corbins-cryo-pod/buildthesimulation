@@ -1,0 +1,32 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/04-05/references.json';
+import v from '../../../../../public/equipment/04-05/verification.json';
+const a='/equipment/04-05/';
+---
+<Layout pageTitle="Diener Nano · Documentary exhibit" subtitle="" description="Inspect the closed tabletop cabinet and compare its outline on a detached paper chart." wide={true}>
+<article class="equipment nano0405">
+<nav class="eq-nav"><a href="/simulations/equipment/04-05/">← Equipment 04-05</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources &amp; checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">04-05 / Documentary reference and passive 2D geometry</span><h2>Diener Nano · Cabinet &amp; footprint chart</h2><p>Inspect the dormant tabletop cabinet. On the separate paper chart, see how a 90° turn changes the fit of its rectangular footprint. The actual cabinet never moves, opens, or operates.</p></header>
+<div class="dn-grid">
+<section class="dn-card"><h3>3D exhibit</h3><div class="dn-bar"><button data-view="whole">Whole exhibit</button><button data-view="front">Cabinet front</button><button data-view="side">Cabinet side</button><button data-view="chart">Paper chart</button><button id="camera-reset">Reset view</button></div>
+<div class="dn-camera"><canvas id="nano-model" aria-label="Dormant tabletop Nano with inactive controls and a separate layout board"></canvas></div>
+<p id="asset" class="dn-note" role="status">Loading metric GLB…</p><p class="dn-note">Drag or pinch to inspect. The gold key on the layout board rotates the paper tile. The pale key switches chart frames; the cabinet controls are fixed decoration.</p></section>
+<section class="dn-card"><h3>Compare two paper layouts</h3><div class="dn-bar"><label>Chart <select id="frame"><option value="narrow">Narrow · 650 × 850 mm</option><option value="wide">Wide · 950 × 850 mm</option></select></label><button class="primary" id="rotate">Rotate footprint</button><button id="reset">Reset</button></div>
+<canvas id="chart" width="438" height="368" role="img" aria-label="Centered outline of the Nano cabinet against the selected fictional reference rectangle"></canvas>
+<p id="status" class="dn-note" role="status" aria-live="polite">0° · Fits drawn rectangle. Side margins: X +55 mm, Y +25 mm.</p>
+<div class="dn-bar"><button id="json">Export chart JSON</button><a href={a+'example-chart.json'}>Example overhang result</a></div>
+<p class="dn-note">For a centered outline, signed margin per side is half the frame size minus half the footprint size. Negative numbers indicate drawn overhang. This omits all real installation, access, loading, service and safety clearances.</p></section>
+</div>
+<section id="evidence"><h3>Sources and geometric verification</h3>
+<figure class="dn-fig"><img src={a+'reference-elevation.svg'} alt="Original model front and side elevations followed by two overlapping paper rectangles" loading="lazy"/><figcaption>Original drawing; exterior details inferred from photos. At right, the rotated paper footprint protrudes on both X sides.</figcaption></figure>
+<ul>{refs.references.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>The manufacturer lists approximately <b>540 × 800 × 775 mm</b> (W × D × H) for the tabletop enclosure. This is not the larger installed Stanford variant. The GLB uses nominal exterior scale; the window, hinges, display, and fasteners are approximate. There are no modeled internal parts, treatment, gas, settings, or sample preparation. The chart compares geometry only, not treatment, sample effects, or instrument capability.</p>
+<div class="dn-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{v.checks.map(c=><tr><th scope="row">{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(8)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model</a> · <a href={a+'diener-nano.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Reference notes</a> · <a href={a+'vr-station.json'}>VR action manifest</a> · <a href={a+'footprint.mjs'}>Geometry module</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p>
+</section></article></Layout><script>import '../../../../lib/equipment/04-05/client.mjs';</script>
+<style>
+.nano0405{--dn-rule:color-mix(in srgb,currentColor 26%,transparent);max-width:1280px;margin:auto}.dn-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.dn-card{min-width:0;border:1px solid var(--dn-rule);padding:.85rem;margin:.8rem 0}.dn-card h3{margin:.21rem 0 .6rem}.dn-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.dn-bar,.dn-note,.dn-fig figcaption{font:.89rem/1.4 system-ui,sans-serif}
+.nano0405 :is(button,select){font:inherit;padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--dn-rule);border-radius:3px;min-height:38px;cursor:pointer}.nano0405 .primary{background:#34594f;color:#fff}.dn-camera{aspect-ratio:1.34;background:#263b40}.dn-camera canvas{width:100%;height:100%;display:block;touch-action:none}.nano0405 #chart{display:block;width:100%;height:auto;max-width:492px;margin:.6rem 0}.dn-table{overflow:auto}.dn-table table{width:100%;border-collapse:collapse}.dn-table :is(td,th){border-bottom:1px solid var(--dn-rule);padding:.42rem;text-align:left}.dn-fig{margin:1rem 0;max-width:680px}.dn-fig img{width:100%;height:auto;display:block}.dn-fig figcaption{margin:.38rem 0}@media(max-width:850px){.dn-grid{grid-template-columns:1fr}}
+</style>

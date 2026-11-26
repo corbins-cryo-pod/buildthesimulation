@@ -1,0 +1,66 @@
+[
+  {
+    "id": "register-slope",
+    "input": "Rectangular 10 mm × 2 mm beam, 40 mm span, E=3 GPa, midspan drop 0.4 mm.",
+    "expected": {
+      "secondMomentM4": 6.666666666666666e-12,
+      "stiffnessNPerM": 15000,
+      "endForceN": 6,
+      "maxStressPa": 9000000
+    },
+    "tolerance": 1e-8,
+    "actual": {
+      "secondMomentM4": 6.666666666666667e-12,
+      "stiffnessNPerM": 14999.999999999993,
+      "endForceN": 6,
+      "maxStressPa": 9000000
+    },
+    "pass": true
+  },
+  {
+    "id": "double-span",
+    "input": "Double support spacing to 80 mm, length 94 mm to ensure overhang, unchanged E and section.",
+    "expected": {
+      "stiffnessNPerM": 1875,
+      "endForceN": 0.75
+    },
+    "tolerance": 1e-9,
+    "actual": {
+      "stiffnessNPerM": 1874.999999999999,
+      "endForceN": 0.75
+    },
+    "pass": true
+  },
+  {
+    "id": "half-deflection",
+    "input": "Hold 40 mm span and change midspan drop to 0.2 mm.",
+    "expected": {
+      "endForceN": 3
+    },
+    "tolerance": 1e-10,
+    "actual": {
+      "endForceN": 3
+    },
+    "pass": true
+  },
+  {
+    "id": "zero-span",
+    "input": "Support span zero.",
+    "expected": "Support span must be positive and 20–160 mm.",
+    "actual": "Support span must be positive and 20–160 mm.",
+    "pass": true
+  },
+  {
+    "id": "outside-domain",
+    "input": "Drop 1.5 mm on 40 mm span, exceeding prescribed small-deflection boundary 2.5%.",
+    "expected": {
+      "forceWithheld": true,
+      "outsideDomain": true
+    },
+    "actual": {
+      "forceWithheld": true,
+      "outsideDomain": true
+    },
+    "pass": true
+  }
+]

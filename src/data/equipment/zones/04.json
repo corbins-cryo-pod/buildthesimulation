@@ -119,9 +119,16 @@
     "inputs": "Resist thickness, underlying material ID and calibrated removal function",
     "outputs": "Cleaned surface revision and residual resist thickness",
     "acceptance": "Strip two resist patches with different initial thicknesses. At a removal greater than the thinner patch but below the thicker one, only the thinner patch clears; neither thickness becomes negative.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, nominal metric dormant tabletop housing",
+    "simulationStatus": "Passive paper footprint comparison; no material treatment model",
+    "integrationStatus": "Standalone exhibit; geometry-only JSON",
+    "simulator": "/simulations/equipment/04-05/simulator/",
+    "related": [
+      [
+        "Documentary model sources and independent checks",
+        "/simulations/equipment/04-05/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "04-06",

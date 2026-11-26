@@ -1,0 +1,623 @@
+{
+  "schema": "bts.flexure-three-point.v1",
+  "deviceId": "14-02",
+  "kind": "simulated",
+  "model": "Instron 5969 / three-point fixture",
+  "sampleId": "elastic-beam-01",
+  "inputRevision": 0,
+  "revision": 1,
+  "configuration": {
+    "sampleId": "elastic-beam-01",
+    "widthMm": 10,
+    "thicknessMm": 2,
+    "lengthMm": 54,
+    "spanMm": 40,
+    "modulusGPa": 3,
+    "dropMm": 0.4,
+    "cellN": 500
+  },
+  "fixture": {
+    "kind": "symmetric-three-point-bend",
+    "spanM": 0.04,
+    "supportIds": [
+      "roller-left",
+      "roller-right"
+    ],
+    "noseId": "central-nose"
+  },
+  "section": {
+    "widthM": 0.01,
+    "thicknessM": 0.002,
+    "lengthM": 0.054,
+    "secondMomentM4": 6.666666666666667e-12
+  },
+  "units": {
+    "deltaM": "m",
+    "forceN": "N",
+    "modelDemandN": "N",
+    "maxFlexStressPa": "Pa",
+    "outerFiberStrain": "1",
+    "stiffnessNPerM": "N/m"
+  },
+  "analyticStiffnessNPerM": 14999.999999999998,
+  "fittedStiffnessNPerM": 14999.999999999993,
+  "points": [
+    {
+      "i": 0,
+      "deltaM": 0,
+      "modelDemandN": 0,
+      "forceN": 0,
+      "maxFlexStressPa": 0,
+      "outerFiberStrain": 0,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 1,
+      "deltaM": 0.000008,
+      "modelDemandN": 0.11999999999999998,
+      "forceN": 0.11999999999999998,
+      "maxFlexStressPa": 179999.99999999997,
+      "outerFiberStrain": 0.000059999999999999995,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 2,
+      "deltaM": 0.000016,
+      "modelDemandN": 0.23999999999999996,
+      "forceN": 0.23999999999999996,
+      "maxFlexStressPa": 359999.99999999994,
+      "outerFiberStrain": 0.00011999999999999999,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 3,
+      "deltaM": 0.000024000000000000004,
+      "modelDemandN": 0.36000000000000004,
+      "forceN": 0.36000000000000004,
+      "maxFlexStressPa": 540000,
+      "outerFiberStrain": 0.00018,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 4,
+      "deltaM": 0.000032,
+      "modelDemandN": 0.4799999999999999,
+      "forceN": 0.4799999999999999,
+      "maxFlexStressPa": 719999.9999999999,
+      "outerFiberStrain": 0.00023999999999999998,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 5,
+      "deltaM": 0.00004,
+      "modelDemandN": 0.6,
+      "forceN": 0.6,
+      "maxFlexStressPa": 899999.9999999999,
+      "outerFiberStrain": 0.00030000000000000003,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 6,
+      "deltaM": 0.00004800000000000001,
+      "modelDemandN": 0.7200000000000001,
+      "forceN": 0.7200000000000001,
+      "maxFlexStressPa": 1080000,
+      "outerFiberStrain": 0.00036,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 7,
+      "deltaM": 0.000056000000000000006,
+      "modelDemandN": 0.84,
+      "forceN": 0.84,
+      "maxFlexStressPa": 1260000,
+      "outerFiberStrain": 0.00042,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 8,
+      "deltaM": 0.000064,
+      "modelDemandN": 0.9599999999999999,
+      "forceN": 0.9599999999999999,
+      "maxFlexStressPa": 1439999.9999999998,
+      "outerFiberStrain": 0.00047999999999999996,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 9,
+      "deltaM": 0.000072,
+      "modelDemandN": 1.0799999999999998,
+      "forceN": 1.0799999999999998,
+      "maxFlexStressPa": 1619999.9999999995,
+      "outerFiberStrain": 0.00054,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 10,
+      "deltaM": 0.00008,
+      "modelDemandN": 1.2,
+      "forceN": 1.2,
+      "maxFlexStressPa": 1799999.9999999998,
+      "outerFiberStrain": 0.0006000000000000001,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 11,
+      "deltaM": 0.00008800000000000001,
+      "modelDemandN": 1.32,
+      "forceN": 1.32,
+      "maxFlexStressPa": 1980000.0000000002,
+      "outerFiberStrain": 0.0006600000000000001,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 12,
+      "deltaM": 0.00009600000000000002,
+      "modelDemandN": 1.4400000000000002,
+      "forceN": 1.4400000000000002,
+      "maxFlexStressPa": 2160000,
+      "outerFiberStrain": 0.00072,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 13,
+      "deltaM": 0.00010400000000000001,
+      "modelDemandN": 1.5599999999999998,
+      "forceN": 1.5599999999999998,
+      "maxFlexStressPa": 2340000,
+      "outerFiberStrain": 0.0007800000000000001,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 14,
+      "deltaM": 0.00011200000000000001,
+      "modelDemandN": 1.68,
+      "forceN": 1.68,
+      "maxFlexStressPa": 2520000,
+      "outerFiberStrain": 0.00084,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 15,
+      "deltaM": 0.00012,
+      "modelDemandN": 1.7999999999999998,
+      "forceN": 1.7999999999999998,
+      "maxFlexStressPa": 2699999.9999999995,
+      "outerFiberStrain": 0.0009,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 16,
+      "deltaM": 0.000128,
+      "modelDemandN": 1.9199999999999997,
+      "forceN": 1.9199999999999997,
+      "maxFlexStressPa": 2879999.9999999995,
+      "outerFiberStrain": 0.0009599999999999999,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 17,
+      "deltaM": 0.00013600000000000003,
+      "modelDemandN": 2.04,
+      "forceN": 2.04,
+      "maxFlexStressPa": 3060000,
+      "outerFiberStrain": 0.0010200000000000003,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 18,
+      "deltaM": 0.000144,
+      "modelDemandN": 2.1599999999999997,
+      "forceN": 2.1599999999999997,
+      "maxFlexStressPa": 3239999.999999999,
+      "outerFiberStrain": 0.00108,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 19,
+      "deltaM": 0.000152,
+      "modelDemandN": 2.28,
+      "forceN": 2.28,
+      "maxFlexStressPa": 3420000,
+      "outerFiberStrain": 0.0011400000000000002,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 20,
+      "deltaM": 0.00016,
+      "modelDemandN": 2.4,
+      "forceN": 2.4,
+      "maxFlexStressPa": 3599999.9999999995,
+      "outerFiberStrain": 0.0012000000000000001,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 21,
+      "deltaM": 0.00016800000000000002,
+      "modelDemandN": 2.52,
+      "forceN": 2.52,
+      "maxFlexStressPa": 3780000,
+      "outerFiberStrain": 0.00126,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 22,
+      "deltaM": 0.00017600000000000002,
+      "modelDemandN": 2.64,
+      "forceN": 2.64,
+      "maxFlexStressPa": 3960000.0000000005,
+      "outerFiberStrain": 0.0013200000000000002,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 23,
+      "deltaM": 0.00018400000000000003,
+      "modelDemandN": 2.7600000000000002,
+      "forceN": 2.7600000000000002,
+      "maxFlexStressPa": 4140000.0000000005,
+      "outerFiberStrain": 0.0013800000000000002,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 24,
+      "deltaM": 0.00019200000000000003,
+      "modelDemandN": 2.8800000000000003,
+      "forceN": 2.8800000000000003,
+      "maxFlexStressPa": 4320000,
+      "outerFiberStrain": 0.00144,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 25,
+      "deltaM": 0.0002,
+      "modelDemandN": 3,
+      "forceN": 3,
+      "maxFlexStressPa": 4500000,
+      "outerFiberStrain": 0.0015,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 26,
+      "deltaM": 0.00020800000000000001,
+      "modelDemandN": 3.1199999999999997,
+      "forceN": 3.1199999999999997,
+      "maxFlexStressPa": 4680000,
+      "outerFiberStrain": 0.0015600000000000002,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 27,
+      "deltaM": 0.00021600000000000002,
+      "modelDemandN": 3.2399999999999998,
+      "forceN": 3.2399999999999998,
+      "maxFlexStressPa": 4860000,
+      "outerFiberStrain": 0.0016200000000000001,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 28,
+      "deltaM": 0.00022400000000000002,
+      "modelDemandN": 3.36,
+      "forceN": 3.36,
+      "maxFlexStressPa": 5040000,
+      "outerFiberStrain": 0.00168,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 29,
+      "deltaM": 0.00023200000000000003,
+      "modelDemandN": 3.48,
+      "forceN": 3.48,
+      "maxFlexStressPa": 5219999.999999999,
+      "outerFiberStrain": 0.0017400000000000002,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 30,
+      "deltaM": 0.00024,
+      "modelDemandN": 3.5999999999999996,
+      "forceN": 3.5999999999999996,
+      "maxFlexStressPa": 5399999.999999999,
+      "outerFiberStrain": 0.0018,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 31,
+      "deltaM": 0.000248,
+      "modelDemandN": 3.7199999999999998,
+      "forceN": 3.7199999999999998,
+      "maxFlexStressPa": 5580000,
+      "outerFiberStrain": 0.00186,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 32,
+      "deltaM": 0.000256,
+      "modelDemandN": 3.8399999999999994,
+      "forceN": 3.8399999999999994,
+      "maxFlexStressPa": 5759999.999999999,
+      "outerFiberStrain": 0.0019199999999999998,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 33,
+      "deltaM": 0.000264,
+      "modelDemandN": 3.96,
+      "forceN": 3.96,
+      "maxFlexStressPa": 5939999.999999999,
+      "outerFiberStrain": 0.00198,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 34,
+      "deltaM": 0.00027200000000000005,
+      "modelDemandN": 4.08,
+      "forceN": 4.08,
+      "maxFlexStressPa": 6120000,
+      "outerFiberStrain": 0.0020400000000000006,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 35,
+      "deltaM": 0.00028,
+      "modelDemandN": 4.199999999999999,
+      "forceN": 4.199999999999999,
+      "maxFlexStressPa": 6299999.999999998,
+      "outerFiberStrain": 0.0020999999999999994,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 36,
+      "deltaM": 0.000288,
+      "modelDemandN": 4.319999999999999,
+      "forceN": 4.319999999999999,
+      "maxFlexStressPa": 6479999.999999998,
+      "outerFiberStrain": 0.00216,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 37,
+      "deltaM": 0.00029600000000000004,
+      "modelDemandN": 4.44,
+      "forceN": 4.44,
+      "maxFlexStressPa": 6660000.000000001,
+      "outerFiberStrain": 0.00222,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 38,
+      "deltaM": 0.000304,
+      "modelDemandN": 4.56,
+      "forceN": 4.56,
+      "maxFlexStressPa": 6840000,
+      "outerFiberStrain": 0.0022800000000000003,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 39,
+      "deltaM": 0.00031200000000000005,
+      "modelDemandN": 4.680000000000001,
+      "forceN": 4.680000000000001,
+      "maxFlexStressPa": 7020000.000000001,
+      "outerFiberStrain": 0.00234,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 40,
+      "deltaM": 0.00032,
+      "modelDemandN": 4.8,
+      "forceN": 4.8,
+      "maxFlexStressPa": 7199999.999999999,
+      "outerFiberStrain": 0.0024000000000000002,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 41,
+      "deltaM": 0.00032800000000000006,
+      "modelDemandN": 4.92,
+      "forceN": 4.92,
+      "maxFlexStressPa": 7380000,
+      "outerFiberStrain": 0.0024600000000000004,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 42,
+      "deltaM": 0.00033600000000000004,
+      "modelDemandN": 5.04,
+      "forceN": 5.04,
+      "maxFlexStressPa": 7560000,
+      "outerFiberStrain": 0.00252,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 43,
+      "deltaM": 0.00034399999999999996,
+      "modelDemandN": 5.159999999999998,
+      "forceN": 5.159999999999998,
+      "maxFlexStressPa": 7739999.999999998,
+      "outerFiberStrain": 0.0025799999999999994,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 44,
+      "deltaM": 0.00035200000000000005,
+      "modelDemandN": 5.28,
+      "forceN": 5.28,
+      "maxFlexStressPa": 7920000.000000001,
+      "outerFiberStrain": 0.0026400000000000004,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 45,
+      "deltaM": 0.00036,
+      "modelDemandN": 5.3999999999999995,
+      "forceN": 5.3999999999999995,
+      "maxFlexStressPa": 8100000,
+      "outerFiberStrain": 0.0027,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 46,
+      "deltaM": 0.00036800000000000005,
+      "modelDemandN": 5.5200000000000005,
+      "forceN": 5.5200000000000005,
+      "maxFlexStressPa": 8280000.000000001,
+      "outerFiberStrain": 0.0027600000000000003,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 47,
+      "deltaM": 0.00037600000000000003,
+      "modelDemandN": 5.64,
+      "forceN": 5.64,
+      "maxFlexStressPa": 8460000,
+      "outerFiberStrain": 0.00282,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 48,
+      "deltaM": 0.00038400000000000006,
+      "modelDemandN": 5.760000000000001,
+      "forceN": 5.760000000000001,
+      "maxFlexStressPa": 8640000,
+      "outerFiberStrain": 0.00288,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 49,
+      "deltaM": 0.00039200000000000004,
+      "modelDemandN": 5.88,
+      "forceN": 5.88,
+      "maxFlexStressPa": 8820000,
+      "outerFiberStrain": 0.00294,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    },
+    {
+      "i": 50,
+      "deltaM": 0.0004,
+      "modelDemandN": 6,
+      "forceN": 6,
+      "maxFlexStressPa": 9000000,
+      "outerFiberStrain": 0.003,
+      "modelValid": true,
+      "domainExceeded": false,
+      "overRange": false
+    }
+  ],
+  "flags": {
+    "overRange": 0,
+    "outsideDomain": 0
+  },
+  "provenance": {
+    "method": "Euler–Bernoulli three-point bend (rigid frictionless supports, central point force)",
+    "measuredHardware": false,
+    "history": [
+      {
+        "deviceId": "14-02",
+        "operation": "elastic flexure",
+        "parentRevision": 0,
+        "resultRevision": 1
+      }
+    ]
+  }
+}

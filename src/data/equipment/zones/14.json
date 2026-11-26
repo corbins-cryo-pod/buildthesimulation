@@ -42,9 +42,10 @@
     "inputs": "Specimen section, fixture type and support span, elastic modulus, imposed crosshead motion",
     "outputs": "Fixture-tagged force–deflection curve and specimen revision",
     "acceptance": "For a slender, simply supported beam under a central point load, compare the small-deflection slope to 48EI/L³. Reject a zero support span.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/14-02/simulator/",
+    "geometryStatus": "Metric standard dual-column frame",
+    "simulationStatus": "Verified ideal three-point flexure",
+    "integrationStatus": "Interactive bend fixture; SI export"
   },
   {
     "id": "14-03",
@@ -266,8 +267,10 @@
     "inputs": "Chamber configuration, timestamped temperature/humidity schedule and sample-response parameters",
     "outputs": "Logged environment and sample-response traces with configuration-limit flags",
     "acceptance": "Apply a step to a first-order thermal phantom. At one time constant its temperature change should reach 1−exp(−1) of the step; an out-of-profile request must be flagged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/14-12/simulator/",
+    "related": [["ESPEC SH chamber family and profile", "https://www.espec.co.jp/english/products/env-test/sh/"]],
+    "geometryStatus": "Metric SH-262 solid-door cabinet",
+    "simulationStatus": "Verified lumped inert thermal response",
+    "integrationStatus": "Interactive step profile; trace exports"
   }
 ]
