@@ -1,0 +1,126 @@
+{
+  "schema": "bts.pcb-assembly.v1",
+  "equipmentId": "08-12",
+  "sampleId": "BTS-PCB-REWORK-A",
+  "footprintId": "D1",
+  "parentRevision": 1,
+  "revision": 2,
+  "provenance": "simulated unpowered PCB topology; no material or thermal claims",
+  "components": [
+    {
+      "id": "D1-REPLACEMENT",
+      "part": "Virtual polarized diode",
+      "role": "replacement",
+      "orientationDeg": 0,
+      "joined": true
+    }
+  ],
+  "pendingPlacement": null,
+  "pads": [
+    {
+      "id": "P1",
+      "net": "VPLUS",
+      "xMm": -7,
+      "zMm": 0
+    },
+    {
+      "id": "P2",
+      "net": "RETURN",
+      "xMm": 7,
+      "zMm": 0
+    }
+  ],
+  "expectedPinNets": {
+    "A": "VPLUS",
+    "K": "RETURN"
+  },
+  "jointStates": [
+    {
+      "pin": "A",
+      "padId": "P1",
+      "net": "VPLUS",
+      "state": "joined"
+    },
+    {
+      "pin": "K",
+      "padId": "P2",
+      "net": "RETURN",
+      "state": "joined"
+    }
+  ],
+  "check": {
+    "ok": true,
+    "code": "verified",
+    "message": "Verified: A → VPLUS, K → RETURN.",
+    "issues": [],
+    "joined": true
+  },
+  "history": [
+    {
+      "revision": 1,
+      "parentRevision": 0,
+      "operation": "remove",
+      "componentId": "D1-ORIGINAL",
+      "footprintId": "D1"
+    },
+    {
+      "revision": 2,
+      "parentRevision": 1,
+      "operation": "join",
+      "componentId": "D1-REPLACEMENT",
+      "footprintId": "D1"
+    }
+  ],
+  "connectivity": {
+    "nodes": [
+      {
+        "id": "VPLUS",
+        "type": "board-net"
+      },
+      {
+        "id": "RETURN",
+        "type": "board-net"
+      },
+      {
+        "id": "P1",
+        "type": "pad"
+      },
+      {
+        "id": "P2",
+        "type": "pad"
+      },
+      {
+        "id": "D1:A",
+        "type": "pin",
+        "componentId": "D1-REPLACEMENT"
+      },
+      {
+        "id": "D1:K",
+        "type": "pin",
+        "componentId": "D1-REPLACEMENT"
+      }
+    ],
+    "edges": [
+      {
+        "a": "P1",
+        "b": "VPLUS",
+        "kind": "board-trace"
+      },
+      {
+        "a": "P2",
+        "b": "RETURN",
+        "kind": "board-trace"
+      },
+      {
+        "a": "D1:A",
+        "b": "P1",
+        "kind": "joint"
+      },
+      {
+        "a": "D1:K",
+        "b": "P2",
+        "kind": "joint"
+      }
+    ]
+  }
+}

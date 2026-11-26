@@ -1,0 +1,13 @@
+{
+  "schema": "bts.sheet-film.v1",
+  "sampleId": "FILM-100R",
+  "revision": 0,
+  "shape": "uniform-disk",
+  "diameterM": 0.1,
+  "resistivityOhmM": 0.000002,
+  "filmThicknessM": 2e-8,
+  "provenance": {
+    "kind": "synthetic",
+    "note": "Uniform 100 Ω/sq teaching artifact on insulating substrate; not an SRM."
+  }
+}
