@@ -1,0 +1,88 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const p='/equipment/06-06/';
+const maker='https://www.elmarco.com/product-lines/laboratory-equipment';
+const catalog='https://exhibitorsearch.messefrankfurt.com/images/large/product_pictures/10000008202601/514289/1775736943990_3056620165.jpg';
+const facility='https://less.nankai.edu.cn/equipment/content/451';
+const refs=[
+ ['front-quarter.webp','Front-left view: square open support frame, blanked side cover and raised closure profile.',catalog,'Elmarco catalogue photograph, published by Techtextil'],
+ ['front-elevation.webp','Front view: large upper window silhouette, control relief and lower frame. The actual window is shown as opaque in this model.',facility,'Nankai University NS LAB equipment photograph']
+];
+const checks=[
+ ['Native AB distance','10.00 mm','10.00 mm','Exact'],
+ ['Rotated AB distance','10.00 mm','10.00 mm','Exact'],
+ ['Alternate AC / BC','8.00 / 6.00 mm','8.00 / 6.00 mm','Exact'],
+ ['Unknown point pair','Rejected','Rejected','Exact'],
+ ['Nominal cabinet W × D × H','1,295 × 1,045 × 2,053 mm','1,295 × 1,045 × 2,053 mm','0.1 mm (geometric only)']
+];
+---
+<Layout title="Elmarco NS LAB · Documentary cabinet and drawing ruler" description="Inspect the closed NS LAB exterior and compare distances in an independent abstract drawing. No equipment operation.">
+ <main id="ns-viewer">
+  <p><a href="/simulations/equipment/06-06/">← Equipment record 06-06</a></p>
+  <p class="series">LABORATORY EQUIPMENT / 06-06 / DOCUMENTARY EXHIBIT</p>
+  <h1>Elmarco NS LAB</h1>
+  <p class="lead">Inspect the closed cabinet and its support frame. The separate ruler exhibit starts on an abstract 6–8–10 mm triangle. Rotate the drawing by a quarter turn to see its coordinates change while the selected distance stays the same.</p>
+  <div class="duo">
+   <section class="card">
+    <h2>Dormant metric cabinet</h2>
+    <div id="ns-view" class="viewer"></div><p id="ns-model" role="status">Loading exterior and detached drawing stand…</p>
+    <div class="actions" aria-label="3D viewpoints">
+     <button type="button" data-ns-view="orbit">Reset orbit</button><button type="button" data-ns-view="front">Front</button><button type="button" data-ns-view="side">Left flank</button><button type="button" data-ns-view="archive">Detached drawing</button>
+    </div>
+    <p>Drag to orbit and scroll or pinch to zoom. Tap only the detached drawing panel to switch the two views. Cabinet features do not respond or open.</p>
+   </section>
+   <section class="card">
+    <h2>Read-only drawing ruler</h2>
+    <canvas id="ns-drawing" width="486" height="486" aria-label="Synthetic right triangle with fixed labeled points A, B, C and 5 mm scale."></canvas>
+    <div class="inputs"><label>Mark pair<select id="ns-pair"><option>AB</option><option>AC</option><option>BC</option></select></label></div>
+    <div class="actions"><button id="ns-next" type="button" disabled>Switch orientation</button><button id="ns-reset" type="button">Reset drawing view</button><button id="ns-export" type="button" disabled>Export ruler JSON</button></div>
+    <p id="ns-status" role="status" aria-live="polite">Loading the fixed drawing…</p>
+    <p id="ns-result" class="readout"></p>
+   </section>
+  </div>
+  <section>
+   <h2>Configuration and reference views</h2>
+   <p>This is the documented <strong>Elmarco Nanospider NS LAB</strong> base exterior corresponding to Elmarco's current NS LAB product listing and catalogue photograph. No installation-specific revision or serial is inferred from the listing. External optional equipment and all internal hardware are omitted, and observations are limited to the photographed visible cabinet trim.</p>
+   <div class="refs">
+    {refs.map(([f,label,href,source])=><figure><img src={p+f} alt={label} width="780" height="590" loading="lazy" /><figcaption><strong>Original reference-based rendering.</strong> {label} <a href={href}>{source} (original)</a>.</figcaption></figure>)}
+   </div>
+   <div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th><th>Source / role</th></tr></thead><tbody>
+    <tr><td>Nominal exterior W × D × H</td><td>1,295 × 1,045 × 2,053 mm</td><td><a href={maker}>Elmarco NS LAB product sheet, Dimensions</a>. Only the outer envelope is sourced. The partial allocations across trim, frame and passive roof cap are inferred, not measured.</td></tr>
+    <tr><td>Visual configuration</td><td>Dormant closed front, opaque window, frame and fixed control relief</td><td><a href={catalog}>Catalogue photo</a> and <a href={facility}>Nankai University installation photo</a>. Rear is approximate and does not depict connections.</td></tr>
+    <tr><td>Detached drawing units</td><td>81 × 81 pixel centers at 0.25 synthetic mm/px</td><td><a href={p+'drawing.json'}>Authorial input fixture</a>. Not device dimensions or measurement accuracy.</td></tr>
+   </tbody></table></div>
+  </section>
+  <section>
+   <h2>How the ruler works</h2>
+   <p>Coordinates use the upper-left pixel center as origin, positive column right and positive row down. The rotated view uses <code>(x, y) → (80 − y, x)</code> on that square. The ruler computes <code>0.25 × hypot(Δcolumn, Δrow)</code> millimeters. For AB the horizontal and vertical separations are 32 and 24 pixels, giving the independent 8–6–10 mm result. Unknown pairs are rejected. The export keeps the drawing ID, revision, selected view, labels and units.</p>
+   <p>These shapes are unrelated to this machine and are not produced by it. The first pass has no sample or materials, no spinning or production model and no process controls. The metric asset and named detached action can be carried into VR authoring, but headset behavior is unverified.</p>
+  </section>
+  <section>
+   <h2>Focused verification</h2>
+   <div class="tablewrap"><table><thead><tr><th>Test</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.map(([name,x,y,t])=><tr><td>{name}</td><td>{x}</td><td>{y}</td><td>{t}</td><td>Pass</td></tr>)}</tbody></table></div>
+   <p><a href={p+'verification.json'}>Verification results</a> · <a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-ruler.json'}>Example ruler result</a> · <a href={p+'drawing.json'}>Editable drawing fixture</a></p>
+   <p><a href={p+'build-model.py'}>Editable Blender geometry source</a> · <a href={p+'ns-lab.glb'} download>Download metric GLB</a> · <a href={p+'interaction.json'}>Interaction manifest</a> · <a href={p+'asset-metrics.json'}>GLB metrics</a></p>
+  </section>
+ </main>
+</Layout>
+<script>
+import '../../../../lib/equipment/06-06/client.mjs';
+</script>
+<style>
+main{max-width:1100px;margin:auto;padding:1.2rem clamp(.9rem,2.5vw,2rem) 3rem}
+.series,.readout,table,input,select,button{font-family:var(--font-label,system-ui,sans-serif)}
+.series{font-size:.78rem;letter-spacing:.13em}.lead{max-width:72ch}
+.duo,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.card{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:1rem;border-radius:.25rem}
+.viewer{height:clamp(23rem,45vw,32rem);overflow:hidden;background:#263949}
+.viewer :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+#ns-drawing{display:block;width:min(100%,26rem);height:auto;background:#263949;margin:.5rem auto 1rem}
+.actions,.inputs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+button,input,select{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 50%,transparent);border-radius:.2rem;padding:.5rem;font-size:.91rem;min-height:2.6rem}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input{width:min(18rem,55vw)}label{display:grid;font-size:.86rem;gap:.25rem}
+figure{margin:0}figure img{width:100%;height:auto;display:block}figcaption{font-size:.92rem;margin:.45rem 0}
+section{margin:1.5rem 0}.duo section{margin:0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent);text-align:left;padding:.5rem;vertical-align:top}
+[data-error=true]{font-weight:bold;color:var(--accent,currentColor)}
+@media(max-width:770px){.duo,.refs{grid-template-columns:1fr}.viewer{height:22rem}}
+</style>

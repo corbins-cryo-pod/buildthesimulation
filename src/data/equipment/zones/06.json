@@ -119,9 +119,10 @@
     "inputs": "Collector travel axis, sheet extent, synthetic fiber density field and random seed",
     "outputs": "Sheet revision with fiber density by area and collector-frame orientation map",
     "acceptance": "Generate a sheet with a known two-band density ratio. Recover that ratio within sampling uncertainty and rotate the map with the collector frame.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed documentary metric exterior; published nominal envelope",
+    "simulationStatus": "Detached abstract drawing ruler only; no process model",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/06-06/simulator/"
   },
   {
     "id": "06-07",

@@ -1,0 +1,67 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    1.09,
+    0.926,
+    0.705
+  ],
+  "meshes": 56,
+  "triangles": 8741,
+  "bytes": 500880,
+  "interaction": {
+    "Dry_drawer_handle": {
+      "action": "drawer",
+      "boundsMinM": [
+        -0.006,
+        0.112,
+        0.2875
+      ],
+      "boundsMaxM": [
+        0.198,
+        0.124,
+        0.3065
+      ]
+    },
+    "Inert_carrier_table": {
+      "action": "check",
+      "boundsMinM": [
+        -0.013,
+        0.094,
+        0.0135
+      ],
+      "boundsMaxM": [
+        0.205,
+        0.102,
+        0.2725
+      ]
+    },
+    "Inert_console_screen": {
+      "action": "check",
+      "boundsMinM": [
+        0.3875,
+        0.137,
+        0.0485
+      ],
+      "boundsMaxM": [
+        0.6665,
+        0.301,
+        0.0555
+      ]
+    }
+  },
+  "drawer": {
+    "node": "Dry_drawer_slide",
+    "displayOnlyDeltaM": [
+      0,
+      0,
+      0.224
+    ],
+    "source": "inferred"
+  },
+  "nominalCabinetMm": [
+    610,
+    350,
+    580
+  ]
+}
