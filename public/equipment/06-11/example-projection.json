@@ -1,0 +1,39 @@
+{
+  "schema": "bts.synthetic-projection-review.v1",
+  "kind": "synthetic-documentary-exhibit",
+  "exhibitId": "OF12G-OPTICAL-ILLUSTRATION-001",
+  "revision": 1,
+  "source": "BuildTheSimulation original abstract cards and ideal length-projection demonstration; not a device, a working drawing, or a measured photo",
+  "viewId": "PERSPECTIVE",
+  "projection": "pinhole",
+  "units": "mm",
+  "cards": [
+    {
+      "id": "CARD-NEAR",
+      "zMm": 200,
+      "sourceSizeMm": [
+        40,
+        30
+      ],
+      "projectionScale": 0.4,
+      "displaySizeMm": [
+        16,
+        12
+      ]
+    },
+    {
+      "id": "CARD-FAR",
+      "zMm": 400,
+      "sourceSizeMm": [
+        40,
+        30
+      ],
+      "projectionScale": 0.2,
+      "displaySizeMm": [
+        8,
+        6
+      ]
+    }
+  ],
+  "nearToFarWidthRatio": 2
+}
