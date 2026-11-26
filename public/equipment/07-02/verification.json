@@ -1,0 +1,162 @@
+[
+  {
+    "test": "Geometry · closed cabinet width",
+    "expected": 637,
+    "actual": 637.00002432,
+    "unit": "mm",
+    "tolerance": 0.5,
+    "pass": true
+  },
+  {
+    "test": "Geometry · closed cabinet height",
+    "expected": 905,
+    "actual": 905.00002308,
+    "unit": "mm",
+    "tolerance": 0.5,
+    "pass": true
+  },
+  {
+    "test": "Geometry · closed cabinet depth",
+    "expected": 790,
+    "actual": 790.20002145,
+    "unit": "mm",
+    "tolerance": 0.5,
+    "pass": true
+  },
+  {
+    "test": "Geometry · clear chamber width",
+    "expected": 470,
+    "actual": 470.00001092,
+    "unit": "mm",
+    "tolerance": 0.1,
+    "pass": true
+  },
+  {
+    "test": "Geometry · largest width error across three 423 mm shelves",
+    "expected": 0,
+    "actual": 0.00000787,
+    "unit": "mm",
+    "tolerance": 0.1,
+    "pass": true
+  },
+  {
+    "test": "Analytic · mean of clipped linear ramp",
+    "expected": 4,
+    "actual": 4,
+    "unit": "vol %",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "test": "Analytic · threshold crossing at 25 s",
+    "expected": 15,
+    "actual": 15,
+    "unit": "s",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "test": "Interval · door overlap",
+    "expected": 10,
+    "actual": 10,
+    "unit": "s",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Boundary · entry at closing edge",
+    "expected": 0,
+    "actual": 0,
+    "unit": "s",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Analytic · first CO₂ exchange half-life",
+    "expected": 2.52,
+    "actual": 2.52,
+    "unit": "vol %",
+    "tolerance": 1e-9,
+    "pass": true
+  },
+  {
+    "test": "Control · two open half-lives",
+    "expected": 1.28,
+    "actual": 1.28,
+    "unit": "vol %",
+    "tolerance": 1e-9,
+    "pass": true
+  },
+  {
+    "test": "Control · glass remains closed",
+    "expected": 5,
+    "actual": 5,
+    "unit": "vol %",
+    "tolerance": 1e-9,
+    "pass": true
+  },
+  {
+    "test": "Interlock · disconnected supply rejected",
+    "expected": 1,
+    "actual": 1,
+    "unit": "boolean",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Manufacturer plot · TC minimum",
+    "expected": 0.7,
+    "actual": 0.71,
+    "unit": "vol %",
+    "tolerance": 0.05,
+    "pass": true
+  },
+  {
+    "test": "Manufacturer plot · TC minimum time",
+    "expected": 318,
+    "actual": 317,
+    "unit": "s",
+    "tolerance": 6,
+    "pass": true
+  },
+  {
+    "test": "Manufacturer plot · centre temperature minimum",
+    "expected": 28.2,
+    "actual": 28.21,
+    "unit": "°C",
+    "tolerance": 0.12,
+    "pass": true
+  },
+  {
+    "test": "Register · sample A includes low CO₂",
+    "expected": 0.7,
+    "actual": 0.71,
+    "unit": "vol %",
+    "tolerance": 0.05,
+    "pass": true
+  },
+  {
+    "test": "Register · sample B after recovery",
+    "expected": 5,
+    "actual": 5,
+    "unit": "vol %",
+    "tolerance": 0.05,
+    "pass": true
+  },
+  {
+    "test": "Register · late sample below 4.5 vol %",
+    "expected": 0,
+    "actual": 0,
+    "unit": "s",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Register · early sample inferred door overlap",
+    "expected": 30,
+    "actual": 30,
+    "unit": "s",
+    "tolerance": 0,
+    "pass": true
+  }
+]

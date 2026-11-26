@@ -1,0 +1,98 @@
+[
+  {
+    "test": "Outer width",
+    "expected": 1300,
+    "actual": 1300.1,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Outer depth",
+    "expected": 800,
+    "actual": 799.903,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Outer height",
+    "expected": 1568,
+    "actual": 1568,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Tray width",
+    "expected": 1200,
+    "actual": 1200,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Tray depth",
+    "expected": 630,
+    "actual": 630,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Tray to chamber ceiling",
+    "expected": 780,
+    "actual": 780,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "SmartPort collar diameter",
+    "expected": 76,
+    "actual": 76,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Accessory collar diameter",
+    "expected": 23,
+    "actual": 23,
+    "units": "mm",
+    "tolerance": 0.25,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Pane thickness edge at nominal opening",
+    "expected": 203,
+    "actual": 202.7395,
+    "units": "mm",
+    "tolerance": 1,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Sash plane rake",
+    "expected": 10,
+    "actual": 10,
+    "units": "degrees",
+    "tolerance": 0.05,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Keypad center from left / body width",
+    "expected": 0.76,
+    "actual": 0.7969,
+    "units": "fraction",
+    "tolerance": 0.05,
+    "outcome": "Pass"
+  },
+  {
+    "test": "Canopy bottom from top / body height",
+    "expected": 0.61,
+    "actual": 0.5927,
+    "units": "fraction",
+    "tolerance": 0.05,
+    "outcome": "Pass"
+  }
+]

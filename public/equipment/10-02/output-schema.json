@@ -1,0 +1,20 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://buildthesimulation.com/equipment/10-02/output-schema.json",
+ "title":"10-02 Digidata acquisition: bts.analog-waveform.v1 superset",
+ "description":"All channels share t[n] = t0S + n*dtS in seconds. Channels must have equal sample counts and samples/codes/overload lengths; each id is unique. parentRevision identifies input; revision is parentRevision+1. Codes are educational signed ADC counts, not ABF bytes.",
+ "type":"object","required":["schema","sampleId","revision","parentRevision","t0S","dtS","channels","provenance"],
+ "properties":{
+  "schema":{"const":"bts.analog-waveform.v1"},"sampleId":{"type":"string","minLength":1,"maxLength":128},
+  "revision":{"type":"integer","minimum":1},"parentRevision":{"type":"integer","minimum":0},"t0S":{"type":"number"},"dtS":{"type":"number","minimum":0.000002,"maximum":1},
+  "channels":{"type":"array","minItems":1,"maxItems":8,"items":{"type":"object","required":["id","unit","terminal","samples","codes","overload"],"properties":{
+   "id":{"type":"string","minLength":1,"maxLength":128},"unit":{"const":"V"},"terminal":{"type":"string","pattern":"^AI[0-7]$"},
+   "samples":{"type":"array","minItems":1,"maxItems":250000,"items":{"type":"number","minimum":-10,"maximum":9.99969482421875}},
+   "codes":{"type":"array","minItems":1,"maxItems":250000,"items":{"type":"integer","minimum":-32768,"maximum":32767}},
+   "overload":{"type":"array","minItems":1,"maxItems":250000,"items":{"enum":[-1,0,1]}}
+  }}},
+  "provenance":{"type":"object","required":["source","type","configuration","method","lsbV","sourceDtS","sourceT0S","sourceProvenance"],"properties":{
+   "source":{"const":"10-02"},"type":{"const":"simulated"},"lsbV":{"const":0.00030517578125},"sourceDtS":{"type":"number","exclusiveMinimum":0},"sourceT0S":{"type":"number"},"configuration":{"type":"string"},"method":{"type":"string"}
+  }}
+ }
+}
