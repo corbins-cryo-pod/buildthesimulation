@@ -37,7 +37,9 @@
         "coating",
         "bake",
         "postBakeThicknessUm",
-        "history"
+        "history",
+        "material",
+        "substrate"
       ],
       "properties": {
         "sampleId": {
@@ -57,7 +59,9 @@
           "required": [
             "calibrationId",
             "spinHistory",
-            "preBakeMap"
+            "preBakeMap",
+            "calibrationKind",
+            "validRpm"
           ],
           "properties": {
             "preBakeMap": {
@@ -91,6 +95,20 @@
                   }
                 }
               }
+            },
+            "calibrationKind": {
+              "enum": [
+                "illustrative",
+                "user-points"
+              ]
+            },
+            "validRpm": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
             }
           }
         },
@@ -100,7 +118,9 @@
             "mode",
             "schedule",
             "tauS",
-            "temperatureHistory"
+            "temperatureHistory",
+            "thermalExposureAboveAmbientCs",
+            "plateCondition"
           ],
           "properties": {
             "mode": {
@@ -116,11 +136,43 @@
                   "waferC"
                 ]
               }
+            },
+            "thermalExposureAboveAmbientCs": {
+              "type": "number",
+              "minimum": 0
+            },
+            "plateCondition": {
+              "type": "string"
             }
           }
         },
         "postBakeThicknessUm": {
           "type": "null"
+        },
+        "material": {
+          "type": "string"
+        },
+        "substrate": {
+          "type": "object",
+          "required": [
+            "shape",
+            "diameterMm",
+            "chuckDiameterMm"
+          ],
+          "properties": {
+            "shape": {
+              "const": "circle"
+            },
+            "diameterMm": {
+              "enum": [
+                100,
+                125
+              ]
+            },
+            "chuckDiameterMm": {
+              "const": 57.2
+            }
+          }
         }
       }
     }

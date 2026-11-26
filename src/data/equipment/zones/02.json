@@ -172,9 +172,10 @@
     "inputs": "Reticle artwork, projection scale, wafer outline, die pitch and field poses",
     "outputs": "Per-field exposure map, incomplete-field flags and overlay records",
     "acceptance": "Step an asymmetric reticle over a 2 × 3 grid wholly within a wafer. Count six copies, spaced by the configured pitch, with feature size set by the declared projection scale.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-informed metric reconstruction; cabinet dimensions estimated",
+    "simulationStatus": "Geometric projection and overlay; analytic checks passed",
+    "integrationStatus": "Simulator and exposure schema implemented; browser/deployment verification pending",
+    "simulator": "/simulations/equipment/02-06/simulator/"
   },
   {
     "id": "02-07",
@@ -192,9 +193,9 @@
     "inputs": "Wafer outline and ID, resist ID, spin history and material-specific thickness calibration",
     "outputs": "Resist-layer revision with thickness map, centering record and calibration ID",
     "acceptance": "Reserve one measured spin-curve point during fitting. Predict its central film thickness and compare with the held-out reading and its predeclared uncertainty.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Reference-informed metric glTF, 81 named components; inferred interiors and pivots",
+    "simulationStatus": "Graph-calibrated AZ 1512 solver; numerical checks passed; spatial map illustrative",
+    "integrationStatus": "Simulator route and export schema implemented; browser and production verification required",
     "related": [
       [
         "Neural Interface Studio",
@@ -204,7 +205,8 @@
         "Microfabrication Laboratory",
         "/simulations/microfabrication/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/02-07/simulator/"
   },
   {
     "id": "02-08",
@@ -222,9 +224,9 @@
     "inputs": "Substrate, coating calibration and two scheduled coating/bake operations",
     "outputs": "Resist revision with separate coating map and temperature-time record",
     "acceptance": "Run the same coat twice with different bake schedules. Pre-bake thickness maps must match; the two histories must show their respective bake traces.",
-    "geometryStatus": "79-component metric GLB; exact constructed brochure envelope and KU plate; remaining geometry inferred",
-    "simulationStatus": "Paired pre-bake film map and independent lumped thermal histories; analytic acceptance passed; no experimental calibration",
-    "integrationStatus": "Dedicated simulator and paired resist revision JSON/CSV export; CI browser verification configured",
+    "geometryStatus": "79-component metric GLB; exact constructed brochure envelope; estimated internal geometry and selected chuck",
+    "simulationStatus": "Paired pre-bake maps, bounded user-point calibration, independent thermal histories and numerical verification; no experimental validation",
+    "integrationStatus": "Dedicated simulator and paired resist JSON/CSV export; CI browser verification configured",
     "simulator": "/simulations/equipment/02-08/simulator/"
   },
   {

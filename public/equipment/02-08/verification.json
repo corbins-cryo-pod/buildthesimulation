@@ -114,14 +114,87 @@
       "actual": 64284,
       "tolerance": "exact",
       "outcome": "PASS"
+    },
+    {
+      "test": "Two-point calibration exponent",
+      "expected": 0.5,
+      "actual": 0.49999999999999994,
+      "tolerance": "1e-12",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Calibration endpoint 2500",
+      "expected": 2,
+      "actual": 2,
+      "tolerance": "1e-12 µm",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Calibration endpoint 5000",
+      "expected": 1.4142135623730951,
+      "actual": 1.4142135623730951,
+      "tolerance": "1e-12 µm",
+      "outcome": "PASS"
+    },
+    {
+      "test": "No extrapolation",
+      "expected": true,
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Independent RK4 temperature",
+      "expected": 119.42719851074057,
+      "actual": 119.42719851074146,
+      "tolerance": "1e-8 °C",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Independent trapezoidal exposure",
+      "expected": 460.81931121565793,
+      "actual": 460.8193655102566,
+      "tolerance": "1e-4 °C·s",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Fractional dwell endpoint",
+      "expected": 7.3,
+      "actual": 7.3,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Center thickness with edge bead",
+      "expected": 1.6,
+      "actual": 1.6,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "No shared map mutation",
+      "expected": 1.6,
+      "actual": 1.6,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Fixed-chuck fit limit",
+      "expected": true,
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
     }
   ],
   "componentCount": 79,
   "default": {
     "centerUm": 1.6,
-    "meanUm": 1.6154607310880496,
+    "meanUm": 1.6154607310486153,
     "finalA": 99.85135503151047,
-    "finalB": 109.9988683651041
+    "finalB": 109.9988683651041,
+    "exposureA": 3235.1891597479166,
+    "exposureB": 7134.009053079167
   },
-  "visualReview": "Independent original render reconstructed from committed metric node definitions was inspected against the ASU and seller photographs; silhouette and module placement agree qualitatively, rear details not photo-verified. Surface overlap on badge/rear panel corrected after review. No photogrammetry."
+  "visualReview": "Independent original render reconstructed from committed metric node definitions was inspected against the ASU and seller photographs; silhouette and module placement agree qualitatively, rear details not photo-verified. Surface overlap on badge/rear panel corrected after review. No photogrammetry.",
+  "audit": "2026-11-25: reviewed manufacturer 2010 brochure, KU equipment listing and January 2021 SOP; chuck discrepancy documented; fixed-chuck scope narrowed. User calibration fits supplied pre-bake points without extrapolation. No measured lab data."
 }

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BTS spin coater resist-layer revision",
+  "type": "object",
+  "required": [
+    "schema",
+    "sampleId",
+    "parentRevision",
+    "revision",
+    "contactIds",
+    "resistId",
+    "calibrationId",
+    "provenance",
+    "wafer",
+    "recipe",
+    "history",
+    "metrics",
+    "grid"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.spin-coater.resist-layer.v1"
+    },
+    "sampleId": {
+      "type": "string"
+    },
+    "parentRevision": {
+      "type": "integer"
+    },
+    "revision": {
+      "type": "integer"
+    },
+    "contactIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resistId": {
+      "type": "string"
+    },
+    "calibrationId": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "wafer": {
+      "type": "object"
+    },
+    "recipe": {
+      "type": "object"
+    },
+    "history": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "grid": {
+      "type": "object",
+      "required": [
+        "nx",
+        "nz",
+        "pitch_mm",
+        "origin_mm",
+        "frame",
+        "units",
+        "values"
+      ],
+      "properties": {
+        "nx": {
+          "type": "integer"
+        },
+        "nz": {
+          "type": "integer"
+        },
+        "pitch_mm": {
+          "type": "number"
+        },
+        "origin_mm": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "frame": {
+          "type": "string"
+        },
+        "units": {
+          "const": "µm"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

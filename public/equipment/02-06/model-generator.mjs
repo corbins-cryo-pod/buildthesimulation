@@ -1,0 +1,15 @@
+export function bytes64(bytes){const A="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";let s="";for(let i=0;i<bytes.length;i+=3){const a=bytes[i],b=bytes[i+1]||0,c=bytes[i+2]||0,n=a*65536+b*256+c;s+=A[(n>>18)&63]+A[(n>>12)&63]+(i+1<bytes.length?A[(n>>6)&63]:"=")+(i+2<bytes.length?A[n&63]:"=")}return s}
+export function buildAsset(model){
+ const prims={box:{p:[],n:[]},cylinder:{p:[],n:[]}};
+ function tri(mesh,a,b,c){const u=b.map((v,i)=>v-a[i]),v=c.map((v,i)=>v-a[i]);let n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];const m=Math.hypot(...n);n=n.map(v=>v/m);mesh.p.push(...a,...b,...c);mesh.n.push(...n,...n,...n)}
+ const q=.5;const V=[[-q,-q,-q],[q,-q,-q],[q,q,-q],[-q,q,-q],[-q,-q,q],[q,-q,q],[q,q,q],[-q,q,q]];
+ for(const f of [[0,3,2,1],[4,5,6,7],[0,4,7,3],[1,2,6,5],[0,1,5,4],[3,7,6,2]]){tri(prims.box,V[f[0]],V[f[1]],V[f[2]]);tri(prims.box,V[f[0]],V[f[2]],V[f[3]])}
+ for(let i=0;i<64;i++){const a=2*Math.PI*i/64,b=2*Math.PI*(i+1)/64,lo=[.5*Math.cos(a),-.5,.5*Math.sin(a)],hi=[lo[0],.5,lo[2]],lo2=[.5*Math.cos(b),-.5,.5*Math.sin(b)],hi2=[lo2[0],.5,lo2[2]];tri(prims.cylinder,lo,hi,hi2);tri(prims.cylinder,lo,hi2,lo2);tri(prims.cylinder,[0,.5,0],hi2,hi);tri(prims.cylinder,[0,-.5,0],lo,lo2)}
+ const gltf={asset:{version:"2.0",generator:"BuildTheSimulation 02-06 parametric geometry"},scene:0,scenes:[{nodes:[]}],nodes:[],meshes:[],materials:[],accessors:[],bufferViews:[],buffers:[]};
+ let chunks=[],offset=0;const primAccess={};
+ for(const [kind,data] of Object.entries(prims)){primAccess[kind]={};for(const [type,arr] of Object.entries(data)){const bytes=new Uint8Array(new Float32Array(arr).buffer),view=gltf.bufferViews.length;gltf.bufferViews.push({buffer:0,byteOffset:offset,byteLength:bytes.length,target:34962});chunks.push(bytes);offset+=bytes.length;const a={bufferView:view,componentType:5126,count:arr.length/3,type:"VEC3"};if(type==="p"){a.min=[-.5,-.5,-.5];a.max=[.5,.5,.5]}primAccess[kind][type]=gltf.accessors.push(a)-1}}
+ const mat={};for(const [key,color] of Object.entries(model.palette)){mat[key]=gltf.materials.push({name:key,pbrMetallicRoughness:{baseColorFactor:[...color,1],metallicFactor:["steel","darksteel","wafer","gold"].includes(key)?.55:.06,roughnessFactor:key==="wafer"?.22:.65}})-1}
+ const meshIndex={};const groupNodes={};for(const group of ["fixed","enclosure","stage","wafer","reticle","beam"]){groupNodes[group]=gltf.nodes.push({name:"group-"+group,children:[]})-1;gltf.scenes[0].nodes.push(groupNodes[group])}
+ for(const p of model.parts){const key=p.primitive+"-"+p.material;if(meshIndex[key]===undefined)meshIndex[key]=gltf.meshes.push({name:key,primitives:[{attributes:{POSITION:primAccess[p.primitive].p,NORMAL:primAccess[p.primitive].n},material:mat[p.material]}]})-1;const idx=gltf.nodes.push({name:p.name,mesh:meshIndex[key],translation:p.position,scale:p.size,extras:{group:p.group}})-1;gltf.nodes[groupNodes[p.group]].children.push(idx)}
+ const data=new Uint8Array(offset);let pos=0;for(const b of chunks){data.set(b,pos);pos+=b.length}gltf.buffers=[{byteLength:offset}];return {gltf,data};
+}

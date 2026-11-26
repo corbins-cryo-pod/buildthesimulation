@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PAS 5500/275D simulated exposure revision",
+  "type": "object",
+  "required": [
+    "schema",
+    "sampleId",
+    "parentRevision",
+    "revision",
+    "job",
+    "exposureDomain",
+    "tally",
+    "fields",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.pas5500.exposure.v1"
+    },
+    "sampleId": {
+      "type": "string"
+    },
+    "parentRevision": {
+      "type": "integer"
+    },
+    "revision": {
+      "type": "integer"
+    },
+    "job": {
+      "type": "object"
+    },
+    "exposureDomain": {
+      "type": "object"
+    },
+    "tally": {
+      "type": "object"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "nominalCenter_mm",
+          "actualCenter_mm",
+          "coverage",
+          "exposed",
+          "overlay_nm",
+          "features"
+        ]
+      }
+    },
+    "provenance": {
+      "type": "object"
+    }
+  }
+}

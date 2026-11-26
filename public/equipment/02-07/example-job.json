@@ -1,0 +1,19 @@
+{
+  "schema": "bts.spin-coater.job.v1",
+  "sampleId": "SI-WAFER-150-001",
+  "parentRevision": 0,
+  "resistId": "AZ 1512",
+  "diameter_mm": 150,
+  "offsetX_mm": 0,
+  "offsetZ_mm": 0,
+  "spreadRPM": 500,
+  "spread_s": 20,
+  "rpm": 4000,
+  "hold_s": 35,
+  "accel_rpm_s": 1000,
+  "edgeAmplitude": 0.35,
+  "edgeWidth_mm": 2,
+  "dispense_mL": 2,
+  "contactIds": [],
+  "calibrationId": "merck-az1512-150mm-graph-v1"
+}
