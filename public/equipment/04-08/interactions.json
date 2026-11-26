@@ -1,0 +1,80 @@
+{
+  "triangles": 808,
+  "draws": 28,
+  "nodes": 10,
+  "bytes": 62520,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "drawing_screen": {
+      "at": [
+        0.46,
+        1.025,
+        0.118
+      ],
+      "extent": [
+        0.355,
+        0.222,
+        0.045
+      ],
+      "action": "view",
+      "label": "Read the current detached drawing station"
+    },
+    "key_left": {
+      "at": [
+        0.331,
+        0.837,
+        0.358
+      ],
+      "extent": [
+        0.078,
+        0.032,
+        0.066
+      ],
+      "action": "select:left",
+      "label": "Read left drawing witness"
+    },
+    "key_center": {
+      "at": [
+        0.46,
+        0.837,
+        0.358
+      ],
+      "extent": [
+        0.078,
+        0.032,
+        0.066
+      ],
+      "action": "select:center",
+      "label": "Read center drawing witness"
+    },
+    "key_right": {
+      "at": [
+        0.589,
+        0.837,
+        0.358
+      ],
+      "extent": [
+        0.078,
+        0.032,
+        0.066
+      ],
+      "action": "select:right",
+      "label": "Read right drawing witness"
+    },
+    "inactive_fascia": {
+      "at": [
+        -0.27,
+        1.54,
+        0.005
+      ],
+      "extent": [
+        0.593,
+        0.445,
+        0.05
+      ],
+      "label": "Closed machine with inactive blank fascia"
+    }
+  }
+}

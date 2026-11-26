@@ -177,9 +177,15 @@
     "inputs": "Backside geometry, initial thickness field, material ID and removal map",
     "outputs": "Thinned substrate revision, residual thickness and estimated removed volume",
     "acceptance": "Apply a uniform removal below the initial thickness to a parallel-sided wafer. Final thickness and volume loss must equal the initial thickness minus removal and area × removal, respectively.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: nominal metric DAG810 closed exterior",
+    "simulationStatus": "First pass: detached drawing readout; material processing out of scope",
+    "integrationStatus": "Linked: documentary viewer and dimension JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/04-08/simulator/"
+      ]
+    ]
   },
   {
     "id": "04-09",
