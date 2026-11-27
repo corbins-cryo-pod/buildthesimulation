@@ -1,6 +1,6 @@
 // Shared, framework-independent discovery utilities.
 // Use the same labels and ranking for header search and future directory entry points.
-export const DISCOVERY_TYPES = ['Organizations', 'Devices', 'Applications', '3D models', 'Tools'];
+export const DISCOVERY_TYPES = ['Organizations', 'Devices', 'Applications', '3D models', 'Equipment', 'Tools'];
 
 const ALIASES = {
   'brain stent': ['stentrode', 'endovascular'],
