@@ -1,0 +1,135 @@
+{
+  "release": "2026-11-27",
+  "devices": [
+    {
+      "id": "03-06",
+      "title": "Veeco Fiji G2",
+      "summary": "Cold-only carrier custody and position checks. No deposition.",
+      "href": "/equipment-prototypes/03-06/",
+      "sha256": "99bba411ba9e0f5cca4d0ad5daae2b715aa48a56d4b46c6bdc805be432047c4c"
+    },
+    {
+      "id": "03-07",
+      "title": "Oxford Plasmalab 80 Plus",
+      "summary": "Dry carrier fit and an idealized capacitive-witness exercise.",
+      "href": "/equipment-prototypes/03-07/",
+      "sha256": "9a5576058b26d8096b153843381577dbff07d8c3379640f7717f1c8d87e48b81",
+      "originalOfflineSha256": "917253acc96407e97ea0ac919d2449833f0880ff318b3baf3dd6fc254c9cba59"
+    },
+    {
+      "id": "03-11",
+      "title": "MPT RTP-600xp",
+      "summary": "Cold carrier fit and a replay of authored temperature traces.",
+      "href": "/equipment-prototypes/03-11/",
+      "sha256": "9d8441da136fdd27d6e1c97f50e1d45d1c7b26ec2d193336cefe73a5cf13d048"
+    },
+    {
+      "id": "03-12",
+      "title": "Harrick PDC-32G-2",
+      "summary": "Cold carrier and door interaction with an illustrative, synthetic trace.",
+      "href": "/equipment-prototypes/03-12/",
+      "sha256": "055f7af7cde10ddfff8d04bbf80cf5f650efaa61d0150562035302927923e9d4"
+    },
+    {
+      "id": "04-05",
+      "title": "Diener Nano",
+      "summary": "Dry, virtual carrier fit through a prescribed mechanical tilt.",
+      "href": "/equipment-prototypes/04-05/",
+      "sha256": "8047a6d98233f994fc7761346099954dcf9a830863b584ad4ce3b240ef695995",
+      "originalOfflineSha256": "9590f502b77feb2f083eedfc3a175aa10e164e4d93a319f3986b15582732aa0b"
+    },
+    {
+      "id": "04-10",
+      "title": "LPKF ProtoLaser R4",
+      "summary": "Cold two-sided coupon alignment; no laser cutting.",
+      "href": "/equipment-prototypes/04-10/",
+      "sha256": "bb5ed8a3583ea3474de0b5510458af8ba308b27d350ed2f4ca82eeee063d25e3"
+    },
+    {
+      "id": "04-12",
+      "title": "EVG 501",
+      "summary": "Inert wafer-pair projected overlap and alignment checks.",
+      "href": "/equipment-prototypes/04-12/",
+      "sha256": "bc8612db8406509a7f08ad57f3231a55dbf6d572604546ce6262ac7082f6dfe9"
+    },
+    {
+      "id": "08-02",
+      "title": "K&S 4523D wedge bonder",
+      "summary": "Inert teaching coupon and pad alignment with a typed geometry record.",
+      "href": "/equipment-prototypes/08-02/",
+      "sha256": "0e4ad197ce8a6947157f2dee0d537376cdf7ceedd8522eafaa3ff1a966224316"
+    },
+    {
+      "id": "11-03",
+      "title": "Doric OTPG_4",
+      "summary": "Compare synthetic timestamp logs; no signal generation or device firing.",
+      "href": "/equipment-prototypes/11-03/",
+      "sha256": "95d7dae3f367a620f3a8dbee9f366a0c421241d4702bc65b8dde5edfdfc348a4"
+    },
+    {
+      "id": "11-05",
+      "title": "Thorlabs PM100D",
+      "summary": "Synthetic power-meter readout using previously authored optical data.",
+      "href": "/equipment-prototypes/11-05/",
+      "sha256": "c0b855abaefc25dd3a4792c8a19afe717c2a21272278e167eb1c80573eb5bb93"
+    },
+    {
+      "id": "11-07",
+      "title": "Thorlabs M470F1 and LEDD1B",
+      "summary": "Virtual connector fit and transfer of a synthetic optical signal record.",
+      "href": "/equipment-prototypes/11-07/",
+      "sha256": "f4953a40b23d787daaa0cd4d4aa3a5d3b1530a422a3384e36ec8ea11c7524f3a"
+    },
+    {
+      "id": "12-11",
+      "title": "Leica LMD7",
+      "summary": "Passive cabinet and region selection on an authored grid; no laser.",
+      "href": "/equipment-prototypes/12-11/",
+      "sha256": "abbd9ba75c7b4f2847dddedd87ae24cf731c07315fb46be4ef2680ee4d58633d"
+    },
+    {
+      "id": "13-02",
+      "title": "ZEISS Crossbeam 550",
+      "summary": "Inert marker orientation and cropping with retained coordinates.",
+      "href": "/equipment-prototypes/13-02/",
+      "sha256": "25e10cf7775cff89e17839d3acb9c0405bb053ede3d887af0c2fb34bde9ab3a6"
+    },
+    {
+      "id": "13-04",
+      "title": "Thermo Scientific VolumeScope 2",
+      "summary": "Synthetic image-stack replay and registration with explicit missing slices.",
+      "href": "/equipment-prototypes/13-04/",
+      "sha256": "b41e7abc856f1ce234004b562f090a12ac06b06cf21f10b735048a9b43de1ebe"
+    },
+    {
+      "id": "13-10",
+      "title": "Leica EM ACE600",
+      "summary": "Cold witness tracking and comparison of authored step-height data.",
+      "href": "/equipment-prototypes/13-10/",
+      "sha256": "61f0a021e53b13ef9492697da3948e4cdbf1f00659616eac212e3e52aaf2e307",
+      "originalOfflineSha256": "e5853d7501106ec92ccd481a90a93092ef755a8cca8631d62022c83146a9bac8"
+    },
+    {
+      "id": "13-11",
+      "title": "Leica EM CPD300",
+      "summary": "Independent virtual marker board with a six-unit capacity and exportable history.",
+      "href": "/equipment-prototypes/13-11/",
+      "sha256": "8eb7c8dcc94c76c4dee04651b3617987366c151972baefd922f8e79698a6431f"
+    },
+    {
+      "id": "13-14",
+      "title": "Thermo Scientific HM325",
+      "summary": "Indexed pitch and position on an inert digital fixture; no blade.",
+      "href": "/equipment-prototypes/13-14/",
+      "sha256": "690f5a8fcd92e5802f028fb5dba10aa696b8a6c7add112cbf1fabc5050e9430b",
+      "originalOfflineSha256": "93b3c8770cd61903567a2bd3e648743a26661e249fad63f20881a67b57a27c1b"
+    },
+    {
+      "id": "15-08",
+      "title": "Iconeus One lower cart",
+      "summary": "Continuous nominal clearance in an authored corridor, including mid-turn overlap.",
+      "href": "/equipment-prototypes/15-08/",
+      "sha256": "24b296d92990a2022946e4f46f26f1f01c691456ed1275ad8aac2f3903085f38"
+    }
+  ]
+}

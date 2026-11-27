@@ -1,0 +1,79 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import release from '../../../../data/equipment-prototypes-2026-11-27.json';
+import '../../../../styles/equipment.css';
+const { devices } = release;
+const register = '/simulations/equipment/';
+---
+<Layout
+  pageTitle="Interactive equipment prototypes"
+  subtitle=""
+  description="Open browser-tested, interactive 3D teaching prototypes from the Build the Simulation equipment register."
+>
+  <article class="equipment eq-sheet prototype-index">
+    <nav class="eq-nav" aria-label="Equipment resources">
+      <a href={register}>Equipment register</a>
+      <a href="/simulations/">All simulations</a>
+    </nav>
+    <header class="eq-mast">
+      <p class="eq-lede">Choose an instrument to open its 3D model and try the exercise. Each prototype explains which features are based on instrument references and which are authored for the demonstration.</p>
+      <p class="prototype-note"><strong>Scope:</strong> These are browser-tested teaching prototypes, not validated models of hardware performance or instructions for operating real equipment. The existing equipment records and simulators are unchanged.</p>
+    </header>
+    <section aria-labelledby="prototype-heading" class="prototype-section">
+      <h2 id="prototype-heading">Available prototypes <span class="prototype-count">{devices.length}</span></h2>
+      <ul class="prototype-list">
+        {devices.map(({ id, title, summary, href }) => (
+          <li id={'prototype-' + id}>
+            <span class="eq-meta">Station {id}</span>
+            <h3>{title}</h3>
+            <p>{summary}</p>
+            <div class="prototype-links">
+              <a class="prototype-open" href={href} aria-label={'Open ' + title + ' prototype'}>Open prototype</a>
+              <a href={register + id + '/'} aria-label={'Open equipment record ' + id}>Equipment record</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section aria-labelledby="viewing-heading" class="prototype-help">
+      <h2 id="viewing-heading">Viewing and interaction</h2>
+      <p>Use a browser with WebGL enabled. Each prototype has its own experiment controls and explains how to use them. An immersive VR control is shown only when the prototype and browser support it; browser testing does not establish compatibility with every physical headset.</p>
+    </section>
+  </article>
+</Layout>
+<style>
+  .prototype-note {
+    border-inline-start: 3px solid var(--border);
+    margin-block: 1.2rem 0;
+    max-width: 68ch;
+    padding: .15rem 0 .15rem 1rem;
+  }
+  .prototype-section { margin-top: 2.1rem; }
+  .prototype-count { margin-inline-start: .55rem; font-size: .85rem; font-weight: normal; }
+  .prototype-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+    gap: .9rem 1rem;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+  .prototype-list li {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.15rem;
+    border: 1px solid var(--border);
+    background: var(--panel);
+  }
+  .prototype-list h3 { margin: .32rem 0 .2rem; font-size: 1.2rem; }
+  .prototype-list p { margin: .3rem 0 1rem; }
+  .prototype-links { display: flex; flex-wrap: wrap; gap: .45rem 1.1rem; margin-top: auto; align-items: baseline; }
+  .prototype-links a { text-underline-offset: .16em; }
+  .prototype-open { font-weight: bold; }
+  .prototype-help p { max-width: 75ch; }
+  @media (max-width: 640px) {
+    .prototype-list { grid-template-columns: 1fr; }
+    .prototype-list li { padding: .95rem; }
+  }
+</style>
