@@ -6,6 +6,8 @@ import { resolveFacets } from './device-facets.js';
 import { deviceModels } from './devices/catalog.js';
 import { organizationDisplayName, organizationSearchNames } from './organization-names.js';
 import { cleanDiscoveryTitle } from './discovery.js';
+import { equipment, zones } from '../data/equipment/index.js';
+import { revisionById } from '../data/equipment-revisions.js';
 
 // One search index per deployment, not an embedded copy in every HTML page.
 // Entries inherit titles, tags and status from the existing source catalogs.
@@ -49,6 +51,15 @@ export async function buildDiscoveryIndex() {
       detail: '3D reference', summary: 'Documented reconstruction',
       keywords: [model.deviceId, model.slug ?? '', ...(model.specs ?? []).flatMap(spec => spec)],
     })),
+    ...(() => {
+      const zoneName = Object.fromEntries(zones.map(zone => [zone.id, zone.name]));
+      return equipment.filter(record => revisionById[record.id]).map(record => ({
+        type: 'Equipment', title: `${record.id} · ${record.name}`,
+        href: `/simulations/equipment/${record.id}/revised/`,
+        detail: record.model ?? '', summary: record.purpose ?? '',
+        keywords: [record.id, record.name ?? '', record.model ?? '', zoneName[record.id.slice(0, 2)] ?? ''],
+      }));
+    })(),
     ...[
       ['Cochlear Implant Laboratory', '/simulations/cochlear-implant/', 'Sound processing, finite-contact fields, auditory-nerve cable dynamics and reproducible implant experiments', 'cochlear implant hearing auditory nerve Rattay CIS n-of-m vocoder electrode recruitment spike raster threshold'],
       ['Cochlear Implant Methods and Validation', '/simulations/cochlear-implant/methods/', 'Model equations, independent numerical references, interpretation boundaries and experiment guide', 'cochlear auditory nerve methods validation finite disk Greenwood Rattay pulse charge numerical convergence'],
@@ -76,6 +87,10 @@ export async function buildDiscoveryIndex() {
       ['Peripheral nerve sandbox', '/sim/', 'Nerve cross-sections and pulses', 'peripheral nerve cuff simulation'],
       ['Neural interface designer', '/simulations/interface-designer/', 'Electrode geometry and routing', 'design electrode layout exports'],
       ['3D model finder', '/devices/models/', 'Reference hardware geometry', 'models inspect implants'],
+      ['Laboratory Equipment Register', '/simulations/equipment/', 'Find instruments by research zone, inspect their 3D and simulation plans', 'equipment register instruments laboratory zone patch clamp microscope aligner'],
+      ['Crystal Palace shared virtual lab', '/simulations/shared-virtual-lab/', 'One virtual lab plan, three connected experiment routes', 'crystal palace shared lab station experiment route handoff'],
+      ['Revised equipment library', '/simulations/equipment/revised/', 'Revised Crystal Palace equipment previews by record, model and zone', 'revised equipment previews crystal palace library'],
+      ['Lab updates', '/simulations/equipment/updates/', 'Crystal Palace equipment updates and verified workflows', 'lab updates equipment workflows verified'],
     ].map(([title, href, summary, keywords]) => ({
       type: 'Tools', title, href, detail: 'Interactive tool', summary, keywords: [keywords],
     })),
