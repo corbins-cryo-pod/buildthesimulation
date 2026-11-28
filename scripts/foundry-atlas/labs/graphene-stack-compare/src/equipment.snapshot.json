@@ -1,0 +1,66 @@
+{
+  "01-01": {
+    "name": "CAD/mask workstation",
+    "model": "KLayout + KiCad + FreeCAD (custom workstation)"
+  },
+  "02-01": {
+    "name": "Contact mask aligner",
+    "model": "Karl SUSS MA6/BA6 Gen 4"
+  },
+  "02-12": {
+    "name": "Inspection microscope",
+    "model": "Nikon ECLIPSE LV100ND LED · manual reflected brightfield"
+  },
+  "03-01": {
+    "name": "Electron-beam evaporation",
+    "model": "Temescal BJD 1800"
+  },
+  "03-03": {
+    "name": "Magnetron sputtering",
+    "model": "Kurt J. Lesker PVD 75 RF/DC"
+  },
+  "03-08": {
+    "name": "Parylene coating",
+    "model": "SCS PDS 2010 Labcoter 2 · dry reference"
+  },
+  "04-01": {
+    "name": "Reactive ion etcher",
+    "model": "Oxford PlasmaPro 80 RIE"
+  },
+  "04-02": {
+    "name": "ICP reactive ion etcher",
+    "model": "Oxford PlasmaLab 100 ICP"
+  },
+  "04-06": {
+    "name": "Wet processing",
+    "model": "Custom ReynoldsTech-style wet bench (exact model pending)"
+  },
+  "04-07": {
+    "name": "Wafer dicing",
+    "model": "DISCO DAD 321"
+  },
+  "05-06": {
+    "name": "Four-point probe",
+    "model": "CDE ResMap 178 · manual load, Jandel 1 mm inline cartridge"
+  },
+  "05-07": {
+    "name": "Probe station",
+    "model": "Cascade Microtech Summit 11000B-AP · manual 200 mm"
+  },
+  "05-10": {
+    "name": "Raman microscope",
+    "model": "HORIBA LabRAM HR Evolution, Olympus BX-series / 532 nm virtual branch"
+  },
+  "08-02": {
+    "name": "Manual wedge bonder",
+    "model": "Kulicke & Soffa 4523"
+  },
+  "12-01": {
+    "name": "Stereo dissecting microscope",
+    "model": "ZEISS SteREO Discovery V12"
+  },
+  "16-13": {
+    "name": "Cable and connector library",
+    "model": "Custom BNC, SMA, USB, triax, FFC and headstage families"
+  }
+}

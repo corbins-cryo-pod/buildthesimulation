@@ -1,0 +1,57 @@
+'use strict';
+const assert=require('node:assert/strict');
+const M=require('../src/engine.cjs'), E=require('../src/evidence.cjs');
+let count=0; const checked=[];
+const test=(name,fn)=>{fn();count++;checked.push(name);};
+const tol=(x,y,eps=1e-10)=>assert.ok(Math.abs(x-y)<=eps,`${x} != ${y} within ${eps}`);
+const at=(stage,extra={})=>M.run({stage,...extra});
+const ready=extra=>at('release',extra);
+const opt=(w,p,shade=false)=>M.optics(w,p,shade);
+const G=M.constants;
+test('Initial source reference is SOI with handle, no artificial masks',()=>{const r=M.run();assert.equal(r.geometry.stage,'soi');assert.equal(r.geometry.siliconHandle,true);assert.deepEqual(r.geometry.masks,[]);});
+test('Traveler has unpatterned source input plus all 12 published figure panels',()=>assert.deepEqual(E.stages.map(x=>x.key),['IN',...'ABCDEFGHIJKL']));
+test('Unreleased stages never yield numeric optical/dark/isolation values',()=>{for(let i=0;i<M.releaseIndex;i++){const r=at(i);assert.equal(r.runState,'process-incomplete');for(const k of ['optical','dark','isolation'])assert.equal(r[k],null);}});
+test('READY is an explicit terminal virtual ledger condition',()=>assert.equal(ready().runState,'ready'));
+test('Masks tally to eight exactly, in source sequence',()=>assert.deepEqual(E.stages.flatMap(x=>x.masks),[1,2,3,4,5,6,7,8]));
+test('First vias and first metal are two masks grouped at H',()=>assert.deepEqual(E.stages[M.index.route].masks,[4,5]));
+test('Trench reopen follows routing and second via; release follows IrOx',()=>{assert.ok(M.index.reopen>M.index.nitride);assert.ok(M.index.release>M.index.electrode);});
+test('DRIE opens both internal and external trenches to BOX',()=>{const g=at('drie').geometry;assert.equal(g.outerTrench,'open-to-BOX');assert.equal(g.innerTrench,'open-to-BOX');assert.equal(g.crossGapBOX,true);});
+test('Liner and fill covers both trenches; fill is not automatically a bridge',()=>{const g=at('fill').geometry;assert.equal(g.outerTrench,'oxide-lined-fill');assert.equal(g.innerTrench,'oxide-lined-fill');assert.equal(g.bridge,false);});
+test('Only outer trench reopens; internal fill, handle, and BOX are retained',()=>{const g=at('reopen').geometry;assert.equal(g.outerTrench,'selectively-reopened');assert.equal(g.innerTrench,'oxide-lined-fill');assert.ok(g.siliconHandle&&g.crossGapBOX);});
+test('Release retains under-silicon BOX but removes handle and BOX across gap',()=>{const g=ready().geometry;assert.ok(g.underSiBOX);assert.ok(!g.siliconHandle&&!g.crossGapBOX);assert.equal(g.sectionReleaseResult,'clear');});
+test('Insulating remnant obstructs geometric gate only',()=>{const r=ready({fault:'oxide',target:4});assert.equal(r.geometry.faultEdge,'C–N4');assert.ok(r.geometry.underSiBOX&&r.geometry.crossGapBOX&&r.geometry.residualBOX);assert.equal(r.geometry.sectionReleaseResult,'obstructed');assert.equal(r.isolation.result,'isolated');});
+test('Conductive web exists only after DRIE',()=>{assert.equal(at('window',{fault:'trench'}).geometry.siliconWeb,false);assert.equal(at('drie',{fault:'trench'}).geometry.siliconWeb,true);});
+test('Metal stringer first exists at IrOx stage',()=>{assert.equal(at('reopen',{fault:'stringer'}).geometry.surfaceStringer,false);assert.equal(at('electrode',{fault:'stringer'}).geometry.surfaceStringer,true);});
+test('Source workflow never substitutes RIE for selective XeF2',()=>{assert.ok(!E.stages[M.index.reopen].tools.includes('04-01'));assert.match(E.stages[M.index.reopen].gap,/XeF₂/);});
+test('Conformal spray gap distinct from top spin',()=>{assert.ok(E.stages[M.index.electrode].tools.includes('02-07'));assert.match(E.stages[M.index.electrode].gap,/Conformal spray/);});
+test('Original dark analyzer and registered analog not misidentified',()=>assert.match(E.tools['09-02'][1],/4155A/));
+test('PRIMA is an architecture-only read, regardless of stale Wang inputs',()=>{const a=M.run({route:'prima'}),b=ready({route:'prima',fault:'shade',power:22,size:70,target:5});assert.deepEqual(a,b);for(const key of ['geometry','optical','dark','isolation'])assert.equal(a[key],null);assert.equal(a.runState,'proprietary-locked');});
+test('PRIMA dimensions and series count are distinct first-generation published values',()=>{const a=M.run({route:'prima'}).publicFacts;assert.equal(a.widthUm,2000);assert.equal(a.thicknessUm,30);assert.equal(a.pixelCount,378);assert.equal(a.pixelWidthUm,100);assert.equal(a.seriesDiodes,2);assert.match(a.shunt,/Polysilicon/);assert.match(a.returnTopology,/mesh/);});
+test('No off-branch read or export for PRIMA; no incomplete export',()=>{assert.throws(()=>M.report({route:'prima'}));assert.throws(()=>M.csv({route:'prima'}));assert.throws(()=>M.report({stage:1}));});
+test('Pixel diameters preserve reported nominal widths / contact diameters',()=>{assert.deepEqual([70,140,280].map(x=>M.coupon(x).activeDiameterUm),[20,40,80]);});
+for(const [width,rho] of [[70,.36],[140,.40],[280,.33]]){
+ test('Report source slope at '+width+' µm',()=>{assert.equal(opt(width,50).sourceResponsivity_A_per_W,rho);assert.equal(opt(width,50).voltage_bias_V,0);assert.equal(opt(width,50).wavelength_nm,880);});
+ test('µW unit mapping and zero light at '+width+' µm',()=>{tol(opt(width,50).predictedMagnitude_uA,rho*50);assert.equal(opt(width,0).predictedMagnitude_uA,0);assert.equal(opt(width,0,true).result,'no-input');});
+ test('Compute physical coupon geometry at '+width+' µm',()=>{const g=M.coupon(width), c=g.pixels[0];assert.equal(g.thicknessUm,30);assert.equal(g.pixels.length,7);tol(g.modelCenterDistanceUm,width+5);tol(Math.max(...c.poly.map(x=>x[0]))-Math.min(...c.poly.map(x=>x[0])),width);const n1=g.pixels[1];tol(Math.min(...n1.poly.map(x=>x[0]))-Math.max(...c.poly.map(x=>x[0])),5);});
+}
+test('880 nm medium inferred EQE matches approximate published 56 percent',()=>tol(opt(140,50).derivedEQE,.5635645383327285,1e-10));
+test('Medium chart span identified distinctly from large and small slope-only visualizations',()=>{assert.match(opt(140,80).domain,/approximate span/);assert.match(opt(70,80).domain,/illustrative/);assert.match(opt(280,80).domain,/illustrative/);});
+test('Synthetic shade retains published slope and scales only received power',()=>{const o=ready({fault:'shade'}).optical;assert.equal(o.sourceResponsivity_A_per_W,.4);tol(o.transmittedVirtualPower_uW,22.5);tol(o.predictedMagnitude_uA,9);tol(o.unobscuredMagnitude_uA,20);assert.equal(o.result,'attenuated');});
+test('Synthetic shade does not influence the dark sample or fixture solution',()=>{const a=ready(),b=ready({fault:'shade'});assert.deepEqual(a.dark,b.dark);assert.deepEqual(a.isolation,b.isolation);});
+test('Dark reported envelope is fixed and not recomputed using light slope',()=>{const a=ready({power:0}),b=ready({power:80,size:70});assert.deepEqual(a.dark,b.dark);assert.deepEqual(a.dark.interval_pA,[1,100]);assert.match(a.dark.specimen,/three-series/);assert.match(a.optical.specimen,/one-diode/);});
+test('Dark high case yields synthetic 240 pA and no drift in optical or isolation',()=>{const a=ready(),b=ready({fault:'leakage'});assert.deepEqual(a.optical,b.optical);assert.deepEqual(a.isolation,b.isolation);assert.equal(b.dark.syntheticWitness_pA,240);assert.equal(b.dark.result,'above-source-span');});
+test('Nominal dark sample within reported span is not promoted to real acceptance',()=>{const d=ready().dark;assert.equal(d.syntheticWitness_pA,8);assert.match(d.caveat,/not a fitted I–V curve or a lot acceptance limit/);});
+test('Dry network is one center, six neighbors, six ring edges plus six spokes',()=>{const t=M.isolation();assert.equal(t.nodes_mV.length,7);assert.equal(t.graph.length,12);assert.equal(t.graph.filter(x=>x.a===0).length,6);});
+test('Nominal balanced ring agrees with closed-form divider',()=>{const t=M.isolation(),y=100*G.fixtureTerminationOhm/(G.fixtureGapOhm+G.fixtureTerminationOhm);for(const x of t.nodes_mV.slice(1))tol(x,y,1e-12);assert.equal(t.result,'isolated');});
+test('Center voltage is fixed, not one of 6 unknowns',()=>{assert.equal(M.isolation(true,6).nodes_mV[0],100);});
+for(let n=1;n<=6;n++){
+ test(`Conductive web relocates exactly to C–N${n}`,()=>{const t=ready({fault:'trench',target:n}).isolation;assert.equal(t.targetEdge,'C–N'+n);assert.ok(t.nodes_mV[n]>95&&t.nodes_mV[n]<96);assert.equal(t.nodes_mV[n],Math.max(...t.nodes_mV.slice(1)));assert.equal(t.result,'coupled');assert.equal(t.graph.filter(x=>x.role==='conductive-bridge').length,1);});
+ test(`KCL and conservation for bridge at N${n}`,()=>{const t=M.isolation(true,n);assert.ok(t.maxVictimKirchhoffResidual_A<2e-24);tol(t.sourceCurrent_A,t.terminatedCurrent_A,2e-22);});
+}
+test('Bridge result approximates independent simple-divider limit; ring loading is smaller',()=>{const t=M.isolation(true,1),x=100*G.fixtureTerminationOhm/(G.fixtureBridgeOhm+G.fixtureTerminationOhm);assert.ok(t.nodes_mV[1]<x);tol(t.nodes_mV[1],x,.02);});
+test('Silicon and metal matched impedance do not imply electrical discriminability',()=>{const a=ready({target:5,fault:'trench'}),b=ready({target:5,fault:'stringer'});assert.ok(a.geometry.siliconWeb&&!a.geometry.surfaceStringer);assert.ok(b.geometry.surfaceStringer&&!b.geometry.siliconWeb);assert.deepEqual(a.isolation,b.isolation);});
+test('Above-floor fixture is not proof of optical crosstalk',()=>assert.match(ready({fault:'trench'}).isolation.caveat,/not a calculation of optical crosstalk/));
+test('Invalid branch, bounds and units are rejected',()=>{for(const x of [{route:'guess'},{stage:13},{target:0},{size:100},{power:81},{power:NaN},{power:'50'},{fault:'convert'}])assert.throws(()=>M.run(x));});
+test('Export includes source, complete stage ledger, source and simulated annotations, but not PRIMA',()=>{const r=M.report({stage:12});assert.equal(r.traveler.length,13);assert.equal(r.sources.length,1);assert.equal(r.sources[0].doi,E.sources.wang.doi);assert.match(r.isolation.source,/Uncalibrated/);assert.equal(r.geometry.teachingPatch.pixels.length,7);assert.equal(r.scope.includes('No clinical'),true);});
+test('CSV carries source-vs-model metadata and all seven dry-network nodes',()=>{const c=M.csv({stage:12,fault:'shade'});assert.ok(c.includes('Wang 2012 section 3.2'));assert.ok(c.includes('synthetic nodal solution'));assert.match(c,/"predicted-current-magnitude","9","uA"/);assert.equal((c.match(/synthetic nodal solution/g)||[]).length,7);});
+console.log(JSON.stringify({revision:M.revision,passed:count,checks:checked},null,2));

@@ -1,0 +1,176 @@
+import csv, json, os, re, xml.etree.ElementTree as ET
+from pathlib import Path
+from playwright.sync_api import sync_playwright, expect
+
+base = Path(__file__).resolve().parent.parent
+out = base / 'validation'
+INDEX = (base/'index.html').as_uri()
+
+def browser_checks(browser, device, kind):
+    device = dict(device)
+    device.pop('default_browser_type',None)
+    context = browser.new_context(**device, accept_downloads=True, reduced_motion='reduce')
+    page = context.new_page()
+    errors, remote, passed = [], [], []
+    page.on('pageerror', lambda error: errors.append(str(error)))
+    page.on('request', lambda request: remote.append(request.url) if request.url.startswith(('http://','https://')) else None)
+    touch = bool(device.get('has_touch'))
+    def loc(css): return page.locator(css)
+    def press(css): loc(css).tap() if touch else loc(css).click()
+    def seen(txt): passed.append(txt)
+    def state(expect_geom, opt, dark, iso):
+        for i, phrase in enumerate([expect_geom, opt, dark, iso]): expect(loc('#bench-summary .badge').nth(i)).to_contain_text(phrase)
+    def no_overflow():
+        assert page.evaluate('document.documentElement.scrollWidth === innerWidth'),page.evaluate('[document.documentElement.scrollWidth,innerWidth]')
+    response=page.goto(INDEX,wait_until='load')
+    assert response and response.ok
+    expect(page).to_have_title(re.compile(r'Photovoltaic Retina Foundry Bench'))
+    expect(loc('#current-title')).to_have_text('Receive silicon-on-insulator')
+    expect(loc('[data-stage]')).to_have_count(13)
+    expect(loc('[data-stage="0"]')).to_have_attribute('aria-current','step')
+    expect(loc('#prev')).to_be_disabled()
+    expect(loc('#prima')).to_be_hidden()
+    no_overflow()
+    seen('Portable offline HTML loads, with 13 stage choices, correct initial checkpoint and responsive width')
+    page.screenshot(path=out/f'{kind}-entry.png', animations='disabled')
+    press('[data-mode="bench"]')
+    expect(loc('#need-release')).to_be_visible()
+    expect(loc('#bench-run')).to_be_hidden()
+    expect(loc('#optics-plot svg')).to_have_count(0)
+    seen('Incomplete traveler cannot show numeric bench results')
+    press('[data-mode="traveler"]')
+    press('#next')
+    expect(loc('#current-title')).to_have_text('Define the isolation windows')
+    expect(loc('#current-masks')).to_contain_text('1/8')
+    press('#prev')
+    expect(loc('#progress')).to_have_text('1 / 13')
+    seen('Previous/next alter the same checkpoint and tally as the traveler')
+    press('[data-stage="2"]')
+    expect(loc('#drawing svg')).to_have_attribute('aria-label', re.compile(r'open-to-BOX'))
+    press('[data-stage="3"]')
+    expect(loc('#drawing svg')).to_have_attribute('aria-label', re.compile(r'oxide-lined-fill; outer oxide-lined-fill'))
+    press('[data-stage="8"]')
+    expect(loc('#current-masks')).to_have_text('5/8 masks by this point · M4 Via one · M5 Ti/Pt metal')
+    expect(loc('#wang-net svg')).to_have_attribute('aria-label',re.compile('three series photodiodes'))
+    seen('Deep etch, refill, and a two-mask checkpoint are distinguished in UI')
+    press('[data-stage="10"]')
+    expect(loc('#drawing svg')).to_have_attribute('aria-label', re.compile(r'oxide-lined-fill; outer selectively-reopened.*Handle present'))
+    press('#traveler .tools summary')
+    expect(loc('#current-tools')).to_contain_text('No identified XeF₂ station')
+    expect(loc('#current-tools')).not_to_contain_text('04-01')
+    seen('Selective outer reopen keeps internal fill and handle and cannot link to generic RIE as substitute')
+    press('[data-stage="12"]')
+    expect(loc('#drawing svg')).to_have_attribute('aria-label', re.compile(r'Handle removed'))
+    expect(loc('#next')).to_be_disabled()
+    expect(loc('#current-masks')).to_contain_text('8/8')
+    press('[data-view="patch"]')
+    expect(loc('#drawing svg')).to_have_attribute('aria-label', re.compile(r'140 micron research width'))
+    loc('#size').select_option('70')
+    expect(loc('#drawing svg')).to_have_attribute('aria-label', re.compile(r'70 micron research width'))
+    loc('#size').select_option('140')
+    if kind=='desktop': page.screenshot(path=out/'desktop-oblique.png',animations='disabled',full_page=False)
+    seen('Release removes support and oblique drawing responds to dimensional branch')
+    press('[data-view="section"]')
+    if kind=='desktop': page.screenshot(path=out/'desktop-traveler.png',animations='disabled',full_page=True)
+    press('#load-witness')
+    state('Open outer gap','Matches slope model','Within published range','Below fixture limit')
+    expect(loc('#optics-readout')).to_contain_text('20.00 µA')
+    expect(loc('#dark-readout')).to_contain_text('8 pA')
+    expect(loc('#isolation-plot svg')).to_have_attribute('aria-label', re.compile(r'0.0100 mV'))
+    seen('Nominal medium witness joins source slope values to separate synthetic dark and coupling checks')
+    loc('#fault').select_option('shade')
+    state('Open outer gap','Virtual optical loss','Within published range','Below fixture limit')
+    expect(loc('#optics-readout')).to_contain_text('9.00 µA')
+    expect(loc('#target')).to_be_disabled()
+    seen('Synthetic translation 50 µW to 9 µA after masking; neighbor input disabled')
+    loc('#fault').select_option('leakage')
+    state('Open outer gap','Matches slope model','Above published range','Below fixture limit')
+    expect(loc('#dark-readout')).to_contain_text('240 pA')
+    expect(loc('#optics-readout')).to_contain_text('20.00 µA')
+    seen('Dark anomaly is isolated from optical and interpixel states')
+    loc('#fault').select_option('oxide')
+    loc('#target').select_option('4')
+    state('Obstructed gap','Matches slope model','Within published range','Below fixture limit')
+    expect(loc('#isolation-readout')).to_contain_text('None')
+    seen('Residual electrically insulating BOX fails only the geometry comparison')
+    loc('#fault').select_option('trench')
+    loc('#target').select_option('2')
+    state('Obstructed gap','Matches slope model','Within published range','Conductive transfer')
+    expect(loc('#isolation-readout')).to_contain_text('C–N2')
+    press('#bench-run .isolation-panel summary')
+    expect(loc('#neighbor-readout .hot')).to_have_text('N2 95.24 mV')
+    loc('#target').select_option('5')
+    expect(loc('#neighbor-readout .hot')).to_have_text('N5 95.24 mV')
+    seen('Conductive fault can move to a different physical boundary; solver target and hottest neighbor agree')
+    loc('#fault').select_option('stringer')
+    expect(loc('#neighbor-readout .hot')).to_have_text('N5 95.24 mV')
+    page.evaluate("window.scrollTo(0, document.querySelector('#bench-controls').getBoundingClientRect().top + scrollY - 7)")
+    page.screenshot(path=out/f'{kind}-bench.png', animations='disabled')
+    seen('Matched electrical output for two deliberately different geometries')
+    if touch:
+        slider=loc('#power'); slider.scroll_into_view_if_needed(); pos=slider.bounding_box(); page.touchscreen.tap(pos['x']+18,pos['y']+pos['height']/2)
+        assert int(slider.input_value())<50, slider.input_value()
+    else:
+        loc('#power').focus(); page.keyboard.press('Home')
+        expect(loc('#power')).to_have_value('0')
+        state('Obstructed gap','No virtual input','Within published range','Conductive transfer')
+    expect(loc('#power-read')).to_have_text(re.compile(r'\d+ µW'))
+    seen('Real touchscreen slider or keyboard control updates the virtual optical input')
+    press('[data-mode="traveler"]')
+    expect(loc('#drawing svg')).to_have_attribute('aria-label', re.compile(r'Synthetic defect at C–N5'))
+    expect(loc('#drawing svg')).to_contain_text('metal stringer')
+    press('[data-view="patch"]')
+    expect(loc('#drawing svg')).to_contain_text('Synthetic span · C–N5')
+    seen('Bench fixture and traveler preserve one physical defect and selected boundary in both views')
+    press('[data-mode="bench"]')
+    press('[data-route="prima"]')
+    expect(loc('#prima')).to_be_visible()
+    expect(loc('#wang')).to_be_hidden()
+    expect(loc('#bench-run')).to_be_hidden()
+    expect(loc('#optics-plot svg')).to_have_count(0)
+    expect(loc('#wang-net svg')).to_have_count(0)
+    expect(loc('#prima')).to_contain_text('378')
+    expect(loc('#prima')).to_contain_text('two series photodiodes')
+    expect(loc('#prima')).to_contain_text('wafer traveler, released layer stack')
+    expect(loc('#prima-drawing svg')).to_have_attribute('aria-label', re.compile(r'polysilicon shunt'))
+    no_overflow()
+    page.screenshot(path=out/f'{kind}-prima.png', animations='disabled', full_page=not touch)
+    seen('PRIMA branch excludes bench traces and presents only cited semiconductor architecture')
+    press('[data-route="wang"]')
+    expect(loc('#bench-run')).to_be_visible()
+    expect(loc('#fault')).to_have_value('stringer')
+    expect(loc('#target')).to_have_value('5')
+    no_overflow()
+    seen('Returning to Wang restores the correct branch-local settings without mixing results')
+    for kindfile,selector,fn in [('json','#download-json','PV12-witness.json'),('csv','#download-csv','PV12-checks.csv'),('svg','#download-svg','PV12-section.svg')]:
+        with page.expect_download() as ev:
+            press(selector)
+        download=ev.value
+        assert download.suggested_filename==fn
+        contents=Path(download.path()).read_text(encoding='utf-8')
+        if not touch: (out/f'example-{fn}').write_text(contents,encoding='utf-8')
+        if kindfile=='json':
+            d=json.loads(contents); assert d['route']=='wang' and d['input']['fault']=='stringer' and d['input']['target']==5
+            assert d['geometry']['sectionReleaseResult']=='obstructed' and d['optical']['voltage_bias_V']==0 and d['dark']['interval_pA']==[1,100]
+            assert len(d['traveler'])==13 and len(d['sources'])==1
+        if kindfile=='csv':
+            rows=list(csv.DictReader(contents.splitlines())); assert len([r for r in rows if r['basis']=='synthetic nodal solution'])==7
+        if kindfile=='svg':
+            root=ET.fromstring(contents); assert root.tag.endswith('}svg') and 'C–N5' in contents and 'metal stringer' in contents
+        seen(f'{kindfile.upper()} download is real, parseable and belongs to current Wang witness')
+    assert not errors,errors
+    assert not remote,remote
+    seen('No external requests or script errors across both branches and all export actions')
+    context.close()
+    return {'profile':kind,'passed':len(passed),'checks':passed,'errors':errors,'remoteRequests':remote}
+
+with sync_playwright() as api:
+    executable = Path(os.environ.get('CHROME_BIN', base.parents[2]/'production-equipment-qa/runtime/chrome-bin/chrome'))
+    browser=api.chromium.launch(executable_path=str(executable) if executable.is_file() else None, headless=True,args=['--no-sandbox','--no-proxy-server','--disable-gpu','--disable-dev-shm-usage'])
+    results=[browser_checks(browser,{'viewport':{'width':1380,'height':985},'device_scale_factor':1},'desktop')]
+    results.append(browser_checks(browser,dict(api.devices['iPhone 13']),'touch'))
+    version=browser.version
+    browser.close()
+record={'entry':'portable index.html','engine':'Chromium '+version,'results':results}
+(out/'browser.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
+print([(r['profile'],r['passed']) for r in results])

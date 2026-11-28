@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Compare uniform Utah and Slant electrode-array geometry, inspect front-to-rear isolation and run a virtual continuity fixture."><title>Utah and Slant | Isolation bench</title>
+<style>/*INLINE_STYLE*/</style></head>
+<body><a class="skip" href="#configure">Skip to configuration</a><main>
+<header><a class="brand" href="/simulations/foundry/">BuildTheSimulation <span>/ Foundry</span></a><a class="travel" href="/simulations/foundry/atlas/#profile=si-utah">Utah process traveler ↗</a></header>
+<section class="hero"><div><p class="eyebrow">Fabrication series / Utah and Slant</p><h1>The isolation bench.</h1><p class="lede">Same pitch. Two height profiles. Inspect how opposing cuts separate a lattice of silicon roots, then see which faults a virtual continuity test can distinguish.</p></div><aside><span class="dot"></span><div>Inert digital coupon<br><small>No physical instrument connected</small></div></aside></section>
+<nav class="jump" aria-label="Laboratory sections"><a href="#configure">01 · Height comparison</a><a href="#cuts">02 · Opposing cuts</a><a href="#continuity">03 · Continuity fixture</a></nav>
+
+<section id="configure" aria-labelledby="heightHeading" class="panel compare">
+ <div class="sect"><p class="eyebrow">Section 01 / Shape and coordinates</p><h2 id="heightHeading">Compare matched lattices</h2></div>
+ <div class="controlGrid">
+  <div><label for="uniform">Uniform reference height</label><select id="uniform"><option value="1500">1.50 mm · same height</option><option value="1000">1.00 mm · same height</option></select></div>
+  <div><label for="range">Slant height evidence</label><select id="range"><option value="study">2017 study · approx. 0.75–1.50 mm</option><option value="overview">Manufacturer overview · 0.50–1.50 mm</option><option value="options">Manufacturer options table · 0.75–1.50 mm</option><option value="measured">Enter ten row heights</option></select></div>
+  <div><label for="grade">Order of Slant row heights</label><select id="grade"><option value="x+">Along +X · left to right on needle face</option><option value="x-">Along −X · right to left on needle face</option><option value="y+">Along +Y · bottom to top on needle face</option><option value="y-">Along −Y · top to bottom on needle face</option></select></div>
+  <div><label for="rotation">Rotate both specimens</label><select id="rotation"><option value="0">0° · original pose</option><option value="90">90° clockwise</option><option value="180">180°</option><option value="270">270° clockwise</option></select></div>
+ </div>
+ <div id="measuredWrap" hidden><label for="measured">Ten row heights · µm</label><textarea rows="2" spellcheck="false" id="measured"></textarea><p class="small">Give ten values in the chosen direction, separated by spaces or commas. Use 100–2,000 µm for this virtual plotting scale.</p></div>
+ <p id="rangeNote" class="scopeNote"></p>
+ <p id="error" role="alert" class="error" hidden></p>
+ <div class="sceneGrid">
+  <figure class="scene"><div><h3>Uniform Utah</h3><p id="leftSub">1.50 mm equal shanks</p></div><svg id="uniformFig" viewBox="0 0 420 264" role="img" aria-label="Isometric model of 100 vertical, equal-height needles"><g></g></svg></figure>
+  <figure class="scene"><div><h3>Utah Slant</h3><p id="rightSub">0.75–1.50 mm endpoint envelope</p></div><svg id="slantFig" viewBox="0 0 420 264" role="img" aria-label="Isometric model of 100 vertical needles with an adjustable tip height profile"><g></g></svg></figure>
+ </div>
+ <div class="bigFacts" id="facts"></div>
+ <figure class="elevation"><div><p class="eyebrow">Inspect without perspective</p><h3>Elevation along the grade</h3><p id="elevationNote"></p><div class="legend"><span class="key standard"></span> Uniform <span class="key tilted"></span> Slant</div></div><svg id="elevation" viewBox="0 0 440 226" role="img" aria-labelledby="elevationTitle elevationDesc"><title id="elevationTitle">Orthographic height profile at equal horizontal and vertical scale</title><desc id="elevationDesc"></desc><g></g></svg></figure>
+ <div class="rowBand" id="rowBand" aria-label="Ten row heights, first through tenth in the selected direction"></div>
+ <p class="small under">Both drawings use the same projection. The ten height values are ordered along the chosen grade, independent of the fixture’s row labels. Needles remain normal to the base; the envelope over their <em>tips</em> can slope. Shank contours are indicative, not CAD or a machining target.</p>
+</section>
+
+<section id="cuts" class="panel cutPanel" aria-labelledby="cutHeading">
+ <div class="sect"><p class="eyebrow">Section 02 / Registration and glass</p><h2 id="cutHeading">Bring two cut planes together</h2></div>
+ <p class="deck">A rear groove filled with glass needs to meet the front opening. An uncut silicon bridge, two faces that only touch, and an overcut that leaves no glass are three different outcomes. Use this same cross-section fixture with either height profile.</p>
+ <div class="examples"><span>Examples</span><div id="examples"></div></div>
+ <div class="cutsGrid">
+ <div class="instrument">
+  <div class="fieldGrid">
+   <div><label for="frontKerf">Front opening · µm</label><input type="number" id="frontKerf" step="any" inputmode="decimal"></div>
+   <div><label for="rearKerf">Rear opening · µm</label><input type="number" id="rearKerf" step="any" inputmode="decimal"></div>
+   <div><label for="glassDepth">Rear groove depth · µm</label><input type="number" id="glassDepth" step="any" inputmode="decimal"></div>
+   <div><label for="toe">Front floor from rear · µm</label><input type="number" id="toe" step="any" inputmode="decimal"></div>
+  </div>
+  <details id="reg"><summary>Pitch, offset and floor drift</summary><div class="fieldGrid">
+   <div><label for="pitchX">X pitch change / interval · µm</label><input type="number" id="pitchX" step="any" inputmode="decimal"></div>
+   <div><label for="pitchY">Y pitch change / interval · µm</label><input type="number" id="pitchY" step="any" inputmode="decimal"></div>
+   <div><label for="offsetX">X alignment shift · µm</label><input type="number" id="offsetX" step="any" inputmode="decimal"></div>
+   <div><label for="offsetY">Y alignment shift · µm</label><input type="number" id="offsetY" step="any" inputmode="decimal"></div>
+   <div><label for="slope">Floor drift / 400 µm · µm</label><input type="number" id="slope" step="any" inputmode="decimal"></div>
+   <div><label for="slopeAxis">Direction of floor drift</label><select id="slopeAxis"><option value="x">Along physical +X</option><option value="y">Along physical +Y</option></select></div>
+  </div><p class="small">Pitch errors accumulate from the central rail. Floor drift uses the rear plane as its datum and is independent of the Slant tip heights.</p></details>
+  <p class="small">Inputs describe a rectangular inspection coupon, not saw instructions. In the historical example, the rear <em>blade</em> width is used as an assumed opening, not measured kerf. A positive floor leaves material above the rear face.</p>
+  <ul id="spans" class="spanRead"></ul>
+ </div>
+ <div class="inspect">
+  <div class="fieldGrid"><div><label for="face">Plan view</label><select id="face"><option value="front">Needle face · +X points right</option><option value="rear">Rear face · mirror left to right</option></select></div><div><label for="edgeAxis">Inspect next neighbor</label><select id="edgeAxis"><option value="x">Across physical +X</option><option value="y">Across physical +Y</option></select></div><div><label for="edgeRow">Select row</label><select id="edgeRow"></select></div><div><label for="edgeCol">Select column</label><select id="edgeCol"></select></div></div>
+  <div class="inspectGrid">
+   <figure><svg id="plan" viewBox="0 0 300 302" role="img" aria-labelledby="planTitle planDesc"><title id="planTitle">Front and rear cut overlay</title><desc id="planDesc"></desc><g></g></svg><figcaption>Plan overlay · click a site or use the row and column menus. Fiducial <strong>A</strong> retains its physical identity on the rear face.</figcaption></figure>
+   <figure><svg id="section" viewBox="0 0 365 302" role="img" aria-labelledby="sectionTitle sectionDesc"><title id="sectionTitle">Detail section of the selected boundary</title><desc id="sectionDesc"></desc><g></g></svg><figcaption id="sectionText"></figcaption></figure>
+  </div>
+  <div class="readout" id="edgeData"></div>
+ </div>
+ </div>
+ <div id="geoNotice" class="scopeNote" role="status"></div>
+</section>
+
+<section id="continuity" class="panel check" aria-labelledby="checkHeading">
+ <div class="sect"><p class="eyebrow">Section 03 / Inert electrical logic</p><h2 id="checkHeading">Which pads can still identify a tip?</h2></div>
+ <p class="deck">The fixture traces Boolean paths on 100 symbolic roots and checks 96 virtual outputs. Four corner roots are parked; they still exist in the graph. An open loses the intended output. A bridge can propagate a tag to another output.</p>
+ <div class="runGrid">
+  <fieldset><legend>Include or add faults</legend><label class="checkLabel"><input type="checkbox" id="accountWeb" checked>Count possible silicon webs from the cut model</label><label class="checkLabel"><input type="checkbox" id="open">Open the selected site’s output lead</label><label class="checkLabel"><input type="checkbox" id="bridge">Bridge the two sites in the selected section</label><p id="faultTarget" class="small"></p><button id="run" class="primary" type="button">Test continuity →</button></fieldset>
+  <div><div id="checkStatus" class="status" aria-live="polite">Run the virtual fixture to inspect the current cut geometry.</div><div id="counts"></div><p class="small" id="paths"></p></div>
+ </div>
+ <div class="exports"><button id="geometryCsv" type="button">Export boundary measurements · CSV</button><button id="channelsCsv" type="button" disabled>Export virtual outputs · CSV</button><button id="record" type="button">Export inspection record · JSON</button></div>
+ <p class="small">The geometry export includes 180 interior neighbor boundaries. The JSON includes every row height, registration result, source, and any completed virtual test. All readings are generated by this coupon model.</p>
+</section>
+
+<section class="reading"><div><p class="eyebrow">Reading the drawing</p><h2>Where the model stops</h2><p>In the verified historical cross-section the trench fill is glass. This drawing does not assert that current commercial arrays use a particular glass, ceramic, process stack or finished channel map. The measured quantities are geometric, not dielectric strength, fracture risk, leakage or recording quality.</p><p>Every inspected cut uses an ideal rectangular section and linear drift of the floor at the cut centerline. The check samples the worst depth along the rear island and does not resolve floor variation across the cut width. A silicon remnant is counted as a <em>candidate</em> bridge only. A cut-through breach or a tangent join is flagged without inventing an electrical connection. Phase, electrode impedance and actual production tolerances are outside the fixture.</p><a href="/simulations/utah-array-fabrication/">Open the separate Utah Array fabrication teaching flow →</a></div><div><p class="eyebrow">Evidence ledger</p><h2>Primary sources</h2><ul id="sources"></ul></div></section>
+<footer><a href="/simulations/foundry/atlas/">Manufacturing workflow atlas</a><span>BuildTheSimulation / inert virtual instrument</span></footer>
+</main><script>/*INLINE_ENGINE*/</script><script>/*INLINE_UI*/</script></body></html>

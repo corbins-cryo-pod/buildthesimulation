@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c161a">
+<title>Photovoltaic Retina Foundry Bench | BuildTheSimulation</title>
+<meta name="description" content="A source-checked virtual wafer traveler for the Wang 2012 photovoltaic pixel and a separate public architecture dossier for first-generation PRIMA.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23152228'/%3E%3Cpath d='M16 3l11 6v14l-11 6L5 23V9z' fill='none' stroke='%23f0bd81' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%237ce0c1'/%3E%3C/svg%3E">
+<style>/*__CSS__*/</style>
+</head>
+<body>
+<header class="mast wrap">
+  <a class="brand" href="https://buildthesimulation.com/"><span class="brand-icon" aria-hidden="true">◈</span><span>BUILD<span class="light">THE</span>SIMULATION</span></a>
+  <a class="back" href="https://buildthesimulation.com/simulations/foundry/">↖ <span>Foundry Atlas</span></a>
+</header>
+<main class="wrap" id="main">
+  <section class="hero" aria-labelledby="page-title">
+    <div>
+      <div class="eyebrow"><span class="signal"></span> MATERIALS WORKBOOK <b>PV–12</b></div>
+      <h1 id="page-title">Photovoltaic retina<span>.</span></h1>
+      <p class="lede">Trace the 2012 research pixel from silicon-on-insulator to three separate bench checks. Compare where first-generation PRIMA differs, and where its foundry record stops.</p>
+      <div class="stamp-row"><span><strong>12</strong> source panels</span><span><strong>8</strong> lithography masks</span><span><strong>3</strong> research widths</span></div>
+    </div>
+    <svg class="hero-fig" viewBox="0 0 390 187" aria-hidden="true"><defs><pattern id="hero-grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12V0H12" fill="none" stroke="#30464b" stroke-width="0.6"/></pattern></defs><rect x="1" y="1" width="388" height="185" rx="18" fill="#0f1c20" stroke="#253c41"/><rect x="8" y="8" width="374" height="170" rx="12" fill="url(#hero-grid)"/><g transform="translate(215 93) scale(1 .78) rotate(-15)"><g fill="#172c31" stroke="#688b84" stroke-width="2"><path d="M-53 -31 0 -62 53 -31V31L0 62 -53 31z"/><path d="M-163 -31 -110 -62 -57 -31V31l-53 31-53-31z"/><path d="M57 -31l53-31 53 31v62l-53 31-53-31z"/></g><path d="M-46 -27 0 -54l46 27v54L0 54l-46-27z" fill="#435b50" stroke="#e0a96b" stroke-width="2"/><path d="M0 -47V-17M-40 24l25-15m55 15L15 9" fill="none" stroke="#96bab1"/><g fill="#172c31" stroke="#efc28c" stroke-width="2"><circle cx="0" cy="0" r="16"/><circle cx="-110" cy="0" r="12"/><circle cx="110" cy="0" r="12"/></g><circle cx="0" cy="0" r="7" fill="#81ddbc"/></g><path d="M190 65V32H87M236 116v35h80" fill="none" stroke="#c79664" stroke-dasharray="3 5"/><g fill="#a6bfba" font-family="monospace" font-size="10" letter-spacing="1.1"><text x="26" y="31">FIG. PV/12</text><text x="248" y="167">PLANAR SILICON</text></g></svg>
+  </section>
+  <nav class="route-list" aria-label="Choose a device branch">
+    <button data-route="wang" aria-pressed="true" type="button"><span class="route-id">01 / SOURCE ROUTE</span><strong>Wang–Palanker 2012</strong><span>Research wafer traveler and bench</span></button>
+    <button data-route="prima" aria-pressed="false" type="button"><span class="route-id">02 / PRODUCT DOSSIER</span><strong>First-generation PRIMA</strong><span>Public architecture · process unavailable</span></button>
+  </nav>
+  <section id="wang" aria-label="Wang 2012 interactive route">
+    <div class="control-row">
+      <div class="segmented" role="group" aria-label="Workspace">
+        <button data-mode="traveler" aria-pressed="true" type="button">Wafer traveler</button><button data-mode="bench" aria-pressed="false" type="button">Bench checks</button>
+      </div>
+      <div class="size-field"><label for="size">Research pixel</label><select id="size"><option value="70">70 µm · Small</option><option value="140" selected>140 µm · Medium</option><option value="280">280 µm · Large</option></select></div>
+    </div>
+    <div id="traveler" class="traveler">
+      <aside class="panel step-panel" aria-label="Fabrication stage chooser">
+        <div class="micro step-title">FIG. 01 / TRAVELER</div>
+        <div id="steps" aria-label="Wafer stages"></div>
+      </aside>
+      <div class="panel drawing-panel">
+        <div class="panel-head"><div><span class="micro">MATERIAL VIEW</span><h2 id="drawing-title">Device cross-section</h2></div><div class="segmented compact" role="group" aria-label="View"><button data-view="section" type="button" aria-pressed="true">Section</button><button data-view="patch" type="button" aria-pressed="false">Oblique</button></div></div>
+        <div id="drawing" class="drawing"></div>
+        <p id="drawing-caption" class="drawing-caption"></p>
+        <div id="wang-net" class="wang-net" hidden><div><b>RESEARCH PIXEL</b><span>In-pixel series wiring</span></div><div id="wang-net-svg"></div></div>
+        <div class="step-controls"><button class="line" type="button" id="prev">← Previous</button><span id="progress" class="micro"></span><button class="line" type="button" id="next">Next →</button></div>
+      </div>
+      <article class="panel detail" aria-labelledby="current-title">
+        <div class="micro" id="current-source"></div><h2 id="current-title"></h2><p id="current-description"></p>
+        <div class="inspect"><b>What to check</b><p id="current-check"></p></div>
+        <p class="micro separator" id="current-masks"></p>
+        <details class="tools"><summary>Register tools and missing capabilities</summary><div id="current-tools"></div></details>
+        <div class="detail-actions"><button class="accent" type="button" id="load-witness">Load released witness →</button></div>
+      </article>
+    </div>
+    <div id="bench" hidden>
+      <div id="need-release" class="panel gate" hidden>
+        <div class="micro">CHECKPOINT REQUIRED</div><h2>Finish the wafer traveler first.</h2><p>You can inspect the published source values now. Numeric witnesses stay locked until the final release checkpoint is selected.</p>
+        <button class="accent" type="button" id="bench-load">Load released witness</button>
+      </div>
+      <div id="bench-controls" class="panel bench-controls" hidden>
+        <div><label for="fault">Synthetic case</label><select id="fault"></select></div>
+        <div><label for="target">Faulted boundary</label><select id="target" disabled><option value="1">C → N1</option><option value="2">C → N2</option><option value="3">C → N3</option><option value="4">C → N4</option><option value="5">C → N5</option><option value="6">C → N6</option></select></div>
+        <div class="power-field"><label for="power">Virtual optical power <output id="power-read" for="power">50 µW</output></label><input id="power" type="range" min="0" max="80" step="1" value="50"></div>
+        <p id="fault-detail"></p>
+      </div>
+      <div id="bench-run" hidden>
+        <div id="bench-summary" class="bench-summary" aria-label="Results by witness"></div>
+        <div class="bench-grid">
+          <article class="panel test-panel" aria-labelledby="optics-title">
+            <div class="micro">01 / SOURCE SLOPE + VIRTUAL INPUT</div><h2 id="optics-title">Light conversion</h2>
+            <p>Single-diode test structure, <b>880 nm</b>, zero voltage bias. This is not the three-diode array output.</p>
+            <div id="optics-plot" class="bench-visual"></div><dl id="optics-readout" class="metrics"></dl><p id="optics-domain" class="caveat"></p>
+          </article>
+          <article class="panel test-panel" aria-labelledby="dark-title">
+            <div class="micro">02 / PUBLISHED RANGE + SYNTHETIC POINT</div><h2 id="dark-title">Reverse dark current</h2>
+            <p>Separate three-junction series witness at the paper’s stated room-temperature reverse-bias condition.</p>
+            <div id="dark-plot" class="bench-visual"></div><dl id="dark-readout" class="metrics"></dl><p class="caveat">The comparison range is not a device specification or a fitted current–voltage curve. This bench has no measurement uncertainty model.</p>
+          </article>
+          <article class="panel test-panel isolation-panel" aria-labelledby="iso-title">
+            <div class="micro">03 / SYNTHETIC CIRCUIT ONLY</div><h2 id="iso-title">Dry interpixel isolation</h2>
+            <p>A seven-node resistor network, not an optical or electrolyte crosstalk model. There is no source-calibrated neighbor resistance in the 2012 evidence used here.</p>
+            <div id="isolation-plot" class="bench-visual"></div><dl id="isolation-readout" class="metrics"></dl>
+            <details><summary>Inspect all six neighbor nodes</summary><div id="neighbor-readout"></div></details>
+          </article>
+        </div>
+        <div class="panel export-box"><div><span class="micro">VIRTUAL SPECIMEN RECORD</span><h2>Download this witness</h2><p>Includes the fixture assumptions, the source conditions, and a stage ledger. No product mask files.</p></div><div class="button-row"><button class="line" type="button" id="download-json">Report JSON</button><button class="line" type="button" id="download-csv">Checks CSV</button><button class="line" type="button" id="download-svg">Section SVG</button></div></div>
+      </div>
+      <details class="panel formulas"><summary>Equations, fixture assumptions and equipment fit</summary><div id="formulas-detail"></div></details>
+    </div>
+  </section>
+  <section id="prima" aria-label="First-generation PRIMA architecture only" hidden>
+    <div class="prima-layout">
+      <article class="panel prima-graphic"><div class="micro">PUBLIC ARCHITECTURE / CONCEPT DRAWING</div><h2>Two junctions on a linked return mesh</h2><div id="prima-drawing" class="drawing"></div><p class="drawing-caption">Seven symbolic sites, not the 378-site product layout or an operating diagram. The shunt and return mesh are architectural facts; physical trace geometry is not reproduced.</p></article>
+      <article class="panel prima-facts"><div class="micro">PRODUCT PROCESS / LOCKED</div><h2>PRIMA is not this wafer traveler.</h2><p>The first-generation public description identifies the chip and electrical topology. It does not give a verified product fabrication or bench test of record.</p><div class="prima-stats"><div><strong>378</strong><span>hexagonal pixels</span></div><div><strong>100 µm</strong><span>pixel width</span></div><div><strong>2 mm</strong><span>chip width</span></div><div><strong>30 µm</strong><span>chip thickness</span></div></div>
+      <ul><li>Each pixel places two series photodiodes between the central active node and a circumferential return. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8792035/" target="_blank" rel="noopener">Palanker 2022</a></li><li>The returns are linked in a hexagonal mesh. <a href="https://web.stanford.edu/~palanker/publications/Monopolar_simulator_2022.pdf" target="_blank" rel="noopener">Chen 2022</a></li><li>Polysilicon shunts are reported for commercial 100 µm pixels. That does not establish a product process sequence. <a href="https://strathprints.strath.ac.uk/94291/1/Shin-etal-JNE-2025-Amorphous-silicon-resistors-enable-smaller-pixels-in-photovoltaic-retinal-prosthesis.pdf" target="_blank" rel="noopener">Shin 2025</a></li></ul>
+      <div class="inspect"><b>Unavailable in this branch</b><p>Product masks, wafer traveler, released layer stack, lot acceptance criteria and matched numeric bench calibration. The 2012 process steps and bench values are not transferred here.</p></div>
+      </article>
+    </div>
+  </section>
+  <section class="sources" aria-labelledby="source-title"><div><span class="micro">EVIDENCE REGISTER</span><h2 id="source-title">Read the originals.</h2><p>Source measurements, model outputs, and proprietary records are kept separate throughout.</p></div><div id="sources-list" class="sources-list"></div></section>
+  <p id="status" class="sr-only" role="status"></p>
+  <noscript><p class="panel gate">This portable lab uses JavaScript to draw and calculate the virtual specimens. See the linked Wang fabrication paper for the original wafer sequence and optical evidence.</p></noscript>
+</main>
+<footer class="wrap footer"><span>BUILDTHESIMULATION / FOUNDRY WORKBOOK PV–12</span><span>Virtual only. No tissue model, light exposure guidance, clinical performance estimate or human-use workflow.</span></footer>
+<script>/*__EVIDENCE__*/</script>
+<script>/*__ENGINE__*/</script>
+<script>/*__UI__*/</script>
+</body>
+</html>

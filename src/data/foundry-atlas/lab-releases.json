@@ -41,5 +41,52 @@
     "profiles": [
       "flex-mesh-four-mask"
     ]
+  },
+  "rolled-microchannels": {
+    "url": "/simulations/rolled-microchannels-foundry/",
+    "sha256": "65f0db651b043336044438761242b94e1878761e40000ea33b99cbc2626d6572",
+    "title": "Rolled microchannel scaffold",
+    "profiles": [
+      "pni-rolled-channel"
+    ]
+  },
+  "retinal-photovoltaic": {
+    "url": "/simulations/retinal-photovoltaic-foundry/",
+    "sha256": "560d11124d866144d06cbe7a4a2a48511fad8f72cb1137d445b8d58be4ebe91d",
+    "title": "Photovoltaic retinal pixel",
+    "profiles": [
+      "systems-photovoltaic"
+    ]
+  },
+  "process-handoff": {
+    "url": "/simulations/foundry/process-handoff/",
+    "sha256": "2d02fbc7d0b8571acbf0bb72daeb9ecacc49125be538622b8d01e04e7bcaf804",
+    "title": "Process handoff bench",
+    "profiles": []
+  },
+  "neurogrid-oect": {
+    "url": "/simulations/neurogrid-oect-foundry/",
+    "sha256": "ce5a922c6901a6abf600dbd08d4e0cc3306d8b6e2d78dfcc6d8be3ed7f035827",
+    "title": "NeuroGrid and OECT",
+    "profiles": [
+      "flex-neurogrid"
+    ]
+  },
+  "utah-slant-compare": {
+    "url": "/simulations/utah-slant-compare/",
+    "sha256": "8595d64fb06bbe96a27765f2f964ed3ce5da34b547927b3d856c36f5d31b8e01",
+    "title": "Utah and Slant geometry",
+    "profiles": [
+      "si-utah"
+    ]
+  },
+  "graphene-stack-compare": {
+    "url": "/simulations/graphene-stack-compare/",
+    "sha256": "b8352bef10b7996683f296e9ff1af28548ba0571e159f9738fd359aa9e63e3ce",
+    "title": "Transparent graphene stacks",
+    "profiles": [
+      "flex-clear",
+      "flex-delft-graph"
+    ]
   }
 }

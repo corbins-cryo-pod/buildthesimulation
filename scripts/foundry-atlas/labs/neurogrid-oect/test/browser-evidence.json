@@ -1,0 +1,45 @@
+{
+  "result": "PASS",
+  "browser": [
+    {
+      "viewport": "desktop",
+      "check": "PASS",
+      "coverage": [
+        "passive geometry and 256-site export",
+        "blocked-window diagnostic",
+        "independent OECT traveler and retained state",
+        "drain sign and gm plots",
+        "covered-channel control with continuous path",
+        "feedthrough leakage and distinct transfer export",
+        "no JS errors / overflow / background requests"
+      ]
+    },
+    {
+      "viewport": "iPhone13",
+      "check": "PASS",
+      "coverage": [
+        "passive geometry and 256-site export",
+        "blocked-window diagnostic",
+        "independent OECT traveler and retained state",
+        "drain sign and gm plots",
+        "covered-channel control with continuous path",
+        "feedthrough leakage and distinct transfer export",
+        "no JS errors / overflow / background requests"
+      ]
+    },
+    {
+      "viewport": "dark360",
+      "check": "PASS",
+      "coverage": [
+        "passive geometry and 256-site export",
+        "blocked-window diagnostic",
+        "independent OECT traveler and retained state",
+        "drain sign and gm plots",
+        "covered-channel control with continuous path",
+        "feedthrough leakage and distinct transfer export",
+        "no JS errors / overflow / background requests"
+      ]
+    }
+  ],
+  "fileOrigin": "PASS"
+}

@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c161a">
+<title>Photovoltaic Retina Foundry Bench | BuildTheSimulation</title>
+<meta name="description" content="A source-checked virtual wafer traveler for the Wang 2012 photovoltaic pixel and a separate public architecture dossier for first-generation PRIMA.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23152228'/%3E%3Cpath d='M16 3l11 6v14l-11 6L5 23V9z' fill='none' stroke='%23f0bd81' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%237ce0c1'/%3E%3C/svg%3E">
+<style>:root{color-scheme:dark;--bg:#0c161a;--panel:#132125;--panel-hi:#18292d;--border:#30454b;--ink:#eff3ed;--muted:#b5c7c1;--sub:#a0b5ae;--gold:#f2bd82;--gold-dim:#a87c51;--mint:#8ce5c7;--rose:#ffab9d;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 68% 620px at 68% -160px,#1c3234,transparent 75%),var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.48}button,input,select{font:inherit}button,select{color:inherit;cursor:pointer}button{touch-action:manipulation}input,button,select,a,summary{-webkit-tap-highlight-color:#8ce5c744}button[disabled],select[disabled]{opacity:.48;cursor:not-allowed}button[aria-pressed=true]{color:var(--gold);border-color:var(--gold-dim);background:#2a302b}a{color:var(--mint);text-underline-offset:3px}a:hover{color:#b9fbe5}button:not(:disabled):hover{border-color:var(--gold)}:focus-visible{outline:2px solid var(--mint);outline-offset:3px}[hidden]{display:none!important}h1,h2,p,ul{margin:0}strong,b{color:var(--ink)}.wrap{width:min(1360px,calc(100% - 64px));margin-inline:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}.light{opacity:.65}.micro,.eyebrow{font:600 11px/1.4 var(--mono);letter-spacing:.105em;color:var(--mint)}.eyebrow{display:flex;align-items:center;gap:.7em}.eyebrow b{color:var(--gold);padding:.15em .4em;border:1px solid #5f5949;border-radius:3px}.signal{background:var(--mint);box-shadow:0 0 15px #7ce0c17a;border-radius:100%;width:7px;height:7px}
+.mast{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:13px;border-bottom:1px solid var(--border)}.brand,.back{display:flex;align-items:center;gap:8px;text-decoration:none;font:600 13px/1 var(--mono);letter-spacing:.085em;color:var(--ink);min-height:44px}.brand-icon{color:var(--gold);font-size:25px;line-height:1}.back{color:var(--gold);letter-spacing:.03em}.hero{padding:27px 0 25px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.7fr);gap:26px;align-items:center}.hero h1{font:400 clamp(2.35rem,5.1vw,5.22rem)/.97 var(--serif);letter-spacing:-.047em;margin:11px 0 10px}.hero h1 span{color:var(--gold)}.lede{max-width:61ch;color:var(--muted);font-size:16px}.stamp-row{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:14px;color:var(--sub);font:600 11px/1.6 var(--mono);letter-spacing:.015em}.stamp-row strong{color:var(--gold);font-size:14px}.hero-fig{width:100%;max-width:390px;justify-self:end;display:block;border-radius:18px}
+.route-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.route-list button{min-width:0;text-align:left;display:grid;gap:2px;padding:11px 15px 13px;min-height:72px;background:var(--panel);border:1px solid var(--border);border-radius:10px}.route-list button[aria-pressed=true]{background:linear-gradient(110deg,#2d3329,#1a2b29);box-shadow:inset 3px 0 var(--gold)}.route-list .route-id{font:600 10px/1.3 var(--mono);letter-spacing:.1em;color:var(--gold)}.route-list strong{font:400 clamp(1.16rem,1.9vw,1.55rem)/1.1 var(--serif)}.route-list button span:last-child{color:var(--muted);font-size:12px}
+.control-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:14px 0 10px;min-height:44px}.segmented{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;flex:none;background:#0e1c20}.segmented button{border:none;border-right:1px solid var(--border);background:none;padding:0 12px;min-height:44px;font-size:13px;font-weight:680}.segmented button:last-child{border-right:none}.segmented button:focus-visible{outline-offset:-3px}.segmented button[aria-pressed=true]{box-shadow:inset 0 -2px var(--gold);background:#27332c}.size-field{display:flex;align-items:center;gap:9px}.size-field label,.bench-controls label{font:600 11px/1.3 var(--mono);letter-spacing:.03em;color:var(--muted)}select{background:#0d1b1f;border:1px solid #425759;border-radius:6px;min-width:0;min-height:44px;padding:6px 11px;font-size:14px}.panel{background:linear-gradient(155deg,#152529,var(--panel));border:1px solid var(--border);border-radius:12px;min-width:0}.traveler{display:grid;grid-template-columns:minmax(165px,.61fr) minmax(0,2.55fr) minmax(234px,1.13fr);gap:10px;align-items:start}.step-panel{grid-column:1;min-width:0;padding:11px 8px}.step-title{padding:4px 7px 8px}.step-panel button{display:flex;align-items:center;gap:6px;width:100%;padding:5px 5px;min-height:34px;border:1px solid transparent;border-radius:5px;background:transparent;text-align:left;font-size:12px;color:var(--muted)}.step-panel button[aria-current=step]{border-color:#a7794f;background:#2a332a;color:var(--ink)}.step-key{display:grid;place-items:center;width:24px;height:20px;flex:none;border-radius:3px;background:#22383a;border:1px solid #3f5b5b;color:#b2dbc9;font:600 11px/1 var(--mono)}.done .step-key{background:#193632;color:var(--mint)}.step-panel button[aria-current=step] .step-key{border-color:var(--gold);color:var(--gold);background:#332f26}.step-desc{overflow-wrap:anywhere}.drawing-panel{grid-column:2;overflow:hidden}.panel-head{display:flex;justify-content:space-between;gap:6px;align-items:center;padding:13px 14px 11px}.panel-head h2,.detail h2,.test-panel h2,.export-box h2,.sources h2,.prima-layout h2,.gate h2{font:400 clamp(1.32rem,2.1vw,1.88rem)/1.09 var(--serif);letter-spacing:-.022em;margin:4px 0}.panel-head h2{margin-bottom:0}.compact button{min-height:43px;padding-inline:9px;font-size:12px}.drawing{display:grid;background:#0d1a1e;min-width:0}.drawing svg{display:block;width:100%;height:auto;aspect-ratio:640/365}.drawing-caption{color:var(--muted);font-size:12px;padding:9px 14px 0}.step-controls{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:12px 14px}.line,.accent{min-height:44px;padding:6px 12px;border:1px solid #526765;border-radius:6px;background:#19292c;font-size:13px;font-weight:650;text-align:center}.accent{background:#f1bf83;color:#172221;border-color:#f1bf83}.accent:not(:disabled):hover{background:#ffd5a7}.detail{grid-column:3;padding:14px}.detail p,.test-panel p,.export-box p,.sources p,.prima-layout p,.gate p{color:var(--muted)}.detail > p{margin-top:9px;font-size:13px}.inspect{background:#0e1c20;border-left:2px solid var(--mint);padding:8px 10px;margin-top:12px;font-size:12px}.inspect p{margin-top:3px}.detail .separator{border-top:1px solid var(--border);padding-top:10px;color:var(--gold)}.detail-actions{margin-top:12px}.tools{margin-top:9px;font-size:12px}.tools summary{color:var(--ink);cursor:pointer;padding:8px 0;min-height:42px}.tools ul{padding-left:16px;color:var(--muted);display:grid;gap:6px}.tools ul li span{display:block}.tools .gap{color:#e0be99;padding-top:6px;font-size:12px}.tools a{font-weight:650}.gate,.formulas,.export-box{padding:17px}.gate p,.export-box p{margin:5px 0 12px}.bench-controls{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) minmax(0,1.6fr);gap:7px 16px;padding:13px}.bench-controls > div{min-width:0;display:flex;flex-direction:column;gap:5px}.bench-controls label{display:flex;justify-content:space-between}.bench-controls label output{color:var(--gold);font-weight:750}.bench-controls select{width:100%}.bench-controls input{width:100%;min-height:44px;accent-color:var(--mint);cursor:pointer;margin:0}.bench-controls p{grid-column:1/-1;color:var(--muted);font-size:13px}.bench-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:9px 0}.badge{border:1px solid #42635a;background:#1a302e;border-radius:8px;padding:7px 9px;min-width:0}.badge b{display:block;margin-bottom:2px;color:var(--mint);font:600 10px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.065em}.badge span{font-size:12px;color:var(--ink);line-height:1.3;display:block}.badge.warn{background:#352824;border-color:#896050}.badge.warn b{color:var(--rose)}.badge.neutral{background:#2c2e29;border-color:#726347}.badge.neutral b{color:var(--gold)}.bench-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}.test-panel{padding:14px;min-width:0}.test-panel p,.test-panel details{font-size:13px;margin-top:7px}.bench-visual{margin:10px 0 3px;background:#0e1b1f;border:1px solid #34494b;border-radius:7px;overflow:hidden}.bench-visual svg{width:100%;height:auto;display:block}.metrics{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(58px,1fr);font-size:12px;gap:0;margin:9px 0 0}.metrics dt,.metrics dd{margin:0;padding:4px 0;border-bottom:1px solid var(--border)}.metrics dt{color:var(--muted)}.metrics dd{text-align:right;font-family:var(--mono);color:var(--ink);font-weight:700}.test-panel .caveat{color:#d4c2a7;font-size:12px}.test-panel details summary,.formulas summary{cursor:pointer;min-height:44px;display:list-item;padding-top:12px}.neighbors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.neighbors span{font:600 11px/1.3 var(--mono);text-align:center;padding:6px 3px;border:1px solid #405a59;border-radius:4px;color:var(--muted)}.neighbors .hot{color:var(--rose);border-color:#a06153}.export-box{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}.export-box p{font-size:13px;margin-bottom:0}.button-row{display:flex;flex-wrap:wrap;gap:5px}.formulas{margin-top:10px}.formulas summary{padding:7px 0 0;min-height:32px;color:var(--mint)}.formulas p{color:var(--muted);font-size:13px;padding-top:7px}.formulas code{font:600 12px/1.6 var(--mono);color:var(--gold)}
+.prima-layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:10px;margin-top:12px;align-items:start}.prima-graphic{overflow:hidden}.prima-graphic .micro,.prima-graphic h2{margin-inline:14px}.prima-graphic .micro{margin-top:14px}.prima-graphic h2{margin-bottom:9px}.prima-graphic .drawing-caption{padding-bottom:12px}.prima-facts{padding:15px}.prima-facts p,.prima-facts ul{font-size:13px;margin-top:9px;color:var(--muted)}.prima-facts ul{padding-left:19px;display:grid;gap:7px}.prima-facts .inspect p{margin-top:2px}.prima-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:12px 0}.prima-stats > div{border:1px solid #385251;border-radius:6px;padding:7px 9px;background:#102225}.prima-stats strong{display:block;color:var(--gold);font:600 19px/1.2 var(--serif)}.prima-stats span{font-size:12px;color:var(--muted)}
+.sources{display:grid;grid-template-columns:minmax(150px,.55fr) minmax(0,1.45fr);gap:15px;align-items:start;margin:22px 0 20px;padding-top:15px;border-top:1px solid var(--border)}.sources p{font-size:13px}.sources-list{display:grid;grid-template-columns:1fr 1fr;gap:6px}.source{font-size:12px;color:var(--muted);border:1px solid var(--border);border-radius:7px;padding:7px 9px;min-width:0}.source a{display:inline-block;min-height:30px;padding-block:5px;font-weight:750}.source .doi{font-family:var(--mono);color:var(--gold);overflow-wrap:anywhere}.footer{border-top:1px solid var(--border);padding:11px 0 22px;font-size:12px;color:var(--sub);display:flex;justify-content:space-between;gap:8px}.footer span:first-child{font:600 10px/1.45 var(--mono);color:var(--gold);letter-spacing:.06em}
+@media(max-width:1080px){.wrap{width:calc(100% - 40px)}.traveler{grid-template-columns:154px minmax(0,1fr) 238px}.bench-grid{grid-template-columns:1fr 1fr}.isolation-panel{grid-column:auto}.hero h1{font-size:clamp(2.05rem,6vw,4.4rem)}}
+@media(max-width:900px){.traveler{grid-template-columns:150px minmax(0,1fr)}.detail{grid-column:2}.step-panel{grid-row:span 2}.drawing-panel{grid-column:2}.prima-layout{grid-template-columns:1fr}.hero{grid-template-columns:minmax(0,1fr) minmax(155px,.55fr)}.hero-fig{max-width:300px}.bench-summary{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:640px){.wrap{width:calc(100% - 24px)}.mast{padding-block:4px}.brand,.back{font-size:11px;gap:4px}.brand-icon{font-size:20px}.hero{grid-template-columns:1fr;padding:19px 0 13px;gap:10px}.hero-fig{display:none}.hero h1{font-size:clamp(2.1rem,8.8vw,3.35rem)}.hero .lede{font-size:14px}.stamp-row{gap:3px 10px;margin-top:8px;font-size:10px}.route-list{gap:6px}.route-list button{padding:8px;min-height:80px}.route-list strong{font-size:1.12rem}.route-list button span:last-child{font-size:11px}.route-list .route-id{font-size:9px}.segmented button{padding-inline:8px;font-size:12px}.control-row{margin:8px 0;gap:5px}.size-field{gap:3px}.size-field label{display:none}.size-field select{max-width:100%;font-size:12px;padding:6px 3px}.traveler{display:grid;grid-template-columns:1fr;gap:7px}.step-panel{grid-row:auto;grid-column:1;padding:5px 6px}.step-title{display:none}#steps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}.step-panel button{justify-content:center;min-height:44px;padding:3px 1px}.step-desc{display:none}.step-key{width:auto;min-width:24px}.drawing-panel,.detail{grid-column:1}.panel-head,.step-controls{padding:8px 9px}.drawing-caption{padding:6px 9px 0}.panel-head h2{font-size:1.21rem}.compact button{min-height:44px;padding-inline:7px;font-size:11px}.step-controls .line{padding:4px 6px;font-size:12px}.step-controls .micro{letter-spacing:0;font-size:10px}.detail{padding:11px}.bench-controls{grid-template-columns:minmax(0,1fr) minmax(0,.62fr);gap:7px 5px;padding:8px}.bench-controls select{font-size:12px;padding-inline:3px}.bench-controls .power-field{grid-column:1/-1}.bench-summary{grid-template-columns:1fr 1fr}.bench-grid{grid-template-columns:1fr;gap:7px}.test-panel{padding:10px}.export-box{display:grid;padding:10px}.button-row button{padding-inline:8px;font-size:12px}.sources{grid-template-columns:1fr;margin-top:14px;gap:8px}.sources-list{grid-template-columns:1fr}.footer{flex-direction:column}.prima-graphic .micro,.prima-graphic h2{margin-inline:10px}.prima-graphic h2{font-size:1.34rem}}
+@media(prefers-reduced-motion:reduce){*, *::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.wang-net{display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;align-items:center;margin:10px 14px 0;padding:4px 8px;background:#0f1e21;border:1px solid #34514e;border-radius:7px}.wang-net b,.wang-net span{display:block;font:600 10px/1.4 var(--mono)}.wang-net b{color:var(--mint);letter-spacing:.07em}.wang-net span{color:var(--muted)}.wang-net svg{display:block;width:100%;height:55px;max-width:420px}
+@media(max-width:640px){.wang-net{margin:8px 8px 0;gap:6px;grid-template-columns:1fr}.wang-net > div:first-child{display:flex;justify-content:space-between;gap:8px}.wang-net svg{height:48px}.size-field label{display:block;position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
+</style>
+</head>
+<body>
+<header class="mast wrap">
+  <a class="brand" href="https://buildthesimulation.com/"><span class="brand-icon" aria-hidden="true">◈</span><span>BUILD<span class="light">THE</span>SIMULATION</span></a>
+  <a class="back" href="https://buildthesimulation.com/simulations/foundry/">↖ <span>Foundry Atlas</span></a>
+</header>
+<main class="wrap" id="main">
+  <section class="hero" aria-labelledby="page-title">
+    <div>
+      <div class="eyebrow"><span class="signal"></span> MATERIALS WORKBOOK <b>PV–12</b></div>
+      <h1 id="page-title">Photovoltaic retina<span>.</span></h1>
+      <p class="lede">Trace the 2012 research pixel from silicon-on-insulator to three separate bench checks. Compare where first-generation PRIMA differs, and where its foundry record stops.</p>
+      <div class="stamp-row"><span><strong>12</strong> source panels</span><span><strong>8</strong> lithography masks</span><span><strong>3</strong> research widths</span></div>
+    </div>
+    <svg class="hero-fig" viewBox="0 0 390 187" aria-hidden="true"><defs><pattern id="hero-grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12V0H12" fill="none" stroke="#30464b" stroke-width="0.6"/></pattern></defs><rect x="1" y="1" width="388" height="185" rx="18" fill="#0f1c20" stroke="#253c41"/><rect x="8" y="8" width="374" height="170" rx="12" fill="url(#hero-grid)"/><g transform="translate(215 93) scale(1 .78) rotate(-15)"><g fill="#172c31" stroke="#688b84" stroke-width="2"><path d="M-53 -31 0 -62 53 -31V31L0 62 -53 31z"/><path d="M-163 -31 -110 -62 -57 -31V31l-53 31-53-31z"/><path d="M57 -31l53-31 53 31v62l-53 31-53-31z"/></g><path d="M-46 -27 0 -54l46 27v54L0 54l-46-27z" fill="#435b50" stroke="#e0a96b" stroke-width="2"/><path d="M0 -47V-17M-40 24l25-15m55 15L15 9" fill="none" stroke="#96bab1"/><g fill="#172c31" stroke="#efc28c" stroke-width="2"><circle cx="0" cy="0" r="16"/><circle cx="-110" cy="0" r="12"/><circle cx="110" cy="0" r="12"/></g><circle cx="0" cy="0" r="7" fill="#81ddbc"/></g><path d="M190 65V32H87M236 116v35h80" fill="none" stroke="#c79664" stroke-dasharray="3 5"/><g fill="#a6bfba" font-family="monospace" font-size="10" letter-spacing="1.1"><text x="26" y="31">FIG. PV/12</text><text x="248" y="167">PLANAR SILICON</text></g></svg>
+  </section>
+  <nav class="route-list" aria-label="Choose a device branch">
+    <button data-route="wang" aria-pressed="true" type="button"><span class="route-id">01 / SOURCE ROUTE</span><strong>Wang–Palanker 2012</strong><span>Research wafer traveler and bench</span></button>
+    <button data-route="prima" aria-pressed="false" type="button"><span class="route-id">02 / PRODUCT DOSSIER</span><strong>First-generation PRIMA</strong><span>Public architecture · process unavailable</span></button>
+  </nav>
+  <section id="wang" aria-label="Wang 2012 interactive route">
+    <div class="control-row">
+      <div class="segmented" role="group" aria-label="Workspace">
+        <button data-mode="traveler" aria-pressed="true" type="button">Wafer traveler</button><button data-mode="bench" aria-pressed="false" type="button">Bench checks</button>
+      </div>
+      <div class="size-field"><label for="size">Research pixel</label><select id="size"><option value="70">70 µm · Small</option><option value="140" selected>140 µm · Medium</option><option value="280">280 µm · Large</option></select></div>
+    </div>
+    <div id="traveler" class="traveler">
+      <aside class="panel step-panel" aria-label="Fabrication stage chooser">
+        <div class="micro step-title">FIG. 01 / TRAVELER</div>
+        <div id="steps" aria-label="Wafer stages"></div>
+      </aside>
+      <div class="panel drawing-panel">
+        <div class="panel-head"><div><span class="micro">MATERIAL VIEW</span><h2 id="drawing-title">Device cross-section</h2></div><div class="segmented compact" role="group" aria-label="View"><button data-view="section" type="button" aria-pressed="true">Section</button><button data-view="patch" type="button" aria-pressed="false">Oblique</button></div></div>
+        <div id="drawing" class="drawing"></div>
+        <p id="drawing-caption" class="drawing-caption"></p>
+        <div id="wang-net" class="wang-net" hidden><div><b>RESEARCH PIXEL</b><span>In-pixel series wiring</span></div><div id="wang-net-svg"></div></div>
+        <div class="step-controls"><button class="line" type="button" id="prev">← Previous</button><span id="progress" class="micro"></span><button class="line" type="button" id="next">Next →</button></div>
+      </div>
+      <article class="panel detail" aria-labelledby="current-title">
+        <div class="micro" id="current-source"></div><h2 id="current-title"></h2><p id="current-description"></p>
+        <div class="inspect"><b>What to check</b><p id="current-check"></p></div>
+        <p class="micro separator" id="current-masks"></p>
+        <details class="tools"><summary>Register tools and missing capabilities</summary><div id="current-tools"></div></details>
+        <div class="detail-actions"><button class="accent" type="button" id="load-witness">Load released witness →</button></div>
+      </article>
+    </div>
+    <div id="bench" hidden>
+      <div id="need-release" class="panel gate" hidden>
+        <div class="micro">CHECKPOINT REQUIRED</div><h2>Finish the wafer traveler first.</h2><p>You can inspect the published source values now. Numeric witnesses stay locked until the final release checkpoint is selected.</p>
+        <button class="accent" type="button" id="bench-load">Load released witness</button>
+      </div>
+      <div id="bench-controls" class="panel bench-controls" hidden>
+        <div><label for="fault">Synthetic case</label><select id="fault"></select></div>
+        <div><label for="target">Faulted boundary</label><select id="target" disabled><option value="1">C → N1</option><option value="2">C → N2</option><option value="3">C → N3</option><option value="4">C → N4</option><option value="5">C → N5</option><option value="6">C → N6</option></select></div>
+        <div class="power-field"><label for="power">Virtual optical power <output id="power-read" for="power">50 µW</output></label><input id="power" type="range" min="0" max="80" step="1" value="50"></div>
+        <p id="fault-detail"></p>
+      </div>
+      <div id="bench-run" hidden>
+        <div id="bench-summary" class="bench-summary" aria-label="Results by witness"></div>
+        <div class="bench-grid">
+          <article class="panel test-panel" aria-labelledby="optics-title">
+            <div class="micro">01 / SOURCE SLOPE + VIRTUAL INPUT</div><h2 id="optics-title">Light conversion</h2>
+            <p>Single-diode test structure, <b>880 nm</b>, zero voltage bias. This is not the three-diode array output.</p>
+            <div id="optics-plot" class="bench-visual"></div><dl id="optics-readout" class="metrics"></dl><p id="optics-domain" class="caveat"></p>
+          </article>
+          <article class="panel test-panel" aria-labelledby="dark-title">
+            <div class="micro">02 / PUBLISHED RANGE + SYNTHETIC POINT</div><h2 id="dark-title">Reverse dark current</h2>
+            <p>Separate three-junction series witness at the paper’s stated room-temperature reverse-bias condition.</p>
+            <div id="dark-plot" class="bench-visual"></div><dl id="dark-readout" class="metrics"></dl><p class="caveat">The comparison range is not a device specification or a fitted current–voltage curve. This bench has no measurement uncertainty model.</p>
+          </article>
+          <article class="panel test-panel isolation-panel" aria-labelledby="iso-title">
+            <div class="micro">03 / SYNTHETIC CIRCUIT ONLY</div><h2 id="iso-title">Dry interpixel isolation</h2>
+            <p>A seven-node resistor network, not an optical or electrolyte crosstalk model. There is no source-calibrated neighbor resistance in the 2012 evidence used here.</p>
+            <div id="isolation-plot" class="bench-visual"></div><dl id="isolation-readout" class="metrics"></dl>
+            <details><summary>Inspect all six neighbor nodes</summary><div id="neighbor-readout"></div></details>
+          </article>
+        </div>
+        <div class="panel export-box"><div><span class="micro">VIRTUAL SPECIMEN RECORD</span><h2>Download this witness</h2><p>Includes the fixture assumptions, the source conditions, and a stage ledger. No product mask files.</p></div><div class="button-row"><button class="line" type="button" id="download-json">Report JSON</button><button class="line" type="button" id="download-csv">Checks CSV</button><button class="line" type="button" id="download-svg">Section SVG</button></div></div>
+      </div>
+      <details class="panel formulas"><summary>Equations, fixture assumptions and equipment fit</summary><div id="formulas-detail"></div></details>
+    </div>
+  </section>
+  <section id="prima" aria-label="First-generation PRIMA architecture only" hidden>
+    <div class="prima-layout">
+      <article class="panel prima-graphic"><div class="micro">PUBLIC ARCHITECTURE / CONCEPT DRAWING</div><h2>Two junctions on a linked return mesh</h2><div id="prima-drawing" class="drawing"></div><p class="drawing-caption">Seven symbolic sites, not the 378-site product layout or an operating diagram. The shunt and return mesh are architectural facts; physical trace geometry is not reproduced.</p></article>
+      <article class="panel prima-facts"><div class="micro">PRODUCT PROCESS / LOCKED</div><h2>PRIMA is not this wafer traveler.</h2><p>The first-generation public description identifies the chip and electrical topology. It does not give a verified product fabrication or bench test of record.</p><div class="prima-stats"><div><strong>378</strong><span>hexagonal pixels</span></div><div><strong>100 µm</strong><span>pixel width</span></div><div><strong>2 mm</strong><span>chip width</span></div><div><strong>30 µm</strong><span>chip thickness</span></div></div>
+      <ul><li>Each pixel places two series photodiodes between the central active node and a circumferential return. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8792035/" target="_blank" rel="noopener">Palanker 2022</a></li><li>The returns are linked in a hexagonal mesh. <a href="https://web.stanford.edu/~palanker/publications/Monopolar_simulator_2022.pdf" target="_blank" rel="noopener">Chen 2022</a></li><li>Polysilicon shunts are reported for commercial 100 µm pixels. That does not establish a product process sequence. <a href="https://strathprints.strath.ac.uk/94291/1/Shin-etal-JNE-2025-Amorphous-silicon-resistors-enable-smaller-pixels-in-photovoltaic-retinal-prosthesis.pdf" target="_blank" rel="noopener">Shin 2025</a></li></ul>
+      <div class="inspect"><b>Unavailable in this branch</b><p>Product masks, wafer traveler, released layer stack, lot acceptance criteria and matched numeric bench calibration. The 2012 process steps and bench values are not transferred here.</p></div>
+      </article>
+    </div>
+  </section>
+  <section class="sources" aria-labelledby="source-title"><div><span class="micro">EVIDENCE REGISTER</span><h2 id="source-title">Read the originals.</h2><p>Source measurements, model outputs, and proprietary records are kept separate throughout.</p></div><div id="sources-list" class="sources-list"></div></section>
+  <p id="status" class="sr-only" role="status"></p>
+  <noscript><p class="panel gate">This portable lab uses JavaScript to draw and calculate the virtual specimens. See the linked Wang fabrication paper for the original wafer sequence and optical evidence.</p></noscript>
+</main>
+<footer class="wrap footer"><span>BUILDTHESIMULATION / FOUNDRY WORKBOOK PV–12</span><span>Virtual only. No tissue model, light exposure guidance, clinical performance estimate or human-use workflow.</span></footer>
+<script>(function (root, create) {
+  const data = create();
+  if (typeof module !== 'undefined' && module.exports) module.exports = data;
+  else root.PVEvidence = data;
+})(typeof globalThis === 'undefined' ? this : globalThis, function () {
+  'use strict';
+  const sources = {
+    wang: {name: 'Wang et al. · J. Neural Eng. (2012)', doi: '10.1088/1741-2560/9/4/046014', url: 'https://web.stanford.edu/~palanker/publications/fabrication_retinal_prosthesis_2012.pdf', detail: '§2.1 and Figs. 1–5: wafer sequence and visual witnesses. §§2.2, 3.1–3.2 and Figs. 8–9: dark and optical evidence. Research device only.'},
+    prima: {name: 'Palanker et al. · Nat. Commun. (2022)', doi: '10.1038/s41467-022-28125-x', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8792035/', detail: 'Device paragraph and Fig. 1: first-generation PRIMA dimensions, 378-site array and two series photodiodes per pixel.'},
+    mesh: {name: 'Chen et al. · J. Neural Eng. (2022)', doi: '10.1088/1741-2552/ac8ed8', url: 'https://web.stanford.edu/~palanker/publications/Monopolar_simulator_2022.pdf', detail: 'Introduction and Fig. 1A: circumferential local return electrodes connected in a hexagonal mesh. Used for topology only.'},
+    shunt: {name: 'Shin et al. · J. Neural Eng. (2025)', doi: '10.1088/1741-2552/ae0522', url: 'https://strathprints.strath.ac.uk/94291/1/Shin-etal-JNE-2025-Amorphous-silicon-resistors-enable-smaller-pixels-in-photovoltaic-retinal-prosthesis.pdf', detail: '§2.2: polysilicon shunts in commercial 100 µm PRIMA pixels. Later small-pixel process variants excluded.'}
+  };
+  const tools = {
+    '01-01': ['KLayout / KiCad / FreeCAD workstation','Mask drafting; no original mask data or foundry-qualified design kit.'],
+    '02-01': ['Karl SUSS MA6/BA6','Contact alignment role, not verified registration or resist/process qualification.'],
+    '02-07': ['Laurell WS-650Mz','Planar top resist spin role only; cannot substitute for conformal trench spray.'],
+    '03-01': ['Temescal BJD 1800','Directional metallization analog, not proof of the source Ti/Pt process.'],
+    '03-03': ['Lesker PVD 75 RF/DC','Sputtering role; target, film and lift-off stack not qualified.'],
+    '03-07': ['Oxford Plasmalab 80 Plus','PECVD silicon nitride role. Inspection/replay only; not thermal oxidation or LPCVD polysilicon.'],
+    '04-01': ['Oxford PlasmaPro 80 RIE','Thin dielectric pattern transfer only; not deep silicon etching or XeF₂.'],
+    '04-03': ['Oxford PlasmaPro 100 Cobra 300','Deep-silicon tool-class match; no verified pattern loading or landing on BOX.'],
+    '04-06': ['Wet-processing bench','Generic wet role; disclosed thinning chemistry does not qualify this station.'],
+    '04-08': ['DISCO DAG810','Back-grind role; no qualified recipe for this fragile stack.'],
+    '04-09': ['G&P POLI-500 AC','Planarization analog only. No verified stop on this hard mask.'],
+    '05-04': ['J.A. Woollam alpha-SE','Film witness metrology analog only. Does not establish either coating process.'],
+    '09-02': ['Keysight B1500A','Analyzer role; source used HP 4155A. Fixture and pA-range resolution not established.'],
+    '11-05': ['Thorlabs PM100D','Optical power measurement role. Sensor and specimen-plane transfer not qualified.'],
+    '12-01': ['ZEISS SteREO Discovery V12','Optical surface inspection role, not proof of 5 µm trench dimensions.'],
+    '13-01': ['ZEISS Gemini 560','Section inspection reference; no measured site data.'],
+    '15-14': ['Retinal prosthesis bench','Custom register exhibit, not a calibrated dark-current or photovoltaic test.'],
+    '16-10': ['Ultrasonic cleaner','Cleaning exhibit only, not a validated buried-oxide release station.']
+  };
+  const stages = [
+    {id:'soi', key:'IN', short:'SOI input', title:'Receive silicon-on-insulator', fig:'§2.1', masks:[], tools:[], gap:'External SOI supply. The buried-oxide thickness and wafer drawings are not reconstructed.', fact:'The group used boron-doped SOI with a 30 µm silicon device layer above buried oxide (BOX) and a silicon handle.', inspect:'Verify material identity, device layer and oxide stop before discussing a mask transfer.', result:'Unpatterned device silicon · BOX · handle', stack:'SOI'},
+    {id:'window', key:'A', short:'Hard-mask window', title:'Define the isolation windows', fig:'Fig. 1(a), §2.1.1', masks:[1], tools:['01-01','02-01','04-01'], gap:'No thermal oxidation module qualification and no original mask layouts.', fact:'A thermal-oxide hard mask is patterned for both the internal diode partitions and the future interpixel boundary.', inspect:'At this checkpoint the oxide opening is patterned; device silicon remains continuous beneath it.', result:'Windowed thermal-oxide hard mask', stack:'Oxide / SOI'},
+    {id:'drie', key:'B', short:'Deep silicon etch', title:'Etch down to the buried oxide', fig:'Figs. 1(b), 2, §2.1.1', masks:[], tools:['04-03','13-01'], gap:'Same tool class does not prove a qualified dry etch at the original aspect ratio.', fact:'The reported nominal isolation trenches are 5 µm wide and extend through the 30 µm device layer to BOX.', inspect:'Check bottom landing and sidewalls. An unetched silicon web can connect neighboring device regions.', result:'Two kinds of trench, both initially open', stack:'Trenched Si / BOX / handle'},
+    {id:'fill', key:'C', short:'Liner + poly fill', title:'Isolate sidewalls and fill the trenches', fig:'Figs. 1(c), 3, §2.1.1', masks:[], tools:['13-01'], gap:'Thermal liner growth and conformal LPCVD polysilicon fill are exterior capabilities. PECVD is not an equivalent fill.', fact:'Thermal oxide lines the etched sidewalls. Conformal LPCVD polysilicon fills both kinds of trench and leaves overburden.', inspect:'A filled trench can still isolate diode islands if its dielectric liner is intact. Do not treat visible fill as a short.', result:'Oxide-lined trenches temporarily filled with polysilicon', stack:'Poly overburden / oxide-lined Si'},
+    {id:'cmp', key:'D', short:'Planarize', title:'Remove polysilicon overburden', fig:'Fig. 1(d), §2.1.1', masks:[], tools:['04-09','05-04'], gap:'Matching the CMP role does not establish endpoint, planarization or dishing for this wafer.', fact:'CMP leaves trench fill in place while removing surface polysilicon, stopping on the oxide hard mask.', inspect:'Differentiate a planar surface from a cleared entire trench; the fill remains within the lined walls.', result:'Planar oxide surface with trench fill retained', stack:'Planarized SOI'},
+    {id:'n-plus', key:'E', short:'n⁺ junctions', title:'Form n⁺ photodiode regions', fig:'Fig. 1(e), §2.1.2', masks:[2], tools:['02-01'], gap:'Phosphorus pre-deposition and its qualification are not represented by a coating or diffusion lookalike.', fact:'Phosphorus pre-deposition in patterned n⁺ regions forms junctions in the originally p-type silicon.', inspect:'The drawn n⁺ locations are symbolic; this bench does not model activated dopant depth or junction profiles.', result:'n⁺ regions in the p-type device layer', stack:'n⁺ regions / p-type Si'},
+    {id:'p-plus', key:'F', short:'p⁺ contacts', title:'Add p⁺ contact regions', fig:'Fig. 1(f), §2.1.2', masks:[3], tools:['02-01'], gap:'Boron implantation and dopant qualification are external. No implant dose or equipment settings in this bench.', fact:'The researchers mask and protect the n⁺ regions, introduce screen oxide, and implant boron into separate contact regions.', inspect:'Distinguish the p⁺ contact from the n⁺ region forming the diode; neither marker is an actual mask.', result:'Distinct n⁺ and p⁺ regions, before routing', stack:'n⁺ and p⁺ regions / p-type Si'},
+    {id:'anneal', key:'G', short:'Oxide + anneal', title:'Form the lower optical film', fig:'Fig. 1(g), §2.1.3', masks:[], tools:['04-06','05-04'], gap:'Thermal oxidation, anneal and optical stack transfer are not qualified. No layer solver is implied.', fact:'The earlier top oxide is removed and a new thermal oxide is grown before thermal drive-in. The paper distinguishes a 60 nm design target from the 80 nm step described in §2.1.3.', inspect:'The distinction between designed and as-described film is retained; the bench does not correct responsivity for either value.', result:'Thermal oxide plus annealed regions', stack:'Thermal optical film / device Si'},
+    {id:'route', key:'H', short:'First vias + Ti/Pt', title:'Connect the photodiodes in series', fig:'Figs. 1(h), 4(b), §2.1.3', masks:[4,5], tools:['02-01','04-01','03-01'], gap:'Research first-metal layout and release/test tolerances are not public masks.', fact:'First vias land on diode contacts; patterned Ti/Pt joins the three junctions within each research pixel.', inspect:'Routing is symbolic. A circuit view can show series connectivity without claiming pad or track dimensions.', result:'Three series-connected diode regions per pixel', stack:'Ti/Pt routing / thermal oxide'},
+    {id:'nitride', key:'I', short:'Nitride + second vias', title:'Passivate routing and reopen contacts', fig:'Fig. 1(i), §2.1.3', masks:[6], tools:['03-07','04-01','05-04'], gap:'PECVD cabinet shows the station role only. No film uniformity or optical performance is qualified.', fact:'PECVD silicon nitride completes the cited antireflection stack and separates metal levels. Second vias expose the electrode nodes.', inspect:'Separate opened contacts from everywhere the dielectric is meant to remain intact.', result:'Nitride film with second contact openings', stack:'Silicon nitride / Ti/Pt / SiO₂'},
+    {id:'reopen', key:'J', short:'Reopen outer trenches', title:'Reopen only the interpixel trenches', fig:'Figs. 1(j), 5, §2.1.3', masks:[7], tools:['02-01','13-01'], gap:'No identified XeF₂ station. Generic RIE is not the selective polysilicon reopen.', fact:'The documented XeF₂ step removes selected fill between pixels. Internal diode-isolation trenches remain oxide-lined and filled.', inspect:'A backside view after release can distinguish open outer gaps from internal filled partitions.', result:'Open outer gap; internal poly fill retained; BOX still present', stack:'Selectively opened trenches'},
+    {id:'electrode', key:'K', short:'Pattern IrOₓ', title:'Form the two electrode features', fig:'Figs. 1(k), 4(b), §2.1.3', masks:[8], tools:['02-07','03-03','12-01'], gap:'Conformal spray resist is not in the register; spin coating represents only the subsequent top-resist role. SIROF parameters are unqualified.', fact:'The paper describes a trench-protecting spray coating followed by top resist patterning, then sputtered iridium oxide lift-off to define the central contact and local return.', inspect:'Look for distinct center and surrounding electrodes. Dark or optical tests cannot by themselves establish film adhesion.', result:'Front side complete; handle and BOX still support the die', stack:'IrOₓ / nitride / first metal / SOI'},
+    {id:'release', key:'L', short:'Thin + release', title:'Remove the handle and free the array', fig:'Figs. 1(l), 5, §2.1.4', masks:[], tools:['04-08','04-06','16-10','12-01','13-01'], gap:'Wet handle removal and controlled fracture of suspended BOX are not qualified. The register ultrasonic cleaner is not a release model.', fact:'The protected front side remains in custody through backside grinding and selective wet removal of the remaining handle. The source then breaks suspended BOX at the outer trenches to release the arrays.', inspect:'The original drawing preserves oxide under silicon. Only the across-gap BOX is removed at release; internal fill is retained.', result:'Released 30 µm device silicon; outer gaps open through the device', stack:'Released PV array'}
+  ];
+  const masks = ['Deep-trench pattern','n⁺ window','p⁺ window','Via one','Ti/Pt metal','Via two','Outer-trench reopen','IrOₓ electrodes'];
+  const sizes = {
+    '70': {widthUm:70, activeUm:20, rho:0.36, label:'Small'},
+    '140': {widthUm:140, activeUm:40, rho:0.40, label:'Medium'},
+    '280': {widthUm:280, activeUm:80, rho:0.33, label:'Large'}
+  };
+  const faults = {
+    nominal: {name:'Nominal witness', detail:'Clean geometry and arbitrary low leakage. This is a virtual control, not a fabricated specimen.'},
+    leakage: {name:'Leaky junction', detail:'Raise only the separate dark-witness current. This is a synthetic sample, not a diode-physics fit.'},
+    shade: {name:'Optical obscuration', detail:'Block 55% of the single-diode coupon’s incident power in the model. The three-diode dark witness and dry fixture do not change.'},
+    trench: {name:'Conductive silicon web', detail:'An assumed unetched conductive bridge spans the selected outer gap. This is not ordinary dielectric-lined polysilicon fill.'},
+    stringer: {name:'Across-gap metal stringer', detail:'A synthetic surface bridge joins the same dry fixture nodes as the silicon web. Geometry distinguishes them; the chosen electrical trace does not.'},
+    oxide: {name:'Suspended BOX remnant', detail:'An insulating strip remains across the selected opening. The geometric release check fails without adding a conductive path to the dry fixture.'}
+  };
+  const prima = {widthUm:2000, thicknessUm:30, pixelCount:378, pixelWidthUm:100, seriesDiodes:2, returnTopology:'Circumferential electrodes joined in a hexagonal mesh', shunt:'Polysilicon shunt reported for commercial 100 µm pixels', gaps:['Product mask files and confirmed layers','Process of record and wafer traveler','Released cross-section and lot-level test limits','Same-specimen optical and electrical bench calibration']};
+  return {sources, tools, stages, masks, sizes, faults, prima};
+});
+</script>
+<script>(function (root, create) {
+  if (typeof module !== 'undefined' && module.exports) module.exports = create(require('./evidence.cjs'));
+  else root.PVModel = create(root.PVEvidence);
+})(typeof globalThis === 'undefined' ? this : globalThis, function (e) {
+  'use strict';
+  const revision = 'PV12.1';
+  const constants = Object.freeze({wavelengthNm:880, electronChargeC:1.602176634e-19, planckJs:6.62607015e-34, lightSpeedMps:299792458, deviceThicknessUm:30, outerGapUm:5, nominalDarkPA:8, leakyDarkPA:240, sourceDarkMinPA:1, sourceDarkMaxPA:100, obscuredTransmission:.45, displayPowerMaxUW:80, fixtureSourceV:.1, fixtureTerminationOhm:1e9, fixtureGapOhm:1e13, fixtureBridgeOhm:5e7, demoTransferLimit:.01, demoOpticalFraction:.85});
+  const cfg = Object.freeze({route:'wang', stage:0, size:140, fault:'nominal', target:1, power:50});
+  const releaseIndex = e.stages.length - 1;
+  const index = Object.fromEntries(e.stages.map((v, i) => [v.id, i]));
+  const circle = Array.from({length:6}, (_, n) => [Math.cos(n*Math.PI/3), Math.sin(n*Math.PI/3)]);
+  const requireFinite = (n, label) => {if (!Number.isFinite(n)) throw new TypeError(label+' must be a number');return n;};
+  const restrict = (n,lo,hi,label) => {requireFinite(n,label);if(n<lo||n>hi)throw new RangeError(label+' outside model bounds');return n;};
+  const integer = (n,lo,hi,label) => {if(!Number.isInteger(n))throw new TypeError(label+' must be an integer');return restrict(n,lo,hi,label);};
+  const own = (table, k) => Object.prototype.hasOwnProperty.call(table,k);
+  function normalize(input = {}) {
+    const v = {...cfg,...input};
+    if (v.route === 'prima') return {route:'prima'};
+    if (v.route !== 'wang') throw new TypeError('Unknown route');
+    if (typeof v.stage === 'string' && own(index,v.stage)) v.stage=index[v.stage];
+    integer(v.stage,0,releaseIndex,'stage');
+    integer(v.target,1,6,'neighbor');
+    restrict(v.power,0,constants.displayPowerMaxUW,'virtual power');
+    if (!own(e.sizes,v.size)) throw new RangeError('Unknown nominal research pixel width');
+    if (!own(e.faults,v.fault)) throw new TypeError('Unknown synthetic fault');
+    return {route:'wang',stage:v.stage,size:Number(v.size),target:v.target,power:v.power,fault:v.fault};
+  }
+  function quantEfficiency(rho, wavelengthNm=constants.wavelengthNm) {
+    requireFinite(rho,'responsivity');requireFinite(wavelengthNm,'wavelength');
+    if(rho<0||wavelengthNm<=0)throw new RangeError('invalid responsivity or wavelength');
+    const c=constants;
+    return rho*c.planckJs*c.lightSpeedMps/(c.electronChargeC*wavelengthNm*1e-9);
+  }
+  function optics(size,power,opticalObscuration=false) {
+    if(!own(e.sizes,size))throw new RangeError('Unknown nominal research pixel width');
+    restrict(power,0,constants.displayPowerMaxUW,'virtual power');
+    const c=constants, rho=e.sizes[size].rho, transmission=opticalObscuration?c.obscuredTransmission:1;
+    const specimen='Wang 2012 one-diode test structure';
+    return {specimen, source:'Wang §3.2 and Fig. 9(b)', wavelength_nm:c.wavelengthNm, voltage_bias_V:0,
+      sourceResponsivity_A_per_W:rho, derivedEQE:quantEfficiency(rho), incidentVirtualPower_uW:power,
+      virtualTransmittedFraction:transmission, transmittedVirtualPower_uW:power*transmission,
+      predictedMagnitude_uA:rho*power*transmission, unobscuredMagnitude_uA:rho*power,
+      teachingThresholdFraction:c.demoOpticalFraction,
+      result: power===0?'no-input':(transmission<c.demoOpticalFraction?'attenuated':'nominal'),
+      domain: Number(size)===140?'The display range lies within the approximate span of the published medium one-diode plot. Line uses the reported slope, not digitized samples.':'The source reports this size’s slope. The common display range is illustrative; it does not establish that size’s measured power span.'};
+  }
+  function dark(leaky=false) {
+    const c=constants,p=leaky?c.leakyDarkPA:c.nominalDarkPA;
+    const result=p>c.sourceDarkMaxPA?'above-source-span':(p<c.sourceDarkMinPA?'below-source-span':'within-source-span');
+    return {specimen:'Wang 2012 three-series-junction configuration', evidence:'Wang §3.1 reported reverse-bias dark-current span at room temperature',
+      interval_pA:[c.sourceDarkMinPA,c.sourceDarkMaxPA], syntheticWitness_pA:p,result,
+      caveat:'This is a single synthetic value compared to a reported range, not a fitted I–V curve or a lot acceptance limit.'};
+  }
+  function hexVertices(cx,cy,width) {
+    const r=width/Math.sqrt(3); return circle.map((_,i)=>[cx+r*Math.cos((i+.5)*Math.PI/3),cy+r*Math.sin((i+.5)*Math.PI/3)]);
+  }
+  function coupon(size) {
+    if(!own(e.sizes,size))throw new RangeError('Unknown nominal research pixel width');
+    const width=e.sizes[size].widthUm, pitch=width+constants.outerGapUm;
+    const centers=[[0,0],...circle.map(([x,y])=>[pitch*x,pitch*y])];
+    return {widthUm:width,activeDiameterUm:e.sizes[size].activeUm,modelCenterDistanceUm:pitch,thicknessUm:constants.deviceThicknessUm,
+      outerGapUm:constants.outerGapUm, drawingNote:'Seven-pixel teaching patch; nominal width is treated as across flats in this rendering. Not the original mask, packing or pitch convention.',
+      pixels:centers.map(([x,y],i)=>({id:i?'N'+i:'C',x,y,poly:hexVertices(x,y,width)}))};
+  }
+  function geometry(state) {
+    const s=normalize(state);
+    if(s.route!=='wang')return null;
+    const i=s.stage, filled=i>=index.fill, outerReopened=i>=index.reopen, last=i===releaseIndex;
+    const siliconWeb=s.fault==='trench'&&i>=index.drie;
+    const surfaceStringer=s.fault==='stringer'&&i>=index.electrode;
+    const residualBOX=s.fault==='oxide'&&last;
+    const bridge=siliconWeb||surfaceStringer;
+    return {specimen:'Wang 2012 teaching section', stage:e.stages[i].id, stageNumber:i, stageLabel:e.stages[i].title, masks:e.stages.slice(0,i+1).flatMap(d=>d.masks), nominalWidthUm:s.size, activeDiameterUm:e.sizes[s.size].activeUm, deviceThicknessUm:constants.deviceThicknessUm, trenchNominalWidthUm:constants.outerGapUm,
+      innerTrench:i<index.drie?'not-etched':(filled?'oxide-lined-fill':'open-to-BOX'),
+      outerTrench:i<index.drie?'not-etched':(outerReopened?'selectively-reopened':(filled?'oxide-lined-fill':'open-to-BOX')),
+      crossGapBOX: i>=index.drie&&(!last||residualBOX), underSiBOX:true,
+      siliconHandle:!last, siliconWeb, surfaceStringer, residualBOX, bridge,
+      faultEdge: (siliconWeb||surfaceStringer||residualBOX)?'C–N'+s.target:null,
+      sectionReleaseResult: !last?'not-released':(bridge||residualBOX?'obstructed':'clear'),
+      caveat:'Geometry is an illustrative section and seven-pixel patch, not original layout or a material simulation.'};
+  }
+  function edges(bridge, target) {
+    const v=[];
+    for(let i=1;i<=6;i++) {
+      v.push({a:0,b:i,role:bridge&&i===target?'conductive-bridge':'center-gap',resistance_Ohm:bridge&&i===target?constants.fixtureBridgeOhm:constants.fixtureGapOhm});
+      v.push({a:i,b:i%6+1,role:'ring-gap',resistance_Ohm:constants.fixtureGapOhm});
+    }
+    return v;
+  }
+  function linear(A,b){
+    const n=b.length, m=A.map((row,i)=>[...row,b[i]]);
+    for(let j=0;j<n;j++){
+      let p=j;
+      for(let i=j+1;i<n;i++)if(Math.abs(m[i][j])>Math.abs(m[p][j]))p=i;
+      if(p!==j)[m[j],m[p]]=[m[p],m[j]];
+      const d=m[j][j]; if(!Number.isFinite(d)||Math.abs(d)<1e-25)throw new RangeError('Singular fixture');
+      for(let k=j;k<=n;k++)m[j][k]/=d;
+      for(let i=0;i<n;i++)if(i!==j){const f=m[i][j];for(let k=j;k<=n;k++)m[i][k]-=f*m[j][k];}
+    }
+    return m.map(row=>row[n]);
+  }
+  function isolation(bridge=false,target=1) {
+    integer(target,1,6,'neighbor');
+    const c=constants, n=6, source=c.fixtureSourceV, gTerm=1/c.fixtureTerminationOhm;
+    const graph=edges(bridge,target);
+    // Scale unknown nodal equations to nS for conditioning. Solve the six unknown voltages.
+    const A=Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>i===j?gTerm*1e9:0));
+    const b=Array(n).fill(0);
+    for(const {a,b:j,resistance_Ohm} of graph){
+      const g=1e9/resistance_Ohm;
+      A[j-1][j-1]+=g;
+      if(a){A[a-1][a-1]+=g; A[a-1][j-1]-=g; A[j-1][a-1]-=g;}
+      else b[j-1]+=g*source;
+    }
+    const voltages=[source,...linear(A,b)];
+    const leakage=Array.from({length:7},(_,i)=>i?voltages[i]*gTerm:0), kcl=[0,...leakage.slice(1)];
+    for(const {a,b,resistance_Ohm} of graph) {
+      const flow=(voltages[a]-voltages[b])/resistance_Ohm; kcl[a]+=flow;kcl[b]-=flow;
+    }
+    const transfer=Math.max(...voltages.slice(1).map(x=>Math.abs(x/source)));
+    return {specimen:'Synthetic dry seven-node resistive coupon', source:'Uncalibrated fixture model; no published interpixel resistance dataset supplied',
+      virtualCenter_V:source, victimTermination_Ohm:c.fixtureTerminationOhm, nominalGap_Ohm:c.fixtureGapOhm,
+      bridgeResidual_Ohm:bridge?c.fixtureBridgeOhm:null, targetEdge:bridge?'C–N'+target:null,
+      nodes_mV:voltages.map(x=>x*1000), graph, peakTransferFraction:transfer, teachingThresholdFraction:c.demoTransferLimit,
+      maxVictimKirchhoffResidual_A:Math.max(...kcl.slice(1).map(Math.abs)), sourceCurrent_A:kcl[0], terminatedCurrent_A:leakage.reduce((a,b)=>a+b,0),
+      result:transfer>c.demoTransferLimit?'coupled':'isolated', caveat:'Conductance values and thresholds are author-selected. This is not a calculation of optical crosstalk, electrolyte field or PRIMA return continuity.'};
+  }
+  function run(input={}) {
+    const s=normalize(input);
+    if(s.route==='prima')return {revision,route:'prima',runState:'proprietary-locked',publicFacts:e.prima,geometry:null,optical:null,dark:null,isolation:null};
+    const g=geometry(s);
+    if(s.stage!==releaseIndex)return {revision,route:'wang',runState:'process-incomplete',geometry:g,optical:null,dark:null,isolation:null};
+    return {revision,route:'wang',runState:'ready',input:s,geometry:g,optical:optics(s.size,s.power,s.fault==='shade'),dark:dark(s.fault==='leakage'),isolation:isolation(g.bridge,s.target)};
+  }
+  function report(input={}) {
+    const r=run(input);
+    if(r.runState!=='ready')throw new Error('No numeric report for this branch/checkpoint');
+    return {...r, geometry:{...r.geometry,teachingPatch:coupon(r.input.size)},
+      traveler:e.stages.map(x=>({id:x.id,figure:x.fig, masks:x.masks, equipment:x.tools, coverageGap:x.gap})),
+      sources:[e.sources.wang],
+      scope:'Virtual materials section and independent bench witnesses only. No clinical, biological, light-exposure or real equipment guidance. None of the modeled witnesses is a manufacturing acceptance test.'};
+  }
+  function csv(input={}) {
+    const {geometry:g,optical:o,dark:d,isolation:t,input:s}=report(input);
+    const rows=[['witness','item','value','unit','basis'],
+      ['configuration','research-width',s.size,'um','reported nominal Wang pixel width'],
+      ['configuration','synthetic-scenario',s.fault,'','teaching assumption'],
+      ['section','release-result',g.sectionReleaseResult,'','schematic witness; not process test'],
+      ['optical','reported-single-diode-slope',o.sourceResponsivity_A_per_W,'A/W','Wang 2012 section 3.2; 880 nm and zero bias'],
+      ['optical','inferred-EQE',o.derivedEQE,'ratio','derived from reported slope, not measured here'],
+      ['optical','virtual-power',o.incidentVirtualPower_uW,'uW','synthetic scalar test input'],
+      ['optical','predicted-current-magnitude',o.predictedMagnitude_uA,'uA','source slope times virtual transmitted power; single diode'],
+      ['dark','reported-lower',d.interval_pA[0],'pA','Wang 2012 section 3.1; three series junctions'],
+      ['dark','reported-upper',d.interval_pA[1],'pA','Wang 2012 section 3.1; three series junctions'],
+      ['dark','synthetic-witness',d.syntheticWitness_pA,'pA','synthetic dark witness; not measured'],
+      ['dry-isolation','max-transfer',t.peakTransferFraction,'ratio','synthetic dry circuit; not a PRIMA calibration'],
+      ...t.nodes_mV.map((x,i)=>['dry-isolation',i?'N'+i:'C',x,'mV','synthetic nodal solution'])];
+    const quote=v=>'"'+String(v).replace(/"/g,'""')+'"';
+    return rows.map(row=>row.map(quote).join(',')).join('\r\n')+'\r\n';
+  }
+  return {revision,constants,cfg,releaseIndex,index,normalize,quantEfficiency,optics,dark,hexVertices,coupon,geometry,isolation,run,report,csv};
+});
+</script>
+<script>(() => {
+  'use strict';
+  const E=window.PVEvidence,M=window.PVModel,$=id=>document.getElementById(id),all=s=>[...document.querySelectorAll(s)];
+  let route='wang',mode='traveler',view='section',specimen={...M.cfg};
+  const ink={bg:'#101d21',grid:'#2b4145',line:'#59736d',silicon:'#557b87',siliconTop:'#416e75',poly:'#d5a46c',oxide:'#a7cfda',handle:'#344750',n:'#88d6dd',p:'#eb9d83',arc:'#8dafc4',metal:'#eacd9d',nitride:'#7ea1bd',ir:'#ffd59a',text:'#d4e5df',muted:'#a6c0b9',gold:'#f4bf84',mint:'#8ce5c7',red:'#ffab9d'};
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
+  const f=(v,n=2)=>Number(v).toFixed(n);
+  const pct=(v,n=1)=>`${f(v*100,n)}%`;
+  const mV=v=>`${f(v, v < .1 ? 4 : 2)} mV`;
+  const ann=s=>{$('status').textContent=s;};
+  const link=(id,label)=>`<a href="https://buildthesimulation.com/simulations/equipment/${id}/" target="_blank" rel="noopener">${esc(id)} · ${esc(label||E.tools[id][0])}</a>`;
+  const inlineSource=(id,label)=>`<a href="${esc(E.sources[id].url)}" target="_blank" rel="noopener">${esc(label)}</a>`;
+  const rect=(x,y,w,h,color,extra='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${color}" ${extra}/>`;
+  const line=(x,y,u,v,stroke=ink.line,w=1,extra='')=>`<line x1="${x}" y1="${y}" x2="${u}" y2="${v}" stroke="${stroke}" stroke-width="${w}" ${extra}/>`;
+  const text=(x,y,s,size=16,color=ink.text,anchor='start',extra='')=>`<text x="${x}" y="${y}" fill="${color}" font-family="ui-monospace,monospace" font-size="${size}" text-anchor="${anchor}" ${extra}>${esc(s)}</text>`;
+  const path=(d,fill='none',stroke=ink.line,w=1,extra='')=>`<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${w}" ${extra}/>`;
+  const polygon=(pts,color,stroke=ink.line,w=1)=>`<polygon points="${pts.map(p=>p.map(x=>f(x,2)).join(',')).join(' ')}" fill="${color}" stroke="${stroke}" stroke-width="${w}"/>`;
+  const dot=(x,y,r,color,stroke='none',w=1)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${color}" stroke="${stroke}" stroke-width="${w}"/>`;
+  const svg=(w,h,name,inside)=>`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(name)}"><title>${esc(name)}</title>${inside}</svg>`;
+  const back=(id,w,h)=>`<defs><pattern id="${id}" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 20V0H20" fill="none" stroke="${ink.grid}" stroke-width=".55"/></pattern></defs>${rect(0,0,w,h,ink.bg)}${rect(0,0,w,h,`url(#${id})`)}`;
+  const callout=(d,c=ink.gold)=>path(d,'none',c,1.1,'stroke-dasharray="3 3"');
+  function section(g){
+    const i=g.stageNumber, j=M.index, w=640,h=365, inGap=[172,193],outGap=[372,397], ranges=[[49,172],[193,372],[397,585]];
+    const b=[];
+    b.push(back('cross-grid',w,h), `<desc>Source Wang 2012, Fig. 1 and section 2.1, DOI 10.1088/1741-2560/9/4/046014. Original vector, schematic only. No product layer drawing or fabrication mask.</desc>`,
+      text(26,32,'PV–12 / SECTION',15,ink.gold),text(614,32,'VERTICAL SCALE EXAGGERATED',13,ink.muted,'end'));
+    if(g.siliconHandle){
+      b.push(rect(49,234,536,65,'url(#handle-tone)','stroke="#637879"'),line(50,242,584,242,'#4e6267'),text(316,268,'SILICON HANDLE',16,ink.text,'middle'));
+    }else{
+      b.push(path('M49 236v54h536v-54','none','#748b83',1,'stroke-dasharray="6 7" opacity=".5"'),text(317,269,'HANDLE REMOVED',16,ink.muted,'middle'));
+    }
+    if(i<j.drie||g.crossGapBOX)b.push(rect(49,224,536,10,ink.oxide));
+    else for(const [a,c] of [[49,372],[397,585]])b.push(rect(a,224,c-a,10,ink.oxide));
+    b.push(`<defs><linearGradient id="handle-tone" x2="0" y2="1"><stop offset="0" stop-color="#394e56"/><stop offset="1" stop-color="#263b44"/></linearGradient><linearGradient id="si-tone" x2="0" y2="1"><stop offset="0" stop-color="#72949c"/><stop offset="1" stop-color="#41616e"/></linearGradient><pattern id="poly-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#a97d4d"/><path d="M-1 6 6 -1 M3 8 8 3" stroke="#d5a46c" stroke-width="1.2"/></pattern></defs>`);
+    if(i<j.drie)b.push(rect(49,139,536,85,'url(#si-tone)','stroke="#829fa5"'));
+    else for(const [a,c] of ranges)b.push(rect(a,139,c-a,85,'url(#si-tone)','stroke="#829fa5"'));
+    if(i>=j.drie){
+      for(const [k,[a,c]] of [inGap,outGap].entries()) {
+        if(i>=j.fill){
+          if(k===0||i<j.reopen)b.push(rect(a+2,139,c-a-4,85,'url(#poly-hatch)','stroke="#d5a46c"'));
+          b.push(line(a+1,141,a+1,222,ink.oxide,2.8),line(c-1,141,c-1,222,ink.oxide,2.8));
+        }
+      }
+    }
+    if(i>=j.window&&i<j.anneal)for(const [a,c] of ranges)b.push(rect(a,128,c-a,i===j.window?11:10,ink.oxide));
+    if(i===j.fill)b.push(rect(49,115,536,13,'url(#poly-hatch)','stroke="#d5a46c"'));
+    if(i>=j['n-plus'])for(const x of [106,258,473])b.push(rect(x,139,27,13,ink.n,'rx="3"'));
+    if(i>=j['p-plus'])for(const x of [142,320,525])b.push(rect(x,139,23,13,ink.p,'rx="3"'));
+    if(i>=j.anneal){
+      for (const [a,c] of ranges) b.push(rect(a,132,c-a,7,ink.arc));
+      if(i>=j.route){
+        // A p+ terminal of the left junction joins the next junction's n+ terminal across the INTERNAL partition.
+        b.push(path('M153 140v-12h114v12','none',ink.metal,5));
+        for(const x of [112,334,485,537])b.push(path(`M${x} 140v-12h9`,'none',ink.metal,5));
+      }
+      if(i>=j.nitride){
+        for(const [a,c] of ranges)b.push(rect(a,117,c-a,7,ink.nitride));
+        for(const x of [105,258,469])b.push(rect(x,116,16,9,ink.bg));
+      }
+      if(i>=j.electrode){
+        for(const [a,c] of [[71,110],[249,286],[482,515],[544,568]])b.push(rect(a,104,c-a,11,ink.ir,'rx="2"'));
+        for(const x of [111,266,485])b.push(rect(x-4,109,8,19,ink.ir,'rx="1"'));
+      }
+    }
+    if(g.siliconWeb)b.push(rect(370,208,29,16,ink.red,'stroke="#fad7c9" stroke-width="1"'));
+    if(g.surfaceStringer)b.push(path('M361 108q24 14 47 0','none',ink.red,5));
+    if(g.residualBOX)b.push(rect(371,225,27,8,'#dcc596','stroke="#f4bf84" stroke-width="1.2"'));
+    if(i>=j.window){
+      b.push(callout('M181 131V72H69'),callout('M385 131V72H574'),text(68,66,'IN-PIXEL',14,ink.gold),text(572,66,'BETWEEN PIXELS',14,ink.gold,'end'));
+      const inner=(i<j.drie?'window':(i<j.fill?'open to BOX':'oxide-lined fill'));
+      const outer=(i<j.drie?'window':(i<j.fill?'open to BOX':(i<j.reopen?'filled for processing':'open gap')));
+      b.push(text(68,89,inner,14,ink.text),text(572,89,outer,14,ink.text,'end'));
+    }else b.push(text(316,83,'SILICON-ON-INSULATOR',19,ink.text,'middle'));
+    b.push(text(285,195,'DEVICE Si',17,ink.text,'middle'),text(285,214,'30 µm',14,ink.text,'middle'),
+      line(606,139,606,224,ink.gold,1.6),line(599,139,613,139,ink.gold),line(599,224,613,224,ink.gold));
+    b.push(rect(50,318,14,9,ink.oxide),text(69,326,'Buried oxide (BOX)',14,ink.muted),text(586,326,i>=j.drie?'Etched trench: nominal 5 µm wide':'Receive-stage schematic',14,ink.muted,'end'));
+    if(g.faultEdge)b.push(text(48,350,`Synthetic ${g.residualBOX?'BOX remnant':g.surfaceStringer?'metal stringer':'silicon web'} · ${g.faultEdge}`,14,ink.red));
+    else b.push(text(49,350,'Wang 2012 · '+E.stages[i].fig,14,ink.gold));
+    return svg(w,h,`${g.stageLabel}. ${g.innerTrench}; outer ${g.outerTrench}. ${g.siliconHandle?'Handle present':'Handle removed'}.${g.faultEdge?' Synthetic defect at '+g.faultEdge+'.':''}`,b.join(''));
+  }
+  function oblique(g,s){
+    const w=640,h=365,i=g.stageNumber,j=M.index, geo=M.coupon(s.size), sc=146/(geo.widthUm+geo.outerGapUm);
+    const project=(x,y,z=0)=>[322+sc*(x-y*.26),184+sc*(x*.09+y*.56)+z];
+    const pts=(p,oversize=1,z=0)=>p.poly.map(([x,y])=>project(p.x+(x-p.x)*oversize,p.y+(y-p.y)*oversize,z));
+    const c=[back('patch-grid',w,h),text(26,32,'PV–12 / SEVEN-PIXEL CUTAWAY',15,ink.gold),text(615,32,'SCHEMATIC',13,ink.muted,'end')];
+    const thickness=geo.thicknessUm*sc*.44, open=i===j.drie||i>=j.reopen,zBase=g.siliconHandle?17+Math.max(thickness,10):thickness+3;
+    if(g.siliconHandle)c.push(polygon([[91,208],[466,208],[556,274],[161,287]],'#233e45','#486468',2),text(345,304,'carrier / handle shown schematically',14,ink.muted,'middle'));
+    const rotated=geo.pixels.slice().sort((a,b)=>project(a.x,a.y)[1]-project(b.x,b.y)[1]);
+    for(const p of rotated){
+      const sizeScale=open?1:geo.modelCenterDistanceUm/geo.widthUm;
+      const top=pts(p,sizeScale),bottom=pts(p,sizeScale,Math.min(zBase,thickness+8));
+      for(let k=0;k<6;k++){const m=(k+1)%6;c.push(polygon([top[k],top[m],bottom[m],bottom[k]],p.id==='C'?'#304e53':'#25444a','#4c6566',1));}
+      c.push(polygon(top,p.id==='C'?'#43676c':'#304e57',p.id==='C'?'#d2a97f':'#759790',p.id==='C'?1.7:1.2));
+      const [cx,cy]=project(p.x,p.y), outlined=pts(p,.83), receptor=pts(p,.72), r=geo.activeDiameterUm*sc/2;
+      if(i>=j.window){
+        for(let spoke=0;spoke<3;spoke++){
+          const a=spoke*Math.PI*2/3+Math.PI/2;
+          const u=project(p.x+geo.widthUm*.16*Math.cos(a),p.y+geo.widthUm*.16*Math.sin(a));
+          const v=project(p.x+geo.widthUm*.41*Math.cos(a),p.y+geo.widthUm*.41*Math.sin(a));
+          c.push(line(...u,...v,i>=j.fill&&p.id==='C'?ink.poly:'#91a6a4',p.id==='C'?2:1.2,i===j.window?'stroke-dasharray="3 3"':''));
+        }
+      }
+      if(i>=j['n-plus']&&p.id==='C')c.push(dot(cx-23,cy-15,3,ink.n),dot(cx+23,cy-12,3,ink.n),dot(cx+7,cy+18,3,ink.n));
+      if(i>=j['p-plus']&&p.id==='C')c.push(dot(cx-28,cy-9,3,ink.p),dot(cx+27,cy-7,3,ink.p),dot(cx+12,cy+14,3,ink.p));
+      if(i>=j.route&&p.id==='C')c.push(path(`M${cx-23} ${cy-15}l-10 22 22 12m34-31 12 11-29 17`,'none',ink.metal,2));
+      if(i>=j.electrode){
+        c.push(polygon(outlined,'none',p.id==='C'?ink.ir:'#a59177',p.id==='C'?2.5:1.3));
+        if(p.id==='C')c.push(polygon(receptor,'none','#836f59',.7));
+        c.push(`<ellipse cx="${cx}" cy="${cy}" rx="${f(r)}" ry="${f(r*.60)}" fill="${p.id==='C'?ink.ir:'#ad987e'}" stroke="${ink.bg}" stroke-width=".9"/>`);
+      }
+    }
+    if(g.faultEdge){
+      const q=geo.pixels[s.target], a=project(0,0),b=project(q.x,q.y),u=(v,k)=>a[k]+(b[k]-a[k])*v;
+      c.push(line(u(.40,0),u(.40,1),u(.61,0),u(.61,1),g.residualBOX?ink.gold:ink.red,5,'stroke-linecap="round"'));
+      c.push(text(615,306,`Synthetic span · ${g.faultEdge}`,14,ink.red,'end'));
+    }
+    const scaleLen=50*sc;
+    c.push(line(26,320,26+scaleLen,320,ink.mint,1.8),line(26,315,26,325,ink.mint),line(26+scaleLen,315,26+scaleLen,325,ink.mint),text(26,346,'50 µm in plane',14,ink.mint),text(616,346,`${s.size} µm nominal · ${geo.activeDiameterUm} µm center pad`,14,ink.gold,'end'));
+    return svg(w,h,`Schematic oblique seven-pixel patch at ${g.stageLabel}, ${s.size} micron research width${g.faultEdge?', defect '+g.faultEdge:''}`,c.join(''));
+  }
+  function diode(x,y,label){
+    return rect(x-9,y-9,18,17,'#133034','rx="2" stroke="#f4bf84" stroke-width="1.6"')+text(x+19,y+4,label,14,ink.text);
+  }
+  function wangCircuit(){
+    const c=[line(18,24,321,24,'#748b83',1.5),dot(28,24,4,ink.gold),dot(309,24,4,ink.mint)];
+    for(const [n,x] of [104,169,234].entries()){
+      c.push(rect(x-13,13,26,22,'#0f1e21'));
+      c.push(polygon([[x+8,15],[x+8,33],[x-8,24]],'none',ink.gold,1.6),line(x-9,14,x-9,34,ink.gold,2),text(x,50,'D'+(n+1),12,ink.text,'middle'));
+    }
+    c.push(text(22,50,'Active',11,ink.gold),text(319,50,'Return',11,ink.mint,'end'));
+    return svg(338,55,'Wang research pixel: three series photodiodes between the central cathode and one local anode return. Symbolic circuit, not a product mask.',c.join(''));
+  }
+  function primaArt(){
+    const c=[back('prima-grid',640,365),text(23,32,'01 / PUBLIC ARRAY TOPOLOGY',14,ink.gold),text(409,32,'02 / ONE PIXEL',14,ink.gold),line(391,49,391,331,ink.line,1,'stroke-dasharray="4 5"')];
+    const p=[[0,0],...Array.from({length:6},(_,i)=>[84*Math.cos(i*Math.PI/3),84*Math.sin(i*Math.PI/3)])].map(([x,y])=>[193+x,158+y]);
+    for(const [cx,cy] of p){
+      c.push(polygon(M.hexVertices(cx,cy,84),'#263d46','#54746f',1.7),polygon(M.hexVertices(cx,cy,73),'none',ink.mint,3),dot(cx,cy,9,ink.gold),dot(cx,cy,4,'#5d4b3a'));
+    }
+    for(let i=1;i<=6;i++)for(const j of [0,i%6+1]){const [u,v]=p[i],[x,y]=p[j],a=(u+x)/2,b=(v+y)/2;c.push(line(a-(u-x)*.09,b-(v-y)*.09,a+(u-x)*.09,b+(v-y)*.09,ink.mint,2.5));}
+    c.push(text(26,295,'378 sites on the reported die',14,ink.text),text(26,317,'Return mesh (mint) · active nodes (gold)',13,ink.muted));
+    c.push(dot(475,84,6,ink.gold),text(487,89,'ACTIVE',14,ink.gold),line(475,91,475,126,ink.line,1.8),diode(475,135,'D1'),line(475,143,475,178,ink.line,1.8),diode(475,187,'D2'),line(475,195,475,261,ink.line,1.8),dot(475,263,6,ink.mint),text(488,268,'RETURN MESH',14,ink.mint));
+    c.push(path('M475 105H570v31l-9 7 18 8-18 8 18 8-18 8 9 7v60h-95','none',ink.gold,1.8),text(564,211,'Rsh',15,ink.gold,'end'),text(409,303,'Reported poly-Si shunt',13,ink.text),text(409,323,'Symbolic circuit; no values',13,ink.muted));
+    return svg(640,365,'First-generation PRIMA public topology: two series photodiodes, a polysilicon shunt, and a connected hexagonal return mesh. Seven symbolic pixels shown.',c.join(''));
+  }
+  function optChart(o){
+    const w=360,h=192,x0=45,y0=149, X=v=>x0+274*v/80,Y=v=>y0-118*v/36;
+    const c=[rect(0,0,w,h,ink.bg),text(20,19,'|I|  µA',13,ink.muted)];
+    for(let i=0;i<=4;i++){const val=20*i,x=X(val);c.push(line(x,29,x,y0,ink.grid),text(x,y0+17,val,12,ink.muted,'middle'));}
+    for(const val of [0,10,20,30])c.push(line(x0,Y(val),319,Y(val),ink.grid),text(38,Y(val)+4,val,12,ink.muted,'end'));
+    c.push(line(x0,29,x0,y0,ink.line,1.1),line(x0,y0,319,y0,ink.line,1.1),text(320,184,'VIRTUAL POWER  µW',12,ink.muted,'end'));
+    c.push(line(x0,Y(0),X(80),Y(80*o.sourceResponsivity_A_per_W),ink.mint,2.5));
+    if(o.virtualTransmittedFraction<1)c.push(line(x0,Y(0),X(80),Y(80*o.sourceResponsivity_A_per_W*o.virtualTransmittedFraction),ink.red,2.5,'stroke-dasharray="5 3"'));
+    const x=X(o.incidentVirtualPower_uW),y=Y(o.predictedMagnitude_uA);
+    c.push(line(x,y0,x,y,ink.gold,1.2,'stroke-dasharray="3 3"'),dot(x,y,5,ink.gold,'#181e20',1.6));
+    return svg(w,h,`Slope-based one-diode line: reported ${o.sourceResponsivity_A_per_W} amps per watt. At virtual input ${o.incidentVirtualPower_uW} microwatts, predicted magnitude ${f(o.predictedMagnitude_uA)} microamps.`,c.join(''));
+  }
+  function darkChart(d){
+    const x=p=>38+288*(Math.log10(p)+1)/4;
+    const c=[rect(0,0,360,192,ink.bg),text(19,19,'REVERSE DARK MAGNITUDE',13,ink.muted),rect(x(1),62,x(100)-x(1),48,'#24423d','rx="5" stroke="#6aae99"'),line(38,94,326,94,ink.line,1.2),text((x(1)+x(100))/2,53,'Published range',13,ink.mint,'middle')];
+    for(const value of [.1,1,10,100,1000])c.push(line(x(value),102,x(value),114,ink.line,1.2),text(x(value),129,value,12,ink.muted,'middle'));
+    const hot=d.result!=='within-source-span', px=x(d.syntheticWitness_pA);
+    c.push(line(px,71,px,104,hot?ink.red:ink.gold,1.4),dot(px,94,6,hot?ink.red:ink.gold,ink.bg,1.4),
+      text(180,157,`${d.syntheticWitness_pA} pA  synthetic point`,13,hot?ink.red:ink.gold,'middle'),text(326,179,'LOG SCALE / pA',12,ink.muted,'end'));
+    return svg(360,192,`Published reverse dark-current interval 1 to 100 picoamps, compared with ${d.syntheticWitness_pA} picoamp synthetic point.`,c.join(''));
+  }
+  function isoChart(t){
+    const c=[rect(0,0,360,192,ink.bg),text(15,18,'C = FIXTURE SOURCE',12,ink.muted),text(345,18,'N = TERMINATED',12,ink.muted,'end')];
+    const p=[[176,101],...Array.from({length:6},(_,i)=>[176+83*Math.cos(i*Math.PI/3),101+64*Math.sin(i*Math.PI/3)])];
+    for(const {a,b,role} of t.graph)c.push(line(...p[a],...p[b],role==='conductive-bridge'?ink.red:'#55726f',role==='conductive-bridge'?3:1.1,role==='conductive-bridge'?'':'stroke-dasharray="3 3"'));
+    p.forEach(([x,y],i)=>{const hot=i&&t.nodes_mV[i]/t.nodes_mV[0]>t.teachingThresholdFraction;c.push(dot(x,y,i?16:20,hot?'#522f2e':i?'#21403e':'#473b2b',hot?ink.red:i?ink.mint:ink.gold,1.5),text(x,y+4,i?'N'+i:'C',i?12:14,hot?ink.red:i?ink.mint:ink.gold,'middle'));});
+    const max=Math.max(...t.nodes_mV.slice(1));
+    c.push(text(16,187,`Peak neighbor: ${mV(max)}`,12, t.result==='coupled'?ink.red:ink.mint));
+    return svg(360,192,`Dry interpixel isolation network. Highest neighbor voltage ${mV(max)} with ${t.nodes_mV[0]} millivolts at the center.`,c.join(''));
+  }
+  const dl=rows=>rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('');
+  const badge=(l,r,kind='')=>`<div class="badge ${kind}"><b>${esc(l)}</b><span>${esc(r)}</span></div>`;
+  function renderTraveler(r){
+    const g=r.geometry,s=E.stages[specimen.stage],i=specimen.stage;
+    all('[data-stage]').forEach(b=>{const n=Number(b.dataset.stage); b.classList.toggle('done',n<i); if(n===i)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+    $('drawing-title').textContent=view==='section'?'Device cross-section':'Oblique test patch';
+    $('drawing').innerHTML=view==='section'?section(g):oblique(g,specimen);
+    $('wang-net').hidden=i<M.index.route;
+    $('wang-net-svg').innerHTML=i<M.index.route?'':wangCircuit();
+    $('drawing-caption').textContent=view==='section'?`${s.stack}. Section passes through one in-pixel partition and one outside boundary. Film heights and trench widths are enlarged for legibility.`:`${s.result}. Seven-pixel schematic; nominal cell width is interpreted across flats for the drawing. Not a mask or packing model.`;
+    $('progress').textContent=`${i+1} / ${E.stages.length}`;
+    $('prev').disabled=i===0; $('next').disabled=i===M.releaseIndex;
+    $('current-source').innerHTML=inlineSource('wang','WANG 2012 / '+s.fig);
+    $('current-title').textContent=s.title;
+    $('current-description').textContent=s.fact;
+    $('current-check').textContent=s.inspect;
+    $('current-masks').textContent=s.masks.length?`${g.masks.length}/8 masks by this point · `+s.masks.map(n=>`M${n} ${E.masks[n-1]}`).join(' · '):`${g.masks.length}/8 masks by this point · No new mask`;
+    $('current-tools').innerHTML=(s.tools.length?`<ul>${s.tools.map(id=>`<li>${link(id)}<span>${esc(E.tools[id][1])}</span></li>`).join('')}</ul>`:'<p>No matching operation runs on the virtual register at this checkpoint.</p>')+`<p class="gap">${esc(s.gap)}</p>`;
+    $('load-witness').textContent=i===M.releaseIndex?'Open the released bench →':'Load released witness →';
+  }
+  function renderBench(r){
+    const ready=r.runState==='ready';
+    $('need-release').hidden=ready; $('bench-controls').hidden=!ready; $('bench-run').hidden=!ready;
+    if(!ready){for(const key of ['bench-summary','optics-plot','dark-plot','isolation-plot','optics-readout','dark-readout','isolation-readout','neighbor-readout'])$(key).replaceChildren(); return;}
+    $('fault').value=specimen.fault; $('target').value=String(specimen.target); $('target').disabled=!['trench','stringer','oxide'].includes(specimen.fault);
+    $('power').value=String(specimen.power); $('power-read').textContent=specimen.power+' µW'; $('fault-detail').textContent=E.faults[specimen.fault].detail;
+    const {geometry:g,optical:o,dark:d,isolation:t}=r, geom=g.sectionReleaseResult==='clear', darkOk=d.result==='within-source-span';
+    $('bench-summary').innerHTML=badge('Release geometry',geom?'Open outer gap':'Obstructed gap',geom?'':'warn')+badge('Light conversion',o.result==='no-input'?'No virtual input':o.result==='nominal'?'Matches slope model':'Virtual optical loss',o.result==='no-input'?'neutral':o.result==='nominal'?'':'warn')+badge('Reverse dark',darkOk?'Within published range':'Above published range',darkOk?'':'warn')+badge('Dry isolation',t.result==='isolated'?'Below fixture limit':'Conductive transfer',t.result==='isolated'?'':'warn');
+    $('optics-plot').innerHTML=optChart(o);
+    $('optics-readout').innerHTML=dl([['Reported responsivity',f(o.sourceResponsivity_A_per_W)+' A/W'],['EQE inferred at 880 nm',pct(o.derivedEQE)],['Predicted |photocurrent|',f(o.predictedMagnitude_uA)+' µA'],['Unobscured model',f(o.unobscuredMagnitude_uA)+' µA'],['Virtual transmission',pct(o.virtualTransmittedFraction,0)]]);
+    $('optics-domain').textContent=o.domain;
+    $('dark-plot').innerHTML=darkChart(d);
+    $('dark-readout').innerHTML=dl([['Reported §3.1 span',d.interval_pA.join('–')+' pA'],['Synthetic point',d.syntheticWitness_pA+' pA']]);
+    $('isolation-plot').innerHTML=isoChart(t);
+    $('isolation-readout').innerHTML=dl([['Peak neighbor fraction',pct(t.peakTransferFraction,t.peakTransferFraction<.0002?3:2)],['Fixture-only limit',pct(t.teachingThresholdFraction,0)],['Conductive boundary',t.targetEdge||'None']]);
+    $('neighbor-readout').innerHTML=`<div class="neighbors">${t.nodes_mV.slice(1).map((v,k)=>`<span${v/t.nodes_mV[0]>t.teachingThresholdFraction?' class="hot"':''}>N${k+1} ${mV(v)}</span>`).join('')}</div>`;
+  }
+  function render(){
+    all('[data-route]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.route===route)));
+    $('wang').hidden=route!=='wang'; $('prima').hidden=route!=='prima';
+    if(route==='prima'){
+      // The architecture branch never receives or renders numerical witness data.
+      renderBench(M.run({route:'prima'})); $('drawing').replaceChildren(); $('wang-net-svg').replaceChildren();
+      $('prima-drawing').innerHTML=primaArt(); return;
+    }
+    all('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+    all('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));
+    $('size').value=String(specimen.size);
+    $('traveler').hidden=mode!=='traveler'; $('bench').hidden=mode!=='bench';
+    const gains=M.run(specimen);
+    if(mode==='bench')renderBench(gains);
+    else renderTraveler(gains);
+  }
+  function change(attrs, msg){specimen={...M.normalize({...specimen,...attrs})};render();if(msg)ann(msg);}
+  function selectStage(n){if(n<0||n>M.releaseIndex)return;change({stage:n},`${E.stages[n].title}. Checkpoint ${n+1} of ${E.stages.length}.`);}
+  function loadBench(){mode='bench';change({stage:M.releaseIndex},'Released virtual witness loaded.'); $('bench-controls').scrollIntoView({block:'start',behavior:'auto'});}
+  function download(name,payload,mime){const u=URL.createObjectURL(new Blob([payload],{type:mime})),a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);ann('Downloaded '+name);}
+  function fileRun(){return route==='wang'&&mode==='bench'&&M.run(specimen).runState==='ready';}
+  $('download-json').addEventListener('click',()=>{if(fileRun())download('PV12-witness.json',JSON.stringify(M.report(specimen),null,2)+'\n','application/json');});
+  $('download-csv').addEventListener('click',()=>{if(fileRun())download('PV12-checks.csv',M.csv(specimen),'text/csv');});
+  $('download-svg').addEventListener('click',()=>{if(fileRun())download('PV12-section.svg',section(M.run(specimen).geometry),'image/svg+xml');});
+  $('steps').innerHTML=E.stages.map((s,i)=>`<button type="button" aria-label="${esc(`Checkpoint ${i+1}: ${s.title}`)}" data-stage="${i}"><span class="step-key">${esc(s.key)}</span><span class="step-desc">${esc(s.short)}</span></button>`).join('');
+  $('fault').innerHTML=Object.entries(E.faults).map(([k,v])=>`<option value="${esc(k)}">${esc(v.name)}</option>`).join('');
+  $('sources-list').innerHTML=Object.values(E.sources).map(s=>`<article class="source"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a><p>${esc(s.detail)}</p><span class="doi">${esc(s.doi)}</span></article>`).join('');
+  $('formulas-detail').innerHTML=`<p><b>Reported single-diode slopes at 880 nm, zero bias:</b> 70 µm: 0.36 A/W; 140 µm: 0.40 A/W; 280 µm: 0.33 A/W. ${inlineSource('wang','Wang §3.2 and Fig. 9b')}.</p><p><b>Power-to-current model:</b> <code>|I| = R × P × T</code>, with transmitted fraction <code>T = 1</code> or synthetic <code>0.45</code>. Inferred quantum efficiency is <code>R h c / (q λ)</code>. These equations do not imply a series-array current, a spectral fit or a beam-exposure setup.</p><p><b>Dark sample:</b> reported 1–100 pA for three series-connected photodiodes at stated room temperature, from ${inlineSource('wang','Wang §3.1')}. Our 8 and 240 pA points are arbitrary, independent of optical response and the seven-node fixture; no reverse I–V waveform or threshold is inferred.</p><p><b>Dry fixture assumptions:</b> a virtual 100 mV source at C; 1 GΩ termination at each neighbor; 10 TΩ per nominal link; a single 50 MΩ substituted link for conductive web or stringer. The solver enforces Kirchhoff’s current law. A 1% transfer limit is a classroom screen, not a device spec. An intact BOX remnant is treated as insulating.</p><p><b>Register links:</b> ${link('09-02')}; ${link('11-05')}; ${link('15-14')}. They illustrate roles and do not certify a measurement floor, detector at the specimen, or optical bench.</p>`;
+  all('[data-route]').forEach(b=>b.addEventListener('click',()=>{route=b.dataset.route;render();ann(route==='prima'?'First-generation PRIMA architecture. Numeric witnesses locked.':'Wang–Palanker 2012 research route.');}));
+  all('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;render();ann(b.textContent);}));
+  all('[data-view]').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.view;render();ann($('drawing-title').textContent);}));
+  all('[data-stage]').forEach(b=>b.addEventListener('click',()=>selectStage(Number(b.dataset.stage))));
+  $('prev').addEventListener('click',()=>selectStage(specimen.stage-1)); $('next').addEventListener('click',()=>selectStage(specimen.stage+1));
+  $('load-witness').addEventListener('click',loadBench); $('bench-load').addEventListener('click',loadBench);
+  $('size').addEventListener('change',e=>change({size:Number(e.target.value)},e.target.value+' micron research pixel.'));
+  $('fault').addEventListener('change',e=>change({fault:e.target.value},'Synthetic case: '+E.faults[e.target.value].name));
+  $('target').addEventListener('change',e=>change({target:Number(e.target.value)},'Boundary C to N'+e.target.value));
+  $('power').addEventListener('input',e=>change({power:Number(e.target.value)}));
+  render();
+})();
+</script>
+</body>
+</html>

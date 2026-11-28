@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#163d36">
+<meta name="description" content="A virtual fabrication traveler and independent geometry, fluidics, and wire-continuity test bench for the Srinivasan 2015 rolled PDMS/SU-8 scaffold.">
+<title>Rolled microchannel foundry · Build the Simulation</title>
+<style>:root{--paper:#fffcf3;--bone:#f4f0e4;--edge:#c7c7b4;--ink:#24362f;--muted:#53685d;--accent:#225c4a;--deep:#183d36;--plate:#213f37;--faint:#eceddf;--green:#dce9dd;--gold:#e4b475;--red:#995131;--sans:system-ui,-apple-system,Segoe UI,sans-serif;--serif:Georgia,"Times New Roman",serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;font:16px/1.48 var(--sans);color:var(--ink);background:var(--bone)}[hidden]{display:none!important}a{color:var(--accent);text-underline-offset:.18em}button,select,input{font:inherit}button,select{min-height:44px}button,summary,label input[type=checkbox],input[type=range],select{cursor:pointer}button{border-radius:5px;border:1px solid #99ac9f;background:var(--paper);color:var(--ink);padding:8px 13px;font-weight:650}.primary{background:var(--deep);border-color:var(--deep);color:#f7fae9}.quiet{background:transparent}button:hover{background:#e0e9da}.primary:hover{background:#335f50}button:disabled,select:disabled,input:disabled{opacity:.57;cursor:not-allowed}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #d18641;outline-offset:2px}.skip{position:absolute;left:-10000px}.skip:focus{left:5px;top:5px;z-index:20;background:white;padding:8px;color:var(--ink)}
+.frame{width:min(1160px,calc(100% - 44px));margin:auto}.cover{background:var(--deep);color:#f6f1df;border-bottom:4px solid #ab996b}.top{display:flex;justify-content:space-between;align-items:center;height:54px;border-bottom:1px solid #768d77;gap:10px}.top a{color:#f6f3df}.top span,.over,.coverspec,.plate-title{font-family:var(--mono);letter-spacing:.11em;font-size:11px;font-weight:700}.top span{color:#dbe5ca}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:32px;align-items:center;padding:24px 0 32px}.hero h1{font:400 clamp(52px,7vw,88px)/.93 var(--serif);margin:10px 0 12px}.hero h1 i{color:#efba76}.hero .lead{font-size:clamp(15px,2vw,19px);max-width:40ch;color:#e5e8d4}.hero .over{color:#c8d4b6}.coverspec{color:#dbe4c2;margin:14px 0 4px}.coverplate{margin:0;max-width:455px;justify-self:end;width:100%}.coverplate figcaption{color:#d6dfc5;font-size:.75rem;margin:4px 0}svg{display:block;width:100%;height:auto}
+.truth{max-width:none;margin:17px 0 15px;padding:10px 13px;border-left:4px solid #b6874e;background:#f0e5ce;font-size:.95rem}.truth strong{font-weight:850}.toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-end}.mode{flex:1 1 275px;min-width:0}.lotbar{flex:1 1 170px;min-width:0;padding:0 6px 4px}.short{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.8rem}.short b,.badges b,.badges span{background:var(--green);color:#305d49;border-radius:3px;padding:2px 5px;font:700 11px/1.5 var(--mono)}.short b.ref{background:#f0dfc2;color:#78481f}progress{display:block;width:100%;height:8px;accent-color:#3a7354;margin-top:6px}.actionbar,.buttons,.stepbuttons{display:flex;gap:8px;flex-wrap:wrap}.mode label,.paper label{display:block;font-size:.85rem;font-weight:650;margin:6px 0 4px}select{display:block;width:100%;max-width:100%;border:1px solid #a6b0a0;border-radius:4px;background:#f5f3e9;padding:6px 26px 6px 9px;color:var(--ink);font-size:16px}input[type=range]{width:100%;height:29px;margin:2px 0;accent-color:#3b7355}output{color:#885629;font-size:.78rem;font-weight:750;margin-left:4px}.over{color:var(--muted)}#tabbar{display:grid;grid-template-columns:repeat(4,1fr);margin:15px 0 0;border:1px solid #9eab9d;border-radius:5px;overflow:hidden}#tabbar button{border:0;border-right:1px solid #bcc7af;border-radius:0;background:#efeee3}#tabbar button:last-child{border-right:0}#tabbar button[aria-pressed=true]{background:#365b4d;color:white}#status{min-height:21px;color:var(--muted);padding:5px 0;font-size:.83rem}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:16px;margin-bottom:16px}.paper,.plate{min-width:0;padding:clamp(16px,2.3vw,26px);border:1px solid var(--edge);border-radius:7px;background:var(--paper)}.paper h2,.paper h3{font:400 clamp(26px,3.8vw,35px)/1.07 var(--serif);margin:7px 0 10px}.paper h3{font-size:23px}.paper .dense{max-width:62ch}.paper p{margin:8px 0 12px}.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.badges span{background:var(--faint);color:var(--muted)}.gate{border-left:3px solid #a8b59a;padding:10px 13px;background:var(--faint);margin:12px 0 14px;font-size:.88rem}.gate dt,.ledger dt{font-size:.85rem;font-weight:780;color:#355c4b}.gate dd,.ledger dd{margin:0 0 8px}.gate dd:last-child,.ledger dd:last-child{margin-bottom:0}.gate dt:not(:first-child),.ledger dt:not(:first-child){margin-top:9px}.fine,.plate p{font-size:.83rem;line-height:1.47;color:var(--muted)}.plate{background:var(--plate);color:#e2ead0;display:flex;flex-direction:column;justify-content:space-between}.plate .plate-title{display:flex;justify-content:space-between;gap:9px;color:#dde6cb}.plate-title span:last-child{color:var(--gold);white-space:nowrap}.plate p{color:#d6dfc7;margin:8px 0 0}.stepbuttons{flex-wrap:nowrap}.stepbuttons .primary{flex:1}.formgrid,.three{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.toggles{display:flex;align-items:center;gap:4px 18px;flex-wrap:wrap;margin:10px 0}.toggles label{display:flex;align-items:center;gap:6px;margin:0;min-height:32px;font-size:.8rem}.toggles input{accent-color:#427759;width:17px;height:17px}.how{max-width:none}.three{grid-template-columns:repeat(3,minmax(0,1fr));margin:13px 0 19px}.sub{border:1px solid #c8cab8;background:#f8f7ed;border-radius:5px;padding:12px;min-width:0}.sub h3{font-size:21px}.presets button{font-size:.85rem}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:13px 0}.metrics div{border:1px solid #b8c6b1;border-radius:5px;background:#e9eddf;padding:9px 11px}.metrics span,.metrics small{display:block;color:#4d6656;font-size:.77rem}.metrics b{font:400 clamp(23px,4vw,34px) var(--serif)}.metrics small{font-size:.73rem}.notice{font-size:.87rem;color:#6f482c;margin:10px 0;min-height:1.4em}.tablebox{overflow:auto;max-width:100%;max-height:320px;border:1px solid var(--edge);border-radius:4px}.tablebox:empty{display:none}.tablebox table{border-collapse:collapse;width:100%;font-size:.77rem;white-space:nowrap}.tablebox th,.tablebox td{padding:5px 8px;text-align:left}.tablebox tr:nth-child(even){background:#f2f3e8}.tablebox thead th{background:#e2e9dc;position:sticky;top:0}.tablebox .bad{color:#893719;font-weight:650}.tablebox caption{padding:6px;text-align:left;font-size:.75rem}.ledger dd{font-size:.87rem}.paper details summary{min-height:35px;text-decoration:underline;text-underline-offset:.17em;color:var(--accent);font-size:.88rem}.paper details{margin:13px 0}footer{border-top:1px solid var(--edge);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;margin-top:23px;padding:16px 0 25px;color:var(--muted);font-size:.81rem}footer span{font:700 10px var(--mono);letter-spacing:.09em}.hit{cursor:pointer}.hit:hover{stroke:white!important;stroke-width:2.4!important}
+@media(max-width:760px){.frame{width:calc(100% - 26px)}.hero{grid-template-columns:1fr;gap:5px;padding:20px 0}.hero h1{font-size:clamp(48px,12vw,69px)}.hero h1 br{display:none}.hero .lead{margin:8px 0}.coverplate{max-width:310px;justify-self:start}.coverplate svg{max-height:122px}.top{height:48px}.top a{font-size:13px}.top span{font-size:9px}.grid{grid-template-columns:1fr;gap:11px}.paper,.plate{padding:14px}.toolbar{gap:8px}.actionbar button{font-size:.82rem}.lotbar{order:3;flex:1 1 100%;padding:0}.three{grid-template-columns:1fr;gap:8px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.metrics div{padding:7px 8px}.truth{font-size:.85rem}.presets button{font-size:.76rem;padding:7px 9px}#tabbar button{font-size:.78rem;padding:5px}.formgrid{gap:5px}.formgrid output{white-space:nowrap}.plate .plate-title{font-size:10px}}
+@media(max-width:375px){.frame{width:calc(100% - 22px)}.hero h1{font-size:45px}.formgrid{grid-template-columns:1fr}.top span,.coverspec{font-size:8px}.top a{font-size:12px}}
+</style>
+</head>
+<body><a href="#workbench" class="skip">Skip to workbench</a>
+<header class="cover"><div class="top frame"><a href="https://buildthesimulation.com/simulations/foundry/">← Foundry laboratories</a><span>BUILD THE SIMULATION</span></div>
+<div class="hero frame"><div><p class="over">FIELD MANUAL / PERIPHERAL INTERFACES</p>
+<h1>Rolled<br> <i>microchannels.</i></h1>
+<p class="lead">Pattern a flat strip. Close and roll it. Then test the fluid openings and the wires independently.</p>
+<p class="coverspec">Srinivasan et al. · <i>Biomaterials</i> (2015)</p></div>
+<figure class="coverplate"><svg viewBox="0 0 450 235" role="img" aria-label="A patterned web and a cut face of its rolled form"><defs><pattern id="covergrid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M0 16V0h16" fill="none" stroke="#638c72" stroke-width=".45"/></pattern></defs><rect x="1" y="1" width="448" height="234" fill="url(#covergrid)" stroke="#668973"/>
+<path d="M35 124l139-37 61 24-140 42z" fill="#679883" stroke="#b8d6b0"/><path d="M45 121l49 21m-32-25 48 21m-30-26 48 21m-30-26 48 21m-30-26 48 20m-30-25 48 20m-29-26 47 21" stroke="#d3a767" stroke-width="5"/><path d="M237 121h34m-10-8 10 8-10 8" stroke="#e4b578" fill="none" stroke-width="2"/>
+<path d="M356 125c-11-28-50-9-37 20s64 26 77-11-12-79-61-83-87 30-83 66 33 69 82 75 91-20 102-58" transform="translate(20 -1) scale(.93)" fill="none" stroke="#81b197" stroke-width="9"/><path d="M356 125c-11-28-50-9-37 20s64 26 77-11-12-79-61-83-87 30-83 66 33 69 82 75 91-20 102-58" transform="translate(20 -1) scale(.93)" fill="none" stroke="#e4b578" stroke-width="3" stroke-dasharray="1 8"/>
+<g fill="#e1e7cc" font-family="monospace" font-size="12" letter-spacing="1"><text x="18" y="24">PLATE 01 · FLAT TO ROLL</text><text x="32" y="191">WALL MASK</text><text x="425" y="211" text-anchor="end">CUT FACE</text></g></svg><figcaption>Concept plate, not recovered microscopy.</figcaption></figure></div></header>
+<main id="workbench" class="frame">
+<noscript>JavaScript is needed for the interactive workbench. <a href="https://doi.org/10.1016/j.biomaterials.2014.11.035">Open the primary source.</a></noscript>
+<section class="truth" aria-label="Published design distinction"><strong>84 openings ≠ 84 channels.</strong> The paper’s <b>100 × 100 µm</b> geometry has <b>84 lumens</b>. Its actual <b>eight-wire</b> article uses <b>59 lumens at 150 × 100 µm</b>. Test either, or compare the clearly labeled 84-lumen counterfactual.</section>
+<section class="toolbar">
+<div class="mode"><label for="mode">Configuration</label><select id="mode"></select></div>
+<div class="lotbar"><div class="short"><b id="tag"></b><span id="progressLabel"></span></div><progress id="progress" aria-label="Accepted traveler handoffs" value="0" max="14"></progress></div>
+<div class="actionbar"><button class="primary" id="runTop">Run selected build</button><button class="quiet" id="reset">Reset</button></div>
+</section>
+<nav id="tabbar" aria-label="Workbench panels"><button data-view="build" aria-pressed="true">01 · Build</button><button data-view="section" aria-pressed="false">02 · Inspect</button><button data-view="bench" aria-pressed="false">03 · Test</button><button data-view="evidence" aria-pressed="false">04 · Evidence</button></nav>
+<div id="status" role="status" aria-live="polite"></div>
+<section id="build" class="view">
+<div class="grid">
+<div class="paper"><span class="over">PROCESS TRAVELER</span><h2 id="stageTitle">Draft the wall mask</h2><label for="step">Inspect a handoff</label><select id="step"></select><div class="badges"><b id="basis">Source</b><span id="stageState"></span></div><p class="dense" id="stageDesc"></p><dl class="gate"><dt>What to check</dt><dd id="stageGate"></dd><dt>Virtual equipment analogues</dt><dd id="stageTools"></dd></dl><div class="stepbuttons"><button id="previous" aria-label="Previous step">←</button><button class="primary" id="advance">Accept handoff</button><button id="next" aria-label="Next step">→</button></div></div>
+<div class="plate"><div class="plate-title"><span>SECTIONAL PROCESS PLATE</span><span id="stageNum"></span></div><svg id="process" viewBox="0 0 555 288" role="img" aria-label="Sectional drawing of the current process handoff"></svg><p id="stageCaption"></p></div>
+</div>
+<div class="paper how"><span class="over">TRY THIS FIRST</span><h3>Two defects that look nothing alike on the bench</h3><p>Run the 59-lumen wired article, then choose <b>Plug W04’s lumen</b>. The physical count stays 59, one dyed-water path stops, and all eight wire identities pass. Now choose <b>Break W04’s lead</b>. The fluid paths remain available, but only seven wire identities pass.</p></div>
+</section>
+<section id="section" class="view" hidden>
+<div class="grid">
+<div class="plate"><div class="plate-title"><span id="faceHeading">CUT FACE / PATTERNED LUMENS</span><span id="faceLabel"></span></div><svg id="face" viewBox="0 0 555 470" role="img" aria-label="Cut face of the selected scaffold and geometric fixture overlays"></svg><p id="faceCaption"></p></div>
+<div class="paper"><span class="over">INERT SECTION VIEW</span><h2>Find a lumen, not a net</h2><p id="modeNote"></p>
+<div class="formgrid"><div><label for="focus">Lumen to inspect</label><select id="focus"></select></div><div><label for="faceAngle">Rotate plate <output id="angleOut"></output></label><input id="faceAngle" type="range" min="-180" max="180" value="0" step="1"></div></div>
+<div class="toggles"><label><input id="maskVisible" type="checkbox" checked> Show translated test plate</label><label><input id="wiresVisible" type="checkbox" checked> Mark modeled readout sites</label></div>
+<label for="drift">Study-informed width trend <output id="driftOut"></output></label><input id="drift" type="range" min="0" max="100" step="1" value="100">
+<p class="fine" id="driftCaption"></p>
+<dl id="lumenFacts" class="gate"></dl>
+</div></div>
+<div class="grid">
+<div class="paper"><span class="over">SECTION DETAIL</span><h3>Compare the clear area</h3><svg id="zoom" viewBox="0 0 420 214" role="img" aria-label="Enlarged selected duct and microwire cross section"></svg><p id="zoomText" class="fine"></p></div>
+<div class="paper"><span class="over">AXIAL WITNESS</span><h3>Trace the selected bore</h3><svg id="axial" viewBox="0 0 420 214" role="img" aria-label="Axial depiction of the chosen channel, test plate, plug and any simulated wire"></svg><p class="fine">When a wire is present, the schematic puts it on the distal half and shows the final 0.5 mm of exposure. Placement and core dimensions are teaching geometry; no insertion technique or tissue is simulated.</p><div class="buttons"><button id="obj">Export witness OBJ</button><button id="mtl" class="quiet">Materials MTL</button></div></div>
+</div>
+</section>
+<section id="bench" class="view" hidden>
+<div class="paper"><span class="over">BENCH / NONLIVING FIXTURE</span><h2>Three tests. Three different answers.</h2><p>A counted aperture, a fixture-qualified flow path and a verified electrical path are not interchangeable. Compare a deliberately shifted matching plate, a simulated plug, or a broken lead.</p>
+<div id="presets" class="buttons presets"><button data-case="ref">Wired reference</button><button data-case="geom84">84 holes, no wires</button><button data-case="counter">84 holes, 8 hypothetical wires</button><button data-case="offset">Shift fixture</button><button data-case="plug">Plug W04’s lumen</button><button data-case="break">Break W04’s lead</button><button data-case="swap">Swap W04/W05</button></div>
+<div class="three">
+<div class="sub"><h3>01 · Fixture registration</h3><label for="dx">Plate X displacement <output id="dxOut"></output></label><input id="dx" type="range" min="-190" max="190" step="1" value="0"><label for="dy">Plate Y displacement <output id="dyOut"></output></label><input id="dy" type="range" min="-190" max="190" step="1" value="0"><p class="fine">One translated Cartesian stencil, not independent shifts for 59 holes. Projected overlap shows incorrect registration with neighboring holes.</p></div>
+<div class="sub"><h3>02 · Fluid path</h3><label for="plugSite">Obstruct one lumen</label><select id="plugSite"></select><label for="plugPct">Width blocked at a local segment <output id="plugOut"></output></label><input id="plugPct" type="range" min="0" max="100" value="0"><label for="pressure">Water-like fixture ΔP <output id="pressureOut"></output></label><input id="pressure" type="range" min="0" max="250" value="80"><p class="fine">Synthetic pressure boundary; flow scales with ΔP. A complete segment obstruction stops one physical path, not its buried conductor.</p></div>
+<div class="sub"><h3>03 · Isolated electrical check</h3><label for="fault">Witness wiring fault</label><select id="fault"><option value="none">Nominal mapping</option><option value="open">Open one lead</option><option value="swap">Transpose an adjacent pair</option><option value="bridge">Bridge an adjacent pair</option></select><label for="wire">Lead to target</label><select id="wire"></select><p class="fine" id="wireNotice"></p></div>
+</div>
+<div class="buttons"><button class="primary" id="test">Complete build &amp; test</button><button id="json">Export lot JSON</button><button id="csv">Export bench CSV</button></div>
+</div>
+<div class="metrics" aria-label="Independent counted outcomes"><div><span>Patterned openings</span><b id="metOpen"></b><small id="mOpenCap"></small></div><div><span>Physically patent lumens</span><b id="metPatent"></b><small>Complete obstructions only</small></div><div><span>Fixture-qualified paths</span><b id="metFit"></b><small>Not a source yield figure</small></div><div><span>Correct electrical identities</span><b id="metElectrical"></b><small>Only installed readout wires</small></div></div>
+<p id="testMessage" class="notice"></p>
+<div class="grid"><div class="paper"><span class="over">SELECTED PATH / TEST RECORD</span><h3 id="benchFocusTitle">Selected lumen</h3><label for="benchFocus">Inspect a lumen</label><select id="benchFocus"></select><dl id="lumenTest" class="gate"></dl><p id="sumFlow" class="fine"></p><details><summary>See all lumen path results</summary><div id="pathTable" class="tablebox"></div></details></div>
+<div class="paper"><span class="over">DRY FIXTURE / ENDPOINT WITNESS</span><h3>Fixture pin → conductor</h3><div id="wireTable" class="tablebox"></div><p class="fine">A fixture label can be electrically linked to the wrong exposed endpoint even when every conductor is present. External bipolar and coupled tripolar reference wires are not among the eight intraluminal wires and are not modeled in this witness.</p></div></div>
+</section>
+<section id="evidence" class="view" hidden>
+<div class="grid">
+<div class="paper"><span class="over">EVIDENCE LEDGER</span><h2>What the paper reports</h2><dl class="ledger"><dt>Device and sections</dt><dd><a href="https://doi.org/10.1016/j.biomaterials.2014.11.035">Srinivasan et al. (2015), <i>Biomaterials</i> 41:151–165</a>. See §§2.1–2.2 and 3.1, 3.7, and Figures 2, 3 and 9. <a href="https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/6/32/files/2015/04/1-s2.0-S0142961214012046-main.pdf?bid=32">Georgia Tech-hosted full article</a>.</dd><dt>Layer order</dt><dd>40 µm lower PDMS, 100 µm tall and 20 µm wide SU-8 walls, 10 µm PDMS cap. The Ti/Au-treated lower glass and the upper PAA release layer are temporary supports with different roles.</dd><dt>Counts and variants</dt><dd>Open grooves precede capping. The capped rolled builds use 143, 84, or 59 patterned lumens at widths of 50, 100, or 150 µm. The nominal axial length after trim is 3 mm; roll diameter is about 1.5 mm. The small open core is not a mask-defined lumen.</dd><dt>Why the wider build is wired</dt><dd>§3.7 names the 150 × 100 µm scaffold, not the 100 × 100 µm scaffold, for the eight 60 µm stainless steel wires. Subtracting a nominal 60 µm disk yields 12,173 µm² of free area there; the comparison in a 100 µm-wide geometry gives 7,173 µm². These are geometric differences, not tissue or usability thresholds.</dd><dt>Real failures vs our test</dt><dd>§3.8 reports nine broken leads among forty implanted wire positions across five devices, leaving thirty-one functioning electrodes in that study. The synthetic diagrams do not simulate aging, tissue response, usable signals or observed clinical yield. The source did not publish the eight exact lumen assignments.</dd></dl></div>
+<div class="paper"><span class="over">ASSUMPTIONS AND EQUATIONS</span><h2>What this bench computes</h2><dl class="ledger"><dt>Archimedean representation</dt><dd>Use a teaching core radius of 170 µm and advance 150 µm radially per full turn. Sample the ribbon by equal lengths of the flat pitch along the centerline. Each polygon is a local wedge; caliper spans come from the modeled outline, not a historical roll scan. Display rotation moves the scaffold and stencil together.</dd><dt>Relative widening</dt><dd>Study §3.1 compares the inner two rings with the outermost ring: approximately 25%, 2.5%, 7.5% extra area for the 50, 100, 150 µm branches. A smooth width trend normalized to those average ratios is a schematic interpolation. The actual per-lumen widths and the core are not measured here.</dd><dt>Stencilled registration</dt><dd>Intersect convex polygons between the reconstructed cut face and a virtual duplicate stencil translated in X/Y. Teaching acceptance uses at least 80% overlap with the matching aperture and at most 2% overlap with other apertures. The paper does not name this fixture or these tolerances.</dd><dt>Benign-fluid surrogate</dt><dd><a href="https://fluid.dtu.dk/Publications/Lecture_notes">Bruus, <i>Theoretical Microfluidics</i>, §2.4.5, Eq. (2.48d)</a>: rectangular pressure-driven flow. Here 41 odd Fourier terms approximate the square/rectangular correction. The local tube, optional wired section, blockage and matched stencil resistance are in series. Replace wire/overlap area losses by aspect-preserving rectangular cross-sections; no leakage, cross-flow, fluid/composite coupling, exact annular resistance, or binding model is inferred. Sums assume independent apertures at the same ΔP.</dd><dt>Data scope</dt><dd>Source geometry and process stages are separately tagged from fixture assumptions. No author masks, batch recipes, qualification limits, process rights, tissue procedures or clinical use. OBJ/MTL are editable schematic meshes in millimetres; interfaces need not match a production part or incorporate all virtual faults.</dd></dl></div></div>
+</section>
+<footer><a href="https://buildthesimulation.com/simulations/foundry/atlas/">Foundry workflow atlas ↗</a><a href="https://buildthesimulation.com/devices/18-microchannel-regenerative-scaffold-srinivasan-2015/">Device catalog ↗</a><span>ROLLED MICROCHANNELS · VIRTUAL BENCH</span></footer>
+</main>
+<script>/* SPDX-License-Identifier: MIT. Inert teaching reconstruction, not a released mask or qualified process. */
+(function(g){
+'use strict';
+const TAU=2*Math.PI;
+const C=Object.freeze({
+  pdmsBaseUm:40,pdmsLidUm:10,heightUm:100,su8WallUm:20,flatAxialWallUm:10000,rollLengthUm:3000,
+  assumedCoreInnerRadiusUm:170,wireDiameterUm:60,wireStockLengthUm:100000,exposedTipLengthUm:500,
+  assumedDistalWireOccupancyLengthUm:1500,assumedPlugLengthUm:250,assumedStencilLengthUm:100,
+  benchViscosityPaS:0.001,teachingOwnMin:.80,teachingNeighborMax:.02,seriesOddTerms:41
+});
+const modeList=[
+ {id:'wire150', label:'150 µm roll · 59 lumens / 8 wires',short:'Instrumented article',status:'Documented build',note:'§§2.2, 3.7 and Fig. 9: eight 304 stainless microwires in a 150 × 100 µm scaffold. Those eight identities are diagrammed, not recovered.',widthUm:150,count:59,wireCount:8,rolled:true,innerAreaRise:.075},
+ {id:'g100',label:'100 µm roll · 84 lumens / no assigned wires',short:'84-lumen geometry',status:'Documented geometry',note:'§§2.1, 3.1 and Fig. 3: 84 lumens. Not the geometry used for the paper’s eight-wire interface.',widthUm:100,count:84,wireCount:0,rolled:true,innerAreaRise:.025},
+ {id:'g50',label:'50 µm roll · 143 lumens / no assigned wires',short:'Narrow-lumen geometry',status:'Documented geometry',note:'§§2.1, 3.1: 143 lumens. The nominal width is smaller than the 60 µm wire diameter. This is not a wired build.',widthUm:50,count:143,wireCount:0,rolled:true,innerAreaRise:.25},
+ {id:'g150',label:'150 µm roll · 59 lumens / no assigned wires',short:'Wide-lumen geometry',status:'Documented geometry',note:'§§2.1, 3.1: 59 lumens. This branch isolates geometry before optional electrical outfitting.',widthUm:150,count:59,wireCount:0,rolled:true,innerAreaRise:.075},
+ {id:'open50',label:'50 µm open strip · uncapped witness',short:'Uncapped flat strip',status:'Documented branch',note:'§3.1 and Fig. 3A: uncapped, unrolled grooves. The virtual mask uses the 143-groove witness layout for inspection; the pictured sample’s full groove count is not established.',widthUm:50,count:143,wireCount:0,rolled:false,innerAreaRise:0},
+ {id:'counter84',label:'100 µm roll · 84 lumens / 8 hypothetical wires',short:'84-lumen counterfactual',status:'Teaching only',note:'Compare eight hypothetical 60 µm wires in the 100 × 100 µm geometry. The actual eight-wire build used the 150 µm width. This is not a reconstructed specimen.',widthUm:100,count:84,wireCount:8,rolled:true,innerAreaRise:.025}
+].map(Object.freeze);
+const MODES=Object.freeze(Object.assign(Object.create(null),Object.fromEntries(modeList.map(x=>[x.id,x]))));
+const stages={
+ design:{name:'Draft the wall mask',basis:'Source geometry / redrawn mask',desc:'Choose one documented geometry before assigning channels. The lithographic layout sets wall and lumen widths. No original GDS or individual rolled lumen maps are available.',gate:'Count slots, not electrical paths. Flat pitch = wall width + lumen width.',tools:['01-01']},
+ base:{name:'Receive the lower PDMS on glass',basis:'Methods §2.1 · Fig. 2.1',desc:'The source spins lower PDMS on Ti/Au-coated glass. Ti/Au is an anti-adhesion carrier treatment, not conductor metallization for the readout.',gate:'Verify the nominal 40 µm base and label the carrier a temporary layer.',tools:['03-01','02-07']},
+ basePlasma:{name:'Activate the base surface',basis:'Methods §2.1 · Fig. 2.2',desc:'Surface preparation supports adhesion between the PDMS and the SU-8. The virtual action represents a change of material state, not a plasma recipe.',gate:'A surface witness belongs to the PDMS/SU-8 interface, not the future PDMS cap bond.',tools:['03-12']},
+ su8:{name:'Apply the wall precursor',basis:'Methods §2.1 · Fig. 2.3',desc:'The patterned layer becomes tall SU-8 partitions on the PDMS base. At this point no through-ducts or separate sensing nets exist.',gate:'Nominal SU-8 height is 100 µm. Check it on an optical section or dummy coupon.',tools:['02-07','05-02']},
+ expose:{name:'Transfer the wall pattern',basis:'Methods §2.1 · Fig. 2.4',desc:'Optical patterning defines walls and clear widths. The illustrative stripes are not recovered production mask artwork. The register’s aligner is a capability match, not a historic tool identification.',gate:'Track the axial wall length on the flat coupon separately from the final 3 mm trim.',tools:['02-01','02-12']},
+ develop:{name:'Inspect the open grooves',basis:'Fig. 2.5 & Fig. 3A',desc:'Development leaves SU-8 walls on the lower PDMS. The source also uses these open flat specimens before any cap step. Do not route a pressurized lumen model through bare grooves.',gate:'Look for wall gaps and count groove openings. Open specimen ends here if selected.',tools:['04-06','02-12','05-02']},
+ openQC:{name:'Check the open witness',basis:'Source control · virtual inspection',desc:'The open witness ends without a roof, roll, wires or pressurized bench test. Inspect cross-sectional dimensions without calling it a fluidic tube.',gate:'A measured groove spacing is valid; confined-flow and electrical results are not applicable.',tools:['12-01','05-02']},
+ lid:{name:'Prepare the cap on its own carrier',basis:'Methods §2.1 · Fig. 2.6',desc:'A separate second glass carrier supports a dissolvable PAA release layer under a nominal 10 µm PDMS cap. The lower Ti/Au stack and top PAA layer have distinct release roles.',gate:'Verify which PDMS face becomes the cap. PAA is not part of the final wall stack.',tools:['02-07','16-09']},
+ bondPlasma:{name:'Prepare the cap bond interface',basis:'Methods §2.1 · Fig. 2.7',desc:'The source depicts activation of the grooved lower assembly for cap attachment. This second activation is distinct from the earlier lower-base activation.',gate:'Keep the cap-transfer surface separate from electrode conductors. There are still zero sensing wires.',tools:['03-12']},
+ cap:{name:'Bring cap and partitions together',basis:'Fig. 2.8 & Fig. 3B',desc:'The thin cap closes the open grooves without plugging them. A continuous cover is not the same thing as the perforated alignment plate used in the later inert test.',gate:'Inspect across neighboring channels for cover gaps, blocked mouths or wall discontinuities.',tools:['16-09','02-12']},
+ releaseCap:{name:'Release the top carrier',basis:'Methods §2.1 · Fig. 2.9',desc:'The source reports dissolving the PAA support for cap transfer. The simulation marks it sacrificial; it does not represent material handling or process timing.',gate:'Capped ducts remain when the second glass carrier and PAA support are withdrawn.',tools:['04-06','12-01']},
+ releaseWeb:{name:'Free the web from the lower carrier',basis:'Methods §2.1 · Fig. 2.10',desc:'Remove the temporary carriers from the closed strip. The flat section shows 40 µm floor, 100 µm wall height and 10 µm lid, a nominal stack of 150 µm.',gate:'A final web section contains PDMS and SU-8, not either carrier or release film.',tools:['12-01']},
+ roll:{name:'Roll across the grooves and trim',basis:'Methods §2.1 · Fig. 3C–D',desc:'The winding direction is transverse to the grooves. Each lumen runs axially through the 3 mm trimmed roll. A small central void between turns is separate from the patterned channels.',gate:'A face-on lumen count survives winding. Do not count the open core as an extra patterned aperture.',tools:['12-01','05-02']},
+ wire:{name:'Register the wire branch',basis:'Methods §2.2 / Results §3.7 + fixture',desc:'The documented article has eight 60 µm, insulated 304 stainless wires terminating within selected 150 µm lumens. In the counterfactual, the same diameters are deliberately overlaid on the 84-lumen geometry as a comparison.',gate:'Use an explicit eight-entry mapping; dried/blocked lumens and electrically open wires must retain distinct identities.',tools:['12-01','16-13']},
+ inspect:{name:'Inspect the section and test two paths',basis:'Independent virtual bench / user controls',desc:'Apply an idealized test plate to the roll and inspect same-ID aperture overlap before predicting benign-fluid transfer. Separately test symbolic wire terminal identity. Neither test verifies the other.',gate:'Log pattern count, aperture coverage, path availability and electrical identity independently.',tools:['12-01','06-07','09-03']}
+};
+const defaults=(mode='wire150')=>{const m=MODES[mode]||MODES.wire150;const w=wireSites(m);return {mode:m.id,driftPct:m.rolled?100:0,dxUm:0,dyUm:0,plugSite:w[3]?.lumen||Math.min(20,m.count),plugPct:0,pressurePa:80,fault:'none',faultWire:4}};
+function wireSites(m){
+ // No original lumen numbering. Space eight deterministic witness sites across the ordered winding.
+ return Array.from({length:m.wireCount},(_,i)=>({index:i+1, id:'W'+String(i+1).padStart(2,'0'),lumen:Math.floor(m.count*(i+.50)/m.wireCount)+1}));
+}
+function normalize(input){
+ const a=input&&typeof input==='object'?input:{},m=MODES[a.mode]||MODES.wire150,d=defaults(m.id);
+ const v=(k,x,y)=>{const w=a[k];const q=(w===null||w===''||w===undefined)?NaN:Number(w);return Number.isFinite(q)?Math.min(y,Math.max(x,q)):d[k]};
+ return {mode:m.id,driftPct:m.rolled?v('driftPct',0,100):0,dxUm:m.rolled?v('dxUm',-190,190):0,dyUm:m.rolled?v('dyUm',-190,190):0,plugSite:Math.round(v('plugSite',1,m.count)),plugPct:m.rolled?v('plugPct',0,100):0,pressurePa:v('pressurePa',0,250),fault:m.wireCount&&['none','open','swap','bridge'].includes(a.fault)?a.fault:'none',faultWire:m.wireCount?Math.round(v('faultWire',1,8)):0};
+}
+function sequence(id){const m=MODES[id]||MODES.wire150,head=['design','base','basePlasma','su8','expose','develop'];return m.rolled?[...head,'lid','bondPlasma','cap','releaseCap','releaseWeb','roll',...(m.wireCount?['wire']:[]),'inspect']:[...head,'openQC']}
+function areaSigned(p){let s=0;for(let i=0;i<p.length;i++){let n=p[(i+1)%p.length];s+=p[i][0]*n[1]-p[i][1]*n[0]}return s/2}
+const area=p=>Math.abs(areaSigned(p)),ccw=p=>areaSigned(p)<0?[...p].reverse():p;
+const xy=(r,t)=>[r*Math.cos(t),r*Math.sin(t)];
+const bounding=p=>[Math.min(...p.map(v=>v[0])),Math.min(...p.map(v=>v[1])),Math.max(...p.map(v=>v[0])),Math.max(...p.map(v=>v[1]))];
+const overlaps=(a,b)=>a[0]<b[2]+1e-8&&b[0]<a[2]+1e-8&&a[1]<b[3]+1e-8&&b[1]<a[3]+1e-8;
+const shift=(p,dx,dy)=>p.map(([x,y])=>[x+dx,y+dy]);
+const cross=(a,b,p)=>(b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]);
+function clipConvex(subject,clip){
+ let out=subject;
+ for(let j=0;j<clip.length&&out.length;j++){
+   const A=clip[j],B=clip[(j+1)%clip.length],p=out;out=[];
+   for(let i=0;i<p.length;i++){
+     const u=p[i],w=p[(i+1)%p.length],x=cross(A,B,u),y=cross(A,B,w),ci=x>=-1e-8,ni=y>=-1e-8;
+     if(ci)out.push(u);
+     if(ci!==ni&&Math.abs(x-y)>1e-15){const t=x/(x-y);out.push([u[0]+t*(w[0]-u[0]),u[1]+t*(w[1]-u[1])]);}
+   }
+ }
+ return out;
+}
+const totalH=C.pdmsBaseUm+C.heightUm+C.pdmsLidUm, radialR0=C.assumedCoreInnerRadiusUm+totalH/2,k=totalH/TAU, hh=totalH/2;
+const bandMin=-hh+C.pdmsBaseUm,bandMax=bandMin+C.heightUm,midOff=(bandMin+bandMax)/2;
+const rk=t=>radialR0+k*t,spiralAt=(t,off=0)=>xy(rk(t)+off,t);
+const integral=r=>(r*Math.hypot(r,k)+k*k*Math.asinh(r/k))/(2*k),s0=integral(radialR0);
+const arc=t=>integral(rk(t))-s0;
+function thetaAt(s){if(s<=0)return 0;let lo=0,hi=s/radialR0;for(let i=0;i<28;i++){const md=(lo+hi)/2;if(arc(md)<s)lo=md;else hi=md;}return (lo+hi)/2}
+const bandPoly=(a,b,lo,hi)=>ccw([spiralAt(a,lo),spiralAt(a,hi),spiralAt(b,hi),spiralAt(b,lo)]);
+function outline(a,b,lo,hi,samples=150){const ts=Array.from({length:samples+1},(_,i)=>a+(b-a)*i/samples);return [...ts.map(t=>spiralAt(t,hi)),...ts.reverse().map(t=>spiralAt(t,lo))]}
+const cache={};
+function getGeometry(mode,drift=100){
+ const m=MODES[mode]||MODES.wire150;drift=m.rolled&&Number.isFinite(drift)?Math.max(0,Math.min(100,drift)):0;const memo=m.id+'/'+drift;if(cache[memo])return cache[memo];
+ const w=m.widthUm, pitch=w+C.su8WallUm, webWidth=m.count*pitch+C.su8WallUm,z=C.rollLengthUm,per=[];
+ for(let i=0;i<m.count;i++){
+   const s=C.su8WallUm+i*pitch+w/2,a=m.rolled?thetaAt(s):0;
+   per.push({lumen:i+1,flatCenterUm:s,thetaRad:a,turn:m.rolled?Math.floor(a/TAU)+1:null,weight:1-s/webWidth});
+ }
+ const turns=m.rolled?per.at(-1).turn:null,inner=per.filter(x=>x.turn<=2),outer=per.filter(x=>x.turn===turns),mean=x=>x.reduce((q,r)=>q+r.weight,0)/x.length;
+ const aW=mean(inner),bW=mean(outer),maxT=m.rolled?thetaAt(webWidth):0;
+ const channels=per.map((p,i)=>{
+   let w2=w;
+   if(m.rolled&&aW>bW)w2*=1+(m.innerAreaRise*drift/100)*(p.weight-bW)/(aW-bW);
+   let poly,center,zAngle,ends=null;
+   if(m.rolled){
+     const rr=rk(p.thetaRad)+midOff,dt=Math.asin(Math.min(.8,w2/(2*rr))),
+       L=Math.max(0,p.thetaRad-dt, i?(p.thetaRad+per[i-1].thetaRad)/2+.001:0),
+       H=Math.min(maxT,p.thetaRad+dt,(i<per.length-1?(p.thetaRad+per[i+1].thetaRad)/2-.001:maxT));
+     ends=[L,H];poly=bandPoly(L,H,bandMin,bandMax); center=spiralAt(p.thetaRad,midOff);zAngle=p.thetaRad;
+   }else{center=[p.flatCenterUm-webWidth/2,C.pdmsBaseUm+C.heightUm/2];zAngle=null;poly=ccw([[center[0]-w/2,C.pdmsBaseUm],[center[0]+w/2,C.pdmsBaseUm],[center[0]+w/2,C.pdmsBaseUm+C.heightUm],[center[0]-w/2,C.pdmsBaseUm+C.heightUm]])}
+   return {...p,widthUm:w2,nominalWidthUm:w,heightUm:C.heightUm,nominalAreaUm2:w*C.heightUm,idealAreaUm2:w2*C.heightUm,sectionPolygonUm:poly,sectionAreaUm2:area(poly),bbox:bounding(poly),centerUm:center,angularBounds:ends,angleForDrawingRad:zAngle};
+ });
+ const bd=m.rolled?bounding(outline(0,maxT,-hh,hh,720)):[-webWidth/2,0,webWidth/2,C.pdmsBaseUm+C.heightUm];
+ const A=channels.filter(x=>x.turn<=2),B=channels.filter(x=>x.turn===turns),avg=q=>q.reduce((p,c)=>p+c.idealAreaUm2,0)/q.length;
+ // A bounded memo avoids a long slider session retaining many full models.
+ if(Object.keys(cache).length>30)for(const u of Object.keys(cache))delete cache[u];
+ return cache[memo]={mode:m.id,webWidthUm:webWidth,flatPitchUm:pitch,nominalThicknessUm:m.rolled?totalH:C.pdmsBaseUm+C.heightUm,axialLengthUm:m.rolled?z:C.flatAxialWallUm,
+   turns: m.rolled?maxT/TAU:null,angularSpanRad:maxT,spanXUm:bd[2]-bd[0],spanYUm:bd[3]-bd[1],bbox:bd,innerAverageAreaRisePct:m.rolled?100*(avg(A)/avg(B)-1):null,channels};
+}
+function register(channels,dx,dy){
+ if(Math.abs(dx)+Math.abs(dy)<1e-10)return channels.map(c=>({ ownFraction:1,neighborFraction:0,hits:[{lumen:c.lumen,fraction:1}]}));
+ const pts=channels.map(c=>{let p=shift(c.sectionPolygonUm,dx,dy);return {id:c.lumen,p,b:bounding(p)}});
+ return channels.map(c=>{
+   const hits=[];for(const other of pts){
+     if(!overlaps(c.bbox,other.b))continue;
+     const f=area(clipConvex(c.sectionPolygonUm,other.p))/c.sectionAreaUm2;
+     if(f>1e-7)hits.push({lumen:other.id,fraction:Math.max(0,Math.min(1,f))});
+   }
+   return {ownFraction:hits.find(h=>h.lumen===c.lumen)?.fraction||0,
+   neighborFraction:Math.min(1,hits.filter(h=>h.lumen!==c.lumen).reduce((a,b)=>a+b.fraction,0)),hits};
+ });
+}
+function rectK(wUm,hUm){
+ const w=Math.max(wUm,hUm)*1e-6,h=Math.min(wUm,hUm)*1e-6;if(!Number.isFinite(w)||!Number.isFinite(h)||h<=0)return 0;
+ let sum=0;for(let j=0;j<C.seriesOddTerms;j++){let n=2*j+1;sum+=Math.tanh(n*Math.PI*w/(2*h))/n**5;}
+ return w*h**3/12*(1-(192/Math.PI**5)*(h/w)*sum);
+}
+function hydraulicR(w,h,l){
+ if(l<=0)return 0;const k=rectK(w,h);return k>0?C.benchViscosityPaS*l*1e-6/k:Infinity;
+}
+function rowFlow(ch,wire,fraction,plugPct,pressure){
+ const w=ch.widthUm,h=ch.heightUm,wireArea=wire?Math.PI*(C.wireDiameterUm/2)**2:0,freeArea=ch.idealAreaUm2-wireArea,
+   wireLen=wire?C.assumedDistalWireOccupancyLengthUm:0;
+ const equivalent=f=>Math.sqrt(Math.max(0,Math.min(1,f))),cf=equivalent(freeArea/ch.idealAreaUm2),f=equivalent(fraction),u=1-plugPct/100;
+ const R=hydraulicR(w,h,C.rollLengthUm-C.assumedPlugLengthUm-wireLen)+hydraulicR(w*cf,h*cf,wireLen)+
+   hydraulicR(w*u,h,C.assumedPlugLengthUm)+hydraulicR(w*f,h*f,C.assumedStencilLengthUm);
+ // µL/min, m^3 × 10^9 µL/m^3 × 60 s/min.
+ return {freeAreaUm2:Math.max(0,freeArea),mappedFlowUlMin:Number.isFinite(R)?pressure/R*60e9:0,resistancePaSecPerM3:Number.isFinite(R)?R:null,wireAreaUm2:wireArea};
+}
+function dryTest(m,x){
+ const sites=wireSites(m),n=sites.length,node=Array.from({length:2*n},(_,i)=>i),find=i=>node[i]===i?i:(node[i]=find(node[i])),join=(a,b)=>{node[find(b)]=find(a)},t=x.faultWire-1,j=t===n-1?t-1:t+1;
+ for(let i=0;i<n;i++){const p=x.fault==='swap'&&i===t?j:x.fault==='swap'&&i===j?t:i;if(!(x.fault==='open'&&i===t))join(i,n+p)}
+ if(n&&x.fault==='bridge')join(n+t,n+j);
+ const matrix=sites.map((_,i)=>sites.map((_,j)=>find(i)===find(n+j)));
+ const rows=sites.map((p,i)=>{const links=sites.filter((_,j)=>matrix[i][j]);return {...p,detectedWireIds:links.map(w=>w.id),detectedLumens:links.map(w=>w.lumen),correct:matrix[i][i]&&links.length===1&&matrix.filter(r=>r[i]).length===1}});
+ return {rows,matrix,isolatedCorrect:rows.filter(r=>r.correct).length,connectedTerminals:rows.filter(r=>r.detectedWireIds.length).length,wires:sites};
+}
+function solve(input){
+ const config=normalize(input),m=MODES[config.mode],g=getGeometry(m.id,config.driftPct),dry=dryTest(m,config),by=Object.fromEntries(dry.wires.map(w=>[w.lumen,w])),reg=m.rolled?register(g.channels,config.dxUm,config.dyUm):[];
+ const rows=g.channels.map((c,i)=>{
+   const wire=by[c.lumen]||null,plugPct=config.plugSite===c.lumen?config.plugPct:0;
+   if(!m.rolled)return {...c,wireId:null,physicalPatency:null,fixtureQualified:null,registration:null,plugPct:0,flow:null};
+   const f=reg[i],physicalPatency=plugPct<100;
+   let flow=rowFlow(c,Boolean(wire),f.ownFraction,plugPct,config.pressurePa);
+   return {...c,wireId:wire?.id||null,physicalPatency,fixtureQualified:physicalPatency&&f.ownFraction+1e-9>=C.teachingOwnMin&&f.neighborFraction<=C.teachingNeighborMax+1e-9,
+       registration:f,plugPct,flow};
+ });
+ return {config,mode:m,geometry:g,rows,dry,
+   stats:{patterned:rows.length,physicalPatent: m.rolled?rows.filter(r=>r.physicalPatency).length:null,
+   fixtureQualified:m.rolled?rows.filter(r=>r.fixtureQualified).length:null,registrationLoss:m.rolled?rows.filter(r=>r.registration.ownFraction+1e-9<C.teachingOwnMin||r.registration.neighborFraction>C.teachingNeighborMax+1e-9).length:null,
+   waterPathModelSumUlMin:m.rolled?rows.reduce((a,b)=>a+b.flow.mappedFlowUlMin,0):null,
+   installedWires:m.wireCount,correctElectrical:dry.isolatedCorrect,
+   nominalWireFreeAreaUm2:m.wireCount?(m.widthUm*C.heightUm-Math.PI*(C.wireDiameterUm/2)**2):null,
+   nominalWireFaceAndSideAreaMm2:m.wireCount?(Math.PI*C.wireDiameterUm*C.exposedTipLengthUm+Math.PI*(C.wireDiameterUm/2)**2)*1e-6:null},
+   referenceNotes:m.wireCount?{tripolar:{outsideWireConductors:2,electricallyCoupled:true,referenceNetCount:1},bipolar:{outsideWireConductors:1,referenceNetCount:1},benchScope:'External returns described in §2.2. Neither is among the eight intraluminal wires. Ground/reference outcomes are not simulated.'}:null};
+}
+function meshOBJ(input){
+ const x=normalize(input),m=MODES[x.mode],g=getGeometry(m.id,x.driftPct),z=m.rolled?C.rollLengthUm:C.flatAxialWallUm;
+ let out=['# Build the Simulation / inert microchannel witness','# Units: mm. No clinical geometry, tolerances, or released production mask.','# Roll, aperture locations and wire identities are reconstructed teaching geometry.', 'mtllib microchannel-witness.mtl']; let cursor=1;
+ const write=(name,mat,pts,faces)=>{
+   out.push('g '+name,'usemtl '+mat);
+   for(const p of pts)out.push('v '+p.map(c=>(c/1000).toFixed(8)).join(' '));
+   for(const f of faces)out.push('f '+f.map(i=>i+cursor).join(' '));cursor+=pts.length;
+ };
+ const rail=(name,mat,a,b,lo,hi,n=4)=>{
+   if(b-a<1e-7)return;let pts=[], faces=[];
+   for(let i=0;i<=n;i++){let t=a+(b-a)*i/n;let p=m.rolled?spiralAt(t,lo):[t,lo],q=m.rolled?spiralAt(t,hi):[t,hi];pts.push([...p,0],[...q,0],[...q,z],[...p,z]);}
+   faces.push([0,1,2,3]);for(let i=0;i<n;i++)for(let j=0;j<4;j++)faces.push([4*i+j,4*(i+1)+j,4*(i+1)+(j+1)%4,4*i+(j+1)%4]);
+   faces.push([4*n+3,4*n+2,4*n+1,4*n]);write(name,mat,pts,faces);
+ };
+ if(m.rolled){
+   let a=0,max=g.angularSpanRad;rail('PDMS_base','pdms',0,max,-hh,bandMin,192);rail('PDMS_lid','pdms',0,max,bandMax,hh,192);
+   for(const q of g.channels){let [l,h]=q.angularBounds;rail('SU8_wall_'+q.lumen,'su8',a,l,bandMin,bandMax,Math.max(2,Math.ceil((l-a)*14)));a=h;}
+   rail('SU8_final_wall','su8',a,max,bandMin,bandMax);
+ }else{
+   const s=-g.webWidthUm/2;rail('PDMS_base','pdms',s,-s,0,C.pdmsBaseUm,1);
+   for(let j=0;j<=m.count;j++){let w=s+j*g.flatPitchUm;rail('SU8_wall_'+(j+1),'su8',w,w+C.su8WallUm,C.pdmsBaseUm,C.pdmsBaseUm+C.heightUm,1)}
+ }
+ for(const s of wireSites(m)){
+   const [cx,cy]=g.channels[s.lumen-1].centerUm,R=C.wireDiameterUm/2,N=18,Z0=z-C.assumedDistalWireOccupancyLengthUm,Z1=z+240;let P=[],F=[];
+   for(let zz of [Z0,Z1])for(let j=0;j<N;j++){const a=TAU*j/N;P.push([cx+R*Math.cos(a),cy+R*Math.sin(a),zz])}
+   F.push(Array.from({length:N},(_,i)=>N-1-i));for(let i=0;i<N;i++)F.push([i,(i+1)%N,(i+1)%N+N,i+N]);F.push(Array.from({length:N},(_,i)=>i+N));
+   write(s.id+'_witness','wire',P,F);
+ }
+ return {obj:out.join('\n')+'\n',
+  mtl:'# Display materials only\nnewmtl pdms\nKd 0.40 0.68 0.56\nnewmtl su8\nKd 0.80 0.58 0.28\nnewmtl wire\nKd 0.75 0.78 0.74\n'};
+}
+const api={C,modeList,MODES,stages,sequence,defaults,normalize,wireSites,
+ area,ccw,clipConvex,register,arc,thetaAt,outline,spiralAt,bandPoly,bandMin,bandMax,halfThickness:hh,
+ getGeometry,rectK,hydraulicR,rowFlow,solve,meshOBJ};
+if(typeof module!=='undefined'&&module.exports)module.exports=api;else g.RMF=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script><script>(function(){
+'use strict';
+const E=RMF,C=E.C,$=s=>document.getElementById(s);
+const colors={cream:'#e4eed1',gold:'#e9b16f',bright:'#ffc48a',ink:'#213e36',glass:'#9cbab3',wall:'#d7a35f',pdms:'#74a790',cool:'#abc8b5',hot:'#e17554',wire:'#f3e3ab',dark:'#14372f'};
+const e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const f=(x,n=0)=>(+x).toFixed(n), local=(x,n=0)=>(+x).toLocaleString('en-US',{minimumFractionDigits:n,maximumFractionDigits:n});
+const lid=n=>'L'+String(n).padStart(3,'0'), pct=x=>f(x*100,1)+'%';
+const text=(x,y,t,size=12,col=colors.cream,anc='start')=>'<text x="'+x+'" y="'+y+'" fill="'+col+'" font-family="ui-monospace,monospace" font-size="'+size+'" text-anchor="'+anc+'">'+e(t)+'</text>';
+const rect=(x,y,w,h,c,st='none',rx=0)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+c+'" stroke="'+st+'" rx="'+rx+'"/>';
+const circ=(x,y,r,c,st='none',sw=1)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+c+'" stroke="'+st+'" stroke-width="'+sw+'"/>';
+const path=(p,fill,stroke,sw=1,extra='')=>'<path d="'+p+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="'+sw+'" '+extra+'/>';
+const poly=(p,fill,st,sw=1,attr='')=>'<polygon points="'+p.map(q=>f(q[0],2)+','+f(q[1],2)).join(' ')+'" fill="'+fill+'" stroke="'+st+'" stroke-width="'+sw+'" '+attr+'/>';
+const pp=(g,w=555,h=288)=>'<defs><pattern id="'+g+'" width="17" height="17" patternUnits="userSpaceOnUse"><path d="M17 0H0v17" fill="none" stroke="#638e74" stroke-opacity=".35" stroke-width=".55"/></pattern></defs>'+rect(1,1,w-2,h-2,'url(#'+g+')','#638370',2);
+const kv=(k,v)=>'<dt>'+e(k)+'</dt><dd>'+v+'</dd>';
+let draft=E.defaults(), result=E.solve(draft), order=E.sequence(draft.mode), done=0, stage=0, focus=draft.plugSite, current='build', faceAngle=0, mask=true, marks=true;
+const modeOpts=E.modeList.map(m=>[m.id,m.label]);
+function fill(id,options){
+ const q=$(id);q.replaceChildren(...options.map(([value,label])=>{const o=document.createElement('option');o.value=value;o.textContent=label;return o}));}
+fill('mode',modeOpts);
+function log(str){$('status').textContent=str}
+function setSelect(){
+ fill('step',order.map((t,i)=>[i,String(i+1).padStart(2,'0')+' · '+E.stages[t].name]));
+ const rows=result.rows.map(q=>[q.lumen,lid(q.lumen)+(q.wireId?' · '+q.wireId:'')]);
+ for(const name of ['focus','benchFocus','plugSite'])fill(name,rows);
+ fill('wire',result.dry.wires.length?result.dry.wires.map(w=>[w.index,w.id+' · '+lid(w.lumen)]):[[0,'No installed wires']]);
+}
+setSelect();
+function useNew(cfg,go,finish,announcement){
+ result=E.solve(cfg);draft=result.config;order=E.sequence(draft.mode);
+ done=finish?order.length:0;stage=finish?done-1:0;focus=draft.plugSite;
+ setSelect();
+ if(go!==null)show(go);
+ else render();
+ if(announcement)log(announcement);
+}
+function change(key,val){
+ const stageFor=order.indexOf(key==='driftPct'?'roll':key==='fault'||key==='faultWire'?'wire':'inspect');
+ if(result.config[key]===val)return;
+ result=E.solve({...draft,[key]:val});draft=result.config;
+ if(stageFor>=0){done=Math.min(done,stageFor);if(stage>done)stage=done;}
+ if(key==='plugSite')focus=draft.plugSite;
+ render();
+ let msg={dxUm:'X registration',dyUm:'Y registration',plugPct:'Obstruction',plugSite:'Lumen target',pressurePa:'Test pressure',driftPct:'Width trend',fault:'Wire fault',faultWire:'Electrical target'}[key];
+ log(msg+' changed. Upstream handoffs retained; test the current configuration again.');
+}
+function show(mode){
+ current=mode;
+ for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==mode;
+ for(const el of document.querySelectorAll('[data-view]'))el.setAttribute('aria-pressed',String(el.dataset.view===mode));
+ log({build:'Inspect any handoff. Acceptance follows the selected route in order.',section:'Design preview: geometry, fixture overlay and route identities.',bench:'Complete the selected traveler to see test results.',evidence:'Source results are separate from teaching fixture assumptions.'}[mode]);render();
+}
+function finish(msg){done=order.length;stage=order.length-1;show('bench');log(msg||'Selected traveler complete. Geometry, flow and electrical records are separate.')}
+const equip=id=>'<a href="https://buildthesimulation.com/simulations/equipment/'+id+'/">'+id+'</a>';
+function inspectStep(){
+ const key=order[stage],s=E.stages[key];
+ $('mode').value=draft.mode;$('step').value=stage;$('stageTitle').textContent=s.name;$('basis').textContent=s.basis;$('stageDesc').textContent=s.desc;
+ $('stageGate').textContent=s.gate;$('stageTools').innerHTML=s.tools.map(equip).join(' · ')+' <span class="fine">(equipment analogues)</span>';
+ $('stageState').textContent=stage<done?'Accepted':stage===done?'Current':'Preview';
+ $('tag').classList.toggle('ref',result.mode.status==='Teaching only');$('tag').textContent=result.mode.status;
+ $('progressLabel').textContent=String(done).padStart(2,'0')+' / '+order.length+' accepted';$('progress').max=order.length;$('progress').value=done;
+ $('runTop').textContent=done===order.length?'Open current test':'Run selected build';
+ $('advance').disabled=stage!==done;$('advance').textContent=stage<done?'Already accepted':stage>done?'Earlier handoffs pending':stage===order.length-1?'Accept & test':'Accept handoff';
+ $('previous').disabled=stage===0;$('next').disabled=stage===order.length-1;
+ $('stageNum').textContent=String(stage+1).padStart(2,'0')+' / '+order.length;
+ if(current==='build')renderProcess(key);
+}
+function plateArea(spec){
+ const {cx,cy,factor,angle,drawWires,obstructions,fitColor,stencil}=spec,w=result.mode;
+ const g=result.geometry,t=g.angularSpanRad,A=angle*Math.PI/180,cos=Math.cos(A),sin=Math.sin(A),P=q=>[cx+factor*(q[0]*cos-q[1]*sin),cy-factor*(q[0]*sin+q[1]*cos)];
+ let body=poly(E.outline(0,t,-E.halfThickness,E.halfThickness,225).map(P),'#ba975e','#d6bb7e',1)+poly(E.outline(0,t,-E.halfThickness,E.bandMin,225).map(P),colors.pdms,'#9cc1a2',.55)+poly(E.outline(0,t,E.bandMax,E.halfThickness,225).map(P),'#87b198','#a9c9ad',.45);
+ for(const rr of result.rows){
+   let selected=rr.lumen===focus,tone=obstructions&&rr.plugPct===100?'#83472e':fitColor&&!rr.fixtureQualified?'#24443a':'#142f2a';
+   body+=poly(rr.sectionPolygonUm.map(P),tone,selected?'#fff4bd':'#b29355',selected?2:.4,'class="hit" data-lumen="'+rr.lumen+'"');
+ }
+ if(stencil&&(draft.dxUm||draft.dyUm)){
+   body+='<g fill-opacity=".22" stroke-opacity=".75" pointer-events="none">';
+   for(const q of result.rows)body+=poly(q.sectionPolygonUm.map(v=>P([v[0]+draft.dxUm,v[1]+draft.dyUm])),colors.hot,colors.bright,.7);
+   body+='</g>';
+ }
+ if(drawWires)for(const rr of result.rows.filter(c=>c.wireId)){
+   let [u,v]=P(rr.centerUm),d=result.dry.rows.find(q=>q.id===rr.wireId),isOpen=d&&!d.correct;
+   body+=circ(u,v,Math.max(2,factor*C.wireDiameterUm/2),isOpen?'#c57954':colors.wire,'#5e5435',.75).replace('<circle ','<circle pointer-events="none" ');
+   if(isOpen)body+=path('M'+(u-3)+' '+(v-3)+'l6 6m0 -6-6 6','none','#fff2d3',1.1,'pointer-events="none"');
+ }
+ return body;
+}
+function renderProcess(id){
+ let s=pp('stagegrid'),m=result.mode,g=result.geometry,w=m.widthUm,n=m.count;
+ if(id==='design'){
+   s+=text(21,26,'WALL MASK / REPRESENTATIVE CENTER WINDOW',13);
+   for(let i=0;i<9;i++){const x=44+i*53;s+=rect(x,67,12,136,colors.wall);s+=rect(x+12,67,41,136,'#325749',colors.cool,.5)}
+   s+=text(45,229,w+' µm nominal clear + 20 µm wall → '+g.flatPitchUm+' µm flat pitch',12,colors.gold);
+   s+=text(45,251,n+' model slots | no electrical nets in mask',12);
+   $('stageCaption').textContent='Concept stripes represent mask pitch. The illustrated nine-period window is not the full author mask.';
+ }else if(['roll','wire','inspect'].includes(id)){
+   s+=plateArea({cx:295,cy:143,factor:.150,angle:0,drawWires:id!=='roll',obstructions:id==='inspect',fitColor:id==='inspect',stencil:id==='inspect'});
+   s+=text(19,25,id==='roll'?'ROLL / TRANSVERSE WINDING':id==='wire'?'WIRE BOUNDARY / SEPARATE NETS':'INERT SECTION / FIXTURE REGISTRATION',13);
+   s+=text(21,265,n+' patterned openings · '+(id==='roll'?0:m.wireCount)+' intraluminal wires at this stage',12,colors.gold);
+   $('stageCaption').textContent=id==='roll'?'The axially continuous openings survive the roll. The free core is not counted.':id==='wire'?'Only selected bores get wires. The gold dots are reconstructed wire positions, not the paper’s random assignments.':'Dimensional inspection and the dry electrical check run on separate fixtures.';
+ }else{
+   const uncapped=['base','basePlasma','su8','expose','develop','openQC','lid','bondPlasma'].includes(id),prepared=!(id==='base'||id==='basePlasma'),whole=id==='su8'||id==='expose';
+   s+=text(21,26,'LAYER STACK / SECTION NOT TO SCALE',13);
+   let glow=-1;
+   if(id==='basePlasma')glow=173;
+   if(id==='bondPlasma')glow=63;
+   if(id!=='releaseWeb'&&id!=='openQC')s+=rect(39,208,435,26,colors.glass)+text(48,226,'temporary Ti/Au-treated glass',12,colors.dark);
+   s+=rect(39,173,435,35,colors.pdms)+text(48,194,'40 µm PDMS base',12,colors.dark);
+   if(prepared){
+     if(whole)s+=rect(39,89,435,84,'#aa814e')+text(48,146,'100 µm SU-8 precursor',13);
+     else{for(let j=0;j<7;j++)s+=rect(39+j*69,89,21,84,colors.wall);s+=text(57,148,w+' µm clear',13,colors.cream);}
+   }
+   if(!uncapped)s+=rect(39,77,435,12,'#9dc3a7')+text(50,70,'10 µm PDMS lid',13);
+   if(['lid','bondPlasma','cap'].includes(id)){
+     let y=id==='cap'?39:44;s+=rect(39,y,435,20,colors.glass)+text(51,y+14,'separate glass/PAA release support',11,colors.dark);
+     s+=rect(39,y+20,435,8,'#ce8ca0');if(uncapped)s+=rect(39,y+28,435,7,'#9dc3a7');
+   }
+   if(glow>0)s+=path('M52 '+glow+'H454','none','#ffdc90',4,'stroke-dasharray="6 6"')+text(42,257,'Surface activation state only',12,colors.gold);
+   if(id==='expose')s+=path('M90 55v34m84-34v34m84-34v34m84-34v34m84-34v34','none','#f9dba6',2,'stroke-dasharray="4 4"');
+   $('stageCaption').textContent=uncapped?'These grooves are still open unless a subsequent cap is selected. No enclosed flow is demonstrated by an uncapped coupon.':'The cap creates enclosed lumens; the upper PAA release is separate from lower Ti/Au carrier treatment.';
+ }
+ $('process').innerHTML=s;
+}
+function stripePlate(){
+ let q=result.rows[focus-1],n=result.rows.length;
+ const short=Math.min(12,n),first=Math.max(1,Math.min(focus-5,n-short+1)),factor=40;
+ let base=rect(36,278,short*factor+7,32,colors.pdms,'#9ac0a3')+text(49,337,'40 µm lower PDMS · no cap',14);
+ for(let k=0;k<short;k++){
+   const id=first+k,x=41+k*factor;
+   base+=rect(x-5,157,10,121,colors.wall);
+   base+=rect(x+5,157,30,121,id===q.lumen?'#5a7154':'#2b4b40',id===q.lumen?'#f7e1ad':'#426d58',1).replace('<rect ','<rect class="hit" data-lumen="'+id+'" ');
+   base+=text(x+20,259,String(id),10,colors.cream,'middle');
+ }
+ return base+text(27,55,'FLAT GAPS · '+first+'–'+(first+short-1)+' OF '+n,14)+text(27,83,'No roof or confined flow in this branch.',12,colors.gold);
+}
+function renderSection(){
+ const m=result.mode,q=result.rows[focus-1],g=result.geometry;
+ $('focus').value=focus;$('modeNote').textContent=m.note;$('faceAngle').value=faceAngle;$('angleOut').textContent=faceAngle+'°';$('drift').value=draft.driftPct;$('driftOut').textContent=m.rolled?draft.driftPct+'%':'n/a';
+ for (let id of ['faceAngle','maskVisible','drift'])$(id).disabled=!m.rolled;
+ $('wiresVisible').disabled=m.wireCount===0;$('maskVisible').checked=mask;$('wiresVisible').checked=marks;
+ $('faceHeading').textContent=m.rolled?'CUT FACE / PATTERNED LUMENS':'FLAT WITNESS / OPEN GROOVES';
+ $('faceLabel').textContent=lid(focus)+' / '+m.count;
+ let s=pp('facegrid',555,470);
+ if(m.rolled){
+   s+=plateArea({cx:276,cy:231,factor:.218,angle:faceAngle,drawWires:marks,obstructions:true,fitColor:true,stencil:mask});
+   s+=text(16,25,'PATTERNED FACE / '+m.count+' LUMENS',14);
+   s+=circ(277,231,19,'none','#85a98d',.9)+text(277,236,'CORE',11,colors.cream,'middle');
+   s+=path('M34 425h'+(200*.218),'none',colors.cream,2)+text(34,447,'200 µm',11)+text(529,446,'Section shown from one end',12,colors.cream,'end');
+   $('faceCaption').textContent='Gold walls, green PDMS, clear lumens. Gold dots mark wired bores; a broken lead remains physically drawn. Orange tint is the shifted virtual aperture plate. The central gap does not count.';
+ }else{
+   s+=stripePlate();
+   $('faceCaption').textContent='Window around the selected groove. Width and pitch follow the nominal open branch; apparent wall shape is illustrative.';
+ }
+ $('face').innerHTML=s;
+ let projection=m.rolled?f(g.spanXUm/1000,3)+' × '+f(g.spanYUm/1000,3)+' mm projected caliper spans · '+f(g.turns,2)+' turns.':'Unrolled and uncapped. No roll-width interpolation.';
+ $('driftCaption').textContent=m.rolled?'Inner two-ring mean is '+f(g.innerAverageAreaRisePct,2)+'% wider in area than the outer-turn mean at this setting. '+projection:projection;
+ const reg=q.registration;
+ $('lumenFacts').innerHTML=kv('Pattern slot',lid(focus)+(q.turn?' · turn '+q.turn:' · open strip'))+
+  kv('Ideal local clear section',f(q.widthUm,1)+' × '+f(q.heightUm,0)+' µm; '+local(q.idealAreaUm2,0)+' µm² before a wire')+
+  kv('Intraluminal wire',q.wireId?e(q.wireId)+' · teaching assignment':'None')+
+  (reg?kv('Matching plate aperture',pct(reg.ownFraction)+' overlap; '+pct(reg.neighborFraction)+' from other holes'):kv('Pressure test','Not applicable without a cap'));
+ renderZoom(q,m);
+ renderAxial(q,m);
+}
+function renderZoom(q,m){
+ const sc=Math.min(1.22,205/q.widthUm),w=q.widthUm*sc,h=q.heightUm*sc,x=195-w/2,y=49,baseH=C.pdmsBaseUm*sc,capH=C.pdmsLidUm*sc;
+ let p=rect(x-21,y+h,w+42,baseH,'#81ac98')+rect(x-20,y,20,h,colors.wall)+rect(x+w,y,20,h,colors.wall);
+ if(m.rolled)p+=rect(x-20,y-capH,w+40,capH,'#92b7a7');
+ p+=rect(x,y,w,h,'#dce4d6','#9bae9b');
+ if(q.wireId)p+=circ(195,y+h/2,C.wireDiameterUm/2*sc,'#b87941','#5e5d36',1.5)+text(195,y+h/2+5,q.wireId,11,colors.cream,'middle');
+ p+=path('M'+x+' 20h'+w,'none','#557267',1.2)+text(195,17,f(q.widthUm,1)+' µm',12,colors.ink,'middle');
+ p+=text(405,70,m.rolled?'LID':'OPEN AIR',11,colors.ink,'end')+text(405,y+h+22,'BASE',11,colors.ink,'end');
+ $('zoom').innerHTML=p;
+ $('zoomText').textContent=q.wireId?'Nominal 60 µm wire disk excludes '+local(q.flow.wireAreaUm2)+' µm². Estimated local remaining area: '+local(q.flow.freeAreaUm2)+' µm² in the ideal rectangle; insulation thickness and actual packing are not resolved.':'No assigned wires. Open area is geometric and does not indicate an addressable electrode.';
+}
+function renderAxial(q,m){
+ let s=text(18,23,m.rolled?'AXIAL CUT / '+lid(focus):'OPEN STRIP / NO ENCLOSED DUCT',13,colors.ink);
+ const left=45,right=378,l=right-left,y=92;
+ s+=rect(left,y+63,l,14,'#8eb69e')+rect(left,y,l,63,'#e3ece0','#8aa481',2);
+ if(m.rolled)s+=rect(left,y-10,l,10,'#82ae97');
+ if(q.plugPct>0)s+=rect(left+4,y+63*(1-q.plugPct/100),31,63*q.plugPct/100,'#b06749');
+ if(q.wireId){
+   const a=left+l*.5,b=a+l/6;
+   s+=path('M395 122H'+b,'none','#596659',9)+path('M'+b+' 122H'+a,'none','#ae7745',8)+text(a-2,112,'bare tip',10,colors.ink);
+   if(result.dry.rows.find(d=>d.id===q.wireId)?.correct===false)s+=path('M383 115l12 13m-1-13-12 13','none','#a4482a',2);
+ }
+ if(m.rolled&&q.registration.ownFraction<.999)s+=rect(left-13,y,7,63,'#c47c63')+text(19,182,'shifted test plate',11,colors.ink);
+ s+=text(right,185,m.rolled?'3 mm trimmed length':'10 mm flat walls',11,colors.ink,'end');
+ s+=text(left,48,'stencil / entrance',11,colors.ink)+text(right,48,q.wireId?'wire-side end':'other end',11,colors.ink,'end');
+ $('axial').innerHTML=s;
+}
+function inputs(){
+ for(const [id,key] of [['dx','dxUm'],['dy','dyUm'],['plugSite','plugSite'],['plugPct','plugPct'],['pressure','pressurePa'],['fault','fault'],['wire','faultWire']])$(id).value=draft[key];
+ const m=result.mode,has=m.wireCount>0,closed=m.rolled;
+ for(const k of ['dx','dy','plugSite','plugPct','pressure'])$(k).disabled=!closed;
+ $('fault').disabled=!has;$('wire').disabled=!has||draft.fault==='none';
+ $('dxOut').textContent=closed?draft.dxUm+' µm':'n/a';$('dyOut').textContent=closed?draft.dyUm+' µm':'n/a';$('plugOut').textContent=closed?draft.plugPct+'%':'n/a';$('pressureOut').textContent=closed?draft.pressurePa+' Pa':'n/a';
+ $('wireNotice').textContent=!has?'No in-lumen conductors in this branch. An uninstrumented aperture cannot pass an electrical identity check.':m.id==='counter84'?'Eight hypothetical witness conductors, not a specimen reported by Srinivasan et al.':'Published count: eight intraluminal wires. Witness labels and their selected positions are illustrative.';
+}
+function renderBench(){
+ inputs();const d=result,m=d.mode,t=d.stats,finished=done===order.length,q=d.rows[focus-1];
+ $('benchFocus').value=focus;$('benchFocusTitle').textContent='Inspect '+lid(focus)+(q.wireId?' · '+q.wireId:'');
+ $('metOpen').textContent=t.patterned;$('mOpenCap').textContent=m.rolled?'Central core excluded':'Open mask grooves, not ducts';
+ const ready=finished&&m.rolled;
+ $('metPatent').textContent=ready?t.physicalPatent+' / '+t.patterned:'—';$('metFit').textContent=ready?t.fixtureQualified+' / '+t.patterned:'—';
+ $('metElectrical').textContent=finished&&m.wireCount?t.correctElectrical+' / '+t.installedWires:'—';
+ $('test').textContent=finished?'Rerun same fixture':m.rolled?'Complete build & test':'Complete open witness';
+ $('csv').disabled=!ready;
+ $('testMessage').textContent=!finished?'Results stale or not yet run. Finishing the traveler changes nothing about the source counts.':!m.rolled?'Open specimen complete. No pressurized duct or electrical test applies.':t.fixtureQualified<t.physicalPatent?'Some physically patent lumens fail the teaching registration gate; a path can still pass fluid under part of an aperture.':'The dry continuity check does not use aperture area or measured fluid flow.';
+ if(!ready){
+   $('lumenTest').innerHTML=kv('Test state',!finished?'Complete the traveler to see current fixture results.':'Open geometry only.');
+   $('sumFlow').textContent='';$('pathTable').innerHTML='';$('wireTable').innerHTML='';return;
+ }
+ const o=q.registration,row=q.wireId?d.dry.rows.find(z=>z.id===q.wireId):null;
+ $('lumenTest').innerHTML=kv('Physical opening',q.physicalPatency?'Present and not fully obstructed':'Present, fully plugged')+kv('Projected registration',pct(o.ownFraction)+' to its own stencil · '+pct(o.neighborFraction)+' to other stencil apertures')+
+  kv('Teaching registration/plug gate',q.fixtureQualified?'Pass':'Fail')+
+  kv('Same-ID flow surrogate',f(q.flow.mappedFlowUlMin,4)+' µL/min at '+draft.pressurePa+' Pa (not a measured value)')+
+  kv('Electrical witness',row?e(row.id)+': '+(row.correct?'mapped correctly':row.detectedWireIds.length?'wrong or bridged identity':'no conductor detected'):'No assigned wire')+
+  (o.hits.length?kv('Which stencil holes?',e(o.hits.map(h=>lid(h.lumen)+' '+pct(h.fraction)).join(' · '))):'');
+ $('sumFlow').textContent='Model sum over independent same-ID paths: '+local(t.waterPathModelSumUlMin,2)+' µL/min at ΔP '+draft.pressurePa+' Pa. Does not include cross-flow.';
+ let rows=d.rows.map(r=>'<tr><th scope="row">'+lid(r.lumen)+(r.wireId?' · '+r.wireId:'')+'</th><td>'+pct(r.registration.ownFraction)+'</td><td>'+pct(r.registration.neighborFraction)+'</td><td'+(r.fixtureQualified?'':' class="bad"')+'>'+(r.fixtureQualified?'pass':'fail')+'</td><td>'+f(r.flow.mappedFlowUlMin,4)+'</td></tr>').join('');
+ $('pathTable').innerHTML='<table><caption>Independent teaching fixture outputs</caption><thead><tr><th scope="col">Lumen</th><th scope="col">Own</th><th scope="col">Neighbor</th><th scope="col">Gate</th><th scope="col">µL/min</th></tr></thead><tbody>'+rows+'</tbody></table>';
+ rows=d.dry.rows.map(r=>'<tr><th scope="row">'+r.id+'</th><td>'+lid(r.lumen)+'</td><td>'+r.detectedLumens.map(lid).join(', ').replace(/^$/,'No path')+'</td><td'+(r.correct?'':' class="bad"')+'>'+(r.correct?'Pass':'Fail')+'</td></tr>').join('');
+ $('wireTable').innerHTML=rows?'<table><caption>Correct '+t.correctElectrical+' · connected '+d.dry.connectedTerminals+' · installed '+t.installedWires+'</caption><thead><tr><th scope="col">Fixture pin</th><th scope="col">Expected</th><th scope="col">Detected</th><th scope="col">Identity</th></tr></thead><tbody>'+rows+'</tbody></table>':'<p>Zero installed wires for this variant.</p>';
+}
+function syncFocus(id){const n=Math.max(1,Math.min(result.rows.length,Math.round(+id)));if(isFinite(n))focus=n;render()}
+function render(){inspectStep();if(current==='section')renderSection();if(current==='bench')renderBench();}
+function makeFile(name,body,type){
+ const url=URL.createObjectURL(new Blob([body],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1800);
+}
+const pres={
+  ref:[{},'Wired reference: 59 lumens and eight installed wires.'],
+  geom84:[{mode:'g100'},'Published 84-lumen geometry. No independently mapped wires.'],
+  counter:[{mode:'counter84'},'Teaching-only comparison: 84 lumens and eight hypothetical wires.'],
+  offset:[{dxUm:33,dyUm:-19},'Test plate translated +33 / −19 µm. Independent wire netlist is unchanged.'],
+  plug:[{plugPct:100},'One lumen is fully blocked. Wire W04 is still connected to its expected terminal.'],
+  break:[{fault:'open',faultWire:4},'One modeled lead is open; fluid patency and physical geometry are unchanged.'],
+  swap:[{fault:'swap',faultWire:4},'W04/W05 transposed: all leads conduct, but two terminal identities fail.']
+};
+for(const b of document.querySelectorAll('[data-case]'))b.onclick=()=>{const [cfg,msg]=pres[b.dataset.case];useNew({...E.defaults(cfg.mode||'wire150'),...cfg},'bench',true,msg)};
+for(const b of document.querySelectorAll('[data-view]'))b.onclick=()=>show(b.dataset.view);
+$('mode').onchange=ev=>{let m=ev.target.value;useNew(E.defaults(m),null,false,'Selected '+E.MODES[m].short+'. Previous lot state cleared.');};
+$('reset').onclick=()=>{faceAngle=0;mask=true;marks=true;useNew(E.defaults(draft.mode),'build',false,'Fresh lot in the same configuration. No tests are current.');};
+$('runTop').onclick=()=>finish();$('test').onclick=()=>finish();
+$('step').onchange=e=>{stage=+e.target.value;inspectStep();};$('previous').onclick=()=>{stage=Math.max(0,stage-1);inspectStep();};$('next').onclick=()=>{stage=Math.min(order.length-1,stage+1);inspectStep();};
+$('advance').onclick=()=>{if(stage===done&&done<order.length){done++;stage=Math.min(done,order.length-1);if(done===order.length)finish();else{render();log('Accepted '+done+' of '+order.length+' handoffs.');}}};
+for(const [id,key] of [['dx','dxUm'],['dy','dyUm'],['plugPct','plugPct'],['pressure','pressurePa'],['drift','driftPct']])$(id).oninput=ev=>change(key,+ev.target.value);
+$('plugSite').onchange=ev=>change('plugSite',+ev.target.value);$('fault').onchange=ev=>change('fault',ev.target.value);$('wire').onchange=ev=>change('faultWire',+ev.target.value);
+for(const id of ['focus','benchFocus'])$(id).onchange=ev=>syncFocus(ev.target.value);
+$('face').onclick=ev=>{const a=ev.target.closest('[data-lumen]');if(a)syncFocus(a.getAttribute('data-lumen'));};
+$('faceAngle').oninput=ev=>{faceAngle=+ev.target.value;renderSection()};$('maskVisible').onchange=ev=>{mask=ev.target.checked;renderSection()};$('wiresVisible').onchange=ev=>{marks=ev.target.checked;renderSection()};
+$('obj').onclick=()=>makeFile('microchannel-witness.obj',E.meshOBJ(draft).obj,'text/plain');$('mtl').onclick=()=>makeFile('microchannel-witness.mtl',E.meshOBJ(draft).mtl,'text/plain');
+$('json').onclick=()=>{
+ const ready=done===order.length;
+ const draftData={format:'BTS-ROLLED-MICROCHANNELS-LOT-1',scope:'Inert virtual fixture. No actual process traveler, channel map, or research yield.',publishedSources:['https://doi.org/10.1016/j.biomaterials.2014.11.035','https://fluid.dtu.dk/Publications/Lecture_notes'],config:draft,finished:ready,provenance:result.mode.note,constants:C,completedHandoffs:order.slice(0,done),stats:ready?result.stats:null,netMatrix:ready?result.dry.matrix:null,results:ready?result.rows:null,electricalReferenceNotes:ready?result.referenceNotes:null,axisUnits:'Micrometers unless explicitly named otherwise; pressure Pa, flow µL/min'};
+ makeFile('microchannel-lot.json',JSON.stringify(draftData,null,2),'application/json');
+ log(ready?'Exported complete teaching lot.':'Exported progress only; pending test results are null.');
+};
+$('csv').onclick=()=>{
+ if(done!==order.length||!result.mode.rolled)return;
+ const quote=value=>'"'+String(value??'').replaceAll('"','""')+'"';
+ const lines=[['fixture-mode','fixture-status','lumen','mapped-wire','turn','nominal-width-um','ideal-width-um','height-um','patterned','physically-patent','plug-percent','matched-fraction','neighbor-fraction','fixture-qualified','pressure-pa','same-id-flow-uL-min','wire-correct']];
+ for(const x of result.rows)lines.push([draft.mode,result.mode.status,lid(x.lumen),x.wireId,x.turn,x.nominalWidthUm,f(x.widthUm,6),x.heightUm,1,+x.physicalPatency,x.plugPct,f(x.registration.ownFraction,7),f(x.registration.neighborFraction,7),+x.fixtureQualified,draft.pressurePa,f(x.flow.mappedFlowUlMin,8),x.wireId?+result.dry.rows.find(r=>r.id===x.wireId).correct:null]);
+ makeFile('microchannel-bench.csv',lines.map(line=>line.map(quote).join(',')).join('\r\n')+'\r\n','text/csv');
+};
+show('build');
+})();
+</script>
+</body></html>

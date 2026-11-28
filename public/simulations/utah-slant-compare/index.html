@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Compare uniform Utah and Slant electrode-array geometry, inspect front-to-rear isolation and run a virtual continuity fixture."><title>Utah and Slant | Isolation bench</title>
+<style>:root{color-scheme:light;--paper:#f5efe1;--panel:#fdf9ee;--ink:#262b27;--muted:#464b42;--line:#b5b19d;--green:#26554b;--night:#243830;--nightDeep:#1c302a;--mint:#9ad0be;--gold:#dfbd73;--rust:#85472e;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;--mono:ui-monospace,'SFMono-Regular',Consolas,monospace}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.52 var(--sans)}html{scroll-behavior:smooth}main{max-width:1370px;margin:0 auto;padding:0 clamp(16px,4vw,64px) 25px}header,footer{display:flex;justify-content:space-between;gap:9px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:14px 0}a{color:var(--green);text-underline-offset:.22em}.brand{font:bold 1.19rem/1.25 var(--serif);color:var(--ink);text-decoration:none}.brand span{font-weight:normal;color:var(--muted)}.travel{font-size:.8rem}.skip{position:absolute;left:-9999px}.skip:focus{position:static;margin-left:10px}h1,h2,h3,p,figure{margin:0}h1,h2,h3{font-family:var(--serif);font-weight:normal;line-height:1.08;letter-spacing:-.032em}h1{font-size:clamp(3.4rem,8.1vw,7.4rem);letter-spacing:-.065em;line-height:.93;margin:.12em 0 .16em}h2{font-size:clamp(1.67rem,4vw,2.75rem)}h3{font-size:clamp(1.3rem,3vw,2.05rem)}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:17px;padding:35px 0 27px}.lede{font-size:1.11rem;max-width:68ch;color:var(--muted)}.hero aside{display:flex;align-items:center;gap:10px;min-width:208px;border-left:2px solid var(--green);padding-left:12px;font-size:.86rem;color:var(--green)}.hero aside small{color:var(--muted)}.dot{width:9px;height:9px;border-radius:50%;background:#6a9674;box-shadow:0 0 0 4px #d9e5cc}.eyebrow,.examples>span,.jump a{font:bold .68rem/1.45 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--green)}.eyebrow{margin:0 0 5px}.jump{display:flex;flex-wrap:wrap;gap:9px 17px;border-top:1px solid var(--line);padding:12px 0 18px}.jump a{white-space:nowrap;letter-spacing:.045em}.panel{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:clamp(14px,2vw,25px);margin:0 0 12px;min-width:0;scroll-margin:10px}.controlGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:14px}.controlGrid>div,.fieldGrid>div{min-width:0}label{display:block;font-size:.8rem;font-weight:660;line-height:1.37;margin:1px 0 6px}button,input,select,textarea{font:inherit;color:var(--ink);max-width:100%}input[type=number],select,textarea,button{min-height:42px;background:#fffdf5;border:1px solid #959989;border-radius:4px;padding:6px 9px}input[type=number],select,textarea{width:100%;display:block}button{cursor:pointer;text-align:left}button:hover{background:#e9ecdb}button:disabled{opacity:.47;cursor:not-allowed}a:focus-visible,select:focus-visible,input:focus-visible,button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #a36322;outline-offset:3px}.scopeNote,.error{font-size:.86rem;background:#efeddf;border-left:3px solid #6f8c74;color:#3c4840;margin:11px 0;padding:8px 10px}.error,.scopeNote.warn{background:#f5e5d8;border-color:var(--rust);color:#633a2a}#measuredWrap{margin-top:11px}#measuredWrap textarea{resize:vertical}#measuredWrap p{margin:.4em 0 0}.sceneGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.scene{background:var(--night);border-radius:5px;color:#f7f1dd;min-width:0;overflow:hidden;padding:10px 14px 2px}.scene>div{display:flex;justify-content:space-between;align-items:end;gap:7px;flex-wrap:wrap}.scene p{font-size:.73rem;color:#e1d5b8}.scene>svg{display:block;width:100%;max-height:255px}.bigFacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}.bigFacts>div{border-left:1px solid var(--line);padding:0 9px}.bigFacts>div:first-child{border:none;padding-left:0}.bigFacts strong{display:block;font:normal clamp(1.35rem,3.2vw,2.25rem)/1.15 var(--serif);letter-spacing:-.035em;color:var(--green);overflow-wrap:anywhere}.bigFacts span{font-size:.74rem;color:var(--muted)}.rowBand{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));border:1px solid #d2c9b3;border-radius:3px;margin:10px 0 5px;background:#f6f0e1}.rowBand>div{padding:5px 3px 4px;text-align:center;border-left:1px solid #d2c9b3;font:600 .75rem/1.4 var(--mono)}.rowBand>div:first-child{border:none}.rowBand span{display:block;font-weight:normal;font-size:.62rem;color:#4d5145}.small,.scope legend,.readout span{color:var(--muted);font-size:.77rem}.under{margin-top:7px}.deck{max-width:83ch;color:var(--muted);font-size:.92rem;margin:.55em 0 .8em}.examples{display:flex;align-items:center;gap:8px 11px;flex-wrap:wrap;margin-bottom:10px}.examples>div,.exports{display:flex;gap:6px;flex-wrap:wrap}.examples button,.exports button{font-size:.78rem;min-height:39px}.cutsGrid{display:grid;grid-template-columns:minmax(285px,.83fr) minmax(0,2.05fr);gap:10px}.instrument,.inspect{border:1px solid #c9c2ad;background:#f6f0e3;padding:12px;border-radius:4px;min-width:0}.inspect{background:#fcf8ec}.fieldGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.inspect>.fieldGrid{grid-template-columns:repeat(4,minmax(0,1fr))}details{margin:12px 0 8px;padding:7px 0;border-top:1px solid #c9c2ad;border-bottom:1px solid #c9c2ad}summary{font-size:.83rem;color:#294f43;cursor:pointer;line-height:1.3;padding:5px 0}details[open] summary{margin-bottom:7px}details small,p.small{margin:.55em 0}.spanRead{margin:10px 0 0;padding:0;list-style:none}.spanRead li{border-top:1px solid #cdc6b2;padding:6px 0;line-height:1.36;font-size:.79rem}.spanRead strong{color:var(--green)}.inspectGrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.13fr);gap:7px;margin-top:9px}.inspectGrid figure{min-width:0}.inspectGrid svg{display:block;width:100%;max-height:285px;background:var(--nightDeep);border:1px solid #344c3e;border-radius:4px}.inspectGrid figcaption{font-size:.72rem;line-height:1.35;color:var(--muted);margin-top:4px}.inspectGrid svg .site{cursor:pointer}.inspectGrid svg .site:hover{stroke:#fff7d7;stroke-width:2.5px}.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:10px 0 0}.readout>div{border-left:1px solid #c9c2ad;padding:3px 8px}.readout strong{display:block;font:bold .93rem/1.3 var(--mono);overflow-wrap:anywhere;color:#264c42}.readout span{display:block;line-height:1.33}.readout>div:first-child{border:none;padding-left:0}.runGrid{display:grid;grid-template-columns:minmax(220px,.88fr) minmax(0,1.4fr);gap:12px}fieldset{border:1px solid #c9c2ad;border-radius:4px;margin:0;padding:11px;min-width:0}legend{color:#3e5148;font-weight:660;font-size:.79rem;padding:0 6px}.checkLabel{display:flex;align-items:center;gap:8px;min-height:33px;margin:1px 0;cursor:pointer}.checkLabel input{accent-color:#28584a;min-width:18px;width:18px;height:18px;margin:0}.primary{background:#2b5a4d;color:#fff;border-color:#2b5a4d;font-weight:650;margin-top:4px}.primary:hover{background:#183e32}.status{padding:9px 10px;background:#e6ecdf;border-left:3px solid #628873;font-size:.88rem;line-height:1.45}.status.bad{border-color:#956243;background:#f4e5d9}.status.idle{border-color:#adb2a1;background:#f1eddf}.exports{margin-top:12px}#counts{margin-top:9px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}#counts div{border-left:1px solid var(--line);padding:3px 8px;font-size:.74rem;line-height:1.28}#counts div:first-child{border:none;padding-left:0}#counts strong{display:block;font:normal 1.75rem/1.1 var(--serif);color:var(--green)}.reading{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);margin-bottom:10px;font-size:.84rem;color:var(--muted)}.reading h2{color:var(--ink);font-size:1.65rem;margin-bottom:9px}.reading p+p,.reading p+a{margin-top:.7em}.reading a{display:inline-block}.reading ul{padding:0;margin:0;list-style:none}.reading li{margin-bottom:.6em}.reading li span{display:block}.reading li a{font-weight:650}footer{color:var(--muted);font-size:.76rem;border:none}.hot{fill:#e7ae7f}.cool{fill:#a3cebb}[hidden]{display:none!important}
+@media(max-width:990px){.controlGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cutsGrid{grid-template-columns:minmax(250px,.9fr) minmax(0,1.8fr)}.inspect>.fieldGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:710px){.hero{padding:23px 0 17px}.hero aside{display:none}.lede{font-size:1.01rem}.controlGrid,.fieldGrid{gap:7px}.cutsGrid,.runGrid{grid-template-columns:1fr}.scene{padding:9px 8px 1px}.scene h3{font-size:1.1rem}.scene p{font-size:.67rem}.reading{grid-template-columns:1fr;gap:15px}.panel{padding:13px}.reading h2{font-size:1.45rem}.rowBand{grid-template-columns:repeat(5,minmax(0,1fr))}.rowBand>div:nth-child(6){border-left:0}.rowBand>div:nth-child(n+6){border-top:1px solid #d2c9b3}input[type=number],select,textarea{font-size:16px}}
+@media(max-width:460px){main{padding-left:11px;padding-right:11px}.cutPanel{padding:12px 9px}.inspectGrid{grid-template-columns:1fr}.inspectGrid svg{max-height:none}.sceneGrid{grid-template-columns:1fr}.scene>svg{max-height:210px}.scene p{font-size:.71rem}.bigFacts{grid-template-columns:repeat(2,minmax(0,1fr))}.bigFacts>div:nth-child(3){border:0;padding-left:0}.examples button{font-size:.74rem;padding:4px 7px}.jump{column-gap:10px}.audit{font-size:.68rem}.readout strong{font-size:.83rem}.readout span{font-size:.7rem}.runGrid{gap:9px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.examples button[aria-pressed=true]{background:#e3e9db;border-color:#628875;box-shadow:inset 0 -2px #7d9f89}
+.elevation{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,1fr);align-items:center;gap:14px;margin:11px 0 8px;padding:10px 14px;background:#f3eddf;border:1px solid #c9c2ad;border-radius:4px}.elevation svg{display:block;width:100%;max-height:164px}.elevation h3{font-size:1.42rem;margin-bottom:5px}.elevation p:not(.eyebrow){font-size:.79rem;color:var(--muted);max-width:53ch}.legend{display:flex;align-items:center;gap:7px;margin:9px 0 0;font-size:.72rem}.key{width:23px;display:inline-block;border-top:2px solid #875521}.key.standard{border-top:2px dashed #335d53}.key.tilted{margin-left:10px}@media(max-width:650px){.elevation{grid-template-columns:1fr;gap:3px;padding:10px}.elevation svg{max-height:190px}.elevation h3{font-size:1.2rem}}
+</style></head>
+<body><a class="skip" href="#configure">Skip to configuration</a><main>
+<header><a class="brand" href="/simulations/foundry/">BuildTheSimulation <span>/ Foundry</span></a><a class="travel" href="/simulations/foundry/atlas/#profile=si-utah">Utah process traveler ↗</a></header>
+<section class="hero"><div><p class="eyebrow">Fabrication series / Utah and Slant</p><h1>The isolation bench.</h1><p class="lede">Same pitch. Two height profiles. Inspect how opposing cuts separate a lattice of silicon roots, then see which faults a virtual continuity test can distinguish.</p></div><aside><span class="dot"></span><div>Inert digital coupon<br><small>No physical instrument connected</small></div></aside></section>
+<nav class="jump" aria-label="Laboratory sections"><a href="#configure">01 · Height comparison</a><a href="#cuts">02 · Opposing cuts</a><a href="#continuity">03 · Continuity fixture</a></nav>
+
+<section id="configure" aria-labelledby="heightHeading" class="panel compare">
+ <div class="sect"><p class="eyebrow">Section 01 / Shape and coordinates</p><h2 id="heightHeading">Compare matched lattices</h2></div>
+ <div class="controlGrid">
+  <div><label for="uniform">Uniform reference height</label><select id="uniform"><option value="1500">1.50 mm · same height</option><option value="1000">1.00 mm · same height</option></select></div>
+  <div><label for="range">Slant height evidence</label><select id="range"><option value="study">2017 study · approx. 0.75–1.50 mm</option><option value="overview">Manufacturer overview · 0.50–1.50 mm</option><option value="options">Manufacturer options table · 0.75–1.50 mm</option><option value="measured">Enter ten row heights</option></select></div>
+  <div><label for="grade">Order of Slant row heights</label><select id="grade"><option value="x+">Along +X · left to right on needle face</option><option value="x-">Along −X · right to left on needle face</option><option value="y+">Along +Y · bottom to top on needle face</option><option value="y-">Along −Y · top to bottom on needle face</option></select></div>
+  <div><label for="rotation">Rotate both specimens</label><select id="rotation"><option value="0">0° · original pose</option><option value="90">90° clockwise</option><option value="180">180°</option><option value="270">270° clockwise</option></select></div>
+ </div>
+ <div id="measuredWrap" hidden><label for="measured">Ten row heights · µm</label><textarea rows="2" spellcheck="false" id="measured"></textarea><p class="small">Give ten values in the chosen direction, separated by spaces or commas. Use 100–2,000 µm for this virtual plotting scale.</p></div>
+ <p id="rangeNote" class="scopeNote"></p>
+ <p id="error" role="alert" class="error" hidden></p>
+ <div class="sceneGrid">
+  <figure class="scene"><div><h3>Uniform Utah</h3><p id="leftSub">1.50 mm equal shanks</p></div><svg id="uniformFig" viewBox="0 0 420 264" role="img" aria-label="Isometric model of 100 vertical, equal-height needles"><g></g></svg></figure>
+  <figure class="scene"><div><h3>Utah Slant</h3><p id="rightSub">0.75–1.50 mm endpoint envelope</p></div><svg id="slantFig" viewBox="0 0 420 264" role="img" aria-label="Isometric model of 100 vertical needles with an adjustable tip height profile"><g></g></svg></figure>
+ </div>
+ <div class="bigFacts" id="facts"></div>
+ <figure class="elevation"><div><p class="eyebrow">Inspect without perspective</p><h3>Elevation along the grade</h3><p id="elevationNote"></p><div class="legend"><span class="key standard"></span> Uniform <span class="key tilted"></span> Slant</div></div><svg id="elevation" viewBox="0 0 440 226" role="img" aria-labelledby="elevationTitle elevationDesc"><title id="elevationTitle">Orthographic height profile at equal horizontal and vertical scale</title><desc id="elevationDesc"></desc><g></g></svg></figure>
+ <div class="rowBand" id="rowBand" aria-label="Ten row heights, first through tenth in the selected direction"></div>
+ <p class="small under">Both drawings use the same projection. The ten height values are ordered along the chosen grade, independent of the fixture’s row labels. Needles remain normal to the base; the envelope over their <em>tips</em> can slope. Shank contours are indicative, not CAD or a machining target.</p>
+</section>
+
+<section id="cuts" class="panel cutPanel" aria-labelledby="cutHeading">
+ <div class="sect"><p class="eyebrow">Section 02 / Registration and glass</p><h2 id="cutHeading">Bring two cut planes together</h2></div>
+ <p class="deck">A rear groove filled with glass needs to meet the front opening. An uncut silicon bridge, two faces that only touch, and an overcut that leaves no glass are three different outcomes. Use this same cross-section fixture with either height profile.</p>
+ <div class="examples"><span>Examples</span><div id="examples"></div></div>
+ <div class="cutsGrid">
+ <div class="instrument">
+  <div class="fieldGrid">
+   <div><label for="frontKerf">Front opening · µm</label><input type="number" id="frontKerf" step="any" inputmode="decimal"></div>
+   <div><label for="rearKerf">Rear opening · µm</label><input type="number" id="rearKerf" step="any" inputmode="decimal"></div>
+   <div><label for="glassDepth">Rear groove depth · µm</label><input type="number" id="glassDepth" step="any" inputmode="decimal"></div>
+   <div><label for="toe">Front floor from rear · µm</label><input type="number" id="toe" step="any" inputmode="decimal"></div>
+  </div>
+  <details id="reg"><summary>Pitch, offset and floor drift</summary><div class="fieldGrid">
+   <div><label for="pitchX">X pitch change / interval · µm</label><input type="number" id="pitchX" step="any" inputmode="decimal"></div>
+   <div><label for="pitchY">Y pitch change / interval · µm</label><input type="number" id="pitchY" step="any" inputmode="decimal"></div>
+   <div><label for="offsetX">X alignment shift · µm</label><input type="number" id="offsetX" step="any" inputmode="decimal"></div>
+   <div><label for="offsetY">Y alignment shift · µm</label><input type="number" id="offsetY" step="any" inputmode="decimal"></div>
+   <div><label for="slope">Floor drift / 400 µm · µm</label><input type="number" id="slope" step="any" inputmode="decimal"></div>
+   <div><label for="slopeAxis">Direction of floor drift</label><select id="slopeAxis"><option value="x">Along physical +X</option><option value="y">Along physical +Y</option></select></div>
+  </div><p class="small">Pitch errors accumulate from the central rail. Floor drift uses the rear plane as its datum and is independent of the Slant tip heights.</p></details>
+  <p class="small">Inputs describe a rectangular inspection coupon, not saw instructions. In the historical example, the rear <em>blade</em> width is used as an assumed opening, not measured kerf. A positive floor leaves material above the rear face.</p>
+  <ul id="spans" class="spanRead"></ul>
+ </div>
+ <div class="inspect">
+  <div class="fieldGrid"><div><label for="face">Plan view</label><select id="face"><option value="front">Needle face · +X points right</option><option value="rear">Rear face · mirror left to right</option></select></div><div><label for="edgeAxis">Inspect next neighbor</label><select id="edgeAxis"><option value="x">Across physical +X</option><option value="y">Across physical +Y</option></select></div><div><label for="edgeRow">Select row</label><select id="edgeRow"></select></div><div><label for="edgeCol">Select column</label><select id="edgeCol"></select></div></div>
+  <div class="inspectGrid">
+   <figure><svg id="plan" viewBox="0 0 300 302" role="img" aria-labelledby="planTitle planDesc"><title id="planTitle">Front and rear cut overlay</title><desc id="planDesc"></desc><g></g></svg><figcaption>Plan overlay · click a site or use the row and column menus. Fiducial <strong>A</strong> retains its physical identity on the rear face.</figcaption></figure>
+   <figure><svg id="section" viewBox="0 0 365 302" role="img" aria-labelledby="sectionTitle sectionDesc"><title id="sectionTitle">Detail section of the selected boundary</title><desc id="sectionDesc"></desc><g></g></svg><figcaption id="sectionText"></figcaption></figure>
+  </div>
+  <div class="readout" id="edgeData"></div>
+ </div>
+ </div>
+ <div id="geoNotice" class="scopeNote" role="status"></div>
+</section>
+
+<section id="continuity" class="panel check" aria-labelledby="checkHeading">
+ <div class="sect"><p class="eyebrow">Section 03 / Inert electrical logic</p><h2 id="checkHeading">Which pads can still identify a tip?</h2></div>
+ <p class="deck">The fixture traces Boolean paths on 100 symbolic roots and checks 96 virtual outputs. Four corner roots are parked; they still exist in the graph. An open loses the intended output. A bridge can propagate a tag to another output.</p>
+ <div class="runGrid">
+  <fieldset><legend>Include or add faults</legend><label class="checkLabel"><input type="checkbox" id="accountWeb" checked>Count possible silicon webs from the cut model</label><label class="checkLabel"><input type="checkbox" id="open">Open the selected site’s output lead</label><label class="checkLabel"><input type="checkbox" id="bridge">Bridge the two sites in the selected section</label><p id="faultTarget" class="small"></p><button id="run" class="primary" type="button">Test continuity →</button></fieldset>
+  <div><div id="checkStatus" class="status" aria-live="polite">Run the virtual fixture to inspect the current cut geometry.</div><div id="counts"></div><p class="small" id="paths"></p></div>
+ </div>
+ <div class="exports"><button id="geometryCsv" type="button">Export boundary measurements · CSV</button><button id="channelsCsv" type="button" disabled>Export virtual outputs · CSV</button><button id="record" type="button">Export inspection record · JSON</button></div>
+ <p class="small">The geometry export includes 180 interior neighbor boundaries. The JSON includes every row height, registration result, source, and any completed virtual test. All readings are generated by this coupon model.</p>
+</section>
+
+<section class="reading"><div><p class="eyebrow">Reading the drawing</p><h2>Where the model stops</h2><p>In the verified historical cross-section the trench fill is glass. This drawing does not assert that current commercial arrays use a particular glass, ceramic, process stack or finished channel map. The measured quantities are geometric, not dielectric strength, fracture risk, leakage or recording quality.</p><p>Every inspected cut uses an ideal rectangular section and linear drift of the floor at the cut centerline. The check samples the worst depth along the rear island and does not resolve floor variation across the cut width. A silicon remnant is counted as a <em>candidate</em> bridge only. A cut-through breach or a tangent join is flagged without inventing an electrical connection. Phase, electrode impedance and actual production tolerances are outside the fixture.</p><a href="/simulations/utah-array-fabrication/">Open the separate Utah Array fabrication teaching flow →</a></div><div><p class="eyebrow">Evidence ledger</p><h2>Primary sources</h2><ul id="sources"></ul></div></section>
+<footer><a href="/simulations/foundry/atlas/">Manufacturing workflow atlas</a><span>BuildTheSimulation / inert virtual instrument</span></footer>
+</main><script>/* Educational cut geometry and Boolean continuity on a hardware-free fixture. */
+(function(host){'use strict';
+const EPS=1e-8, N=10, P=400, SIZE=4000, SPAN=(N-1)*P;
+const refs={
+ standard:['Blackrock · Utah Array options','https://blackrockneurotech.com/products/utah-array/','400 µm pitch; separate research and clinical length options. The FAQ’s 4 × 4 mm footprint and 0.2 mm substrate are representative, not universal manufacturing tolerances.'],
+ ifu:['Blackrock · NeuroPort configuration, rev. 3','https://blackrockneurotech.com/wp-content/uploads/2023/04/LB-0612_NeuroPort_Array_IFU.pdf','A reference with 100 physical electrode positions and 96 connected recording outputs; the virtual fixture does not reproduce its clinical hardware or wiring.'],
+ vendor:['Blackrock · Slant overview and specification table','https://blackrockneurotech.com/products/slant-array/','The overview describes a linear 0.5–1.5 mm grade. The options table instead lists custom lengths of 0.75–1.5 mm. The two are preserved separately.'],
+ study:['Wendelken et al. (2017) · Slant array hardware','https://doi.org/10.1186/s12984-017-0320-4','Device geometry: 100 sites on a 4 × 4 mm base, 400 µm pitch, approximately 0.75–1.5 mm lengths. The corner reference convention applies to this study, not every order.'],
+ glass:['Jones, Campbell & Normann (1992) · glass/silicon array','https://pubmed.ncbi.nlm.nih.gov/1510294/','The glass-isolated base was a distinct alternative to an earlier junction-isolation architecture.'],
+ patent:['University of Utah · historical glass-isolated cross-section','https://patents.google.com/patent/US5215088A/en','Figures 6–9 distinguish two orthogonal grids on opposite faces. The example names a 125 µm rear blade and 250 µm rear depth, and a 270 µm front kerf. It does not qualify a current vendor process.'],
+ cut:['Bhandari et al. (2010) · wafer-scale shaping','https://pubmed.ncbi.nlm.nih.gov/20706618/','Orthogonal rough cuts and later shaping are different steps. Real post-etch tips cannot be inferred from the as-cut square ligament.']
+};
+const ranges={
+ study:{short:750,long:1500,name:'2017 study envelope',scope:'Approximate endpoints are reported. Exact heights of the ten rows are not given; the drawn linear row schedule is modeled.'},
+ overview:{short:500,long:1500,name:'Manufacturer overview',scope:'Blackrock describes a linear grade from 0.5 to 1.5 mm. Exact row heights shown here are the ideal interpolation, not measurements.'},
+ options:{short:750,long:1500,name:'Manufacturer options table',scope:'Blackrock lists 0.75–1.5 mm custom lengths. This table does not establish an actual row schedule; the drawing uses ideal linear interpolation.'},
+ measured:{name:'User-entered row heights',scope:'These ten values are user inputs, not manufacturer data or proof of fabricated dimensions.'}
+};
+const limits={
+ frontKerf:[60,360],rearKerf:[40,300],glassDepth:[60,550],toe:[-60,550],
+ pitchX:[-36,36],pitchY:[-36,36],offsetX:[-250,250],offsetY:[-250,250],slope:[-55,55]
+};
+const pretty={frontKerf:'Front cut opening',rearKerf:'Rear cut opening',glassDepth:'Rear groove depth',toe:'Front cut floor',pitchX:'X pitch offset',pitchY:'Y pitch offset',offsetX:'X registration',offsetY:'Y registration',slope:'Floor drift'};
+const base={
+ range:'study',grade:'x+',uniform:1500,
+ measured:'750, 833, 917, 1000, 1083, 1167, 1250, 1333, 1417, 1500',
+ frontKerf:220,rearKerf:120,glassDepth:250,toe:200,pitchX:0,pitchY:0,offsetX:0,offsetY:0,slope:0,slopeAxis:'x',accountWeb:true,
+ open:false,bridge:false,faultRow:4,faultCol:4,bridgeAxis:'x'
+};
+const examples={
+ nominal:{name:'Aligned coupon',options:{}},
+ shift:{name:'Pitch drift toward one edge',options:{pitchX:24,offsetX:90}},
+ shelf:{name:'Silicon shelf between cuts',options:{toe:267}},
+ cap:{name:'Glass cap breach',options:{toe:25,slope:8}},
+ mixed:{name:'One open and one bridge',options:{open:true,bridge:true,faultRow:3,faultCol:5,bridgeAxis:'y'}},
+ historical:{name:'Historical section dimensions',options:{frontKerf:270,rearKerf:125,glassDepth:250,toe:200}}
+};
+const clamp=(x,a,b)=>Math.min(Math.max(x,a),b), finite=x=>typeof x==='number'&&Number.isFinite(x), int=x=>Number.isSafeInteger(x);
+const coord=i=>(i-(N-1)/2)*P, rail=i=>(i-N/2)*P, numberId=(row,col)=>row*N+col, siteName=(row,col)=>'R'+(row+1)+'C'+(col+1);
+const nodeName=i=>siteName(Math.floor(i/N),i%N);
+const bounds=r=>int(r)&&r>=0&&r<N;
+function gradeData(o){
+ if(!Object.prototype.hasOwnProperty.call(ranges,o.range)||!['x+','x-','y+','y-'].includes(o.grade))return {error:'Choose a supported Slant range and direction.'};
+ let heights;
+ const r=ranges[o.range];
+ if(o.range==='measured'){
+  const raw=String(o.measured??'').trim();
+  if(raw.length>1600)return {error:'Enter ten row heights in µm, separated by spaces or commas.'};
+  const parts=raw.split(/[\s,]+/);heights=parts.map(v=>/^\d+(?:\.\d+)?$/.test(v)?Number(v):NaN);
+  if(heights.length!==N||heights.some(x=>!(finite(x)&&x>=100&&x<=2000)))return {error:'Enter exactly ten heights from 100 through 2,000 µm, ordered in the selected grade direction.'};
+ }else heights=Array.from({length:N},(_,i)=>r.short+(r.long-r.short)*i/(N-1));
+ const changes=heights.slice(1).map((h,i)=>h-heights[i]);
+ const asc=changes.every(d=>d>=-EPS),desc=changes.every(d=>d<=EPS),delta=heights.at(-1)-heights[0],max=Math.max(...heights),min=Math.min(...heights);
+ const az={ 'x+':0,'y+':90,'x-':180,'y-':270 }[o.grade],angle=Math.atan(delta/SPAN)*180/Math.PI;
+ return {name:r.name,scope:r.scope,heights,min,max,spread:max-min,delta,angle,az,axis:o.grade[0],reverse:o.grade[1]==='-',kind:o.range==='measured'?'entered':'interpolated',monotone:asc?(desc?'level':'increasing'):desc?'decreasing':'nonmonotone'};
+}
+function gridHeight(g,row,col){
+ const ind=g.axis==='x'?col:row;return g.heights[g.reverse?N-1-ind:ind];
+}
+function mapFace(flag,x,y){
+ return {x:flag==='rear'?-x:x,y};
+}
+function isoXY(x,y,t=0){
+ if(t===90)return [y,-x];
+ if(t===180)return [-x,-y];
+ if(t===270)return [-y,x];
+ return [x,y];
+}
+function faceAxis(p,axis){
+ const pitch=P+p[axis==='x'?'pitchX':'pitchY'],offset=p[axis==='x'?'offsetX':'offsetY'];
+ const cuts=Array.from({length:N+1},(_,i)=>{
+  const back=rail(i),front=offset+pitch*(i-N/2);
+  const backLo=back-p.rearKerf/2,backHi=back+p.rearKerf/2,frontLo=front-p.frontKerf/2,frontHi=front+p.frontKerf/2;
+  const lo=Math.max(backLo,frontLo),hi=Math.min(backHi,frontHi),margin=hi-lo;
+  return {i,internal:i>0&&i<N,back,front,backLo,backHi,frontLo,frontHi,centerOffset:front-back,margin,overlap:Math.max(margin,0),gap:Math.max(-margin,0)};
+ });
+ const cells=Array.from({length:N},(_,i)=>{
+  const l=cuts[i],r=cuts[i+1];
+  const frontLo=clamp(l.frontHi,-SIZE/2,SIZE/2),frontHi=clamp(r.frontLo,-SIZE/2,SIZE/2),backLo=clamp(l.backHi,-SIZE/2,SIZE/2),backHi=clamp(r.backLo,-SIZE/2,SIZE/2);
+  return {i,frontLo,frontHi,backLo,backHi,frontWidth:Math.max(0,frontHi-frontLo),backWidth:Math.max(0,backHi-backLo),matchedWidth:Math.max(0,Math.min(frontHi,backHi)-Math.max(frontLo,backLo))};
+ });
+ return {axis,offset,pitch,pitchError:pitch-P,nominalSpan:SPAN,uncroppedFrontSpan:pitch*(N-1),spanError:(pitch-P)*(N-1),cuts,cells,
+  maxInternalError:Math.max(...cuts.filter(c=>c.internal).map(c=>Math.abs(c.centerOffset))),
+  minFrontWidth:Math.min(...cells.map(c=>c.frontWidth)),minMatchedWidth:Math.min(...cells.map(c=>c.matchedWidth))};
+}
+function localFloor(o,x,y){return o.toe+o.slope*(o.slopeAxis==='x'?x:y)/P;}
+function edgeAt(o,axes,axis,startRow,startCol){
+ const across=axis==='x'?startCol:startRow, along=axis==='x'?startRow:startCol, info=axes[axis].cuts[across+1];
+ const alongAxis=axes[axis==='x'?'y':'x'],support=alongAxis.cells[along];
+ let a=axis==='x'?localFloor(o,info.front,support.backLo):localFloor(o,support.backLo,info.front);
+ let b=axis==='x'?localFloor(o,info.front,support.backHi):localFloor(o,support.backHi,info.front);
+ const hMid=(a+b)/2,hMin=Math.min(a,b),hMax=Math.max(a,b);
+ const depthMargin=o.glassDepth-hMax;
+ const verticalOverlap=Math.max(0,o.glassDepth-Math.max(0,hMax));
+ const separationHorizontal=info.margin>EPS,separationVertical=depthMargin>EPS;
+ const tangent=Math.abs(info.margin)<=EPS||Math.abs(depthMargin)<=EPS;
+ const web=info.margin<-EPS||depthMargin<-EPS;
+ const breach=hMin<=EPS;
+ // Give the worst retained section only where the two cuts have finite plan overlap.
+ const capMin=separationHorizontal?clamp(hMin,0,o.glassDepth):o.glassDepth,capMax=separationHorizontal?clamp(hMax,0,o.glassDepth):o.glassDepth;
+ const toRow=startRow+(axis==='y'?1:0),toCol=startCol+(axis==='x'?1:0);
+ return {axis,row:startRow,col:startCol,a:numberId(startRow,startCol),b:numberId(toRow,toCol),aName:siteName(startRow,startCol),bName:siteName(toRow,toCol),
+  centerOffset:info.centerOffset,frontCenter:info.front,backCenter:info.back,frontLo:info.frontLo,frontHi:info.frontHi,backLo:info.backLo,backHi:info.backHi,
+  overlapWidth:info.overlap,lateralClearance:info.margin,sideSilicon:info.gap,floorAtCenter:hMid,floorMin:hMin,floorMax:hMax,depthMargin,verticalOverlap,verticalSilicon:Math.max(0,-depthMargin),
+  capMin,capMax,tangent,siliconCandidate:web,breach,joined:separationHorizontal&&separationVertical&&!breach,
+  state:web?'web':breach?'breach':tangent?'tangent':'joined'};
+}
+function validate(input={}){
+ const o={...base,...input};
+ if(![1000,1500].includes(o.uniform))return {error:'The uniform reference is 1.0 mm or 1.5 mm.'};
+ for(const [k,[min,max]] of Object.entries(limits))if(!finite(o[k])||o[k]<min||o[k]>max)return {error:pretty[k]+' must be '+min+' to '+max+' µm in this virtual fixture.'};
+ if(!['x','y'].includes(o.slopeAxis))return {error:'Choose the X or Y floor drift direction.'};
+ const g=gradeData(o);if(g.error)return g;
+ return {o,g};
+}
+function evaluate(input={}){
+ const selected=validate(input);if(selected.error)return selected;const {o,g}=selected;
+ const axes={x:faceAxis(o,'x'),y:faceAxis(o,'y')};
+ const outOfEnvelope=Object.values(axes).some(a=>a.maxInternalError>=P/2-EPS||a.minMatchedWidth<=EPS);
+ const edges=[];
+ for(let r=0;r<N;r++)for(let c=0;c<N;c++){if(c<N-1)edges.push(edgeAt(o,axes,'x',r,c));if(r<N-1)edges.push(edgeAt(o,axes,'y',r,c));}
+ const summary={edgeCount:edges.length,web:edges.filter(e=>e.siliconCandidate).length,tangent:edges.filter(e=>e.tangent).length,breach:edges.filter(e=>e.breach).length,joined:edges.filter(e=>e.joined).length,
+ minLateralMargin:Math.min(...edges.map(e=>e.lateralClearance)),minDepthMargin:Math.min(...edges.map(e=>e.depthMargin)),minGlassCap:Math.min(...edges.map(e=>e.capMin)),maxVerticalSilicon:Math.max(...edges.map(e=>e.verticalSilicon)),maxSideSilicon:Math.max(...edges.map(e=>e.sideSilicon))};
+ const nodes=Array.from({length:N*N},(_,i)=>{
+  let r=Math.floor(i/N),c=i%N,corner=[0,N-1].includes(r)&&[0,N-1].includes(c);
+  return {id:i,name:siteName(r,c),row:r,col:c,x:coord(c),y:coord(r),u:o.uniform,h:gridHeight(g,r,c),corner};
+ });
+ return {o,g,axes,summary,edges,nodes,outOfEnvelope};
+}
+function continuity(q,input={}){
+ if(!q||q.error)return {error:'Run a valid section first.'};
+ const o={...q.o,...input};
+ if(q.outOfEnvelope)return {error:'Correspondence is outside this fixture’s nearest-neighbor registration model. Resolve the cut registration before assigning continuity groups.'};
+ if(!bounds(o.faultRow)||!bounds(o.faultCol))return {error:'Select an existing fixture site.'};
+ if(!['x','y'].includes(o.bridgeAxis))return {error:'Select positive X or positive Y for the additional bridge.'};
+ const a=numberId(o.faultRow,o.faultCol);
+ if(o.open&&q.nodes[a].corner)return {error:'This corner is a parked site, not one of the 96 virtual outputs. To inject a lead open, choose a noncorner site.'};
+ if(o.bridge&&((o.bridgeAxis==='x'&&o.faultCol===N-1)||(o.bridgeAxis==='y'&&o.faultRow===N-1)))return {error:'The neighbor is outside the coupon. Choose an interior edge or the other positive axis.'};
+ const parent=Array.from({length:N*N},(_,i)=>i);
+ function root(x){while(parent[x]!==x){parent[x]=parent[parent[x]];x=parent[x];}return x;}
+ const join=(i,j)=>{const a=root(i),b=root(j);if(a!==b)parent[Math.max(a,b)]=Math.min(a,b);};
+ const assumed=o.accountWeb?q.edges.filter(e=>e.siliconCandidate):[];
+ for(const e of assumed)join(e.a,e.b);
+ const manual=o.bridge?[a,numberId(o.faultRow+(o.bridgeAxis==='y'?1:0),o.faultCol+(o.bridgeAxis==='x'?1:0))]:null;
+ if(manual)join(...manual);
+ const groups=new Map();
+ q.nodes.forEach(n=>{const g=root(n.id);if(groups.has(g))groups.get(g).push(n.id);else groups.set(g,[n.id]);});
+ const records=q.nodes.map(n=>{
+  const parked=n.corner,paths=parked||(o.open&&n.id===a)?[]:[...groups.get(root(n.id))];
+  return {...n,paths,labels:paths.map(nodeName),status:parked?'parked':!paths.length?'open':paths.length===1?'isolated':'ambiguous'};
+ });
+ const count=s=>records.filter(x=>x.status===s).length;
+ return {records,assumedEdges:assumed.length,manual,openSite:o.open?a:null,sourcesPerCluster:[...groups.values()].map(g=>g.length).sort((a,b)=>b-a),clusters:groups.size,active:96,parked:4,isolated:count('isolated'),open:count('open'),ambiguous:count('ambiguous')};
+}
+const api={N,P,SIZE,SPAN,refs,ranges,limits,pretty,base,examples,coord,rail,siteName,nodeName,gradeData,gridHeight,mapFace,isoXY,faceAxis,edgeAt,evaluate,continuity};if(typeof module!=='undefined'&&module.exports)module.exports=api;else host.UtahBench=api;
+})(typeof globalThis==='object'?globalThis:this);
+</script><script>(()=>{'use strict';
+const E=UtahBench,$=s=>document.getElementById(s),ns='http://www.w3.org/2000/svg',f=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(Math.abs(n)<1e-9?0:n);
+const scale=(v,l,h,outL,outH)=>outL+(v-l)*(outH-outL)/(h-l),clamp=(x,l,h)=>Math.max(l,Math.min(h,x));
+const ds=(tag,t='',attrs={})=>{const e=document.createElement(tag);if(t!=='')e.textContent=t;for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;};
+const se=(g,tag,attrs,t)=>{const n=document.createElementNS(ns,tag);for(const[k,v]of Object.entries(attrs))n.setAttribute(k,v);if(t!==undefined)n.textContent=t;g.append(n);return n;};
+const line=(g,x1,y1,x2,y2,stroke,extra={})=>se(g,'line',{x1,y1,x2,y2,stroke,...extra});
+const rect=(g,x,y,width,height,fill,extra={})=>se(g,'rect',{x,y,width:Math.max(0,width),height:Math.max(0,height),fill,...extra});
+const tx=(g,x,y,s,fill='#e2e6d1',size=11,a={})=>se(g,'text',{x,y,fill,'font-size':size,'font-family':'ui-monospace,monospace',...a},s);
+const poly=(g,points,fill,extra={})=>se(g,'polygon',{points:points.map(a=>a.join(',')).join(' '),fill,...extra});
+const major=['frontKerf','rearKerf','glassDepth','toe','pitchX','pitchY','offsetX','offsetY','slope'];
+let q=null,t=null,first=true,sectionEdge=null;
+const field=n=>$(n).value.trim()===''?NaN:Number($(n).value);
+const selectCount=(s,n,label,v=0)=>{s.replaceChildren(...Array.from({length:n},(_,i)=>ds('option',label+(i+1),{value:i})));s.value=String(clamp(v,0,n-1));};
+const pal={mint:'#a6d4be',gold:'#e4be72',amber:'#f1bf8a',rust:'#f0a087',bg:'#20362d',soft:'#ccd8c7',stroke:'#7d9b88'};
+if(location.protocol==='file:')document.querySelectorAll('a[href^="/"]').forEach(a=>a.href='https://buildthesimulation.com'+a.getAttribute('href'));
+function read(){
+ const o={range:$('range').value,grade:$('grade').value,uniform:Number($('uniform').value),measured:$('measured').value,slopeAxis:$('slopeAxis').value};
+ for(const k of major)o[k]=field(k);
+ return Object.assign(o, readFault());
+}
+function readFault(){return {accountWeb:$('accountWeb').checked,open:$('open').checked,bridge:$('bridge').checked,faultRow:Number($('edgeRow').value),faultCol:Number($('edgeCol').value),bridgeAxis:$('edgeAxis').value};}
+function edgeChoices(row=Number($('edgeRow').value),col=Number($('edgeCol').value)){
+ const a=$('edgeAxis').value;selectCount($('edgeRow'),a==='y'?9:10,'Row ',row);selectCount($('edgeCol'),a==='x'?9:10,'Column ',col);
+}
+function fixturePreset(name){
+ const ex=E.examples[name];if(!ex)return;
+ const o={...E.base,...ex.options};
+ for(const k of major)$(k).value=o[k];
+ $('slopeAxis').value=o.slopeAxis;$('open').checked=o.open;$('bridge').checked=o.bridge;$('accountWeb').checked=o.accountWeb;
+ $('edgeAxis').value=o.bridgeAxis;let r=o.faultRow,c=o.faultCol;
+ if(name==='shift'){r=4;c=8;}
+ if(name==='cap'){r=4;c=0;}
+ edgeChoices(r,c);$('reg').open=['shift','cap'].includes(name);render(true);
+ for(const b of document.querySelectorAll('[data-example]'))b.setAttribute('aria-pressed',String(b.dataset.example===name));
+}
+function unpress(){for(const b of document.querySelectorAll('[data-example]'))b.setAttribute('aria-pressed','false');}
+function plotAx(kind){
+ const g=$(kind+'Fig').querySelector('g');g.replaceChildren();if(!q||q.error)return;
+ const slant=kind==='slant',sc=Number($('rotation').value);
+ function xyz(x,y,z=0){const [u,v]=E.isoXY(x,y,sc);return[210+.0406*(u+v),177+.0148*(u-v)-.050*z];}
+ const v=[[-2000,-2000],[2000,-2000],[2000,2000],[-2000,2000]];
+ const lower=v.map(([x,y])=>xyz(x,y,-145)),upper=v.map(([x,y])=>xyz(x,y));
+ poly(g,lower,'#50665a',{stroke:'#5f7a66','stroke-width':1});
+ // Screen-facing base walls, sorted from the far face to the viewer.
+ const walls=v.map((_,i)=>({i,j:(i+1)%4,y:(upper[i][1]+upper[(i+1)%4][1])/2})).sort((a,b)=>a.y-b.y);
+ for(const w of walls.slice(-2))poly(g,[lower[w.i],lower[w.j],upper[w.j],upper[w.i]],'#738678',{stroke:'#99ad97','stroke-width':.8});
+ poly(g,upper,'#7b8c72',{stroke:'#a1b69c','stroke-width':1});
+ for(let i=1;i<10;i++){let a=E.rail(i);line(g,...xyz(a,-2000),...xyz(a,2000),'#b7bba2',{'stroke-width':.58,opacity:.6});line(g,...xyz(-2000,a),...xyz(2000,a),'#b7bba2',{'stroke-width':.58,opacity:.6});}
+ const pos=q.nodes.map(n=>({...n,d:xyz(n.x,n.y)[1]})).sort((a,b)=>a.d-b.d||a.row-b.row);
+ for(const n of pos){
+  const h=slant?n.h:n.u,cxy=xyz(n.x,n.y),pt=xyz(n.x,n.y,h),top=xyz(n.x,n.y,h*.28),baseW=3.5,w=1.9;
+  const color=slant?h>q.g.min+.65*q.g.spread?'#ecce89':h<q.g.min+.31*q.g.spread?'#b3d7b1':'#d3d4a0':'#d9dcc1';
+  poly(g,[[cxy[0]-baseW,cxy[1]+1],[top[0]-w,top[1]],[pt[0],pt[1]],[top[0]+w,top[1]],[cxy[0]+baseW,cxy[1]+1]],color,{stroke:'#293d33','stroke-width':.65});
+  line(g,pt[0],pt[1]+3,cxy[0],cxy[1],'#f5ebc9',{'stroke-width':.45,opacity:.65});
+ }
+ if(slant){
+  const coords=[];
+  for(let i=0;i<10;i++){
+   const j=q.g.reverse?9-i:i;const x=q.g.axis==='x'?E.coord(j):E.coord(5),y=q.g.axis==='x'?E.coord(5):E.coord(j);
+   coords.push(xyz(x,y,q.g.heights[i]));
+  }
+  se(g,'polyline',{points:coords.map(a=>a.join(',')).join(' '),fill:'none',stroke:'#f3cf83','stroke-width':1.55,'stroke-dasharray':'4 3'});
+  for(const [x,y] of [coords[0],coords.at(-1)])se(g,'circle',{cx:x,cy:y,r:3.3,fill:'#ffd889',stroke:'#36392c'});
+ }
+ const mark=xyz(-1935,1935);se(g,'circle',{cx:mark[0],cy:mark[1],r:6,fill:'#20352c',stroke:'#e1cb8c'});tx(g,mark[0],mark[1]+3,'A',pal.gold,8,{'text-anchor':'middle'});
+ tx(g,17,251,'COMMON SCALE · AXES FIXED TO COUPON',pal.soft,9);
+ tx(g,401,251,'FIXTURE SKETCH',pal.soft,9,{'text-anchor':'end'});
+}
+function facts(){
+ const node=$('facts');node.replaceChildren();$('rowBand').replaceChildren();
+ for(const [x,l] of [['400 µm','Nominal center pitch'],['3,600 µm','Center span, not 4 mm outline'],[f(q.g.spread)+' µm','Slant tip-height spread'],[f(q.g.angle)+'°','Endpoint-to-endpoint profile angle']]){
+  const d=ds('div');d.append(ds('strong',x),ds('span',l));node.append(d);
+ }
+ q.g.heights.forEach((h,i)=>{const d=ds('div',f(h));d.append(ds('span','Row '+(i+1)+' · µm'));$('rowBand').append(d);});
+ $('leftSub').textContent=(q.o.uniform/1000).toFixed(2)+' mm equal shanks';
+ $('rightSub').textContent=(q.g.min/1000).toFixed(2)+'–'+(q.g.max/1000).toFixed(2)+' mm · '+(q.g.kind==='entered'?'entered':'interpolated');
+ const order=q.g.monotone==='nonmonotone'?' The entered height list reverses direction between some rows; the angle only joins its endpoints.':q.g.monotone==='decreasing'?' The height decreases in the selected direction.':'';
+ $('rangeNote').textContent=q.g.scope+order;
+}
+function elevation(){
+ const g=$('elevation').querySelector('g');g.replaceChildren();
+ if(!q||q.error)return;
+ const dist=.081,origin=71,base=188,x=i=>origin+i*E.P*dist,y=h=>base-h*dist;
+ const olive='#335d53',orange='#875521',axis='#827e69',ink='#354439',grid='#d4cdb8';
+ for(let m=0;m<=2000;m+=500){
+  const yy=y(m);line(g,origin,yy,x(9),yy,grid,{'stroke-width':.8,'stroke-dasharray':m===0?'none':'3 2'});
+  tx(g,origin-9,yy+3,m===0?'0':f(m),ink,10,{'text-anchor':'end'});
+ }
+ for(let i=0;i<10;i++)line(g,x(i),base-3,x(i),base+4,axis,{'stroke-width':1});
+ line(g,origin,base,x(9),base,axis,{'stroke-width':1.05});line(g,origin,y(2000),origin,base,axis,{'stroke-width':1.05});
+ tx(g,20,29,'µm',ink,10);
+ line(g,origin,y(q.o.uniform),x(9),y(q.o.uniform),olive,{'stroke-width':2,'stroke-dasharray':'6 4'});
+ const points=q.g.heights.map((v,i)=>[x(i),y(v)]);
+ se(g,'polyline',{points:points.map(p=>p.join(',')).join(' '),fill:'none',stroke:orange,'stroke-width':2});
+ for(const [xx,yy] of points)se(g,'circle',{cx:xx,cy:yy,r:3.25,fill:'#dbad60',stroke:orange,'stroke-width':.8});
+ const grade=q.o.grade[1]==='+'?'+'+q.o.grade[0].toUpperCase():'−'+q.o.grade[0].toUpperCase();
+ tx(g,origin,210,'FIRST',ink,10);tx(g,x(9),210,'TENTH',ink,10,{'text-anchor':'end'});
+ tx(g,(origin+x(9))/2,210,'3,600 µm  '+grade+' →',ink,10,{'text-anchor':'middle'});
+ const info='The dashed uniform profile is '+f(q.o.uniform)+' µm. The Slant endpoints are '+f(q.g.heights[0])+' and '+f(q.g.heights[9])+' µm along '+grade+'.';
+ $('elevationDesc').textContent=info;
+ $('elevationNote').textContent=info+' Both axes use the same scale.';
+}
+function plan(){
+ const fig=$('plan'),g=fig.querySelector('g');g.replaceChildren();if(!q||q.error)return;
+ const isRear=$('face').value==='rear',face=isRear?'rear':'front',aa=sectionEdge,x0=150,y0=147,k=224/E.SIZE;
+ const xy=(x,y)=>{let p=E.mapFace(face,x,y);return [x0+p.x*k,y0-p.y*k];};
+ const L=x0-112,T=y0-112;
+ const clip=se(g,'clipPath',{id:'overlayClip'});rect(clip,L,T,224,224,'white');
+ rect(g,L,T,224,224,'#314a3e',{stroke:'#93aa97','stroke-width':1});
+ const overlay=se(g,'g',{'clip-path':'url(#overlayClip)'});
+ function strip(isX,c,which){
+  const front=which==='front',low=front?c.frontLo:c.backLo,high=front?c.frontHi:c.backHi,center=front?c.front:c.back,fill=front?'#e5ba62':'#79bda8';
+  if(isX){let xl=xy(low,0)[0],xh=xy(high,0)[0];rect(overlay,Math.min(xl,xh),T,Math.abs(xh-xl),224,fill,{opacity:front?.20:.29});line(overlay,xy(center,0)[0],T,xy(center,0)[0],T+224,fill,{'stroke-width':.68,'stroke-dasharray':front?'none':'3 2',opacity:.82});}
+  else {let yh=xy(0,high)[1],yl=xy(0,low)[1];rect(overlay,L,yh,224,yl-yh,fill,{opacity:front?.20:.29});line(overlay,L,xy(0,center)[1],L+224,xy(0,center)[1],fill,{'stroke-width':.68,'stroke-dasharray':front?'none':'3 2',opacity:.82});}
+ }
+ for(const ax of ['x','y'])for(const c of q.axes[ax].cuts.filter(v=>v.internal)){strip(ax==='x',c,'rear');strip(ax==='x',c,'front');}
+ // Each candidate physical web is drawn perpendicular to the separating cut.
+ for(const e of q.edges.filter(a=>a.siliconCandidate)){const A=q.nodes[e.a],B=q.nodes[e.b],[x,y]=xy((A.x+B.x)/2,(A.y+B.y)/2);line(g,x+(e.axis==='x'?-3.5:0),y+(e.axis==='y'?-3.5:0),x+(e.axis==='x'?3.5:0),y+(e.axis==='y'?3.5:0),pal.rust,{'stroke-width':2,'stroke-linecap':'round'});}
+ let fStates=t&&!t.error?t.records:null;
+ for(const n of q.nodes){
+  const [x,y]=xy(n.x,n.y),active=aa&&(n.id===aa.a||n.id===aa.b),state=fStates?.[n.id].status;
+  const fill=state==='open'?'#f08f75':state==='ambiguous'?'#f2b769':n.corner?'#233a30':pal.soft;
+  const c=se(g,'circle',{cx:x,cy:y,r:active?6.3:3.55,fill,stroke:active?'#fff1a6':n.corner?pal.mint:'#30483d','stroke-width':active?2:.9,'data-r':n.row,'data-c':n.col,class:'site'});
+  se(c,'title',{},n.name+(n.corner?' · parked corner':state?' · '+state:'')+(active?' · selected boundary':''));
+ }
+ if(aa){const a=q.nodes[aa.a],b=q.nodes[aa.b],pa=xy(a.x,a.y),pb=xy(b.x,b.y);
+  line(g,...pa,...pb,aa.siliconCandidate?pal.rust:pal.gold,{'stroke-width':1.9,'pointer-events':'none'});
+ }
+ const [xa,ya]=xy(-1940,1935);se(g,'circle',{cx:xa,cy:ya,r:6,fill:'#182a23',stroke:pal.gold});tx(g,xa,ya+3,'A',pal.gold,8,{'text-anchor':'middle'});
+ tx(g,36,24,isRear?'REAR FACE · X MIRRORED':'NEEDLE FACE · +X RIGHT',pal.mint,12);
+ tx(g,18,158,'+Y',pal.soft,9);tx(g,265,249,isRear?'−X':'+X',pal.soft,9);
+ line(g,36,275,58,275,pal.gold,{'stroke-width':2});tx(g,63,278,'front cut',pal.soft,9);
+ line(g,164,275,186,275,pal.mint,{'stroke-width':2,'stroke-dasharray':'3 2'});tx(g,191,278,'rear glass',pal.soft,9);
+ if(q.g.spread>0){
+  const dr=q.g.axis==='x'?1:0,sg=q.g.reverse?-1:1,pp1=xy(-dr*sg*850,-(1-dr)*sg*850),pp2=xy(dr*sg*850,(1-dr)*sg*850);
+  const x1=pp1[0],y1=pp1[1],x2=pp2[0],y2=pp2[1];
+  // Show nominal row order in the bottom margin with a proper mirrored horizontal sign.
+  const sign=x2===x1?y1>y2?'↑':'↓':x2>x1?'→':'←';
+  tx(g,36,295,'Slant row order '+sign+' · selected grade axis',pal.soft,9);
+ }
+ $('planDesc').textContent=(isRear?'Rear view mirrors X; physical site IDs stay fixed. ':'Needle side; positive X is right. ')+(aa?aa.aName+' to '+aa.bName+' selected. ':'')+q.summary.web+' candidate boundaries are marked.';
+}
+function section(){
+ const g=$('section').querySelector('g');g.replaceChildren();const e=sectionEdge;if(!e)return;
+ const o=q.o,origin=e.backCenter,range=Math.max(220,Math.abs(e.frontCenter-origin)+o.frontKerf/2+24,o.rearKerf/2+24);
+ const zmax=Math.max(o.glassDepth+78,e.floorMax+61,340),zmin=Math.min(-38,e.floorMin-12),X=x=>scale(x-origin,-range,range,27,337),Y=z=>scale(z,zmin,zmax,252,40);
+ let y0=Y(0),yTop=Y(zmax),x1=X(origin-range),x2=X(origin+range),yG=Y(o.glassDepth);
+ rect(g,x1,yTop,x2-x1,y0-yTop,'#748176',{stroke:'#a4b19f','stroke-width':1});
+ rect(g,X(e.backLo),yG,X(e.backHi)-X(e.backLo),y0-yG,'#7ab6a4',{stroke:pal.mint,'stroke-width':.8});
+ // The front cut is shown at the midspan floor; dashed markers denote extremes.
+ const yH=Y(e.floorAtCenter);rect(g,X(e.frontLo),yTop-.5,X(e.frontHi)-X(e.frontLo),yH-yTop+.5,'#1e322b',{stroke:pal.gold,'stroke-width':1.1});
+ line(g,x1-2,y0,x2+3,y0,'#d4ddc5',{'stroke-width':1,'stroke-dasharray':'4 3'});
+ if(Math.abs(e.floorMax-e.floorMin)>1e-7){for(const h of [e.floorMin,e.floorMax])line(g,X(e.frontLo),Y(h),X(e.frontHi),Y(h),pal.gold,{'stroke-width':.8,'stroke-dasharray':'3 2'});}
+ tx(g,30,22,'DETAIL · '+e.axis.toUpperCase()+'-NEIGHBOR BOUNDARY',pal.mint,12);
+ tx(g,30,267,'REAR DATUM  z = 0',pal.soft,10);
+ if(e.lateralClearance<0){
+  const start=e.frontCenter>e.backCenter?e.backHi:e.frontHi,end=e.frontCenter>e.backCenter?e.frontLo:e.backLo,y=Y(Math.max(1,Math.min(o.glassDepth,e.floorAtCenter+15)));
+  line(g,X(start),y,X(end),y,pal.rust,{'stroke-width':3.5});se(g,'circle',{cx:(X(start)+X(end))/2,cy:y,r:2.6,fill:pal.rust});
+ }else if(e.depthMargin<0){
+  let lo=Math.max(e.frontLo,e.backLo),hi=Math.min(e.frontHi,e.backHi),yOver=Math.min(yG,Y(e.floorMax));rect(g,X(lo),yOver,X(hi)-X(lo),Math.abs(yG-yOver),pal.rust,{opacity:.7});
+ }else if(e.capMin<=1e-8){
+  let lo=Math.max(e.frontLo,e.backLo),hi=Math.min(e.frontHi,e.backHi);line(g,X(lo),y0,X(hi),y0,pal.rust,{'stroke-width':3.25});
+ }
+ const left='Opening = '+f(o.frontKerf)+' µm';const right='Rear depth = '+f(o.glassDepth)+' µm';tx(g,30,288,left,pal.gold,10);tx(g,337,288,right,pal.mint,10,{'text-anchor':'end'});
+ const adjust=e.siliconCandidate?(e.sideSilicon>0?' The cuts miss laterally.':' Part of the boundary retains a modeled silicon shelf.'):e.breach?' The modeled cut reaches the rear plane somewhere along this edge.':e.tangent?' A zero-margin contact is flagged; it is not a verified connection.':' Finite overlap joins the cuts in the rectangular model.';
+ const desc=e.aName+' ↔ '+e.bName+'. Front opening shown at the selected edge’s midspan; dashed lines show floor extremes where present.'+adjust;
+ $('sectionDesc').textContent=desc;$('sectionText').textContent=desc;
+}
+function spans(){
+ $('spans').replaceChildren();
+ for(const ax of ['x','y']){
+  const a=q.axes[ax],li=ds('li');li.append(ds('strong',ax.toUpperCase()+' '),document.createTextNode('· front repeat '+f(a.pitch)+' µm | nine-interval span '+f(a.uncroppedFrontSpan)+' µm ('+(a.spanError>0?'+':'')+f(a.spanError)+' µm). Max interior shift '+f(a.maxInternalError)+' µm. Narrowest matched ligament '+f(a.minMatchedWidth)+' µm.'));$('spans').append(li);
+ }
+ const st=q.summary;
+ const count=st.web+' candidate silicon '+(st.web===1?'bridge':'bridges')+' · '+st.breach+' boundaries reaching the rear plane · '+st.tangent+' tangent joins (counts can overlap).';
+ const pre=q.outOfEnvelope?'Out of model: a corresponding cut moved by at least half a pitch or lost its paired ligament. Geometry remains inspectable; electrical assignment is withheld. ':st.web+st.breach+st.tangent===0?'All 180 inspected boundaries have finite overlap with retained glass in this fixture. ':'These are model flags, not a product acceptance result. ';
+ $('geoNotice').textContent=pre+count;$('geoNotice').classList.toggle('warn',q.outOfEnvelope||st.web+st.breach+st.tangent>0);
+}
+function setCards(box,pairs){box.replaceChildren();for(const [value,label] of pairs){let d=ds('div');d.append(ds('strong',value),ds('span',label));box.append(d);}}
+function clearTest(msg){
+ t=null;$('channelsCsv').disabled=true;$('counts').replaceChildren();$('paths').textContent='';
+ $('checkStatus').className='status idle';$('checkStatus').textContent=msg||'Inputs changed. Test the current fixture again.';
+}
+function view(){
+ if(!q||q.error)return;
+ const r=Number($('edgeRow').value),c=Number($('edgeCol').value),a=$('edgeAxis').value;sectionEdge=q.edges.find(e=>e.axis===a&&e.row===r&&e.col===c)||null;
+ plotAx('uniform');plotAx('slant');elevation();plan();section();
+ const e=sectionEdge;if(!e)return;
+ setCards($('edgeData'),[[f(e.lateralClearance)+' µm','Signed plan-view overlap (negative = gap)'],[f(e.depthMargin)+' µm','Worst signed depth overlap (negative = shelf)'],[f(e.capMin)+' µm','Minimum retained glass cap in modeled strip']]);
+ $('faultTarget').textContent='Selected '+e.aName+' → '+e.bName+' along physical +'+e.axis.toUpperCase()+'. Open applies only to '+e.aName+'.';
+}
+function render(reset=true){
+ const o=read();q=E.evaluate(o);
+ $('measuredWrap').hidden=o.range!=='measured';$('error').hidden=!q.error;$('error').textContent=q.error||'';
+ if(reset)clearTest(first?'Run the virtual fixture to inspect the current cut geometry.':undefined);
+ first=false;
+ const bad=!!q.error;
+ for(const id of ['geometryCsv','record'])$(id).disabled=bad;
+ $('run').disabled=bad||q.outOfEnvelope;
+ if(bad){
+  $('rangeNote').textContent='Enter valid values to draw the arrays.';
+  $('geoNotice').textContent=q.error;$('geoNotice').classList.add('warn');
+  for(const id of ['facts','rowBand','spans','edgeData'])$(id).replaceChildren();
+  for(const id of ['uniformFig','slantFig','elevation','plan','section'])$(id).querySelector('g').replaceChildren();$('sectionText').textContent='';$('elevationNote').textContent='';
+  $('faultTarget').textContent='No valid section selected.';return;
+ }
+ facts();spans();view();
+ if(q.outOfEnvelope){$('checkStatus').className='status bad';$('checkStatus').textContent='The network solver is withheld outside the nearest-neighbor registration model.';}
+}
+function test(){
+ if(!q||q.error||q.outOfEnvelope)return;
+ t=E.continuity(q,readFault());
+ if(t.error){$('checkStatus').className='status bad';$('checkStatus').textContent=t.error;$('channelsCsv').disabled=true;$('counts').replaceChildren();$('paths').textContent='';return;}
+ $('channelsCsv').disabled=false;
+ const bad=t.open+t.ambiguous>0;
+ $('checkStatus').className='status'+(bad?' bad':'');
+ $('checkStatus').textContent=bad?'Identity fault found: '+t.open+' open '+(t.open===1?'output':'outputs')+', '+t.ambiguous+' '+(t.ambiguous===1?'ambiguity':'ambiguous outputs')+'.':'All 96 virtual outputs reached one expected tip each under the chosen assumptions.';
+ setCards($('counts'),[[t.isolated,'Isolated output'],[t.open,'Open lead'],[t.ambiguous,'Multiple paths'],[t.parked,'Parked corner']]);
+ const problems=t.records.filter(r=>['open','ambiguous'].includes(r.status)).slice(0,3).map(r=>r.name+': '+(r.paths.length===0?'no tip path':r.labels.slice(0,6).join(', ')+(r.paths.length>6?' …':'')));
+ $('paths').textContent='Counted '+t.assumedEdges+' geometry-derived edges'+(t.manual?' plus the manual bridge':'')+'. '+(problems.length?problems.join(' | ')+'.':'')+(q.summary.breach||q.summary.tangent?' Glass breach and tangent flags never create an assumed electrical link by themselves.':'');
+ plan();
+}
+function rowsData(){
+ return q.edges.map(e=>({
+  axis:e.axis.toUpperCase(),site_A:e.aName,site_B:e.bName,front_cut_center_um:e.frontCenter,rear_cut_center_um:e.backCenter,center_offset_um:e.centerOffset,
+  signed_plan_overlap_um:e.lateralClearance,side_silicon_gap_um:e.sideSilicon,front_floor_midspan_um:e.floorAtCenter,front_floor_min_um:e.floorMin,front_floor_max_um:e.floorMax,
+  signed_depth_overlap_um:e.depthMargin,residual_silicon_depth_um:e.verticalSilicon,min_retained_glass_cap_um:e.capMin,max_retained_glass_cap_um:e.capMax,
+  silicon_bridge_candidate:e.siliconCandidate,reaches_rear_plane:e.breach,tangent:e.tangent,classification:e.state
+ }));
+}
+function channelData(){
+ return !t||t.error?null:t.records.map(a=>({site:a.name,row:a.row+1,column:a.col+1,nominal_x_um:a.x,nominal_y_um:a.y,modeled_uniform_height_um:a.u,modeled_slant_height_um:a.h,virtual_output:a.corner?'parked':'observed',state:a.status,possible_tip_count:a.paths.length,possible_symbolic_tips:a.labels.join('|')}));
+}
+function csv(r){const h=Object.keys(r[0]);return [h,...r.map(v=>h.map(k=>v[k]))].map(x=>x.join(',')).join('\r\n')+'\r\n';}
+function download(mode){
+ if(!q||q.error)return;
+ let body='',file='utah-isolation-';
+ if(mode==='geometry'){body=csv(rowsData());file+='boundaries.csv';}
+ if(mode==='channels'){const r=channelData();if(!r)return;body=csv(r);file+='virtual-outputs.csv';}
+ if(mode==='record'){const channels=channelData();body=JSON.stringify({
+   schema:'BTS-utah-isolation-v1',synthetic:true,not_product_acceptance:true,units:{geometry:'µm',angle:'degrees'},
+   base:{nominalPitch:E.P,nominalOutline:E.SIZE,nominalCenterSpan:E.SPAN,siteCount:100,fixtureOutputs:96},
+   evidence:{note:q.g.scope,gradeStatus:q.g.kind,sources:Object.values(E.refs).map(([title,url,note])=>({title,url,note}))},parameters:{...q.o,...readFault()},derivedTipProfile:q.g,
+   view:{rotation:Number($('rotation').value),face:$('face').value,selectedSection:sectionEdge?{a:sectionEdge.aName,b:sectionEdge.bName}:null},
+   cutModelValid:!q.outOfEnvelope,boundarySummary:q.summary,
+   axes:Object.fromEntries(Object.entries(q.axes).map(([ax,v])=>[ax,{frontPitch:v.pitch,pitchError:v.pitchError,uncroppedFrontRepeatSpan:v.uncroppedFrontSpan,spanError:v.spanError,maxInteriorCenterShift:v.maxInternalError,minMatchedLigament:v.minMatchedWidth,cuts:v.cuts}])),
+   boundaries:rowsData(),virtualFixture:channels?{summary:{isolated:t.isolated,open:t.open,ambiguous:t.ambiguous,parked:t.parked,geometricEdgesCounted:t.assumedEdges,manualEdge:t.manual?.map(E.nodeName)??null},outputs:channels}:null
+  },null,2);file+='record.json';}
+ const url=URL.createObjectURL(new Blob([body],{type:mode==='record'?'application/json':'text/csv;charset=utf-8'})),a=ds('a','',{href:url,download:file});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),25000);
+}
+for(const [id,v] of Object.entries(E.examples)){const b=ds('button',v.name,{'data-example':id,'aria-pressed':'false',type:'button'});b.addEventListener('click',()=>fixturePreset(id));$('examples').append(b);}
+for(const [title,url,note] of Object.values(E.refs)){const item=ds('li');item.append(ds('a',title,{href:url,rel:'noreferrer'}),ds('span',note));$('sources').append(item);}
+for(const [k,[a,b]] of Object.entries(E.limits)){const node=$(k);node.min=a;node.max=b;}
+for(const id of ['uniform','range','grade','measured',...major,'slopeAxis'])$(id).addEventListener('input',()=>{if(major.includes(id)||id==='slopeAxis')unpress();render(true);});
+for(const id of ['face','rotation'])$(id).addEventListener('input',view);
+$('edgeAxis').addEventListener('input',()=>{edgeChoices();render(true);});
+for(const id of ['edgeRow','edgeCol','accountWeb','open','bridge'])$(id).addEventListener('input',()=>render(true));
+$('plan').addEventListener('click',ev=>{const site=ev.target.closest('[data-r]');if(site){edgeChoices(Number(site.dataset.r),Number(site.dataset.c));render(true);}});
+$('run').addEventListener('click',test);
+$('geometryCsv').addEventListener('click',()=>download('geometry'));$('channelsCsv').addEventListener('click',()=>download('channels'));$('record').addEventListener('click',()=>download('record'));
+$('measured').value=E.base.measured;
+const query=new URLSearchParams(location.search),example=query.get('example');
+if(Object.prototype.hasOwnProperty.call(E.ranges,query.get('range')))$('range').value=query.get('range');
+fixturePreset(Object.prototype.hasOwnProperty.call(E.examples,example)?example:'nominal');
+})();
+</script></body></html>

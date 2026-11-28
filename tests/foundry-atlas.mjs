@@ -28,7 +28,11 @@ test("atlas cross-references, unique IDs and evidence counts are consistent",()=
  for(const [k,v] of Object.entries(data.meta.counts)) assert.equal(sum[k]??0,v,k);
  for(const x of data.profiles){
   for(const slug of x.devices) assert.ok(d.get(slug).profileIds.includes(x.id),x.id);
-  if(x.lab) assert.match(x.lab,/^\/simulations\/[a-z0-9-]+\/$/);
+  if(x.lab) assert.match(x.lab,/^\/simulations\/(?:[a-z0-9-]+\/)+$/);
+  for(const lab of x.extraLabs??[]){
+   assert.ok(lab.title && lab.url!==x.lab,x.id);
+   assert.match(lab.url,/^\/simulations\/(?:[a-z0-9-]+\/)+$/);
+  }
   assert.ok(x.gaps.length,x.id);
   for(const s of x.sources) assert.equal(new URL(s.url).protocol,"https:");
   for(const s of x.steps){

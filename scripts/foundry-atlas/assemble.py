@@ -97,8 +97,10 @@ def assemble(repo,lanes,revision,updated,source_revision=None):
             need(artifact.exists() and hashlib.sha256(artifact.read_bytes()).hexdigest()==entry['sha256'], f'{key}: lab digest mismatch')
             for pid in entry['profiles']:
                 need(pid in profile_keys, f'{key}: missing target profile {pid}')
-                need(not profile_keys[pid].get('lab') or profile_keys[pid]['lab']==path, f'{key}: would overwrite existing lab link {pid}')
-                profile_keys[pid]['lab']=path
+                profile=profile_keys[pid]
+                if not profile.get('lab'): profile['lab']=path
+                elif profile['lab']!=path:
+                    profile.setdefault('extraLabs',[]).append({'url':path,'title':entry.get('title',key)})
     for p in profiles:
         k=p['id']
         need(re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*',k),f'Invalid profile ID {k}')
@@ -138,7 +140,7 @@ def assemble(repo,lanes,revision,updated,source_revision=None):
             d['profileIds'].sort(key=lambda k:(ORDER.index(profile_index[k]['evidence']),k))
             d['status']=profile_index[d['profileIds'][0]]['evidence']
     counts=collections.Counter(d['status'] for d in devices)
-    return dict(meta=dict(revision=revision,updated=updated,sourceRevision=source_revision,toolFitUrl=labs.get('tool-fit',{}).get('url'),overview='A catalog-wide index of virtual and bench-reference process routes, documented branches, equipment matches and missing capabilities. A mapped register ID is not a physical tool reservation, a qualified recipe or proof that an entire device can be fabricated. Queued entries are listed explicitly.',counts={k:counts[k] for k in ORDER}),devices=devices,profiles=profiles,equipment=list(equipment.values()))
+    return dict(meta=dict(revision=revision,updated=updated,sourceRevision=source_revision,toolFitUrl=labs.get('tool-fit',{}).get('url'),processHandoffUrl=labs.get('process-handoff',{}).get('url'),overview='A catalog-wide index of virtual and bench-reference process routes, documented branches, equipment matches and missing capabilities. A mapped register ID is not a physical tool reservation, a qualified recipe or proof that an entire device can be fabricated. Queued entries are listed explicitly.',counts={k:counts[k] for k in ORDER}),devices=devices,profiles=profiles,equipment=list(equipment.values()))
 
 if __name__=='__main__':
     a=argparse.ArgumentParser()

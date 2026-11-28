@@ -1,0 +1,141 @@
+{
+  "lab": "Photovoltaic retinal pixel foundry bench",
+  "revision": "PV12.1",
+  "branch": "Wang–Palanker 2012 research process",
+  "separateProductDossier": "First-generation PRIMA · public architecture only",
+  "entry": {
+    "path": "index.html",
+    "bytes": 79486,
+    "sha256": "560d11124d866144d06cbe7a4a2a48511fad8f72cb1137d445b8d58be4ebe91d"
+  },
+  "testCounts": {
+    "model": 58,
+    "browser": {
+      "desktop": 20,
+      "touch": 20
+    },
+    "registerIds": 18
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6061,
+      "sha256": "51ea7d092ea2e008dbd6fb6f0069c0792adcec53292fd2fbaced70d1a1352e30"
+    },
+    {
+      "path": "build.py",
+      "bytes": 620,
+      "sha256": "1d065934a940bea0b5f21b636f127391f9a8755f7fdc2e2ae8187c2a3583ad82"
+    },
+    {
+      "path": "index.html",
+      "bytes": 79486,
+      "sha256": "560d11124d866144d06cbe7a4a2a48511fad8f72cb1137d445b8d58be4ebe91d"
+    },
+    {
+      "path": "src/engine.cjs",
+      "bytes": 12235,
+      "sha256": "83c68dd6d3658e526a5ee6803684f90404ef3c7ae61a1c694637e72c32dbf41d"
+    },
+    {
+      "path": "src/evidence.cjs",
+      "bytes": 13624,
+      "sha256": "e48209bcfe08fa564cc4f38762a4c46f4e76904f7677fd8b341b28f5ddc61313"
+    },
+    {
+      "path": "src/style.css",
+      "bytes": 14818,
+      "sha256": "d0dfc3199bb0fbb01b6720bf42da386d46c81348f631cc6bee6c6d9cddeca09c"
+    },
+    {
+      "path": "src/template.html",
+      "bytes": 12681,
+      "sha256": "f76510e23824d79332fadf8149c11411da3b0b24e8abcc8dcb4b794123cfaac5"
+    },
+    {
+      "path": "src/ui.js",
+      "bytes": 26179,
+      "sha256": "3db687a3f9332a75bd8a9962f0bf6587c26f72899cf92a48bdbb497103222fd8"
+    },
+    {
+      "path": "tests/browser.py",
+      "bytes": 11337,
+      "sha256": "c217ede37003f527de704464a7e21755d965c20264a8064081e758c6dc2ab579"
+    },
+    {
+      "path": "tests/model.cjs",
+      "bytes": 10409,
+      "sha256": "0bf436046011c536e0b6e3bfc6ce0ff156992164305d143f56a6cd13cf00f1f2"
+    },
+    {
+      "path": "validation/browser.json",
+      "bytes": 3943,
+      "sha256": "5d0d764c4454714c48bd96ad88cce802a8b43a511dfd42cb9c6d82b6d50fc3b0"
+    },
+    {
+      "path": "validation/desktop-bench.png",
+      "bytes": 316083,
+      "sha256": "32f8371345919cce27195cdb2897336c3ddbe013b218651785267de214583835"
+    },
+    {
+      "path": "validation/desktop-entry.png",
+      "bytes": 317342,
+      "sha256": "73ab150e91a72c5f3444ce03f0e5e60263cb5ac206608c2b0874e5291fd02d13"
+    },
+    {
+      "path": "validation/desktop-oblique.png",
+      "bytes": 367766,
+      "sha256": "23dcabdbefb16205451eae5ff1352eb7ebd3538b62cd145575e2cf10adeb9f69"
+    },
+    {
+      "path": "validation/desktop-prima.png",
+      "bytes": 454249,
+      "sha256": "a13e51ddfdf421af31698a6cb7f42a679f1d71513660b5c6e2930d826cfcff4f"
+    },
+    {
+      "path": "validation/desktop-traveler.png",
+      "bytes": 535666,
+      "sha256": "dba60e4187f471d1ab80347fb35f02d510659ac29d783265f7b525577de4526f"
+    },
+    {
+      "path": "validation/equipment.json",
+      "bytes": 4805,
+      "sha256": "7f60e6c764623d22daefded0e9e16866cf271be61f7354164442fbefc8fe3c15"
+    },
+    {
+      "path": "validation/example-PV12-checks.csv",
+      "bytes": 1508,
+      "sha256": "4a0dda0c47da703de01bafe4fc3fa7f46285ae43790e4747aa99918c151449f4"
+    },
+    {
+      "path": "validation/example-PV12-section.svg",
+      "bytes": 6204,
+      "sha256": "4899659c1be5b193bf37e7cf225297067ac62da5139b48f98794d391c4002bbd"
+    },
+    {
+      "path": "validation/example-PV12-witness.json",
+      "bytes": 13971,
+      "sha256": "b81ecc49fdd6fa25312fb32cbb41ba3a897676218d74fdc195750c5ad717e29a"
+    },
+    {
+      "path": "validation/numerical.json",
+      "bytes": 3694,
+      "sha256": "a745b2d8ddbb64be7c55f0e29ac04b2348c2eceaf3506a54750143ca3e23896e"
+    },
+    {
+      "path": "validation/touch-bench.png",
+      "bytes": 338218,
+      "sha256": "3948e8b5aecd00d1a480018bd961c037b671866c41c8e0f409db378041fc9e05"
+    },
+    {
+      "path": "validation/touch-entry.png",
+      "bytes": 566627,
+      "sha256": "2064e454ab91c13ef336395a624fe66fc551a29b3773c606146294558fb500f1"
+    },
+    {
+      "path": "validation/touch-prima.png",
+      "bytes": 600832,
+      "sha256": "97abd1022e9d6ddad0615bb9f02c28d439baa8e45a7ecea12f8f78299452650b"
+    }
+  ]
+}

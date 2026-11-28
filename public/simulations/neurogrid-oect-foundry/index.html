@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#243830"><meta name="description" content="Compare the passive 2015 NeuroGrid with the separate 2013 PEDOT:PSS organic electrochemical transistor architecture. Virtual foundry, materials, and inert bench checks."><title>NeuroGrid and OECT bench | Build the Simulation</title><style>:root{color-scheme:light;--shell:#eae9df;--paper:#fefdf6;--ink:#28372e;--muted:#4d6053;--line:#b3c0ad;--line2:#d7ded0;--well:#e7ede3;--green:#23634f;--on:#fffdf4;--warning:#7a511e;--warningbg:#f5ead2;--brass:#bd9b60;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--title:'Century Schoolbook','Iowan Old Style','Palatino Linotype',Georgia,serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--shell);color:var(--ink);font:16px/1.5 var(--sans);-webkit-text-size-adjust:100%}[hidden]{display:none!important}h1,h2,h3,h4,p,ul,ol,dl,figure{margin:0}h1,h2,h3,h4,.h3{font:500 1.5rem/1.12 var(--title);letter-spacing:-.035em;text-wrap:pretty}p{overflow-wrap:anywhere}a{color:var(--green);text-underline-offset:.18em}button,a,input,select,summary{touch-action:manipulation}button,input,select{color:inherit;font:inherit;min-width:0}button,summary,select{cursor:pointer}button:disabled{cursor:default;opacity:.46}:focus-visible{outline:3px solid #c48631;outline-offset:3px}.sr-only,.skip:not(:focus){position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip:focus{position:absolute;z-index:50;background:var(--paper);padding:8px 12px;top:6px;left:8px}.wrap{width:min(1360px,100%);margin:auto;padding-inline:clamp(16px,4.2vw,65px)}.bar{background:var(--paper);border-bottom:1px solid var(--line)}.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:52px;padding-block:5px}.bar nav{display:flex;gap:clamp(11px,3vw,25px);align-items:center}.bar a,footer a{font-size:.8rem;color:var(--muted);text-decoration:none}.bar a:hover,footer a:hover{text-decoration:underline}.bar .wordmark{font-weight:700;color:var(--ink)}.hero{background:#233a31;color:#fff6df;border-bottom:4px solid var(--brass)}.cover{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(18px,4vw,55px);padding-block:clamp(22px,4.2vw,60px)}.kicker,.chip,.n,.point{font:650 .67rem/1.42 var(--mono);letter-spacing:.095em;text-transform:uppercase}.hero .kicker{color:#dac28b}.kicker span{color:var(--brass);margin:0 .3em}.hero h1{font-size:clamp(3.26rem,6.3vw,6.15rem);line-height:.99;margin:.13em 0 .2em}.hero .lede{font-size:clamp(1.09rem,2.15vw,1.52rem);color:#f0e8cb;font-weight:520}.hero .sub{max-width:51ch;color:#d5e0d3;font-size:.9rem;margin-top:8px}.coverplate svg{max-width:470px;display:block;width:100%;height:auto;margin-left:auto}.intro{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:clamp(17px,3vw,38px) 0 10px}.intro .kicker,.muted,.inside,.plate-note,footer{color:var(--muted)}.intro h2{font-size:clamp(2rem,3.8vw,3.22rem);margin:3px 0}.intro>p{max-width:46ch;font-size:.85rem;color:var(--muted)}.pick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 14px}.pick button{background:var(--paper);display:flex;flex-direction:column;align-items:start;justify-content:flex-start;text-align:left;padding:12px 15px 13px;border:1px solid var(--line);gap:3px;border-radius:4px;overflow-wrap:anywhere}.pick button[aria-pressed=true]{background:var(--well);box-shadow:inset 3px 0 var(--green);border-color:var(--green)}.pick button .kicker{color:var(--green)}.pick button b{font:500 clamp(1.27rem,2vw,1.85rem)/1.2 var(--title);letter-spacing:-.02em}.pick button span:not(.kicker){font-size:.83rem;line-height:1.28}.pick button small{color:var(--muted);font-size:.72rem;margin-top:3px}.layout{display:grid;grid-template-columns:minmax(215px,.7fr) minmax(0,2.1fr);gap:clamp(12px,2.2vw,28px);align-items:start}.right{display:grid;gap:12px;min-width:0}.card{background:var(--paper);border:1px solid var(--line);border-radius:4px;min-width:0;overflow-wrap:anywhere}.traveler>summary,.provenance>summary{display:grid;position:relative;list-style:none;padding:13px 13px 9px;gap:2px}.traveler>summary::-webkit-details-marker,.provenance>summary::-webkit-details-marker{display:none}.traveler>summary::after,.provenance>summary::after{content:'+';font:600 1rem var(--mono);color:var(--green);position:absolute;right:10px;top:12px}.traveler[open]>summary::after,.provenance[open]>summary::after{content:'−'}.traveler .kicker,.provenance .kicker,.card header .kicker{color:var(--muted)}.small{font-size:.79rem;line-height:1.4}.traveler progress{width:calc(100% - 24px);margin:5px 12px 11px;height:6px;accent-color:var(--green);display:block}.traveler ol{list-style:none;padding:0}.traveler li{border-top:1px solid var(--line2)}.traveler li button{display:grid;grid-template-columns:24px minmax(0,1fr) 12px;gap:5px;width:100%;min-height:42px;border:0;background:none;padding:8px 10px;font-size:.82rem;text-align:left;line-height:1.28}.traveler li button .n{color:var(--muted);margin-top:2px}.traveler li button[aria-current]{background:var(--well);box-shadow:inset 2px 0 var(--green)}.stage-symbol{color:var(--green);font-size:.72rem}.tiny-actions{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.traveler .tiny-actions,.stage-controls{padding:9px 12px;border-top:1px solid var(--line2);background:var(--well)}.tiny-actions button,.demo,.sitepick button,.curve-pick button{min-height:40px;font-weight:650;font-size:.78rem;border:1px solid var(--line);line-height:1.25;border-radius:3px;padding:7px 8px}.primary{background:var(--green);border-color:var(--green)!important;color:var(--on)}.quiet{background:var(--paper);color:var(--green)}.quiet:hover{background:var(--well)}.card header{display:flex;justify-content:space-between;align-items:start;padding:clamp(13px,1.8vw,24px) clamp(13px,1.8vw,24px) 0;gap:6px 12px;flex-wrap:wrap}.card header h3{font-size:clamp(1.51rem,2.6vw,2.35rem);margin-top:2px}.chip{color:var(--green);background:var(--well);border:1px solid var(--line);border-radius:4px;padding:4px 6px;font-size:.61rem}.step-copy{padding:10px clamp(13px,1.8vw,24px) 12px;font-size:.86rem;color:var(--muted)}#stage-check{margin-top:7px;color:var(--ink)}.point{color:var(--green)}.equipment{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:9px}.equipment a{font-size:.67rem;line-height:1.32;padding:4px 6px;background:var(--well);border:1px solid var(--line2);border-radius:3px;text-decoration:none}.equipment a:hover{text-decoration:underline}.plate{min-width:0;background:#1b3229;color:#dddec5;border-block:1px solid var(--line)}.plate svg{display:block;width:100%;height:auto;touch-action:pan-y}.plate-note{padding:7px 12px;font-size:.73rem;line-height:1.38}.stage-controls{gap:6px;justify-content:space-between}.stage-controls button:nth-child(2){margin-left:auto}.bench-body{padding:9px clamp(13px,1.8vw,24px) 13px}.demo{margin:8px 0}.settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 12px;padding:8px 11px;background:var(--well);border-radius:3px;border:1px solid var(--line);margin-bottom:5px}.settings label{font-size:.74rem;color:var(--muted);font-weight:650;display:block;min-width:0}.settings select,.settings input[type=number],#site{display:block;width:100%;min-height:41px;border:1px solid var(--line);border-radius:3px;padding:6px;color:var(--ink);background:var(--paper);margin-top:3px;font-size:.83rem}.settings input[type=range]{display:block;accent-color:var(--green);width:100%;min-height:30px;margin:0}.settings output{font:650 .75rem var(--mono);color:var(--ink);margin-left:5px}.readouts{display:grid;grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);gap:9px;margin-top:10px}.readouts>div{border:1px solid var(--line2);border-radius:3px;padding:9px;min-width:0}.readouts h4{font-size:1.17rem;margin:1px 0 7px}.curve-pick{display:flex;flex-wrap:wrap;gap:5px}.curve-pick button{background:var(--paper);min-height:33px;color:var(--green)}.curve-pick button[aria-pressed=true]{background:var(--green);color:var(--on)}.diagramplot{display:block;width:100%;max-width:470px;height:auto;margin-top:6px;color:var(--green)}.notice{background:var(--warningbg);color:var(--warning);border-left:2px solid var(--brass);padding:8px 9px;font-size:.77rem;margin-top:7px}#site-picker{display:grid;grid-template-columns:39px minmax(42px,82px) 39px;gap:6px;align-items:end;margin:0 0 7px}#site-picker button{border:1px solid var(--line);border-radius:3px;min-height:41px}#site{text-align:center;font-family:var(--mono);margin:0}.stamp{display:grid;grid-template-columns:90px minmax(0,1fr);gap:4px 5px;font-size:.76rem;line-height:1.32}.stamp dt{color:var(--muted)}.stamp dd{margin:0;font-weight:600}.statline{border-top:1px solid var(--line2);padding-top:6px;color:var(--green);font-weight:640;font-size:.74rem;margin-top:7px}.exports{margin:10px 0 6px}.provenance{margin-top:14px}.inside{font-size:.81rem;padding:2px 12px 15px}.inside dl{margin:9px 0}.inside dt{font-weight:620}.inside dd{margin:2px 0 8px}footer{display:flex;justify-content:space-between;gap:8px;font-size:.75rem;padding:11px 0;margin-top:15px;border-top:1px solid var(--line)}
+@media(max-width:740px){.bar .wrap{min-height:45px}.bar a,footer a{font-size:.7rem}.cover{display:block;padding-block:21px}.cover h1{font-size:3.21rem}.cover .lede{font-size:1.13rem}.cover .sub{font-size:.82rem}.coverplate{display:none}.intro{display:block}.intro>p{font-size:.78rem}.pick{gap:7px;margin-bottom:9px}.pick button{padding:8px 9px}.pick button span:not(.kicker){font-size:.73rem}.pick button small{font-size:.64rem}.layout{grid-template-columns:minmax(0,1fr);gap:8px}.right{gap:8px}.traveler ol{max-height:205px;overflow:auto}.traveler .tiny-actions{padding:7px 10px}.stage-controls{padding:6px 7px}.stage-controls button{min-height:42px;padding:6px;font-size:.7rem}.settings{padding:7px;gap:6px}.settings select,.settings input[type=number],#site{font-size:16px}.readouts{grid-template-columns:1fr}.diagramplot{max-width:none}.equipment a{font-size:.65rem}.curve-pick button{min-height:41px}}
+@media(max-width:380px){.wrap{padding-inline:10px}.cover h1{font-size:2.82rem}.tiny-actions button,.curve-pick button{font-size:.72rem}}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--shell:#232b24;--paper:#2a372e;--ink:#edede3;--muted:#c4d1c4;--line:#627764;--line2:#4a5a4c;--well:#395143;--green:#bedbc4;--on:#23382b;--warning:#f7d8a1;--warningbg:#4b412e}}
+</style></head>
+<body><a href="#bench" class="skip">Skip to virtual bench</a><header class="bar"><div class="wrap"><a class="wordmark" href="/">Build the Simulation</a><nav aria-label="Website"><a href="/simulations/foundry/">Foundry labs</a><a href="/simulations/foundry/atlas/#profile=flex-neurogrid">Workflow atlas</a></nav></div></header>
+<header class="hero"><div class="wrap cover"><div><p class="kicker">Flexible interfaces <span>/</span> 024</p><h1>NeuroGrid &amp; OECT</h1><p class="lede">Same polymer. Two different circuits.</p><p class="sub">Follow a passive surface electrode and a separate electrolyte-gated transistor from film stack to virtual bench.</p></div>
+<figure class="coverplate" aria-hidden="true"><svg viewBox="0 0 510 189" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="tiles" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 0h12v12" fill="none" stroke="#95a791" stroke-opacity=".19" stroke-width=".7"/></pattern></defs><rect x="11" y="11" width="488" height="166" fill="url(#tiles)" stroke="#809d87"/><path d="M254 24v138" stroke="#819a86" stroke-dasharray="3 5"/><g fill="none" stroke="#d6b872" stroke-width="1.8"><path d="M41 100h49v-6h83v-10h36"/><path d="M163 100h-73m83-16v16"/><rect x="158" y="73" width="15" height="32" fill="#6e8b62"/><path d="M279 103h57V94h27m39 0h28v9h48"/><path d="M338 117h93"/><path d="M362 93h41v-12h-41z" fill="#6e8b62"/><path d="M359 64h47" stroke="#96bead" stroke-dasharray="4 3"/><path d="M382 45v32" stroke="#96bead" stroke-dasharray="3 4"/><circle cx="382" cy="44" r="4" fill="#96bead" stroke="none"/></g><g fill="#e0e3cd" font-family="monospace" font-size="10.5" letter-spacing="1.6"><text x="28" y="38">PLATE 024  /  COMPARISON</text><text x="43" y="145">E  ·  SINGLE PASSIVE SITE</text><text x="281" y="145">S / D  ·  GATED CHANNEL</text><text x="391" y="51" font-size="9">BATH G</text></g></svg></figure></div></header>
+<main class="wrap" id="bench" tabindex="-1">
+<div class="intro"><div><p class="kicker">01 / Compare devices</p><h2>Choose a process</h2></div><p>The 2013 OECT is a different device, not an upgrade or hidden mode of the 2015 NeuroGrid.</p></div>
+<noscript><p class="notice">Enable JavaScript for this offline bench. Published references remain available below.</p></noscript><p id="error" role="alert" class="notice" hidden>The lab did not load.</p>
+<div id="app" hidden>
+<div class="pick" role="group" aria-label="Device process">
+<button id="choose-passive" type="button" data-mode="passive"><span class="kicker">A · 2015</span><b>Passive NeuroGrid</b><span>256 sites · 10 × 10 µm · 30 µm reported spacing</span><small>Output: impedance magnitude and phase</small></button>
+<button id="choose-oect" type="button" data-mode="oect"><span class="kicker">B · 2013</span><b>Active OECT</b><span>17 transistors + 8 separate passive electrodes</span><small>Output: signed drain current and transconductance</small></button>
+</div>
+<div class="layout">
+<details class="card traveler" id="travel" open><summary><span class="kicker">02 / Sequence</span><span class="h3">Process traveler</span><span class="muted small" id="frontier"></span></summary><progress id="progress" value="1" max="8" aria-label="Stations reached"></progress><ol id="steps"></ol><div class="tiny-actions"><button id="reset" type="button" class="quiet">Reset this route</button><button id="run" type="button" class="primary">Run to bench →</button></div></details>
+<div class="right">
+<section class="card scene-card" id="stage-detail"><header><div><p class="kicker" id="stage-kicker"></p><h3 id="stage-title"></h3></div><span id="stage-basis" class="chip"></span></header><div class="step-copy"><p id="stage-description"></p><p id="stage-check"></p><div class="equipment" id="step-tools"></div></div><div class="plate"><svg id="plate" role="img" aria-label="Virtual section or site map" viewBox="0 0 820 370" xmlns="http://www.w3.org/2000/svg"></svg></div><p id="plate-note" class="plate-note"></p><div class="tiny-actions stage-controls"><button type="button" id="view-toggle" class="quiet">Show site map</button><button type="button" id="prev-stage" class="quiet">← Previous</button><button type="button" id="next-stage" class="primary">Next station →</button></div></section>
+<section class="card inspection" id="inspection"><header><div><p class="kicker">03 / Inert checks</p><h3 id="bench-title"></h3></div><span class="chip">Synthetic values</span></header>
+<div class="bench-body"><p class="muted small" id="bench-help"></p><button type="button" id="compare-cover" class="quiet demo">Try the covered-window case</button>
+<div id="settings" class="settings"><label for="fault">Replay an isolated fault<select id="fault"></select></label><label id="faultloc-wrap" for="faultloc">Fault site (1–256)<input id="faultloc" type="number" inputmode="numeric" min="1" max="256" value="138"></label>
+<label id="vg-wrap" for="vg">Synthetic gate V<sub>G</sub> <output id="vg-out" for="vg"></output><input id="vg" type="range" min="0" max=".6" step=".01" value=".35"></label>
+<label id="vd-wrap" for="vd">Synthetic drain V<sub>D</sub> <output id="vd-out" for="vd"></output><input id="vd" type="range" min="-.5" max="0" step=".01" value="-.4"></label></div>
+<p class="muted small" id="fault-note"></p>
+<div class="readouts"><div class="checks"><h4 id="check-caption">Selected contact</h4><div id="site-picker"><button id="prev-site" class="quiet" type="button" aria-label="Previous site">←</button><label for="site" class="sr-only">Inspect a site number</label><input id="site" type="number" inputmode="numeric" min="1" max="256" value="138"><button id="next-site" class="quiet" type="button" aria-label="Next site">→</button></div><div id="stats"></div></div>
+<div class="checkplot"><h4 id="curve-caption"></h4><div class="curve-pick" role="group" aria-label="Bench plot"><button type="button" id="curve-a" data-curve="a"></button><button type="button" id="curve-b" data-curve="b"></button></div><div id="plot"></div><p class="muted small" id="benchmark"></p></div></div>
+<div class="tiny-actions exports"><button class="quiet" id="csv" type="button">Download bench CSV ↓</button><button class="quiet" id="json" type="button">Download traveler JSON ↓</button></div><p class="muted small">Exports label simulated values. NeuroGrid and OECT use separate units, fields and circuit conventions.</p>
+</div></section>
+</div></div></div>
+<details class="card provenance"><summary><span class="kicker">04 / Evidence</span><span class="h3">Sources and boundaries</span></summary><div class="inside"><p>No as-built mask, hardware control, patient or animal procedure, electrophysiological recording, or classified medical performance. The passivation window and flat wet/dry feedthrough are abstract geometry; the latter is not a hermetic package.</p><dl id="refs"><dt><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4308485/">Passive NeuroGrid paper</a></dt><dd>Figures and methods, 2015.</dd><dt><a href="https://www.nature.com/articles/ncomms2573.pdf">OECT paper</a></dt><dd>Architecture and transistor curves, 2013.</dd></dl><p><a href="/devices/24-neurogrid-pedot-pss-surface-array/">NeuroGrid catalog sheet ↗</a></p></div></details>
+<footer><span>Build the Simulation · Foundry notebook</span><a href="/simulations/foundry/">Foundry labs ↑</a></footer>
+</main><p id="live" aria-live="polite" role="status" class="sr-only"></p><script>/* Dual-route passive-electrode / OECT teaching model. */
+((global)=>{
+'use strict';
+const docs={
+ passive:{title:'Khodagholy et al. · NeuroGrid (2015)',url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC4308485/',doi:'10.1038/nn.3905',scope:'Figure 1, Results and Online Methods, Probe fabrication and characterization. Establishes passive 256-contact geometry, 4 µm encapsulated film, metal stack and polymer recording surface.'},
+ oect:{title:'Khodagholy et al. · organic electrochemical transistors (2013)',url:'https://www.nature.com/articles/ncomms2573.pdf',doi:'10.1038/ncomms2573',scope:'Figures 1 and 2, Structure and Methods. Establishes separate Au terminals, PEDOT:PSS channel, patterned parylene passivation, and an external electrode immersed in electrolyte as gate.'},
+ elements:{title:'Khodagholy et al. · high-transconductance OECTs (2013)',url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC3717497/',doi:'10.1038/ncomms3133',scope:'Figure 1 and device physics support the distinction between ionic gating and electron/hole conduction; not a source for this model’s numerical constants.'}
+};
+const tools={'01-01':'Mask / CAD reference','02-02':'MJB3 aligner · not MJB4','02-06':'Projection stepper · not GCA','02-07':'Spin coater','02-12':'Reflectance microscope','03-01':'E-beam evaporation','03-08':'SCS Labcoter 2 reference','04-01':'RIE operation class','04-06':'Wet bench reference','05-01':'Profilometer','05-07':'Manual probe station','08-10':'Adhesive dispensing reference','09-01':'Potentiostat','09-02':'Parameter analyzer · independently verify SMU count','09-03':'Single SMU · not the dual instrument','09-12':'Inert cell reference','12-01':'Stereo microscope','16-11':'Carrier handling','16-13':'Connector references'};
+const mk=(title,desc,check,equipment,basis='Published architecture')=>({title,desc,check,equipment:equipment.split(' ').filter(Boolean),basis});
+const passive=[
+ mk('Define the passive array and film','The 2015 paper describes a 256-site version with 10 × 10 µm sites, reported 30 µm separation and a finished film about 4 µm thick. The centered 16 × 16 patch treats spacing as center pitch. Full outline, tails, pins and routing artwork are not recovered.','Count 256 physical contacts; the bath reference is an external measurement reference, not an additional recording site.','01-01 16-11'),
+ mk('Form the lower parylene carrier film','The Online Methods describe 2 µm of parylene C and contrasting adhesion and anti-adhesion interfaces. The actual substrate holder, layer-specific treatment and release tolerances are not specified in this teaching route.','Keep temporary carrier, release interface and finished polymer separate. No silicon-device circuitry is implied.','03-08 05-01 16-11'),
+ mk('Pattern the site-to-pad conductor','Projection lithography, metal deposition and lift-off produce the local Ti/Pt/Au stack (10/150/50 nm in Methods). Authors name a GCA i-line stepper and a CVC evaporator; our tools are analogous classes only.','Each contact gets one isolated conductor. A connector pin, metal trace and exposed PEDOT:PSS surface are not the same object.','02-06 03-01 05-07'),
+ mk('Encapsulate the conductor and define the window','The published thin film encapsulates metal with parylene or PEDOT:PSS and locates the metal near its mechanical neutral plane. The remaining nominal film thickness in the drawing is an explanatory split, not an additional measurement.','An intended window sits over the polymer-coated site only. Insulated feedthrough regions keep the metal out of the bench liquid.','03-08 04-01 02-12'),
+ mk('Complete the PEDOT:PSS site','The mixed-conducting polymer is the exposed surface of a passive electrode, not a gate-controlled channel. Trace and bonding pad overlap are schematic; the sequence tracks material states rather than reproducing mask and process specifications.','An exposed square maps to one lead. A covered electrode, exposed interconnect and an open trace are different failure modes.','02-07 02-12 05-07'),
+ mk('Release and label a film coupon','The adhesion contrast and released thin film are described by the authors; this stage represents the completed handoff without claiming cartridge, release or cable details.','Retain insulated traces after release. Associate fabricated site, pad and virtual output IDs only where the model explicitly defines them.','04-06 12-01 16-13','Process reconstruction'),
+ mk('Check dry continuity and isolation','Inspect the virtual conductor graph and external reference separately. A neighboring-net bridge is not two good signals, even if each terminal conducts. This is logical inspection, not a measurement through the passivation.','Pull apart open, covered, shorted, reference-open and leakage cases before interpreting an AC measurement.','05-07 02-12 16-13','Synthetic check'),
+ mk('Run inert small-signal impedance','A passive site can be represented by series resistance plus a parallel RC interface in an inert cell. Frequency, magnitude and phase are reported, but there is no gate voltage, transconductance or amplification here.','Report modeled |Z| and phase only for isolated, wet, connected contacts with a reference. No measured sample or device-level acceptance limit is presented.','09-01 09-12','Synthetic check')
+];
+const oect=[
+ mk('Define a different research architecture','The 2013 probe is a separate platform, with 17 OECTs and eight 12 × 12 µm passive electrodes. Each transistor has a 6 µm channel length and 15 µm width. This bench selects one transistor, not the complete connector.','Label source, drain, conducting polymer channel and a separate electrolyte gate. Eight passive sites are not eight extra gate terminals.','01-01 16-11'),
+ mk('Form the parylene substrate','Figure 1 and Methods use a nominal 2 µm lower parylene C film. The handling carrier and its release geometry are not reconstructed in this view.','Do not reuse the NeuroGrid mask or the Pt-containing metal stack. Similar substrate materials do not imply an interchangeable process.','03-08 05-01'),
+ mk('Pattern separate source and drain leads','The paper reports contact lithography and 5 nm Ti / 100 nm Au. The two metal leads remain separate across the gap where the channel will be formed; no on-film Au gate is assumed.','Verify a gap between source and drain metal before the polymer bridge. The published SUSS MJB4 is not the register MJB3.','02-02 03-01 02-12'),
+ mk('Place a polymer bridge, not a single pad','The PEDOT:PSS patch contacts both terminals and forms a 6 × 15 µm channel. Its shape in the plate illustrates a conduction path across an otherwise insulating gap, not an exact mask drawing. Figure 1 uses a nominal 200 nm PEDOT:PSS figure legend.','Only this bridge provides the intended electronic path. A direct S–D metal short bypasses gating.','02-07 02-12 05-07'),
+ mk('Insulate the feedthrough and open the channel','The 2 µm upper parylene separates the bath from the gold wiring while the polymer channel exchanges ions with the bath. “Feedthrough” here means the flat insulated lead crossing the wet/dry boundary, not a hermetic metal/ceramic package.','The channel window must leave the gold under parylene or polymer. Covering the window stops ionic control without necessarily breaking dry conduction.','03-08 04-01 02-12'),
+ mk('Expose dry pads and separate the bath gate','The probe has dry connector pads. The published in vitro gate is a separate metal electrode in the electrolyte, not a deposited gate under the polymer. Layouts and connector pinout are not reproduced.','Keep the gate electric lead separate from the two dry film leads. The electrolyte is an ionic path to the channel, not a metallic G–D jumper.','16-13 09-12','Architecture handoff'),
+ mk('Inspect dry path and gate isolation','Source and drain can conduct through PEDOT:PSS while a gate path fails. A breach at an insulated lead creates a separate drain-to-bath leakage mechanism. Test this only in the teaching graph.','Distinguish S/D open, loss of ionic coupling, exposed lead and a direct bypass; an apparent drain current alone is not a functional transistor.','05-07 09-02 09-03','Synthetic check'),
+ mk('Sweep the virtual p-type transfer','Set source to zero in the model. At fixed negative drain voltage, increasing the virtual positive gate voltage depletes this p-type channel and reduces absolute drain current. Signed I_D remains negative and moves toward zero.','Display signed I_D in µA, dI_D/dV_G in µS, and modeled gate leakage in nA. Fig. 2 used a dual SourceMeter; the register’s single 2450 is not its equivalent.','09-02 09-03 09-12','Synthetic check')
+];
+const modes={
+ passive:{label:'NeuroGrid · passive (2015)',route:passive,source:'passive',description:'One electrode, one insulated route and a separate bath reference. Passive AC impedance, not gain.',geometry:{sites:256,rows:16,columns:16,pitchUm:30,siteUm:10,finishedFilmUm:4,nominalLowerUm:2,metalStackNm:[['Ti',10],['Pt',150],['Au',50]],reference:'external bath reference',basis:'centered regular lattice inferred from Figure 1; no recovered routing'}},
+ oect:{label:'PEDOT:PSS OECT · active (2013)',route:oect,source:'oect',description:'Source/drain span a polymer channel with a third, spatially separate electrode in the bath. One transistor witness is simulated.',geometry:{transistors:17,passiveCompanionElectrodes:8,companionElectrodeUm:12,channelLengthUm:6,channelWidthUm:15,nominalBottomUm:2,nominalTopUm:2,channelLegendNm:200,metalStackNm:[['Ti',5],['Au',100]],gate:'external stainless-steel gate from the published in-vitro architecture',basis:'no actual full-array artwork or acquisition map'}}
+};
+const faults={
+ passive:{
+  nominal:{label:'Clean passive witness',note:'All 256 synthetic site traces remain isolated and individually mapped.',at:0},
+  open:{label:'Open conductor',note:'One selected metal trace has no path to its labeled output, though its polymer may be exposed.',at:2},
+  cover:{label:'Blocked recording window',note:'The selected dry trace remains continuous. No expected electrolyte-to-site interface is open.',at:3},
+  short:{label:'Neighbor bridge',note:'Two adjacent logical nets are merged; both fail electrical isolation.',at:2},
+  breach:{label:'Insulation defect · large apparent contact',note:'An exposed interconnect lowers the apparent impedance of the simple bench witness; that is a defect, not a better electrode.',at:3},
+  reference:{label:'External reference disconnected',note:'All device traces remain. The bench cannot infer impedance without the modeled measurement reference.',at:7}
+ },
+ oect:{
+  nominal:{label:'Clean gated witness',note:'Channels are insulated except for the polymer area; gate changes drain current through the electrolyte.',at:0},
+  source:{label:'Source lead open',note:'No intended drain current path. Gate excitation is represented only as an independent ionic boundary.',at:2},
+  drain:{label:'Drain lead open',note:'No intended drain current path. An isolated lead cannot amplify.',at:2},
+  covered:{label:'Channel window covered',note:'Dry output path is intact, but the gate cannot modulate the covered channel in the simplified model.',at:4},
+  gate:{label:'Bath gate disconnected',note:'The channel is exposed, but the unconnected bath-gate drive cannot set a gate potential. The bench witness holds a constant ungated conductance.',at:5},
+  leakage:{label:'Feedthrough insulation breach',note:'A separate virtual bath-to-lead path appears. A transfer may still look active, but the leakage witness flags isolation.',at:4},
+  bridge:{label:'Source/drain metal bridge',note:'A dominant ohmic path bypasses the channel. The teaching model shows a flat current curve at fixed bias, not gain.',at:2}
+ }
+};
+const clamp=(x,min,max)=>Math.max(min,Math.min(max,x));
+const q=(x,n=5)=>+x.toFixed(n);
+const finite=(v,d)=>typeof v==='number'&&Number.isFinite(v)?v:d;
+const id=i=>'E'+String(i+1).padStart(3,'0');
+const frequencies=[10,20,50,100,150,220,330,470,680,1000,1500,2200,3300,4700,6800,10000,15000,20000,50000,100000];
+function passiveZ(row,freq=frequencies){
+ if(!row?.spectrumReady)return [];
+ const k=row.leakage?3.2:1,R=410000/k,C=1.8e-9*k,Rs=1200;
+ return freq.map(f=>{if(!Number.isFinite(f)||f<=0)throw new RangeError('Frequency must be positive');const a=2*Math.PI*f*R*C,b=1+a*a,re=Rs+R/b,im=-R*a/b;return {fHz:f,realOhm:q(re),imagOhm:q(im),absOhm:q(Math.hypot(re,im)),phaseDeg:q(Math.atan2(im,re)*180/Math.PI)}});
+}
+function psolve(stage,i,defect,loc){
+ const available=stage>=2,hasWindow=stage>=4,ready=stage>=7,active=stage>=faults.passive[defect].at;
+ const adj=loc%16===15?loc-1:loc+1,reference=!(active&&defect==='reference');
+ const rows=Array.from({length:256},(_,n)=>{
+  const x=(n%16-7.5)*30,y=(7.5-Math.floor(n/16))*30;
+  const open=active&&defect==='open'&&n===loc,short=active&&defect==='short'&&(n===loc||n===adj),leakage=active&&defect==='breach'&&n===loc,blocked=active&&defect==='cover'&&n===loc;
+  const trace=available&&!open,windowOpen=hasWindow&&!blocked;
+  const spectrumReady=ready&&trace&&windowOpen&&reference&&!short;
+  return {id:id(n),index:n,centerUm:[x,y],trace,windowOpen,short,leakage,
+   logicalOutputs:!trace?[]:short?[id(Math.min(loc,adj)),id(Math.max(loc,adj))]:[id(n)],
+   dry:stage<6?'Not inspected':open?'Open trace':short?'Shorted': 'Mapped',
+   wet:stage<7?'Not inspected':!reference?'Missing reference':!trace?'Missing trace':short?'Shared net':!windowOpen?'Blocked window':leakage?'Leaky insulation':'Isolated contact',
+   spectrumReady};
+ });
+ return {rows,selected:rows[i],ref:reference,counts:{film:256,goodRoutes:rows.filter(r=>r.dry==='Mapped').length,open:rows.filter(r=>r.dry==='Open trace').length,short:rows.filter(r=>r.dry==='Shorted').length,valid:rows.filter(r=>r.spectrumReady&&!r.leakage).length,abnormalSpectrum:rows.filter(r=>r.spectrumReady&&r.leakage).length}};
+}
+const params={lowUs:20,rangeUs:320,midV:.33,widthV:.073,healthyGateNS:5,breachGateNS:560,shortUs:1350};
+function osolve(stage,fault,vg,vd){
+ const active=stage>=faults.oect[fault].at;
+ const problem=k=>active&&fault===k;
+ const hasLeads=stage>=2,polymer=stage>=3,windowOpen=stage>=4&&!problem('covered'),gate=stage>=5&&!problem('gate');
+ const drive=windowOpen&&gate,source=hasLeads&&!problem('source'),drain=hasLeads&&!problem('drain'),path=source&&drain&&(polymer||problem('bridge'));
+ const leakage=problem('leakage'),bridge=problem('bridge');
+ const ready=stage>=7,inspected=stage>=6,code=!inspected?'Not inspected':!path?'Open S–D path':bridge?'Metal bypass':leakage?'Feedthrough leak':!gate?'Gate disconnected':!windowOpen?'Channel covered':'Isolated gated channel';
+ const sweepPoint=(g)=>{
+  const z=1/(1+Math.exp(((drive?g:0)-params.midV)/params.widthV));
+  const cond=!path?0:bridge?params.shortUs:params.lowUs+params.rangeUs*z;
+  const iD=vd*cond; // V × µS = µA, signed drain-current convention.
+  const gm=path&&drive&&!bridge?-vd*params.rangeUs*z*(1-z)/params.widthV:0;
+  const iG=gate?g*(leakage?params.breachGateNS:windowOpen?params.healthyGateNS:0):0;
+  return {vG:g,vD:vd,iDuA:q(iD),gmUS:q(gm),iGnA:q(iG)};
+ };
+ const sweep=ready?Array.from({length:61},(_,i)=>sweepPoint(q(i/100,2))):[];
+ return {sources:{s:source,d:drain,g:gate},windowOpen,polymer,path,drive,leakage,bridge,status:code,sweep,selected:ready?sweepPoint(vg):null};
+}
+function solve(opts={}){
+ const mode=opts.mode==='oect'?'oect':'passive',stage=clamp(Math.round(finite(opts.stage,0)),0,7);
+ const fault=Object.hasOwn(faults[mode],opts.fault)?opts.fault:'nominal';
+ const inspect=clamp(Math.round(finite(opts.inspect,137)),0,255),location=clamp(Math.round(finite(opts.location,137)),0,255);
+ const vG=clamp(finite(opts.vG,.35),0,.6),vD=clamp(finite(opts.vD,-.4),-.5,0);
+ const result=mode==='passive'?psolve(stage,inspect,fault,location):osolve(stage,fault,vG,vD);
+ return {mode,stage,fault,inspect,location,vG,vD,result};
+}
+function report(m){
+ const p=modes[m.mode],data=m.mode==='passive'?{counts:m.result.counts,referenceConnected:m.result.ref,selected:m.result.selected,syntheticImpedance:passiveZ(m.result.selected)}:{diagnostics:{status:m.result.status,polymerChannel:m.result.polymer,windowOpen:m.result.windowOpen,isolatedGate:m.result.drive,pathSD:m.result.path,feedthroughLeakage:m.result.leakage},selected:m.result.selected,syntheticTransfer:m.result.sweep,modelConstants:params};
+ return {schema:'neurogrid-oect-bench/1',mode:m.mode,stage:m.stage+1,geometry:p.geometry,source:docs[p.source],secondarySources:m.mode==='oect'?[docs.elements]:[],modelNotice:'Synthetic inert-bench educational comparison, not measured data, fabrication instructions, pinout, or a medical device.',fault:m.fault,...(m.mode==='passive'?{faultSite:m.fault==='reference'||m.fault==='nominal'?null:id(m.location)}:{voltages:{VG:m.vG,VD:m.vD,VS:0},publishedFigure2Benchmark:{drainBiasV:-.4,peakGmUS:900,peakVG:.42,relationship:'Literature datum only, not fitted to this simulated sweep'}}),...data};
+}
+function csv(m){
+ if(m.stage<7)throw new Error('Complete the inert bench before export.');
+ if(m.mode==='oect')return 'synthetic_gate_V,synthetic_drain_V,signed_synthetic_drain_uA,derivative_uS,synthetic_gate_nA\n'+m.result.sweep.map(z=>[z.vG,z.vD,z.iDuA,z.gmUS,z.iGnA].join(',')).join('\n')+'\n';
+ return 'synthetic_site_id,inferred_center_x_um,inferred_center_y_um,logical_outputs,dry_graph,wet_window,measurement_status,synthetic_abs_Z_1k_ohm,synthetic_phase_1k_deg\n'+m.result.rows.map(r=>{const z=passiveZ(r,[1000])[0];return [r.id,...r.centerUm,r.logicalOutputs.join(';'),r.dry,r.windowOpen,r.wet,z?.absOhm??'',z?.phaseDeg??''].join(',')}).join('\n')+'\n';
+}
+const api={docs,tools,modes,faults,params,solve,passiveZ,report,csv};
+if(typeof module!=='undefined'&&module.exports)module.exports=api;else global.NGBench=api;
+})(globalThis);
+</script><script>(()=>{
+'use strict';
+const N=window.NGBench,$=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=i=>String(i).padStart(2,'0');
+const BASE='https://buildthesimulation.com',url=s=>location.protocol==='file:'&&s.startsWith('/')?BASE+s:s;
+const blank=()=>({stage:0,reached:0,fault:'nominal',location:137,inspect:137,vG:.35,vD:-.4,map:false,curve:'a'});
+const forMode={passive:blank(),oect:blank()};let mode='passive',model;const cur=()=>forMode[mode];
+const colors={m:'#92ab94',ink:'#e2e7cc',gold:'#d8b77d',film:'#b08550',bath:'#375f5a',poly:'#97c598',bad:'#f89f84',blank:'#254b3e',oxide:'#77b7af'};
+function pnum(value,prev){const n=Number(value);return Number.isInteger(n)&&n?Math.max(0,Math.min(255,n-1)):prev}
+function status(t){$('live').textContent='';setTimeout(()=>$('live').textContent=t,20)}
+function stgo(stage,scroll=false){const a=cur();a.stage=Math.max(0,Math.min(7,stage));a.reached=Math.max(a.stage,a.reached);render();if(scroll){const s=$('stage-title');s.setAttribute('tabindex','-1');s.focus({preventScroll:true});$('stage-detail').scrollIntoView({block:'start'})}status('Station '+(a.stage+1)+': '+N.modes[mode].route[a.stage].title)}
+const line=(x1,y1,x2,y2,c=colors.m,w=2,rest='')=>'<path d="M'+x1+' '+y1+'L'+x2+' '+y2+'" stroke="'+c+'" fill="none" stroke-width="'+w+'" '+rest+'/>';
+const rect=(x,y,w,h,f,s=colors.m,rest='')=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+f+'" stroke="'+s+'" '+rest+'/>';
+const text=(x,y,t,s=15,c=colors.ink,a='start')=>'<text x="'+x+'" y="'+y+'" fill="'+c+'" text-anchor="'+a+'" font-family="ui-monospace,monospace" font-size="'+s+'">'+esc(t)+'</text>';
+const note=(xy,t)=>text(xy[0],xy[1],t,13,colors.m);
+const circle=(x,y,r,f,c,rest='')=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+f+'" stroke="'+c+'" '+rest+'/>';
+const dashed='stroke-dasharray="6 5"';
+const water=()=>'<path d="M65 146Q124 128 191 140T333 140T477 139T619 139T755 140V232H65Z" fill="'+colors.bath+'" stroke="#75a394" stroke-opacity=".78"/>';
+function plate(){
+ const a=cur(),m=model,s=m.stage,r=m.result;
+ const legend=['PARYLENE C','BURIED METAL','PEDOT:PSS','INERT BATH'];
+ const defs='<defs><pattern id="plate-grid" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M0 0H14V14" fill="none" stroke="#8da694" stroke-opacity=".16" stroke-width=".65"/></pattern><marker id="tip" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5 0 5" fill="none" stroke="#a3c7a5"/></marker></defs>';
+ const base=defs+rect(0,0,820,370,'#20362b','none')+rect(17,15,786,337,'url(#plate-grid)','#769382')+text(43,49,mode==='passive'?'PASSIVE PLATE / 2015':'ACTIVE PLATE / 2013',18,colors.gold);
+ let p=base,desc='';
+ if(mode==='passive'&&a.map){
+  const o=26,gx=312,gy=63,g=16;
+  p+=rect(gx,gy,g*g,g*g,colors.blank,colors.m);
+  for(const j of r.rows){
+   const x=gx+(j.index%16)*g+g/2,y=gy+Math.floor(j.index/16)*g+g/2;
+   const c=s<4?'#61756a':s>=6&&(j.dry!=='Mapped')?colors.bad:j.leakage?'#e6b87b':!j.windowOpen?'#ddcda6':colors.poly;
+   p+=circle(x,y,3.4,c,'none','data-site="'+j.index+'"');
+   if(j.index===a.inspect)p+=circle(x,y,7.9,'none',colors.ink,'stroke-width="1.4" pointer-events="none"');
+  }
+  p+=text(47,111,'16 × 16',31)+text(47,140,'INFERRED CENTER MAP',15,colors.gold)+text(47,185,'256 SITES',23)+note([47,211],'Reported 30 µm spacing');
+  p+=text(47,264,'SELECTED  '+r.selected.id,22)+note([47,292],s>=6?r.selected.dry:'Not yet inspected');
+  p+=note([590,115],'Green   isolated')+note([590,139],'Salmon  dry error')+note([590,163],'Cream   covered')+note([590,187],'Gold    lead leak')+note([590,245],'Symbols enlarged');
+  desc='Centered, inferred 16 × 16 patch. Contact symbols are larger than geometry. Tap a marker or use the numeric site inspector; changing the inspected site does not move the fault.';
+ }else if(mode==='passive'){
+  const row=r.selected;
+  if(s>=5)p+=water()+text(61,136,'INERT ELECTROLYTE VOLUME',14,colors.oxide);
+  if(s>=1)p+=rect(108,240,609,33,colors.film,colors.gold)+text(106,303,'2 µm BASE PARYLENE',13,colors.gold);
+  if(s>=2){
+   p+=rect(146,229,504,9,colors.gold,colors.gold);
+   if(!row.trace){p+=rect(239,228,15,12,'#23372b','#23372b')+line(237,225,255,242,colors.bad,3)+line(255,225,237,242,colors.bad,3)}
+  }
+  if(s>=3){p+=rect(108,196,346,29,'#85704b',colors.gold)+rect(493,196,224,29,'#85704b',colors.gold)+text(536,184,'INSULATED ROUTE',14,colors.gold);}
+  if(s>=4)p+=row.windowOpen?rect(455,206,37,22,colors.poly,colors.poly)+text(474,174,'EXPOSED POLYMER',13,colors.poly,'middle'):rect(451,196,45,30,colors.film,colors.gold)+text(474,174,'COVERED SITE',13,colors.bad,'middle');
+  if(s>=5){p+=line(747,107,747,173,r.ref?colors.oxide:colors.bad,3,r.ref?'':dashed)+circle(747,175,5,r.ref?colors.oxide:colors.bad,'none')+note([585,104],'SEPARATE REFERENCE');}
+  if(s>=3&&row.leakage)p+=line(565,185,565,226,colors.bad,5,dashed)+text(557,167,'BREACH',14,colors.bad);
+  p+=note([46,334],'ONE SITE → ONE TRACE. NO SOURCE, DRAIN OR GATE.');
+  desc='Concept section, thickness exaggerated. The passive bath reference is not a gate and not an extra recording channel. Exposing only a polymer-coated site preserves the metal feedthrough insulation.';
+ }else{
+  if(s>=5)p+=water()+text(64,135,'INERT IONIC BOUNDARY',14,colors.oxide);
+  if(s>=1)p+=rect(106,244,610,33,colors.film,colors.gold)+text(109,305,'2 µm BASE PARYLENE',13,colors.gold);
+  if(s>=2){
+   p+=rect(142,232,229,9,colors.gold,colors.gold)+rect(451,232,225,9,colors.gold,colors.gold);
+   
+   for(const [key,x] of [['s',236],['d',572]])if(!r.sources[key])p+=rect(x-7,231,14,11,'#20362b','none')+line(x-7,227,x+7,246,colors.bad,3)+line(x+7,227,x-7,246,colors.bad,3);
+  }
+  if(r.polymer)p+=rect(356,217,109,14,colors.poly,colors.poly)+text(411,303,'6 × 15 µm CHANNEL',13,colors.m,'middle');
+  if(s>=4){
+   p+=rect(107,194,248,32,'#85704b',colors.gold)+rect(465,194,251,32,'#85704b',colors.gold);
+   if(!r.windowOpen)p+=rect(353,193,113,32,colors.film,colors.gold)+text(411,185,'WINDOW BLOCKED',13,colors.bad,'middle');
+   else p+=text(404,187,'POLYMER WINDOW',13,colors.poly,'middle');
+   p+=text(727,303,'INSULATED FEEDTHROUGH',13,colors.m,'end');
+  }
+  if(s>=5){
+   const c=r.sources.g?colors.oxide:colors.bad;
+   p+=line(582,66,582,119,c,3,r.sources.g?'':dashed)+circle(582,123,7,c,c)+text(598,108,'G · SEPARATE BATH GATE',13,c);
+   if(r.drive)p+='<path d="M570 130Q510 146 451 159" stroke="'+colors.poly+'" fill="none" stroke-width="2" '+dashed+' marker-end="url(#tip)"/>';
+   if(r.leakage)p+=line(556,175,556,229,colors.bad,4,dashed)+text(546,167,'LEAK',13,colors.bad);
+  }
+  if(s>=2){
+   p+=text(144,s>=4?216:209,r.sources.s?'S · SOURCE':'S · OPEN LEAD',17,r.sources.s?colors.ink:colors.bad);
+   p+=text(677,s>=4?216:209,r.sources.d?'D · DRAIN':'D · OPEN LEAD',17,r.sources.d?colors.ink:colors.bad,'end');
+  }
+  if(r.bridge)p+=line(363,237,457,237,colors.bad,5)+text(408,267,'METAL BYPASS',13,colors.bad,'middle');
+  p+=note([45,334],'GATES THE CHANNEL THROUGH IONS; NO DIRECT G–D METAL PATH.');
+  desc='Concept section, not exact artwork. Dry source and drain wiring remains buried. The channel alone has an electrolyte window; the gate is a separate electrode in the bath. Feedthrough does not mean a hermetic seal.';
+ }
+ $('plate').innerHTML=p;$('plate-note').textContent=desc;$('plate').setAttribute('aria-label',desc);
+ $('view-toggle').hidden=mode==='oect';$('view-toggle').textContent=a.map?'Show cross-section':'Show site map';
+}
+function makePlot(data,props){
+ if(!data.length)return '';
+ const l=47,r=372,t=20,b=135,xa=data.map(x=>x[props.x]),ya=data.map(x=>x[props.y]),lo=Math.min(...ya),hi=Math.max(...ya);
+ const isLog=(props.x==='fHz'),ylog=props.y==='absOhm';const tr=x=>isLog?Math.log10(x):x,tra=y=>ylog?Math.log10(y):y;
+ const minX=tr(xa[0]),maxX=tr(xa.at(-1)),yMin=tra(lo),yMax=tra(hi),padY=yMax===yMin?(Math.abs(yMax)*.1+1):(yMax-yMin)*.08,y0=yMin-padY,y1=yMax+padY;
+ const X=x=>l+(tr(x)-minX)*(r-l)/(maxX-minX),Y=y=>b-(tra(y)-y0)*(b-t)/(y1-y0);
+ const fmt=n=>Math.abs(n)>=1000?(n/1000).toPrecision(3).replace(/\.?0+$/,'')+'k':Number(n.toPrecision(3)).toString();
+ const grids=(isLog?[10,100,1000,10000,100000]:[0,.15,.3,.45,.6]).map(x=>'<path d="M'+X(x)+' '+t+'V'+b+'" opacity=".32"/><text x="'+X(x)+'" y="150" text-anchor="middle" stroke-width="0">'+fmt(x)+'</text>').join('');
+ const yticks=[.1,.5,.9].map(q=>{const z=y0+(y1-y0)*q,yy=ylog?10**z:z;return '<path d="M'+l+' '+Y(yy)+'H'+r+'" opacity=".32"/><text x="42" y="'+(Y(yy)+3)+'" text-anchor="end" stroke-width="0">'+fmt(yy)+'</text>'}).join('');
+ const path=data.map((x,i)=>(i?'L':'M')+X(x[props.x]).toFixed(1)+' '+Y(x[props.y]).toFixed(1)).join(' ');
+ const s=props.selected;
+ return '<svg class="diagramplot" role="img" aria-label="'+esc(props.a11y)+'" viewBox="0 0 392 166" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" fill="currentColor" font-family="monospace" font-size="10" stroke-width=".7">'+grids+yticks+'<text x="7" y="12" stroke-width="0">'+esc(props.unit)+'</text><text x="380" y="164" text-anchor="end" stroke-width="0">'+(isLog?'Frequency (Hz)':'Gate voltage (V)')+'</text><path d="'+path+'" stroke-width="2.4" fill="none"/>'+(s?'<circle cx="'+X(s[props.x])+'" cy="'+Y(s[props.y])+'" r="3.8"/>':'')+'</g></svg>'
+}
+const stamps=pairs=>'<dl class="stamp">'+pairs.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>').join('')+'</dl>';
+function bench(){
+ const a=cur(),r=model.result,p=mode==='passive',done=a.stage===7,inspected=a.stage>=6;
+ $('bench-title').textContent=p?'Passive impedance bench':'Electrolyte-gated transfer bench';
+ $('bench-help').textContent=p?'An AC test on one isolated electrode interface. Frequency is the horizontal axis; this device has no V_G or transconductance.':'One simulated transistor, not 17 simultaneous outputs. Source is the 0 V reference; ADC/readout electronics are not modeled.';
+ $('faultloc-wrap').hidden=!p;$('vg-wrap').hidden=p;$('vd-wrap').hidden=p;
+ $('vg-out').value=a.vG.toFixed(2)+' V';$('vd-out').value=a.vD.toFixed(2)+' V';
+ $('fault-note').textContent=N.faults[mode][a.fault].note+(a.stage<N.faults[mode][a.fault].at?' Applies at station '+(N.faults[mode][a.fault].at+1)+'.':'');
+ $('site-picker').hidden=!p;$('check-caption').textContent=p?'Selected contact':'Selected transistor';
+ $('prev-site').disabled=a.inspect===0;$('next-site').disabled=a.inspect===255;
+ if(document.activeElement!==$('site'))$('site').value=String(a.inspect+1);if(document.activeElement!==$('faultloc'))$('faultloc').value=String(a.location+1);
+ let props,data=[];
+ if(p){
+  const z=r.selected;data=N.passiveZ(z);const k=data.find(x=>x.fHz===1000);
+  $('stats').innerHTML=stamps([['Site',z.id],['Dry graph',z.dry],['Wet interface',z.wet],['Logical line',inspected?z.logicalOutputs.join(' / ')||'None':'Not inspected'],['|Z| at 1 kHz',k?(k.absOhm/1000).toFixed(2)+' kΩ · synthetic':'Unavailable'],['Phase at 1 kHz',k?k.phaseDeg.toFixed(1)+'° · synthetic':'Unavailable']])+(done?'<p class="statline">'+r.counts.goodRoutes+' mapped / 256 · '+r.counts.valid+' isolated wet · '+r.counts.abnormalSpectrum+' anomalous low-Z</p>':'');
+  $('curve-caption').textContent='Synthetic impedance spectrum';$('curve-a').textContent='Magnitude |Z|';$('curve-b').textContent='Phase';
+  $('benchmark').textContent='Passive series R + (parallel RC) is a synthetic contrast, not a numerical fit to the NeuroGrid paper or a neural sample.';
+  const phase=a.curve==='b';props={x:'fHz',y:phase?'phaseDeg':'absOhm',unit:phase?'Phase (°)':'|Z| (Ω)',a11y:phase?'Synthetic phase across frequency.':'Synthetic impedance magnitude across frequency.',selected:k};
+ }else{
+  const k=r.selected;data=r.sweep;
+  $('stats').innerHTML=stamps([['Inspection',r.status],['S–D path',r.path?'Continuous':'Not continuous'],['Polymer window',r.windowOpen?'Exposed':'Closed'],['Gate drive',r.sources.g?'Present':'Not present'],['I_D',k?k.iDuA.toFixed(2)+' µA · signed':'Unavailable'],['g_m',k?k.gmUS.toFixed(2)+' µS':'Unavailable'],['I_G',k?k.iGnA.toFixed(2)+' nA':'Unavailable']]);
+  $('curve-caption').textContent='Synthetic p-type transfer';$('curve-a').textContent='Signed I_D';$('curve-b').textContent='g_m slope';
+  $('benchmark').textContent='Literature Fig. 2 only: reported peak g_m ≈ 900 µS at V_G ≈ +0.42 V and V_D = −0.4 V. The virtual curve is not fitted to it. More positive gate reduces |I_D|, so signed slope is positive.';
+  const g=a.curve==='b';props={x:'vG',y:g?'gmUS':'iDuA',unit:g?'g_m (µS)':'I_D (µA)',a11y:g?'Synthetic transconductance versus gate voltage.':'Synthetic signed drain current versus gate voltage.',selected:k};
+ }
+ $('curve-a').setAttribute('aria-pressed',String(a.curve==='a'));$('curve-b').setAttribute('aria-pressed',String(a.curve==='b'));
+ $('plot').innerHTML=makePlot(data,props)||'<p class="notice">'+(!done?'Finish the virtual process to run the bench.':'No valid impedance spectrum: inspect the reference, trace, isolation and window.')+'</p>';
+ $('csv').disabled=!done;
+}
+function render(){
+ const a=cur(),d=N.modes[mode],step=d.route[a.stage];model=N.solve({mode,...a});
+ for(const b of document.querySelectorAll('[data-mode]'))b.setAttribute('aria-pressed',String(b.dataset.mode===mode));
+ $('frontier').textContent=(a.stage<a.reached?'Reviewing archive · ':'')+(a.reached+1)+' / 8 stations reached';$('progress').value=a.reached+1;
+ $('prev-stage').disabled=a.stage===0;$('next-stage').disabled=a.stage>=7;$('next-stage').textContent=a.stage>=7?'At bench':'Next station →';
+ $('run').disabled=a.stage===7;
+ $('stage-kicker').textContent='Station '+pad(a.stage+1)+' / 08 · '+(mode==='passive'?'Passive':'Active');
+ $('stage-title').textContent=step.title;$('stage-basis').textContent=step.basis;
+ $('stage-description').textContent=step.desc;$('stage-check').innerHTML='<strong class="point">Check </strong>'+esc(step.check);
+ $('step-tools').innerHTML=step.equipment.map(i=>'<a href="'+esc(url('/simulations/equipment/'+i+'/'))+'">'+esc(i+' · '+N.tools[i])+'</a>').join('')+'<a href="'+esc(N.docs[d.source].url)+'">Primary source ↗</a>';
+ for(const b of $('steps').querySelectorAll('button')){
+  const i=Number(b.dataset.step);b.disabled=i>a.reached;b.querySelector('.st-title').textContent=d.route[i].title;
+  b.querySelector('.stage-symbol').textContent=i===a.stage?'▶':i<=a.reached?'✓':'·';
+  if(i===a.stage)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');
+ }
+ plate();bench();
+}
+function syncControls(){
+ $('fault').innerHTML=Object.entries(N.faults[mode]).map(([key,d])=>'<option value="'+esc(key)+'">'+esc(d.label)+'</option>').join('');
+ const a=cur();$('vg').value=a.vG;$('vd').value=a.vD;$('fault').value=a.fault;$('faultloc').value=a.location+1;$('site').value=a.inspect+1;
+}
+function download(name,kind,txt){const a=document.createElement('a');a.download=name;a.href=URL.createObjectURL(new Blob([txt],{type:kind}));document.body.append(a);a.click();const u=a.href;a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}
+function init(){
+ $('steps').innerHTML=Array.from({length:8},(_,i)=>'<li><button type="button" data-step="'+i+'"><span class="n">'+pad(i+1)+'</span><span class="st-title"></span><span class="stage-symbol" aria-hidden="true"></span></button></li>').join('');
+ $('refs').innerHTML=Object.values(N.docs).map(x=>'<dt><a href="'+esc(x.url)+'">'+esc(x.title)+'</a></dt><dd>'+esc(x.scope)+'</dd>').join('');
+ if(location.protocol==='file:')for(const a of document.querySelectorAll('a[href^="/"]'))a.href=url(a.getAttribute('href'));
+ for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>{mode=b.dataset.mode;syncControls();render();status(N.modes[mode].label+' selected.')});
+ $('steps').addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b&&!b.disabled)stgo(+b.dataset.step,true)});
+ $('next-stage').addEventListener('click',()=>stgo(cur().stage+1,true));$('prev-stage').addEventListener('click',()=>stgo(cur().stage-1,true));
+ $('run').addEventListener('click',()=>{stgo(7,false);$('inspection').scrollIntoView({block:'start'})});
+ $('reset').addEventListener('click',()=>{forMode[mode]=blank();syncControls();stgo(0)});
+ $('view-toggle').addEventListener('click',()=>{cur().map=!cur().map;plate()});
+ $('compare-cover').addEventListener('click',()=>{const a=cur();a.fault=mode==='passive'?'cover':'covered';if(mode==='passive')a.inspect=a.location;syncControls();stgo(7)});
+ $('fault').addEventListener('change',()=>{cur().fault=$('fault').value;render()});
+ $('faultloc').addEventListener('change',()=>{const a=cur();a.location=pnum($('faultloc').value,a.location);$('faultloc').value=a.location+1;render()});
+ $('site').addEventListener('change',()=>{const a=cur();a.inspect=pnum($('site').value,a.inspect);$('site').value=a.inspect+1;render()});
+ $('plate').addEventListener('click',e=>{const b=e.target.closest('[data-site]');if(b){cur().inspect=+b.dataset.site;render();status('Selected '+model.result.selected.id)}});
+ $('prev-site').addEventListener('click',()=>{cur().inspect=Math.max(0,cur().inspect-1);render()});
+ $('next-site').addEventListener('click',()=>{cur().inspect=Math.min(255,cur().inspect+1);render()});
+ ['vg','vd'].forEach(k=>$(k).addEventListener('input',()=>{cur()[k==='vg'?'vG':'vD']=+$(k).value;render()}));
+ for(const b of document.querySelectorAll('[data-curve]'))b.addEventListener('click',()=>{cur().curve=b.dataset.curve;bench()});
+ $('csv').addEventListener('click',()=>download('neurogrid-oect-'+mode+'-synthetic.csv','text/csv;charset=utf-8',N.csv(model)));
+ $('json').addEventListener('click',()=>download('neurogrid-oect-'+mode+'-traveler.json','application/json',JSON.stringify(N.report(model),null,2)+'\n'));
+ syncControls();render();$('app').hidden=false;
+}
+try{init()}catch(e){$('error').hidden=false;console.error(e)}
+})();
+</script></body></html>

@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#153e42">
+<meta name="description" content="Compare virtual graphene coupon manufacturing: four transferred sheets on flexible parylene versus direct multilayer growth on retained fused silica. Inspect dry continuity and optical apertures.">
+<title>Transparent Graphene Foundry | Build The Simulation</title>
+<style>:root{--paper:#f7f2e5;--sheet:#fdf9ef;--ink:#20312e;--sub:#4b655e;--line:#becab6;--accent:#275456;--accent-deep:#16383c;--pale:#e5eee2;--gold:#a85f3b;--graph:#0c3036;--cardshadow:0 2px 5px #1e282414;--serif:Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:repeating-linear-gradient(0deg,#664e2d03 0,#664e2d03 1px,transparent 1px,transparent 4px),var(--paper);font:15px/1.45 var(--sans);min-width:0}html{scroll-behavior:smooth}
+a{color:#255b5b;text-underline-offset:3px;overflow-wrap:anywhere}a:hover{color:#8d4a2b}
+button,select,input{font:inherit;color:inherit}button,select{min-height:42px;line-height:1.2;padding:7px 10px;border:1px solid #a5b9ac;border-radius:3px;background:#fbf7ea}
+button{cursor:pointer}button:hover{border-color:#436e65;background:#f0ecdc}button:disabled,select:disabled{opacity:.44;cursor:default}button[aria-pressed=true],.primary{background:#255259;color:#fff7df;border-color:#255259;font-weight:680}.primary:hover{background:#326469}
+:focus-visible{outline:3px solid #be6d40;outline-offset:2px}
+.skip:not(:focus),.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.skip:focus{position:absolute;z-index:4;left:8px;top:8px;background:var(--sheet);padding:7px}
+.wrap{width:min(1450px,calc(100% - 64px));margin-inline:auto;min-width:0}
+.mast{background:#eee7d6;border-bottom:1px solid #a1b3a6}
+.mast-in{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:58px}
+.brand{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#284943;font:780 .71rem/1.1 var(--mono);letter-spacing:.07em;white-space:nowrap}
+.seal{display:grid;place-items:center;width:29px;height:29px;background:#2c524d;color:#fff0d4;font:italic 700 21px/1 var(--serif);box-shadow:inset 0 0 0 2px #b3c2a58a}
+.mast nav{display:flex;gap:clamp(8px,2.4vw,25px);flex-wrap:wrap;justify-content:flex-end;font:750 .77rem/1.3 var(--mono)}
+.hero{padding:34px 0 22px;display:flex;gap:20px;justify-content:space-between;align-items:end}
+.hero-icon{width:min(237px,20%);flex:none;margin-right:10px}
+.hero-icon svg{display:block;width:100%;height:auto}
+.eyebrow,.micro,.tag,.trav-meta,footer,.verdict{font-family:var(--mono);letter-spacing:.11em;font-weight:750}
+.eyebrow{font-size:.72rem;color:#41665e;margin:0 0 5px}
+h1,h2,h3{font:600 1.3rem/1.08 var(--serif);margin:0}
+h1{font-size:clamp(2.8rem,6vw,5.35rem);letter-spacing:-.066em;line-height:.97}
+h2{font-size:clamp(1.95rem,3.4vw,3.05rem);letter-spacing:-.047em}
+h3{font-size:1.37rem;letter-spacing:-.022em}
+.dek{font-size:clamp(.98rem,1.6vw,1.22rem);max-width:66ch;color:#415b54;margin:.85rem 0 0;line-height:1.4}
+.boundary{margin:0 0 22px;padding:10px 12px;border-block:1px solid #a4b7a9;background:#e5ecdd;color:#325a54;font-size:.90rem}
+.station-bar,.section-top{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:11px}
+.station-controls{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+.station-controls button,.section-top button{white-space:nowrap;font-size:.84rem}
+.viewbar{display:flex;align-items:center;gap:7px;padding:7px 9px 8px;background:#e7ece1;border:1px solid var(--line);flex-wrap:wrap;margin-bottom:11px}
+.micro{font-size:.67rem;color:#476660}
+.seg{display:flex;gap:5px;flex-wrap:wrap}
+.seg button{font-size:.78rem;min-height:35px}
+.viewhint{font-size:.8rem;color:#435f5a;margin-left:auto}
+.samples,.report-grid,.witnesses,.lab-parameters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.sample{min-width:0;border:1px solid var(--line);background:var(--sheet);box-shadow:var(--cardshadow)}
+.sample-head{display:flex;justify-content:space-between;gap:12px;align-items:start;padding:12px 13px;background:#1e4747;color:#fff3d7}
+.sample[data-sample=clear] .sample-head{background:#543f4b}
+.sample-head h3{font-size:clamp(1.15rem,2.2vw,1.61rem);margin:.15rem 0 .18rem}
+.sample-head p{margin:0;color:#e0e8d9;font-size:.77rem}
+.tag{white-space:nowrap;border:1px solid #d9dfcb6b;padding:5px 7px;font-size:.66rem;color:#e4f2df}
+.stage-strip{display:grid;grid-template-columns:41px minmax(0,1fr) 41px;gap:5px;padding:8px;border-bottom:1px solid var(--line)}
+.stage-strip button{padding:5px;min-height:39px;font-size:.84rem;font-weight:700}
+.stage-strip select{font-size:.84rem;padding:5px 7px;min-height:39px;min-width:0;width:100%}
+.specimen{padding:0;margin:0;background:#0b252a;overflow:hidden}
+.specimen svg{display:block;width:100%;height:auto;min-height:160px;aspect-ratio:620/325}
+.sample-body{padding:11px 13px}
+.sample-body p{margin:4px 0;color:#3b5b54;font-size:.88rem}
+.stage-index{font:700 .67rem var(--mono);color:#5a6f63}
+.stage-title{font-weight:750;color:#244f49}
+.stage-dep{display:inline-block;background:#eee2ce;border:1px solid #cab19a;color:#794629;padding:3px 6px;margin-top:5px;font-size:.74rem;font-weight:650}
+.stage-tools{border-top:1px solid #d1dbcb;padding-top:7px;margin-top:8px!important;overflow-wrap:anywhere}
+.stage-tools a{font-size:.75rem}
+.stage-read{font-size:.77rem;border-top:1px solid #d4dccd;padding-top:8px;margin-top:8px!important}
+.investigations,.report,.evidence{margin-top:28px;padding-top:16px;border-top:2px solid #91a797}
+.cases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:9px 0 12px}
+.cases button{text-align:left;display:grid;gap:3px;align-content:start;min-height:66px;padding:8px 10px}
+.cases button b{font-size:.88rem}
+.cases button span{font-size:.75rem}
+.cases button[aria-pressed=true]{background:#dbeadd;color:#254b46}
+.parameters-card,.read-card,.witness-card{border:1px solid var(--line);background:var(--sheet);padding:13px;min-width:0}
+.parameters-card legend{font:680 .97rem var(--serif);padding:0 5px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 10px}
+.fields label{display:grid;gap:4px;font-size:.77rem;color:#3c5e56;font-weight:650;min-width:0}
+.fields select{font-size:.80rem;width:100%;min-width:0}
+.fields input[type=range]{width:100%;margin:0;accent-color:#396b62;min-height:34px}
+.fields label output{color:#7e502d;font-family:var(--mono)}
+.fields label small{font-size:.73rem;color:#5d7369;font-weight:480}
+.read-head{display:flex;justify-content:space-between;align-items:start;gap:6px}
+.verdict{font-size:.63rem;padding:3px 5px;background:#ebeadc;border:1px solid #c3c7b4;text-align:center;max-width:11rem}
+.verdict[data-tone=pass]{color:#2b613f;background:#e4eedc;border-color:#a8c7a4}
+.verdict[data-tone=hold]{color:#774324;background:#f4e5d0;border-color:#cfb293}
+.verdict[data-tone=fail]{color:#873631;background:#f4dcd3;border-color:#c6a094}
+.results-list{margin:8px 0 4px;display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);border-top:1px solid #ccd9c9;font-size:.86rem}
+.results-list dd,.results-list dt{margin:0;padding:5px 2px;border-bottom:1px solid #e3e9db}
+.results-list dt{color:#40665d}.results-list dd{overflow-wrap:anywhere;font-weight:600}
+.result-why{font-size:.81rem;margin:8px 0;color:#456459}
+.scope{color:#4d6f60;font-size:.79rem;margin:9px 0 0}
+.witnesses{margin-top:11px}.witness-card h3{padding:0 0 8px}
+.witness-item{border-top:1px solid #d3dfd0;padding:8px 0}
+.witness-item h4{margin:0;color:#315951;font-size:.81rem}
+.witness-item p{font-size:.84rem;margin:3px 0;color:#425e58}
+.witness-main{font:600 1.33rem/1.16 var(--serif)!important;color:#274d45!important}
+.witness-card .source{font-size:.75rem;border-top:1px solid #d3dfd0;margin:5px 0 0;padding-top:7px;color:#36564f}
+.method{margin:12px 0 0;border-block:1px solid var(--line);padding:0 9px;font-size:.87rem}
+.method summary{min-height:43px;padding:10px 3px;font-weight:750;color:#315d57;cursor:pointer}
+.method ul{padding-left:18px;margin:6px 0 13px}.method li{margin-bottom:7px}
+footer{display:flex;justify-content:space-between;align-items:center;gap:5px;border-top:1px solid #a9bcae;font-size:.65rem;color:#456853;margin-top:28px;padding:13px 0 23px}
+@media(max-width:930px){.wrap{width:calc(100% - 38px)}.viewhint{margin-left:0}.sample-head h3{font-size:1.17rem}.cases button{padding:7px}.fields select{font-size:.75rem}}
+@media(max-width:720px){.wrap{width:calc(100% - 24px)}.hero{padding:27px 0 13px}.hero-icon{width:26%;margin-right:0}.station-bar,.section-top{align-items:flex-start;flex-wrap:wrap}.station-controls{justify-content:flex-start}.viewbar .seg button{min-height:42px}.viewhint{font-size:.74rem}.samples,.report-grid,.witnesses,.lab-parameters{grid-template-columns:1fr;gap:10px}.cases{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.parameters-card,.read-card,.witness-card{padding:11px}.scope{font-size:.77rem}.boundary{font-size:.83rem;margin-bottom:16px}.sample-head h3{font-size:1.3rem}}
+@media(max-width:430px){.hero-icon{display:none}.hero h1{font-size:2.68rem}.hero .eyebrow{font-size:.64rem}.mast-in{min-height:52px}.mast nav{gap:5px 10px;font-size:.63rem}.brand{font-size:.60rem;gap:5px}.seal{width:24px;height:24px}.section-top button{font-size:.78rem}.viewbar{gap:5px}.viewbar .micro{margin-right:3px}footer{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+[hidden]{display:none!important}
+.witness-plot{width:100%;height:auto;display:block;margin:0 0 9px}
+</style>
+</head><body>
+<a class="skip" href="#station">Skip to comparison</a>
+<header class="mast"><div class="wrap mast-in"><a class="brand" href="/"><span class="seal">B</span><span>BUILD THE<br>SIMULATION</span></a><nav aria-label="Project"><a href="/simulations/foundry/">Foundry</a><a href="/simulations/foundry/atlas/">Workflow atlas</a><a href="#references">Sources</a></nav></div></header>
+<main class="wrap">
+  <section class="hero">
+    <div><p class="eyebrow">TRANSPARENT ELECTRONICS / PROCESS COMPARISON</p><h1>Two ways to build<br>with graphene</h1><p class="dek">Put four transferred sheets beside a film grown directly on its catalyst. Follow both coupons to the bench and check what survived: the conductor, the window, or both.</p></div>
+    <div class="hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 232 145"><path d="M11 75l86-40 56 28-87 40z" fill="#8a726d" stroke="#514b54"/><path d="M10 65l86-40 57 28-87 41z" fill="#a38073" stroke="#514b54"/><path d="M10 55l86-40 57 28-87 41z" fill="#b39b91" stroke="#514b54"/><path d="M10 44l86-40 57 29-87 40z" fill="#e7d6c4" stroke="#514b54"/><path d="M84 90l78-37 55 28-77 38z" fill="#4b8583" stroke="#1b4647"/><path d="M84 90v19l56 27v-17z" fill="#3f6d6a" stroke="#1b4647"/><path d="M140 119v17l77-37V81z" fill="#679997" stroke="#1b4647"/><path d="M84 90l78-37 55 28-77 38z" fill="#b0d4c4" stroke="#1b4647"/><path d="M136 80l23-11 29 13-22 11z" fill="#996844" stroke="#333d3b"/><ellipse cx="148" cy="80" rx="9" ry="4.9" fill="#384955"/><path d="M99 104l25 12m74-18 12-5" stroke="#cde5d1" stroke-width="1.5"/></svg>
+    </div>
+  </section>
+  <p class="boundary"><strong>Device process ≠ material witness.</strong> The Delft device is made without transferring graphene. Its paper’s transmission number, however, comes from a <em>different, transferred film</em>.</p>
+  <section id="station" aria-labelledby="station-title">
+    <div class="station-bar">
+      <div><p class="eyebrow">FLEXIBLE VS RIGID</p><h2 id="station-title">Comparison station</h2></div>
+      <div class="station-controls"><button id="reset" class="dim" type="button">Reset both</button><button id="run-all" class="primary" type="button">Run both to bench</button></div>
+    </div>
+    <div class="viewbar">
+      <span class="micro">INSPECTION</span>
+      <div class="seg" role="group" aria-label="Inspection mode"><button data-view="plan" aria-pressed="true" type="button">Plan</button><button data-view="section" aria-pressed="false" type="button">Layer cutaway</button><button data-view="aperture" aria-pressed="false" type="button">Window proof</button></div>
+      <div class="viewhint" id="viewhint">Plan view, same physical XY scale for both coupon layouts.</div>
+    </div>
+    <div id="samples" class="samples" aria-label="Two independent fabrication travelers"></div>
+  </section>
+  <section class="investigations" id="faults" aria-labelledby="fault-title">
+    <div class="section-top"><div><p class="eyebrow">BENCH INVESTIGATIONS</p><h2 id="fault-title">What can the test miss?</h2></div></div>
+    <div class="cases" role="group" aria-label="Example challenges">
+      <button data-case="tear" type="button"><b>One transfer tears</b><span>Can CLEAR still conduct?</span></button>
+      <button data-case="stagger" type="button"><b>Four staggered tears</b><span>Try hypothetical interior bridges.</span></button>
+      <button data-case="mores" type="button"><b>Mo left at the face</b><span>Does a connected Delft line still have a clear window?</span></button>
+      <button data-case="track" type="button"><b>Carbon track opens</b><span>Does retained Mo keep the path alive?</span></button>
+    </div>
+    <div class="lab-parameters" id="parameters"></div>
+  </section>
+  <section class="report" id="report" aria-labelledby="report-title">
+    <div class="section-top"><div><p class="eyebrow">VIRTUAL BENCH RECORD</p><h2 id="report-title">Read the two coupons</h2></div><button id="download" type="button">Download comparison JSON</button></div>
+    <div class="report-grid" id="reports"></div>
+    <p class="scope">Apparent clear area is a geometry calculation, not optical transmission. Dry resistance uses a simplified sheet model; it is not a measurement of wet impedance or clinical performance.</p>
+  </section>
+  <section class="evidence" id="references" aria-labelledby="evidence-title">
+    <p class="eyebrow">PRIMARY EVIDENCE</p><h2 id="evidence-title">Put each result with its sample</h2>
+    <div id="witnesses" class="witnesses"></div>
+    <details class="method" id="method"><summary>Model and qualification limits</summary><div id="method-body"></div></details>
+  </section>
+</main>
+<footer class="wrap"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/">Back to workflow atlas ↑</a></footer>
+<script id="equipment-data" type="application/json">{"01-01": {"name": "CAD/mask workstation", "model": "KLayout + KiCad + FreeCAD (custom workstation)"}, "02-01": {"name": "Contact mask aligner", "model": "Karl SUSS MA6/BA6 Gen 4"}, "02-12": {"name": "Inspection microscope", "model": "Nikon ECLIPSE LV100ND LED · manual reflected brightfield"}, "03-01": {"name": "Electron-beam evaporation", "model": "Temescal BJD 1800"}, "03-03": {"name": "Magnetron sputtering", "model": "Kurt J. Lesker PVD 75 RF/DC"}, "03-08": {"name": "Parylene coating", "model": "SCS PDS 2010 Labcoter 2 · dry reference"}, "04-01": {"name": "Reactive ion etcher", "model": "Oxford PlasmaPro 80 RIE"}, "04-02": {"name": "ICP reactive ion etcher", "model": "Oxford PlasmaLab 100 ICP"}, "04-06": {"name": "Wet processing", "model": "Custom ReynoldsTech-style wet bench (exact model pending)"}, "04-07": {"name": "Wafer dicing", "model": "DISCO DAD 321"}, "05-06": {"name": "Four-point probe", "model": "CDE ResMap 178 · manual load, Jandel 1 mm inline cartridge"}, "05-07": {"name": "Probe station", "model": "Cascade Microtech Summit 11000B-AP · manual 200 mm"}, "05-10": {"name": "Raman microscope", "model": "HORIBA LabRAM HR Evolution, Olympus BX-series / 532 nm virtual branch"}, "08-02": {"name": "Manual wedge bonder", "model": "Kulicke & Soffa 4523"}, "12-01": {"name": "Stereo dissecting microscope", "model": "ZEISS SteREO Discovery V12"}, "16-13": {"name": "Cable and connector library", "model": "Custom BNC, SMA, USB, triax, FFC and headstage families"}}</script>
+<script>/* Build The Simulation — transparent graphite/graphene process comparison. */
+(function(root){
+'use strict';
+const SOURCE={
+  clear:{title:'Park, Schendel, Mikael et al. (2014) · Nature Communications 5:5258',url:'https://www.nature.com/articles/ncomms6258',doi:'10.1038/ncomms6258',scope:'Fig. 1 and Methods: carrier, 16-site released CLEAR arrays and sequential transfer/encapsulation. Fig. 2e–f: sheet resistance and optical witness. Supplement S5: sequence of fabrication.'},
+  delft:{title:'Alvarez de Eulate, Pavlou, León González et al. (2026) · Advanced Science 13:e17524',url:'https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202517524',doi:'10.1002/advs.202517524',scope:'§2.1, Fig. 1 and §4.1/Supplement S2: fused-silica Mo-on-chip growth, cap/passivation, dicing, local catalyst removal and assembly. Fig. 2a–b and §4.2: Raman and separate material transmission witness.'}
+};
+const PRESETS={
+  clear:{tear:'none',transferPath:'terminal',windowShift:0},
+  delft:{inner:'intact',moAtFace:0,diameter:10,windowShift:0}
+};
+const SAMPLE={
+  clear:{id:'CL-04',short:'CLEAR',name:'Four transfers on a flexible film',sub:'Parylene-C • silicon removed',catalog:'68-clear-transparent-graphene-microecog',
+    dimensionEvidence:'The displayed 100 µm contact and one-path layout are a teaching coupon, not sourced CLEAR mask dimensions. The source device patterns 16 sites.',
+    bands:'470 and 570 nm',
+    evidence:[
+      {label:'Fabrication record',main:'Four sequential transfers',desc:'Four donor monolayers were stacked on the parylene/metal stack. That is an operation count, not a local layer-count measurement at every site.'},
+      {label:'Sheet resistance',main:'152 → 76 Ω/□',desc:'Fig. 2e compares a one-layer material witness (152 Ω/□) with a four-layer material witness (76 Ω/□); neither number is a complete site-to-pad reading.'},
+      {label:'Transmission witness',main:'≈90%',desc:'Fig. 2f plus text: four graphene layers on a 15 µm parylene-C witness at two highlighted visible bands (470 and 570 nm). This is not a 550 nm site datum or a spectrum of your simulated coupon.'}
+    ],
+    stages:[
+      ['Prepare temporary silicon','Start on an incoming silicon support. The electronic coupon is released later; the Si is not part of the final optical path.',['01-01','02-12']],
+      ['Deposit lower parylene','The paper reports 15 µm of parylene-C on the silicon support. Keep it as the flexible base.',['03-08']],
+      ['Pattern Cr/Au pads and leads','Define 10 nm Cr and 200 nm Au to form the metal terminals and the start of each routing path. The contact face itself will be graphene.',['02-01','03-01','04-06']],
+      ['Transfer sheet 1','Bring the first separately grown CVD monolayer onto the prepared surface. An operator logs a transfer; that does not prove continuity.',['04-06'],'Donor graphene and qualified transfer'],
+      ['Transfer sheet 2','Stack a second donor sheet. It can be continuous where the first has a tear, but one extra transfer does not establish local electronic bridging.',['04-06'],'Donor graphene and qualified transfer'],
+      ['Transfer sheet 3','Stack a third donor sheet and preserve the prior order. The simulator does not treat one observed optical value as a direct count of three layers.',['04-06'],'Donor graphene and qualified transfer'],
+      ['Transfer sheet 4','The target stack now has four logged transfers. Keep this fabrication log distinct from the electrical and optical material witnesses.',['04-06'],'Donor graphene and qualified transfer'],
+      ['Add protective oxide; pattern carbon','The published process uses a temporary 30 nm SiO₂ coating during pattern transfer. Define the electrode and accumulated carbon routes; this coupon shows a single branch.',['02-01','04-01'],'Protective-oxide deposition qualification'],
+      ['Apply passivation; cut windows','Deposit the reported 10 µm upper parylene and define site and pad windows plus the outline. The opened site still has its temporary oxide.',['03-08','02-01','04-01']],
+      ['Release parylene from silicon','The flexible laminate separates from the carrier. The reference optical film is not a test of the assembly when it is still on opaque silicon.',['04-06','12-01']],
+      ['Clear the protective oxide','Remove the sacrificial oxide after release to open the carbon contact. The upper passivation over leads remains.',['04-06','12-01']],
+      ['Fit the tail; audit the coupon','Represent the reported polyimide stiffener and connector as a bench interface. Compare continuity and exposed area against the independent source witnesses.',['05-06','05-07','05-10','16-13'],'Calibrated transmission measurement']
+    ]},
+  delft:{id:'DL-ML',short:'Delft',name:'Direct growth on rigid silica',sub:'Fused silica • substrate retained',catalog:'209-tu-delft-transfer-free-multilayer-graphene-mea',
+    dimensionEvidence:'The paper reports 10, 30 and 50 µm contact variants on several arrays. Here they are single-contact coupons; no full masks or source pinout are recovered.',
+    bands:'550 nm',
+    evidence:[
+      {label:'Raman witness',main:'D ≈1335 · G ≈1582 · 2D ≈2660 cm⁻¹',desc:'The paper compares averaged spectra (n=5) after growth and after device fabrication; it reports I₂D/I_G < 1 and an as-grown I_D/I_G of ~0.35. These observations support multilayer material and are not a direct layer count.'},
+      {label:'Thickness inference',main:'Roughly 20–25 layers',desc:'A 52.5 percentage-point optical loss divided by a nominal 2.3 percentage points per layer gives 22.8. This linear estimate becomes less reliable for thick stacks and is not a per-site count.'},
+      {label:'Transmission witness',main:'47.5% at 550 nm',desc:'Fig. 2b uses a separate, centimeter-scale graphene sheet transferred to glass for the optical test and subtracts the glass contribution. The actual device process grows directly on patterned Mo without a graphene transfer.'}
+    ],
+    stages:[
+      ['Accept fused silica','Start on a transparent fused-silica carrier that remains in the finished coupon. It is not a flexible foil.',['01-01','02-12']],
+      ['Pattern Mo catalyst and back marker','The process sputters 50 nm Mo on the front, then transfers the catalyst pattern by ICP-RIE. A temporary backside Ti marker aids tool detection; it is not conductivity through the front.',['03-03','02-01','04-02']],
+      ['Remove the back marker','The temporary marker is removed before growth to avoid introducing it into the growth stack. Keep patterned Mo; do not remove the growth template.',['04-06']],
+      ['Grow multilayer carbon on Mo','The patterned Mo is the growth template for a turbostratic multilayer carbon film. No donor-sheet transfer occurs on the device. Import this as an external growth step, not generic dielectric PECVD.',['05-10'],'Qualified high-temperature catalytic graphene CVD'],
+      ['Protect the contact with Ti/Al','The reported pattern uses a lifted-off 10 nm Ti / 100 nm Al cap over future electrodes. Prevent damage at the contact; this cap is sacrificial.',['02-01','03-01','04-06']],
+      ['Make outer Au routing; add clamp layer','Pattern the outer Ti/Au tracks and contact pads. A new backside Ti clamp layer is used for a later plasma tool; it is separate from the removed marker.',['03-01','02-01']],
+      ['Deposit parylene passivation','Add the reported 1–2 µm parylene-C layer over the metal and carbon tracks. Keep inner graphene/Mo separate from outer Ti/Au.',['03-08']],
+      ['Etch pad and contact openings','Define pad and contact access in the passivation. The contact opening lands on the sacrificial cap, not on exposed graphene.',['02-01','04-02']],
+      ['Dice and retain the glass','The die separates from the wafer perimeter by dicing. Its fused silica remains under the electronic stack. Dicing is not film release.',['04-07']],
+      ['Clear cap and back clamp layer','Remove the two temporary metals where specified. Mo still underlies the graphene at this moment; seeing dark carbon is not proof of a Mo-free aperture.',['04-06','12-01']],
+      ['Clear Mo only at the site','Remove Mo beneath the opened graphene face; the covered inner wire intentionally retains its graphene/Mo bilayer. Residual catalyst can remain in a virtual fault.',['04-06','12-01']],
+      ['Connect to PCB; audit the coupon','Represent the wired PCB interface and assess continuity, aperture and witness provenance separately. The Raman and optical coupons are not equivalents of a local film-thickness check.',['08-02','05-07','05-10'],'Calibrated normal-transmission measurement']
+    ]}
+};
+const clamps=(x,lo,hi)=>Math.max(lo,Math.min(hi,x));
+function options(key,incoming={}){
+  const n=(v,d)=>Number.isFinite(Number(v))?Number(v):d;
+  const windowShift=clamps(n(incoming.windowShift,0),0,2);
+  if(key==='clear')return {tear:['none','one','aligned','staggered'].includes(incoming.tear)?incoming.tear:'none',
+    transferPath:incoming.transferPath==='ideal'?'ideal':'terminal',windowShift};
+  return {inner:['intact','carbon-break','both-break','mo-open'].includes(incoming.inner)?incoming.inner:'intact',
+    moAtFace:clamps(n(incoming.moAtFace,0),0,1),diameter:[10,30,50].includes(+incoming.diameter)?+incoming.diameter:10,windowShift};
+}
+const dims=(key,o)=>{
+  if(key==='clear')return {diameter:100,plateW:900,plateH:420,siteX:168,siteY:210,routeX1:168,routeX2:720,overlap:28,routeW:38};
+  return {diameter:o.diameter,plateW:900,plateH:420,siteX:168,siteY:210,routeX1:168+o.diameter/2,routeX2:720,overlap:20,routeW:12};
+};
+function circleOverlap(a,b,d) {
+  if(a===0||b===0||d>=a+b)return 0;
+  if(d<=Math.abs(a-b))return Math.PI*Math.min(a,b)**2;
+  return a*a*Math.acos(clamps((d*d+a*a-b*b)/(2*d*a),-1,1))+b*b*Math.acos(clamps((d*d+b*b-a*a)/(2*d*b),-1,1))-
+    .5*Math.sqrt(Math.max(0,(-d+a+b)*(d+a-b)*(d-a+b)*(d+a+b)));
+}
+// Effective resistance from a one-volt nodal solve. Wires with no route to either endpoint are dropped.
+function solve(edges,from='a',to='b'){
+  const g=new Map(), connect=(a,b,r)=>{if(!g.has(a))g.set(a,[]);g.get(a).push([b,1/r]);};
+  edges.forEach(([a,b,r])=>{if(a!==b&&r>0&&Number.isFinite(r)){connect(a,b,r);connect(b,a,r);}});
+  const reachable=new Set([from]),todos=[from];while(todos.length){
+    for(const [y] of g.get(todos.pop())||[])if(!reachable.has(y)){reachable.add(y);todos.push(y);}
+  }
+  if(!reachable.has(to))return null;
+  const int=[...reachable].filter(x=>x!==from&&x!==to),p=new Map(int.map((x,i)=>[x,i])),n=int.length;
+  const A=int.map((node,i)=>{
+    const r=Array(n+1).fill(0);
+    for(const [neighbor,c] of g.get(node)){
+      r[i]+=c;
+      if(neighbor===from)r[n]+=c;
+      else if(neighbor!==to)r[p.get(neighbor)]-=c;
+    }
+    return r;
+  });
+  for(let i=0;i<n;i++){
+    let row=i;for(let j=i+1;j<n;j++)if(Math.abs(A[j][i])>Math.abs(A[row][i]))row=j;
+    if(Math.abs(A[row][i])<1e-15)return null;
+    [A[i],A[row]]=[A[row],A[i]];let pivot=A[i][i];
+    for(let k=i;k<=n;k++)A[i][k]/=pivot;
+    for(let j=0;j<n;j++)if(j!==i){const x=A[j][i];for(let k=i;k<=n;k++)A[j][k]-=x*A[i][k];}
+  }
+  const volts=y=>y===from?1:y===to?0:A[p.get(y)][n]; 
+  const out=(g.get(from)||[]).reduce((sum,[y,c])=>sum+c*(1-volts(y)),0);
+  return out>1e-12?1/out:null;
+}
+const interpolatedRs=n=> n>0?152/Math.sqrt(n):null;
+const grownEstimate=(100-47.5)/2.3;
+const layerCuts=(setting,sheet,n)=>{
+  if(setting==='one'&&sheet===n-1)return [2];
+  if(setting==='aligned')return [2];
+  if(setting==='staggered')return [sheet%4];
+  return [];
+};
+function clearFilm(n,opt,dimensions){
+  if(n<1)return {rOhm:null,fullSheets:0,edges:[],rsEquivalent:null,segDefects:[]};
+  const L=dimensions.routeX2-dimensions.routeX1,W=dimensions.routeW,q=interpolatedRs(n)*n*L/W/4;
+  const edges=[],segDefects=[];let full=0; 
+  for(let sheet=0;sheet<n;sheet++){
+    const cuts=layerCuts(opt.tear,sheet,n);
+    const v=i=>i===0?'a':i===4?'b':opt.transferPath==='ideal'?'ideal_'+i:'s'+sheet+'_'+i;
+    for(let i=0;i<4;i++){
+      if(!cuts.includes(i))edges.push([v(i),v(i+1),q]);
+      else segDefects.push([sheet+1,i]);
+    }
+    if(!cuts.length)full++;
+  }
+  const rOhm=solve(edges);return {rOhm,fullSheets:full,edges,rsEquivalent:rOhm===null?null:rOhm*W/L,segDefects};
+}
+function delftFilm(opt,d){
+  const L=d.routeX2-d.routeX1,W=d.routeW;
+  // Fictional dry sheet resistances used solely to demonstrate an alternate path.
+  const p=120*L/W, m=1.06*L/W, end=120*(.5*d.diameter+20)/W+.45;
+  const carbon=!['carbon-break','both-break'].includes(opt.inner), moly=!['mo-open','both-break'].includes(opt.inner);
+  const ed=[['j','b',end]];
+  if(carbon)ed.push(['a','j',p]); if(moly)ed.push(['a','j',m]);
+  return {rOhm:solve(ed),carbon,moly,edges:ed,assumed:{carbonSheet:120,molySheet:1.06,end}};
+}
+function model(key,step,state={}){
+  if(!(key in SAMPLE))throw new Error('Unknown reference');
+  const s=clamps(Math.round(Number(step)||0),0,11),o=options(key,state),d=dims(key,o);
+  const isC=key==='clear', n=isC?clamps(s-2,0,4):0;
+  const film=isC?clearFilm(n,o,d):delftFilm(o,d);
+  const art=s>=(isC?7:5);
+  const apertureFormed=s>=(isC?8:7);
+  const hasCarbon=isC?n>0:s>=3;
+  const backed=isC?s<9:true;
+  const cap=isC?(s>=7&&s<10):(s>=4&&s<9);
+  const residue=isC?0:s<1?0:s<10?1:o.moAtFace;
+  const r=d.diameter/2, windowDx=o.windowShift*r, nominalA=Math.PI*r*r;
+  const geom=apertureFormed?circleOverlap(r,r,windowDx):0;
+  const capBlocked=cap||!hasCarbon;
+  const carbonArea=capBlocked?0:geom*(1-residue);
+  const clearFraction=carbonArea/nominalA, ready=s===11;
+  const dry=art?film.rOhm:null, pass=ready&&dry!==null&&clearFraction>=.999&&(isC?n===4:true);
+  const note=residue>0&&!isC?'Mo remains in this modeled portion of the face. A conducting trace does not prove the catalyst was cleared.':
+    cap?'The polymers may have a window, but the temporary cap has not been cleared.':
+      apertureFormed&&geom<.999*nominalA?'Window misregistration reduces the exposed/optically unblocked area; adding a conducting layer cannot realign it.':'';
+  return {sample:SAMPLE[key].id,key,s,o,d,n,film,hasCarbon,backed,cap,residue,windowDx,nominalA,geom,carbonArea,clearFraction,art,apertureFormed,dry,ready,pass,note};
+}
+root.GrapheneEngine={SOURCE,SAMPLE,PRESETS,options,model,dims,solve,circleOverlap,interpolatedRs,grownEstimate,clearFilm,delftFilm};
+})(typeof module==='object'&&module.exports?module.exports:globalThis);
+</script><script>/* Two SVG benches with identical plan scale and an explicit exaggerated Z diagram. */
+(function(){
+'use strict';
+const E=globalThis.GrapheneEngine;
+const colors={si:'#566e7c',pc:'#659b8e',mo:'#a98a64',carbon:'#94caba',gold:'#e2af60',ti:'#c4b4bb',cap:'#9fbdcf',silica:'#518b99',support:'#ab8671'};
+const W=620,H=325;
+const r=(x,n=2)=>Number(x.toFixed(n));
+const esc=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+function txt(x,y,s,opt={}){return '<text x="'+r(x)+'" y="'+r(y)+'" fill="'+(opt.color||'#d2e7df')+'" font-family="ui-monospace, Consolas, monospace" font-size="'+(opt.size||13)+'" font-weight="'+(opt.bold?750:550)+'"'+(opt.anchor?' text-anchor="'+opt.anchor+'"':'')+'>'+esc(s)+'</text>'}
+function rect(x,y,w,h,c,extra=''){return '<rect x="'+r(x)+'" y="'+r(y)+'" width="'+r(w)+'" height="'+r(h)+'" fill="'+c+'" '+extra+'/>'}
+function circle(x,y,rr,c,extra=''){return '<circle cx="'+r(x)+'" cy="'+r(y)+'" r="'+r(rr)+'" fill="'+c+'" '+extra+'/>'}
+function line(x,y,x1,y1,c,extra=''){return '<path d="M'+r(x)+' '+r(y)+' L'+r(x1)+' '+r(y1)+'" stroke="'+c+'" '+extra+'/>'}
+function poly(pg,c,extra=''){return '<polygon points="'+pg.map(x=>x.map(i=>r(i)).join(',')).join(' ')+'" fill="'+c+'" '+extra+'/>'}
+const plate=(key,title,body,foot)=>{
+  const titleId='title-'+key, pat='grid-'+key;
+  return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-labelledby="'+titleId+'" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><title id="'+titleId+'">'+esc(title)+'</title><defs><pattern id="'+pat+'" width="21" height="21" patternUnits="userSpaceOnUse"><path d="M21 0H0V21" fill="none" stroke="#7c9c972b" stroke-width="1"/></pattern><linearGradient id="back-'+key+'" x2="1" y2="1"><stop stop-color="#11343a"/><stop offset="1" stop-color="#10272c"/></linearGradient></defs>'+rect(0,0,W,H,'url(#back-'+key+')')+rect(0,0,W,H,'url(#'+pat+')')+
+    body+rect(0,0,W,28,'#0a2327')+rect(0,H-30,W,30,'#0a2327')+
+    txt(15,19,E.SAMPLE[key].id+' / '+title.toUpperCase(),{size:12,bold:true})+txt(15,H-10,foot,{size:11,color:'#afc9bf'})+'</svg>';
+};
+const P_X=76,P_Y=51,S=.52;
+const kk=(x,y)=>[P_X+S*x,P_Y+S*y];
+function measure(x,y,um){
+  return line(x,y,x+um*S,y,'#c2e4d4','stroke-width="1.5"')+line(x,y-4,x,y+4,'#c2e4d4','stroke-width="1.2"')+line(x+um*S,y-4,x+um*S,y+4,'#c2e4d4','stroke-width="1.2"')+txt(x+um*S+9,y+5,um+' µm',{size:12});
+}
+function plan(m){
+  const {key,s,d,hasCarbon,n,residue,apertureFormed,cap,backed}=m,c=key==='clear',cls=E.SAMPLE[key].id;
+  const x0=P_X,y0=P_Y,x1=P_X+d.plateW*S,y1=P_Y+d.plateH*S,[xc,yc]=kk(d.siteX,d.siteY),rad=d.diameter/2*S, wr=d.routeW*S;
+  const moStage=!c&&s>=1, outer=c?s>=2:s>=5;
+  const [end]=kk(d.routeX2,0),[begin]=kk(d.routeX1,0),[xP]=kk(776,0);
+  let g='';
+  g+=rect(x0,y0,x1-x0,y1-y0,c?(s===0?colors.si:'#4a776e'):colors.silica,'rx="12" fill-opacity=".69" stroke="#b0d1c2" stroke-width="1.2"');
+  g+=rect(x0+8,y0+8,x1-x0-16,y1-y0-16,'none','rx="8" stroke="#bcd9cb" stroke-opacity=".37" stroke-dasharray="4 4"');
+  if(outer){
+    g+=rect(end-12,yc-9,xP-end+31,18,colors.gold,'rx="3"');
+    g+=rect(xP,yc-47,57,94,colors.gold,'rx="6" stroke="#edd89f" stroke-width="1.2"');
+    g+=rect(xP+10,yc-39,39,78,'none','rx="2" stroke="#6f5b39" stroke-dasharray="3 3"');
+  }
+  if(moStage){
+    const growStart=s<10?xc:begin;
+    g+=rect(growStart,yc-wr/2,end-growStart,wr,colors.mo,'rx="2"');
+    if(residue>0)g+=circle(xc,yc,rad,colors.mo);
+    if(!m.film.moly)g+=line(begin+95,yc,begin+113,yc,'#0f3036','stroke-width="'+(wr+2)+'"');
+  }
+  if(hasCarbon){
+    if(c&&s<7){
+      for(let k=0;k<n;k++)g+=rect(x0+23+k*4,y0+20-k*2,x1-x0-54,y1-y0-40,colors.carbon,'rx="5" fill-opacity=".14" stroke="#abdfcd" stroke-opacity=".6" stroke-dasharray="7 4"');
+      g+=txt(x0+28,y0+49,n+' TRANSFER'+(n===1?'':'S')+' LOGGED',{size:18,bold:true,color:'#e6f5e5'});
+    }else if(c){
+      g+=rect(begin,yc-wr/2,end-begin,wr,'#84b9a4','rx="3" stroke="#bcdeca" stroke-width="1"');
+      for(let k=0;k<n;k++){
+        let ya=yc-wr/2+(k+.5)*wr/n,grid=(end-begin)/4;
+        g+=txt(begin+27,ya+2,'',{size:2})+line(begin,ya,end,ya,k%2?'#c6ead5':'#3c716b','stroke-width="'+Math.max(1,wr/n*.47)+'"');
+        for(const [sheet,seg] of m.film.segDefects){if(sheet===k+1){
+          g+=line(begin+grid*(seg+.45),ya,begin+grid*(seg+.55),ya,'#102a2e','stroke-width="'+Math.max(2,wr/n*.78)+'"')+
+            circle(begin+(seg+.5)*grid,ya,2.2,'#f28871');
+        }}
+      }
+    }else{
+      g+=line(xc,yc-1,end,yc-1,'#a8dfcb','stroke-width="2"');
+      if(!m.film.carbon)g+=line(begin+95,yc-1,begin+113,yc-1,m.film.moly?colors.mo:'#0f3036','stroke-width="'+(m.film.moly?3:8)+'"');
+      if(!m.film.carbon&&!m.film.moly)g+=circle(begin+105,yc,3,'#f19c86');
+    }
+    g+=circle(xc,yc,rad,c&&s<7?'none':c?'#b7dbbb':'#aed6bb',c&&s<7?'stroke="#d0e9ce" stroke-width="1" stroke-dasharray="4 3"':'stroke="#cfe3c9" stroke-width=".8"');
+  }
+  if((c?s>=8:s>=6)){
+    g+=rect(x0+14,y0+13,x1-x0-27,y1-y0-26,'#88c9b1','rx="9" fill-opacity=".13" stroke="#c1e2d3" stroke-opacity=".29"');
+  }
+  if(apertureFormed){
+    g+=circle(xc+m.windowDx*S,yc,rad,'none','stroke="#d0eeda" stroke-width="1.1" stroke-dasharray="'+(rad>8?'4 3':'2 1')+'"');
+  }
+  if(cap){
+    if(c)g+=circle(xc,yc,rad,colors.cap,'fill-opacity=".6" stroke="#d6e4ea" stroke-width="1.2"');
+    else g+=circle(xc,yc,rad,colors.cap,'stroke="#d6e4ea" stroke-width="1.1"');
+  }else if(residue){
+    g+=circle(xc,yc,rad,colors.mo,'fill-opacity="'+Math.min(1,residue*.87)+'"');
+  }
+  const xt=148,yt=236;
+  if(hasCarbon||moStage){
+    g+=line(xc,yc+rad+3,xt,yt-17,'#d6eee0','stroke-width="1"')+txt(xt,yt,(c&&s<7)||!hasCarbon?'FUTURE CONTACT':'CONTACT',{color:'#d4ecd9'});
+    g+=txt(xt,yt+17,d.diameter+' µm Ø'+(c?' model':''),{size:11,color:'#c3d6cd'});
+  }
+  if((c?s>=7:s>=1)){
+    const rLab=c?'GRAPHENE INNER TRACK':'GRAPHENE / Mo INNER TRACK';
+    g+=line(341,yc-8,365,125,'#a6cbbb','stroke-width="1"')+txt(332,113,hasCarbon?rLab:'Mo CATALYST',{anchor:'middle'});
+  }
+  if(outer)g+=txt(527,235,'Au TERMINAL',{anchor:'end',size:11,color:'#f1d68f'});
+  g+=measure(88,281,100);
+  const descriptor=c?(backed?'Temporary silicon carrier is still attached':s<11?'Released parylene; tail not yet fitted':'Released parylene / polyimide-backed tail'):'Retained fused silica under the whole pattern';
+  return plate(key,'Plan',g,descriptor);
+}
+function quad(x,y,w,h,c,tile,attr=''){
+  const side=73,lift=37,a=[x,y],b=[x+w,y],d=[x+side,y-lift],q=[x+w+side,y-lift];
+  return poly([a,b,q,d],c,'fill-opacity="'+tile+'" stroke="#17363a" stroke-width="1.1" '+attr)+
+    poly([a,[x,y+h],[x+w,y+h],b],c,'fill-opacity="'+(tile-.14)+'" stroke="#17363a" stroke-width=".9" '+attr)+
+    poly([b,[x+w,y+h],[x+w+side,y-lift+h],q],c,'fill-opacity="'+(tile-.27)+'" stroke="#17363a" stroke-width=".9" '+attr);
+}
+function stackLayers(m){
+  const c=m.key==='clear',s=m.s;
+  if(c) {
+    return [
+      ...(m.backed?[{k:'si',v:'Temporary Si carrier',w:230,h:12}]:[]),
+      ...(s>=1?[{k:'pc',v:'15 µm parylene-C base',w:224,h:8}]:[]),
+      ...(s>=2?[{k:'gold',v:'Cr / Au routing',w:92,h:4}]:[]),
+      ...(m.n?[{k:'carbon',v:m.n+' transferred sheet'+(m.n===1?'':'s'),w:142,h:2,n:m.n}]:[]),
+      ...(m.cap?[{k:'cap',v:'Temporary SiO₂ cap',w:136,h:4}]:[]),
+      ...(s>=8?[{k:'pc',v:'10 µm parylene-C cover',w:210,h:8,window:true}]:[])
+    ];
+  }
+  return [
+    ...(s===1||s>=5&&s<9?[{k:'ti',v:'Temporary backside Ti',w:230,h:4}]:[]),
+    {k:'silica',v:'Retained fused silica',w:230,h:14},
+    ...(s>=1?[{k:'mo',v:s>=10?'Mo retained in inner track':'Mo spans track and future contact',w:161,h:5}]:[]),
+    ...(s>=3?[{k:'carbon',v:'Grown multilayer graphene',w:162,h:9,bulk:true}]:[]),
+    ...(s>=5?[{k:'gold',v:'Ti / Au outer routing',w:82,h:4}]:[]),
+    ...(m.cap?[{k:'cap',v:'Temporary Ti / Al cap',w:78,h:5}]:[]),
+    ...(s>=6?[{k:'pc',v:'1–2 µm parylene cover',w:215,h:7,window:m.apertureFormed}]:[])
+  ];
+}
+function section(m){
+  const tags=stackLayers(m);
+  const N=tags.length,start=271,delta=Math.min(36,Math.max(27,196/(N-1||1))),base=Math.max(65,start-(N-1)*delta);
+  let g='', labels='';
+  for(let i=0;i<N;i++){
+    const l=tags[i], z=base+(N-1-i)*delta,x=l.k==='gold'?182:67;
+    if(l.n){
+      for(let k=0;k<l.n;k++)g+=quad(x,z+(l.n-1-k)*4,l.w,l.h,colors[l.k],.83-(l.n-1-k)*.06);
+    }else{
+      g+=quad(x,z,l.w,l.h,colors[l.k],l.k==='pc'?.67:.93);
+      if(l.bulk)for(let j=1;j<=3;j++)g+=line(x+4,z+j*2,x+l.w-5,z+j*2,'#e3f4e49e');
+      if(l.window)g+=poly([[x+41,z-10],[x+60,z-21],[x+90,z-21],[x+72,z-10]],'#17373d','stroke="#d0f2e4" stroke-width="1" stroke-dasharray="2 2"');
+    }
+    const tip=x+l.w+70;
+    labels+=line(Math.min(tip,363),z-14,371,z-14,'#a3bbb4','stroke-width=".9"')+
+      txt(381,z-10,l.v,{size:l.v.length>30?11:13,color:'#e1ece1'});
+  }
+  return plate(m.key,'Layer cutaway',g+labels,'Exploded Z is exaggerated. Layers, thickness and evidence remain separate.');
+}
+const pct=x=>Math.round(x*1000)/10+'%';
+function aperture(m){
+  const {key,windowDx,d,cap,hasCarbon,apertureFormed,residue}=m;
+  const id='win-'+key,c0=[202,158],rad=74,dx=windowDx/(d.diameter/2)*rad,c1=[c0[0]+dx,c0[1]];
+  let g='<defs><clipPath id="'+id+'">'+circle(...c1,rad,'#fff')+'</clipPath><pattern id="hatch-'+key+'" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 6L6 0" stroke="#c8e1d9" stroke-width="1" opacity=".7"/></pattern></defs>';
+  g+=circle(...c0,rad,'#37565b','fill-opacity=".62" stroke="#aedccc" stroke-width="2"');
+  if(hasCarbon)g+=circle(...c0,rad,key==='clear'?'#658c77':'#546d63','fill-opacity=".8" stroke="#a9c8bc" stroke-width="1"');
+  if(apertureFormed){
+    if(hasCarbon){
+      const fill=cap?'url(#hatch-'+key+')':residue===1?'#a38a60':key==='clear'?'#b6e5bc':'#91bba3';
+      g+=circle(...c0,rad,fill,'clip-path="url(#'+id+')" fill-opacity="'+(cap||residue===1?.7:.91)+'"');
+      if(!cap&&residue>0&&residue<1) {
+        const theta=2*Math.PI*residue,x=c0[0]+rad*Math.cos(theta),y=c0[1]+rad*Math.sin(theta);
+        g+='<path d="M'+c0[0]+' '+c0[1]+'l'+rad+' 0A'+rad+' '+rad+' 0 '+(theta>Math.PI?1:0)+' 1 '+r(x)+' '+r(y)+'Z" fill="#a58b60" fill-opacity=".9" clip-path="url(#'+id+')"/>';
+      }
+    }
+    g+=circle(...c1,rad,'none','stroke="#e4efdb" stroke-width="1.7" stroke-dasharray="6 4"');
+  }
+  const label=(y,val,color)=>txt(412,y,val,{color,size:14});
+  g+=line(60,158,384,158,'#8db8b1','stroke-opacity=".48" stroke-dasharray="3 3"')+
+    label(80,'PHYSICAL Ø '+d.diameter+' µm','#b7dbc7')+
+    label(129,'GEOMETRIC OPEN '+pct(m.geom/m.nominalA),'#e4eee0')+
+    label(164,'UNCOVERED '+pct(m.clearFraction),'#bee6c7')+
+    label(203,!apertureFormed?'WINDOW NOT CUT':cap?'TEMP CAP REMAINS':residue>0?'RESIDUAL Mo':'CAP CLEARED',cap||residue>0?'#e5bd8d':'#bde3d0');
+  if(windowDx>0)g+=txt(398,246,'Δx '+r(windowDx,2)+' µm',{color:'#d0b794'});
+  return plate(key,'Window proof',g,'Face enlarged to its own diameter. Area proof; color is not spectroscopy.');
+}
+
+function evidenceChart(key){
+  const ww=600,hh=156;
+  const p=(x,y,n,z={})=>txt(x,y,n,{color:'#39655b',...z});
+  let plot=rect(0,0,ww,hh,'#edf0e3','rx="4"');
+  if(key==='clear'){
+    const xx=n=>98+143*(n-1),yy=ohm=>105-(ohm-55)*.66;
+    plot+=p(14,20,'SHEET RESISTANCE · Ω/□',{bold:true,size:12})+line(70,107,554,107,'#a7b9a6')+line(70,35,70,107,'#a7b9a6');
+    for(const n of [1,2,3,4])plot+=p(xx(n),126,n+' sheet'+(n===1?'':'s'),{anchor:'middle',size:11});
+    for(const n of [1,2,3,4])if(n<4)plot+=line(xx(n),yy(E.interpolatedRs(n)),xx(n+1),yy(E.interpolatedRs(n+1)),'#8c653f','stroke-width="1.5" stroke-dasharray="5 4"');
+    for(const n of [1,4])plot+=circle(xx(n),yy(E.interpolatedRs(n)),4.1,'#266b61')+p(xx(n)+10,yy(E.interpolatedRs(n))-4,E.interpolatedRs(n)+' Ω/□',{size:11});
+    plot+=p(70,145,'Dots: reported endpoints  ·  dashed: teaching interpolation',{size:10});
+    return '<svg class="witness-plot" viewBox="0 0 '+ww+' '+hh+'" role="img" aria-label="Clear sheet resistance measured at 152 ohms per square for one transfer and 76 for four transfers. Intermediate line calculated.">'+plot+'</svg>';
+  }
+  const xx=n=>79+(n-1000)/2000*465;
+  plot+=p(14,20,'RAMAN POSITION MARKERS · cm⁻¹',{bold:true,size:12})+line(68,91,550,91,'#a7b9a6');
+  for(const [tag,num] of [['D',1335],['G',1582],['2D',2660]]){
+    const x=xx(num);
+    plot+=line(x,49,x,91,'#496d62','stroke-width="2.1"')+circle(x,48,3.3,'#2c716a')+p(x,38,tag,{anchor:'middle',bold:true,size:13})+p(x,108,'≈'+num,{anchor:'middle',size:11});
+  }
+  plot+=p(65,140,'Peak positions only. Heights, widths and raw spectra not fabricated.',{size:10});
+  return '<svg class="witness-plot" viewBox="0 0 '+ww+' '+hh+'" role="img" aria-label="Reported Delft Raman peak positions: D near 1335, G near 1582, and 2D near 2660 inverse centimetres. Peak heights not modeled.">'+plot+'</svg>';
+}
+globalThis.GrapheneVisual={render:(m,mode)=>mode==='section'?section(m):mode==='aperture'?aperture(m):plan(m),stackLayers,evidenceChart};
+})();
+</script><script>/* Independent travelers, process inspectors, provenance-preserving reports. */
+(function(){
+'use strict';
+const E=globalThis.GrapheneEngine,V=globalThis.GrapheneVisual,$=x=>document.getElementById(x),Q=x=>[...document.querySelectorAll(x)];
+const EQ=JSON.parse($('equipment-data').textContent),siteRoot=location.protocol==='file:'?'https://buildthesimulation.com':'';
+const samples=['clear','delft'],ruler={clear:0,delft:0};
+let cond=Object.fromEntries(samples.map(k=>[k,{...E.PRESETS[k]}])),model={},current='plan',preset=null,timer=null;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const es=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const id=(k,j)=>k+'-'+j;
+const ft=(n,p=1)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:p}).format(n);
+const viewhelp={
+  plan:'Plan view, same physical XY scale for both coupon layouts.',
+  section:'Exploded cross-section, with Z enlarged. Materials are placed in process order.',
+  aperture:'Local windows enlarged to their own diameters. Geometric proof, not a transmission test.'
+};
+function stageText(k,i){
+  return String(i+1).padStart(2,'0')+' · '+E.SAMPLE[k].stages[i][0];
+}
+function install(){
+  $('samples').innerHTML=samples.map(k=>{
+    const s=E.SAMPLE[k];
+    return '<article class="sample" id="'+k+'" data-sample="'+k+'" aria-labelledby="'+id(k,'head')+'"><div class="sample-head"><div><p>'+es(s.short)+' / '+es(s.sub)+'</p><h3 id="'+id(k,'head')+'">'+es(s.name)+'</h3></div><span class="tag">'+es(s.id)+'</span></div>'+
+      '<div class="stage-strip"><button id="'+id(k,'prev')+'" aria-label="Previous '+s.short+' stage" type="button">←</button><label class="sr-only" for="'+id(k,'process')+'">Select '+s.short+' process stage</label><select id="'+id(k,'process')+'">'+s.stages.map((a,i)=>'<option value="'+i+'">'+es(stageText(k,i))+'</option>').join('')+'</select><button id="'+id(k,'next')+'" aria-label="Next '+s.short+' stage" type="button">→</button></div>'+
+      '<figure class="specimen" id="'+id(k,'figure')+'"></figure><div class="sample-body"><div class="stage-index" id="'+id(k,'idx')+'"></div><span class="stage-title" id="'+id(k,'title')+'"></span><p id="'+id(k,'desc')+'"></p>'+
+      '<div class="stage-dep" id="'+id(k,'external')+'" hidden></div><p class="stage-tools" id="'+id(k,'tools')+'"></p><p class="stage-read" id="'+id(k,'status')+'"></p></div></article>';
+  }).join('');
+  const sel=(k,name,label,choices)=>'<label>'+es(label)+'<select id="'+id(k,name)+'">'+choices.map(x=>'<option value="'+x[0]+'">'+es(x[1])+'</option>').join('')+'</select></label>';
+  const slider=(k,name,label,max,increment)=>'<label>'+es(label)+' · <output id="'+id(k,name+'-value')+'">0</output><input type="range" id="'+id(k,name)+'" min="0" max="'+max+'" step="'+increment+'" value="0" aria-label="'+es(label)+'"></label>';
+  $('parameters').innerHTML='<fieldset class="parameters-card"><legend>CL-04 · CLEAR</legend><div class="fields">'+
+    sel('clear','tear','Transfer defects',[['none','No modeled tear'],['one','A break in the newest sheet'],['aligned','Coincident breaks in every sheet'],['staggered','Staggered breaks across sheets']])+
+    sel('clear','transferPath','Inter-sheet electrical access',[['terminal','Common terminals only'],['ideal','Ideal interior ties (hypothetical)']])+
+    slider('clear','windowShift','Contact-window X offset',2,.02)+'</div></fieldset>'+
+    '<fieldset class="parameters-card"><legend>DL-ML · Delft</legend><div class="fields">'+
+    sel('delft','diameter','Reported site diameter choices',[[10,'10 µm'],[30,'30 µm'],[50,'50 µm']])+
+    sel('delft','inner','Inner track fault',[['intact','Graphene and Mo connected'],['carbon-break','Graphene interrupted; Mo intact'],['mo-open','Mo interrupted; graphene intact'],['both-break','Both paths interrupted']])+
+    slider('delft','moAtFace','Residual Mo at the opened face',1,.01)+slider('delft','windowShift','Contact-window X offset',2,.02)+
+    '</div></fieldset>';
+  $('reports').innerHTML=samples.map(k=>{
+    const d=E.SAMPLE[k];
+    return '<article class="read-card" id="'+id(k,'results')+'" aria-labelledby="'+id(k,'result-head')+'"><div class="read-head"><h3 id="'+id(k,'result-head')+'">'+d.id+' · '+d.short+'</h3><span id="'+id(k,'verdict')+'" class="verdict"></span></div><dl class="results-list" id="'+id(k,'values')+'"></dl><p class="result-why" id="'+id(k,'why')+'"></p><button data-artwork="'+k+'" type="button">Download '+d.id+' inspection SVG</button></article>';
+  }).join('');
+  $('witnesses').innerHTML=samples.map(k=>{
+    const d=E.SAMPLE[k],p=E.SOURCE[k];
+    return '<article class="witness-card" id="'+id(k,'evidence')+'"><h3>'+d.id+' · '+d.short+'</h3>'+V.evidenceChart(k)+d.evidence.map(s=>'<div class="witness-item"><h4>'+es(s.label)+'</h4><p class="witness-main">'+es(s.main)+'</p><p>'+es(s.desc)+'</p></div>').join('')+
+      '<p class="source"><a href="'+p.url+'">'+es(p.title)+'</a><br>'+es(p.scope)+'</p><p class="source"><a href="'+siteRoot+'/devices/'+d.catalog+'/">Catalog device record →</a></p></article>';
+  }).join('');
+  $('method-body').innerHTML='<ul><li><strong>CLEAR virtual line:</strong> The 1-layer and 4-layer reported TLM witness endpoints are 152 and 76 Ω/□. For n transferred sheets the intentionally simple interpolation is 152/√n; equivalent sheet paths have four equal sections and are then solved at 1 V between common terminals. The hypothetical interior-tie mode imposes perfect local electrical exchange. Neither individual-sheet conductivity nor bridging between torn segments was recovered from the source.</li>'+
+    '<li><strong>Delft virtual line:</strong> The inner circuit solves equivalent sheet paths in parallel, followed by a common carbon-facing section and lead term. Model assumptions are 120 Ω/□ graphene, 1.06 Ω/□ Mo (a bulk-based illustration, not a thin-film measurement) and an assumed end term. The graph is a dry teaching model and never borrows CLEAR resistance values or estimates the wet electrode impedance.</li>'+
+    '<li><strong>Optical area:</strong> Under equal-radius design contact and opening masks, calculate their exact plan-area overlap after X offset. Temporary caps block qualified access; for the Delft fault remove the declared residual-Mo area fraction from the overlap. Color and sector labels are diagrammatic, not optical constants or physical metrology. Nominally the top carbon can be visible even while residual Mo below it still intercepts the optical window.</li>'+
+    '<li><strong>Bench gate:</strong> An independent stage-12 read requires an end-to-end dry path and a nominal clear aperture within this calculator. Recorded process defects still display a hold when they survive the gate. Sample IDs, fabrication ledger, geometry calculations and primary-source witness records stay independent.</li>'+
+    '<li><strong>Scope:</strong> These virtual coupons do not reproduce INBRAIN, another rGO technology, or either paper\'s full mask artwork. Geometry drawn beyond the source specifications is labeled; process classes do not imply a qualified powder, substrate, tool or recipe. No optical device-use, tissue, efficacy, or biological application is modeled.</li></ul>';
+  if(siteRoot)Q('a[href^="/"]').forEach(a=>a.setAttribute('href',siteRoot+a.getAttribute('href')));
+}
+function verdict(m){
+  if(!m.ready)return ['IN PROCESS','','Complete this traveler or run both to the bench. Readouts from the other sample are unchanged.'];
+  if(m.dry===null)return ['DRY OPEN','fail',m.key==='clear'?'The selected electrical coupling rules do not create an end-to-end carbon path. Four logged transfers are not proof of four intact sheets.':'Neither inner path reaches the common carbon-facing section.'];
+  if(m.clearFraction<.999)return ['WINDOW HOLD','hold',m.note||'The line conducts, but the modeled opening is not nominal. Optical aperture and dry continuity are separate.'];
+  const hid=m.key==='clear'?m.o.tear!=='none':m.o.inner!=='intact';
+  if(hid)return ['READS WITH DEFECT','hold',m.key==='clear'?'The dry path and window pass this limited gate. The transfer defect is still present.':'The dry path survived through the remaining conductor. This does not prove the buried stack is intact.'];
+  return ['VIRTUAL BENCH PASS','pass','The reconstructed path reaches the terminal and the modeled aperture is clear. This is not manufacturing qualification.'];
+}
+function refresh(k){
+  const p=E.SAMPLE[k],m=(model[k]=E.model(k,ruler[k],cond[k])),s=m.s,st=p.stages[s];
+  $(id(k,'process')).value=s;
+  $(id(k,'prev')).disabled=s===0;
+  $(id(k,'next')).disabled=s===11;
+  $(id(k,'idx')).textContent='TRAVELER '+String(s+1).padStart(2,'0')+' / 12';
+  $(id(k,'title')).textContent=st[0];
+  $(id(k,'desc')).textContent=st[1];
+  const ex=$(id(k,'external'));ex.hidden=!st[3];ex.textContent=st[3]?'EXTERNAL / '+st[3]:'';
+  $(id(k,'tools')).innerHTML='<span class="micro">REGISTER</span> '+st[2].map(i=>'<a href="'+siteRoot+'/simulations/equipment/'+i+'/" title="'+es(EQ[i]?.model||'Process-class link')+'">'+i+' '+es(EQ[i]?.name||'Equipment')+'</a>').join(' · ');
+  $(id(k,'status')).textContent=k==='clear'?(m.n+' / 4 transfers logged · '+(m.backed?'temporary silicon retained at this stage':'carrier removed')):((m.hasCarbon?'Grown carbon present, no device transfer':'Carbon not grown')+' · silica retained');
+  $(id(k,'figure')).innerHTML=V.render(m,current);
+  const [v,t,why]=verdict(m);$(id(k,'verdict')).textContent=v;$(id(k,'verdict')).dataset.tone=t;
+  $(id(k,'why')).textContent=why;
+  const val=[
+    ['Path resistance',!m.art?'Not yet routed':m.dry===null?'Open':ft(m.dry,2)+' Ω · model'],
+    ['Aperture overlap',m.apertureFormed?ft(100*m.geom/m.nominalA,1)+'% of target':'Not yet cut'],
+    ['Unobstructed carbon window',m.apertureFormed?ft(100*m.clearFraction,1)+'% of target':'Not yet cut'],
+    ['Carbon thickness proof',k==='clear'?(m.n+' transfer'+(m.n===1?'':'s')+' logged'):(m.hasCarbon?'MLG present; layer count not resolved':'No carbon yet')],
+    ['Substrate disposition',k==='clear'?(m.backed?'Si still supports coupon':'Released parylene film'):'Retained fused silica'],
+  ];
+  if(k==='clear')val.splice(1,0,['Entire sheets with through-path',m.n?m.film.fullSheets+' / '+m.n:'No carbon yet']);
+  else val.splice(1,0,['Inner conductor paths',m.hasCarbon?((m.film.carbon?'Carbon':'Carbon open')+' · '+(m.film.moly?'Mo':'Mo open')):'Not yet grown']);
+  $(id(k,'values')).innerHTML=val.map(([a,b])=>'<dt>'+es(a)+'</dt><dd>'+es(b)+'</dd>').join('');
+  for(const [x,n] of Object.entries(m.o)) {
+    const fld=$(id(k,x));if(fld)fld.value=n;
+  }
+  $(id(k,'windowShift-value')).textContent=ft(m.windowDx,2)+' µm';
+  if(k==='delft')$('delft-moAtFace-value').textContent=ft(m.o.moAtFace*100)+'%';
+}
+function all(){samples.forEach(refresh);Q('[data-case]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.case===preset?'true':'false'));}
+function stop(){clearInterval(timer);timer=null;$('run-all').textContent='Run both to bench';}
+function setmode(m){current=m;$('viewhint').textContent=viewhelp[m];Q('[data-view]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.view===m?'true':'false'));all();}
+function step(k,i){stop();ruler[k]=Math.max(0,Math.min(11,+i));refresh(k);}
+function start(){
+  if(timer){stop();return;}
+  if(reduced){ruler.clear=11;ruler.delft=11;all();return;}
+  if(samples.every(k=>ruler[k]===11)){ruler.clear=0;ruler.delft=0;all();}
+  $('run-all').textContent='Pause both';
+  timer=setInterval(()=>{
+    samples.forEach(k=>{ruler[k]=Math.min(11,ruler[k]+1)});all();
+    if(samples.every(k=>ruler[k]===11))stop();
+  },108);
+}
+const CAS={
+  tear:['clear',{tear:'one',transferPath:'terminal'},'section'],
+  stagger:['clear',{tear:'staggered',transferPath:'terminal'},'plan'],
+  mores:['delft',{moAtFace:.4,inner:'intact'},'aperture'],
+  track:['delft',{moAtFace:0,inner:'carbon-break'},'plan']
+};
+function scenario(n){
+  stop();
+  const [key,change,view]=CAS[n];
+  cond[key]={...E.PRESETS[key],...change};ruler[key]=11;preset=n;setmode(view);
+}
+function download(name,text,type){
+  const el=document.createElement('a');el.download=name;el.href=URL.createObjectURL(new Blob([text],{type}));document.body.append(el);el.click();el.remove();setTimeout(()=>URL.revokeObjectURL(el.href),1100);
+}
+install();
+for(const k of samples) {
+  $(id(k,'process')).onchange=e=>step(k,e.target.value);
+  $(id(k,'prev')).onclick=()=>step(k,ruler[k]-1);
+  $(id(k,'next')).onclick=()=>step(k,ruler[k]+1);
+  for(const name of Object.keys(E.PRESETS[k])){
+    const field=$(id(k,name)),numeric=typeof E.PRESETS[k][name]==='number';
+    const change=e=>{preset=null;cond[k][name]=numeric?+e.target.value:e.target.value;refresh(k);Q('[data-case]').forEach(b=>b.setAttribute('aria-pressed','false'));};
+    field.addEventListener(field.type==='range'?'input':'change',change);
+  }
+}
+$('run-all').onclick=start;
+$('reset').onclick=()=>{stop();samples.forEach(k=>{cond[k]={...E.PRESETS[k]};ruler[k]=0});preset=null;setmode('plan')};
+Q('[data-view]').forEach(b=>b.onclick=()=>setmode(b.dataset.view));
+Q('[data-case]').forEach(b=>b.onclick=()=>scenario(b.dataset.case));
+Q('[data-artwork]').forEach(b=>b.onclick=()=>{
+  const m=model[b.dataset.artwork],svg=V.render(m,current);
+  download(m.sample.toLowerCase()+'-'+current+'.svg',svg.replace('</title>','</title><desc>Teaching SVG, not a mask. '+es(E.SAMPLE[m.key].dimensionEvidence)+' Source DOI '+E.SOURCE[m.key].doi+'.</desc>'),'image/svg+xml');
+});
+$('download').onclick=()=>{
+  const out={schema:'bts-graphene-coupon-comparison/1',revision:'1.0.0',
+    classification:'Original virtual single-contact teaching coupons, not source CAD or production recipes. No shared transmittance calibration.',
+    mode:current,
+    samples:samples.map(key=>{
+      const s=E.SAMPLE[key],m=model[key],v=verdict(m);
+      return {id:s.id,reference:s.short,state:{...m,film:{...m.film,edges:m.art?m.film.edges:[]}},modeledResult:{status:v[0],reason:v[2]},
+        includedSpecs:s.dimensionEvidence,stages:s.stages.map((a,i)=>({stage:i+1,name:a[0],completed:i<=m.s,registerToolIds:a[2],unqualifiedDependency:a[3]||null})),
+        measuredWitness:{sampleRelationship:key==='clear'?'four transferred layers on 15 µm parylene witness':'transferred cm-scale film on glass, glass contribution subtracted',
+          transmittance:key==='clear'?.90:.475,wavelengthScope:s.bands,approximate:key==='clear',description:s.evidence,source:E.SOURCE[key]}}
+    })};
+  download('graphene-coupon-comparison.json',JSON.stringify(out,null,2),'application/json');
+};
+setmode('plan');
+})();
+</script>
+</body></html>

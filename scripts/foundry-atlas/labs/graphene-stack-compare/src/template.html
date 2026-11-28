@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#153e42">
+<meta name="description" content="Compare virtual graphene coupon manufacturing: four transferred sheets on flexible parylene versus direct multilayer growth on retained fused silica. Inspect dry continuity and optical apertures.">
+<title>Transparent Graphene Foundry | Build The Simulation</title>
+<style>@@CSS@@</style>
+</head><body>
+<a class="skip" href="#station">Skip to comparison</a>
+<header class="mast"><div class="wrap mast-in"><a class="brand" href="/"><span class="seal">B</span><span>BUILD THE<br>SIMULATION</span></a><nav aria-label="Project"><a href="/simulations/foundry/">Foundry</a><a href="/simulations/foundry/atlas/">Workflow atlas</a><a href="#references">Sources</a></nav></div></header>
+<main class="wrap">
+  <section class="hero">
+    <div><p class="eyebrow">TRANSPARENT ELECTRONICS / PROCESS COMPARISON</p><h1>Two ways to build<br>with graphene</h1><p class="dek">Put four transferred sheets beside a film grown directly on its catalyst. Follow both coupons to the bench and check what survived: the conductor, the window, or both.</p></div>
+    <div class="hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 232 145"><path d="M11 75l86-40 56 28-87 40z" fill="#8a726d" stroke="#514b54"/><path d="M10 65l86-40 57 28-87 41z" fill="#a38073" stroke="#514b54"/><path d="M10 55l86-40 57 28-87 41z" fill="#b39b91" stroke="#514b54"/><path d="M10 44l86-40 57 29-87 40z" fill="#e7d6c4" stroke="#514b54"/><path d="M84 90l78-37 55 28-77 38z" fill="#4b8583" stroke="#1b4647"/><path d="M84 90v19l56 27v-17z" fill="#3f6d6a" stroke="#1b4647"/><path d="M140 119v17l77-37V81z" fill="#679997" stroke="#1b4647"/><path d="M84 90l78-37 55 28-77 38z" fill="#b0d4c4" stroke="#1b4647"/><path d="M136 80l23-11 29 13-22 11z" fill="#996844" stroke="#333d3b"/><ellipse cx="148" cy="80" rx="9" ry="4.9" fill="#384955"/><path d="M99 104l25 12m74-18 12-5" stroke="#cde5d1" stroke-width="1.5"/></svg>
+    </div>
+  </section>
+  <p class="boundary"><strong>Device process ≠ material witness.</strong> The Delft device is made without transferring graphene. Its paper’s transmission number, however, comes from a <em>different, transferred film</em>.</p>
+  <section id="station" aria-labelledby="station-title">
+    <div class="station-bar">
+      <div><p class="eyebrow">FLEXIBLE VS RIGID</p><h2 id="station-title">Comparison station</h2></div>
+      <div class="station-controls"><button id="reset" class="dim" type="button">Reset both</button><button id="run-all" class="primary" type="button">Run both to bench</button></div>
+    </div>
+    <div class="viewbar">
+      <span class="micro">INSPECTION</span>
+      <div class="seg" role="group" aria-label="Inspection mode"><button data-view="plan" aria-pressed="true" type="button">Plan</button><button data-view="section" aria-pressed="false" type="button">Layer cutaway</button><button data-view="aperture" aria-pressed="false" type="button">Window proof</button></div>
+      <div class="viewhint" id="viewhint">Plan view, same physical XY scale for both coupon layouts.</div>
+    </div>
+    <div id="samples" class="samples" aria-label="Two independent fabrication travelers"></div>
+  </section>
+  <section class="investigations" id="faults" aria-labelledby="fault-title">
+    <div class="section-top"><div><p class="eyebrow">BENCH INVESTIGATIONS</p><h2 id="fault-title">What can the test miss?</h2></div></div>
+    <div class="cases" role="group" aria-label="Example challenges">
+      <button data-case="tear" type="button"><b>One transfer tears</b><span>Can CLEAR still conduct?</span></button>
+      <button data-case="stagger" type="button"><b>Four staggered tears</b><span>Try hypothetical interior bridges.</span></button>
+      <button data-case="mores" type="button"><b>Mo left at the face</b><span>Does a connected Delft line still have a clear window?</span></button>
+      <button data-case="track" type="button"><b>Carbon track opens</b><span>Does retained Mo keep the path alive?</span></button>
+    </div>
+    <div class="lab-parameters" id="parameters"></div>
+  </section>
+  <section class="report" id="report" aria-labelledby="report-title">
+    <div class="section-top"><div><p class="eyebrow">VIRTUAL BENCH RECORD</p><h2 id="report-title">Read the two coupons</h2></div><button id="download" type="button">Download comparison JSON</button></div>
+    <div class="report-grid" id="reports"></div>
+    <p class="scope">Apparent clear area is a geometry calculation, not optical transmission. Dry resistance uses a simplified sheet model; it is not a measurement of wet impedance or clinical performance.</p>
+  </section>
+  <section class="evidence" id="references" aria-labelledby="evidence-title">
+    <p class="eyebrow">PRIMARY EVIDENCE</p><h2 id="evidence-title">Put each result with its sample</h2>
+    <div id="witnesses" class="witnesses"></div>
+    <details class="method" id="method"><summary>Model and qualification limits</summary><div id="method-body"></div></details>
+  </section>
+</main>
+<footer class="wrap"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/">Back to workflow atlas ↑</a></footer>
+<script id="equipment-data" type="application/json">@@EQUIPMENT@@</script>
+<script>@@ENGINE@@</script><script>@@VISUAL@@</script><script>@@APP@@</script>
+</body></html>
