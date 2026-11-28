@@ -1,5 +1,46 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>Self-closing cuff · Device Foundry</title><style>:root{--ink:#172e32;--deep:#152c31;--muted:#506465;--rule:#c8c8b9;--paper:#f7f5ea;--back:#ebeadd;--accent:#a74c2c;--gold:#e9c480;font:15px/1.48 system-ui,sans-serif;color:var(--ink);background:var(--back)}*{box-sizing:border-box}body{margin:0}header{background:var(--deep);color:var(--paper);border-bottom:4px solid #b67348;padding:12px max(calc((100vw - 1260px)/2),4vw);display:flex;align-items:center;justify-content:space-between;gap:12px}.line,.key,.actions,.preset,.tabs,.plothead,.viewbar,.stationtop,.sectionhead,footer{display:flex;align-items:center;gap:12px}.line i{height:16px;border-right:1px solid #738384}.brand{border:1px solid #d5c69d;border-radius:4px;padding:1px 6px;color:var(--gold);font:700 19px Georgia,serif}.line span,.topcode,small,.eyebrow,.stationtop,.tag,.badge,.stamp span,th{font:650 10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}.topcode{color:#cfcdb8}.eyebrow,small{color:var(--accent);display:block}.eyebrow span{margin:0 7px}main{max-width:1300px;margin:auto;padding:0 32px}.hero{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:38px 0 23px}.hero h1{font:normal clamp(39px,5vw,76px)/1.05 Georgia,serif;letter-spacing:-.055em;margin:8px 0 11px}.hero h1 span{color:var(--accent)}p{margin:9px 0 14px;color:var(--muted)}.hero p{font-size:16px;max-width:760px;margin-bottom:0}.stamp{border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:8px 0;min-width:150px}.stamp span,.stamp strong{display:block}.stamp strong{font:normal 29px Georgia,serif}.tabs{border-bottom:1px solid #a5aca3;margin:0 0 20px;gap:0}.tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;font-weight:650;color:var(--muted);padding:10px 17px}.tabs [aria-pressed=true]{color:var(--ink);border-color:var(--accent);background:var(--paper)}.workgrid,.lowergrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:17px}.lowergrid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:17px}.plate,.control,.paper{min-width:0;background:var(--paper);border:1px solid var(--rule);border-radius:5px}.control,.paper{padding:22px}.plothead,.viewbar{padding:16px 18px;justify-content:space-between}.plothead{align-items:center}.plothead h2,.paper h2,.control h2,.sectionhead h2{font:normal 30px/1.12 Georgia,serif;letter-spacing:-.045em;margin:5px 0 12px}.plothead h2{font-size:25px;margin-bottom:2px}.plothead select{max-width:48%;font-size:12px}.viz{position:relative;height:310px;background:var(--deep)}canvas{display:block}.viz canvas{width:100%;height:100%;touch-action:none}.tag{position:absolute;left:12px;top:12px;color:#f0cd88;background:#21343ae8;border:1px solid #4c6060;padding:3px 6px;pointer-events:none;letter-spacing:.05em}.viewbar{font-size:12px;color:var(--muted);padding:8px 14px}.key{border-top:1px solid var(--rule);flex-wrap:wrap;padding:10px 14px;gap:8px 16px}.key span,.fine{font-size:12px;color:var(--muted)}.key i{display:inline-block;width:10px;height:10px;margin-right:5px;border:1px solid #31474144;border-radius:2px}.stationtop{justify-content:space-between;border-bottom:1px solid var(--rule);padding:8px 0;color:#647370}.control h2{margin-top:16px}.control p,.paper p{font-size:14px}.control label,label[for]{display:block;font-weight:650;font-size:13px;margin:13px 0 4px}output{float:right;font:600 13px ui-monospace,monospace;color:var(--accent)}select,button,.buttonlike{font:inherit;color:var(--ink);border:1px solid #a8afa6;border-radius:4px;background:#f9f8f1;padding:8px 11px;cursor:pointer}button,.buttonlike{min-height:38px;font-weight:600;font-size:13px}button:disabled{opacity:.48;cursor:not-allowed}button:hover:not(:disabled),.buttonlike:hover{border-color:var(--accent)}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,.buttonlike:focus-within{outline:3px solid #22888b;outline-offset:2px}.control select,#ch,#freq{max-width:100%;width:100%}input[type=range]{width:100%;accent-color:var(--accent)}.fieldnote{display:block;color:#596968;font-size:12px;margin:2px 0 9px}.actions{flex-wrap:wrap;gap:7px;margin-top:12px}.major{background:var(--ink);border-color:var(--ink);color:var(--paper)}.linkbtn{background:none;padding:0;border:0;color:var(--accent);min-height:25px}.status,#cycleResult{border-left:3px solid #a56c42;padding-left:9px;font-size:13px;color:var(--ink)}.paper h3{font:normal 21px Georgia,serif}.small{min-height:31px;font-size:11px;flex-shrink:0}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metrics div{border-top:2px solid #a6b5a6;padding:7px 0}.metrics b{font:normal 22px Georgia,serif;display:block}.metrics span{font-size:12px;color:var(--muted)}hr{border:0;border-top:1px solid var(--rule);margin:21px 0}summary{cursor:pointer;font-weight:600}#rail{display:grid;gap:2px}.step{display:flex;justify-content:space-between;align-items:center;border:0;border-bottom:1px solid #d3d5c8;border-radius:0;background:none;text-align:left;padding:7px}.step.selected{background:#eae8d8}.step em{font:600 10px ui-monospace,monospace;color:#61746a}.step i{font:600 10px ui-monospace,monospace;color:var(--accent);margin-right:8px}.buttonlike{position:relative;display:inline-block;overflow:hidden}.buttonlike input{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}.sectionhead{justify-content:space-between;align-items:flex-start;margin-bottom:16px}.sectionhead p{max-width:720px}.sectionhead button{flex-shrink:0}.badge{color:#546a64}.preset{gap:6px}.preset button{font-size:12px;padding:3px 9px;min-height:32px}.readrow{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid var(--rule);padding:7px 0;font-size:13px}.readrow b{text-align:right}.wide{margin-top:17px}.graph{height:214px;width:100%;background:#f8f7ef;margin:8px 0}.paper img{display:block;max-width:100%;height:auto;border:1px solid #d3d5c8;margin-top:15px}.paper a{color:#185c60;text-underline-offset:2px}.sourceitem{display:grid;grid-template-columns:140px 1fr;gap:12px;margin:0;border-bottom:1px solid var(--rule);padding:10px 0;font-size:14px}.pill{font:650 10px ui-monospace,monospace;color:#7a4e35;text-transform:uppercase;letter-spacing:.05em}.sourceitem strong{display:block}footer{justify-content:space-between;border-top:1px solid var(--rule);padding:16px 0;margin-top:25px;font-size:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:800px){main{padding:0 15px}.workgrid,.lowergrid{grid-template-columns:1fr}.hero{padding-top:24px}.stamp,.topcode{display:none}.viz{height:286px}.control,.paper{padding:18px}.lowergrid{gap:12px}footer,.sectionhead{align-items:flex-start;flex-wrap:wrap}.tabs button{flex:1;padding:8px 4px;font-size:13px}.plothead{padding:12px}.plothead h2{font-size:22px}.sectionhead button{flex-shrink:1}.sourceitem{grid-template-columns:1fr;gap:4px}.line span{font-size:9px}.metrics{gap:5px}.graph{height:193px}}@media(max-width:380px){.plothead{flex-wrap:wrap}.plothead select{max-width:100%}.viewbar{align-items:flex-start}.viz{height:247px}.tag{font-size:9px}}
-</style></head><body>
+</style><!-- bts-workflow-player:1 -->
+<style>
+/* Foundry workflow motion, scoped to the process plate. */
+.fp-player{box-sizing:border-box;min-width:0;width:100%;margin:.62rem 0 .72rem;font:400 14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#e5eddb;text-align:left}
+.fp-native-hidden{display:none!important}
+.fp-head,.fp-transport{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.fp-head{padding:7px 8px;border:1px solid #739180;border-radius:7px;background:#244a41}
+.fp-head-note{flex:1 1 145px;min-width:0;color:#dce8dc;font-size:12px;line-height:1.4}
+.fp-player button,.fp-player select{font:650 14px/1.18 system-ui,-apple-system,Segoe UI,sans-serif;min-height:44px;color:#203a31;background:#f7f2df;border:1px solid #7fa08b;border-radius:5px;padding:7px 10px;box-shadow:none;text-transform:none;letter-spacing:normal;margin:0;cursor:pointer}
+.fp-player button:hover:not(:disabled),.fp-player select:hover{background:#fff7da}
+.fp-player button:disabled{opacity:.56;cursor:not-allowed}
+.fp-player button:focus-visible,.fp-player select:focus-visible{outline:3px solid #ffd191;outline-offset:2px}
+.fp-player [data-fp="action"]{background:#f0c180;border-color:#f5d49c;color:#27382e}
+.fp-player [data-fp="action"]:hover{background:#ffdb9e}
+.fp-player .fp-expanded{margin-top:7px;border:1px solid #739180;border-radius:7px;background:#193b34;overflow:hidden}
+.fp-player .fp-expanded[hidden],.fp-player button[hidden]{display:none!important}
+.fp-card{padding:10px 11px 9px;min-width:0}
+.fp-kicker{color:#eac187;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase}
+.fp-player .fp-label{margin:4px 0;font:650 16px/1.28 system-ui,-apple-system,Segoe UI,sans-serif;color:#fff4d9;overflow-wrap:anywhere}
+.fp-player .fp-note{margin:4px 0 6px;font-size:12px;color:#deebd8;line-height:1.4;min-height:2.8em}
+.fp-player .fp-scene{display:block;width:100%;height:auto;max-width:none;min-height:0;background:#16372f;border-top:1px solid #6e8c7c;border-bottom:1px solid #6e8c7c}
+.fp-track{height:5px;background:#597568;margin:8px 0 4px;overflow:hidden;border-radius:4px}
+.fp-bar{height:100%;width:0;background:#e9b274;transform-origin:left;will-change:width}
+.fp-player .fp-info{font:400 11px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#dce8dc}
+.fp-transport{margin-top:8px;align-items:end}
+.fp-transport label{margin:0;font:600 11px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;color:#deebd8;display:block;min-width:0}
+.fp-transport select{display:block;background:#f3eedc;width:max-content;max-width:100%;margin-top:3px}
+.fp-transport .fp-choose{flex:1 1 184px}
+.fp-transport .fp-choose select{width:100%;appearance:auto}
+.fp-player .fp-progress-text{white-space:nowrap}
+.fp-player [data-fp="close"],.fp-player [data-fp="replay"]{background:#315c4e;color:#f4efd9}
+.fp-player [data-fp="close"]:hover,.fp-player [data-fp="replay"]:hover{background:#3f6e5d}
+@media(max-width:480px){
+ .fp-player .fp-note{min-height:0}
+ .fp-transport .fp-choose{flex-basis:100%;order:2}
+ .fp-player button,.fp-player select{font-size:13px}
+ .fp-head-note{flex-basis:130px}
+ .fp-card{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){.fp-player *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head><body>
 <header><div class="line"><b class="brand">B/S</b><span>BUILD THE SIMULATION</span><i></i><span>DEVICE FOUNDRY</span></div><span class="topcode">FIELD BOOK &nbsp; / &nbsp; SOFT INTERFACES</span></header>
 <main><div class="hero"><div><div class="eyebrow">Specimen 04 <span>•</span> Polymer actuators</div><h1>The self-closing cuff<span>.</span></h1><p>Follow a soft electrode array from a silicon carrier to a reversible wrap around an inert mandrel. Inspect what each fabrication choice changes.</p></div><div class="stamp"><span>REFERENCE</span><strong>10.7 × 2.1</strong><span>MM · INTERFACING SECTION</span></div></div>
 <nav class="tabs" aria-label="Workbench sections"><button id="t-workshop" aria-pressed="true">01 &nbsp; Foundry</button><button id="t-bench" aria-pressed="false">02 &nbsp; Test bench</button><button id="t-evidence" aria-pressed="false">03 &nbsp; Evidence</button></nav>
@@ -172,7 +213,262 @@ function assembly(canvas,s){const o=ctxFor(canvas,C.bg);if(!o)return;const {ctx:
  txt(c,'Cuff pads',w*.11,h-16);txt(c,'ACA',w*.46,h-16,'#bbd6bd',10);txt(c,'FFC pins',w*.72,h-16);txt(c,'Expected identities · reconstructed pad geometry',12,35,'#c4d2c8',10);}
  return{flat,solid,assembly,makeMesh,graph,bind,reset}
 })();
-</script><script>(()=>{
+</script><script>
+/* Read-only Foundry Process Player. Elapsed display time is educational, not process time. */
+window.BTSFoundryPlay = (() => {
+'use strict';
+const W=600,H=267;
+const C={bg:'#183c34',paper:'#edf2d5',muted:'#a9c1a4',iron:'#55756b',steel:'#7ca1a0',si:'#74949b',glass:'#87a8a8',gold:'#e8b572',amber:'#c79856',poly:'#8fbeae',dark:'#234c3e',pink:'#d99c9c',red:'#ed8d73',mint:'#9de5bf',blue:'#97d2de',night:'#15332c'};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=u=>{u=clamp(u);return u*u*(3-2*u)};
+const mix=(a,b,u)=>a+(b-a)*u;
+const num=v=>Number.isFinite(v)?Number(v.toFixed(2)):0;
+const attrs=' shape-rendering="geometricPrecision"';
+const rect=(x,y,w,h,col,stroke='none',sw=1,extra='')=>'<rect x="'+num(x)+'" y="'+num(y)+'" width="'+num(Math.max(0,w))+'" height="'+num(Math.max(0,h))+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'" '+extra+'/>';
+const line=(x,y,a,b,col=C.muted,n=2,extra='')=>'<line x1="'+num(x)+'" y1="'+num(y)+'" x2="'+num(a)+'" y2="'+num(b)+'" stroke="'+col+'" stroke-width="'+n+'" stroke-linecap="round" '+extra+'/>';
+const dot=(x,y,r,col,stroke='none',sw=1)=>'<circle cx="'+num(x)+'" cy="'+num(y)+'" r="'+num(r)+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'"/>';
+const poly=(pts,col,stroke='none',sw=1,z='polygon')=>'<'+z+' points="'+pts.map(([x,y])=>num(x)+','+num(y)).join(' ')+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'" stroke-linecap="round" stroke-linejoin="round"/>';
+const path=(d,col='none',stroke=C.muted,n=2,extra='')=>'<path d="'+d+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+n+'" stroke-linecap="round" stroke-linejoin="round" '+extra+'/>';
+const label=(x,y,t,opts={})=>'<text x="'+num(x)+'" y="'+num(y)+'" fill="'+(opts.color||C.paper)+'" font-family="ui-monospace,monospace" font-size="'+(opts.size||13)+'" text-anchor="'+(opts.anchor||'start')+'">'+esc(t)+'</text>';
+const ell=(x,y,rx,ry,c,stroke='none',n=1)=>'<ellipse cx="'+num(x)+'" cy="'+num(y)+'" rx="'+num(Math.max(0,rx))+'" ry="'+num(Math.max(0,ry))+'" fill="'+c+'" stroke="'+stroke+'" stroke-width="'+n+'"/>';
+const group=(p,opacity=1,extra='')=>'<g opacity="'+num(clamp(opacity))+'" '+extra+'>'+p+'</g>';
+function arrow(x,y,x2,y2,c=C.gold,n=2){
+ const a=Math.atan2(y2-y,x2-x),r=8;return line(x,y,x2,y2,c,n)+poly([[x2,y2],[x2-r*Math.cos(a-.5),y2-r*Math.sin(a-.5)],[x2-r*Math.cos(a+.5),y2-r*Math.sin(a+.5)]],c);
+}
+function tick(x,y,u,col=C.mint){return group(path('M'+(x-5)+' '+y+'l3 4 8 -10','none',col,3),u)}
+function guide(x,y,w,h){return rect(x,y,w,h,'none',C.muted,1,'stroke-dasharray="4 5"')}
+function opacityAttr(u){return 'opacity="'+num(clamp(u))+'"'}
+function panel(id,title,caption='SCHEMATIC · NOT PROCESS TIMING'){
+ return '<defs><pattern id="fpGrid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0v18" fill="none" stroke="#75a889" stroke-opacity=".25" stroke-width=".6"/></pattern></defs>'+rect(0,0,W,H,C.bg)+rect(11,10,W-22,H-20,'url(#fpGrid)','#718c78',1.1)+label(23,32,id+'  /  '+title.toUpperCase(),{color:C.gold,size:12})+label(W-22,H-17,caption,{color:C.muted,size:10,anchor:'end'});
+}
+function stretch(tickStart,tickStop,u){return ease((u-tickStart)/(tickStop-tickStart));}
+function seqPoints(pts,u){
+ u=clamp(u);if(pts.length<=1||u>=1)return pts;
+ let index=u*(pts.length-1),i=Math.floor(index),t=index-i;
+ return [...pts.slice(0,i+1),[mix(pts[i][0],pts[i+1][0],t),mix(pts[i][1],pts[i+1][1],t)]];
+}
+const lengthLabel=(x,y,w,s)=>line(x,y,x+w,y,C.muted,1)+line(x,y-4,x,y+4,C.muted,1)+line(x+w,y-4,x+w,y+4,C.muted,1)+label(x+w/2,y+16,s,{color:C.muted,size:11,anchor:'middle'});
+const gfx={W,H,C,esc,clamp,ease,mix,num,attrs,rect,line,dot,poly,path,label,ell,group,arrow,tick,guide,opacityAttr,panel,stretch,seqPoints,lengthLabel};
+function attach({plate,extra=[],interrupt,build,compact=false}){
+ if(!plate||typeof build!=='function')return null;
+ let host=document.createElement('section');host.className='fp-player';host.id='foundry-workflow-player';host.setAttribute('aria-label','Workflow animation');host.dataset.state='idle';
+ host.innerHTML='<div class="fp-head"><button type="button" data-fp="action" aria-controls="fp-expanded" aria-expanded="false">Play workflow</button><button type="button" data-fp="replay" hidden>Replay</button><button type="button" data-fp="close" hidden>Close animation</button><span class="fp-head-note" data-fp="summary">Watch each modeled step. Playback does not change the specimen.</span></div>'+
+ '<div class="fp-expanded" id="fp-expanded" hidden><div class="fp-card"><div class="fp-kicker"><span data-fp="position" class="fp-progress-text"></span> · PROCESS PREVIEW</div><div class="fp-label" data-fp="title" aria-live="polite"></div><div class="fp-note" data-fp="description"></div></div>'+
+ '<svg class="fp-scene" data-fp="scene" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Animated process plate"></svg>'+
+ '<div class="fp-card"><div class="fp-track" aria-hidden="true"><div class="fp-bar" data-fp="bar"></div></div><div class="fp-info" data-fp="timing">Display time is not a process parameter.</div>'+
+ '<div class="fp-transport"><button type="button" data-fp="prev" aria-label="Previous animation scene">← Scene</button><button type="button" data-fp="next" aria-label="Next animation scene">Scene →</button><label>Speed<select data-fp="speed"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label class="fp-choose">Animation scene<select data-fp="jump"></select></label></div></div></div>';
+ plate.before(host);
+ const idx=Object.fromEntries([...host.querySelectorAll('[data-fp]')].map(el=>[el.dataset.fp,el])),box=host.querySelector('.fp-expanded');
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');let scenes=[],phase='idle',scene=0,elapsed=0,last=null,raf=0,lastDraw=-Infinity,reduced=motion.matches,visualVersion=-1,opened=false,speed=1,staticPreview=false;
+ const replace=[plate,...extra].filter(Boolean);
+ function visible(on){
+   opened=on;box.hidden=!on;idx.action.setAttribute('aria-expanded',String(on));
+   for(const a of replace)a.classList.toggle('fp-native-hidden',on);
+   idx.close.hidden=!on;
+ }
+ function updatePhase(p,msg){
+   phase=p;host.dataset.state=p;
+   idx.action.textContent=({idle:'Play workflow',playing:'Pause',paused:'Resume',finished:'Replay workflow'})[p];
+   idx.replay.hidden=!opened||p==='finished';
+   idx.summary.textContent=msg||({idle:'Watch each modeled step. Playback does not change the specimen.',playing:'Read-only playback. Manual controls still work.',paused:'Paused. Resume here or choose another scene.',finished:'Animation complete. The specimen is unchanged.'})[p];
+ }
+ const duration=s=>s.duration||2300;
+ const sceneCount=()=>scenes.length;
+ function render(force=false){
+   const a=scenes[scene];if(!a)return;
+   const fraction=clamp(elapsed/duration(a));
+   const u=(reduced||staticPreview)?1:ease(Math.min(1,fraction/.67));
+   if(visualVersion!==scene){
+     visualVersion=scene;const label='Step '+(scene+1)+' / '+sceneCount();
+     host.dataset.step=String(scene+1);host.dataset.total=String(sceneCount());host.dataset.scene=a.id;
+     idx.position.textContent=label;idx.title.textContent=a.name;idx.description.textContent=a.detail;
+     idx.scene.setAttribute('aria-label',label+': '+a.name+'. '+(a.alt||a.detail));
+     idx.jump.value=String(scene);idx.prev.disabled=scene===0;idx.next.disabled=scene>=sceneCount()-1;
+   }
+   if(force||!reduced){
+     idx.scene.innerHTML=a.draw(u);
+     host.dataset.frame=String(Math.round(u*1000));
+   }
+   idx.bar.style.width=(100*(scene+(reduced?Number(fraction>=1):fraction))/sceneCount()).toFixed(2)+'%';
+   idx.timing.textContent=reduced?'Reduced motion: stage snapshots. Display time is not a process parameter.':'Display time is not a process parameter.';
+ }
+ function loop(t){
+   if(phase!=='playing')return;
+   if(last!==null)elapsed+=Math.min(80,Math.max(0,t-last))*speed;
+   last=t;
+   let a=scenes[scene];
+   if(elapsed>=duration(a)){
+     elapsed=duration(a);
+     render(true);
+     if(scene===sceneCount()-1){raf=0;last=null;updatePhase('finished');return;}
+     elapsed=0;scene++;visualVersion=-1;render(true);lastDraw=t;
+   }else if(t-lastDraw>40){
+     render(false);lastDraw=t;
+   }
+   raf=requestAnimationFrame(loop);
+ }
+ function stop(){cancelAnimationFrame(raf);raf=0;last=null;}
+ function play(){stop();if(staticPreview){staticPreview=false;render(true);}updatePhase('playing');raf=requestAnimationFrame(loop);}
+ function pause(msg){stop();updatePhase('paused',msg);}
+ function begin(){
+   const b=build(),list=Array.isArray(b)?b:b?.scenes;
+   if(!list?.length){updatePhase('idle','No documented process playback for this branch.');return;}
+   scenes=list;scene=0;elapsed=0;staticPreview=false;visualVersion=-1;lastDraw=-Infinity;
+   idx.jump.replaceChildren(...scenes.map((a,i)=>new Option(String(i+1).padStart(2,'0')+' · '+a.name,String(i))));
+   visible(true);render(true);play();
+ }
+ function close(focus=false){
+   if(!opened)return;
+   stop();visible(false);visualVersion=-1;phase='idle';elapsed=0;scene=0;delete host.dataset.step;delete host.dataset.total;delete host.dataset.scene;delete host.dataset.frame;
+   idx.scene.replaceChildren();updatePhase('idle');if(focus)idx.action.focus();
+ }
+ function manual(n){
+   if(!opened||n<0||n>=sceneCount())return;
+   scene=n;elapsed=0;staticPreview=true;visualVersion=-1;pause('Manual animation scene. The specimen is unchanged.');
+   render(true);
+ }
+ idx.action.onclick=()=>{if(phase==='playing')pause();else if(phase==='paused')play();else begin();};
+ idx.replay.onclick=begin;idx.close.onclick=()=>close(true);
+ idx.prev.onclick=()=>manual(scene-1);idx.next.onclick=()=>manual(scene+1);idx.jump.onchange=()=>manual(+idx.jump.value);
+ idx.speed.onchange=()=>{speed=+idx.speed.value;last=null;};
+ host.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){e.preventDefault();close(true)}});
+ const onInterrupt=e=>{if(opened&&e.target instanceof Element&&!host.contains(e.target)&&e.target.closest(interrupt))close(false)};
+ if(interrupt)for(const ev of ['click','change','input'])document.addEventListener(ev,onInterrupt,true);
+ const setMotion=e=>{reduced=e.matches;if(opened)render(true);};
+ if(motion.addEventListener)motion.addEventListener('change',setMotion);else motion.addListener(setMotion);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&phase==='playing')pause('Paused when this tab was hidden. Resume here when ready.');});
+ if(compact)host.classList.add('fp-compact');
+ return {close};
+}
+return {attach,gfx};
+})();
+</script>
+<script>
+window.FoundryCuffScenes=(E,D,model,diameter)=>{
+'use strict';
+const {C,rect,line,dot,poly,path,label,ell,group,arrow,tick,panel,stretch:e,mix,lengthLabel,seqPoints}=BTSFoundryPlay.gfx;
+const {p,n,channels}=model, [base,ppy]=p.stack.split(':');
+const xs=ch=>141+30*(ch.u-.12),ys=ch=>ch.side>0?118:176;
+const plateSet=['Pattern the strip','Temporary carrier','Sensing traces and bus','Protected flex','Register the windows','Separate surface coating','Release from temporary support','Connect interface pads','Distinct active stripes','Electrical witness','Inert-mandrel witness'];
+const details=[
+  `Display layout: ${n} sensing sites and ${base} / ${ppy} µm PaC / PPy film pair. Coordinate layout and play timing are explanatory.`,
+  'Silicon is temporary. This view adds the first permanent Parylene C film above it.',
+  'Individual sensing tracks and the actuator bus appear as separate conductors. Fine geometries are schematic.',
+  'The insulating overlayer covers tracks before the independent perimeter pattern is defined.',
+  'Temporary mask openings move into registration with metal lands. Offset is magnified for visibility.',
+  'PEDOT:PSS forms the contact surface; it is not the PPy actuator. The gold underneath remains a distinct path.',
+  'The patterned flex separates from the silicon carrier. If the selected release branch retains a tether, the animation keeps it attached.',
+  'The flex cable and anisotropic joint meet the pad bank. Apparent overlap can still reach the wrong pin.',
+  'PPy(DBS) coverage develops on the separate actuator stripes, not across the sensing sites.',
+  'Trace the intended-fixture endpoints as well as electrode exposure. The animation only previews the check; consult the bench to run it.',
+  'Wrap and reopening are shown on a nonliving rigid cylinder. Shape progression is a visual interpolation, not measured actuation kinetics.'
+];
+const carrier=(x=96,y=179,w=405)=>rect(x,y,w,43,C.si,'#bed0bf',1)+line(x,y+38,x+w,y+38,'#466b69',3);
+const strip=()=>rect(104,91,402,108,'#8bb4a1','#c9d8b7',1.3,'rx="7"')+rect(426,112,83,60,'#b8ce9f','#b8d1b8',1,'rx="4"');
+function drawTracks(u,withPads=false,withSites=true){
+ let s='';
+ for(let i=0;i<n;i++){
+  const ch=channels[i],x=xs(ch),y=ys(ch),d2=Math.floor(i/(n===28?2:1));
+  const k=e(i/n*.25,.85+i/n*.15,u),a0=x,b0=y,a1=Math.min(470,x+14+3*(i%3)),b1=y+(y>145?-1:1)*(8+(i%5)*4);
+  let pts=[[a0,b0],[a1,b1],[433,b1],[478,125+(i+1)*33/(n+1)]];
+  s+=poly(seqPoints(pts,k),'none',C.gold,n>3?1.15:2,'polyline');
+  if(p.breakNet==='first'&&i===0&&k>.45)s+=line(a1+9,b1,a1+19,b1,C.dark,3);
+  if(withSites)s+=group(dot(x,y,n>3?3.7:7,C.gold,'#634f3d',1),e(.18,.72,k));
+ }
+ s+=line(118,147,mix(118,495,u),147,C.amber,3.5);
+ if(p.breakNet==='drive'&&u>.4)s+=line(320,147,333,147,C.dark,5);
+ if(withPads)for(let i=0;i<n+1;i++){const y=119+49*i/Math.max(1,n);s+=rect(474,y,n===3?22:14,n===3?7:1.3,C.gold)}
+ return s;
+}
+function sectionStack(i,u){
+ let q=carrier(95,183);
+ const paint=(y,h,c,w=405)=>rect(95,y,w,h,c,'#c9d7bb',.55);
+ if(i>=1)q+=paint(165,18,C.poly,i===1?405*e(0,.9,u):405);
+ if(i>=2)q+=paint(157,8,C.gold,i===2?405*u:405);
+ if(i>=3)q+=paint(140,17,'#a7c9ad',i===3?405*u:405);
+ return q;
+}
+function last(u){
+ const cycle=u<.5?e(.04,.5,u):1-e(.56,.98,u),ret=E.bench(model,D,.4,diameter),rm=ret.rm||diameter/2;
+ const R=ret.valid&&ret.k!=null&&ret.k>0&&cycle>1e-5?1/(ret.k*cycle):null;
+ const vv=[],N=65;
+ for(let j=0;j<=N;j++){
+  const s=E.L*j/N;
+  vv.push([E.point(s,-E.W/2,R,rm),E.point(s,E.W/2,R,rm)]);
+ }
+ const px=(xyz)=>[xyz[0]*45+xyz[2]*21, -xyz[1]*39+xyz[2]*10],A=vv.map(pair=>pair.map(px)),ALL=A.flat();
+ const cx=(Math.min(...ALL.map(x=>x[0]))+Math.max(...ALL.map(x=>x[0])))/2;
+ const cy=(Math.min(...ALL.map(x=>x[1]))+Math.max(...ALL.map(x=>x[1])))/2;
+ const cv=v=>{let [x,y]=px(v);return [x-cx+299,y-cy+138]};
+ let shapes='';
+ const [x,y]=cv([0,0,0]),dr=14*diameter;
+ shapes+=group(ell(x-94,y,dr*.3,dr,'#78908a',C.blue,1)+rect(x-94,y-dr,188,dr*2,'#788d83','#afc6ad',.7)+ell(x+94,y,dr*.3,dr,'#668f87',C.blue,1),.52);
+ const fields=vv.slice(1).map((a,i)=>({depth:(a[0][1]+a[1][1])/2, p:[...vv[i],a[1],a[0]].map(cv),i}));
+ for(const x of fields.sort((a,b)=>a.depth-b.depth)){
+  shapes+=poly(x.p,x.i%7===0?'#bd9963':x.i%2?'#78a08e':'#7da696','#a7c1a6',.35);
+ }
+ return shapes+label(28,227,!ret.valid?'Preview held: '+ret.status:R?'Geometric wrap preview':'Flat-state reference',{color:ret.valid?C.mint:C.red,size:13})+label(570,227,`Inert Ø ${diameter.toFixed(2)} mm`,{anchor:'end',color:C.blue,size:12});
+}
+return E.stages.map((st,i)=>({id:'cuff-'+(i+1),name:st.name,detail:details[i],duration:i===10?4100:2400,draw:u=>{
+ let q=panel('CUFF',plateSet[i]);
+ if(i===0){
+   q+=group(strip(),e(0,.5,u));
+   for(const c of channels){const k=e(.11,.92,u),x=xs(c),y=ys(c);q+=group(dot(x,y,n>3?4.2:7,C.gold,C.paper,.7),k);}
+   q+=lengthLabel(104,216,402,'10.7 mm nominal sensing section');
+   q+=label(113,62,`${n} SENSE POSITIONS / CHOSEN FILM PAIR ${base}:${ppy}`,{color:C.mint,size:12});
+ }else if(i===1){
+   q+=carrier(96,181)+rect(96,164,405*u,17,C.poly,'#d0dfc0',1);
+   q+=label(113,209,'TEMPORARY SILICON',{color:C.night})+label(113,152,'PARYLENE C BASE',{color:C.mint,size:12});
+ }else if(i===2){
+   q+=strip()+drawTracks(u);
+   q+=label(116,75,'SENSE NETS',{color:C.gold})+label(415,78,'DRIVE BUS',{color:C.gold});
+ }else if(i===3){
+   q+=strip()+drawTracks(1);
+   q+=group(rect(103,88,403*e(0,.55,u),112,'#b5d4a9',C.paper,1,'rx="7"'),.59);
+   let x=502-p.edge*.48*e(.48,1,u);
+   q+=line(x,86,x,207,p.edge?C.red:C.gold,2,'stroke-dasharray="5 5"');
+   q+=label(112,68,p.edge?'ILLUSTRATIVE EDGE INCURSION':'SEPARATE OUTLINE CUT',{color:p.edge?C.red:C.mint});
+ }else if(i===4||i===5){
+   q+=strip()+group(drawTracks(1,false,true),.38);
+   for(const ch of channels){const x=xs(ch),y=ys(ch),dx=ch.dev*.43,dy=i===4?mix(-21,0,u):0,xx=x+(i===4?mix(34,dx,u):dx);
+     q+=dot(x,y,n>3?4.9:7,C.gold);
+     q+=dot(xx,y+dy,n>3?4.0:6,'none',C.paper,1.1);
+     if(i===5)q+=group(dot(xx,y,n>3?4:6,C.blue),e(0,.95,u)*ch.effective);
+   }
+   q+=label(113,74,i===4?'LAND AND MASK ARE SEPARATE':'COATING OVER THE WINDOW',{color:C.mint});
+   q+=label(109,226,'Shapes and offsets enlarged',{color:C.muted,size:11});
+ }else if(i===6){
+   q+=carrier(95,191);
+   const h=mix(0,p.release==='tether'?31:67,u),bend=p.release==='tether'?36:62;
+   const pts=Array.from({length:39},(_,j)=>{const x=97+10.4*j,t=j/38,y=178-h*e(.08,1,t)-Math.sin(t*Math.PI)*u*bend*.5;return [x,y]});
+   q+=poly(pts,'none',C.poly,14,'polyline')+poly(pts.map(([x,y])=>[x,y-2]),'none',C.gold,1.5,'polyline');
+   if(p.release==='tether')q+=line(97,177,97,195,C.red,3);
+   if(p.release==='tear'&&u>.7)q+=path('M380 129l4 13 5-3','none',C.red,2);
+   q+=label(107,226,p.release==='tether'?'TETHER RETAINED':'CARRIER STAYS BEHIND',{color:C.paper,size:12});
+ }else if(i===7){
+   q+=strip()+drawTracks(1,true);
+   let x=mix(529,473,u),dy=p.bond*.14;
+   q+=rect(x,107+dy,117,76,'#8cad99',C.paper,1,'rx="4"');
+   for(let i=0;i<=n;i++){const y=119+49*i/Math.max(1,n);q+=rect(x,y+dy+p.skew*.13*(i/n-.5),24,n>3?1.2:6,C.gold);}
+   q+=group(rect(478,110,16,62,'#b89368',C.paper,1),e(.62,1,u)*.72)+label(102,73,'PAD BAND AND FLEX CABLE',{color:C.mint});
+ }else if(i===8){
+   q+=strip()+group(drawTracks(1,true),.56);
+   for(let j=0;j<14;j++){const x=130+j*21,z=e(j/23,.74+j/53,u)*p.ppy/100;q+=line(x,154,x+15*z,154-47*z,'#786184',6);}
+   q+=label(109,74,'PPy(DBS) DRIVE STRIPES',{color:C.mint});
+ }else if(i===9){
+   q+=strip()+group(drawTracks(1,true),.62);
+   for(let j=0;j<n;j++){
+     let ch=channels[j],x=xs(ch),y=ys(ch),k=e(j/n*.71,.11+j/n*.81,u);
+     q+=group(dot(x,y,n>3?3.7:6,ch.dc?C.mint:C.red),k);
+   }
+   q+=label(107,71,'VIRTUAL CONTINUITY PATHS',{color:C.mint})+label(111,227,'Preview only · no test recorded',{color:C.muted,size:12});
+ }else q+=last(u);
+ return q;
+}}));
+};
+</script>
+<script>(()=>{
 'use strict';const $=k=>document.getElementById(k),E=Cuff,D=MEASUREMENTS;
 const fmt=(x,n=2)=>x==null?'—':Number(x).toFixed(n),row=(k,v)=>'<div class="readrow"><span>'+k+'</span><b>'+v+'</b></div>';
 let log=[],s=E.inspect(log),tab='workshop',v=.4,d=1.4,selected=0,selectedCh=0,cycle=null,stageRecord=0;
@@ -238,5 +534,14 @@ $('freq').innerHTML=D.eis.map((q,i)=>'<option value="'+i+'">'+Number(q[0].toPrec
 new ResizeObserver(()=>paint()).observe(document.querySelector('main'));
 window.cuffState=()=>JSON.parse(JSON.stringify({rev:s.rev,s,tab,v,d,b:E.bench(s,D,v,d),cycle,lot:lotFile()}));
 render();
+
+if(window.BTSFoundryPlay)window.BTSFoundryPlay.attach({
+  plate:$('drawing').closest('.viz'),extra:[$('drawing').closest('.viz').nextElementSibling],interrupt:"#t-workshop,#t-bench,#t-evidence,#homeview,#view,#commit,#rewind,#goBench,#auto,#reset,#upload,#download,#rail button,#returnTo,#fields input,#fields select",
+  build:()=>{ const witness = E.nominal();
+        for(let i=0;i<log.length;i++) witness[i]=log[i];
+        if(log.length<witness.length) witness[log.length]=getfields(log.length);
+        return window.FoundryCuffScenes(E,D,E.inspect(witness),d);
+         }
+});
 })();
 </script></body></html>

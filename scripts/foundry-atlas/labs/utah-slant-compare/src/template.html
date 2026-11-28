@@ -4,7 +4,17 @@
 <body><a class="skip" href="#configure">Skip to configuration</a><main>
 <header><a class="brand" href="/simulations/foundry/">BuildTheSimulation <span>/ Foundry</span></a><a class="travel" href="/simulations/foundry/atlas/#profile=si-utah">Utah process traveler ↗</a></header>
 <section class="hero"><div><p class="eyebrow">Fabrication series / Utah and Slant</p><h1>The isolation bench.</h1><p class="lede">Same pitch. Two height profiles. Inspect how opposing cuts separate a lattice of silicon roots, then see which faults a virtual continuity test can distinguish.</p></div><aside><span class="dot"></span><div>Inert digital coupon<br><small>No physical instrument connected</small></div></aside></section>
-<nav class="jump" aria-label="Laboratory sections"><a href="#configure">01 · Height comparison</a><a href="#cuts">02 · Opposing cuts</a><a href="#continuity">03 · Continuity fixture</a></nav>
+<nav class="jump" aria-label="Laboratory sections"><a href="#workflow-player">00 · Playback</a><a href="#configure">01 · Height comparison</a><a href="#cuts">02 · Opposing cuts</a><a href="#continuity">03 · Continuity fixture</a></nav>
+
+<section id="workflow-player" class="panel workflow-player" aria-labelledby="workflow-heading">
+ <div class="workflow-head"><div class="sect"><p class="eyebrow">Section 00 / Guided cutaway</p><h2 id="workflow-heading">Play the isolation sequence</h2></div>
+ <div class="workflow-toolbar" role="group" aria-label="Workflow playback"><button id="workflow-play" type="button" class="primary">Play workflow</button><div><div class="workflow-play-label"><span id="workflow-state">Ready</span><span id="workflow-position">1 / 6</span></div><progress id="workflow-progress" value="1" max="6" aria-label="Workflow playback progress"></progress></div></div></div>
+ <p class="deck">Replay the historical glass-isolated cross-section on this virtual coupon. Change the specimen or pause to inspect a particular milestone.</p>
+ <ol class="workflow-steps" id="workflow-steps" aria-label="Cutaway steps"></ol>
+ <div class="workflow-frame"><figure class="workflow-plate"><svg id="workflow-plate" viewBox="0 0 510 219" role="img" aria-labelledby="workflow-plate-title workflow-plate-desc"><title id="workflow-plate-title">Cross-section of the selected neighbor boundary</title><desc id="workflow-plate-desc"></desc><g></g></svg></figure><div class="workflow-caption"><p class="eyebrow" id="workflow-basis"></p><h3 id="workflow-title"></h3><p id="workflow-description"></p><p id="workflow-readout" class="workflow-readout"></p></div></div>
+ <p class="workflow-scope small"><a href="https://patents.google.com/patent/US5215088A/en">Historical reference: US5215088A Figs. 6–9 ↗</a>. Dwell times are for viewing. Not a process recipe, modern Utah/Slant traveler, shank-shaping model, or calibrated product test.</p>
+ <p id="workflow-live" class="workflow-sr" role="status"></p>
+</section>
 
 <section id="configure" aria-labelledby="heightHeading" class="panel compare">
  <div class="sect"><p class="eyebrow">Section 01 / Shape and coordinates</p><h2 id="heightHeading">Compare matched lattices</h2></div>

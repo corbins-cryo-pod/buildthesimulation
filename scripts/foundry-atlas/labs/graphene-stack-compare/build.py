@@ -3,6 +3,7 @@ import argparse,json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 SRC=ROOT/'src'
+SHARED=ROOT.parent/'_shared'
 def build(repo=None,out=None):
     if repo:
         eq={}
@@ -15,7 +16,7 @@ def build(repo=None,out=None):
     eq={i:eq[i]for i in used}
     if repo:(SRC/'equipment.snapshot.json').write_text(json.dumps(eq,ensure_ascii=False,indent=2)+'\n')
     html=(SRC/'template.html').read_text()
-    for name,p in {'CSS':'style.css','ENGINE':'engine.js','VISUAL':'visual.js','APP':'app.js'}.items():
+    for name,p in {'CSS':'style.css','ENGINE':'engine.js','VISUAL':'visual.js','APP':'app.js','PLAYBACK_JS':SHARED/'workflow-player.js','PLAYBACK_CSS':SHARED/'workflow-player.css'}.items():
         content=(SRC/p).read_text()
         assert '</script' not in content.lower()
         html=html.replace('@@'+name+'@@',content)

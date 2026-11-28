@@ -3,6 +3,11 @@
 @media(max-width:790px){main{padding:0 .95rem 1rem}.bench{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"source receiver" "port port"}.source{grid-area:source}.receiver{grid-area:receiver}.testport{grid-area:port;justify-content:start;gap:.28rem}.testport svg{max-width:11rem}.controls{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:.45rem}.controls button{width:auto;flex:0 1 auto}}
 @media(max-width:500px){main{padding:0 .72rem .9rem}nav{gap:.25rem .65rem;font-size:.77rem;padding:.65rem 0}header{padding:1.4rem 0 1.1rem}.deck{font-size:1.12rem}.bench{grid-template-columns:minmax(0,1fr);grid-template-areas:"source" "receiver" "port";gap:.6rem}.bench article{padding:.7rem}#caseButtons{gap:.35rem}#caseButtons button{font-size:.78rem;padding:.35rem .47rem}.fact{font-size:.81rem}select{font-size:1rem}.controls button{min-height:2.75rem}.top{gap:.4rem}}
 @media(prefers-color-scheme:dark){:root{color-scheme:dark;--paper:#20292a;--panel:#293334;--ink:#f2efe5;--sub:#c3cdca;--border:#667574;--faint:#485455;--rail:#303c3c;--accent:#a8d6d1;--button:#315b64;--gold:#d7ad76}.chip.match{color:#b5e0c1;background:#293e35}.chip.incompatible{color:#f1adaa;background:#432a29}.chip.unknown{color:#ecd097;background:#443d28}}
+
+.handoff-play{display:grid;grid-template-columns:minmax(13rem,.7fr) minmax(0,1.3fr);gap:.85rem;align-items:stretch;margin:.1rem 0 .9rem;border:1px solid var(--border);border-left:4px solid var(--accent);background:var(--rail);padding:.7rem .85rem}.handoff-play h2{font-size:1.4rem}.handoff-play-controls{display:flex;align-items:center;flex-wrap:wrap;gap:.48rem .7rem}.handoff-count{width:100%;font:600 .72rem/1.3 var(--mono);display:grid;grid-template-columns:minmax(0,1fr);gap:.22rem}.handoff-count progress{width:100%;height:.55rem;accent-color:var(--accent)}.handoff-stage{min-width:0;border:1px solid var(--border);background:var(--panel);padding:.55rem .68rem;font-size:.86rem}.handoff-stage-head{display:flex;gap:.3rem .58rem;flex-wrap:wrap;align-items:baseline;justify-content:space-between}#handoff-stage-name{font-weight:730}#handoff-stage-detail{margin:.24rem 0 0}#handoff-token{transform:translateX(var(--handoff-x,22px));transition:transform .54s cubic-bezier(.2,.7,.3,1);stroke-width:1.2;stroke:#5c4d27}#handoff-token rect{fill:#f0dc9e}#handoff-port[data-transit=received] #handoff-token rect{fill:#b7d6b5}#handoff-port[data-block=incompatible] #handoff-token rect{fill:#e6a495}#handoff-port[data-block=unknown] #handoff-token rect{fill:#e5c982}#checks li[aria-current=step]{border-left:3px solid var(--accent)}.handoff-play[data-playback=running] #handoff-stage-name{color:var(--accent)}
+@media(max-width:660px){.handoff-play{grid-template-columns:minmax(0,1fr);gap:.6rem}.handoff-play-controls{justify-content:space-between}}
+@media(prefers-reduced-motion:reduce){#handoff-token{transition:none}}
+#handoff-port[data-transit=source] #handoff-token{transition:none}
 </style></head>
 <body><main>
 <nav aria-label="Section"><a href="/simulations/foundry/">Foundry</a><a href="/simulations/foundry/atlas/">Workflow atlas</a><a href="/simulations/foundry/tool-fit/">Tool fit bench</a><span aria-current="page">Process handoff bench</span></nav>
@@ -12,10 +17,14 @@
 <section id="casesSection" aria-labelledby="caseTitle">
 <div class="rail-desc"><p class="index">01 · Case file</p><h2 id="caseTitle">Pick a handoff</h2></div><div id="caseButtons" role="group" aria-label="Case files"></div>
 <h3 id="prompt"></h3><p id="insight"></p><p id="profiles"></p></section>
+<section class="handoff-play" id="handoff-player" aria-labelledby="handoff-play-title" data-playback="ready">
+ <div class="handoff-play-controls"><div><p class="index">Guided playback</p><h2 id="handoff-play-title">Follow the record</h2></div><button type="button" class="primary" id="handoff-play">Play workflow</button><label class="handoff-count" for="handoff-meter"><span id="handoff-play-count">0 checks inspected</span><progress id="handoff-meter" max="1" value="0"></progress></label></div>
+ <div class="handoff-stage"><div class="handoff-stage-head"><p id="handoff-stage-name">Ready to inspect</p><p id="handoff-stage-result" class="chip ready">Virtual receipt</p></div><p id="handoff-stage-detail">Play visits each check in order. Select a new source or receiver, or use the manual inspect buttons at any time.</p></div>
+</section>
 <section aria-label="Test the handoff" class="bench">
 <article class="source"><p class="index">02 / Source record</p><label for="artifact">What is handed off?</label><select id="artifact"></select><div id="record"></div></article>
 <article class="receiver"><p class="index">04 / Receiver</p><label for="demand">What does it need?</label><select id="demand"></select><div id="contract"></div></article><div class="testport">
-<svg viewBox="0 0 260 76" width="260" height="76" role="img" aria-labelledby="port-title" id="handoff-port"><title id="port-title">Three-panel schematic of the record, checks and receiving contract</title><rect x="10" y="20" width="42" height="36" rx="3"></rect><path d="M18 29h26M18 38h26M18 47h18M52 38h39" fill="none"></path><path d="M84 33l7 5-7 5" fill="none"></path><path d="M136 15l24 23-24 23-24-23z" id="indicator"></path><path d="M126 38h20M136 28v20M160 38h49M200 33l9 5-9 5" fill="none"></path><path d="M209 18h40v40h-40zM215 26h27M215 34h27M215 43h27M215 51h27" fill="none"></path></svg>
+<svg viewBox="0 0 260 76" width="260" height="76" role="img" aria-labelledby="port-title" id="handoff-port"><title id="port-title">Three-panel schematic of the record, checks and receiving contract</title><rect x="10" y="20" width="42" height="36" rx="3"></rect><path d="M18 29h26M18 38h26M18 47h18M52 38h39" fill="none"></path><path d="M84 33l7 5-7 5" fill="none"></path><path d="M136 15l24 23-24 23-24-23z" id="indicator"></path><path d="M126 38h20M136 28v20M160 38h49M200 33l9 5-9 5" fill="none"></path><path d="M209 18h40v40h-40zM215 26h27M215 34h27M215 43h27M215 51h27" fill="none"></path><g id="handoff-token" aria-hidden="true"><rect x="0" y="30" width="13" height="16" rx="2"></rect><path d="M3 34h7M3 38h6M3 42h4"></path></g></svg>
 <p class="index">03 / Handoff check</p><p id="progress">Waiting for inspection.</p><p id="verdict" class="chip ready">Not inspected</p><div class="controls">
 <button type="button" id="next">Inspect next gate</button><button type="button" class="primary" id="run">Inspect all gates</button><button type="button" id="reset" disabled>Reset checks</button></div></div>
 </section>
@@ -185,13 +194,67 @@ function prove(data,c,a,d){
 }
 return {version,labels,cases,demands,prove};
 });
+</script><script>/* Shared clock only. Each foundry bench defines and paints its own reviewed stages. */
+(function(root,factory){
+ const api=factory();
+ if(typeof module==='object'&&module.exports)module.exports=api;else root.FoundryBenchPlay=api;
+})(typeof globalThis==='object'?globalThis:this,function(){
+'use strict';
+const playLabel={ready:'Play workflow',running:'Pause workflow',paused:'Resume workflow',complete:'Replay workflow'};
+function create({paint,delay=2100,clock=globalThis}){
+ let total=0,progress=0,running=false,timer=null,epoch=0;
+ const snapshot=()=>({total,progress,running,mode:running?'running':total>0&&progress===total?'complete':progress?'paused':'ready'});
+ const emit=()=>paint(snapshot());
+ function clear(){
+  epoch++;
+  if(timer!==null)clock.clearTimeout(timer);
+  timer=null;
+ }
+ function schedule(){
+  clear();
+  if(!running||progress>=total)return;
+  const thisEpoch=epoch;
+  timer=clock.setTimeout(()=>{
+   if(thisEpoch!==epoch||!running)return;
+   timer=null;
+   tick();
+  },delay);
+ }
+ function tick(){
+  progress=Math.min(total,progress+1);
+  if(progress===total)running=false;
+  emit();schedule();
+ }
+ function load(length){
+  if(!Number.isSafeInteger(length)||length<0)throw RangeError('Expected a non-negative integer stage count.');
+  clear();total=length;progress=0;running=false;emit();
+ }
+ function go(index){
+  if(!Number.isSafeInteger(index))throw RangeError('Expected an integer stage index.');
+  clear();running=false;progress=Math.max(0,Math.min(total,index));emit();
+ }
+ function pause(){
+  if(!running)return;
+  clear();running=false;emit();
+ }
+ function toggle(){
+  if(running){pause();return;}
+  if(!total)return;
+  if(progress===total)progress=0;
+  running=true;
+  if(!progress)tick();else{emit();schedule();}
+ }
+ return {snapshot,load,go,pause,toggle,next:()=>go(progress+1),previous:()=>go(progress-1),finish:()=>go(total),reset:()=>go(0)};
+}
+return {create,playLabel};
+});
 </script><script>(function(){
 'use strict';
 const $=id=>document.getElementById(id), data=JSON.parse($('handoff-data').textContent), H=Handoff;
 const plain=(name,value,cls)=>{const i=document.createElement(name);if(value!==undefined)i.textContent=value;if(cls)i.className=cls;return i;};
 const a=(title,href)=>{const l=plain('a',title);l.href=href;return l;};
 const art=$('artifact'),dem=$('demand'),refs=$('references'),list=$('checks'),group=$('caseButtons');
-const next=$('next'),run=$('run'),reset=$('reset'),download=$('download');
+const next=$('next'),run=$('run'),reset=$('reset'),download=$('download'),play=$('handoff-play');
 const eqURL=p=>'https://buildthesimulation.com'+p, atlas='/simulations/foundry/atlas/#profile=';
 const dict=data.dictionary;
 const fields={id:'Sample or fixture',revision:'Revision',revisionMeaning:'Revision tracks',waferMm:'Wafer diameter',status:'Recorded state',position:'Stored at',fixture:'Dry fixture',spanMm:'Printed marker span',units:'Units',unit:'Units',shape:'Substrate',sizeMm:'Side or diameter',nx:'Grid columns',ny:'Grid rows',frame:'Coordinate frame',syntheticEdit:'Bench counterfactual',dieId:'Die',carrierId:'Carrier',designRevision:'Design revision',passing:'Pads in tolerance',total:'Pad count',failed:'Pads out of tolerance',bondState:'Reported state',complete:'Full layout coverage',percent:'Covered',state:'Reported state',physicalMeasurement:'Physical measurement?',measuredRate:'Measured rate',estimate:'Estimated synthetic rate',reference:'Synthetic rate standard',decision:'Recorded decision',points:'Data points',edges:'Mapped edges',shorts:'Simulated short flags',source:'Origin',channels:'Channels',dtS:'Time step',t0S:'Start time',sideMm:'Panel side',widthMm:'Written width',heightMm:'Written height',lineUm:'Dense line',spaceUm:'Dense gap',thicknessMm:'Thickness'};
@@ -216,7 +279,8 @@ function format(k,v){
  return (k==='spanMm'?Number(v.toFixed(3)):v)+(k.endsWith('Mm')?' mm':k.endsWith('Um')?' µm':k.endsWith('S')?' s':k==='percent'?'%':'');
 }
 const opt=(value,title)=>{const z=plain('option',title);z.value=value;return z;};
-let cs, proof, revealed=0;
+let cs, proof, lastAnnounced=0, ledgerProof;
+const player=FoundryBenchPlay.create({paint:render,delay:2300});
 const inputs=new URLSearchParams(location.search);
 for(const c of H.cases){const b=plain('button');b.type='button';b.dataset.case=c.id;b.append(plain('b',c.number),plain('span',c.name));b.addEventListener('click',()=>choose(c.id));group.append(b);}
 const text=(k,t)=>{$(k).textContent=t;};
@@ -235,7 +299,7 @@ function choose(id,fromURL=false){
 }
 function setup(pin=true){
  const origin=data.records[art.value],target=H.demands[dem.value];
- proof=H.prove(data,cs.id,art.value,dem.value);revealed=0;
+ proof=H.prove(data,cs.id,art.value,dem.value);
  const re=$('record'),co=$('contract');
  re.replaceChildren(plain('h3',origin.title),plain('code',origin.schema,'schema'));
  const lp=plain('p',undefined,'record-tag'),station=data.evidence[origin.sources[0]]?.station;
@@ -260,16 +324,40 @@ function setup(pin=true){
  const keys=[...new Set([...origin.sources,...target.sources,...proof.gates.flatMap(q=>q.sources)])];
  refs.replaceChildren(...keys.map(k=>{const x=data.evidence[k],li=plain('li');li.append(a(x.title,x.href));return li;}));
  text('pinned','Equipment register: '+dict.commit.slice(0,12)+' · checked '+dict.date+' · source record SHA-256 '+origin.recordSha256+'. Full hashes and the declared demand are included in the receipt.');
- render();text('announce','Loaded a new handoff. Prior checks cleared.');
+ lastAnnounced=0;player.load(proof.gates.length);text('announce','Loaded a new handoff. Prior checks cleared.');
 }
-function render(){
- const len=proof.gates.length,complete=revealed===len;
+function render(state){
+ const {progress:revealed,total:len,mode}=state,complete=len>0&&revealed===len;
+ const current=proof.gates[revealed-1], prefix=complete?'Finished':'Step '+revealed+' / '+len;
+ const port=$('handoff-port'),meter=$('handoff-meter'),badge=$('handoff-stage-result'),bench=$('handoff-player');
+ play.textContent=FoundryBenchPlay.playLabel[mode];
+ bench.dataset.playback=mode;bench.dataset.step=String(revealed);
+ meter.max=len||1;meter.value=revealed;
+ text('handoff-play-count',revealed+' of '+len+' gates inspected');
+ text('handoff-stage-name',current?(complete?'Last gate: ':prefix+' · ')+current.gate:'Ready to inspect');
+ badge.className='chip '+(complete?proof.status:current?current.status:'ready');
+ badge.textContent=complete?'Final: '+H.labels[proof.status]:current?colors[current.status]:'Virtual receipt';
+ text('handoff-stage-detail',current?current.reason:'Play visits each check in order. Select a new source or receiver, or use the manual inspect buttons at any time.');
+ const stopped=proof.gates.slice(0,revealed).find(g=>g.status!=='match');
+ const tokenX=complete&&proof.status==='match'?226:stopped?106:revealed?Math.round(50+50*revealed/len):22;
+ port.style.setProperty('--handoff-x',tokenX+'px');
+ port.dataset.transit=complete&&proof.status==='match'?'received':stopped?'held':revealed?'inspection':'source';
+ port.dataset.block=complete?proof.status:stopped?.status||'pending';
+ if(mode==='running'&&revealed!==lastAnnounced&&current)text('announce','Gate '+revealed+': '+current.gate+'. '+colors[current.status]+'.');
+ if(complete&&lastAnnounced!==revealed)text('announce',H.labels[proof.status]+'. All '+len+' gates inspected.');
+ lastAnnounced=revealed;
  next.disabled=run.disabled=complete;reset.disabled=revealed===0;download.disabled=!complete;
- $('handoff-port').dataset.state=complete?proof.status:'pending';
+ port.dataset.state=complete?proof.status:'pending';
  text('progress',revealed+' / '+len+' inspected');
  const verdict=$('verdict');verdict.className='chip '+(complete?proof.status:'ready');verdict.textContent=complete?H.labels[proof.status]:revealed?'Inspection in progress':'Not inspected';
- list.replaceChildren(...proof.gates.map((g,i)=>{
-  const pending=i>=revealed,li=plain('li');li.dataset.state=pending?'pending':g.status;
+ if(ledgerProof!==proof){list.replaceChildren();ledgerProof=proof;}
+ proof.gates.forEach((g,i)=>{
+  const pending=i>=revealed,visual=pending?'pending':g.status,existing=list.children[i];
+  // Revealing the next gate never removes links from already-read rows.
+  const li=existing?.dataset.state===visual?existing:plain('li');
+  if(i===revealed-1)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');
+  if(li===existing)return;
+  li.dataset.state=visual;
   const content=plain('div'),head=plain('div',undefined,'gate-line');
   head.append(plain('strong',g.gate),plain('span',pending?'Pending':colors[g.status],'chip '+(pending?'ready':g.status)));
   content.append(head);
@@ -277,19 +365,28 @@ function render(){
    content.append(plain('p',g.reason,'reason'));
    const cites=plain('p',undefined,'cite-line');g.sources.forEach((key,n)=>{const ref=data.evidence[key];if(ref)cites.append(a((n+1)+'. '+ref.title,ref.href));});content.append(cites);
   }
-  li.append(plain('span',String(i+1).padStart(2,'0'),'no'),content);return li;
- }));
+  li.append(plain('span',String(i+1).padStart(2,'0'),'no'),content);
+  if(existing)existing.replaceWith(li);else list.append(li);
+ });
  text('notes',complete?(proof.status==='match'?'This selection meets only the digital demand printed above. It does not qualify a physical article.':proof.status==='incompatible'?'At least one supplied field or record conflicts with this specific demand. A different documented artifact could change the decision.':'No explicit contradiction was found in the compared gates, but at least one required fact or adapter is unproven. Stop the chain here.'):'The overall decision appears after all gates are inspected. Read any incompatible or unproven gate before treating a virtual chain as connected.');
 }
-function inspect(all){
- const len=proof.gates.length;
- if(revealed>=len)return;
- revealed=all?len:revealed+1;render();
- text('announce',revealed===len?H.labels[proof.status]+'. All '+len+' gates inspected.':proof.gates[revealed-1].gate+': '+colors[proof.gates[revealed-1].status]+'.');
+function announceStep(){
+ const state=player.snapshot(),gate=proof.gates[state.progress-1];
+ text('announce',state.mode==='complete'?H.labels[proof.status]+'. All '+state.total+' gates inspected.':gate?'Gate '+state.progress+': '+gate.gate+'. '+colors[gate.status]+'.':'Inspection reset.');
 }
-art.addEventListener('change',()=>setup());dem.addEventListener('change',()=>setup());next.addEventListener('click',()=>inspect(false));run.addEventListener('click',()=>inspect(true));reset.addEventListener('click',()=>{revealed=0;render();text('announce','Inspection reset.');next.focus();});
+art.addEventListener('change',()=>setup());dem.addEventListener('change',()=>setup());
+play.addEventListener('click',()=>{
+ const wasPlaying=player.snapshot().running;
+ player.toggle();
+ if(wasPlaying)text('announce','Workflow paused.');
+ else if(player.snapshot().running)text('announce','Playing workflow. '+$('handoff-stage-name').textContent+'.');
+});
+next.addEventListener('click',()=>{player.next();announceStep();});
+run.addEventListener('click',()=>{player.finish();announceStep();});
+reset.addEventListener('click',()=>{player.reset();announceStep();next.focus();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)player.pause();});
 download.addEventListener('click',()=>{
- if(revealed!==proof.gates.length)return;
+ if(player.snapshot().mode!=='complete')return;
  const record=data.records[art.value],demand=H.demands[dem.value],evidence={};
  for(const k of new Set([...record.sources,...demand.sources,...proof.gates.flatMap(q=>q.sources)]))if(data.evidence[k])evidence[k]=data.evidence[k];
  const obj={schema:'bts.process-handoff-receipt.v1',benchVersion:H.version,virtualOnly:true,pinnedEquipment:dict,part:{...record},demand:{id:dem.value,...demand},receipt:proof,evidence};

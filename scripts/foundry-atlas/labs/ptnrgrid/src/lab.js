@@ -8,6 +8,7 @@ const en=n=>Number(n).toLocaleString('en-US');
 const stageLabel=i=>String(i+1).padStart(2,'0');
 const cfg=$('configuration'), f=$('defect'), ss=$('site'), fs=$('fault-site');
 const state={stage:0,frontier:0,site:512,defectSite:512,view:'panel',viewManual:false,model:null};
+let foundryPlayer=null;
 const names={panel:'Carrier and writing field',stack:'Exploded film and contact stack',route:'Registered routes A and B',grid:'Site index and diagnostic map',connect:'Film to extender and logical output',mold:'Passive inert mold comparison'};
 const captions={
  panel:'The two squares compare sizes. The registered 150 mm write area is not a 177.8 mm square chuck specification. Pattern extent, mount and actual staging need separate evidence.',
@@ -35,7 +36,7 @@ function strip(){
  $('progress').max=D.stages.length;$('progress').value=state.frontier+1;
  $('next').disabled=m.stage>=D.stagesLast;$('next').textContent=m.stage>=D.stagesLast?'Traveler complete':m.stage<state.frontier?'Next saved station →':'Next station →';
  $('scene-prev').disabled=m.stage===0;$('scene-next').disabled=m.stage>=D.stagesLast;$('scene-next').textContent=m.stage>=D.stagesLast?'Completed':'Next station →';$('scene-progress').textContent=stageLabel(m.stage)+' / '+D.stages.length;
- $('run').textContent=state.frontier>=D.stagesLast?'Show final state':'Run all';
+ $('run').textContent=state.frontier>=D.stagesLast?'Show final state':'Jump to final';
  $('run').disabled=state.frontier>=D.stagesLast&&m.stage>=D.stagesLast;
  for(const button of $('traveler').querySelectorAll('button')){
   const i=Number(button.dataset.stage),icon=button.querySelector('.stage-state');
@@ -47,6 +48,7 @@ function setStage(i,scroll=false){
  state.stage=Math.max(0,Math.min(D.stagesLast,i));state.frontier=Math.max(state.frontier,state.stage);
  state.view=defaultView(state.stage);state.viewManual=false;update(true);if(scroll)forceScene();
  announce('Station '+(state.stage+1)+': '+D.stages[state.stage].title+'.');
+ foundryPlayer?.sync();
 }
 function visual(){
  const m=state.model,r=m.res[state.site],k=state.view;
@@ -123,7 +125,14 @@ function init(){
  $('export-csv').addEventListener('click',()=>save('ptnrgrid-'+cfg.value+'-virtual-ledger.csv','text/csv;charset=utf-8',D.csv(state.model)));
  $('export-json').addEventListener('click',()=>save('ptnrgrid-'+cfg.value+'-traveler.json','application/json',JSON.stringify(D.report(state.model,state.site),null,2)+'\n'));
  if(matchMedia('(max-width:730px)').matches)$('traveler-box').open=false;
- $('model-ui').hidden=false;update(true)
+ $('model-ui').hidden=false;update(true);
+ foundryPlayer=window.installFoundryPlayback({
+  button:$('play-ptnr'), frames:[$('scene')],
+  read:()=>({completed:state.stage+1,total:D.stages.length,done:state.stage>=D.stagesLast,
+    text:(state.stage+1)+' / '+D.stages.length+' · '+D.stages[state.stage].title}),
+  advance:()=>setStage(state.stage+1),
+  replay:()=>setStage(0)
+ })
 }
 try{init()}catch(e){$('load-error').hidden=false;console.error(e)}
 })();

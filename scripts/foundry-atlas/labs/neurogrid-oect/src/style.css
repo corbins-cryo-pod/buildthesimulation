@@ -3,3 +3,14 @@
 @media(max-width:740px){.bar .wrap{min-height:45px}.bar a,footer a{font-size:.7rem}.cover{display:block;padding-block:21px}.cover h1{font-size:3.21rem}.cover .lede{font-size:1.13rem}.cover .sub{font-size:.82rem}.coverplate{display:none}.intro{display:block}.intro>p{font-size:.78rem}.pick{gap:7px;margin-bottom:9px}.pick button{padding:8px 9px}.pick button span:not(.kicker){font-size:.73rem}.pick button small{font-size:.64rem}.layout{grid-template-columns:minmax(0,1fr);gap:8px}.right{gap:8px}.traveler ol{max-height:205px;overflow:auto}.traveler .tiny-actions{padding:7px 10px}.stage-controls{padding:6px 7px}.stage-controls button{min-height:42px;padding:6px;font-size:.7rem}.settings{padding:7px;gap:6px}.settings select,.settings input[type=number],#site{font-size:16px}.readouts{grid-template-columns:1fr}.diagramplot{max-width:none}.equipment a{font-size:.65rem}.curve-pick button{min-height:41px}}
 @media(max-width:380px){.wrap{padding-inline:10px}.cover h1{font-size:2.82rem}.tiny-actions button,.curve-pick button{font-size:.72rem}}
 @media(prefers-color-scheme:dark){:root{color-scheme:dark;--shell:#232b24;--paper:#2a372e;--ink:#edede3;--muted:#c4d1c4;--line:#627764;--line2:#4a5a4c;--well:#395143;--green:#bedbc4;--on:#23382b;--warning:#f7d8a1;--warningbg:#4b412e}}
+
+
+/* Native station playback. Only the live section fades; evidence and focus remain fixed. */
+#stage-detail{scroll-margin-top:12px;overflow-anchor:none}
+.stage-play-jump{display:inline-flex;align-items:center;min-height:44px;margin:-3px 0 6px;font-size:.82rem;font-weight:720}
+.stage-player{scroll-margin-top:12px;display:grid;grid-template-columns:auto minmax(114px,1fr);align-items:center;gap:10px;background:var(--well);border-block:1px solid var(--line2);padding:8px 12px}
+.stage-player button{min-height:44px;white-space:nowrap;padding-inline:12px}
+.stage-play-line{display:flex;justify-content:space-between;gap:6px;font-size:.75rem;font-weight:700;color:var(--ink);line-height:1.15}
+.stage-play-line span:last-child{color:var(--muted);white-space:nowrap}
+.stage-play-track progress{display:block;width:100%;height:8px;margin-top:5px;accent-color:var(--green)}
+@media(max-width:400px){.stage-player{padding-inline:8px;gap:7px}.stage-player button{padding-inline:10px;font-size:.78rem}.stage-play-line{font-size:.70rem}}

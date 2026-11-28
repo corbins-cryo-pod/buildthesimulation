@@ -4,6 +4,7 @@ import argparse, json
 from pathlib import Path
 HOME=Path(__file__).resolve().parent
 SRC=HOME/'src'
+SHARED=HOME.parent/'_shared'
 
 def build(dest:Path, repo:Path):
     tools={}
@@ -18,7 +19,7 @@ def build(dest:Path, repo:Path):
             needed.update(re.findall(r"'(\d\d-\d\d)'",line.split('tools:')[1]))
     assert needed.issubset(tools),f'Missing equipment: {needed-set(tools)}'
     s=(SRC/'template.html').read_text()
-    assets={'CSS':'style.css','ENGINE':'engine.js','VIEW':'view.js','APP':'app.js'}
+    assets={'CSS':'style.css','ENGINE':'engine.js','VIEW':'view.js','APP':'app.js','PLAYBACK_JS':SHARED/'workflow-player.js','PLAYBACK_CSS':SHARED/'workflow-player.css'}
     for symbol,path in assets.items():
         content=(SRC/path).read_text()
         assert '</script' not in content.lower(),path

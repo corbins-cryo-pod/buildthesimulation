@@ -35,3 +35,9 @@ The Python generator selects metadata, real record IDs, realization/scope, opera
 - Ten named scenarios × every one of 199 equipment entries (1,990 evaluations). Fourteen station IDs have a specific reviewed rule for at least one question. For stations without a relevant reviewed rule, "not established" is intentional.
 - Chromium UI on 1366 px desktop, iPhone 13 emulation, and a 320 px small viewport. All ten presets checked for horizontal overflow at each size. Selectors, missing-field handling, per-gate transitions, evidence links, downloaded content and absence of browser errors checked.
 - These are local functional and boundary tests. They neither test a physical instrument nor establish on-site hardware access. Deployment verification is separate.
+
+## Guided playback
+
+Play workflow starts with the current requirement, then checks each documented configuration gate, each virtual experiment gate, and a scoped decision. The comparison remains visible below; Previous and Next stage are available and stop autoplay. Changing any requirement or selected station cancels the active tour. The comparison JSON remains independent and pauses playback when downloaded. Pause and resume keep the current stage. Replay starts from the first stage for the current selections. Playback is opt-in; reduced-motion users receive the same sequence with no sliding markers or sweep effects.
+
+The one-file builder in this directory inlines the shared scheduler from `../bench-play.js`. `node ../bench-play.test.cjs` verifies timer cancellation; `CHROME_BIN=/path/to/chromium python ../bench-play.browser.py` tests the bundled entry points on desktop, iPhone 13 emulation, and a narrow reduced-motion configuration.

@@ -8,10 +8,14 @@
 <section id="casesSection" aria-labelledby="caseTitle">
 <div class="rail-desc"><p class="index">01 · Case file</p><h2 id="caseTitle">Pick a handoff</h2></div><div id="caseButtons" role="group" aria-label="Case files"></div>
 <h3 id="prompt"></h3><p id="insight"></p><p id="profiles"></p></section>
+<section class="handoff-play" id="handoff-player" aria-labelledby="handoff-play-title" data-playback="ready">
+ <div class="handoff-play-controls"><div><p class="index">Guided playback</p><h2 id="handoff-play-title">Follow the record</h2></div><button type="button" class="primary" id="handoff-play">Play workflow</button><label class="handoff-count" for="handoff-meter"><span id="handoff-play-count">0 checks inspected</span><progress id="handoff-meter" max="1" value="0"></progress></label></div>
+ <div class="handoff-stage"><div class="handoff-stage-head"><p id="handoff-stage-name">Ready to inspect</p><p id="handoff-stage-result" class="chip ready">Virtual receipt</p></div><p id="handoff-stage-detail">Play visits each check in order. Select a new source or receiver, or use the manual inspect buttons at any time.</p></div>
+</section>
 <section aria-label="Test the handoff" class="bench">
 <article class="source"><p class="index">02 / Source record</p><label for="artifact">What is handed off?</label><select id="artifact"></select><div id="record"></div></article>
 <article class="receiver"><p class="index">04 / Receiver</p><label for="demand">What does it need?</label><select id="demand"></select><div id="contract"></div></article><div class="testport">
-<svg viewBox="0 0 260 76" width="260" height="76" role="img" aria-labelledby="port-title" id="handoff-port"><title id="port-title">Three-panel schematic of the record, checks and receiving contract</title><rect x="10" y="20" width="42" height="36" rx="3"></rect><path d="M18 29h26M18 38h26M18 47h18M52 38h39" fill="none"></path><path d="M84 33l7 5-7 5" fill="none"></path><path d="M136 15l24 23-24 23-24-23z" id="indicator"></path><path d="M126 38h20M136 28v20M160 38h49M200 33l9 5-9 5" fill="none"></path><path d="M209 18h40v40h-40zM215 26h27M215 34h27M215 43h27M215 51h27" fill="none"></path></svg>
+<svg viewBox="0 0 260 76" width="260" height="76" role="img" aria-labelledby="port-title" id="handoff-port"><title id="port-title">Three-panel schematic of the record, checks and receiving contract</title><rect x="10" y="20" width="42" height="36" rx="3"></rect><path d="M18 29h26M18 38h26M18 47h18M52 38h39" fill="none"></path><path d="M84 33l7 5-7 5" fill="none"></path><path d="M136 15l24 23-24 23-24-23z" id="indicator"></path><path d="M126 38h20M136 28v20M160 38h49M200 33l9 5-9 5" fill="none"></path><path d="M209 18h40v40h-40zM215 26h27M215 34h27M215 43h27M215 51h27" fill="none"></path><g id="handoff-token" aria-hidden="true"><rect x="0" y="30" width="13" height="16" rx="2"></rect><path d="M3 34h7M3 38h6M3 42h4"></path></g></svg>
 <p class="index">03 / Handoff check</p><p id="progress">Waiting for inspection.</p><p id="verdict" class="chip ready">Not inspected</p><div class="controls">
 <button type="button" id="next">Inspect next gate</button><button type="button" class="primary" id="run">Inspect all gates</button><button type="button" id="reset" disabled>Reset checks</button></div></div>
 </section>
@@ -24,4 +28,4 @@
 </section>
 <footer><a href="/simulations/foundry/atlas/">Back to the workflow atlas</a><p>Constrained software and planning examples only</p></footer>
 <p id="announce" class="assist" role="status" aria-live="polite"></p>
-</main><script id="handoff-data" type="application/json">@@DATA@@</script><script>@@ENGINE@@</script><script>@@UI@@</script></body></html>
+</main><script id="handoff-data" type="application/json">@@DATA@@</script><script>@@ENGINE@@</script><script>@@PLAY@@</script><script>@@UI@@</script></body></html>

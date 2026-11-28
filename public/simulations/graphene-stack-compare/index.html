@@ -98,6 +98,22 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:5px;bor
 
 [hidden]{display:none!important}
 .witness-plot{width:100%;height:auto;display:block;margin:0 0 9px}
+
+/* Foundry workflow controls */
+.foundry-playback{display:flex;align-items:center;gap:8px 12px;min-width:0;padding:8px 10px;margin:0;background:#e4ece0;color:#203b38;border:1px solid #b6c5b7;border-radius:2px;line-height:1.24;scroll-margin-block-start:8px}
+.foundry-playback button[data-foundry-play]{padding:7px 10px;min-height:43px;flex:none;line-height:1.15;white-space:nowrap;background:#274f4c;color:#fff7e6;border:1px solid #274f4c;border-radius:3px;font-size:13px;font-weight:725;cursor:pointer}
+.foundry-playback button[data-foundry-play]:hover{background:#355b57}
+.foundry-playback button[data-foundry-play]:focus-visible{outline:2px solid #a65c30;outline-offset:2px}
+.foundry-playback button[data-foundry-play]::before{content:"";display:inline-block;width:0;height:0;margin-right:.56em;border:5px solid transparent;border-right:0;border-left:7px solid currentColor}
+.foundry-playback[data-play-state="playing"] button[data-foundry-play]::before{width:7px;height:10px;border:0;border-inline:2px solid currentColor}
+.foundry-playback[data-play-state="complete"] button[data-foundry-play]::before{content:"↻";width:auto;height:auto;border:0;font-size:1em;margin-right:.46em}
+.foundry-playback-readout{flex:1 1 86px;display:grid;gap:3px;min-width:0}
+.foundry-playback progress{appearance:auto;display:block;block-size:7px;inline-size:100%;min-width:0;max-width:100%;margin:0;accent-color:#487b6e}
+.foundry-playback [data-foundry-current]{min-width:0;font:650 11px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+.foundry-playback [data-foundry-notice]{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}
+@media (max-width:407px){.foundry-playback{gap:7px;padding:6px}.foundry-playback button[data-foundry-play]{font-size:12px;padding-inline:8px}.foundry-playback [data-foundry-current]{font-size:10.3px}}
+
+#station>.foundry-playback{margin:0 0 7px}@media(max-width:720px){#station>.foundry-playback[data-play-state="playing"]{position:sticky;top:0;z-index:2}}
 </style>
 </head><body>
 <a class="skip" href="#station">Skip to comparison</a>
@@ -113,8 +129,11 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:5px;bor
   <section id="station" aria-labelledby="station-title">
     <div class="station-bar">
       <div><p class="eyebrow">FLEXIBLE VS RIGID</p><h2 id="station-title">Comparison station</h2></div>
-      <div class="station-controls"><button id="reset" class="dim" type="button">Reset both</button><button id="run-all" class="primary" type="button">Run both to bench</button></div>
+      <div class="station-controls"><button id="reset" class="dim" type="button">Reset both</button></div>
     </div>
+    <div class="foundry-playback" data-foundry-playback role="group" aria-label="Workflow playback">
+<button type="button" id="run-all" data-foundry-play aria-label="Play workflow">Play workflow</button><div class="foundry-playback-readout"><progress max="1" value="0" aria-label="Combined progress across CLEAR and Delft"></progress><span data-foundry-current>Inspect the current stage</span></div><span data-foundry-notice role="status" aria-live="polite"></span>
+</div>
     <div class="viewbar">
       <span class="micro">INSPECTION</span>
       <div class="seg" role="group" aria-label="Inspection mode"><button data-view="plan" aria-pressed="true" type="button">Plan</button><button data-view="section" aria-pressed="false" type="button">Layer cutaway</button><button data-view="aperture" aria-pressed="false" type="button">Window proof</button></div>
@@ -144,6 +163,136 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:5px;bor
   </section>
 </main>
 <footer class="wrap"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/">Back to workflow atlas ↑</a></footer>
+<script>
+/* Foundry playback: a clock for existing model stages, never a second process model. */
+window.installFoundryPlayback = function installFoundryPlayback(spec) {
+  "use strict";
+  const panel = spec.button.closest("[data-foundry-playback]");
+  const progress = panel.querySelector("progress");
+  const current = panel.querySelector("[data-foundry-current]");
+  const notice = panel.querySelector("[data-foundry-notice]");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  let running = false;
+  let timer = 0;
+  let reason = "";
+  let motion = [];
+  const interaction = [
+    "button", "select", "input", "textarea", "summary", "a", "canvas", "[role=button]",
+    "[data-foundry-inspect]"
+  ].join(",");
+  function sync() {
+    const p = spec.read();
+    const label = running ? "Pause workflow" : p.done ? "Replay workflow" : "Play workflow";
+    spec.button.textContent = label;
+    spec.button.setAttribute("aria-label", label);
+    progress.max = p.total;
+    progress.value = p.completed;
+    current.textContent = p.text;
+    panel.dataset.playState = running ? "playing" : p.done ? "complete" : "idle";
+    panel.dataset.playPosition = String(p.completed);
+    if (reason) panel.title = reason;
+    else panel.removeAttribute("title");
+  }
+  function cancelMotion() {
+    for (const a of motion) a.cancel();
+    motion = [];
+  }
+  function notify(message) {
+    reason = message;
+    notice.textContent = message;
+    sync();
+  }
+  function pause(detail = "Playback paused. Press Play workflow to continue.") {
+    if (!running) return;
+    running = false;
+    clearTimeout(timer);
+    timer = 0;
+    cancelMotion();
+    notify(detail);
+  }
+  function flash() {
+    cancelMotion();
+    if (reduced.matches) return;
+    for (const frame of spec.frames || []) {
+      if (typeof frame.animate === "function") {
+        motion.push(frame.animate([{opacity:0.86},{opacity:1}],{duration:150,easing:"ease-out"}));
+      }
+    }
+  }
+  function schedule() {
+    timer = setTimeout(advance, spec.delay || 1300);
+  }
+  function advance() {
+    if (!running) return;
+    if (document.hidden) {
+      pause("Playback paused while the page is hidden.");
+      return;
+    }
+    const old = spec.read();
+    try {
+      spec.advance();
+      const next = spec.read();
+      flash();
+      if (next.done) {
+        running = false;
+        timer = 0;
+        notify("Workflow finished. Press Replay workflow to review from the beginning.");
+      } else if (next.completed <= old.completed) {
+        pause("Playback stopped at the current stage; you can continue manually.");
+      } else {
+        sync();
+        schedule();
+      }
+    } catch (e) {
+      pause("Playback stopped at the current stage; you can continue manually.");
+      console.error(e);
+    }
+  }
+  spec.button.addEventListener("click", () => {
+    if (running) return pause();
+    if (spec.read().done) spec.replay();
+    const next = spec.read();
+    if (next.done) return sync();
+    running = true;
+    notify("Playback started. Press Pause workflow or use a manual control to take over.");
+    // Compact screens should show the changing workpiece, not only its Play button.
+    const frame = (spec.frames || [])[0];
+    if (frame) {
+      const b = frame.getBoundingClientRect();
+      const visible = Math.max(0, Math.min(b.bottom, innerHeight) - Math.max(b.top, 0));
+      if (visible < Math.min(b.height * 0.65, innerHeight * 0.36)) {
+        panel.scrollIntoView({block:"start", behavior:"instant"});
+      }
+    }
+    schedule();
+  });
+  function manual(ev) {
+    if (!running) return;
+    if (ev.type === "keydown" && ev.key === "Escape") { pause(); return; }
+    const target = ev.target instanceof Element ? ev.target : null;
+    if (!target || target.closest("[data-foundry-playback]") ||
+        !target.closest(interaction)) return;
+    if (ev.type === "keydown" && ["Tab", "Shift", "Control", "Alt", "Meta"].includes(ev.key)) return;
+    pause("Playback paused for manual inspection. Press Play workflow to resume.");
+  }
+  for (const name of ["pointerdown", "click", "input", "change", "keydown"]) {
+    document.addEventListener(name, manual, true);
+  }
+  document.addEventListener("wheel", (ev) => {
+    if (ev.target instanceof Element && ev.target.closest("canvas,[data-foundry-inspect]")) manual(ev);
+  }, {capture:true, passive:true});
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) pause("Playback paused while the page is hidden.");
+  });
+  window.addEventListener("pagehide", () => pause("Playback paused while the page is hidden."));
+  if (typeof reduced.addEventListener === "function") {
+    reduced.addEventListener("change", () => { if (reduced.matches) cancelMotion(); });
+  }
+  sync();
+  return {sync, pause};
+};
+
+</script>
 <script id="equipment-data" type="application/json">{"01-01": {"name": "CAD/mask workstation", "model": "KLayout + KiCad + FreeCAD (custom workstation)"}, "02-01": {"name": "Contact mask aligner", "model": "Karl SUSS MA6/BA6 Gen 4"}, "02-12": {"name": "Inspection microscope", "model": "Nikon ECLIPSE LV100ND LED · manual reflected brightfield"}, "03-01": {"name": "Electron-beam evaporation", "model": "Temescal BJD 1800"}, "03-03": {"name": "Magnetron sputtering", "model": "Kurt J. Lesker PVD 75 RF/DC"}, "03-08": {"name": "Parylene coating", "model": "SCS PDS 2010 Labcoter 2 · dry reference"}, "04-01": {"name": "Reactive ion etcher", "model": "Oxford PlasmaPro 80 RIE"}, "04-02": {"name": "ICP reactive ion etcher", "model": "Oxford PlasmaLab 100 ICP"}, "04-06": {"name": "Wet processing", "model": "Custom ReynoldsTech-style wet bench (exact model pending)"}, "04-07": {"name": "Wafer dicing", "model": "DISCO DAD 321"}, "05-06": {"name": "Four-point probe", "model": "CDE ResMap 178 · manual load, Jandel 1 mm inline cartridge"}, "05-07": {"name": "Probe station", "model": "Cascade Microtech Summit 11000B-AP · manual 200 mm"}, "05-10": {"name": "Raman microscope", "model": "HORIBA LabRAM HR Evolution, Olympus BX-series / 532 nm virtual branch"}, "08-02": {"name": "Manual wedge bonder", "model": "Kulicke & Soffa 4523"}, "12-01": {"name": "Stereo dissecting microscope", "model": "ZEISS SteREO Discovery V12"}, "16-13": {"name": "Cable and connector library", "model": "Custom BNC, SMA, USB, triax, FFC and headstage families"}}</script>
 <script>/* Build The Simulation — transparent graphite/graphene process comparison. */
 (function(root){
@@ -501,8 +650,7 @@ globalThis.GrapheneVisual={render:(m,mode)=>mode==='section'?section(m):mode==='
 const E=globalThis.GrapheneEngine,V=globalThis.GrapheneVisual,$=x=>document.getElementById(x),Q=x=>[...document.querySelectorAll(x)];
 const EQ=JSON.parse($('equipment-data').textContent),siteRoot=location.protocol==='file:'?'https://buildthesimulation.com':'';
 const samples=['clear','delft'],ruler={clear:0,delft:0};
-let cond=Object.fromEntries(samples.map(k=>[k,{...E.PRESETS[k]}])),model={},current='plan',preset=null,timer=null;
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cond=Object.fromEntries(samples.map(k=>[k,{...E.PRESETS[k]}])),model={},current='plan',preset=null,foundryPlayer=null;
 const es=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const id=(k,j)=>k+'-'+j;
 const ft=(n,p=1)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:p}).format(n);
@@ -550,7 +698,7 @@ function install(){
   if(siteRoot)Q('a[href^="/"]').forEach(a=>a.setAttribute('href',siteRoot+a.getAttribute('href')));
 }
 function verdict(m){
-  if(!m.ready)return ['IN PROCESS','','Complete this traveler or run both to the bench. Readouts from the other sample are unchanged.'];
+  if(!m.ready)return ['IN PROCESS','','Complete this traveler or play both workflows to the bench. Readouts from the other sample are unchanged.'];
   if(m.dry===null)return ['DRY OPEN','fail',m.key==='clear'?'The selected electrical coupling rules do not create an end-to-end carbon path. Four logged transfers are not proof of four intact sheets.':'Neither inner path reaches the common carbon-facing section.'];
   if(m.clearFraction<.999)return ['WINDOW HOLD','hold',m.note||'The line conducts, but the modeled opening is not nominal. Optical aperture and dry continuity are separate.'];
   const hid=m.key==='clear'?m.o.tear!=='none':m.o.inner!=='intact';
@@ -587,20 +735,10 @@ function refresh(k){
   $(id(k,'windowShift-value')).textContent=ft(m.windowDx,2)+' µm';
   if(k==='delft')$('delft-moAtFace-value').textContent=ft(m.o.moAtFace*100)+'%';
 }
-function all(){samples.forEach(refresh);Q('[data-case]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.case===preset?'true':'false'));}
-function stop(){clearInterval(timer);timer=null;$('run-all').textContent='Run both to bench';}
+function all(){samples.forEach(refresh);Q('[data-case]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.case===preset?'true':'false'));foundryPlayer?.sync();}
+function stop(){foundryPlayer?.pause();}
 function setmode(m){current=m;$('viewhint').textContent=viewhelp[m];Q('[data-view]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.view===m?'true':'false'));all();}
-function step(k,i){stop();ruler[k]=Math.max(0,Math.min(11,+i));refresh(k);}
-function start(){
-  if(timer){stop();return;}
-  if(reduced){ruler.clear=11;ruler.delft=11;all();return;}
-  if(samples.every(k=>ruler[k]===11)){ruler.clear=0;ruler.delft=0;all();}
-  $('run-all').textContent='Pause both';
-  timer=setInterval(()=>{
-    samples.forEach(k=>{ruler[k]=Math.min(11,ruler[k]+1)});all();
-    if(samples.every(k=>ruler[k]===11))stop();
-  },108);
-}
+function step(k,i){stop();ruler[k]=Math.max(0,Math.min(11,+i));refresh(k);foundryPlayer?.sync();}
 const CAS={
   tear:['clear',{tear:'one',transferPath:'terminal'},'section'],
   stagger:['clear',{tear:'staggered',transferPath:'terminal'},'plan'],
@@ -626,7 +764,6 @@ for(const k of samples) {
     field.addEventListener(field.type==='range'?'input':'change',change);
   }
 }
-$('run-all').onclick=start;
 $('reset').onclick=()=>{stop();samples.forEach(k=>{cond[k]={...E.PRESETS[k]};ruler[k]=0});preset=null;setmode('plan')};
 Q('[data-view]').forEach(b=>b.onclick=()=>setmode(b.dataset.view));
 Q('[data-case]').forEach(b=>b.onclick=()=>scenario(b.dataset.case));
@@ -648,6 +785,13 @@ $('download').onclick=()=>{
   download('graphene-coupon-comparison.json',JSON.stringify(out,null,2),'application/json');
 };
 setmode('plan');
+foundryPlayer=window.installFoundryPlayback({
+  button:$('run-all'), frames:samples.map(k=>$(id(k,'figure'))),
+  read:()=>({completed:ruler.clear+ruler.delft+2,total:24,done:samples.every(k=>ruler[k]===11),
+    text:'CLEAR '+(ruler.clear+1)+' / 12 · Delft '+(ruler.delft+1)+' / 12'}),
+  advance:()=>{samples.forEach(k=>{ruler[k]=Math.min(11,ruler[k]+1)});all();},
+  replay:()=>{samples.forEach(k=>{ruler[k]=0});all();}
+});
 })();
 </script>
 </body></html>

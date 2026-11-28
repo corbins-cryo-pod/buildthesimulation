@@ -4,8 +4,7 @@
 const E=globalThis.GrapheneEngine,V=globalThis.GrapheneVisual,$=x=>document.getElementById(x),Q=x=>[...document.querySelectorAll(x)];
 const EQ=JSON.parse($('equipment-data').textContent),siteRoot=location.protocol==='file:'?'https://buildthesimulation.com':'';
 const samples=['clear','delft'],ruler={clear:0,delft:0};
-let cond=Object.fromEntries(samples.map(k=>[k,{...E.PRESETS[k]}])),model={},current='plan',preset=null,timer=null;
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cond=Object.fromEntries(samples.map(k=>[k,{...E.PRESETS[k]}])),model={},current='plan',preset=null,foundryPlayer=null;
 const es=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const id=(k,j)=>k+'-'+j;
 const ft=(n,p=1)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:p}).format(n);
@@ -53,7 +52,7 @@ function install(){
   if(siteRoot)Q('a[href^="/"]').forEach(a=>a.setAttribute('href',siteRoot+a.getAttribute('href')));
 }
 function verdict(m){
-  if(!m.ready)return ['IN PROCESS','','Complete this traveler or run both to the bench. Readouts from the other sample are unchanged.'];
+  if(!m.ready)return ['IN PROCESS','','Complete this traveler or play both workflows to the bench. Readouts from the other sample are unchanged.'];
   if(m.dry===null)return ['DRY OPEN','fail',m.key==='clear'?'The selected electrical coupling rules do not create an end-to-end carbon path. Four logged transfers are not proof of four intact sheets.':'Neither inner path reaches the common carbon-facing section.'];
   if(m.clearFraction<.999)return ['WINDOW HOLD','hold',m.note||'The line conducts, but the modeled opening is not nominal. Optical aperture and dry continuity are separate.'];
   const hid=m.key==='clear'?m.o.tear!=='none':m.o.inner!=='intact';
@@ -90,20 +89,10 @@ function refresh(k){
   $(id(k,'windowShift-value')).textContent=ft(m.windowDx,2)+' µm';
   if(k==='delft')$('delft-moAtFace-value').textContent=ft(m.o.moAtFace*100)+'%';
 }
-function all(){samples.forEach(refresh);Q('[data-case]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.case===preset?'true':'false'));}
-function stop(){clearInterval(timer);timer=null;$('run-all').textContent='Run both to bench';}
+function all(){samples.forEach(refresh);Q('[data-case]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.case===preset?'true':'false'));foundryPlayer?.sync();}
+function stop(){foundryPlayer?.pause();}
 function setmode(m){current=m;$('viewhint').textContent=viewhelp[m];Q('[data-view]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.view===m?'true':'false'));all();}
-function step(k,i){stop();ruler[k]=Math.max(0,Math.min(11,+i));refresh(k);}
-function start(){
-  if(timer){stop();return;}
-  if(reduced){ruler.clear=11;ruler.delft=11;all();return;}
-  if(samples.every(k=>ruler[k]===11)){ruler.clear=0;ruler.delft=0;all();}
-  $('run-all').textContent='Pause both';
-  timer=setInterval(()=>{
-    samples.forEach(k=>{ruler[k]=Math.min(11,ruler[k]+1)});all();
-    if(samples.every(k=>ruler[k]===11))stop();
-  },108);
-}
+function step(k,i){stop();ruler[k]=Math.max(0,Math.min(11,+i));refresh(k);foundryPlayer?.sync();}
 const CAS={
   tear:['clear',{tear:'one',transferPath:'terminal'},'section'],
   stagger:['clear',{tear:'staggered',transferPath:'terminal'},'plan'],
@@ -129,7 +118,6 @@ for(const k of samples) {
     field.addEventListener(field.type==='range'?'input':'change',change);
   }
 }
-$('run-all').onclick=start;
 $('reset').onclick=()=>{stop();samples.forEach(k=>{cond[k]={...E.PRESETS[k]};ruler[k]=0});preset=null;setmode('plan')};
 Q('[data-view]').forEach(b=>b.onclick=()=>setmode(b.dataset.view));
 Q('[data-case]').forEach(b=>b.onclick=()=>scenario(b.dataset.case));
@@ -151,4 +139,11 @@ $('download').onclick=()=>{
   download('graphene-coupon-comparison.json',JSON.stringify(out,null,2),'application/json');
 };
 setmode('plan');
+foundryPlayer=window.installFoundryPlayback({
+  button:$('run-all'), frames:samples.map(k=>$(id(k,'figure'))),
+  read:()=>({completed:ruler.clear+ruler.delft+2,total:24,done:samples.every(k=>ruler[k]===11),
+    text:'CLEAR '+(ruler.clear+1)+' / 12 · Delft '+(ruler.delft+1)+' / 12'}),
+  advance:()=>{samples.forEach(k=>{ruler[k]=Math.min(11,ruler[k]+1)});all();},
+  replay:()=>{samples.forEach(k=>{ruler[k]=0});all();}
+});
 })();

@@ -7,6 +7,100 @@ const line=(g,x1,y1,x2,y2,stroke,extra={})=>se(g,'line',{x1,y1,x2,y2,stroke,...e
 const rect=(g,x,y,width,height,fill,extra={})=>se(g,'rect',{x,y,width:Math.max(0,width),height:Math.max(0,height),fill,...extra});
 const tx=(g,x,y,s,fill='#e2e6d1',size=11,a={})=>se(g,'text',{x,y,fill,'font-size':size,'font-family':'ui-monospace,monospace',...a},s);
 const poly=(g,points,fill,extra={})=>se(g,'polygon',{points:points.map(a=>a.join(',')).join(' '),fill,...extra});
+const workflow=[
+ {key:'blank',short:'Silicon',title:'Start with a silicon section',basis:'01 / MODEL START',body:'Start with the selected neighbor boundary before either face is cut. The taller Slant tip envelope is a separate geometry comparison.'},
+ {key:'groove',short:'Rear groove',title:'Open the rear groove',basis:'02 / HISTORICAL FIG. 6',body:'The historical route creates the grid from the rear face first. This slice shows only one open groove, not the whole grid or a tool path.'},
+ {key:'glass',short:'Glass fill',title:'Fill the rear groove with glass',basis:'03 / HISTORICAL FIG. 7',body:'The drawn glass occupies the rear groove. The front-to-rear meeting has not happened yet; silicon still spans the upper region in this slice.'},
+ {key:'front',short:'Front cut',title:'Bring the opposing cut down',basis:'04 / HISTORICAL FIGS. 8–9',body:'The front opening creates a separate plane. The draw uses the selected cut’s midpoint, not a blade profile or an etch-shaped shank.'},
+ {key:'geometry',short:'Inspect cuts',title:'Check overlap and retained glass',basis:'05 / VIRTUAL GEOMETRY',body:'Compare lateral overlap and worst along-edge depth. A missed join, a zero-margin contact and a breach remain different observations.'},
+ {key:'continuity',short:'Continuity',title:'Trace virtual output identity',basis:'06 / SYNTHETIC BENCH',body:'Touching or removing glass does not by itself create a modeled conductor. The existing Boolean fixture counts only the geometry assumptions and faults selected below.'}
+];
+const reducedWorkflow=matchMedia('(prefers-reduced-motion: reduce)'), WORKFLOW_DWELL=1850;
+let workflowStage=0,workflowState='ready',workflowTimer,workflowMotion;
+const Wdrop=()=>{clearTimeout(workflowTimer);workflowTimer=undefined;workflowMotion?.cancel();};
+function workflowAnnounce(s){$('workflow-live').textContent=s;}
+function workflowStop(notify=false){
+ if(workflowState!=='playing')return;
+ Wdrop();workflowState='paused';renderWorkflow();
+ if(notify)workflowAnnounce('Workflow paused at step '+(workflowStage+1)+'.');
+}
+function workflowReplay(){
+ if(workflowState==='playing'){workflowStop(true);return;}
+ if(!q||q.error)return;
+ if(workflowState!=='paused'||workflowStage===workflow.length-1)workflowStage=0;
+ workflowState='playing';workflowShow(workflowStage,true);
+ if($('workflow-plate').getBoundingClientRect().bottom>innerHeight)$('workflow-player').scrollIntoView({block:'start',behavior:'auto'});
+ workflowQueue();
+}
+function workflowQueue(){
+ clearTimeout(workflowTimer);
+ workflowTimer=setTimeout(()=>{
+  workflowTimer=undefined;
+  if(workflowState!=='playing')return;
+  const next=workflowStage+1;
+  if(next>=workflow.length-1)workflowState='complete';
+  workflowShow(next,true);
+  if(workflowState==='playing')workflowQueue();
+ },WORKFLOW_DWELL);
+}
+function workflowShow(i,motion=false){
+ workflowStage=clamp(i,0,workflow.length-1);
+ if(workflowStage===workflow.length-1&&!q?.error&&!q?.outOfEnvelope)test();
+ renderWorkflow();
+ workflowAnnounce('Step '+(workflowStage+1)+', '+workflow[workflowStage].title+(workflowState==='complete'?'. Workflow complete.':'.'));
+ workflowMotion?.cancel();
+ const art=$('workflow-plate');
+ if(motion&&!reducedWorkflow.matches&&art.animate)workflowMotion=art.animate([{opacity:.45},{opacity:1}],{duration:320,easing:'ease-out'});
+}
+function renderWorkflow(){
+ const a=workflow[workflowStage],e=sectionEdge,step=workflowStage,valid=!!(q&&!q.error&&e);
+ $('workflow-player').dataset.state=workflowState;
+ $('workflow-play').textContent={ready:'Play workflow',playing:'Pause workflow',paused:'Resume workflow',complete:'Replay workflow'}[workflowState];
+ $('workflow-play').disabled=!valid;
+ $('workflow-state').textContent={ready:'Ready',playing:'Playing',paused:'Paused',complete:'Complete'}[workflowState];
+ $('workflow-position').textContent=(step+1)+' / '+workflow.length;
+ $('workflow-progress').max=workflow.length;$('workflow-progress').value=step+1;
+ for(const b of $('workflow-steps').querySelectorAll('button')){
+  b.disabled=!valid;
+  if(Number(b.dataset.workflowStep)===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');
+ }
+ $('workflow-basis').textContent=a.basis;$('workflow-title').textContent=a.title;$('workflow-description').textContent=a.body;
+ const g=$('workflow-plate').querySelector('g'),read=$('workflow-readout');g.replaceChildren();read.dataset.warning='false';
+ if(!valid){read.textContent='A valid fixture configuration is required. Edit the existing inputs below.';read.dataset.warning='true';$('workflow-plate-desc').textContent=read.textContent;return;}
+ const o=q.o,range=Math.max(200,Math.abs(e.frontCenter-e.backCenter)+o.frontKerf/2+20,o.rearKerf/2+20),origin=e.backCenter;
+ const top=Math.max(o.glassDepth+78,e.floorMax+61,340),bottom=Math.min(-26,e.floorMin-9),X=x=>scale(x-origin,-range,range,32,478),Y=z=>scale(z,bottom,top,176,42);
+ const yf=Y(0),yr=Y(o.glassDepth),yt=Y(top),bLo=X(e.backLo),bHi=X(e.backHi),fLo=X(e.frontLo),fHi=X(e.frontHi);
+ rect(g,0,0,510,219,pal.bg);
+ tx(g,31,22,'FRONT',pal.soft,12);tx(g,476,22,e.aName+'  ↔  '+e.bName,pal.gold,12,{'text-anchor':'end'});
+ rect(g,32,yt,446,yf-yt,'#748176',{stroke:'#a4b19f','stroke-width':1,'data-layer':'silicon'});
+ if(step>=1)rect(g,bLo,yr,bHi-bLo,yf-yr,step<2?'#243a30':'#79b6a3',{stroke:pal.mint,'stroke-width':1.1,'data-layer':step<2?'empty-rear-groove':'glass'});
+ if(step>=3){
+  const cut=Y(e.floorAtCenter);
+  rect(g,fLo,yt-.6,fHi-fLo,Math.min(yf,cut)-yt+.6,pal.bg,{stroke:pal.gold,'stroke-width':1.15,'data-layer':'front-cut'});
+  if(Math.abs(e.floorMax-e.floorMin)>1e-7)
+   for(const h of [e.floorMin,e.floorMax])line(g,fLo,Y(h),fHi,Y(h),pal.gold,{'stroke-dasharray':'3 3','stroke-width':.7});
+ }
+ line(g,29,yf,481,yf,'#c3d3c0',{'stroke-width':1,'stroke-dasharray':'4 3'});
+ if(step>=4){
+  const xx1=Math.max(bLo,fLo),xx2=Math.min(bHi,fHi);
+  if(xx2>xx1){const yy=Math.min(197,yf+13);line(g,xx1,yy,xx2,yy,pal.gold,{'stroke-width':1.8,'data-layer':'registered-span'});}
+  if(e.siliconCandidate){
+   const yrisk=Y(Math.max(0,Math.min(top,(o.glassDepth+e.floorAtCenter)/2)));
+   if(e.lateralClearance<0){const start=e.frontCenter>e.backCenter?bHi:fHi,end=e.frontCenter>e.backCenter?fLo:bLo;line(g,start,yrisk,end,yrisk,pal.rust,{'stroke-width':4,'data-layer':'web-marker'});}
+   else if(xx2>xx1)line(g,xx1,yrisk,xx2,yrisk,pal.rust,{'stroke-width':4,'data-layer':'web-marker'});
+  }else if(e.breach&&xx2>xx1)line(g,xx1,yf,xx2,yf,pal.rust,{'stroke-width':3.6,'data-layer':'breach-marker'});
+ }
+ tx(g,32,203,'REAR · DATUM',pal.soft,12);
+ tx(g,477,203,step===0?'INTACT SECTION':step===1?'OPEN REAR GROOVE':step===2?'GLASS IN REAR GROOVE':step===3?'OPPOSING FRONT OPENING':step===4?'MODEL OVERLAP WITNESS':'INERT NETWORK CHECK',pal.mint,11,{'text-anchor':'end'});
+ let label=['One selected boundary in a symbolic silicon block.','Open at the rear face; no front cut or glass yet.','Glass witness present; the front is still uncut.','Front opening shown at the current boundary midpoint.'][step];
+ if(step===4){label='Lateral overlap '+f(e.lateralClearance)+' µm · depth margin '+f(e.depthMargin)+' µm · retained cap '+f(e.capMin)+' µm.';read.dataset.warning=String(e.siliconCandidate||e.tangent||e.breach);}
+ if(step===5){
+  if(q.outOfEnvelope||!t||t.error){label=q.outOfEnvelope?'Network withheld outside the nearest-neighbor model.':t?.error||'No current fixture result. Run the continuity check again after editing.';read.dataset.warning='true';}
+  else{label=t.isolated+' isolated · '+t.open+' open · '+t.ambiguous+' ambiguous outputs. '+t.parked+' parked corner roots.';read.dataset.warning=String(t.open+t.ambiguous>0);}
+ }
+ read.textContent=label;$('workflow-plate-desc').textContent=a.title+'. '+label+' Boundary: '+e.aName+' to '+e.bName+'.';
+}
+
 const major=['frontKerf','rearKerf','glassDepth','toe','pitchX','pitchY','offsetX','offsetY','slope'];
 let q=null,t=null,first=true,sectionEdge=null;
 const field=n=>$(n).value.trim()===''?NaN:Number($(n).value);
@@ -184,7 +278,7 @@ function clearTest(msg){
 function view(){
  if(!q||q.error)return;
  const r=Number($('edgeRow').value),c=Number($('edgeCol').value),a=$('edgeAxis').value;sectionEdge=q.edges.find(e=>e.axis===a&&e.row===r&&e.col===c)||null;
- plotAx('uniform');plotAx('slant');elevation();plan();section();
+ plotAx('uniform');plotAx('slant');elevation();plan();section();renderWorkflow();
  const e=sectionEdge;if(!e)return;
  setCards($('edgeData'),[[f(e.lateralClearance)+' µm','Signed plan-view overlap (negative = gap)'],[f(e.depthMargin)+' µm','Worst signed depth overlap (negative = shelf)'],[f(e.capMin)+' µm','Minimum retained glass cap in modeled strip']]);
  $('faultTarget').textContent='Selected '+e.aName+' → '+e.bName+' along physical +'+e.axis.toUpperCase()+'. Open applies only to '+e.aName+'.';
@@ -202,7 +296,7 @@ function render(reset=true){
   $('geoNotice').textContent=q.error;$('geoNotice').classList.add('warn');
   for(const id of ['facts','rowBand','spans','edgeData'])$(id).replaceChildren();
   for(const id of ['uniformFig','slantFig','elevation','plan','section'])$(id).querySelector('g').replaceChildren();$('sectionText').textContent='';$('elevationNote').textContent='';
-  $('faultTarget').textContent='No valid section selected.';return;
+  $('faultTarget').textContent='No valid section selected.';renderWorkflow();return;
  }
  facts();spans();view();
  if(q.outOfEnvelope){$('checkStatus').className='status bad';$('checkStatus').textContent='The network solver is withheld outside the nearest-neighbor registration model.';}
@@ -248,6 +342,23 @@ function download(mode){
   },null,2);file+='record.json';}
  const url=URL.createObjectURL(new Blob([body],{type:mode==='record'?'application/json':'text/csv;charset=utf-8'})),a=ds('a','',{href:url,download:file});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),25000);
 }
+$('workflow-steps').replaceChildren(...workflow.map((a,i)=>{
+ const li=ds('li'),b=ds('button','',{type:'button','data-workflow-step':i,'aria-label':'Step '+(i+1)+': '+a.title});
+ b.append(ds('span',String(i+1).padStart(2,'0')),ds('span',a.short));
+ b.addEventListener('click',()=>{workflowStop();if(workflowState==='complete')workflowState='ready';workflowShow(i);});
+ li.append(b);return li;
+}));
+$('workflow-play').addEventListener('click',workflowReplay);
+for(const kind of ['input','change'])document.querySelector('main').addEventListener(kind,e=>{
+ if(e.target.closest('#configure,#cuts,#continuity')&&e.target.matches('input,select,textarea'))workflowStop(true);
+},true);
+document.querySelector('main').addEventListener('click',e=>{
+ const n=e.target.closest('[data-example],[data-r],#run,#geometryCsv,#channelsCsv,#record,.jump a:not([href="#workflow-player"])');
+ if(n&&!n.disabled)workflowStop(true);
+},true);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)workflowStop();});
+window.addEventListener('pagehide',()=>workflowStop());
+if(reducedWorkflow.addEventListener)reducedWorkflow.addEventListener('change',()=>{if(reducedWorkflow.matches)workflowMotion?.cancel();});
 for(const [id,v] of Object.entries(E.examples)){const b=ds('button',v.name,{'data-example':id,'aria-pressed':'false',type:'button'});b.addEventListener('click',()=>fixturePreset(id));$('examples').append(b);}
 for(const [title,url,note] of Object.values(E.refs)){const item=ds('li');item.append(ds('a',title,{href:url,rel:'noreferrer'}),ds('span',note));$('sources').append(item);}
 for(const [k,[a,b]] of Object.entries(E.limits)){const node=$(k);node.min=a;node.max=b;}
@@ -256,7 +367,7 @@ for(const id of ['face','rotation'])$(id).addEventListener('input',view);
 $('edgeAxis').addEventListener('input',()=>{edgeChoices();render(true);});
 for(const id of ['edgeRow','edgeCol','accountWeb','open','bridge'])$(id).addEventListener('input',()=>render(true));
 $('plan').addEventListener('click',ev=>{const site=ev.target.closest('[data-r]');if(site){edgeChoices(Number(site.dataset.r),Number(site.dataset.c));render(true);}});
-$('run').addEventListener('click',test);
+$('run').addEventListener('click',()=>{test();renderWorkflow();});
 $('geometryCsv').addEventListener('click',()=>download('geometry'));$('channelsCsv').addEventListener('click',()=>download('channels'));$('record').addEventListener('click',()=>download('record'));
 $('measured').value=E.base.measured;
 const query=new URLSearchParams(location.search),example=query.get('example');

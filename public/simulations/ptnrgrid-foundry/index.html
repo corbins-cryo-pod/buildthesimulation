@@ -7,6 +7,22 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 
 .inline-traveler{border-top:1px solid var(--softline);display:flex;align-items:center;justify-content:space-between;gap:6px;padding:8px 12px;background:var(--well)}.inline-traveler .help{font-family:var(--mono);margin:0;font-variant-numeric:tabular-nums}.inline-traveler button{min-height:39px}@media(max-width:730px){.inline-traveler{padding:7px}.inline-traveler button{min-height:42px;padding:6px 8px;font-size:.75rem}}
+
+/* Foundry workflow controls */
+.foundry-playback{display:flex;align-items:center;gap:8px 12px;min-width:0;padding:8px 10px;margin:0;background:#e4ece0;color:#203b38;border:1px solid #b6c5b7;border-radius:2px;line-height:1.24;scroll-margin-block-start:8px}
+.foundry-playback button[data-foundry-play]{padding:7px 10px;min-height:43px;flex:none;line-height:1.15;white-space:nowrap;background:#274f4c;color:#fff7e6;border:1px solid #274f4c;border-radius:3px;font-size:13px;font-weight:725;cursor:pointer}
+.foundry-playback button[data-foundry-play]:hover{background:#355b57}
+.foundry-playback button[data-foundry-play]:focus-visible{outline:2px solid #a65c30;outline-offset:2px}
+.foundry-playback button[data-foundry-play]::before{content:"";display:inline-block;width:0;height:0;margin-right:.56em;border:5px solid transparent;border-right:0;border-left:7px solid currentColor}
+.foundry-playback[data-play-state="playing"] button[data-foundry-play]::before{width:7px;height:10px;border:0;border-inline:2px solid currentColor}
+.foundry-playback[data-play-state="complete"] button[data-foundry-play]::before{content:"↻";width:auto;height:auto;border:0;font-size:1em;margin-right:.46em}
+.foundry-playback-readout{flex:1 1 86px;display:grid;gap:3px;min-width:0}
+.foundry-playback progress{appearance:auto;display:block;block-size:7px;inline-size:100%;min-width:0;max-width:100%;margin:0;accent-color:#487b6e}
+.foundry-playback [data-foundry-current]{min-width:0;font:650 11px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+.foundry-playback [data-foundry-notice]{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}
+@media (max-width:407px){.foundry-playback{gap:7px;padding:6px}.foundry-playback button[data-foundry-play]{font-size:12px;padding-inline:8px}.foundry-playback [data-foundry-current]{font-size:10.3px}}
+
+.scene-card .foundry-playback{margin:0 10px 7px}
 </style></head>
 <body><a class="skip" href="#workbench">Skip to workbench</a>
 <header class="mast"><div class="wrap"><a class="brand" href="/"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.2" y="1.2" width="21.6" height="21.6" rx="3" fill="none" stroke="currentColor"/><path d="M4 13h4l2.1-6.1 3.5 10 1.75-4H20" fill="none" stroke="currentColor" stroke-width="1.35"/></svg>Build the Simulation</a><nav aria-label="Site"><a href="/simulations/foundry/">Foundry labs</a><a href="/simulations/foundry/atlas/#profile=flex-ptnr">Workflow atlas</a></nav></div></header>
@@ -17,13 +33,16 @@
 <noscript><p class="notice">Enable JavaScript to run this offline simulation. References remain available <a href="https://doi.org/10.1126/scitranslmed.abj1441">in the article</a>.</p></noscript><p id="load-error" role="alert" class="notice" hidden>The model could not load.</p>
 <div class="layout" id="model-ui" hidden>
 <div class="side">
-<section class="card setup"><div class="boxhead"><p class="eyebrow">01 / Setup</p><h3>Process configuration</h3></div><label for="configuration">Published form factor</label><select id="configuration"></select><p id="config-note" class="help"></p><div class="setup-buttons"><button id="next" class="primary" type="button">Next station →</button><button class="secondary" id="run" type="button">Run all</button><button class="as-link" id="reset" type="button">Reset</button></div></section>
+<section class="card setup"><div class="boxhead"><p class="eyebrow">01 / Setup</p><h3>Process configuration</h3></div><label for="configuration">Published form factor</label><select id="configuration"></select><p id="config-note" class="help"></p><div class="setup-buttons"><button id="next" class="primary" type="button">Next station →</button><button class="secondary" id="run" type="button">Jump to final</button><button class="as-link" id="reset" type="button">Reset</button></div></section>
 <details class="card traveler" id="traveler-box" open><summary><span class="eyebrow">02 / Sequence</span><span class="h3">Virtual traveler</span><span id="stage-status" class="help"></span></summary><progress id="progress" max="19" value="1" aria-label="Completed virtual stations"></progress><ol id="traveler" aria-label="Process stations"></ol></details>
 </div>
 <div class="lab">
 <section class="card scene-card"><div class="boxhead stage-head"><div><p class="eyebrow" id="stage-index"></p><h3 id="stage-title"></h3></div><span class="badge" id="stage-basis"></span></div>
 <div class="stage-body"><p id="stage-description"></p><p class="check" id="stage-check"></p><div id="stage-evidence"></div></div>
 <div role="group" class="modes" aria-label="Inspection views"><button type="button" data-view="panel">Panel</button><button type="button" data-view="stack">Layer stack</button><button type="button" data-view="route">Routes A/B</button><button type="button" data-view="grid">Site map</button><button type="button" data-view="connect">Connector</button><button type="button" data-view="mold">Inert mold</button></div>
+<div class="foundry-playback" data-foundry-playback role="group" aria-label="Workflow playback">
+<button type="button" id="play-ptnr" data-foundry-play aria-label="Play workflow">Play workflow</button><div class="foundry-playback-readout"><progress max="1" value="0" aria-label="Current station"></progress><span data-foundry-current>Inspect the current stage</span></div><span data-foundry-notice role="status" aria-live="polite"></span>
+</div>
 <div class="scene"><canvas id="scene" width="1050" height="620" role="img" aria-label="Interactive inspection drawing"></canvas><div class="legend" id="legend"></div></div><p class="caption" id="scene-caption"></p><div class="inline-traveler" aria-label="Quick station navigation"><button type="button" class="secondary" id="scene-prev">← Previous</button><span id="scene-progress" class="help"></span><button type="button" class="primary" id="scene-next">Next station →</button></div>
 </section>
 <section class="card diagnosis"><div class="boxhead"><p class="eyebrow">03 / Inspection</p><h3>Faults and bench evidence</h3></div><p id="faulthelp">Try a distinct failure mechanism. The fault site stays fixed as you inspect neighboring sites.</p>
@@ -37,7 +56,137 @@
 </div></div>
 <details class="card evidence" id="evidence"><summary><span class="eyebrow">04 / Provenance</span><span class="h3">Published references &amp; model limits</span></summary><div><p>No tissue, stimulation, clinical method, recipe settings, measurement dataset, or manufacturer pinout. A named machine is a candidate only. In the literature, finished film and deposited values differ; the lab keeps both visible.</p><dl id="refs"></dl><p><a href="/devices/74-ptnrgrid-platinum-nanorod-surface-arrays/">PtNRGrid catalog sheet ↗</a></p></div></details>
 <footer><span>Build the Simulation <b> / </b> Foundry notebook</span><a href="/simulations/foundry/">Foundry labs ↑</a></footer>
-</main><p id="live" class="sr-only" role="status" aria-live="polite"></p><script>/* PtNRGrid foundry: pure, deterministic, offline educational process and diagnostic model. */
+</main><p id="live" class="sr-only" role="status" aria-live="polite"></p><script>
+/* Foundry playback: a clock for existing model stages, never a second process model. */
+window.installFoundryPlayback = function installFoundryPlayback(spec) {
+  "use strict";
+  const panel = spec.button.closest("[data-foundry-playback]");
+  const progress = panel.querySelector("progress");
+  const current = panel.querySelector("[data-foundry-current]");
+  const notice = panel.querySelector("[data-foundry-notice]");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  let running = false;
+  let timer = 0;
+  let reason = "";
+  let motion = [];
+  const interaction = [
+    "button", "select", "input", "textarea", "summary", "a", "canvas", "[role=button]",
+    "[data-foundry-inspect]"
+  ].join(",");
+  function sync() {
+    const p = spec.read();
+    const label = running ? "Pause workflow" : p.done ? "Replay workflow" : "Play workflow";
+    spec.button.textContent = label;
+    spec.button.setAttribute("aria-label", label);
+    progress.max = p.total;
+    progress.value = p.completed;
+    current.textContent = p.text;
+    panel.dataset.playState = running ? "playing" : p.done ? "complete" : "idle";
+    panel.dataset.playPosition = String(p.completed);
+    if (reason) panel.title = reason;
+    else panel.removeAttribute("title");
+  }
+  function cancelMotion() {
+    for (const a of motion) a.cancel();
+    motion = [];
+  }
+  function notify(message) {
+    reason = message;
+    notice.textContent = message;
+    sync();
+  }
+  function pause(detail = "Playback paused. Press Play workflow to continue.") {
+    if (!running) return;
+    running = false;
+    clearTimeout(timer);
+    timer = 0;
+    cancelMotion();
+    notify(detail);
+  }
+  function flash() {
+    cancelMotion();
+    if (reduced.matches) return;
+    for (const frame of spec.frames || []) {
+      if (typeof frame.animate === "function") {
+        motion.push(frame.animate([{opacity:0.86},{opacity:1}],{duration:150,easing:"ease-out"}));
+      }
+    }
+  }
+  function schedule() {
+    timer = setTimeout(advance, spec.delay || 1300);
+  }
+  function advance() {
+    if (!running) return;
+    if (document.hidden) {
+      pause("Playback paused while the page is hidden.");
+      return;
+    }
+    const old = spec.read();
+    try {
+      spec.advance();
+      const next = spec.read();
+      flash();
+      if (next.done) {
+        running = false;
+        timer = 0;
+        notify("Workflow finished. Press Replay workflow to review from the beginning.");
+      } else if (next.completed <= old.completed) {
+        pause("Playback stopped at the current stage; you can continue manually.");
+      } else {
+        sync();
+        schedule();
+      }
+    } catch (e) {
+      pause("Playback stopped at the current stage; you can continue manually.");
+      console.error(e);
+    }
+  }
+  spec.button.addEventListener("click", () => {
+    if (running) return pause();
+    if (spec.read().done) spec.replay();
+    const next = spec.read();
+    if (next.done) return sync();
+    running = true;
+    notify("Playback started. Press Pause workflow or use a manual control to take over.");
+    // Compact screens should show the changing workpiece, not only its Play button.
+    const frame = (spec.frames || [])[0];
+    if (frame) {
+      const b = frame.getBoundingClientRect();
+      const visible = Math.max(0, Math.min(b.bottom, innerHeight) - Math.max(b.top, 0));
+      if (visible < Math.min(b.height * 0.65, innerHeight * 0.36)) {
+        panel.scrollIntoView({block:"start", behavior:"instant"});
+      }
+    }
+    schedule();
+  });
+  function manual(ev) {
+    if (!running) return;
+    if (ev.type === "keydown" && ev.key === "Escape") { pause(); return; }
+    const target = ev.target instanceof Element ? ev.target : null;
+    if (!target || target.closest("[data-foundry-playback]") ||
+        !target.closest(interaction)) return;
+    if (ev.type === "keydown" && ["Tab", "Shift", "Control", "Alt", "Meta"].includes(ev.key)) return;
+    pause("Playback paused for manual inspection. Press Play workflow to resume.");
+  }
+  for (const name of ["pointerdown", "click", "input", "change", "keydown"]) {
+    document.addEventListener(name, manual, true);
+  }
+  document.addEventListener("wheel", (ev) => {
+    if (ev.target instanceof Element && ev.target.closest("canvas,[data-foundry-inspect]")) manual(ev);
+  }, {capture:true, passive:true});
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) pause("Playback paused while the page is hidden.");
+  });
+  window.addEventListener("pagehide", () => pause("Playback paused while the page is hidden."));
+  if (typeof reduced.addEventListener === "function") {
+    reduced.addEventListener("change", () => { if (reduced.matches) cancelMotion(); });
+  }
+  sync();
+  return {sync, pause};
+};
+
+</script>
+<script>/* PtNRGrid foundry: pure, deterministic, offline educational process and diagnostic model. */
 ((global)=>{
 'use strict';
 const main='https://iebl.ucsd.edu/sites/default/files/iebl/2022-05/Human%20Brain%20Mapping%20with%20Multi%20Thousand%20Channels_0.pdf';
@@ -321,6 +470,7 @@ const en=n=>Number(n).toLocaleString('en-US');
 const stageLabel=i=>String(i+1).padStart(2,'0');
 const cfg=$('configuration'), f=$('defect'), ss=$('site'), fs=$('fault-site');
 const state={stage:0,frontier:0,site:512,defectSite:512,view:'panel',viewManual:false,model:null};
+let foundryPlayer=null;
 const names={panel:'Carrier and writing field',stack:'Exploded film and contact stack',route:'Registered routes A and B',grid:'Site index and diagnostic map',connect:'Film to extender and logical output',mold:'Passive inert mold comparison'};
 const captions={
  panel:'The two squares compare sizes. The registered 150 mm write area is not a 177.8 mm square chuck specification. Pattern extent, mount and actual staging need separate evidence.',
@@ -348,7 +498,7 @@ function strip(){
  $('progress').max=D.stages.length;$('progress').value=state.frontier+1;
  $('next').disabled=m.stage>=D.stagesLast;$('next').textContent=m.stage>=D.stagesLast?'Traveler complete':m.stage<state.frontier?'Next saved station →':'Next station →';
  $('scene-prev').disabled=m.stage===0;$('scene-next').disabled=m.stage>=D.stagesLast;$('scene-next').textContent=m.stage>=D.stagesLast?'Completed':'Next station →';$('scene-progress').textContent=stageLabel(m.stage)+' / '+D.stages.length;
- $('run').textContent=state.frontier>=D.stagesLast?'Show final state':'Run all';
+ $('run').textContent=state.frontier>=D.stagesLast?'Show final state':'Jump to final';
  $('run').disabled=state.frontier>=D.stagesLast&&m.stage>=D.stagesLast;
  for(const button of $('traveler').querySelectorAll('button')){
   const i=Number(button.dataset.stage),icon=button.querySelector('.stage-state');
@@ -360,6 +510,7 @@ function setStage(i,scroll=false){
  state.stage=Math.max(0,Math.min(D.stagesLast,i));state.frontier=Math.max(state.frontier,state.stage);
  state.view=defaultView(state.stage);state.viewManual=false;update(true);if(scroll)forceScene();
  announce('Station '+(state.stage+1)+': '+D.stages[state.stage].title+'.');
+ foundryPlayer?.sync();
 }
 function visual(){
  const m=state.model,r=m.res[state.site],k=state.view;
@@ -436,7 +587,14 @@ function init(){
  $('export-csv').addEventListener('click',()=>save('ptnrgrid-'+cfg.value+'-virtual-ledger.csv','text/csv;charset=utf-8',D.csv(state.model)));
  $('export-json').addEventListener('click',()=>save('ptnrgrid-'+cfg.value+'-traveler.json','application/json',JSON.stringify(D.report(state.model,state.site),null,2)+'\n'));
  if(matchMedia('(max-width:730px)').matches)$('traveler-box').open=false;
- $('model-ui').hidden=false;update(true)
+ $('model-ui').hidden=false;update(true);
+ foundryPlayer=window.installFoundryPlayback({
+  button:$('play-ptnr'), frames:[$('scene')],
+  read:()=>({completed:state.stage+1,total:D.stages.length,done:state.stage>=D.stagesLast,
+    text:(state.stage+1)+' / '+D.stages.length+' · '+D.stages[state.stage].title}),
+  advance:()=>setStage(state.stage+1),
+  replay:()=>setStage(0)
+ })
 }
 try{init()}catch(e){$('load-error').hidden=false;console.error(e)}
 })();

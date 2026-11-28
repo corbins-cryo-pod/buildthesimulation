@@ -143,6 +143,22 @@ summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10p
 @media (max-width:740px){.wrap{width:calc(100% - 28px)}.bench-layout{display:flex;flex-direction:column;gap:10px}.traveler,.inspection{width:100%}.traveler .panel-head{min-height:38px}.traveler .pop-block{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:9px;padding:7px 9px}.traveler .stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.stages li+li{border-top:0}.stages li:nth-child(n+3){border-top:1px solid #dedfcf}.stages li:nth-child(odd){border-right:1px solid #dedfcf}.stages button{line-height:1.15;gap:4px;min-height:38px;padding:6px 7px;font-size:.77rem}.trav-controls{grid-template-columns:42px 1fr 1fr;padding:6px;gap:5px}.trav-controls button{min-height:36px;font-size:.79rem}#run{grid-column:auto}.view-controls .seg button,.view-actions select,.view-controls .view-actions button,.masks button{min-height:42px}.view-controls .view-actions button{width:40px}#specimen{height:clamp(290px,62vw,390px)}.worknote{padding:10px;gap:10px}.result-grid,.evidence-grid{grid-template-columns:minmax(0,1fr)}.evidence-grid{gap:7px}.evidence-grid article{padding-top:8px}.lead{padding:25px 0 15px}.brief{margin-bottom:13px;padding:9px 10px;font-size:.81rem}.fine-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.metrics{margin-bottom:10px}.metrics span{font-size:.63rem}.pinmap button{font-size:.72rem}.plots,.map-box{padding:12px}}
 @media (max-width:420px){.wrap{width:calc(100% - 22px)}.lead h1{font-size:2.9rem}.mobile-only{display:inline}.lead .insignia{display:none}.mast-inner{min-height:54px;gap:8px}.mast nav{gap:6px 10px}.mast nav a{font-size:.62rem}.brand{font-size:9px;gap:4px}.brandmark{width:24px;height:24px;font-size:19px}.worknote{grid-template-columns:1fr;gap:7px}.worknote .check{padding-left:7px}.section-head h2{font-size:1.91rem}.scenario-row button{font-size:.77rem;min-height:40px}.pinmap button{font-size:.64rem}.fine-controls{gap:10px}.metrics>div{padding:8px 5px}.lead .eyebrow{font-size:.65rem}.foot{flex-wrap:wrap}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition:none!important}}
+
+/* Foundry workflow controls */
+.foundry-playback{display:flex;align-items:center;gap:8px 12px;min-width:0;padding:8px 10px;margin:0;background:#e4ece0;color:#203b38;border:1px solid #b6c5b7;border-radius:2px;line-height:1.24;scroll-margin-block-start:8px}
+.foundry-playback button[data-foundry-play]{padding:7px 10px;min-height:43px;flex:none;line-height:1.15;white-space:nowrap;background:#274f4c;color:#fff7e6;border:1px solid #274f4c;border-radius:3px;font-size:13px;font-weight:725;cursor:pointer}
+.foundry-playback button[data-foundry-play]:hover{background:#355b57}
+.foundry-playback button[data-foundry-play]:focus-visible{outline:2px solid #a65c30;outline-offset:2px}
+.foundry-playback button[data-foundry-play]::before{content:"";display:inline-block;width:0;height:0;margin-right:.56em;border:5px solid transparent;border-right:0;border-left:7px solid currentColor}
+.foundry-playback[data-play-state="playing"] button[data-foundry-play]::before{width:7px;height:10px;border:0;border-inline:2px solid currentColor}
+.foundry-playback[data-play-state="complete"] button[data-foundry-play]::before{content:"↻";width:auto;height:auto;border:0;font-size:1em;margin-right:.46em}
+.foundry-playback-readout{flex:1 1 86px;display:grid;gap:3px;min-width:0}
+.foundry-playback progress{appearance:auto;display:block;block-size:7px;inline-size:100%;min-width:0;max-width:100%;margin:0;accent-color:#487b6e}
+.foundry-playback [data-foundry-current]{min-width:0;font:650 11px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+.foundry-playback [data-foundry-notice]{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}
+@media (max-width:407px){.foundry-playback{gap:7px;padding:6px}.foundry-playback button[data-foundry-play]{font-size:12px;padding-inline:8px}.foundry-playback [data-foundry-current]{font-size:10.3px}}
+
+.inspection .foundry-playback{margin:7px 8px 0}@media(max-width:740px){.inspection{order:-1}}
 </style>
 </head>
 <body>
@@ -179,11 +195,14 @@ summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10p
     <aside class="traveler" aria-label="Ten-step foundry traveler">
       <div class="panel-head"><b>PROCESS TRAVELER</b><span id="step-counter" class="stamp">01 / 10</span></div>
       <div class="pop-block"><label for="population">Configuration</label><select id="population"><option value="full">32-site Pt baseline</option><option value="half">16 sites / 32-pin fixture</option></select></div>
-      <div class="trav-controls"><button id="prev" type="button" aria-label="Previous step">←</button><button id="next" type="button">Next step <span aria-hidden="true">→</span></button><button id="run" type="button">Run to bench</button></div>
+      <div class="trav-controls"><button id="prev" type="button" aria-label="Previous step">←</button><button id="next" type="button">Next step <span aria-hidden="true">→</span></button></div>
       <ol class="stages" id="stages"></ol>
     </aside>
     <section class="inspection" aria-labelledby="stage-name">
       <div class="panel-head"><b id="stage-name">01 · Artwork and carrier</b><span id="mode-badge" class="stamp">SPECIMEN</span></div>
+      <div class="foundry-playback" data-foundry-playback role="group" aria-label="Workflow playback">
+<button type="button" id="run" data-foundry-play aria-label="Play workflow">Play workflow</button><div class="foundry-playback-readout"><progress max="1" value="0" aria-label="Current process stage"></progress><span data-foundry-current>Inspect the current stage</span></div><span data-foundry-notice role="status" aria-live="polite"></span>
+</div>
       <div class="view-controls" aria-label="Specimen view controls">
         <div class="seg" id="view-tabs" aria-label="Inspection regions"><button data-region="overview" aria-pressed="true">Overview</button><button data-region="mesh">Mesh</button><button data-region="site">Site</button><button data-region="stem">Stem</button><button data-region="io">I/O</button><button data-region="section">Layers</button></div>
         <div class="view-actions">
@@ -257,6 +276,136 @@ summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10p
 </main>
 <footer class="wrap foot"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/#device=23-syringe-injectable-mesh-electronics">Return to workflow atlas ↑</a></footer>
 <noscript><p>This lab requires JavaScript for the interactive geometry and bench calculations.</p></noscript>
+<script>
+/* Foundry playback: a clock for existing model stages, never a second process model. */
+window.installFoundryPlayback = function installFoundryPlayback(spec) {
+  "use strict";
+  const panel = spec.button.closest("[data-foundry-playback]");
+  const progress = panel.querySelector("progress");
+  const current = panel.querySelector("[data-foundry-current]");
+  const notice = panel.querySelector("[data-foundry-notice]");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  let running = false;
+  let timer = 0;
+  let reason = "";
+  let motion = [];
+  const interaction = [
+    "button", "select", "input", "textarea", "summary", "a", "canvas", "[role=button]",
+    "[data-foundry-inspect]"
+  ].join(",");
+  function sync() {
+    const p = spec.read();
+    const label = running ? "Pause workflow" : p.done ? "Replay workflow" : "Play workflow";
+    spec.button.textContent = label;
+    spec.button.setAttribute("aria-label", label);
+    progress.max = p.total;
+    progress.value = p.completed;
+    current.textContent = p.text;
+    panel.dataset.playState = running ? "playing" : p.done ? "complete" : "idle";
+    panel.dataset.playPosition = String(p.completed);
+    if (reason) panel.title = reason;
+    else panel.removeAttribute("title");
+  }
+  function cancelMotion() {
+    for (const a of motion) a.cancel();
+    motion = [];
+  }
+  function notify(message) {
+    reason = message;
+    notice.textContent = message;
+    sync();
+  }
+  function pause(detail = "Playback paused. Press Play workflow to continue.") {
+    if (!running) return;
+    running = false;
+    clearTimeout(timer);
+    timer = 0;
+    cancelMotion();
+    notify(detail);
+  }
+  function flash() {
+    cancelMotion();
+    if (reduced.matches) return;
+    for (const frame of spec.frames || []) {
+      if (typeof frame.animate === "function") {
+        motion.push(frame.animate([{opacity:0.86},{opacity:1}],{duration:150,easing:"ease-out"}));
+      }
+    }
+  }
+  function schedule() {
+    timer = setTimeout(advance, spec.delay || 1300);
+  }
+  function advance() {
+    if (!running) return;
+    if (document.hidden) {
+      pause("Playback paused while the page is hidden.");
+      return;
+    }
+    const old = spec.read();
+    try {
+      spec.advance();
+      const next = spec.read();
+      flash();
+      if (next.done) {
+        running = false;
+        timer = 0;
+        notify("Workflow finished. Press Replay workflow to review from the beginning.");
+      } else if (next.completed <= old.completed) {
+        pause("Playback stopped at the current stage; you can continue manually.");
+      } else {
+        sync();
+        schedule();
+      }
+    } catch (e) {
+      pause("Playback stopped at the current stage; you can continue manually.");
+      console.error(e);
+    }
+  }
+  spec.button.addEventListener("click", () => {
+    if (running) return pause();
+    if (spec.read().done) spec.replay();
+    const next = spec.read();
+    if (next.done) return sync();
+    running = true;
+    notify("Playback started. Press Pause workflow or use a manual control to take over.");
+    // Compact screens should show the changing workpiece, not only its Play button.
+    const frame = (spec.frames || [])[0];
+    if (frame) {
+      const b = frame.getBoundingClientRect();
+      const visible = Math.max(0, Math.min(b.bottom, innerHeight) - Math.max(b.top, 0));
+      if (visible < Math.min(b.height * 0.65, innerHeight * 0.36)) {
+        panel.scrollIntoView({block:"start", behavior:"instant"});
+      }
+    }
+    schedule();
+  });
+  function manual(ev) {
+    if (!running) return;
+    if (ev.type === "keydown" && ev.key === "Escape") { pause(); return; }
+    const target = ev.target instanceof Element ? ev.target : null;
+    if (!target || target.closest("[data-foundry-playback]") ||
+        !target.closest(interaction)) return;
+    if (ev.type === "keydown" && ["Tab", "Shift", "Control", "Alt", "Meta"].includes(ev.key)) return;
+    pause("Playback paused for manual inspection. Press Play workflow to resume.");
+  }
+  for (const name of ["pointerdown", "click", "input", "change", "keydown"]) {
+    document.addEventListener(name, manual, true);
+  }
+  document.addEventListener("wheel", (ev) => {
+    if (ev.target instanceof Element && ev.target.closest("canvas,[data-foundry-inspect]")) manual(ev);
+  }, {capture:true, passive:true});
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) pause("Playback paused while the page is hidden.");
+  });
+  window.addEventListener("pagehide", () => pause("Playback paused while the page is hidden."));
+  if (typeof reduced.addEventListener === "function") {
+    reduced.addEventListener("change", () => { if (reduced.matches) cancelMotion(); });
+  }
+  sync();
+  return {sync, pause};
+};
+
+</script>
 <script type="application/json" id="equipment-data">{"01-01": {"name": "CAD/mask workstation", "model": "KLayout + KiCad + FreeCAD (custom workstation)"}, "02-01": {"name": "Contact mask aligner", "model": "Karl SUSS MA6/BA6 Gen 4"}, "02-07": {"name": "Spin coater", "model": "Laurell WS-650Mz"}, "02-10": {"name": "Automated resist developer", "model": "SUSS Delta12AQ"}, "02-12": {"name": "Inspection microscope", "model": "Nikon ECLIPSE LV100ND LED · manual reflected brightfield"}, "03-01": {"name": "Electron-beam evaporation", "model": "Temescal BJD 1800"}, "03-02": {"name": "Thermal evaporation", "model": "Edwards 306 Vacuum Coater"}, "03-12": {"name": "Plasma surface treatment", "model": "Harrick Basic PDC-32G-2 · documentary static exterior"}, "04-06": {"name": "Wet processing", "model": "Custom ReynoldsTech-style wet bench (exact model pending)"}, "05-01": {"name": "Stylus profilometer", "model": "Bruker DektakXT manual XY with enclosure and 1 µm radius stylus"}, "05-07": {"name": "Probe station", "model": "Cascade Microtech Summit 11000B-AP · manual 200 mm"}, "08-06": {"name": "Bond pull / shear tester", "model": "Nordson DAGE legacy 4000 / WP100g cartridge"}, "09-01": {"name": "Potentiostat / galvanostat", "model": "Gamry Reference 600+ (legacy reference; 620 successor)"}, "09-03": {"name": "Source measure unit", "model": "Keithley 2450 SourceMeter"}, "09-06": {"name": "Waveform generator", "model": "Keysight 33622A Trueform (dual channel, standard bench configuration)"}, "09-12": {"name": "Electrochemical test cell", "model": "Custom three-electrode cell / saline bath"}, "10-10": {"name": "Open acquisition system", "model": "Open Ephys Acquisition Board Gen 3"}, "12-01": {"name": "Stereo dissecting microscope", "model": "ZEISS SteREO Discovery V12"}, "16-13": {"name": "Cable and connector library", "model": "Custom BNC, SMA, USB, triax, FFC and headstage families"}}</script>
 <script>/* Four-mask Mesh Foundry. Original teaching artwork; all planar coordinates in µm. */
 (function(root) {
@@ -815,32 +964,18 @@ summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10p
   const escape=(x)=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
   const equip=JSON.parse($('equipment-data').textContent),build='mesh-foundry-1.0.0';
   let options={...E.opt0},step=1,selected=16,freq=1000,model=E.analyze(options,step),geometry=E.drawing(options),currentPreset='nominal';
-  let timer=null;
+  let foundryPlayer=null;
   const view=globalThis.MeshView.createViewer($('specimen'),i=>changeSelected(i));
   const glyph={'good':'•','wrong-map':'↔','shared':'×','open':'×','empty':'·','not-seated':' ','unlatched':'○'};
   const translations={'good':'correct map','wrong-map':'wrong map','shared':'shared net','open':'open','empty':'unpopulated','not-seated':'not seated','unlatched':'latch open'};
   const presets={nominal:{},open:{fault:'open'},shift:{offset:500},occluded:{window:10},bridge:{fault:'bridge'},rail:{fault:'rail'}};
   const maskHierarchy=['lower','gold','platinum','upper'];
-  const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function stageChange(n,fromRun=false){
-    if(!fromRun)stop(false);
+  function stageChange(n){
     step=Math.max(1,Math.min(E.STAGES.length,n));
     const target=E.STAGES[step-1].inspect;
     view.set({region:target,solo:'stage',camera:target==='section'?'explode':'plan'},true);
     refresh(false);
-  }
-  function stop(paint=true){if(timer){clearInterval(timer);timer=null;if(paint)paintStage()}}
-  function start(){
-    if(timer){stop();return}
-    if(prefersReduced){stageChange(E.STAGES.length);return}
-    if(step===E.STAGES.length)stageChange(1,true);
-    timer=setInterval(()=>{
-      const end=step>=E.STAGES.length-1;
-      if(end)stop(false);
-      stageChange(step+1,true);
-    },175);
-    paintStage();
   }
   function changeSelected(x){
     selected=Math.max(1,Math.min(32,+x||1));
@@ -883,7 +1018,7 @@ summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10p
     $('mode-badge').textContent=v.solo==='stage'?(step>6?'RELEASED':'ON CARRIER'):v.solo==='all'?'ARTWORK PREVIEW':'MASK '+E.MASKS[v.solo].no+' PREVIEW';
     $('prev').disabled=step===1;
     $('next').disabled=step===E.STAGES.length;
-    $('run').textContent=timer?'Pause traveler':step===E.STAGES.length?'Run again':'Run to bench';
+    foundryPlayer?.sync();
     Q('[data-stage]').forEach(el=>{if(+el.dataset.stage===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')});
     Q('[data-region]').forEach(el=>el.setAttribute('aria-pressed',v.region===el.dataset.region?'true':'false'));
     Q('[data-mask]').forEach(el=>el.setAttribute('aria-pressed',v.solo===el.dataset.mask?'true':'false'));
@@ -1013,7 +1148,7 @@ summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10p
   Q('[data-preset]').forEach(el=>el.onclick=()=>applyPreset(el.dataset.preset));
   $('selected-pin').onchange=e=>changeSelected(e.target.value);
   $('population').onchange=e=>{currentPreset='';config({...options,population:e.target.value})};
-  $('prev').onclick=()=>stageChange(step-1);$('next').onclick=()=>stageChange(step+1);$('run').onclick=start;
+  $('prev').onclick=()=>stageChange(step-1);$('next').onclick=()=>stageChange(step+1);
   $('camera').onchange=e=>{view.set({camera:e.target.value},true);refresh(false)};
   $('zoom-in').onclick=()=>view.zoom(1.24);$('zoom-out').onclick=()=>view.zoom(1/1.24);$('reset-view').onclick=view.reset;
   $('clear-faults').onclick=()=>applyPreset('nominal');
@@ -1041,6 +1176,13 @@ summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10p
   };
   if(siteRoot) Q('a[href^="/"]').forEach(a=>a.setAttribute('href',siteRoot+a.getAttribute('href')));
   config(options,false);
+  foundryPlayer=window.installFoundryPlayback({
+    button:$('run'),frames:[$('specimen')],
+    read:()=>({completed:step,total:E.STAGES.length,done:step===E.STAGES.length,
+      text:step+' / '+E.STAGES.length+' · '+E.STAGES[step-1].name}),
+    advance:()=>stageChange(step+1),
+    replay:()=>stageChange(1)
+  });
 })();
 </script>
 </body></html>

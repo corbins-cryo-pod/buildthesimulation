@@ -1,0 +1,38 @@
+/* Foundry workflow motion, scoped to the process plate. */
+.fp-player{box-sizing:border-box;min-width:0;width:100%;margin:.62rem 0 .72rem;font:400 14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#e5eddb;text-align:left}
+.fp-native-hidden{display:none!important}
+.fp-head,.fp-transport{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.fp-head{padding:7px 8px;border:1px solid #739180;border-radius:7px;background:#244a41}
+.fp-head-note{flex:1 1 145px;min-width:0;color:#dce8dc;font-size:12px;line-height:1.4}
+.fp-player button,.fp-player select{font:650 14px/1.18 system-ui,-apple-system,Segoe UI,sans-serif;min-height:44px;color:#203a31;background:#f7f2df;border:1px solid #7fa08b;border-radius:5px;padding:7px 10px;box-shadow:none;text-transform:none;letter-spacing:normal;margin:0;cursor:pointer}
+.fp-player button:hover:not(:disabled),.fp-player select:hover{background:#fff7da}
+.fp-player button:disabled{opacity:.56;cursor:not-allowed}
+.fp-player button:focus-visible,.fp-player select:focus-visible{outline:3px solid #ffd191;outline-offset:2px}
+.fp-player [data-fp="action"]{background:#f0c180;border-color:#f5d49c;color:#27382e}
+.fp-player [data-fp="action"]:hover{background:#ffdb9e}
+.fp-player .fp-expanded{margin-top:7px;border:1px solid #739180;border-radius:7px;background:#193b34;overflow:hidden}
+.fp-player .fp-expanded[hidden],.fp-player button[hidden]{display:none!important}
+.fp-card{padding:10px 11px 9px;min-width:0}
+.fp-kicker{color:#eac187;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase}
+.fp-player .fp-label{margin:4px 0;font:650 16px/1.28 system-ui,-apple-system,Segoe UI,sans-serif;color:#fff4d9;overflow-wrap:anywhere}
+.fp-player .fp-note{margin:4px 0 6px;font-size:12px;color:#deebd8;line-height:1.4;min-height:2.8em}
+.fp-player .fp-scene{display:block;width:100%;height:auto;max-width:none;min-height:0;background:#16372f;border-top:1px solid #6e8c7c;border-bottom:1px solid #6e8c7c}
+.fp-track{height:5px;background:#597568;margin:8px 0 4px;overflow:hidden;border-radius:4px}
+.fp-bar{height:100%;width:0;background:#e9b274;transform-origin:left;will-change:width}
+.fp-player .fp-info{font:400 11px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#dce8dc}
+.fp-transport{margin-top:8px;align-items:end}
+.fp-transport label{margin:0;font:600 11px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;color:#deebd8;display:block;min-width:0}
+.fp-transport select{display:block;background:#f3eedc;width:max-content;max-width:100%;margin-top:3px}
+.fp-transport .fp-choose{flex:1 1 184px}
+.fp-transport .fp-choose select{width:100%;appearance:auto}
+.fp-player .fp-progress-text{white-space:nowrap}
+.fp-player [data-fp="close"],.fp-player [data-fp="replay"]{background:#315c4e;color:#f4efd9}
+.fp-player [data-fp="close"]:hover,.fp-player [data-fp="replay"]:hover{background:#3f6e5d}
+@media(max-width:480px){
+ .fp-player .fp-note{min-height:0}
+ .fp-transport .fp-choose{flex-basis:100%;order:2}
+ .fp-player button,.fp-player select{font-size:13px}
+ .fp-head-note{flex-basis:130px}
+ .fp-card{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){.fp-player *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

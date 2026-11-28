@@ -4,9 +4,12 @@ from pathlib import Path
 import sys
 root=Path(__file__).resolve().parent
 src=root/'src'
+shared=root.parent/'_shared'
 doc=(src/'index.html').read_text()
 for mark,text in {
     '__CSS__':(src/'style.css').read_text(),
+    '__PLAYBACK_CSS__':(shared/'workflow-player.css').read_text(),
+    '__PLAYBACK_JS__':(shared/'workflow-player.js').read_text(),
     '__ENGINE__':(src/'engine.js').read_text(),
     '__SCRIPT__':(src/'scene.js').read_text()+'\n'+(src/'lab.js').read_text()
 }.items():

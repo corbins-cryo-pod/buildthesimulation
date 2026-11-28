@@ -38,3 +38,9 @@ The build also invokes the real isolated-trench solver to show 150 mm acceptance
 - Chromium desktop, iPhone 13 emulation, and 320 px dark-mode mobile tested (129 scenario sweeps) with no external page requests or horizontal overflow. Also tested keyboard, deep links, pending/export interlock, stale receipt reset, evidence disclosure, and two JSON download round-trips.
 - Receipt includes the typed demand, a compact source artifact, SHA-256 evidence, ordered gates, and the selected virtual result if one was executed at build. It is not a traveler.
 - Example route suffixes: `?case=developer` is **not** valid; use `?case=develop&artifact=contact&demand=developer`. Further examples: `?case=panel&artifact=narrowSpace&demand=reference-field`, `?case=record&artifact=volts&demand=adc`, `?case=seal&artifact=leak&demand=named-package`. Omit optional artifact and demand for the default example in that case.
+
+## Guided playback
+
+Play workflow walks the selected requirement through each existing gate using the same results as manual inspection. The record marker crosses only when all gates match; an incompatible or unproven case stays held. Inspect next, Inspect all, Reset, and changed selections take precedence over autoplay. The JSON remains unavailable until all gates are inspected. Pause and resume keep the current stage. Replay starts from the first stage for the current selections. Playback is opt-in; reduced-motion users receive the same sequence with no sliding markers or sweep effects.
+
+The one-file builder in this directory inlines the shared scheduler from `../bench-play.js`. `node ../bench-play.test.cjs` verifies timer cancellation; `CHROME_BIN=/path/to/chromium python ../bench-play.browser.py` tests the bundled entry points on desktop, iPhone 13 emulation, and a narrow reduced-motion configuration.

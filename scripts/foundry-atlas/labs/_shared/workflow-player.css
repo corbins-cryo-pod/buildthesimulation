@@ -1,0 +1,13 @@
+/* Foundry workflow controls */
+.foundry-playback{display:flex;align-items:center;gap:8px 12px;min-width:0;padding:8px 10px;margin:0;background:#e4ece0;color:#203b38;border:1px solid #b6c5b7;border-radius:2px;line-height:1.24;scroll-margin-block-start:8px}
+.foundry-playback button[data-foundry-play]{padding:7px 10px;min-height:43px;flex:none;line-height:1.15;white-space:nowrap;background:#274f4c;color:#fff7e6;border:1px solid #274f4c;border-radius:3px;font-size:13px;font-weight:725;cursor:pointer}
+.foundry-playback button[data-foundry-play]:hover{background:#355b57}
+.foundry-playback button[data-foundry-play]:focus-visible{outline:2px solid #a65c30;outline-offset:2px}
+.foundry-playback button[data-foundry-play]::before{content:"";display:inline-block;width:0;height:0;margin-right:.56em;border:5px solid transparent;border-right:0;border-left:7px solid currentColor}
+.foundry-playback[data-play-state="playing"] button[data-foundry-play]::before{width:7px;height:10px;border:0;border-inline:2px solid currentColor}
+.foundry-playback[data-play-state="complete"] button[data-foundry-play]::before{content:"↻";width:auto;height:auto;border:0;font-size:1em;margin-right:.46em}
+.foundry-playback-readout{flex:1 1 86px;display:grid;gap:3px;min-width:0}
+.foundry-playback progress{appearance:auto;display:block;block-size:7px;inline-size:100%;min-width:0;max-width:100%;margin:0;accent-color:#487b6e}
+.foundry-playback [data-foundry-current]{min-width:0;font:650 11px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+.foundry-playback [data-foundry-notice]{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}
+@media (max-width:407px){.foundry-playback{gap:7px;padding:6px}.foundry-playback button[data-foundry-play]{font-size:12px;padding-inline:8px}.foundry-playback [data-foundry-current]{font-size:10.3px}}

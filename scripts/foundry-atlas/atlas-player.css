@@ -1,0 +1,23 @@
+/* Playback stays visually and semantically separate from physically calibrated labs. */
+.workflow-player{position:relative;margin:clamp(16px,2.5vw,26px) 0 22px;border:1px solid var(--line2);border-radius:4px;background:var(--sheet);min-width:0;overflow:hidden;scroll-margin-block:1rem}
+.workflow-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:start;gap:7px 12px;padding:clamp(12px,2.2vw,19px) clamp(12px,2.3vw,19px) 7px}
+.workflow-top .overline{color:var(--soft);font-size:.63rem}.workflow-top h4{font-size:clamp(1.28rem,2.15vw,1.86rem);margin-top:.23rem}.workflow-top .tag{max-width:100%;overflow-wrap:anywhere}
+.workflow-note,.workflow-preview{padding:0 clamp(12px,2.3vw,19px);font-size:.8rem;line-height:1.4;color:var(--soft)}
+.workflow-preview{font-weight:630;color:var(--ink);padding-bottom:12px}
+.workflow-controls{display:flex;flex-wrap:wrap;align-items:end;gap:6px;padding:9px clamp(12px,2.3vw,19px) 11px}
+.workflow-controls button,.wf-speed select{min-height:43px;padding:5px 8px;border-radius:3px;font:650 .75rem/1.23 var(--sans);border:1px solid var(--line2);color:var(--link);background:var(--sheet);text-align:center}
+.workflow-controls button:hover:not(:disabled){background:var(--selection)}.workflow-controls .wf-play{display:inline-flex;gap:5px;align-items:center;color:var(--on);background:var(--accent);border-color:var(--accent);font-weight:700;white-space:normal}.workflow-controls .wf-play:hover:not(:disabled){filter:brightness(.91);background:var(--accent)}.wf-play svg{flex:none}
+.wf-speed{margin-left:auto;display:flex;gap:5px;align-items:center;color:var(--soft);font:650 .67rem var(--mono)}
+.wf-speed select{width:auto;min-width:53px;line-height:1.25;padding:5px 3px;color:var(--ink);font-size:.76rem}
+.workflow-progress{height:4px;background:var(--well)}.workflow-progress span{display:block;height:100%;width:100%;background:var(--mark);transform:scaleX(0);transform-origin:left center}
+.workflow-plate{display:flex;justify-content:center;background:#142d28;border-block:1px solid var(--line2)}
+.workflow-svg{width:100%;max-width:680px;display:block;height:auto}
+.workflow-copy{padding:9px clamp(12px,2.3vw,19px) 6px;font-size:.81rem;line-height:1.5}
+.workflow-position{display:flex;flex-wrap:wrap;align-items:center;gap:5px 9px}
+.workflow-copy h5{font:600 clamp(1.01rem,1.65vw,1.3rem)/1.25 var(--sans);margin:5px 0}
+#workflow-caption,#workflow-context{font-size:.78rem;color:var(--soft)}#workflow-context{margin-top:4px}
+.wf-limits{margin:0 0 0;padding:7px clamp(12px,2.3vw,19px);color:var(--soft);font-size:.72rem;background:var(--well);border-top:1px solid var(--line)}
+.workflow-player[data-player-plan=boundary] .workflow-plate{margin-top:9px}
+.workflow-player[data-player-plan=boundary] .workflow-copy{padding-bottom:11px}
+@media(max-width:700px){.workflow-controls{align-items:stretch;gap:5px;padding-inline:9px}.workflow-controls button{font-size:.72rem;padding-inline:7px;min-height:43px}.wf-speed{margin-left:0}.wf-speed select{font-size:16px;min-height:43px}.workflow-player{margin-top:12px}.workflow-top{padding-top:11px}.workflow-note,.workflow-preview{font-size:.75rem}.workflow-copy h5{font-size:1.02rem}.workflow-copy .text-btn{min-height:39px}}
+@media print{.workflow-player{display:none!important}}

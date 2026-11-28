@@ -70,3 +70,37 @@ are separate checks:
 python scripts/foundry-atlas/tests/audit_routes.py src/data/foundry-atlas/lanes
 CHROME_BIN=/path/to/chromium python scripts/foundry-atlas/tests/sweep.py public/simulations/foundry/atlas/index.html
 ```
+
+## Workflow playback
+
+Open any process profile or device route, choose a configuration if applicable,
+and press **Play workflow**. On a baseline with branch-qualified handoffs the
+button names the suggested configuration and selects it explicitly; playback
+never concatenates mutually exclusive branches. The original handoff number
+stays visible even when the playback skips other configurations. Pause, resume,
+previous/next, replay, and four presentation speeds are independent of the
+original traveler. The current animation pauses when opening its detailed
+handoff or going to another browser tab. Reduced-motion preferences show static
+plates with the same text and controls.
+
+The diagrams are original schematic cues for process classes, not machine or
+device geometries. A cited document identifies the operation, not the exact
+diagram or elapsed time. External/unverified steps draw an evidence boundary
+instead of a fabrication step; incompatible and out-of-scope configurations
+explain why no manufacturing sequence plays. Standalone foundry labs remain the
+place to find device-specific controls and bench models.
+
+```sh
+node --test tests/foundry-atlas-playback.mjs
+CHROME_BIN=/path/to/chromium python scripts/foundry-atlas/tests/playback.py public/simulations/foundry/atlas/index.html
+```
+
+When standalone labs change, refresh the exact hub release ledger before
+assembling the Atlas. Verify the static build via the entry point users open:
+
+```sh
+python scripts/foundry-atlas/update_lab_ledger.py
+node --test tests/foundry-playback-release.mjs
+CHROME_BIN=/path/to/chromium python scripts/foundry-atlas/tests/playback_hub.py dist
+python scripts/foundry-atlas/tests/verify_live.py --attempts 8
+```

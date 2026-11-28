@@ -6,7 +6,10 @@
 <meta name="theme-color" content="#203c3a">
 <meta name="description" content="Follow a four-mask flexible mesh through a virtual wafer process, register its plug-and-play connector, and verify a synthetic electronics-only bench result.">
 <title>Four-Mask Mesh Foundry | Build The Simulation</title>
-<style>@@CSS@@</style>
+<style>@@CSS@@
+@@PLAYBACK_CSS@@
+.inspection .foundry-playback{margin:7px 8px 0}@media(max-width:740px){.inspection{order:-1}}
+</style>
 </head>
 <body>
 <a class="skip" href="#workspace">Skip to the foundry</a>
@@ -42,11 +45,14 @@
     <aside class="traveler" aria-label="Ten-step foundry traveler">
       <div class="panel-head"><b>PROCESS TRAVELER</b><span id="step-counter" class="stamp">01 / 10</span></div>
       <div class="pop-block"><label for="population">Configuration</label><select id="population"><option value="full">32-site Pt baseline</option><option value="half">16 sites / 32-pin fixture</option></select></div>
-      <div class="trav-controls"><button id="prev" type="button" aria-label="Previous step">←</button><button id="next" type="button">Next step <span aria-hidden="true">→</span></button><button id="run" type="button">Run to bench</button></div>
+      <div class="trav-controls"><button id="prev" type="button" aria-label="Previous step">←</button><button id="next" type="button">Next step <span aria-hidden="true">→</span></button></div>
       <ol class="stages" id="stages"></ol>
     </aside>
     <section class="inspection" aria-labelledby="stage-name">
       <div class="panel-head"><b id="stage-name">01 · Artwork and carrier</b><span id="mode-badge" class="stamp">SPECIMEN</span></div>
+      <div class="foundry-playback" data-foundry-playback role="group" aria-label="Workflow playback">
+<button type="button" id="run" data-foundry-play aria-label="Play workflow">Play workflow</button><div class="foundry-playback-readout"><progress max="1" value="0" aria-label="Current process stage"></progress><span data-foundry-current>Inspect the current stage</span></div><span data-foundry-notice role="status" aria-live="polite"></span>
+</div>
       <div class="view-controls" aria-label="Specimen view controls">
         <div class="seg" id="view-tabs" aria-label="Inspection regions"><button data-region="overview" aria-pressed="true">Overview</button><button data-region="mesh">Mesh</button><button data-region="site">Site</button><button data-region="stem">Stem</button><button data-region="io">I/O</button><button data-region="section">Layers</button></div>
         <div class="view-actions">
@@ -120,6 +126,9 @@
 </main>
 <footer class="wrap foot"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/#device=23-syringe-injectable-mesh-electronics">Return to workflow atlas ↑</a></footer>
 <noscript><p>This lab requires JavaScript for the interactive geometry and bench calculations.</p></noscript>
+<script>
+@@PLAYBACK_JS@@
+</script>
 <script type="application/json" id="equipment-data">@@EQUIPMENT@@</script>
 <script>@@ENGINE@@</script>
 <script>@@VIEW@@</script>

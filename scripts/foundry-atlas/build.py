@@ -10,9 +10,13 @@ payload=json.loads(args.data.read_text(encoding='utf8'))
 for k in ('meta','devices','profiles','equipment'):
     if k not in payload: raise ValueError(f'missing atlas key: {k}')
 doc=(root/'atlas.template.html').read_text()
-for token,path in [('__ATLAS_STYLES__','atlas.css'),('__ATLAS_SCRIPT__','atlas.js')]:
+blocks = {
+    '__ATLAS_STYLES__': ['atlas.css', 'atlas-player.css'],
+    '__ATLAS_SCRIPT__': ['atlas-player.js', 'atlas.js'],
+}
+for token, paths in blocks.items():
     if doc.count(token)!=1: raise ValueError(f'bad marker: {token}')
-    doc=doc.replace(token,(root/path).read_text(encoding='utf8'))
+    doc=doc.replace(token,'\n'.join((root/path).read_text(encoding='utf8') for path in paths))
 if doc.count('__FOUNDRY_DATA__')!=1:raise ValueError('bad data marker')
 raw=json.dumps(payload,ensure_ascii=False,separators=(',',':'),allow_nan=False).replace('&','\\u0026').replace('<','\\u003c').replace('>','\\u003e').replace('\u2028','\\u2028').replace('\u2029','\\u2029')
 args.output.parent.mkdir(parents=True,exist_ok=True)

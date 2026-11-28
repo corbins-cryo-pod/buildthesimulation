@@ -4,6 +4,17 @@
 @media(max-width:740px){.bar .wrap{min-height:45px}.bar a,footer a{font-size:.7rem}.cover{display:block;padding-block:21px}.cover h1{font-size:3.21rem}.cover .lede{font-size:1.13rem}.cover .sub{font-size:.82rem}.coverplate{display:none}.intro{display:block}.intro>p{font-size:.78rem}.pick{gap:7px;margin-bottom:9px}.pick button{padding:8px 9px}.pick button span:not(.kicker){font-size:.73rem}.pick button small{font-size:.64rem}.layout{grid-template-columns:minmax(0,1fr);gap:8px}.right{gap:8px}.traveler ol{max-height:205px;overflow:auto}.traveler .tiny-actions{padding:7px 10px}.stage-controls{padding:6px 7px}.stage-controls button{min-height:42px;padding:6px;font-size:.7rem}.settings{padding:7px;gap:6px}.settings select,.settings input[type=number],#site{font-size:16px}.readouts{grid-template-columns:1fr}.diagramplot{max-width:none}.equipment a{font-size:.65rem}.curve-pick button{min-height:41px}}
 @media(max-width:380px){.wrap{padding-inline:10px}.cover h1{font-size:2.82rem}.tiny-actions button,.curve-pick button{font-size:.72rem}}
 @media(prefers-color-scheme:dark){:root{color-scheme:dark;--shell:#232b24;--paper:#2a372e;--ink:#edede3;--muted:#c4d1c4;--line:#627764;--line2:#4a5a4c;--well:#395143;--green:#bedbc4;--on:#23382b;--warning:#f7d8a1;--warningbg:#4b412e}}
+
+
+/* Native station playback. Only the live section fades; evidence and focus remain fixed. */
+#stage-detail{scroll-margin-top:12px;overflow-anchor:none}
+.stage-play-jump{display:inline-flex;align-items:center;min-height:44px;margin:-3px 0 6px;font-size:.82rem;font-weight:720}
+.stage-player{scroll-margin-top:12px;display:grid;grid-template-columns:auto minmax(114px,1fr);align-items:center;gap:10px;background:var(--well);border-block:1px solid var(--line2);padding:8px 12px}
+.stage-player button{min-height:44px;white-space:nowrap;padding-inline:12px}
+.stage-play-line{display:flex;justify-content:space-between;gap:6px;font-size:.75rem;font-weight:700;color:var(--ink);line-height:1.15}
+.stage-play-line span:last-child{color:var(--muted);white-space:nowrap}
+.stage-play-track progress{display:block;width:100%;height:8px;margin-top:5px;accent-color:var(--green)}
+@media(max-width:400px){.stage-player{padding-inline:8px;gap:7px}.stage-player button{padding-inline:10px;font-size:.78rem}.stage-play-line{font-size:.70rem}}
 </style></head>
 <body><a href="#bench" class="skip">Skip to virtual bench</a><header class="bar"><div class="wrap"><a class="wordmark" href="/">Build the Simulation</a><nav aria-label="Website"><a href="/simulations/foundry/">Foundry labs</a><a href="/simulations/foundry/atlas/#profile=flex-neurogrid">Workflow atlas</a></nav></div></header>
 <header class="hero"><div class="wrap cover"><div><p class="kicker">Flexible interfaces <span>/</span> 024</p><h1>NeuroGrid &amp; OECT</h1><p class="lede">Same polymer. Two different circuits.</p><p class="sub">Follow a passive surface electrode and a separate electrolyte-gated transistor from film stack to virtual bench.</p></div>
@@ -16,10 +27,13 @@
 <button id="choose-passive" type="button" data-mode="passive"><span class="kicker">A · 2015</span><b>Passive NeuroGrid</b><span>256 sites · 10 × 10 µm · 30 µm reported spacing</span><small>Output: impedance magnitude and phase</small></button>
 <button id="choose-oect" type="button" data-mode="oect"><span class="kicker">B · 2013</span><b>Active OECT</b><span>17 transistors + 8 separate passive electrodes</span><small>Output: signed drain current and transconductance</small></button>
 </div>
+<a class="stage-play-jump" href="#stage-detail">↓ Jump to workflow playback</a>
 <div class="layout">
 <details class="card traveler" id="travel" open><summary><span class="kicker">02 / Sequence</span><span class="h3">Process traveler</span><span class="muted small" id="frontier"></span></summary><progress id="progress" value="1" max="8" aria-label="Stations reached"></progress><ol id="steps"></ol><div class="tiny-actions"><button id="reset" type="button" class="quiet">Reset this route</button><button id="run" type="button" class="primary">Run to bench →</button></div></details>
 <div class="right">
-<section class="card scene-card" id="stage-detail"><header><div><p class="kicker" id="stage-kicker"></p><h3 id="stage-title"></h3></div><span id="stage-basis" class="chip"></span></header><div class="step-copy"><p id="stage-description"></p><p id="stage-check"></p><div class="equipment" id="step-tools"></div></div><div class="plate"><svg id="plate" role="img" aria-label="Virtual section or site map" viewBox="0 0 820 370" xmlns="http://www.w3.org/2000/svg"></svg></div><p id="plate-note" class="plate-note"></p><div class="tiny-actions stage-controls"><button type="button" id="view-toggle" class="quiet">Show site map</button><button type="button" id="prev-stage" class="quiet">← Previous</button><button type="button" id="next-stage" class="primary">Next station →</button></div></section>
+<section class="card scene-card" id="stage-detail"><header><div><p class="kicker" id="stage-kicker"></p><h3 id="stage-title"></h3></div><span id="stage-basis" class="chip"></span></header><div id="stage-player" class="stage-player" role="group" aria-label="Workflow playback">
+<button type="button" id="stage-play" class="primary">Play workflow</button><div class="stage-play-track"><div class="stage-play-line"><span id="stage-play-label">Ready</span><span id="stage-play-step"></span></div><progress id="stage-play-progress" value="1" max="8" aria-label="Workflow playback progress"></progress></div>
+</div><div class="plate"><svg id="plate" role="img" aria-label="Virtual section or site map" viewBox="0 0 820 370" xmlns="http://www.w3.org/2000/svg"></svg></div><p id="plate-note" class="plate-note"></p><div class="step-copy"><p id="stage-description"></p><p id="stage-check"></p><div class="equipment" id="step-tools"></div></div><div class="tiny-actions stage-controls"><button type="button" id="view-toggle" class="quiet">Show site map</button><button type="button" id="prev-stage" class="quiet">← Previous</button><button type="button" id="next-stage" class="primary">Next station →</button></div></section>
 <section class="card inspection" id="inspection"><header><div><p class="kicker">03 / Inert checks</p><h3 id="bench-title"></h3></div><span class="chip">Synthetic values</span></header>
 <div class="bench-body"><p class="muted small" id="bench-help"></p><button type="button" id="compare-cover" class="quiet demo">Try the covered-window case</button>
 <div id="settings" class="settings"><label for="fault">Replay an isolated fault<select id="fault"></select></label><label id="faultloc-wrap" for="faultloc">Fault site (1–256)<input id="faultloc" type="number" inputmode="numeric" min="1" max="256" value="138"></label>
@@ -161,8 +175,54 @@ const blank=()=>({stage:0,reached:0,fault:'nominal',location:137,inspect:137,vG:
 const forMode={passive:blank(),oect:blank()};let mode='passive',model;const cur=()=>forMode[mode];
 const colors={m:'#92ab94',ink:'#e2e7cc',gold:'#d8b77d',film:'#b08550',bath:'#375f5a',poly:'#97c598',bad:'#f89f84',blank:'#254b3e',oxide:'#77b7af'};
 function pnum(value,prev){const n=Number(value);return Number.isInteger(n)&&n?Math.max(0,Math.min(255,n-1)):prev}
-function status(t){$('live').textContent='';setTimeout(()=>$('live').textContent=t,20)}
-function stgo(stage,scroll=false){const a=cur();a.stage=Math.max(0,Math.min(7,stage));a.reached=Math.max(a.stage,a.reached);render();if(scroll){const s=$('stage-title');s.setAttribute('tabindex','-1');s.focus({preventScroll:true});$('stage-detail').scrollIntoView({block:'start'})}status('Station '+(a.stage+1)+': '+N.modes[mode].route[a.stage].title)}
+let liveTimer;
+function status(t){clearTimeout(liveTimer);$('live').textContent='';liveTimer=setTimeout(()=>$('live').textContent=t,20)}
+const stageMotion=matchMedia('(prefers-reduced-motion: reduce)'), STATION_DWELL=1850;
+let stageTimer,stageAnimation,playState='ready';
+function renderPlayback(){
+ const a=cur(),count=N.modes[mode].route.length,b=$('stage-play');
+ b.textContent={ready:'Play workflow',playing:'Pause workflow',paused:'Resume workflow',complete:'Replay workflow'}[playState];
+ $('stage-player').dataset.state=playState;
+ $('stage-play-label').textContent={ready:'Ready',playing:'Playing',paused:'Paused',complete:'Complete'}[playState];
+ $('stage-play-step').textContent=(a.stage+1)+' / '+count;
+ const p=$('stage-play-progress');p.max=count;p.value=a.stage+1;
+}
+function stopPlayback(next='paused',notify=false){
+ clearTimeout(stageTimer);stageTimer=undefined;stageAnimation?.cancel();
+ playState=next;renderPlayback();
+ if(notify)status('Workflow paused at station '+(cur().stage+1)+'.');
+}
+function interruptPlayback(){if(playState==='playing')stopPlayback('paused',true);}
+function showPlaybackFrame(){
+ stageAnimation?.cancel();
+ const plate=$('plate');
+ if(!stageMotion.matches&&plate.animate)
+  stageAnimation=plate.animate([{opacity:.42},{opacity:1}],{duration:300,easing:'ease-out'});
+}
+function queueStation(){
+ clearTimeout(stageTimer);
+ stageTimer=setTimeout(()=>{
+  stageTimer=undefined;
+  if(playState!=='playing')return;
+  const next=cur().stage+1,last=N.modes[mode].route.length-1;
+  stgo(next);
+  if(next>=last){playState='complete';renderPlayback();}
+  showPlaybackFrame();
+  if(next<last)queueStation();
+ },STATION_DWELL);
+}
+function togglePlayback(){
+ if(playState==='playing'){stopPlayback('paused',true);return;}
+ const restart=playState!=='paused'||cur().stage>=N.modes[mode].route.length-1;
+ playState='playing';cur().map=false;stgo(restart?0:cur().stage);
+ const scene=$('stage-detail'),art=$('plate');
+ if(art.getBoundingClientRect().bottom>innerHeight)scene.scrollIntoView({block:'start',behavior:'auto'});
+ showPlaybackFrame();queueStation();
+}
+if(stageMotion.addEventListener)stageMotion.addEventListener('change',()=>{if(stageMotion.matches)stageAnimation?.cancel();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playState==='playing')stopPlayback('paused');});
+window.addEventListener('pagehide',()=>{if(playState==='playing')stopPlayback('paused');});
+function stgo(stage,scroll=false){const a=cur();a.stage=Math.max(0,Math.min(7,stage));if(playState==='complete'&&a.stage<7)playState='ready';a.reached=Math.max(a.stage,a.reached);render();if(scroll){const s=$('stage-title');s.setAttribute('tabindex','-1');s.focus({preventScroll:true});$('stage-detail').scrollIntoView({block:'start'})}status('Station '+(a.stage+1)+': '+N.modes[mode].route[a.stage].title)}
 const line=(x1,y1,x2,y2,c=colors.m,w=2,rest='')=>'<path d="M'+x1+' '+y1+'L'+x2+' '+y2+'" stroke="'+c+'" fill="none" stroke-width="'+w+'" '+rest+'/>';
 const rect=(x,y,w,h,f,s=colors.m,rest='')=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+f+'" stroke="'+s+'" '+rest+'/>';
 const text=(x,y,t,s=15,c=colors.ink,a='start')=>'<text x="'+x+'" y="'+y+'" fill="'+c+'" text-anchor="'+a+'" font-family="ui-monospace,monospace" font-size="'+s+'">'+esc(t)+'</text>';
@@ -232,6 +292,11 @@ function plate(){
   p+=note([45,334],'GATES THE CHANNEL THROUGH IONS; NO DIRECT G–D METAL PATH.');
   desc='Concept section, not exact artwork. Dry source and drain wiring remains buried. The channel alone has an electrolyte window; the gate is a separate electrode in the bath. Feedthrough does not mean a hermetic seal.';
  }
+ if(s>=6&&!a.map){
+ const caption=s===6?'DRY CHECK':'VIRTUAL BENCH';
+ const result=mode==='passive'?(s===6?r.selected.dry:r.selected.wet):r.status;
+ if(result){p+=text(44,82,caption+' · '+result.toUpperCase(),14,colors.oxide);desc+=' '+caption+': '+result+'.';}
+ }
  $('plate').innerHTML=p;$('plate-note').textContent=desc;$('plate').setAttribute('aria-label',desc);
  $('view-toggle').hidden=mode==='oect';$('view-toggle').textContent=a.map?'Show cross-section':'Show site map';
 }
@@ -292,7 +357,7 @@ function render(){
   b.querySelector('.stage-symbol').textContent=i===a.stage?'▶':i<=a.reached?'✓':'·';
   if(i===a.stage)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');
  }
- plate();bench();
+ plate();bench();renderPlayback();
 }
 function syncControls(){
  $('fault').innerHTML=Object.entries(N.faults[mode]).map(([key,d])=>'<option value="'+esc(key)+'">'+esc(d.label)+'</option>').join('');
@@ -300,14 +365,18 @@ function syncControls(){
 }
 function download(name,kind,txt){const a=document.createElement('a');a.download=name;a.href=URL.createObjectURL(new Blob([txt],{type:kind}));document.body.append(a);a.click();const u=a.href;a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}
 function init(){
+ $('stage-play').addEventListener('click',togglePlayback);
+ const manualClick='[data-step],#next-stage,#prev-stage,#run,#reset,#view-toggle,#compare-cover,[data-site],#prev-site,#next-site,[data-curve],#csv,#json';
+ $('app').addEventListener('click',e=>{const b=e.target.closest(manualClick);if(b&&!b.disabled)interruptPlayback();},true);
+ for(const kind of ['input','change'])$('app').addEventListener(kind,e=>{if(e.target.matches('input,select'))interruptPlayback();},true);
  $('steps').innerHTML=Array.from({length:8},(_,i)=>'<li><button type="button" data-step="'+i+'"><span class="n">'+pad(i+1)+'</span><span class="st-title"></span><span class="stage-symbol" aria-hidden="true"></span></button></li>').join('');
  $('refs').innerHTML=Object.values(N.docs).map(x=>'<dt><a href="'+esc(x.url)+'">'+esc(x.title)+'</a></dt><dd>'+esc(x.scope)+'</dd>').join('');
  if(location.protocol==='file:')for(const a of document.querySelectorAll('a[href^="/"]'))a.href=url(a.getAttribute('href'));
- for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>{mode=b.dataset.mode;syncControls();render();status(N.modes[mode].label+' selected.')});
+ for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>{stopPlayback('ready');mode=b.dataset.mode;syncControls();render();status(N.modes[mode].label+' selected.')});
  $('steps').addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b&&!b.disabled)stgo(+b.dataset.step,true)});
  $('next-stage').addEventListener('click',()=>stgo(cur().stage+1,true));$('prev-stage').addEventListener('click',()=>stgo(cur().stage-1,true));
  $('run').addEventListener('click',()=>{stgo(7,false);$('inspection').scrollIntoView({block:'start'})});
- $('reset').addEventListener('click',()=>{forMode[mode]=blank();syncControls();stgo(0)});
+ $('reset').addEventListener('click',()=>{stopPlayback('ready');forMode[mode]=blank();syncControls();stgo(0)});
  $('view-toggle').addEventListener('click',()=>{cur().map=!cur().map;plate()});
  $('compare-cover').addEventListener('click',()=>{const a=cur();a.fault=mode==='passive'?'cover':'covered';if(mode==='passive')a.inspect=a.location;syncControls();stgo(7)});
  $('fault').addEventListener('change',()=>{cur().fault=$('fault').value;render()});

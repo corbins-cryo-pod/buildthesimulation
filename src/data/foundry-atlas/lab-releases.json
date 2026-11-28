@@ -1,26 +1,26 @@
 {
   "stentrode": {
     "url": "/simulations/stentrode-foundry/",
-    "sha256": "15da19e4d56b7293ddfc867f47c8d4463c4ea7697a1b85638a25662052a236d2",
+    "sha256": "01138991ff3de127394fd59e28e48dec0e2eb71ce2e1c9bbfc481f4aaa8e0d04",
     "profiles": [
       "systems-stent"
     ]
   },
   "time4h": {
     "url": "/simulations/time-4h-foundry/",
-    "sha256": "5fee0b4ff27eb916685e859f3cb22f20bc95f211901f2d03f191de4a4fceaabe",
+    "sha256": "10682b0ff9af2b3ec6409d9dbf03bfb5a4bec5a2c2a9907e0acfda4ea8c860c9",
     "profiles": [
       "pni-time"
     ]
   },
   "tool-fit": {
     "url": "/simulations/foundry/tool-fit/",
-    "sha256": "f3c69410895893260cf2aadbf368095cdcb3e471ae2b000afdbcfaaf8b36e3e6",
+    "sha256": "f9d3274b4c435fff2582a52e53dc7861f7cc7e0b1fe6e82026d1567a1ba0875d",
     "profiles": []
   },
   "neuropixels-family": {
     "url": "/simulations/neuropixels-family/",
-    "sha256": "e3ed1d7d64cb3ed1ac1add1bac491e3e3972cf9c741df83e2c7b942abca9f6f0",
+    "sha256": "64ec8932c36ccd8a672ef76b522dcd34998e16843b30f03aa31b236486b86ce1",
     "profiles": [
       "si-np2",
       "si-np-ultra",
@@ -30,21 +30,21 @@
   },
   "ptnrgrid": {
     "url": "/simulations/ptnrgrid-foundry/",
-    "sha256": "02f8872d5ba3ff6672e243f99b3ed8a0d77c4dd7a63fca1e7cc976be62f8a327",
+    "sha256": "ccff52bd522882e6deb67dad75974f1ea7632f80c8b290432fd4670678848bd2",
     "profiles": [
       "flex-ptnr"
     ]
   },
   "mesh-electronics": {
     "url": "/simulations/mesh-electronics-foundry/",
-    "sha256": "3802d470a25a81bb4140003e2b2e373e433baa0b3a2226467ba253e80ec039a2",
+    "sha256": "ac23905ddf467cdfd89f530f6ea2b5080378e990c99fa9ea0e17e3b2e2100a11",
     "profiles": [
       "flex-mesh-four-mask"
     ]
   },
   "rolled-microchannels": {
     "url": "/simulations/rolled-microchannels-foundry/",
-    "sha256": "65f0db651b043336044438761242b94e1878761e40000ea33b99cbc2626d6572",
+    "sha256": "bcb5a4a36303da90dd685cd407bdc21fbb2b60b268863d89f65b2780b1af1ccf",
     "title": "Rolled microchannel scaffold",
     "profiles": [
       "pni-rolled-channel"
@@ -52,7 +52,7 @@
   },
   "retinal-photovoltaic": {
     "url": "/simulations/retinal-photovoltaic-foundry/",
-    "sha256": "560d11124d866144d06cbe7a4a2a48511fad8f72cb1137d445b8d58be4ebe91d",
+    "sha256": "89aabdf20bb2672591b80c91ad2049268a4732c86fb552c2c9c6cef66717ad8d",
     "title": "Photovoltaic retinal pixel",
     "profiles": [
       "systems-photovoltaic"
@@ -60,13 +60,13 @@
   },
   "process-handoff": {
     "url": "/simulations/foundry/process-handoff/",
-    "sha256": "2d02fbc7d0b8571acbf0bb72daeb9ecacc49125be538622b8d01e04e7bcaf804",
+    "sha256": "f24c10683a0308b50b945bd4e1e329d227fe699c4ac3da30f52a40c6eddf73a3",
     "title": "Process handoff bench",
     "profiles": []
   },
   "neurogrid-oect": {
     "url": "/simulations/neurogrid-oect-foundry/",
-    "sha256": "ce5a922c6901a6abf600dbd08d4e0cc3306d8b6e2d78dfcc6d8be3ed7f035827",
+    "sha256": "4d2fb014c5e8c1f42467518c15873af0d8928e31cd4f52082c15d02ee54a9bfc",
     "title": "NeuroGrid and OECT",
     "profiles": [
       "flex-neurogrid"
@@ -74,7 +74,7 @@
   },
   "utah-slant-compare": {
     "url": "/simulations/utah-slant-compare/",
-    "sha256": "8595d64fb06bbe96a27765f2f964ed3ce5da34b547927b3d856c36f5d31b8e01",
+    "sha256": "ec5a3a015097d39f9114da3985970dfb9b9478e0c18a8aaf1f7c4d5d3cf1fd07",
     "title": "Utah and Slant geometry",
     "profiles": [
       "si-utah"
@@ -82,11 +82,36 @@
   },
   "graphene-stack-compare": {
     "url": "/simulations/graphene-stack-compare/",
-    "sha256": "b8352bef10b7996683f296e9ff1af28548ba0571e159f9738fd359aa9e63e3ce",
+    "sha256": "b42af5800b35eb2728cfa32505b44519ac7b677d8a121e130079b08f184aa2fa",
     "title": "Transparent graphene stacks",
     "profiles": [
       "flex-clear",
       "flex-delft-graph"
     ]
+  },
+  "utah-array-fabrication": {
+    "url": "/simulations/utah-array-fabrication/",
+    "sha256": "6ad82e56fc3f376ec9c73237908ed192cae4b68c88448c0b15abab4a74b70cc7",
+    "profiles": []
+  },
+  "neuropixels-foundry": {
+    "url": "/simulations/neuropixels-foundry/",
+    "sha256": "70b318dbc10c4f1bc925f2e6a13c261da078d86e055892a94a6974df623bfaa2",
+    "profiles": []
+  },
+  "masmanidis-64d-foundry": {
+    "url": "/simulations/masmanidis-64d-foundry/",
+    "sha256": "4670d639cb4a37fc87207f14cb9a489513c069eeb27c8c5d3662f3c5f9c1c33c",
+    "profiles": []
+  },
+  "flex-rigid-ecog-foundry": {
+    "url": "/simulations/flex-rigid-ecog-foundry/",
+    "sha256": "4625d41078aa98dc0f8d25d7a8bd6655caa74bf12ac24b89b8efbe36b0ca0732",
+    "profiles": []
+  },
+  "self-closing-cuff-foundry": {
+    "url": "/simulations/self-closing-cuff-foundry/",
+    "sha256": "909295f14159308931e03b4fe7da13a2daa3b7c44b02f85dd613c8c0b3928ec9",
+    "profiles": []
   }
 }

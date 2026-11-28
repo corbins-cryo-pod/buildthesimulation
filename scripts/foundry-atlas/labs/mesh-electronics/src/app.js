@@ -8,32 +8,18 @@
   const escape=(x)=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
   const equip=JSON.parse($('equipment-data').textContent),build='mesh-foundry-1.0.0';
   let options={...E.opt0},step=1,selected=16,freq=1000,model=E.analyze(options,step),geometry=E.drawing(options),currentPreset='nominal';
-  let timer=null;
+  let foundryPlayer=null;
   const view=globalThis.MeshView.createViewer($('specimen'),i=>changeSelected(i));
   const glyph={'good':'•','wrong-map':'↔','shared':'×','open':'×','empty':'·','not-seated':' ','unlatched':'○'};
   const translations={'good':'correct map','wrong-map':'wrong map','shared':'shared net','open':'open','empty':'unpopulated','not-seated':'not seated','unlatched':'latch open'};
   const presets={nominal:{},open:{fault:'open'},shift:{offset:500},occluded:{window:10},bridge:{fault:'bridge'},rail:{fault:'rail'}};
   const maskHierarchy=['lower','gold','platinum','upper'];
-  const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function stageChange(n,fromRun=false){
-    if(!fromRun)stop(false);
+  function stageChange(n){
     step=Math.max(1,Math.min(E.STAGES.length,n));
     const target=E.STAGES[step-1].inspect;
     view.set({region:target,solo:'stage',camera:target==='section'?'explode':'plan'},true);
     refresh(false);
-  }
-  function stop(paint=true){if(timer){clearInterval(timer);timer=null;if(paint)paintStage()}}
-  function start(){
-    if(timer){stop();return}
-    if(prefersReduced){stageChange(E.STAGES.length);return}
-    if(step===E.STAGES.length)stageChange(1,true);
-    timer=setInterval(()=>{
-      const end=step>=E.STAGES.length-1;
-      if(end)stop(false);
-      stageChange(step+1,true);
-    },175);
-    paintStage();
   }
   function changeSelected(x){
     selected=Math.max(1,Math.min(32,+x||1));
@@ -76,7 +62,7 @@
     $('mode-badge').textContent=v.solo==='stage'?(step>6?'RELEASED':'ON CARRIER'):v.solo==='all'?'ARTWORK PREVIEW':'MASK '+E.MASKS[v.solo].no+' PREVIEW';
     $('prev').disabled=step===1;
     $('next').disabled=step===E.STAGES.length;
-    $('run').textContent=timer?'Pause traveler':step===E.STAGES.length?'Run again':'Run to bench';
+    foundryPlayer?.sync();
     Q('[data-stage]').forEach(el=>{if(+el.dataset.stage===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')});
     Q('[data-region]').forEach(el=>el.setAttribute('aria-pressed',v.region===el.dataset.region?'true':'false'));
     Q('[data-mask]').forEach(el=>el.setAttribute('aria-pressed',v.solo===el.dataset.mask?'true':'false'));
@@ -206,7 +192,7 @@
   Q('[data-preset]').forEach(el=>el.onclick=()=>applyPreset(el.dataset.preset));
   $('selected-pin').onchange=e=>changeSelected(e.target.value);
   $('population').onchange=e=>{currentPreset='';config({...options,population:e.target.value})};
-  $('prev').onclick=()=>stageChange(step-1);$('next').onclick=()=>stageChange(step+1);$('run').onclick=start;
+  $('prev').onclick=()=>stageChange(step-1);$('next').onclick=()=>stageChange(step+1);
   $('camera').onchange=e=>{view.set({camera:e.target.value},true);refresh(false)};
   $('zoom-in').onclick=()=>view.zoom(1.24);$('zoom-out').onclick=()=>view.zoom(1/1.24);$('reset-view').onclick=view.reset;
   $('clear-faults').onclick=()=>applyPreset('nominal');
@@ -234,4 +220,11 @@
   };
   if(siteRoot) Q('a[href^="/"]').forEach(a=>a.setAttribute('href',siteRoot+a.getAttribute('href')));
   config(options,false);
+  foundryPlayer=window.installFoundryPlayback({
+    button:$('run'),frames:[$('specimen')],
+    read:()=>({completed:step,total:E.STAGES.length,done:step===E.STAGES.length,
+      text:step+' / '+E.STAGES.length+' · '+E.STAGES[step-1].name}),
+    advance:()=>stageChange(step+1),
+    replay:()=>stageChange(1)
+  });
 })();

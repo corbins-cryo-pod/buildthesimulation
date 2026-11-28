@@ -7,8 +7,8 @@ import assert from 'node:assert/strict';
 const dir=path.dirname(fileURLToPath(import.meta.url)), cli=new Map();
 if(process.argv.length%2!==0)throw Error('Pass --repo path, --lanes path, and/or --out path.');
 for(let n=2;n<process.argv.length;n+=2){if(!['--repo','--lanes','--out'].includes(process.argv[n]))throw Error('Unknown option '+process.argv[n]);cli.set(...process.argv.slice(n,n+2));}
-const repo=path.resolve(cli.get('--repo')||path.join(dir,'../../../foundry-atlas-site'));
-const lanes=path.resolve(cli.get('--lanes')||path.join(dir,'../../lanes'));
+const repo=path.resolve(cli.get('--repo')||path.join(dir,'../../../..'));
+const lanes=path.resolve(cli.get('--lanes')||path.join(repo,'src/data/foundry-atlas/lanes'));
 const out=path.resolve(cli.get('--out')||path.join(dir,'index.html'));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const orderless=v=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.keys(v).sort().map(k=>[k,orderless(v[k])])):Array.isArray(v)?v.map(orderless):v;
@@ -133,7 +133,7 @@ const proofs={
 };
 const data={dictionary:{repository:eq.snapshot.repo,commit:eq.snapshot.commit,date:eq.snapshot.checked,sha256:hash(fs.readFileSync(equipmentPath))},equipment,profiles,records,evidence,proofs};
 const text=(f)=>fs.readFileSync(path.join(dir,f),'utf8');let html=text('page.html');
-const inserts={'@@STYLE@@':text('style.css'),'@@ENGINE@@':text('engine.cjs'),'@@UI@@':text('ui.js'),'@@DATA@@':JSON.stringify(data).replaceAll('<','\\u003c').replaceAll('&','\\u0026')};
+const inserts={'@@STYLE@@':text('style.css'),'@@ENGINE@@':text('engine.cjs'),'@@UI@@':text('ui.js'),'@@PLAY@@':text('../bench-play.js'),'@@DATA@@':JSON.stringify(data).replaceAll('<','\\u003c').replaceAll('&','\\u0026')};
 for(const [k,v] of Object.entries(inserts)){assert.equal(html.split(k).length,2);html=html.replace(k,()=>v);}
 fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,html);
 console.log(JSON.stringify({records:Object.keys(records).length,stations:Object.keys(equipment).length,atlasProfiles:Object.keys(profiles).length,softwareImports:2,provenDirectRejections:5,htmlBytes:Buffer.byteLength(html),sha256:hash(html)}));

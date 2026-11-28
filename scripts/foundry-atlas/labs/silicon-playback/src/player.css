@@ -1,0 +1,16 @@
+.bts-workflow-player{--fp-accent:var(--mint,var(--teal,var(--green,#286553)));--fp-ink:var(--ink,#22352e);--fp-panel:var(--panel,var(--paper,var(--card,#fffdf1)));--fp-line:var(--edge,var(--line,var(--rule,#887d6b)));--fp-dim:var(--muted,var(--dim,#414c45));margin:.55rem 0 .85rem;padding:.64rem .79rem;border:1px solid var(--fp-line);border-radius:5px;background:var(--fp-panel);color:var(--fp-ink);min-width:0}
+.bts-workflow-player .bts-flow-row{display:flex;align-items:center;justify-content:space-between;gap:.48rem .85rem;flex-wrap:wrap}
+.bts-workflow-player .bts-flow-buttons{display:flex;align-items:center;gap:.34rem .45rem;flex-wrap:wrap}
+.bts-workflow-player button{min-height:42px;min-width:42px;padding:.41rem .62rem;cursor:pointer}
+.bts-workflow-player button[disabled]{cursor:not-allowed}
+.bts-workflow-player .bts-flow-name{font:700 .70rem/1.25 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.055em}
+.bts-workflow-player progress{display:block;width:100%;height:.52rem;accent-color:var(--fp-accent);margin:.51rem 0 .37rem}
+.bts-workflow-player .bts-flow-status{font-size:.86rem;font-weight:650;line-height:1.35;min-height:1.25em;overflow-wrap:anywhere}
+.bts-workflow-player .bts-flow-note{margin:.25em 0 0;color:var(--fp-dim);font-size:.76rem;line-height:1.32}
+.bts-workflow-player .bts-flow-ready{margin:.32rem 0 0;font-size:.80rem;line-height:1.35}
+.bts-workflow-player .bts-flow-confirm{border-top:1px solid var(--fp-line);padding-top:.42rem;margin-top:.44rem;font-size:.82rem}
+.bts-workflow-player .bts-flow-confirm button{margin:.35rem .25rem 0 0}
+[data-bts-flow-active]{outline:2px solid var(--mint,var(--teal,var(--green,#286553)));outline-offset:2px}
+@media(max-width:470px){.bts-workflow-player{padding:.58rem .61rem}.bts-workflow-player .bts-flow-buttons{width:100%}.bts-workflow-player .bts-flow-name{font-size:.66rem}.bts-workflow-player button{padding:.39rem .53rem}}
+@media(prefers-reduced-motion:reduce){.bts-workflow-player,.bts-workflow-player *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:760px){.bts-workflow-player:is([data-player-state="running"],[data-player-state="paused"],[data-player-state="blocked"]){position:sticky;top:0;z-index:6}.bts-workflow-player~[id],.bts-workflow-player~* [id][data-bts-flow-active]{scroll-margin-top:9.5rem}}

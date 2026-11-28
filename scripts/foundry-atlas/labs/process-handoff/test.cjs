@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),H=require('./engine.cjs');
-const html=fs.readFileSync(process.argv[2]||path.join(__dirname,'index.html'),'utf8'),g=html.match(/<script id="handoff-data" type="application\/json">([\s\S]*?)<\/script>/);
+const html=fs.readFileSync(process.argv[2]||path.join(__dirname,'../../../../public/simulations/foundry/process-handoff/index.html'),'utf8'),g=html.match(/<script id="handoff-data" type="application\/json">([\s\S]*?)<\/script>/);
 const db=JSON.parse(g[1]);
 const {cases,demands,prove}=H,M='match',X='incompatible',U='unknown';
 const all={
@@ -60,7 +60,7 @@ const {developer,adc}=db.proofs;
 assert.equal(developer.outputRevision,developer.inputRevision+1);assert.equal(developer.id,db.records.contact.fields.id);assert.equal(developer.points,6400);assert(developer.openCells>0);
 assert.equal(adc.outputRevision,adc.inputRevision+1);assert.equal(adc.id,db.records.volts.fields.id);assert.equal(adc.points,131);assert.equal(adc.terminal,'AI0');
 assert.equal(prove(db,'carrier','contact','drie').status,U);assert.equal(prove(db,'invented','dry200','drie').status,U);assert.equal(prove(db,'panel','tinyRegion','invented').valid,false);
-const dict=fs.readFileSync(process.argv[3]||path.join(__dirname,'../../lanes/equipment.json'));assert.equal(crypto.createHash('sha256').update(dict).digest('hex'),db.dictionary.sha256);
+const dict=fs.readFileSync(process.argv[3]||path.join(__dirname,'../../../../src/data/foundry-atlas/lanes/equipment.json'));assert.equal(crypto.createHash('sha256').update(dict).digest('hex'),db.dictionary.sha256);
 for(const r of Object.values(db.records)){assert.match(r.recordSha256,/^[a-f0-9]{64}$/);assert(r.sources.every(k=>db.evidence[k]));}
 for(const d of Object.values(demands)){assert(db.equipment[d.station]||d.station==='external');assert(d.sources.every(k=>db.evidence[k]));}
 console.log(JSON.stringify({result:'pass',pairs:count,cases:cases.length,distinctDemands:Object.keys(demands).length,softwareWitnesses:{developer,adc}},null,2));

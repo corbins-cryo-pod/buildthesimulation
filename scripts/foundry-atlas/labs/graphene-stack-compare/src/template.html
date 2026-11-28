@@ -4,7 +4,10 @@
 <meta name="theme-color" content="#153e42">
 <meta name="description" content="Compare virtual graphene coupon manufacturing: four transferred sheets on flexible parylene versus direct multilayer growth on retained fused silica. Inspect dry continuity and optical apertures.">
 <title>Transparent Graphene Foundry | Build The Simulation</title>
-<style>@@CSS@@</style>
+<style>@@CSS@@
+@@PLAYBACK_CSS@@
+#station>.foundry-playback{margin:0 0 7px}@media(max-width:720px){#station>.foundry-playback[data-play-state="playing"]{position:sticky;top:0;z-index:2}}
+</style>
 </head><body>
 <a class="skip" href="#station">Skip to comparison</a>
 <header class="mast"><div class="wrap mast-in"><a class="brand" href="/"><span class="seal">B</span><span>BUILD THE<br>SIMULATION</span></a><nav aria-label="Project"><a href="/simulations/foundry/">Foundry</a><a href="/simulations/foundry/atlas/">Workflow atlas</a><a href="#references">Sources</a></nav></div></header>
@@ -19,8 +22,11 @@
   <section id="station" aria-labelledby="station-title">
     <div class="station-bar">
       <div><p class="eyebrow">FLEXIBLE VS RIGID</p><h2 id="station-title">Comparison station</h2></div>
-      <div class="station-controls"><button id="reset" class="dim" type="button">Reset both</button><button id="run-all" class="primary" type="button">Run both to bench</button></div>
+      <div class="station-controls"><button id="reset" class="dim" type="button">Reset both</button></div>
     </div>
+    <div class="foundry-playback" data-foundry-playback role="group" aria-label="Workflow playback">
+<button type="button" id="run-all" data-foundry-play aria-label="Play workflow">Play workflow</button><div class="foundry-playback-readout"><progress max="1" value="0" aria-label="Combined progress across CLEAR and Delft"></progress><span data-foundry-current>Inspect the current stage</span></div><span data-foundry-notice role="status" aria-live="polite"></span>
+</div>
     <div class="viewbar">
       <span class="micro">INSPECTION</span>
       <div class="seg" role="group" aria-label="Inspection mode"><button data-view="plan" aria-pressed="true" type="button">Plan</button><button data-view="section" aria-pressed="false" type="button">Layer cutaway</button><button data-view="aperture" aria-pressed="false" type="button">Window proof</button></div>
@@ -50,6 +56,9 @@
   </section>
 </main>
 <footer class="wrap"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/">Back to workflow atlas ↑</a></footer>
+<script>
+@@PLAYBACK_JS@@
+</script>
 <script id="equipment-data" type="application/json">@@EQUIPMENT@@</script>
 <script>@@ENGINE@@</script><script>@@VISUAL@@</script><script>@@APP@@</script>
 </body></html>

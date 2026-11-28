@@ -15,17 +15,18 @@ for(const pick of [a,b]){
  const groups={};
  for(const r of db.records){if(!groups[r.zoneId]){groups[r.zoneId]=tag('optgroup');groups[r.zoneId].label=r.zoneId+' · '+r.zone;pick.append(groups[r.zoneId]);}groups[r.zoneId].append(option(r.id,r.id+' · '+r.name));}
 }
-const summaryLine=tag('span');
-function gates(box,title,res){
+function gates(box,title,res,layer){
  const container=tag('div',undefined,'group'),top=tag('div',undefined,'group-head');top.append(tag('h4',title),tag('span',F.labels[res.status],'chip '+res.status));container.append(top);
- const ul=tag('ul',undefined,'gates');for(const g of res.gates){
+ container.dataset.fitLayer=layer;
+ const ul=tag('ul',undefined,'gates');for(const [i,g] of res.gates.entries()){
   const li=tag('li'),key=tag('span',({within:'Within',outside:'Outside',unknown:'Unknown'})[g.status]+' · ','gate-key '+g.status);
+  li.dataset.fitGate=String(i);
   li.append(key,tag('strong',g.title),tag('p',g.reason));ul.append(li);
  }container.append(ul);box.append(container);
 }
 function renderTool(box,r,v){
  box.replaceChildren();const title=tag('h3');const l=link(r.model,site(r.url));l.className='title-link';title.append(l);box.append(title,tag('p',r.realization+' · '+r.simulationScope,'kit'));
- gates(box,'Documentation',v.reference);gates(box,'Virtual experiment',v.virtual);
+ gates(box,'Documentation',v.reference,'reference');gates(box,'Virtual experiment',v.virtual,'virtual');
  const details=tag('details',undefined,'evidence'),sr=tag('summary','Show limits and sources');details.append(sr);
  const limits=tag('ul');for(const lim of r.limits)limits.append(tag('li',lim));details.append(limits);
  const roles=tag('p','Dictionary roles: '+r.operations.map(x=>db.operations[x]||x).join('; ')+'.','tiny');details.append(roles);
@@ -60,7 +61,79 @@ function draw(d){
  figure.append(svgEl('rect',{x:140-w/2,y:80-h/2,width:w,height:h,fill:'#ac734a','fill-opacity':'.5',stroke:'#905624','stroke-width':'2'}));aside.append(figure);
  aside.append(tag('p','Green: '+fmt(d.size)+' mm '+(d.shape==='square'?'square carrier.':'diameter wafer.')+' Ochre: '+fmt(d.width)+' × '+fmt(d.height)+' mm written footprint, centered with all four corners occupied.','caption'));
 }
-let recent;
+const fitPlay=$('fit-play'),fitBack=$('fit-back'),fitNext=$('fit-next');
+const stagesFor={intake:'Requirement',reference:'Documentation',virtual:'Virtual experiment',result:'Decision'};
+const briefStatus={within:'Within this gate',outside:'Outside configuration',unknown:'Not established'};
+let recent,plan=[],pair=[],seenStep=-1;
+const player=FoundryBenchPlay.create({paint:showStage,delay:2300});
+function summaryFor(d){
+ const val=(x,u)=>Number.isFinite(x)?fmt(x)+' '+u:'not specified';
+ if(d.job==='optical'){
+  const shape=d.shape==='round'?'wafer diameter':'carrier side';
+  const f=d.pattern==='dense'?'each line and each gap':'isolated feature';
+  return 'Compare the same '+shape+' ('+val(d.size,'mm')+'), written footprint ('+val(d.width,'mm')+' by '+val(d.height,'mm')+'), and '+f+' ('+val(d.feature,'µm')+').';
+ }
+ if(d.job==='deep')return 'Compare '+(d.material==='si'?'silicon':d.material==='iii-v'?'a III–V material':'an unspecified material')+' at '+val(d.size,'mm')+', asking for '+(d.end==='trench'?'one isolated trench':'a through-release of the device')+'. Diameter, material and output state are separate gates.';
+ if(d.job==='dry'||d.job==='bond')return 'Compare a '+val(d.size,'mm')+' '+(d.shape==='square'?'square carrier':'round wafer')+' and the selected '+(d.job==='bond'?'alignment and bond requirement.':'dry handling role.');
+ return desc[d.job]||'Compare the reviewed gates without substituting similar tools.';
+}
+function prepareTour(d,records,results){
+ pair=records;
+ plan=[{phase:'intake',title:F.jobs[d.job],note:summaryFor(d)}];
+ for(const layer of ['reference','virtual']){
+  const n=Math.max(...results.map(v=>v[layer].gates.length));
+  for(let i=0;i<n;i++){
+   const gates=results.map(v=>v[layer].gates[i]||null);
+   plan.push({phase:layer,gateIndex:i,gates,title:stagesFor[layer]+' · gate '+(i+1)+' of '+n,note:layer==='reference'?'Current reference checks for each named configuration.':'Current checks in each selected browser experiment, not evidence of hardware operation.'});
+  }
+ }
+ plan.push({phase:'result',title:'Read the two verdicts separately',note:'No physical result, equipment access, process qualification or permission is established by these checks.',results});
+ seenStep=-1;player.load(plan.length);
+}
+function showStage(state){
+ const {progress,total,mode}=state,current=plan[progress-1],phase=current?.phase||'intake';
+ const rail=$('fit-player'),meter=$('fit-progress'),stage=$('fit-stage');
+ rail.dataset.playback=mode;rail.dataset.step=String(progress);stage.dataset.phase=phase;
+ fitPlay.textContent=FoundryBenchPlay.playLabel[mode];
+ fitBack.disabled=progress===0;fitNext.disabled=!total||progress===total;
+ meter.max=total||1;meter.value=progress;
+ rail.style.setProperty('--fit-travel',((total?progress/total:0)*100)+'%');
+ $('fit-count').textContent=progress+' of '+total+' stages reviewed';
+ $('fit-stage-title').textContent=current?.title||'Ready to compare';
+ $('fit-stage-note').textContent=current?.note||'Play checks the current pair one stage at a time. Change any input or select another station to stop and reset the tour.';
+ for(const li of rail.querySelectorAll('[data-fit-phase]')){
+  if(li.dataset.fitPhase===phase)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');
+ }
+ const cards=$('fit-stage-cards');cards.replaceChildren(...pair.map((r,i)=>{
+  const box=tag('div',undefined,'fit-stage-card');
+  box.append(tag('p','Station '+(i?'B':'A')+' · '+r.id,'caption'),tag('h4',r.model));
+  if(current?.gates){
+   const g=current.gates[i];
+   if(g){
+    const line=tag('p',undefined,'fit-gate-label');line.append(tag('strong',g.title),tag('span',briefStatus[g.status],'chip '+g.status));box.append(line,tag('p',g.reason,'fit-reason'));
+   }else box.append(tag('p','No additional '+(phase==='reference'?'documentation':'virtual')+' gate for this station.','fit-reason'));
+  }else if(current?.results){
+   const result=current.results[i];
+   for(const [layer,label] of [['reference','Documentation'],['virtual','Virtual experiment']]){
+    const st=result[layer].status,line=tag('p',undefined,'fit-gate-label');line.append(tag('strong',label),tag('span',F.labels[st],'chip '+st));box.append(line);
+   }
+  }else box.append(tag('p',current?r.name:r.realization,'fit-reason'));
+  return box;
+ }));
+ for(const x of document.querySelectorAll('.fit-current-gate')){x.classList.remove('fit-current-gate');x.removeAttribute('aria-current');}
+ if(current?.gates)for(const station of ['result-a','result-b']){
+  const li=$(station).querySelector('[data-fit-layer="'+phase+'"] [data-fit-gate="'+current.gateIndex+'"]');
+  if(li){li.classList.add('fit-current-gate');li.setAttribute('aria-current','step');}
+ }
+ if(seenStep!==progress){
+  const headline=current?('Stage '+progress+' of '+total+'. '+current.title+'. '+(current.gates?current.gates.filter(Boolean).map(g=>g.title).join('; '):'')):'Playback reset to the current comparison.';
+  $('fit-announce').textContent=headline;seenStep=progress;
+ }
+}
+fitPlay.addEventListener('click',()=>player.toggle());
+fitBack.addEventListener('click',()=>player.previous());
+fitNext.addEventListener('click',()=>player.next());
+document.addEventListener('visibilitychange',()=>{if(document.hidden)player.pause();});
 function show(){
  const d=read(),r1=db.records.find(x=>x.id===a.value),r2=db.records.find(x=>x.id===b.value);
  const v1=F.evaluate(db,a.value,d),v2=F.evaluate(db,b.value,d);
@@ -72,6 +145,7 @@ function show(){
  for(const [r,v] of [[r1,v1],[r2,v2]]){
   recent.evidence[r.id]={model:r.model,register:site(r.url),simulator:site(r.simulatorUrl),limits:r.limits,external:Object.fromEntries([...new Set(v.reference.gates.flatMap(q=>q.sourceIds))].filter(k=>db.sources[k]).map(k=>[k,db.sources[k]]))};
  }
+ prepareTour(d,[r1,r2],[v1,v2]);
 }
 function apply(id){
  const p=F.presets.find(p=>p.id===id);if(!p)return;
@@ -80,7 +154,7 @@ function apply(id){
 function custom(){preset.value='custom';$('case-note').textContent='Custom comparison. Unknowns remain explicit; compare the same requirement across any two registered stations.';show();}
 preset.addEventListener('change',()=>preset.value==='custom'?custom():apply(preset.value));
 $('request').addEventListener('input',custom);$('request').addEventListener('submit',e=>e.preventDefault());a.addEventListener('change',custom);b.addEventListener('change',custom);
-$('export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(recent,null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=link('Export',u);a.download='tool-fit-'+recent.stations.map(x=>x.toolId).join('-vs-')+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);});
+$('export').addEventListener('click',()=>{player.pause();const blob=new Blob([JSON.stringify(recent,null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=link('Export',u);a.download='tool-fit-'+recent.stations.map(x=>x.toolId).join('-vs-')+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);});
 $('provenance').textContent=Object.keys(F.jobs).length+' questions · '+db.records.length+' selectable register entries · '+Object.keys(F.expectedOps).length+' explicitly reviewed station IDs · model '+F.version+' · source revision '+db.snapshot.commit.slice(0,12)+' · evidence checked '+db.snapshot.checked+'.';
 const fromURL=new URLSearchParams(location.hash.slice(1)).get('case');apply(F.presets.some(p=>p.id===fromURL)?fromURL:'panel');
 })();

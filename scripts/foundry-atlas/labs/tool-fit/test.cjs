@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),F=require('./engine.cjs');
-const htmlPath=process.argv[2]||path.join(__dirname,'index.html'),datapath=process.argv[3]||path.join(__dirname,'../../lanes/equipment.json');
+const htmlPath=process.argv[2]||path.join(__dirname,'../../../../public/simulations/foundry/tool-fit/index.html'),datapath=process.argv[3]||path.join(__dirname,'../../../../src/data/foundry-atlas/lanes/equipment.json');
 const html=fs.readFileSync(htmlPath,'utf8'),db=JSON.parse(html.match(/<script id="equipment-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);let n=0;
 const c=(x,y,s)=>{assert.deepEqual(x,y,s);n++;},base=F.base;
 c(crypto.createHash('sha256').update(fs.readFileSync(datapath)).digest('hex'),db.dictionarySha256,'dictionary hash');

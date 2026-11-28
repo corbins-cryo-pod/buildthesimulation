@@ -22,6 +22,47 @@
 .wang-net{display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;align-items:center;margin:10px 14px 0;padding:4px 8px;background:#0f1e21;border:1px solid #34514e;border-radius:7px}.wang-net b,.wang-net span{display:block;font:600 10px/1.4 var(--mono)}.wang-net b{color:var(--mint);letter-spacing:.07em}.wang-net span{color:var(--muted)}.wang-net svg{display:block;width:100%;height:55px;max-width:420px}
 @media(max-width:640px){.wang-net{margin:8px 8px 0;gap:6px;grid-template-columns:1fr}.wang-net > div:first-child{display:flex;justify-content:space-between;gap:8px}.wang-net svg{height:48px}.size-field label{display:block;position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
 </style>
+<!-- bts-workflow-player:1 -->
+<style>
+/* Foundry workflow motion, scoped to the process plate. */
+.fp-player{box-sizing:border-box;min-width:0;width:100%;margin:.62rem 0 .72rem;font:400 14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#e5eddb;text-align:left}
+.fp-native-hidden{display:none!important}
+.fp-head,.fp-transport{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.fp-head{padding:7px 8px;border:1px solid #739180;border-radius:7px;background:#244a41}
+.fp-head-note{flex:1 1 145px;min-width:0;color:#dce8dc;font-size:12px;line-height:1.4}
+.fp-player button,.fp-player select{font:650 14px/1.18 system-ui,-apple-system,Segoe UI,sans-serif;min-height:44px;color:#203a31;background:#f7f2df;border:1px solid #7fa08b;border-radius:5px;padding:7px 10px;box-shadow:none;text-transform:none;letter-spacing:normal;margin:0;cursor:pointer}
+.fp-player button:hover:not(:disabled),.fp-player select:hover{background:#fff7da}
+.fp-player button:disabled{opacity:.56;cursor:not-allowed}
+.fp-player button:focus-visible,.fp-player select:focus-visible{outline:3px solid #ffd191;outline-offset:2px}
+.fp-player [data-fp="action"]{background:#f0c180;border-color:#f5d49c;color:#27382e}
+.fp-player [data-fp="action"]:hover{background:#ffdb9e}
+.fp-player .fp-expanded{margin-top:7px;border:1px solid #739180;border-radius:7px;background:#193b34;overflow:hidden}
+.fp-player .fp-expanded[hidden],.fp-player button[hidden]{display:none!important}
+.fp-card{padding:10px 11px 9px;min-width:0}
+.fp-kicker{color:#eac187;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase}
+.fp-player .fp-label{margin:4px 0;font:650 16px/1.28 system-ui,-apple-system,Segoe UI,sans-serif;color:#fff4d9;overflow-wrap:anywhere}
+.fp-player .fp-note{margin:4px 0 6px;font-size:12px;color:#deebd8;line-height:1.4;min-height:2.8em}
+.fp-player .fp-scene{display:block;width:100%;height:auto;max-width:none;min-height:0;background:#16372f;border-top:1px solid #6e8c7c;border-bottom:1px solid #6e8c7c}
+.fp-track{height:5px;background:#597568;margin:8px 0 4px;overflow:hidden;border-radius:4px}
+.fp-bar{height:100%;width:0;background:#e9b274;transform-origin:left;will-change:width}
+.fp-player .fp-info{font:400 11px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#dce8dc}
+.fp-transport{margin-top:8px;align-items:end}
+.fp-transport label{margin:0;font:600 11px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;color:#deebd8;display:block;min-width:0}
+.fp-transport select{display:block;background:#f3eedc;width:max-content;max-width:100%;margin-top:3px}
+.fp-transport .fp-choose{flex:1 1 184px}
+.fp-transport .fp-choose select{width:100%;appearance:auto}
+.fp-player .fp-progress-text{white-space:nowrap}
+.fp-player [data-fp="close"],.fp-player [data-fp="replay"]{background:#315c4e;color:#f4efd9}
+.fp-player [data-fp="close"]:hover,.fp-player [data-fp="replay"]:hover{background:#3f6e5d}
+@media(max-width:480px){
+ .fp-player .fp-note{min-height:0}
+ .fp-transport .fp-choose{flex-basis:100%;order:2}
+ .fp-player button,.fp-player select{font-size:13px}
+ .fp-head-note{flex-basis:130px}
+ .fp-card{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){.fp-player *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 <header class="mast wrap">
@@ -347,6 +388,231 @@
   return {revision,constants,cfg,releaseIndex,index,normalize,quantEfficiency,optics,dark,hexVertices,coupon,geometry,isolation,run,report,csv};
 });
 </script>
+<script>
+/* Read-only Foundry Process Player. Elapsed display time is educational, not process time. */
+window.BTSFoundryPlay = (() => {
+'use strict';
+const W=600,H=267;
+const C={bg:'#183c34',paper:'#edf2d5',muted:'#a9c1a4',iron:'#55756b',steel:'#7ca1a0',si:'#74949b',glass:'#87a8a8',gold:'#e8b572',amber:'#c79856',poly:'#8fbeae',dark:'#234c3e',pink:'#d99c9c',red:'#ed8d73',mint:'#9de5bf',blue:'#97d2de',night:'#15332c'};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=u=>{u=clamp(u);return u*u*(3-2*u)};
+const mix=(a,b,u)=>a+(b-a)*u;
+const num=v=>Number.isFinite(v)?Number(v.toFixed(2)):0;
+const attrs=' shape-rendering="geometricPrecision"';
+const rect=(x,y,w,h,col,stroke='none',sw=1,extra='')=>'<rect x="'+num(x)+'" y="'+num(y)+'" width="'+num(Math.max(0,w))+'" height="'+num(Math.max(0,h))+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'" '+extra+'/>';
+const line=(x,y,a,b,col=C.muted,n=2,extra='')=>'<line x1="'+num(x)+'" y1="'+num(y)+'" x2="'+num(a)+'" y2="'+num(b)+'" stroke="'+col+'" stroke-width="'+n+'" stroke-linecap="round" '+extra+'/>';
+const dot=(x,y,r,col,stroke='none',sw=1)=>'<circle cx="'+num(x)+'" cy="'+num(y)+'" r="'+num(r)+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'"/>';
+const poly=(pts,col,stroke='none',sw=1,z='polygon')=>'<'+z+' points="'+pts.map(([x,y])=>num(x)+','+num(y)).join(' ')+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'" stroke-linecap="round" stroke-linejoin="round"/>';
+const path=(d,col='none',stroke=C.muted,n=2,extra='')=>'<path d="'+d+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+n+'" stroke-linecap="round" stroke-linejoin="round" '+extra+'/>';
+const label=(x,y,t,opts={})=>'<text x="'+num(x)+'" y="'+num(y)+'" fill="'+(opts.color||C.paper)+'" font-family="ui-monospace,monospace" font-size="'+(opts.size||13)+'" text-anchor="'+(opts.anchor||'start')+'">'+esc(t)+'</text>';
+const ell=(x,y,rx,ry,c,stroke='none',n=1)=>'<ellipse cx="'+num(x)+'" cy="'+num(y)+'" rx="'+num(Math.max(0,rx))+'" ry="'+num(Math.max(0,ry))+'" fill="'+c+'" stroke="'+stroke+'" stroke-width="'+n+'"/>';
+const group=(p,opacity=1,extra='')=>'<g opacity="'+num(clamp(opacity))+'" '+extra+'>'+p+'</g>';
+function arrow(x,y,x2,y2,c=C.gold,n=2){
+ const a=Math.atan2(y2-y,x2-x),r=8;return line(x,y,x2,y2,c,n)+poly([[x2,y2],[x2-r*Math.cos(a-.5),y2-r*Math.sin(a-.5)],[x2-r*Math.cos(a+.5),y2-r*Math.sin(a+.5)]],c);
+}
+function tick(x,y,u,col=C.mint){return group(path('M'+(x-5)+' '+y+'l3 4 8 -10','none',col,3),u)}
+function guide(x,y,w,h){return rect(x,y,w,h,'none',C.muted,1,'stroke-dasharray="4 5"')}
+function opacityAttr(u){return 'opacity="'+num(clamp(u))+'"'}
+function panel(id,title,caption='SCHEMATIC · NOT PROCESS TIMING'){
+ return '<defs><pattern id="fpGrid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0v18" fill="none" stroke="#75a889" stroke-opacity=".25" stroke-width=".6"/></pattern></defs>'+rect(0,0,W,H,C.bg)+rect(11,10,W-22,H-20,'url(#fpGrid)','#718c78',1.1)+label(23,32,id+'  /  '+title.toUpperCase(),{color:C.gold,size:12})+label(W-22,H-17,caption,{color:C.muted,size:10,anchor:'end'});
+}
+function stretch(tickStart,tickStop,u){return ease((u-tickStart)/(tickStop-tickStart));}
+function seqPoints(pts,u){
+ u=clamp(u);if(pts.length<=1||u>=1)return pts;
+ let index=u*(pts.length-1),i=Math.floor(index),t=index-i;
+ return [...pts.slice(0,i+1),[mix(pts[i][0],pts[i+1][0],t),mix(pts[i][1],pts[i+1][1],t)]];
+}
+const lengthLabel=(x,y,w,s)=>line(x,y,x+w,y,C.muted,1)+line(x,y-4,x,y+4,C.muted,1)+line(x+w,y-4,x+w,y+4,C.muted,1)+label(x+w/2,y+16,s,{color:C.muted,size:11,anchor:'middle'});
+const gfx={W,H,C,esc,clamp,ease,mix,num,attrs,rect,line,dot,poly,path,label,ell,group,arrow,tick,guide,opacityAttr,panel,stretch,seqPoints,lengthLabel};
+function attach({plate,extra=[],interrupt,build,compact=false}){
+ if(!plate||typeof build!=='function')return null;
+ let host=document.createElement('section');host.className='fp-player';host.id='foundry-workflow-player';host.setAttribute('aria-label','Workflow animation');host.dataset.state='idle';
+ host.innerHTML='<div class="fp-head"><button type="button" data-fp="action" aria-controls="fp-expanded" aria-expanded="false">Play workflow</button><button type="button" data-fp="replay" hidden>Replay</button><button type="button" data-fp="close" hidden>Close animation</button><span class="fp-head-note" data-fp="summary">Watch each modeled step. Playback does not change the specimen.</span></div>'+
+ '<div class="fp-expanded" id="fp-expanded" hidden><div class="fp-card"><div class="fp-kicker"><span data-fp="position" class="fp-progress-text"></span> · PROCESS PREVIEW</div><div class="fp-label" data-fp="title" aria-live="polite"></div><div class="fp-note" data-fp="description"></div></div>'+
+ '<svg class="fp-scene" data-fp="scene" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Animated process plate"></svg>'+
+ '<div class="fp-card"><div class="fp-track" aria-hidden="true"><div class="fp-bar" data-fp="bar"></div></div><div class="fp-info" data-fp="timing">Display time is not a process parameter.</div>'+
+ '<div class="fp-transport"><button type="button" data-fp="prev" aria-label="Previous animation scene">← Scene</button><button type="button" data-fp="next" aria-label="Next animation scene">Scene →</button><label>Speed<select data-fp="speed"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label class="fp-choose">Animation scene<select data-fp="jump"></select></label></div></div></div>';
+ plate.before(host);
+ const idx=Object.fromEntries([...host.querySelectorAll('[data-fp]')].map(el=>[el.dataset.fp,el])),box=host.querySelector('.fp-expanded');
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');let scenes=[],phase='idle',scene=0,elapsed=0,last=null,raf=0,lastDraw=-Infinity,reduced=motion.matches,visualVersion=-1,opened=false,speed=1,staticPreview=false;
+ const replace=[plate,...extra].filter(Boolean);
+ function visible(on){
+   opened=on;box.hidden=!on;idx.action.setAttribute('aria-expanded',String(on));
+   for(const a of replace)a.classList.toggle('fp-native-hidden',on);
+   idx.close.hidden=!on;
+ }
+ function updatePhase(p,msg){
+   phase=p;host.dataset.state=p;
+   idx.action.textContent=({idle:'Play workflow',playing:'Pause',paused:'Resume',finished:'Replay workflow'})[p];
+   idx.replay.hidden=!opened||p==='finished';
+   idx.summary.textContent=msg||({idle:'Watch each modeled step. Playback does not change the specimen.',playing:'Read-only playback. Manual controls still work.',paused:'Paused. Resume here or choose another scene.',finished:'Animation complete. The specimen is unchanged.'})[p];
+ }
+ const duration=s=>s.duration||2300;
+ const sceneCount=()=>scenes.length;
+ function render(force=false){
+   const a=scenes[scene];if(!a)return;
+   const fraction=clamp(elapsed/duration(a));
+   const u=(reduced||staticPreview)?1:ease(Math.min(1,fraction/.67));
+   if(visualVersion!==scene){
+     visualVersion=scene;const label='Step '+(scene+1)+' / '+sceneCount();
+     host.dataset.step=String(scene+1);host.dataset.total=String(sceneCount());host.dataset.scene=a.id;
+     idx.position.textContent=label;idx.title.textContent=a.name;idx.description.textContent=a.detail;
+     idx.scene.setAttribute('aria-label',label+': '+a.name+'. '+(a.alt||a.detail));
+     idx.jump.value=String(scene);idx.prev.disabled=scene===0;idx.next.disabled=scene>=sceneCount()-1;
+   }
+   if(force||!reduced){
+     idx.scene.innerHTML=a.draw(u);
+     host.dataset.frame=String(Math.round(u*1000));
+   }
+   idx.bar.style.width=(100*(scene+(reduced?Number(fraction>=1):fraction))/sceneCount()).toFixed(2)+'%';
+   idx.timing.textContent=reduced?'Reduced motion: stage snapshots. Display time is not a process parameter.':'Display time is not a process parameter.';
+ }
+ function loop(t){
+   if(phase!=='playing')return;
+   if(last!==null)elapsed+=Math.min(80,Math.max(0,t-last))*speed;
+   last=t;
+   let a=scenes[scene];
+   if(elapsed>=duration(a)){
+     elapsed=duration(a);
+     render(true);
+     if(scene===sceneCount()-1){raf=0;last=null;updatePhase('finished');return;}
+     elapsed=0;scene++;visualVersion=-1;render(true);lastDraw=t;
+   }else if(t-lastDraw>40){
+     render(false);lastDraw=t;
+   }
+   raf=requestAnimationFrame(loop);
+ }
+ function stop(){cancelAnimationFrame(raf);raf=0;last=null;}
+ function play(){stop();if(staticPreview){staticPreview=false;render(true);}updatePhase('playing');raf=requestAnimationFrame(loop);}
+ function pause(msg){stop();updatePhase('paused',msg);}
+ function begin(){
+   const b=build(),list=Array.isArray(b)?b:b?.scenes;
+   if(!list?.length){updatePhase('idle','No documented process playback for this branch.');return;}
+   scenes=list;scene=0;elapsed=0;staticPreview=false;visualVersion=-1;lastDraw=-Infinity;
+   idx.jump.replaceChildren(...scenes.map((a,i)=>new Option(String(i+1).padStart(2,'0')+' · '+a.name,String(i))));
+   visible(true);render(true);play();
+ }
+ function close(focus=false){
+   if(!opened)return;
+   stop();visible(false);visualVersion=-1;phase='idle';elapsed=0;scene=0;delete host.dataset.step;delete host.dataset.total;delete host.dataset.scene;delete host.dataset.frame;
+   idx.scene.replaceChildren();updatePhase('idle');if(focus)idx.action.focus();
+ }
+ function manual(n){
+   if(!opened||n<0||n>=sceneCount())return;
+   scene=n;elapsed=0;staticPreview=true;visualVersion=-1;pause('Manual animation scene. The specimen is unchanged.');
+   render(true);
+ }
+ idx.action.onclick=()=>{if(phase==='playing')pause();else if(phase==='paused')play();else begin();};
+ idx.replay.onclick=begin;idx.close.onclick=()=>close(true);
+ idx.prev.onclick=()=>manual(scene-1);idx.next.onclick=()=>manual(scene+1);idx.jump.onchange=()=>manual(+idx.jump.value);
+ idx.speed.onchange=()=>{speed=+idx.speed.value;last=null;};
+ host.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){e.preventDefault();close(true)}});
+ const onInterrupt=e=>{if(opened&&e.target instanceof Element&&!host.contains(e.target)&&e.target.closest(interrupt))close(false)};
+ if(interrupt)for(const ev of ['click','change','input'])document.addEventListener(ev,onInterrupt,true);
+ const setMotion=e=>{reduced=e.matches;if(opened)render(true);};
+ if(motion.addEventListener)motion.addEventListener('change',setMotion);else motion.addListener(setMotion);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&phase==='playing')pause('Paused when this tab was hidden. Resume here when ready.');});
+ if(compact)host.classList.add('fp-compact');
+ return {close};
+}
+return {attach,gfx};
+})();
+</script>
+<script>
+window.FoundryRetinalScenes=(E,M,specimen)=>{
+'use strict';
+const {C,rect,line,dot,poly,group,label,path,arrow,panel,stretch:e,mix,lengthLabel,seqPoints}=BTSFoundryPlay.gfx;
+const xl=61,xr=539, y=112, h=75, bottom=y+h,ybox=bottom,hbox=10,handle=197;
+const gaps=[[165,193],[358,387]],cells=[[xl,165],[193,358],[387,xr]];
+const g=M.coupon(specimen.size), aC=C.blue,bC=C.pink,body='#638d91',boxc='#a6c7c0',coat='#80a8b7',metal='#e1bd82';
+const shorts={
+ soi:'Receive SOI',window:'Open both mask windows',drie:'Etch to BOX',fill:'Line the walls and fill',cmp:'Planarize the surface','n-plus':'n⁺ junctions','p-plus':'p⁺ contacts',
+ anneal:'Lower optical film',route:'First metal / series link',nitride:'Passivate and open contacts',reopen:'Remove outer fill only',electrode:'Separate electrode features',release:'Remove temporary handle'
+};
+const descriptions={
+ soi:`Wang–Palanker research branch, ${g.widthUm} µm nominal pixel. The 30 µm silicon device layer, buried oxide (BOX) and handle are distinct; vertical thickness is enlarged.`,
+ window:'The oxide hard mask registers an in-pixel boundary and a future between-pixel boundary. The two trench roles differ after release.',
+ drie:'The animated slot advances from the front to the buried oxide. The drawing does not supply etcher settings or a process depth calibration.',
+ fill:'A liner remains at each silicon wall as polysilicon fills both representative isolation gaps. This is the fill described in the research process.',
+ cmp:'The surface overburden disappears while both isolation fills remain. A qualified endpoint or polish recipe is not implied.',
+ 'n-plus':'Blue marks identify the reported n⁺ photodiode regions; the physical movement is an explanatory mask/depth indication, not a dopant profile.',
+ 'p-plus':'Separate rose marks indicate p⁺ contact regions. They are not the same physical step as the n⁺ regions.',
+ anneal:'The older surface oxide gives way to the lower optical layer. This does not predict optical film performance or temperature history.',
+ route:'The Ti/Pt series link crosses an internal partition between diode regions. It does not intentionally join independent neighboring pixels.',
+ nitride:'A nitride coating protects the routes while the second contact openings are revealed. The film stack is schematic.',
+ reopen:'Only the boundary between pixels is cleared of its sacrificial fill here. The internal oxide-lined isolation remains.',
+ electrode:'The central electrode and circumferential return are separate features. The animation does not represent light-driven tissue stimulation or commercial PRIMA fabrication.',
+ release:'The handle and selected suspended BOX are removed. The remaining research witness is separated from the temporary support; playback does not run the bench checks.'
+};
+function strip(y,h,c,arr=cells){let r='';for(const [a,b] of arr)r+=rect(a,y,b-a,h,c,'#abc6b9',.4);return r;}
+function details(gate,i,u){
+ const j=M.index,wave=(list,col,q,ww)=>list.map((x,k)=>rect(x,y,ww*e(k*.085,.6+k*.095,q),9,col)).join('');
+ let r='';
+ if(i===0)r+=group(rect(xl,y,xr-xl,h,body,'#a6c7b9',.75),e(0,.9,u));
+ else{
+  const depth=i<j.drie?0:i===j.drie?h*e(0,.95,u):h;
+  r+=strip(y,h,body);
+  for(const [a,b] of gaps){if(depth<h)r+=rect(a,y+depth,b-a,h-depth,body,'#a3bfb2',.45);}
+ }
+ let z=1;
+ if(i===j.release)z=1-e(.24,.99,u);
+ if(z>0)r+=group(rect(xl,handle+36*(1-z),xr-xl,34,C.iron,'#91ad9f',.75)+label(299,handle+23+36*(1-z),'HANDLE',{anchor:'middle',size:11}),z);
+ r+=rect(xl,ybox,358-xl,hbox,boxc,'#c1d7c3',.5)+rect(387,ybox,xr-387,hbox,boxc,'#c1d7c3',.5);
+ if(i<j.release||gate.residualBOX||u<.65)r+=group(rect(358,ybox,29,hbox,gate.residualBOX?C.red:boxc),i===j.release&&!gate.residualBOX?1-e(.36,.65,u):1);
+ if(i>=j.window&&i<j.anneal){
+  for(const [a,b] of cells)r+=rect(a,y-10,(b-a)*(i===j.window?u:1),10,boxc);
+ }
+ if(i===j.window)gaps.forEach(([a,b])=>{r+=group(arrow((a+b)/2,80,(a+b)/2,107,C.gold,1.25),e(.48,1,u));});
+ if(i>=j.fill){
+    gaps.forEach(([a,b],k)=>{
+      const fraction=i===j.fill?e(.05,.9,u):k===1&&i===j.reopen?1-e(0,.89,u):k===1&&i>j.reopen?0:1;
+      if(fraction>0)r+=rect(a+2,bottom-h*fraction,b-a-4,h*fraction,C.amber,'#d7c196',.6);
+      const z=i===j.fill?e(0,.43,u):1;
+      r+=line(a+1,y,a+1,y+h*z,boxc,2)+line(b-1,y,b-1,y+h*z,boxc,2);
+    });
+ }
+ if(i===j.fill||i===j.cmp){const z=i===j.fill?e(.66,1,u):1-e(0,.9,u);r+=rect(xl,y-18*z-10,xr-xl,18*z,C.amber,'#d0ad6c',z>.01?.5:0);
+  if(i===j.cmp){const cx=mix(xl+18,xr-43,u);r+=rect(cx,y-49,35,15,'#8ca398',C.paper,.65)+path('M'+cx+' '+(y-32)+'h34','none',C.blue,1.4);}
+ }
+ if(i>=j['n-plus'])r+=wave([104,238,433],aC,i===j['n-plus']?u:1,22);
+ if(i>=j['p-plus'])r+=wave([135,301,487],bC,i===j['p-plus']?u:1,19);
+ if(i>=j.anneal)r+=strip(y-7,7,coat,i===j.anneal?cells.map(([a,b])=>[a,a+(b-a)*u]):cells);
+ if(i>=j.route){
+   const x=e(.01,.95,i===j.route?u:1);
+   const trace=pts=>poly(seqPoints(pts,x),'none',metal,4.2,'polyline');
+   r+=trace([[142,y+2],[142,y-17],[247,y-17],[247,y+2]])+trace([[105,y+1],[105,y-17],[93,y-17]])+trace([[312,y+1],[312,y-17],[325,y-17]])+
+      trace([[441,y+1],[441,y-17],[430,y-17]])+trace([[495,y+1],[495,y-17],[507,y-17]]);
+ }
+ if(i>=j.nitride){
+   for(const [a,b] of cells){
+    const y0=y-26,w=b-a;
+    let ww=i===j.nitride?w*e(.02,.67,u):w;
+    r+=rect(a,y0,ww,6,'#80a5bf');
+   }
+   const al=i===j.nitride?e(.63,1,u):1;
+   for(const a of [94,137,232,301,432,490])r+=rect(a,y-26,8*al,6,C.bg);
+ }
+ if(i>=j.electrode){
+   for(const [ix,[a,b]] of [[93,114],[229,262],[436,457],[489,508]].entries()){
+     const z=i===j.electrode?e(ix*.17,.48+ix*.17,u):1;
+     r+=rect(a,y-38,(b-a)*z,10,'#f2c889','#ffe5b0',.6,'rx="2"');
+   }
+ }
+ if(gate.siliconWeb)r+=rect(gaps[1][0],bottom-10,gaps[1][1]-gaps[1][0],10,C.red);
+ if(gate.surfaceStringer)r+=path('M346 '+(y-33)+'q30 13 54 0','none',C.red,4);
+ if(i===j.reopen||i===j.fill)r+=label(180,65,'IN-PIXEL',{anchor:'middle',size:11,color:C.gold})+label(374,65,'BETWEEN PIXELS',{anchor:'middle',size:11,color:C.gold});
+ if(i===j.route)r+=label(181,61,'SERIES BRIDGE INSIDE ONE PIXEL',{anchor:'middle',size:11,color:C.gold});
+ if(i===j['p-plus']||i===j['n-plus'])r+=label(73,70,i===j['n-plus']?'n⁺ REGION':'n⁺ AND p⁺ REGIONS',{color:C.mint,size:12});
+ return r;
+}
+return E.stages.map((stage,i)=>{
+ const gg=M.geometry({...specimen,route:'wang',stage:i});
+ return {id:'pv-'+stage.id,name:stage.title,detail:descriptions[stage.id]||stage.fact,duration:['drie','reopen','release'].includes(stage.id)?3100:2350,
+ draw:u=>panel('PV–12',shorts[stage.id])+details(gg,i,u)};
+});
+};
+</script>
 <script>(() => {
   'use strict';
   const E=window.PVEvidence,M=window.PVModel,$=id=>document.getElementById(id),all=s=>[...document.querySelectorAll(s)];
@@ -597,6 +863,11 @@
   $('target').addEventListener('change',e=>change({target:Number(e.target.value)},'Boundary C to N'+e.target.value));
   $('power').addEventListener('input',e=>change({power:Number(e.target.value)}));
   render();
+
+if(window.BTSFoundryPlay)window.BTSFoundryPlay.attach({
+  plate:$('drawing'),extra:[$('drawing-caption')],interrupt:"[data-mode],[data-route],[data-view],[data-stage],#prev,#next,#load-witness,#bench-load,#size,#fault,#target,#power",
+  build:()=>{ return route==='wang' && mode==='traveler'?window.FoundryRetinalScenes(E,M,{...specimen}):[]; }
+});
 })();
 </script>
 </body>

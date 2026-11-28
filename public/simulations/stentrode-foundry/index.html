@@ -4,7 +4,48 @@
 @media(max-width:520px){.hero{grid-template-columns:1fr}.identity{display:none}.lead{font-size:17px}.bar span{font-size:8px;letter-spacing:.06em}.hero h1{font-size:44px}.headrow{align-items:start}.stages button{padding:6px 5px;min-height:48px}.stage-row{grid-template-columns:1fr}.stagecheck,.stagehead{padding:12px}.visual-panel{grid-template-columns:1fr}.inspector{border-left:0;border-top:1px solid #bec3ab;display:grid;grid-template-columns:minmax(96px,.75fr) 1.15fr;column-gap:10px;align-items:center}.inspector .label{grid-column:1/-1}.inspector svg{grid-row:2/4}.metric{flex-direction:column;align-items:start}.inspector .micro{margin:0;align-self:start}.controls{grid-template-columns:1fr 1fr}.controls>div:last-child{grid-column:1/-1}.readouts{grid-template-columns:1fr 1fr}.auditrow,.evidencegrid{grid-template-columns:1fr}.faultcontrols{grid-template-columns:1fr 1.5fr;gap:7px}.faultcontrols button{justify-self:start;grid-column:1/-1}table{font-size:10px}.report .toolgroup{gap:4px}.toolgroup button{font-size:11px}.navstrip{gap:12px}.legend{gap:8px}.drawing,.inspector{padding:9px}footer{align-items:start;flex-direction:column;justify-content:center;gap:4px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .inspectlabel{display:flex;align-items:center;justify-content:space-between;font:650 11px system-ui;gap:6px;margin-top:8px}.inspectlabel select{min-height:32px;border:1px solid #9fa990;color:#28493d;background:#fffdf5}.pinInspect{font:inherit;color:inherit;padding:0;border:0;background:transparent;min-height:26px;width:100%}.geoDisc{cursor:pointer}
-</style></head>
+</style><!-- bts-workflow-player:1 -->
+<style>
+/* Foundry workflow motion, scoped to the process plate. */
+.fp-player{box-sizing:border-box;min-width:0;width:100%;margin:.62rem 0 .72rem;font:400 14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#e5eddb;text-align:left}
+.fp-native-hidden{display:none!important}
+.fp-head,.fp-transport{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.fp-head{padding:7px 8px;border:1px solid #739180;border-radius:7px;background:#244a41}
+.fp-head-note{flex:1 1 145px;min-width:0;color:#dce8dc;font-size:12px;line-height:1.4}
+.fp-player button,.fp-player select{font:650 14px/1.18 system-ui,-apple-system,Segoe UI,sans-serif;min-height:44px;color:#203a31;background:#f7f2df;border:1px solid #7fa08b;border-radius:5px;padding:7px 10px;box-shadow:none;text-transform:none;letter-spacing:normal;margin:0;cursor:pointer}
+.fp-player button:hover:not(:disabled),.fp-player select:hover{background:#fff7da}
+.fp-player button:disabled{opacity:.56;cursor:not-allowed}
+.fp-player button:focus-visible,.fp-player select:focus-visible{outline:3px solid #ffd191;outline-offset:2px}
+.fp-player [data-fp="action"]{background:#f0c180;border-color:#f5d49c;color:#27382e}
+.fp-player [data-fp="action"]:hover{background:#ffdb9e}
+.fp-player .fp-expanded{margin-top:7px;border:1px solid #739180;border-radius:7px;background:#193b34;overflow:hidden}
+.fp-player .fp-expanded[hidden],.fp-player button[hidden]{display:none!important}
+.fp-card{padding:10px 11px 9px;min-width:0}
+.fp-kicker{color:#eac187;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase}
+.fp-player .fp-label{margin:4px 0;font:650 16px/1.28 system-ui,-apple-system,Segoe UI,sans-serif;color:#fff4d9;overflow-wrap:anywhere}
+.fp-player .fp-note{margin:4px 0 6px;font-size:12px;color:#deebd8;line-height:1.4;min-height:2.8em}
+.fp-player .fp-scene{display:block;width:100%;height:auto;max-width:none;min-height:0;background:#16372f;border-top:1px solid #6e8c7c;border-bottom:1px solid #6e8c7c}
+.fp-track{height:5px;background:#597568;margin:8px 0 4px;overflow:hidden;border-radius:4px}
+.fp-bar{height:100%;width:0;background:#e9b274;transform-origin:left;will-change:width}
+.fp-player .fp-info{font:400 11px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#dce8dc}
+.fp-transport{margin-top:8px;align-items:end}
+.fp-transport label{margin:0;font:600 11px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;color:#deebd8;display:block;min-width:0}
+.fp-transport select{display:block;background:#f3eedc;width:max-content;max-width:100%;margin-top:3px}
+.fp-transport .fp-choose{flex:1 1 184px}
+.fp-transport .fp-choose select{width:100%;appearance:auto}
+.fp-player .fp-progress-text{white-space:nowrap}
+.fp-player [data-fp="close"],.fp-player [data-fp="replay"]{background:#315c4e;color:#f4efd9}
+.fp-player [data-fp="close"]:hover,.fp-player [data-fp="replay"]:hover{background:#3f6e5d}
+@media(max-width:480px){
+ .fp-player .fp-note{min-height:0}
+ .fp-transport .fp-choose{flex-basis:100%;order:2}
+ .fp-player button,.fp-player select{font-size:13px}
+ .fp-head-note{flex-basis:130px}
+ .fp-card{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){.fp-player *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
 <body>
 <header><div class="bar"><a href="/simulations/foundry/" class="brand">BUILD THE SIMULATION</a><span>DEVICE FOUNDRY&nbsp; / &nbsp;BENCH NOTE 06</span></div></header>
 <main>
@@ -141,7 +182,214 @@ function obj(setting) {
 return {obj,published,stations,refs,faultNames,norm,geom,aperture,sites,graph,result,diff};
 })();
 if(typeof module!=="undefined"&&module.exports)module.exports=StentBench;
-</script><script>(()=>{
+</script><script>
+/* Read-only Foundry Process Player. Elapsed display time is educational, not process time. */
+window.BTSFoundryPlay = (() => {
+'use strict';
+const W=600,H=267;
+const C={bg:'#183c34',paper:'#edf2d5',muted:'#a9c1a4',iron:'#55756b',steel:'#7ca1a0',si:'#74949b',glass:'#87a8a8',gold:'#e8b572',amber:'#c79856',poly:'#8fbeae',dark:'#234c3e',pink:'#d99c9c',red:'#ed8d73',mint:'#9de5bf',blue:'#97d2de',night:'#15332c'};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const ease=u=>{u=clamp(u);return u*u*(3-2*u)};
+const mix=(a,b,u)=>a+(b-a)*u;
+const num=v=>Number.isFinite(v)?Number(v.toFixed(2)):0;
+const attrs=' shape-rendering="geometricPrecision"';
+const rect=(x,y,w,h,col,stroke='none',sw=1,extra='')=>'<rect x="'+num(x)+'" y="'+num(y)+'" width="'+num(Math.max(0,w))+'" height="'+num(Math.max(0,h))+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'" '+extra+'/>';
+const line=(x,y,a,b,col=C.muted,n=2,extra='')=>'<line x1="'+num(x)+'" y1="'+num(y)+'" x2="'+num(a)+'" y2="'+num(b)+'" stroke="'+col+'" stroke-width="'+n+'" stroke-linecap="round" '+extra+'/>';
+const dot=(x,y,r,col,stroke='none',sw=1)=>'<circle cx="'+num(x)+'" cy="'+num(y)+'" r="'+num(r)+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'"/>';
+const poly=(pts,col,stroke='none',sw=1,z='polygon')=>'<'+z+' points="'+pts.map(([x,y])=>num(x)+','+num(y)).join(' ')+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+sw+'" stroke-linecap="round" stroke-linejoin="round"/>';
+const path=(d,col='none',stroke=C.muted,n=2,extra='')=>'<path d="'+d+'" fill="'+col+'" stroke="'+stroke+'" stroke-width="'+n+'" stroke-linecap="round" stroke-linejoin="round" '+extra+'/>';
+const label=(x,y,t,opts={})=>'<text x="'+num(x)+'" y="'+num(y)+'" fill="'+(opts.color||C.paper)+'" font-family="ui-monospace,monospace" font-size="'+(opts.size||13)+'" text-anchor="'+(opts.anchor||'start')+'">'+esc(t)+'</text>';
+const ell=(x,y,rx,ry,c,stroke='none',n=1)=>'<ellipse cx="'+num(x)+'" cy="'+num(y)+'" rx="'+num(Math.max(0,rx))+'" ry="'+num(Math.max(0,ry))+'" fill="'+c+'" stroke="'+stroke+'" stroke-width="'+n+'"/>';
+const group=(p,opacity=1,extra='')=>'<g opacity="'+num(clamp(opacity))+'" '+extra+'>'+p+'</g>';
+function arrow(x,y,x2,y2,c=C.gold,n=2){
+ const a=Math.atan2(y2-y,x2-x),r=8;return line(x,y,x2,y2,c,n)+poly([[x2,y2],[x2-r*Math.cos(a-.5),y2-r*Math.sin(a-.5)],[x2-r*Math.cos(a+.5),y2-r*Math.sin(a+.5)]],c);
+}
+function tick(x,y,u,col=C.mint){return group(path('M'+(x-5)+' '+y+'l3 4 8 -10','none',col,3),u)}
+function guide(x,y,w,h){return rect(x,y,w,h,'none',C.muted,1,'stroke-dasharray="4 5"')}
+function opacityAttr(u){return 'opacity="'+num(clamp(u))+'"'}
+function panel(id,title,caption='SCHEMATIC · NOT PROCESS TIMING'){
+ return '<defs><pattern id="fpGrid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0v18" fill="none" stroke="#75a889" stroke-opacity=".25" stroke-width=".6"/></pattern></defs>'+rect(0,0,W,H,C.bg)+rect(11,10,W-22,H-20,'url(#fpGrid)','#718c78',1.1)+label(23,32,id+'  /  '+title.toUpperCase(),{color:C.gold,size:12})+label(W-22,H-17,caption,{color:C.muted,size:10,anchor:'end'});
+}
+function stretch(tickStart,tickStop,u){return ease((u-tickStart)/(tickStop-tickStart));}
+function seqPoints(pts,u){
+ u=clamp(u);if(pts.length<=1||u>=1)return pts;
+ let index=u*(pts.length-1),i=Math.floor(index),t=index-i;
+ return [...pts.slice(0,i+1),[mix(pts[i][0],pts[i+1][0],t),mix(pts[i][1],pts[i+1][1],t)]];
+}
+const lengthLabel=(x,y,w,s)=>line(x,y,x+w,y,C.muted,1)+line(x,y-4,x,y+4,C.muted,1)+line(x+w,y-4,x+w,y+4,C.muted,1)+label(x+w/2,y+16,s,{color:C.muted,size:11,anchor:'middle'});
+const gfx={W,H,C,esc,clamp,ease,mix,num,attrs,rect,line,dot,poly,path,label,ell,group,arrow,tick,guide,opacityAttr,panel,stretch,seqPoints,lengthLabel};
+function attach({plate,extra=[],interrupt,build,compact=false}){
+ if(!plate||typeof build!=='function')return null;
+ let host=document.createElement('section');host.className='fp-player';host.id='foundry-workflow-player';host.setAttribute('aria-label','Workflow animation');host.dataset.state='idle';
+ host.innerHTML='<div class="fp-head"><button type="button" data-fp="action" aria-controls="fp-expanded" aria-expanded="false">Play workflow</button><button type="button" data-fp="replay" hidden>Replay</button><button type="button" data-fp="close" hidden>Close animation</button><span class="fp-head-note" data-fp="summary">Watch each modeled step. Playback does not change the specimen.</span></div>'+
+ '<div class="fp-expanded" id="fp-expanded" hidden><div class="fp-card"><div class="fp-kicker"><span data-fp="position" class="fp-progress-text"></span> · PROCESS PREVIEW</div><div class="fp-label" data-fp="title" aria-live="polite"></div><div class="fp-note" data-fp="description"></div></div>'+
+ '<svg class="fp-scene" data-fp="scene" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Animated process plate"></svg>'+
+ '<div class="fp-card"><div class="fp-track" aria-hidden="true"><div class="fp-bar" data-fp="bar"></div></div><div class="fp-info" data-fp="timing">Display time is not a process parameter.</div>'+
+ '<div class="fp-transport"><button type="button" data-fp="prev" aria-label="Previous animation scene">← Scene</button><button type="button" data-fp="next" aria-label="Next animation scene">Scene →</button><label>Speed<select data-fp="speed"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label class="fp-choose">Animation scene<select data-fp="jump"></select></label></div></div></div>';
+ plate.before(host);
+ const idx=Object.fromEntries([...host.querySelectorAll('[data-fp]')].map(el=>[el.dataset.fp,el])),box=host.querySelector('.fp-expanded');
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');let scenes=[],phase='idle',scene=0,elapsed=0,last=null,raf=0,lastDraw=-Infinity,reduced=motion.matches,visualVersion=-1,opened=false,speed=1,staticPreview=false;
+ const replace=[plate,...extra].filter(Boolean);
+ function visible(on){
+   opened=on;box.hidden=!on;idx.action.setAttribute('aria-expanded',String(on));
+   for(const a of replace)a.classList.toggle('fp-native-hidden',on);
+   idx.close.hidden=!on;
+ }
+ function updatePhase(p,msg){
+   phase=p;host.dataset.state=p;
+   idx.action.textContent=({idle:'Play workflow',playing:'Pause',paused:'Resume',finished:'Replay workflow'})[p];
+   idx.replay.hidden=!opened||p==='finished';
+   idx.summary.textContent=msg||({idle:'Watch each modeled step. Playback does not change the specimen.',playing:'Read-only playback. Manual controls still work.',paused:'Paused. Resume here or choose another scene.',finished:'Animation complete. The specimen is unchanged.'})[p];
+ }
+ const duration=s=>s.duration||2300;
+ const sceneCount=()=>scenes.length;
+ function render(force=false){
+   const a=scenes[scene];if(!a)return;
+   const fraction=clamp(elapsed/duration(a));
+   const u=(reduced||staticPreview)?1:ease(Math.min(1,fraction/.67));
+   if(visualVersion!==scene){
+     visualVersion=scene;const label='Step '+(scene+1)+' / '+sceneCount();
+     host.dataset.step=String(scene+1);host.dataset.total=String(sceneCount());host.dataset.scene=a.id;
+     idx.position.textContent=label;idx.title.textContent=a.name;idx.description.textContent=a.detail;
+     idx.scene.setAttribute('aria-label',label+': '+a.name+'. '+(a.alt||a.detail));
+     idx.jump.value=String(scene);idx.prev.disabled=scene===0;idx.next.disabled=scene>=sceneCount()-1;
+   }
+   if(force||!reduced){
+     idx.scene.innerHTML=a.draw(u);
+     host.dataset.frame=String(Math.round(u*1000));
+   }
+   idx.bar.style.width=(100*(scene+(reduced?Number(fraction>=1):fraction))/sceneCount()).toFixed(2)+'%';
+   idx.timing.textContent=reduced?'Reduced motion: stage snapshots. Display time is not a process parameter.':'Display time is not a process parameter.';
+ }
+ function loop(t){
+   if(phase!=='playing')return;
+   if(last!==null)elapsed+=Math.min(80,Math.max(0,t-last))*speed;
+   last=t;
+   let a=scenes[scene];
+   if(elapsed>=duration(a)){
+     elapsed=duration(a);
+     render(true);
+     if(scene===sceneCount()-1){raf=0;last=null;updatePhase('finished');return;}
+     elapsed=0;scene++;visualVersion=-1;render(true);lastDraw=t;
+   }else if(t-lastDraw>40){
+     render(false);lastDraw=t;
+   }
+   raf=requestAnimationFrame(loop);
+ }
+ function stop(){cancelAnimationFrame(raf);raf=0;last=null;}
+ function play(){stop();if(staticPreview){staticPreview=false;render(true);}updatePhase('playing');raf=requestAnimationFrame(loop);}
+ function pause(msg){stop();updatePhase('paused',msg);}
+ function begin(){
+   const b=build(),list=Array.isArray(b)?b:b?.scenes;
+   if(!list?.length){updatePhase('idle','No documented process playback for this branch.');return;}
+   scenes=list;scene=0;elapsed=0;staticPreview=false;visualVersion=-1;lastDraw=-Infinity;
+   idx.jump.replaceChildren(...scenes.map((a,i)=>new Option(String(i+1).padStart(2,'0')+' · '+a.name,String(i))));
+   visible(true);render(true);play();
+ }
+ function close(focus=false){
+   if(!opened)return;
+   stop();visible(false);visualVersion=-1;phase='idle';elapsed=0;scene=0;delete host.dataset.step;delete host.dataset.total;delete host.dataset.scene;delete host.dataset.frame;
+   idx.scene.replaceChildren();updatePhase('idle');if(focus)idx.action.focus();
+ }
+ function manual(n){
+   if(!opened||n<0||n>=sceneCount())return;
+   scene=n;elapsed=0;staticPreview=true;visualVersion=-1;pause('Manual animation scene. The specimen is unchanged.');
+   render(true);
+ }
+ idx.action.onclick=()=>{if(phase==='playing')pause();else if(phase==='paused')play();else begin();};
+ idx.replay.onclick=begin;idx.close.onclick=()=>close(true);
+ idx.prev.onclick=()=>manual(scene-1);idx.next.onclick=()=>manual(scene+1);idx.jump.onchange=()=>manual(+idx.jump.value);
+ idx.speed.onchange=()=>{speed=+idx.speed.value;last=null;};
+ host.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){e.preventDefault();close(true)}});
+ const onInterrupt=e=>{if(opened&&e.target instanceof Element&&!host.contains(e.target)&&e.target.closest(interrupt))close(false)};
+ if(interrupt)for(const ev of ['click','change','input'])document.addEventListener(ev,onInterrupt,true);
+ const setMotion=e=>{reduced=e.matches;if(opened)render(true);};
+ if(motion.addEventListener)motion.addEventListener('change',setMotion);else motion.addListener(setMotion);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&phase==='playing')pause('Paused when this tab was hidden. Resume here when ready.');});
+ if(compact)host.classList.add('fp-compact');
+ return {close};
+}
+return {attach,gfx};
+})();
+</script>
+<script>
+window.FoundryStentScenes=(E,state)=>{
+'use strict';
+const {C,rect,line,dot,poly,group,ell,label,path,arrow,tick,panel,stretch:e,mix,seqPoints,lengthLabel}=BTSFoundryPlay.gfx;
+const p=E.published, N=8, phi=state.rotation*Math.PI/180, from=E.geom(3), full=E.result({...state,stage:7});
+function project(row,c,g){
+ const a=c*Math.PI/4+phi, rr=45*g.diameter/3;
+ return [67+row/12*449*g.length/from.length+Math.cos(a)*rr*.35,115+Math.sin(a)*rr,Math.cos(a)];
+}
+function grid(g,drag=0){
+ const RR=45*g.diameter/3,X=67+drag,end=X+449*g.length/from.length, edges=[];
+ let art=ell(X,115,RR*.35,RR,'#407060','#9cb9a7',.9);
+ for(let j=0;j<12;j++)for(let c=0;c<8;c++)for(let k of [-1,1])if(!((j+c)%2)){const a=project(j,c,g),b=project(j+1,c+k,g);edges.push({a,b,z:(a[2]+b[2])/2});}
+ for(const {a,b,z} of edges.sort((a,b)=>a.z-b.z))art+=line(a[0]+drag,a[1],b[0]+drag,b[1],z>=0?'#b6ceae':'#739c89',z>=0?1.6:1.1,z<0?'stroke-dasharray="4 2"':'');
+ return art+ell(end,115,RR*.35,RR,'none','#b3cbb2',.9);
+}
+const tray=i=>[82+i*61,201];
+const names=['Supplied lattice','Disc coupons','Separate disc–wire subassemblies','Crossover mounting','Wire fanout and breakout','Geometric mandrel sweep','Trace expected pin identities','Separate the records'];
+const detail=[
+ 'The research scaffold arrives as a sourced input. The shown nitinol lattice is inferred; it is not drawn as a fabrication recipe.',
+ 'Lay out eight circular, nominal 750 µm platinum discs for inspection. Thickness is exaggerated only in the separate native evidence plate.',
+ 'In the published article insulated Pt/W leads join to discs by a specialist resistance-welding operation. The moving marks indicate only assembly topology.',
+ 'Each selected site moves to a drawn crossing. Positions and order are reconstructed and do not define published or product pin assignments.',
+ 'The route adds eight symbolic C1–C8 witness terminals, independent of the scaffold return.',
+ 'Change the nominal geometry against a smooth inert cylinder, not tissue. This is the lab’s diagonal-preserving geometric surrogate; there is no nitinol force law.',
+ 'Independent blue/gold paths illustrate the virtual net graph and the frame barrier. The native fixture remains untested by playback.',
+ 'Geometry, dry continuity and source evidence stay distinct. Playing this stage does not capture a baseline or export files.'
+];
+function gPass(id,u){
+ const t=full.continuity.rows[id],ox=72,oy=62+id*22,x2=501;
+ let v=line(ox,oy,ox+12,oy,C.gold,2)+label(29,oy+4,'C'+(id+1),{size:11})+label(568,oy+4,'D'+(id+1),{size:11,anchor:'end'});
+ for(const dst of t.discs){const a=[ox+13,oy],b=[ox+115,oy],c=[x2-85,62+dst*22],d=[x2,62+dst*22];v+=poly(seqPoints([a,b,c,d],u),'none',dst===id&&!t.frame?C.mint:C.red,2,'polyline');}
+ if(t.frame)v+=line(ox+27,oy,mix(ox+27,282,u),224,C.red,1.5,'stroke-dasharray="4 4"');
+ if(!t.discs.length&&u>.75)v+=path('M178 '+(oy-5)+'l8 10m0-10-8 10','none',C.red,2);
+ return v;
+}
+return E.stations.map((st,i)=>({id:'stent-'+(i+1),name:st[1],detail:detail[i],duration:i===3||i===5?3300:2400,draw:u=>{
+ let a=panel('STENTRODE',names[i]);
+ if(i<6){
+   const diam=i===5?(u<.55?mix(3,2,e(0,.55,u)):mix(2,state.diameter,e(.57,1,u))):3;
+   const g=i===5?E.geom(diam):from;
+   a+=grid(g,i===0?mix(-94,0,u):0);
+   if(i===0)a+=lengthLabel(68,216,449,u>.66?'31.1 mm nominal · sourced frame':'Intake · no electrical routes');
+   if(i===1||i===2||i===3||i===4||i===5){
+    E.sites(g).forEach((s,j)=>{
+      const l=project(s.row,s.column,g),t=tray(j),v=i<3?0:i===3?e(j*.046,.6+j*.052,u):1;
+      const x=mix(t[0],l[0],v),y=mix(i===1?mix(221,201,e(j*.04,.68,u)):t[1],l[1],v),k=i===1?e(j*.047,.7+j*.04,u):1;
+      a+=group(dot(x,y,6.2,C.gold,'#e2d7ac',1),k);
+      if(i===2)a+=line(x,y,mix(x,x-30,u),mix(y,y-18,u),C.amber,1.4)+group(dot(x,y,2.5,C.blue),e(.45,.91,u));
+      if(i>=4){
+       const y0=183+j*5, pts=[[33,y0],[50+j*4,y0],[x-17,y+11],[x,y]];
+       a+=poly(seqPoints(pts,i===4?e(j*.08,.65+j*.047,u):1),'none',C.gold,1,'polyline');
+       a+=rect(22,y0-1.6,9,2.7,C.gold);
+      }
+    });
+   }
+   if(i===1)a+=label(31,232,'Eight separate discs · not mounted',{color:C.gold,size:11});
+   if(i===2)a+=label(29,235,'Joint indicators do not assert continuity',{color:C.muted,size:11});
+   if(i===3)a+=label(29,235,'Teaching crossover map · no recovered scaffold CAD',{color:C.muted,size:11});
+   if(i===4)a+=label(24,232,'C1…C8 = fixture terminals',{color:C.gold,size:11});
+   if(i===5){
+    a+=ell(61,115,10,45*diam/3,'none',C.blue,1.2)+label(27,222,'Inert mandrel: Ø '+diam.toFixed(2)+' mm · geometry only',{color:C.mint,size:12});
+   }
+ }else if(i===6){
+   a+=line(266,224,450,224,C.steel,1.4,'stroke-dasharray="4 4"')+label(471,228,'FRAME',{color:C.blue,size:11});
+   for(let j=0;j<N;j++)a+=gPass(j,e(j*.075,.43+j*.08,u));
+ }else{
+   const words=['Geometry','Continuity','Source boundary'],help=['Shape and dimensions','Pins, discs, frame','Published vs modeled'];
+   words.forEach((w,j)=>{let x=29+j*185,v=e(j*.16,.45+j*.14,u),y=mix(157,82,v);
+    a+=group(rect(x,y,167,109,'#396353','#a1beaa',1,'rx="6"')+label(x+12,y+28,w,{color:C.gold,size:12})+label(x+12,y+56,help[j],{size:11})+line(x+13,y+84,x+145,y+84,C.steel,1),v);
+   });
+ }
+ return a;
+}}));
+};
+</script>
+<script>(()=>{
 "use strict";
 const E=StentBench,$=x=>document.getElementById(x),num=(x,d=2)=>Number(x).toFixed(d),clamp=(a,l,h)=>Math.min(h,Math.max(l,a));
 let state=E.norm(),base=null,snap=E.result(state);
@@ -259,5 +507,10 @@ $('export').onclick=()=>{const doc={schema:'bts.stentrode.traveler/1',version:'1
 $('csv').onclick=()=>{const a=snap.continuity;if(!a.testEnabled)return;let z='fixture_pin,'+Array.from({length:8},(_,i)=>'to_D'+(i+1)).join(',')+',to_frame,classification\r\n'+a.rows.map(r=>['C'+(r.pin+1),...Array.from({length:8},(_,j)=>Number(r.discs.includes(j))),Number(r.frame),r.reason].join(',')).join('\r\n')+'\r\n';download('stent-electrode-dry-matrix.csv',z,'text/csv')};
 $('obj').onclick=()=>{const data=E.obj(state);if(data)download('stent-electrode-inert-geometry-mm.obj',data,'text/plain')};
 render();
+
+if(window.BTSFoundryPlay)window.BTSFoundryPlay.attach({
+  plate:$('geometry'),extra:[],interrupt:"#prev,#next,#finish,#reset,#stages button,#volume,#flat,#diam,#rot,#site,#inspection,#fault,#cover,#clear,#baseline,#export,#csv,#obj",
+  build:()=>{ return window.FoundryStentScenes(E,{...state}); }
+});
 })();
 </script></body></html>

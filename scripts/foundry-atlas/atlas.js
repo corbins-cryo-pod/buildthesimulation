@@ -20,6 +20,7 @@ const normId=x=>typeof x==='string'?x:'';
 let data,deviceMap,profileMap,equipMap,cross,searches,filters,counts;
 let mode='devices', focusId='', profileId='', variantId='', page=0;
 let results=[],opened=new Set([0]),currentSteps=[],lastDetail='',lastTitle='',focusTimer;
+let workflowPlayer;
 const pageSize=8;
 const modeState=()=>filters[mode];
 const tableFor=m=>m==='equipment'?equipMap:m==='profiles'?profileMap:deviceMap;
@@ -66,7 +67,7 @@ if(scope)s+='<p class="notice">'+esc(scope)+'</p>';
 if(!d.standalone&&d.status==='reference'&&!scope)s+='<p class="notice">This device is matched to a reference architecture. The traveler below is not its manufacturer’s recipe.</p>';
 if(!d.standalone&&d.status==='proprietary'&&!scope)s+='<p class="notice">A public device description is not a factory traveler. Exact proprietary operations remain unknown.</p>';
 if(!d.standalone&&d.status==='out-of-scope'&&!scope)s+='<p class="notice">The scope boundary below is not an executable manufacturing route for this device.</p>';
-s+='<div class="links">'+link(d.url,'Device sheet ↗')+'<button type="button" data-action="export">Download traveler ↓</button><button type="button" data-action="print">Print</button><button type="button" data-action="copy">Copy link</button></div>';
+s+='<div class="links">'+link(d.url,'Device sheet ↗')+'<button type="button" data-action="export">Download traveler ↓</button><button type="button" data-action="print">Print</button><button type="button" data-action="copy">Copy link</button>'+(p?'<button type="button" data-action="jump-player">Workflow player ↓</button>':'')+'</div>';
 if(!p){currentSteps=[];return s+'<div class="note-block"><h4>'+(d.status==='queued'?'Route not yet mapped':'No route in this edition')+'</h4><p>The catalog sheet is available. A manufacturing sequence has not been attached to this entry; no equipment or source coverage is implied.</p></div></div>'}
 if(!d.standalone){
 s+='<section class="route-header" aria-label="Process route"><p class="overline">Process route'+(ps.length>1?' · '+ps.length+' linked profiles':'')+'</p>';if(ps.length>1)s+='<label class="sr-only" for="route-select">Select a process route</label><select id="route-select">'+ps.map(z=>opt(z.id,z.title)).join('')+'</select>';
@@ -79,6 +80,7 @@ if(variants.length){s+='<section class="caps"><h4>Configuration branches</h4><la
 if(v)s+='<div class="branch-note"><span class="tiny">Selected branch</span> '+badge(v.status)+'<p><strong>'+esc(v.label)+'.</strong> '+esc(v.description)+'</p></div>';
 else s+='<p class="scope-note">'+variants.length+' named '+(variants.length===1?'alternative.':'alternatives.')+' Inspect one at a time. The atlas does not assume every branch can be combined.</p>';if(variants.length>1)s+='<details class="branch-table"><summary>Compare all '+variants.length+' named branches</summary><ul>'+variants.map(x=>{const m=arr(p.steps).map((st,i)=>arr(st.varies).includes(x.id)?digit(i+1):'').filter(Boolean);return '<li><strong>'+esc(x.label)+'</strong> '+badge(x.status)+'<p>'+esc(x.description)+'</p><small>'+esc(m.length?'Flagged handoffs: '+m.join(', '):'No branch-specific handoff identified in this profile.')+'</small></li>'}).join('')+'</ul></details>';s+='</section>'}
 const steps=currentSteps=arr(p.steps),sourceIds=new Map(arr(p.sources).map((x,i)=>[x.id,i]));
+s+='<section class="workflow-player" id="workflow-player" aria-labelledby="workflow-heading"></section>';
 s+='<div class="readerbar"><h4 class="section-title">Process traveler</h4>'+(steps.length?'<button type="button" id="toggle-steps" data-action="toggle" class="text-btn">Expand all steps</button>':'')+'</div>';
 if(steps.length){s+='<p class="smallnote">Open a handoff to see its basis, equipment and acceptance check.'+(v?(v.status==='incompatible'?' This branch is shown for comparison only; no manufacturing handoffs apply.':' Handoffs excluded by this branch are marked. Other steps are shown without assuming equivalence.'):'')+'</p><ol class="step-list">';
 s+=join(steps,(step,i)=>{const eq=arr(step.tools),sr=arr(step.sourceIds).filter(id=>sourceIds.has(id)),vv=arr(step.varies),sensitive=v&&vv.includes(v.id),notHere=v&&(v.status==='incompatible'||(arr(step.only).length&&!arr(step.only).includes(v.id)));return '<li class="step'+(notHere?' not-applicable':'')+'"><details data-step="'+i+'"'+(opened.has(i)?' open':'')+'><summary><span class="stepno">'+digit(i+1)+'</span><span><strong>'+esc(step.title)+'</strong><span class="step-summary-tags">'+badge(step.status)+(notHere?'<span class="scope-tag">Not in selected branch</span>':sensitive?'<span class="flag">Selected branch varies here</span>':v&&vv.length?'<span class="scope-tag">Other branch specified</span>':v?'<span class="scope-tag">No branch difference listed</span>':'')+'</span></span><span class="step-chevron" aria-hidden="true"></span></summary><div class="step-body"><p>'+esc(step.detail)+'</p>'+(eq.length?'<p class="smallnote"><span class="subkey">Register candidates</span> · source methods do not qualify these specific virtual tools</p><div class="chips">'+eq.map(chip).join('')+'</div>':'<p class="smallnote"><span class="subkey">Register candidates:</span> none assigned to this handoff.</p>')+(txt(step.check)?'<p class="qa"><strong>Acceptance check:</strong> '+esc(step.check)+'</p>':'')+(vv.length?'<p class="smallnote"><span class="subkey">Configuration-sensitive:</span> '+esc(vv.map(id=>variants.find(v=>v.id===id)?.label||id).join(' · '))+'</p>':'')+(sr.length?'<div class="cite-line">Step evidence: '+sr.map(id=>{const j=sourceIds.get(id);return '<button type="button" class="text-btn" data-source="'+j+'" aria-label="Show source '+(j+1)+'">['+(j+1)+']</button>'}).join(' ')+'</div>':'<div class="cite-line">No individual source linked to this step; consult the profile evidence below.</div>')+'</div></details></li>'});s+='</ol>'}else s+='<p class="smallnote">No manufacturing steps are asserted for this profile.</p>';
@@ -95,8 +97,25 @@ if(!by.size)s+='<p>This instrument is indexed, but no reviewed process handoff c
 for(const {p,titles} of by.values()){const ds=data.devices.filter(d=>arr(d.profileIds).includes(p.id));s+='<a class="related-btn" href="'+esc(hrefFor('profiles',p.id))+'" data-profile="'+esc(p.id)+'"><strong>'+esc(p.title)+' →</strong><small>'+esc(titles.join(' · '))+'</small><small>'+esc(ds.length?ds.length+' linked device '+(ds.length===1?'record':'records'):'Standalone process profile')+'</small></a>'}s+='</div>'}
 s+='</section></div>';return s}
 function syncStepToggle(){const b=$('toggle-steps');if(!b)return;const ds=[...document.querySelectorAll('details[data-step]')];const all=ds.length&&ds.every(x=>x.open);b.textContent=all?'Collapse all steps':'Expand all steps';b.setAttribute('aria-label',b.textContent)}
-function renderDetail(){const rec=currentRec(),detail=$('detail');if(!rec||!results.length){detail.innerHTML='<div class="empty"><p class="overline">No result</p><h3 id="detail-heading" tabindex="-1" style="margin-top:8px">No matching '+(mode==='devices'?'devices':mode==='equipment'?'equipment':'process profiles')+'</h3><p>Try a shorter name, a catalog or equipment ID, or clear the filters to return to the index.</p><button class="text-btn" data-action="clear" type="button">Clear all filters</button></div>';currentSteps=[];lastDetail='';return}
-detail.innerHTML=mode==='equipment'?equipmentBody(rec):deviceBody(mode==='profiles'?asProfile(rec):rec);if($('route-select'))$('route-select').value=profileId;if($('variant-select'))$('variant-select').value=variantId;syncStepToggle();
+function mountWorkflow(rec){
+ const el=$('workflow-player'),p=mode==='profiles'?rec:routeFor(rec);
+ if(!el||!p)return;
+ workflowPlayer=window.AtlasWorkflowPlayer.create(el,p,selectedVariant(p),{
+  selectBranch(id){
+   changeDetail(p.id,id,'variant');
+   workflowPlayer?.start?.();
+   $('workflow-play')?.focus({preventScroll:true});
+   $('workflow-player')?.scrollIntoView({block:'start'});
+  },
+  focusBranch(){const v=$('variant-select');v?.focus({preventScroll:true});v?.scrollIntoView({block:'center'});},
+  readStep(index){
+   const d=$('detail').querySelector('details[data-step="'+index+'"]');
+   if(!d)return;d.open=true;d.querySelector('summary')?.focus({preventScroll:true});d.scrollIntoView({block:'center'});
+  }
+ });
+}
+function renderDetail(){workflowPlayer?.destroy();workflowPlayer=undefined;const rec=currentRec(),detail=$('detail');if(!rec||!results.length){detail.innerHTML='<div class="empty"><p class="overline">No result</p><h3 id="detail-heading" tabindex="-1" style="margin-top:8px">No matching '+(mode==='devices'?'devices':mode==='equipment'?'equipment':'process profiles')+'</h3><p>Try a shorter name, a catalog or equipment ID, or clear the filters to return to the index.</p><button class="text-btn" data-action="clear" type="button">Clear all filters</button></div>';currentSteps=[];lastDetail='';return}
+detail.innerHTML=mode==='equipment'?equipmentBody(rec):deviceBody(mode==='profiles'?asProfile(rec):rec);if($('route-select'))$('route-select').value=profileId;if($('variant-select'))$('variant-select').value=variantId;syncStepToggle();if(mode!=='equipment')mountWorkflow(rec);
 lastDetail=mode+':'+focusId;lastTitle=mode==='equipment'?rec.name:rec.title;document.title=lastTitle+' | Foundry workflow atlas';}
 function render({locate=false}={}){updateFacets();results=freeKeys().filter(filterPass);if(!results.includes(focusId)){focusId=results[0]||'';profileId='';variantId='';setDefaults();opened=new Set([0]);}if(locate&&focusId)page=Math.floor(results.indexOf(focusId)/pageSize);renderList();renderDetail()}
 function refilter(){page=0;const prev=focusId;render({locate:true});if(prev!==focusId&&focusId)writeHistory(false)}
@@ -110,7 +129,7 @@ $('detail').addEventListener('change',e=>{if(e.target.id==='variant-select')chan
 $('detail').addEventListener('toggle',e=>{const det=e.target;if(det.matches?.('details[data-step]')){const i=Number(det.dataset.step);if(det.open)opened.add(i);else opened.delete(i);syncStepToggle()}},true);
 $('detail').addEventListener('click',ev=>{const t=ev.target.closest('button,a');if(!t)return;if(t.matches('a')&&(ev.metaKey||ev.ctrlKey||ev.shiftKey||ev.altKey||ev.button!==0))return;
 if(t.dataset.equipment){ev.preventDefault();choose('equipment',t.dataset.equipment,'','',{focus:true});return}if(t.dataset.profile){ev.preventDefault();choose('profiles',t.dataset.profile,'','',{focus:true});return}if(t.dataset.device){ev.preventDefault();choose('devices',t.dataset.device,t.dataset.route||'','',{focus:true});return}if(t.dataset.source!==undefined){const li=$('source-'+t.dataset.source);if(li){$('sources').open=true;li.focus({preventScroll:true});li.scrollIntoView({block:'nearest'})}return}
-switch(t.dataset.action){case 'clear':clearFilters(mode);refilter();$('search').focus();break;case 'toggle':{const ds=[...$('detail').querySelectorAll('details[data-step]')],open=!ds.every(e=>e.open);ds.forEach(e=>e.open=open);syncStepToggle();break}case 'export':exported();break;case 'print':window.print();break;case 'copy':copyLink();break}});
+switch(t.dataset.action){case 'clear':clearFilters(mode);refilter();$('search').focus();break;case 'toggle':{const ds=[...$('detail').querySelectorAll('details[data-step]')],open=!ds.every(e=>e.open);ds.forEach(e=>e.open=open);syncStepToggle();break}case 'jump-player':{const w=$('workflow-player');if(w){w.scrollIntoView({block:'start'});const target=$('workflow-play')||$('workflow-heading');if(target){if(target.tagName!=='BUTTON')target.tabIndex=-1;target.focus({preventScroll:true})}}break;}case 'export':exported();break;case 'print':window.print();break;case 'copy':copyLink();break}});
 let before=[];window.addEventListener('beforeprint',()=>{before=[...$('detail').querySelectorAll('details:not([open])')];before.forEach(x=>x.open=true)});window.addEventListener('afterprint',()=>{before.forEach(x=>x.open=false);before=[]});
 window.addEventListener('hashchange',readHash);}
 function init(){data=JSON.parse($('atlas-data').textContent);if(!Array.isArray(data.devices)||!Array.isArray(data.profiles)||!Array.isArray(data.equipment))throw Error('Atlas release data is incomplete.');data.meta=data.meta||{};

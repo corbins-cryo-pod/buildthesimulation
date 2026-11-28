@@ -8,8 +8,54 @@ const blank=()=>({stage:0,reached:0,fault:'nominal',location:137,inspect:137,vG:
 const forMode={passive:blank(),oect:blank()};let mode='passive',model;const cur=()=>forMode[mode];
 const colors={m:'#92ab94',ink:'#e2e7cc',gold:'#d8b77d',film:'#b08550',bath:'#375f5a',poly:'#97c598',bad:'#f89f84',blank:'#254b3e',oxide:'#77b7af'};
 function pnum(value,prev){const n=Number(value);return Number.isInteger(n)&&n?Math.max(0,Math.min(255,n-1)):prev}
-function status(t){$('live').textContent='';setTimeout(()=>$('live').textContent=t,20)}
-function stgo(stage,scroll=false){const a=cur();a.stage=Math.max(0,Math.min(7,stage));a.reached=Math.max(a.stage,a.reached);render();if(scroll){const s=$('stage-title');s.setAttribute('tabindex','-1');s.focus({preventScroll:true});$('stage-detail').scrollIntoView({block:'start'})}status('Station '+(a.stage+1)+': '+N.modes[mode].route[a.stage].title)}
+let liveTimer;
+function status(t){clearTimeout(liveTimer);$('live').textContent='';liveTimer=setTimeout(()=>$('live').textContent=t,20)}
+const stageMotion=matchMedia('(prefers-reduced-motion: reduce)'), STATION_DWELL=1850;
+let stageTimer,stageAnimation,playState='ready';
+function renderPlayback(){
+ const a=cur(),count=N.modes[mode].route.length,b=$('stage-play');
+ b.textContent={ready:'Play workflow',playing:'Pause workflow',paused:'Resume workflow',complete:'Replay workflow'}[playState];
+ $('stage-player').dataset.state=playState;
+ $('stage-play-label').textContent={ready:'Ready',playing:'Playing',paused:'Paused',complete:'Complete'}[playState];
+ $('stage-play-step').textContent=(a.stage+1)+' / '+count;
+ const p=$('stage-play-progress');p.max=count;p.value=a.stage+1;
+}
+function stopPlayback(next='paused',notify=false){
+ clearTimeout(stageTimer);stageTimer=undefined;stageAnimation?.cancel();
+ playState=next;renderPlayback();
+ if(notify)status('Workflow paused at station '+(cur().stage+1)+'.');
+}
+function interruptPlayback(){if(playState==='playing')stopPlayback('paused',true);}
+function showPlaybackFrame(){
+ stageAnimation?.cancel();
+ const plate=$('plate');
+ if(!stageMotion.matches&&plate.animate)
+  stageAnimation=plate.animate([{opacity:.42},{opacity:1}],{duration:300,easing:'ease-out'});
+}
+function queueStation(){
+ clearTimeout(stageTimer);
+ stageTimer=setTimeout(()=>{
+  stageTimer=undefined;
+  if(playState!=='playing')return;
+  const next=cur().stage+1,last=N.modes[mode].route.length-1;
+  stgo(next);
+  if(next>=last){playState='complete';renderPlayback();}
+  showPlaybackFrame();
+  if(next<last)queueStation();
+ },STATION_DWELL);
+}
+function togglePlayback(){
+ if(playState==='playing'){stopPlayback('paused',true);return;}
+ const restart=playState!=='paused'||cur().stage>=N.modes[mode].route.length-1;
+ playState='playing';cur().map=false;stgo(restart?0:cur().stage);
+ const scene=$('stage-detail'),art=$('plate');
+ if(art.getBoundingClientRect().bottom>innerHeight)scene.scrollIntoView({block:'start',behavior:'auto'});
+ showPlaybackFrame();queueStation();
+}
+if(stageMotion.addEventListener)stageMotion.addEventListener('change',()=>{if(stageMotion.matches)stageAnimation?.cancel();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playState==='playing')stopPlayback('paused');});
+window.addEventListener('pagehide',()=>{if(playState==='playing')stopPlayback('paused');});
+function stgo(stage,scroll=false){const a=cur();a.stage=Math.max(0,Math.min(7,stage));if(playState==='complete'&&a.stage<7)playState='ready';a.reached=Math.max(a.stage,a.reached);render();if(scroll){const s=$('stage-title');s.setAttribute('tabindex','-1');s.focus({preventScroll:true});$('stage-detail').scrollIntoView({block:'start'})}status('Station '+(a.stage+1)+': '+N.modes[mode].route[a.stage].title)}
 const line=(x1,y1,x2,y2,c=colors.m,w=2,rest='')=>'<path d="M'+x1+' '+y1+'L'+x2+' '+y2+'" stroke="'+c+'" fill="none" stroke-width="'+w+'" '+rest+'/>';
 const rect=(x,y,w,h,f,s=colors.m,rest='')=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+f+'" stroke="'+s+'" '+rest+'/>';
 const text=(x,y,t,s=15,c=colors.ink,a='start')=>'<text x="'+x+'" y="'+y+'" fill="'+c+'" text-anchor="'+a+'" font-family="ui-monospace,monospace" font-size="'+s+'">'+esc(t)+'</text>';
@@ -79,6 +125,11 @@ function plate(){
   p+=note([45,334],'GATES THE CHANNEL THROUGH IONS; NO DIRECT G–D METAL PATH.');
   desc='Concept section, not exact artwork. Dry source and drain wiring remains buried. The channel alone has an electrolyte window; the gate is a separate electrode in the bath. Feedthrough does not mean a hermetic seal.';
  }
+ if(s>=6&&!a.map){
+ const caption=s===6?'DRY CHECK':'VIRTUAL BENCH';
+ const result=mode==='passive'?(s===6?r.selected.dry:r.selected.wet):r.status;
+ if(result){p+=text(44,82,caption+' · '+result.toUpperCase(),14,colors.oxide);desc+=' '+caption+': '+result+'.';}
+ }
  $('plate').innerHTML=p;$('plate-note').textContent=desc;$('plate').setAttribute('aria-label',desc);
  $('view-toggle').hidden=mode==='oect';$('view-toggle').textContent=a.map?'Show cross-section':'Show site map';
 }
@@ -139,7 +190,7 @@ function render(){
   b.querySelector('.stage-symbol').textContent=i===a.stage?'▶':i<=a.reached?'✓':'·';
   if(i===a.stage)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');
  }
- plate();bench();
+ plate();bench();renderPlayback();
 }
 function syncControls(){
  $('fault').innerHTML=Object.entries(N.faults[mode]).map(([key,d])=>'<option value="'+esc(key)+'">'+esc(d.label)+'</option>').join('');
@@ -147,14 +198,18 @@ function syncControls(){
 }
 function download(name,kind,txt){const a=document.createElement('a');a.download=name;a.href=URL.createObjectURL(new Blob([txt],{type:kind}));document.body.append(a);a.click();const u=a.href;a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}
 function init(){
+ $('stage-play').addEventListener('click',togglePlayback);
+ const manualClick='[data-step],#next-stage,#prev-stage,#run,#reset,#view-toggle,#compare-cover,[data-site],#prev-site,#next-site,[data-curve],#csv,#json';
+ $('app').addEventListener('click',e=>{const b=e.target.closest(manualClick);if(b&&!b.disabled)interruptPlayback();},true);
+ for(const kind of ['input','change'])$('app').addEventListener(kind,e=>{if(e.target.matches('input,select'))interruptPlayback();},true);
  $('steps').innerHTML=Array.from({length:8},(_,i)=>'<li><button type="button" data-step="'+i+'"><span class="n">'+pad(i+1)+'</span><span class="st-title"></span><span class="stage-symbol" aria-hidden="true"></span></button></li>').join('');
  $('refs').innerHTML=Object.values(N.docs).map(x=>'<dt><a href="'+esc(x.url)+'">'+esc(x.title)+'</a></dt><dd>'+esc(x.scope)+'</dd>').join('');
  if(location.protocol==='file:')for(const a of document.querySelectorAll('a[href^="/"]'))a.href=url(a.getAttribute('href'));
- for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>{mode=b.dataset.mode;syncControls();render();status(N.modes[mode].label+' selected.')});
+ for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>{stopPlayback('ready');mode=b.dataset.mode;syncControls();render();status(N.modes[mode].label+' selected.')});
  $('steps').addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b&&!b.disabled)stgo(+b.dataset.step,true)});
  $('next-stage').addEventListener('click',()=>stgo(cur().stage+1,true));$('prev-stage').addEventListener('click',()=>stgo(cur().stage-1,true));
  $('run').addEventListener('click',()=>{stgo(7,false);$('inspection').scrollIntoView({block:'start'})});
- $('reset').addEventListener('click',()=>{forMode[mode]=blank();syncControls();stgo(0)});
+ $('reset').addEventListener('click',()=>{stopPlayback('ready');forMode[mode]=blank();syncControls();stgo(0)});
  $('view-toggle').addEventListener('click',()=>{cur().map=!cur().map;plate()});
  $('compare-cover').addEventListener('click',()=>{const a=cur();a.fault=mode==='passive'?'cover':'covered';if(mode==='passive')a.inspect=a.location;syncControls();stgo(7)});
  $('fault').addEventListener('change',()=>{cur().fault=$('fault').value;render()});
