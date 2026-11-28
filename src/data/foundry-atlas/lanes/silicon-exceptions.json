@@ -1,0 +1,1019 @@
+{
+  "profiles": [
+    {
+      "id": "si-cmu-electrochem",
+      "title": "CMU/Pitt: flexible recording shank with two chemical sites",
+      "family": "Patterned Parylene and electrochemical coatings",
+      "evidence": "documented",
+      "summary": "A flexible shank carries 16 recording contacts plus two independently wired chemical-release sites. The two larger sites are not extra recording channels. The virtual route ends at electrical testing and an inert payload proxy, not delivery to tissue.",
+      "devices": [
+        "77-flexible-neurochemical-recording-probe"
+      ],
+      "variants": [
+        {
+          "id": "record",
+          "label": "16 electrical measurement sites",
+          "description": "Small Pt/Au/Pt contacts have a PEDOT:PSS sensing finish. The larger sites are addressed separately.",
+          "status": "documented"
+        },
+        {
+          "id": "release",
+          "label": "2 chemical-site interfaces",
+          "description": "The paper used different payload-loaded coatings; the atlas represents them by identity and finite inventory, not actuating or preparing biological payloads.",
+          "status": "documented"
+        },
+        {
+          "id": "pump",
+          "label": "Pressure-driven perfusion channel",
+          "description": "Not this probe: its local coating has finite capacity, not a pump, microchannel or refillable reservoir.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Create the compliant base",
+          "detail": "Use a silicon carrier and lower Parylene-C film; reflectometry tracks film thickness separately from later top passivation.",
+          "tools": [
+            "03-08",
+            "05-05"
+          ],
+          "status": "documented",
+          "check": "Confirm the lower film is present before metal; it is not a sacrificial layer.",
+          "sourceIds": [
+            "cmu-flex"
+          ],
+          "only": [
+            "record",
+            "release"
+          ]
+        },
+        {
+          "title": "Pattern the shared metal stack",
+          "detail": "Lift-off defines a Pt/Au/Pt sandwich with thin narrower recording leads and separate wider chemical-site connections. Match the 18 functional nets to the backend and preserve the unused connector pad.",
+          "tools": [
+            "02-01",
+            "03-01",
+            "05-07"
+          ],
+          "status": "documented",
+          "check": "A reconstruction with 18 acquisition channels fails. Test each of the two large nets separately from the 16 small ones.",
+          "sourceIds": [
+            "cmu-flex"
+          ],
+          "only": [
+            "record",
+            "release"
+          ]
+        },
+        {
+          "title": "Open upper windows, then separate the perimeter",
+          "detail": "A second nominal 10 µm Parylene-C film covers the routes. The first oxygen plasma etch opens metal windows and starts the outline; a second outline mask defines the remaining thickness.",
+          "tools": [
+            "03-08",
+            "02-01",
+            "04-01",
+            "05-01"
+          ],
+          "status": "documented",
+          "check": "Hole over a site: stops at metal. Perimeter outside the site: clears the two films. Verify these endpoints independently.",
+          "sourceIds": [
+            "cmu-flex"
+          ],
+          "only": [
+            "record",
+            "release"
+          ]
+        },
+        {
+          "title": "Release and register the flat-cable connection",
+          "detail": "The authors exploit weak adhesion in water rather than dissolving a deliberately deposited sacrificial metal. Anneal the detached film on a flat support and link the flat cable to the adapter PCB.",
+          "tools": [
+            "16-11",
+            "12-01",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "A 19-position ZIF is not 19 populated signal contacts; check the documented vacant position.",
+          "sourceIds": [
+            "cmu-flex"
+          ],
+          "only": [
+            "record",
+            "release"
+          ]
+        },
+        {
+          "title": "Treat the contacts according to role",
+          "detail": "On recording sites, the conducting polymer finish changes interface impedance. Chemical sites use a different particle-containing polymer coating in the source; payload preparation and actuation are not part of this bench workflow.",
+          "tools": [
+            "09-01",
+            "09-12"
+          ],
+          "status": "documented",
+          "check": "Preserve a bare-vs-coated recording-site comparison. Test a finite, inert inventory proxy separately without equating impedance with delivered quantity.",
+          "sourceIds": [
+            "cmu-flex"
+          ],
+          "only": [
+            "record",
+            "release"
+          ]
+        },
+        {
+          "title": "Test an instrumented dummy load",
+          "detail": "Drive the recording input with a calibration tone. Model the two auxiliary lines as electrical loads and show where actuation artifacts would mask recording, with no active compound or biological output.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "16-02",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Mark the artifact interval unreadable rather than computing changes in firing through it.",
+          "sourceIds": [
+            "cmu-flex"
+          ],
+          "only": [
+            "record",
+            "release"
+          ]
+        }
+      ],
+      "gaps": [
+        "No clinical dosing, preparation or release instructions, loaded compounds, or tissue experiments are part of the virtual workflow.",
+        "Published changes in impedance and finite coating behavior are distinct measurements, not universal thresholds."
+      ],
+      "sources": [
+        {
+          "id": "cmu-flex",
+          "title": "Malekoshoaraie, Wu et al. (2024): fully flexible recording/release probes",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11211464/",
+          "note": "Figures 1, 6 and 7 and fabrication Methods describe the two-mask polymer etch, weak-adhesion release, connector and distinct recording and payload coatings."
+        }
+      ]
+    },
+    {
+      "id": "si-neurostring",
+      "title": "NeuroString: laser-converted porous conductor in elastomer",
+      "family": "Stretchable electrochemical string",
+      "evidence": "documented",
+      "summary": "The electrode is a cut cross-section of a conductive nanoparticle/graphene network in elastomer. Making a long, conductive fiber would not by itself reproduce its selective electrochemical response.",
+      "devices": [
+        "81-neurostring-neurochemical-sensor"
+      ],
+      "variants": [
+        {
+          "id": "brain",
+          "label": "Short, multi-string layout",
+          "description": "The studied brain assembly shows three measurement channels. A 3–5 mm device segment is distinct from tip width and thickness.",
+          "status": "documented"
+        },
+        {
+          "id": "gut",
+          "label": "Long, compliant layout",
+          "description": "A separate tens-to-hundreds-of-millimeters layout is used for the gut; the authors pattern individual traces and evaluate movement effects.",
+          "status": "documented"
+        },
+        {
+          "id": "spikes",
+          "label": "Use generic extracellular spike readout",
+          "description": "This device senses chemical concentration using electrochemical measurements, not action-potential voltage.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Define separate sensor layouts and feedstock",
+          "detail": "Prepare a film on a PI carrier using a qualified metalloporphyrin-containing polymer precursor. Fe- and Ni-containing precursors lead to different oxide particles; do not substitute a bare commercial PI sheet silently.",
+          "tools": [
+            "01-01",
+            "03-09"
+          ],
+          "status": "documented",
+          "check": "Keep film batch, catalyst identity and geometry traceable through transfer.",
+          "sourceIds": [
+            "neurostring-li"
+          ],
+          "only": [
+            "brain",
+            "gut"
+          ]
+        },
+        {
+          "title": "Convert the patterned film to a porous conductor",
+          "detail": "The study uses a CO₂ laser engraver to carbonize the precursor. This is a material transformation, not photolithographic UV resist exposure; the register has no qualified matching engraver.",
+          "tools": [],
+          "status": "external",
+          "check": "Use Raman/microscopy and continuity on a processed witness, not a dark color alone, to identify a conductive region.",
+          "sourceIds": [
+            "neurostring-li"
+          ],
+          "only": [
+            "brain",
+            "gut"
+          ]
+        },
+        {
+          "title": "Embed, release and flip the composite",
+          "detail": "SEBS penetrates the graphene network, enabling peel and transfer. Encapsulate from the second face while retaining backend contact access.",
+          "tools": [
+            "02-07",
+            "12-01",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Compare resistance before and after transfer. A torn conductor can sit inside an intact-looking elastomer strip.",
+          "sourceIds": [
+            "neurostring-li"
+          ],
+          "only": [
+            "brain",
+            "gut"
+          ]
+        },
+        {
+          "title": "Separate the geometry appropriate to the branch",
+          "detail": "For the short version, the paper isolates individual narrow strings; the longer layout has separately patterned conductors. The cutting operation is not interchangeable with earlier laser carbonization.",
+          "tools": [
+            "12-01",
+            "05-07"
+          ],
+          "status": "documented",
+          "check": "Inspect edge isolation and continuity at bent and unloaded states; do not use one unstretched measurement as a fatigue qualification.",
+          "sourceIds": [
+            "neurostring-li"
+          ],
+          "varies": [
+            "brain",
+            "gut"
+          ],
+          "only": [
+            "brain",
+            "gut"
+          ]
+        },
+        {
+          "title": "Open the sensing cross-section",
+          "detail": "The cut end surface rather than the sidewall is the working face. Oxygen plasma and a Nafion finish are used in the reported sensor; retain the insulator along non-sensing regions.",
+          "tools": [
+            "04-01",
+            "13-01",
+            "09-12"
+          ],
+          "status": "documented",
+          "check": "Distinguish a deliberately exposed end from accidental sidewall damage by imaging and blank measurements.",
+          "sourceIds": [
+            "neurostring-li"
+          ],
+          "only": [
+            "brain",
+            "gut"
+          ]
+        },
+        {
+          "title": "Calibrate a chemical signal with motion controls",
+          "detail": "Compare blank and known calibration standards, reference electrode and stretched/unstrained states. The exact fast-scan waveform bandwidth requires a qualified test chain beyond a generic instrument listing.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "14-01",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "A current peak in a mixed sample does not prove one specific neurotransmitter. Store concentration, current, reference, strain and interference conditions separately.",
+          "sourceIds": [
+            "neurostring-li"
+          ],
+          "only": [
+            "brain",
+            "gut"
+          ]
+        }
+      ],
+      "gaps": [
+        "No registered CO₂ conversion/cutting station or verified fast-scan acquisition bandwidth has been identified.",
+        "An elastomer end-face model is not a biological selectivity, chronic lifetime or drug-response predictor."
+      ],
+      "sources": [
+        {
+          "id": "neurostring-li",
+          "title": "Li et al. (2022): a tissue-like neurotransmitter sensor",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9210986/",
+          "note": "Methods and Extended Data Figure 1 distinguish graphene/metal-oxide laser conversion, brain vs gut layouts, SEBS transfer, end face and calibration. Detecting catecholamines need not uniquely identify dopamine."
+        }
+      ]
+    },
+    {
+      "id": "si-mxene-fiber",
+      "title": "SIAT: aligned MXene / PEDOT:PSS wet-spun fibers",
+      "family": "Wet-spun functional fiber",
+      "evidence": "partial",
+      "summary": "These are conductive Ti₃C₂ titanium carbide sheets assembled into fibers; the composite also contains PEDOT:PSS. Wet coagulation with mechanical take-up is not electrospinning or thermal drawing.",
+      "devices": [
+        "194-siat-liquid-crystal-mxene-pedot-fibre-electrode"
+      ],
+      "variants": [
+        {
+          "id": "mx",
+          "label": "MX: pure MXene",
+          "description": "Use the non-composite fiber as a separate material comparator.",
+          "status": "documented"
+        },
+        {
+          "id": "mpp",
+          "label": "MPP: composite fiber",
+          "description": "Published approximately 30 µm composite fibers incorporate the conductive polymer between oriented sheets.",
+          "status": "documented"
+        },
+        {
+          "id": "spin",
+          "label": "Produce it on an electrospinner",
+          "description": "An electric-field jet is not the paper’s two-step wet coagulation route; the register’s electrospinner cannot be assumed compatible.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lock the flake material and dispersion",
+          "detail": "Treat qualified Ti₃C₂ flakes and the selected dispersion as inputs. Mechanically dispersing any conductive powder is not evidence for liquid-crystalline order.",
+          "tools": [],
+          "status": "external",
+          "check": "Record precursor identity and polymer presence; support any ordering claim with structural evidence.",
+          "sourceIds": [
+            "mx-gou",
+            "mx-siat"
+          ],
+          "only": [
+            "mx",
+            "mpp"
+          ]
+        },
+        {
+          "title": "Form and consolidate the fiber",
+          "detail": "The authors describe shear alignment followed by initial coagulation and a strain-controlled second solidification. The register has a pump concept but does not document the complete spinning and take-up line.",
+          "tools": [],
+          "status": "external",
+          "check": "Track breaks, diameter and take-up alignment as separate outcomes. Without the coupled line, mark fiber production external.",
+          "sourceIds": [
+            "mx-gou",
+            "mx-siat"
+          ],
+          "varies": [
+            "mx",
+            "mpp"
+          ],
+          "only": [
+            "mx",
+            "mpp"
+          ]
+        },
+        {
+          "title": "Inspect longitudinal and transverse structure",
+          "detail": "Use microscopy of fiber and cross-section to distinguish intersheet network morphology from a surface coating. A cross-section is also needed to estimate a conduction area.",
+          "tools": [
+            "13-01",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Measure area/diameter rather than assuming a perfect circular 30 µm section for every specimen.",
+          "sourceIds": [
+            "mx-gou",
+            "mx-siat"
+          ],
+          "only": [
+            "mx",
+            "mpp"
+          ]
+        },
+        {
+          "title": "Separate the exposed interface from the lead",
+          "detail": "Represent a defined exposed end and insulated connection on a bench coupon. The publicly checked summaries do not establish one uniform package/insulation design across skin and implanted variants.",
+          "tools": [
+            "12-01",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Keep exposed geometric area, immersed length and end contact method with the test record.",
+          "sourceIds": [
+            "mx-gou",
+            "mx-siat"
+          ],
+          "only": [
+            "mx",
+            "mpp"
+          ]
+        },
+        {
+          "title": "Compare conductivity and interface response",
+          "detail": "Measure longitudinal resistance versus length on the fiber; measure frequency-dependent impedance at the electrolyte interface on a defined area. They do not share units or identify the same failure.",
+          "tools": [
+            "09-03",
+            "09-01",
+            "09-12",
+            "14-01"
+          ],
+          "status": "reference",
+          "check": "Do not convert an area-normalized quantity to raw ohms without its area and convention, or interpret charge storage as charge injection.",
+          "sourceIds": [
+            "mx-gou",
+            "mx-siat"
+          ],
+          "only": [
+            "mx",
+            "mpp"
+          ]
+        }
+      ],
+      "gaps": [
+        "The complete wet-spinning take-up fixture, process calibration and exact channelized packaging remain external.",
+        "An electrical test of the material does not predict efficacy, tissue stimulation, or chronic durability."
+      ],
+      "sources": [
+        {
+          "id": "mx-gou",
+          "title": "Gou et al. (2025): microscale MXene/PEDOT-PSS fiber electrodes",
+          "url": "https://doi.org/10.1002/adfm.202424236",
+          "note": "Primary publication identifies Ti₃C₂, a two-step wet-spinning route, the composite and approximately 30 µm fibers. Electrical characterization applies to the particular material and test geometry."
+        },
+        {
+          "id": "mx-siat",
+          "title": "SIAT: liquid-crystal MXene fiber process (Chinese)",
+          "url": "https://siat.cas.cn/siatxww/kyjz/202504/t20250401_7585748.html",
+          "note": "Investigators’ institutional account describes shear-aligned flakes, coagulation followed by strain-controlled solidification, and pure MXene versus composite fibers."
+        }
+      ]
+    },
+    {
+      "id": "si-umbrella",
+      "title": "CIBR USEs: eight flexible ribbons and a common central anchor",
+      "family": "Stretchable polyimide filaments",
+      "evidence": "documented",
+      "summary": "This umbrella is fabricated flat and becomes three-dimensional by folding. Its eight ribbons and shared central reference do not imply eight recording channels. The 120- and 240-channel versions change geometry and connector count.",
+      "devices": [
+        "195-cibr-umbrella-type-stretchable-electrode-array"
+      ],
+      "variants": [
+        {
+          "id": "small",
+          "label": "120-channel layout",
+          "description": "38 µm ribbon width, 50 µm site pitch and one 120-channel FPC in the publication.",
+          "status": "documented"
+        },
+        {
+          "id": "large",
+          "label": "240-channel layout",
+          "description": "70 µm ribbon width, 30 µm site pitch and two 120-channel FPCs.",
+          "status": "documented"
+        },
+        {
+          "id": "finish",
+          "label": "Pt or PEDOT:PSS contact finishes",
+          "description": "Two reported finishes; preserve the selected material and its comparison instead of combining them into one default coating.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lay out eight ribbons on a temporary wafer",
+          "detail": "Start from a patterned Al release film on a 4-inch Si carrier. The geometry has serpentine stretch sections, straight recording regions and a 210 µm shared central reference.",
+          "tools": [
+            "01-01",
+            "02-01",
+            "03-03"
+          ],
+          "status": "documented",
+          "check": "Check location of central reference and each site; do not mistake ten or six designs per wafer for a percentage yield.",
+          "sourceIds": [
+            "umbrella-bai"
+          ]
+        },
+        {
+          "title": "Build the two-metal, three-insulator routing stack",
+          "detail": "PI separates two patterned Cr/Au layers. Imaging or sectioning can inspect the cross-section; independent continuity tests are needed for two-level routes.",
+          "tools": [
+            "02-07",
+            "03-09",
+            "02-01",
+            "03-01",
+            "13-02"
+          ],
+          "status": "documented",
+          "check": "Report an open route and an adjacent-layer short separately; include the minimum-width region in inspection.",
+          "sourceIds": [
+            "umbrella-bai"
+          ]
+        },
+        {
+          "title": "Pattern umbrella boundaries and strengthen the hub",
+          "detail": "Use oxygen RIE for the polymer outline, then form I/O pads and localized SU-8 reinforcement at the hub/ribbon junctions. A uniform rigid coating would change the stretch mechanism.",
+          "tools": [
+            "04-01",
+            "03-01",
+            "02-01",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Hub reinforcement must not immobilize the serpentine spans or cover recording sites.",
+          "sourceIds": [
+            "umbrella-bai"
+          ]
+        },
+        {
+          "title": "Bond FPCs before dissolving the release layer",
+          "detail": "After separation into carrier pieces, ACF flip-chip attachment joins the I/O region to one or two 120-channel FPCs. Remove the Al layer only after this supported connection.",
+          "tools": [
+            "04-07",
+            "08-04",
+            "04-06",
+            "05-07"
+          ],
+          "status": "documented",
+          "check": "Use one FPC for the 120-channel variant and two for 240; check nets under the actual ACF interface.",
+          "sourceIds": [
+            "umbrella-bai"
+          ],
+          "varies": [
+            "small",
+            "large"
+          ]
+        },
+        {
+          "title": "Finish, support and mechanically screen",
+          "detail": "Electrodeposit Pt or PEDOT:PSS, then temporarily support the flexible recording area. A safe virtual/inert phantom test moves the central hub and tracks continuity in all eight ribbons.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "12-01",
+            "14-01"
+          ],
+          "status": "documented",
+          "check": "A central-reference open can invalidate recording with intact signal traces; a single torn ribbon is spatially distinct.",
+          "sourceIds": [
+            "umbrella-bai"
+          ]
+        }
+      ],
+      "gaps": [
+        "No recovered full mask files, lot-wide yield, qualified ACF bonding head or validated mechanical fatigue model are implied.",
+        "A folding/continuity demonstration on an inert fixture is not validation of surgical deployment or long-term recording."
+      ],
+      "sources": [
+        {
+          "id": "umbrella-bai",
+          "title": "Bai et al. (2026): umbrella-type stretchable probes",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13620120/",
+          "note": "Figure 1 and Methods describe two routings, three PI layers, two Cr/Au levels, SU-8 reinforcement, assembly before release and the agarose mechanical reference."
+        }
+      ]
+    },
+    {
+      "id": "si-mnis",
+      "title": "Fudan MNIS: flexible, dielectrically isolated transistor and optical array",
+      "family": "Thin SOI active sensor",
+      "evidence": "documented",
+      "summary": "The same silicon transistor structure can sense capacitively coupled signals or light, depending on bias. A separate gold resistive element measures temperature. The buried oxide retained from the SOI supplier becomes the outward-facing barrier; it is not the deposited transistor gate dielectric.",
+      "devices": [
+        "198-fudan-mnis-silicon-transistor-multimodal-ecog"
+      ],
+      "variants": [
+        {
+          "id": "electrical",
+          "label": "Electrical pickup through intact oxide",
+          "description": "The transistor reads a capacitively coupled input; no exposed-metal recording window is needed.",
+          "status": "documented"
+        },
+        {
+          "id": "optical",
+          "label": "Photodetection mode",
+          "description": "The same active semiconductor changes its response under illumination; this does not add a microLED emitter to the wafer.",
+          "status": "documented"
+        },
+        {
+          "id": "thermal",
+          "label": "Gold resistance thermometer",
+          "description": "The metal resistor is a separate temperature transducer on the same flexible device, not a third operating mode of the transistor.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepare the SOI donor and diffusion mask",
+          "detail": "The reported donor has 220 nm device silicon, a 300 nm buried oxide and a 500 µm handle thinned to 200 µm. Deposit and open a separate PECVD silicon-oxide masking film. Only its exposed regions will take the dopant.",
+          "tools": [
+            "04-08",
+            "03-07",
+            "02-01",
+            "04-01",
+            "05-04"
+          ],
+          "status": "documented",
+          "check": "Record device-silicon, BOX and handle thickness independently; a thick diffusion mask does not change the BOX barrier.",
+          "sourceIds": [
+            "mnis-li"
+          ]
+        },
+        {
+          "title": "Form source/drain regions and isolate active islands",
+          "detail": "The published route uses boron predeposition and drive-in in a dedicated tube furnace, then patterned silicon isolation trenches. A general box furnace is not a qualified dopant line.",
+          "tools": [],
+          "status": "external",
+          "check": "Track actual doping history and active-island isolation. Treat unqualified wafer diffusion as a blocked external module, not an assumed material.",
+          "sourceIds": [
+            "mnis-li"
+          ]
+        },
+        {
+          "title": "Build the gate and interconnect stack",
+          "detail": "Deposit the 50 nm PECVD SiO₂ and 15 nm ALD Al₂O₃ gate insulators. Open source/drain contacts and sputter patterned Cr/Au for interconnects, gate metallization and thermal resistance.",
+          "tools": [
+            "03-07",
+            "03-05",
+            "02-01",
+            "04-06",
+            "03-03",
+            "09-02"
+          ],
+          "status": "documented",
+          "check": "Compare transistor transfer and output curves to controls for gate leakage and contact failure. A working Au thermometer does not establish transistor action.",
+          "sourceIds": [
+            "mnis-li"
+          ]
+        },
+        {
+          "title": "Support the electronics before removing the handle",
+          "detail": "Passivate with PI and laminate the front to a supported assembly incorporating 15 µm Kapton and PDMS. The reported finished flexible stack is about 31 µm, not 31 µm of silicon.",
+          "tools": [
+            "02-07",
+            "03-09",
+            "12-01",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Check axis and handling orientation: the BOX is exposed from the handle side after transfer.",
+          "sourceIds": [
+            "mnis-li"
+          ]
+        },
+        {
+          "title": "Expose, but do not open, the buried oxide",
+          "detail": "The authors remove most of the handle by ICP-RIE and finish selectively with XeF₂ vapor. A reactive-ion chamber or wet bench is not a verified substitute for the missing XeF₂ station; the completed release remains external.",
+          "tools": [],
+          "status": "external",
+          "check": "Verify silicon clearance and integrity of the outward-facing thermal oxide, including edge regions, before accepting the capacitive-sensing interface.",
+          "sourceIds": [
+            "mnis-li"
+          ]
+        },
+        {
+          "title": "Separate test modes and interconnects",
+          "detail": "Use the 4 × 4 transistor array with its recorded site map. Test electrical response with a known capacitively coupled signal, light response using a measured optical input against a dark trace, and Au resistance against a temperature standard.",
+          "tools": [
+            "09-02",
+            "09-03",
+            "09-06",
+            "11-02",
+            "11-05",
+            "16-07"
+          ],
+          "status": "reference",
+          "check": "Record electrical gain, photocurrent and resistance-versus-temperature in separate units. Do not infer on-chip multiplexing or 16 thermometers from 16 transistors.",
+          "sourceIds": [
+            "mnis-li"
+          ],
+          "varies": [
+            "electrical",
+            "optical",
+            "thermal"
+          ]
+        },
+        {
+          "title": "Characterize barrier integrity under load",
+          "detail": "Use defined bends or soak conditions and compare electrical leakage and sensitivity before and after. The accelerated experiment was run at 70 °C; this is not a measured lifetime in a person.",
+          "tools": [
+            "14-01",
+            "14-11",
+            "09-03"
+          ],
+          "status": "reference",
+          "check": "Keep lost contact, cracked barrier and ordinary thermal response distinguishable. No time-to-clinical-failure conversion is supplied.",
+          "sourceIds": [
+            "mnis-li"
+          ]
+        }
+      ],
+      "gaps": [
+        "No instrumented boron diffusion line, XeF₂ module or transferable full foundry control plan is established by this equipment register.",
+        "Actual die exposure requires an appropriately sized holder. Published bending and accelerated aging cannot certify long-term barrier performance."
+      ],
+      "sources": [
+        {
+          "id": "mnis-li",
+          "title": "Li et al.: active multimodal neural interface (MNIS)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12806190/",
+          "note": "Experimental Section and Figure S1 separate donor SOI, doped active islands, gate dielectric, support and removal of the handle. Figure 1 shows 16 PMOS devices and Au thermometry; Figure 3 separates operating modes."
+        }
+      ]
+    },
+    {
+      "id": "si-siat-lig",
+      "title": "SIAT LIG: bilateral strain sensor or polymer–gold neural electrode",
+      "family": "Laser-converted flexible bioelectronics",
+      "evidence": "partial",
+      "summary": "These are two different devices that can share acquisition time, not two measurements from the same contact. One turns mechanical deformation into resistance change; the other reduces the impedance of an electrode–electrolyte interface.",
+      "devices": [
+        "200-siat-laser-induced-graphene-multimodal-electrode"
+      ],
+      "variants": [
+        {
+          "id": "bil",
+          "label": "BiL-LIG mechanical sensor",
+          "description": "Bilateral rather than single-sided conductors change the strain-response curve. The reported range improvement is relative to the reference, not a claim of 40% absolute usable strain.",
+          "status": "documented"
+        },
+        {
+          "id": "inte",
+          "label": "IntE-LIG electrode array",
+          "description": "The conductive polymer–gold finish modifies a LIG electrical interface. A low impedance ratio is not evidence of mechanical sensing.",
+          "status": "documented"
+        },
+        {
+          "id": "pems",
+          "label": "PEMS: common acquisition timeline",
+          "description": "The study combines the two devices. Time alignment and individual channel calibration remain necessary for multimodal output.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Choose the output domain and controls",
+          "detail": "For mechanical readout retain an identically defined single-layer control. For electrode readout retain unmodified LIG contacts of the same exposed geometry. The two controls cannot substitute for one another.",
+          "tools": [
+            "01-01",
+            "01-05"
+          ],
+          "status": "documented",
+          "check": "A change in strain produces a resistance ratio; electrode impedance is complex and frequency dependent. Label each data field accordingly.",
+          "sourceIds": [
+            "lig-liao",
+            "lig-siat"
+          ]
+        },
+        {
+          "title": "Form the laser-defined conductors externally",
+          "detail": "The researchers report laser-induced graphene, not laser-exposed resist. A wavelength, substrate, atmosphere and qualified conversion line were not established from the materials reviewed. Do not import the NeuroString precursor or assume the registered MLA can make LIG.",
+          "tools": [],
+          "status": "external",
+          "check": "Require a defined conversion process and witness characterization. A visible dark mark alone does not prove a functional graphene network.",
+          "sourceIds": [
+            "lig-liao",
+            "lig-siat"
+          ]
+        },
+        {
+          "title": "Mechanical branch: compare one and two sides",
+          "detail": "Measure resistance while applying controlled deformation in the same geometry. The reported high-strain gauge factor is 3.77; it is dimensionless, local to its stated strain regime, not a universal low-strain specification.",
+          "tools": [
+            "14-01",
+            "09-03",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Fit the slope of fractional resistance change against strain over a stated window. Compare loading and unloading, baseline drift and practical working range separately.",
+          "sourceIds": [
+            "lig-liao"
+          ],
+          "varies": [
+            "bil",
+            "pems"
+          ],
+          "only": [
+            "bil",
+            "pems"
+          ]
+        },
+        {
+          "title": "Electrode branch: qualify the modified surface",
+          "detail": "The institution reports a conductive polymer–gold composite layer on LIG. The public evidence reviewed does not establish the layer order or a compatible local deposition recipe, so local processing is not claimed.",
+          "tools": [],
+          "status": "external",
+          "check": "Distinguish the integrated composite from an assumed Au film or untreated LIG; document panel, area and comparator before testing.",
+          "sourceIds": [
+            "lig-liao",
+            "lig-siat"
+          ],
+          "varies": [
+            "inte",
+            "pems"
+          ],
+          "only": [
+            "inte",
+            "pems"
+          ]
+        },
+        {
+          "title": "Measure the interfacial response, not DC trace resistance",
+          "detail": "Compare modified and unmodified surfaces with the same electrolyte, reference, area and frequency. The study reports up to a 98.5% relative impedance reduction at 1 kHz, not 98.5 Ω or a universal cutoff.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Calculate the ratio from the two matched measurements and retain the spectrum; a DC continuity test cannot produce the same quantity.",
+          "sourceIds": [
+            "lig-liao",
+            "lig-siat"
+          ],
+          "varies": [
+            "inte",
+            "pems"
+          ],
+          "only": [
+            "inte",
+            "pems"
+          ]
+        },
+        {
+          "title": "Synchronize two fixture outputs",
+          "detail": "Pair mechanical motion on a dummy fixture with a separately tagged electrical input. Store the channels, units and clocks distinctly before aligning them on a shared timeline.",
+          "tools": [
+            "09-06",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Recover independently imposed event offsets. Cross-correlation is not evidence of a physiological or causal relationship.",
+          "sourceIds": [
+            "lig-liao"
+          ],
+          "varies": [
+            "pems"
+          ],
+          "only": [
+            "pems"
+          ]
+        }
+      ],
+      "gaps": [
+        "No exact laser workcell, process window, coating chemistry or production yield is established by the verified public material.",
+        "The bench route reproduces neither experiments on living subjects nor seizure detection, diagnosis or treatment."
+      ],
+      "sources": [
+        {
+          "id": "lig-liao",
+          "title": "Liao et al. (2026): laser-induced graphene for multimodal monitoring",
+          "url": "https://doi.org/10.1002/adfm.202531604",
+          "note": "The primary article identifies the two device branches, the single-layer comparator, multimodal system and relative rather than absolute performance figures."
+        },
+        {
+          "id": "lig-siat",
+          "title": "SIAT: bilateral strain sensor and engineered LIG electrode (Chinese)",
+          "url": "https://isynbio.siat.ac.cn/siat/2026-05/08/article_2026050810453348920.html",
+          "note": "Research group describes bilateral structures, conductive-polymer/gold composite treatment, and 1 kHz impedance comparison. No calibrated laser or full layer recipe is established here."
+        }
+      ]
+    },
+    {
+      "id": "si-tum-utah",
+      "title": "TUM: four Blackrock 8 × 8 arrays on one pedestal",
+      "family": "Commercial multi-array silicon assembly",
+      "evidence": "partial",
+      "summary": "The hand-interface catalog entry is a 256-electrode assembly: four 64-electrode arrays, one cable bundle per array and one shared titanium pedestal. It is not a new 256-site lithographic die and not four standard 96-channel implants.",
+      "devices": [
+        "214-tum-256-microelectrode-custom-bci-implant"
+      ],
+      "variants": [
+        {
+          "id": "quad",
+          "label": "Documented TUM hardware: 4 × 64",
+          "description": "Each 8 × 8 grid carries 64 iridium-oxide-coated 1.5 mm silicon needles. Four grids have separate physical positions.",
+          "status": "documented"
+        },
+        {
+          "id": "single",
+          "label": "Single-grid fixture for fault isolation",
+          "description": "A synthetic reference can exercise one 64-site block at a time. It does not convert the purchased assembly into four independent products.",
+          "status": "reference"
+        },
+        {
+          "id": "utah100",
+          "label": "Four 10 × 10 arrays or four 96-channel maps",
+          "description": "Reject for this configuration even though such sizes occur elsewhere in the Utah family.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Specify all four grids and the shared output",
+          "detail": "Use the four-array hardware shown in Figure 1. A grid coordinate is not a globally unique channel without an array ID. Record architecture separately from the historical clinical context.",
+          "tools": [
+            "01-01",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "Four arrays × eight rows × eight columns = 256 distinct physical electrodes. Never reuse a 96-channel map to pad the count.",
+          "sourceIds": [
+            "tum-wagner"
+          ],
+          "only": [
+            "quad",
+            "single"
+          ]
+        },
+        {
+          "title": "Treat the commercial array fabrication as external",
+          "detail": "The investigators identify Blackrock Utah/NeuroPort hardware but do not publish lot travelers, electrode masks, process recipes or implant factory qualification. The historical silicon-array paper is a fabrication comparator only.",
+          "tools": [],
+          "status": "external",
+          "check": "Accept packaged hardware as an external source. No exact base isolation, interconnects or coating process may be inferred from a historical 10 × 10 design.",
+          "sourceIds": [
+            "tum-wagner",
+            "tum-classic"
+          ],
+          "only": [
+            "quad",
+            "single"
+          ]
+        },
+        {
+          "title": "Inspect the separate arrays and cable assemblies",
+          "detail": "The paper describes four iridium-oxide-coated silicon grids connected by fine braided bundles to one titanium pedestal. A virtual package can represent each cable separately without implying a known wire order.",
+          "tools": [
+            "12-01",
+            "05-02",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "Differentiate needle length from electrode count. The published needle length is 1.5 mm; the exposed conductive tip area is not given by that length.",
+          "sourceIds": [
+            "tum-wagner"
+          ],
+          "only": [
+            "quad",
+            "single"
+          ]
+        },
+        {
+          "title": "Build a bench-only hierarchical map",
+          "detail": "Assign every modeled site an (array,row,column) address and inject a known tag into a synthetic harness. Treat the actual pedestal/headstage pin table as missing unless independently provided.",
+          "tools": [
+            "01-05",
+            "09-06"
+          ],
+          "status": "reference",
+          "check": "All 256 model addresses must be distinct. Passing a synthetic map does not validate the vendor pin assignment.",
+          "sourceIds": [
+            "tum-wagner"
+          ],
+          "varies": [
+            "quad",
+            "single"
+          ],
+          "only": [
+            "quad",
+            "single"
+          ]
+        },
+        {
+          "title": "Separate site-, bundle- and pedestal-level failure",
+          "detail": "Simulate a single open, loss of one 64-site bundle and common output loss as separate faults. If an impedance fixture is used, store electrolyte, frequency and reference. This is proposed bench QA, not a measurement reported at surgery.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Expect 255, 192 and 0 available model electrodes under these idealized faults, respectively; no estimate of clinically usable channels follows.",
+          "sourceIds": [
+            "tum-wagner"
+          ],
+          "varies": [
+            "quad",
+            "single"
+          ],
+          "only": [
+            "quad",
+            "single"
+          ]
+        }
+      ],
+      "gaps": [
+        "No commercial master batch record, dose/clinical protocol, cable-to-pedestal pin table or per-site factory impedance thresholds are provided.",
+        "A patient-facing report is not manufacturing authorization, and the synthetic model does not predict patient performance."
+      ],
+      "sources": [
+        {
+          "id": "tum-wagner",
+          "title": "Wagner et al. (2026): TUM four-grid NeuroPort equipment",
+          "url": "https://doi.org/10.1227/ons.0000000000002067",
+          "note": "Figure 1 and Methods identify four 8 × 8 Blackrock silicon arrays, 1.5 mm iridium-oxide-coated needles, braided connections and one titanium pedestal for each case. This is a configuration source, not a factory traveler."
+        },
+        {
+          "id": "tum-classic",
+          "title": "Jones et al. (1992): historical penetrating silicon array",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/1510294/",
+          "note": "Academic design and fabrication comparator for planar arrays of penetrating silicon needles. This does not document the production steps, pinout, sizes or acceptance limits of the specific TUM apparatus."
+        }
+      ]
+    }
+  ]
+}

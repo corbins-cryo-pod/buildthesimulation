@@ -1,0 +1,4109 @@
+{
+  "profiles": [
+    {
+      "id": "flex-mesh-four-mask",
+      "title": "Open SU-8 mesh with gold wiring and platinum sites",
+      "family": "Freestanding electronic mesh",
+      "evidence": "documented",
+      "devices": [
+        "23-syringe-injectable-mesh-electronics"
+      ],
+      "summary": "Track a specific four-mask, plug-and-play mesh from its silicon carrier to an electrically mapped, freestanding net. The later protocol is a documented member of the 2015 mesh family, not the original silicon-nanowire transistor variant.",
+      "sources": [
+        {
+          "id": "flex-mesh-four-mask-mesh",
+          "title": "Liu et al., 2015, ordering and suspension of mesh electronics",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4591029/",
+          "note": "Figure 1 and Methods distinguish metal electrodes and nanowire devices, with different electronics."
+        },
+        {
+          "id": "flex-mesh-four-mask-protocol",
+          "title": "Schuhmann et al., JoVE, four-mask plug-and-play mesh",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126522/",
+          "note": "Section 1 and Figure 2 give the four mask functions, sacrificial nickel and separate gold/Pt depositions. The I/O section documents the ZIF interface."
+        }
+      ],
+      "variants": [
+        {
+          "id": "metal",
+          "label": "Four-mask passive Pt array",
+          "status": "documented",
+          "description": "The sequence below makes a passive metal-electrode mesh; mask 2 routes the signals and mask 3 defines the contacts."
+        },
+        {
+          "id": "nanowire",
+          "label": "2015 active nanowire mesh",
+          "status": "external",
+          "description": "A semiconductor device branch, not a selectable electrode metal. Requires separate nanowire growth, assembly, contacting and transistor calibration."
+        },
+        {
+          "id": "pitch",
+          "label": "Open-area geometry comparison",
+          "status": "reference",
+          "description": "Change unit-cell angle or spacing in a CAD comparison, then rerun net connectivity and free-span checks. This is not a published new mesh."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Specify cell, stem and I/O regions",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Maintain separate design layers for bottom struts, leads and I/O, electrode sites and upper struts. Pads are not sensing contacts.",
+          "check": "Check each site's continuous path to a unique pad; retain windows where the top polymer must not cover a site.",
+          "sourceIds": [
+            "flex-mesh-four-mask-protocol"
+          ],
+          "varies": [
+            "metal",
+            "pitch"
+          ],
+          "only": [
+            "metal",
+            "pitch"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Coat the removable carrier",
+          "tools": [
+            "03-02",
+            "02-07"
+          ],
+          "detail": "Use nickel on silicon as the sacrificial support; a thin photosensitive lower SU-8 film becomes the mechanical net, not a blanket electronic substrate.",
+          "check": "Check that release-layer breaks will not anchor the finished mesh.",
+          "sourceIds": [
+            "flex-mesh-four-mask-protocol"
+          ],
+          "varies": [
+            "metal",
+            "pitch"
+          ],
+          "only": [
+            "metal",
+            "pitch"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Expose lower struts and wire the mesh",
+          "tools": [
+            "02-01",
+            "03-02",
+            "04-06"
+          ],
+          "detail": "Pattern the first structural layer, then lift off adhesion metal/gold on the narrow members and at the I/O stem. Crossings in projection do not create arbitrary extra electrical nodes.",
+          "check": "Overlay the wire within its supporting strut and check the narrowest trace at a junction.",
+          "sourceIds": [
+            "flex-mesh-four-mask-protocol"
+          ],
+          "varies": [
+            "metal",
+            "pitch"
+          ],
+          "only": [
+            "metal",
+            "pitch"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Define the electrode level",
+          "tools": [
+            "02-01",
+            "03-01",
+            "04-06"
+          ],
+          "detail": "A third mask and e-beam deposited Cr/Pt form discrete contacts that overlap their assigned interconnect. A blanket Pt film is not equivalent.",
+          "check": "Check both overlap at the neck and electrical isolation of neighboring contacts.",
+          "sourceIds": [
+            "flex-mesh-four-mask-protocol"
+          ],
+          "varies": [
+            "metal",
+            "pitch"
+          ],
+          "only": [
+            "metal",
+            "pitch"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Seal struts and expose interfaces",
+          "tools": [
+            "02-07",
+            "02-01",
+            "16-09"
+          ],
+          "detail": "Pattern the upper SU-8 level over the metal while leaving contact and I/O apertures. The structural layers join during the final bake.",
+          "check": "Check covered leads, accessible pad windows and the absence of a polymer web bridging an open cell.",
+          "sourceIds": [
+            "flex-mesh-four-mask-protocol"
+          ],
+          "varies": [
+            "metal",
+            "pitch"
+          ],
+          "only": [
+            "metal",
+            "pitch"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Release and capture the I/O",
+          "tools": [
+            "03-12",
+            "04-06",
+            "12-01",
+            "16-13"
+          ],
+          "detail": "After surface treatment, remove the sacrificial metal and handle the released mesh in liquid. Register the I/O tail to its ZIF connector; no anatomical procedure is modeled.",
+          "check": "A broken floating strut and an electrically open trace are separate failure observations.",
+          "sourceIds": [
+            "flex-mesh-four-mask-protocol"
+          ],
+          "varies": [
+            "metal",
+            "pitch"
+          ],
+          "only": [
+            "metal",
+            "pitch"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Score a bench surrogate",
+          "tools": [
+            "05-07",
+            "09-01",
+            "09-12",
+            "14-10"
+          ],
+          "detail": "Measure an adjacency/netlist check followed by contact impedance and continuity through a controlled flex on an inert fixture.",
+          "check": "Record which contact–pad pair failed, before or after release, rather than interpreting loss as a neural signal.",
+          "sourceIds": [
+            "flex-mesh-four-mask-protocol"
+          ],
+          "varies": [
+            "metal",
+            "pitch"
+          ],
+          "only": [
+            "metal",
+            "pitch"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Transfer to a semiconductor branch",
+          "tools": [],
+          "detail": "An active nanowire mesh needs a separate device process and transistor transfer-characterization; this passive route stops at the interface contract.",
+          "check": "Reject a simulation that produces transistor gain from a Pt electrode by changing only its label.",
+          "sourceIds": [
+            "flex-mesh-four-mask-mesh"
+          ],
+          "varies": [
+            "nanowire"
+          ],
+          "only": [
+            "nanowire"
+          ]
+        }
+      ],
+      "gaps": [
+        "The four-mask protocol does not expose all original masks or certify a locally fabricated wafer.",
+        "Suspend and characterize on an inert fixture. Syringe deployment, implantation, tissue behavior, and clinical performance are outside this traveler."
+      ]
+    },
+    {
+      "id": "flex-neurogrid",
+      "title": "Parylene NeuroGrid: embedded routing and PEDOT:PSS sites",
+      "family": "Polymer surface arrays",
+      "evidence": "documented",
+      "devices": [
+        "24-neurogrid-pedot-pss-surface-array"
+      ],
+      "summary": "The 2015 paper describes passive conducting-polymer contacts on a very thin parylene-C sheet. The metal leads lie near the neutral plane, but a PEDOT:PSS contact on its own is not a transistor.",
+      "sources": [
+        {
+          "id": "flex-neurogrid-ng",
+          "title": "Khodagholy et al., NeuroGrid",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4308485/",
+          "note": "Figure 1 and Online Methods: 256-contact micrograph, 10 µm square sites, 30 µm spacing, 4 µm film, Au/Pt and PEDOT:PSS patterning."
+        },
+        {
+          "id": "flex-neurogrid-oect",
+          "title": "Khodagholy et al., organic transistors at the surface",
+          "url": "https://www.nature.com/articles/ncomms2573",
+          "note": "Methods and Figure 1 identify gold source/drain, a polymer channel and electrolyte gate as additional components of a different research device."
+        }
+      ],
+      "variants": [
+        {
+          "id": "passive",
+          "label": "2015 passive 256-site NeuroGrid",
+          "status": "documented",
+          "description": "10 µm square electrode surfaces, reported 30 µm spacing. Do not populate an extra acquisition channel for the reference."
+        },
+        {
+          "id": "active",
+          "label": "OECT teaching comparison, not NeuroGrid",
+          "status": "reference",
+          "description": "An electrolyte-gated source/channel/drain device needs controlled bias and a transfer curve. It is not an upgrade that can be added by software."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Lay out the passive grid",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Keep sensing windows distinct from high-density gold traces and bond pads. Preserve a map of geometric contacts to pads instead of assuming row order equals acquisition order.",
+          "check": "Compare count and spacing with Figure 1; a reconstructed rectangular crop is not an original mask.",
+          "sourceIds": [
+            "flex-neurogrid-ng"
+          ],
+          "varies": [
+            "passive"
+          ],
+          "only": [
+            "passive"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Establish support and metal plane",
+          "tools": [
+            "03-08",
+            "02-06",
+            "03-01",
+            "04-06"
+          ],
+          "detail": "Build the lower parylene-C layer on a carrier and pattern Pt/Au pads and conductors using aligned photolithography and lift-off. Register metal at the film mid-plane.",
+          "check": "Check finished conductor continuity before adding the upper film.",
+          "sourceIds": [
+            "flex-neurogrid-ng"
+          ],
+          "varies": [
+            "passive"
+          ],
+          "only": [
+            "passive"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Open the polymer-facing sites",
+          "tools": [
+            "03-08",
+            "02-06",
+            "04-01"
+          ],
+          "detail": "Define the upper insulation and patterned openings; distinguish sacrificial patterning films from the permanent parylene barrier.",
+          "check": "Do not leave bare gold routing in the electrode window or accidentally open an adjacent lead.",
+          "sourceIds": [
+            "flex-neurogrid-ng"
+          ],
+          "varies": [
+            "passive"
+          ],
+          "only": [
+            "passive"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Form and condition PEDOT:PSS",
+          "tools": [
+            "02-07",
+            "16-09",
+            "04-06"
+          ],
+          "detail": "Pattern the polymer conductor at the contacts; complete the thermal treatment and aqueous conditioning described in Methods. This is not electroplating a metal electrode.",
+          "check": "Inspect polymer registration, aperture continuity and residue; perform an impedance spectrum in a known electrolyte.",
+          "sourceIds": [
+            "flex-neurogrid-ng"
+          ],
+          "varies": [
+            "passive"
+          ],
+          "only": [
+            "passive"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Separate film and connect",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "detail": "Recover the compliant device and take the exposed backend pads to the readout. Handling pressure near the free film can buckle traces.",
+          "check": "Confirm contact-to-terminal mapping and check for common leakage, not just DC opens.",
+          "sourceIds": [
+            "flex-neurogrid-ng"
+          ],
+          "varies": [
+            "passive"
+          ],
+          "only": [
+            "passive"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Compare against an active cell",
+          "tools": [
+            "05-07",
+            "09-02",
+            "09-03",
+            "09-12"
+          ],
+          "detail": "For a separate OECT coupon, pattern gold source and drain contacts, bridge with PEDOT:PSS and expose the channel to a gated electrolyte. Measure drain current as gate bias is varied.",
+          "check": "An impedance magnitude alone does not establish transconductance. Do not display OECT gain for the passive grid.",
+          "sourceIds": [
+            "flex-neurogrid-oect"
+          ],
+          "varies": [
+            "active"
+          ],
+          "only": [
+            "active"
+          ]
+        }
+      ],
+      "gaps": [
+        "No recovered mask, exact packaging map or guaranteed field signal is implied. The catalog records a passive grid; the OECT is a separately sourced comparison."
+      ]
+    },
+    {
+      "id": "flex-ptnr",
+      "title": "PtNRGrid: large-panel traces and dealloyed sites",
+      "family": "Nanostructured surface arrays",
+      "evidence": "documented",
+      "devices": [
+        "74-ptnrgrid-platinum-nanorod-surface-arrays"
+      ],
+      "summary": "The defining operations are redundant Cr/Au patterning, Pt–Ag co-sputtering, and selective dealloying after release. Preserve all three. A plain platinum disk or an electroplated coating is a different electrode.",
+      "sources": [
+        {
+          "id": "flex-ptnr-grid",
+          "title": "Tchoe et al., PtNRGrid cortical mapping",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9650779/",
+          "note": "Figure 1 specifies the distinct pitch, width and site-count configurations; the main text describes the finished film."
+        },
+        {
+          "id": "flex-ptnr-si",
+          "title": "Tchoe et al., article with supplementary manufacturing Methods",
+          "url": "https://iebl.ucsd.edu/sites/default/files/iebl/2022-05/Human%20Brain%20Mapping%20with%20Multi%20Thousand%20Channels_0.pdf",
+          "note": "Supplement §§1.1–1.6: 7-inch glass, repeated metal, site alloy, mask, post-release dealloying and silver-epoxy PCB bond."
+        }
+      ],
+      "variants": [
+        {
+          "id": "square",
+          "label": "1,024 sites at 1 mm pitch",
+          "status": "documented",
+          "description": "Large-area square grid. Change lead fanout and extender mapping with geometry."
+        },
+        {
+          "id": "narrow",
+          "label": "1,024-site narrow grid at 0.2 mm pitch",
+          "status": "documented",
+          "description": "Smaller pitch is a separate published artwork; do not just rescale the contacts."
+        },
+        {
+          "id": "wide",
+          "label": "2,048-site grid at 1.8 mm pitch",
+          "status": "documented",
+          "description": "A larger-area design; 2,048 is a contact count, not the channel capacity of one generic instrument."
+        },
+        {
+          "id": "rodent",
+          "label": "0.15 mm pitch research grid",
+          "status": "documented",
+          "description": "Separate layout. Do not infer its total number of contacts from the human variants."
+        },
+        {
+          "id": "panel",
+          "label": "Treat a 150 mm square writer field as 180 mm",
+          "status": "incompatible",
+          "description": "Do not infer the written pattern spans the whole 180 mm glass plate, or that a listed 150 mm standard write field covers it. Verify both the actual pattern extent and physical carrier support; absent confirmation, use a coupon or external module."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Prepare a temporary panel",
+          "tools": [
+            "02-07",
+            "03-08",
+            "03-12"
+          ],
+          "detail": "Support the thin parylene on glass with a release layer. The publication distinguishes deposited film from measured finished thickness.",
+          "check": "Record physical dimensions separately for carrier, active pattern and final film; verify all tool holders.",
+          "sourceIds": [
+            "flex-ptnr-si",
+            "flex-ptnr-grid"
+          ],
+          "only": [
+            "square",
+            "narrow",
+            "wide",
+            "rodent"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern long routes twice",
+          "tools": [
+            "02-03",
+            "03-01",
+            "04-06"
+          ],
+          "detail": "The authors patterned Cr/Au twice on the same leads to reduce susceptibility to a defect in one resist pass. The second repetition is not a crossover routing level.",
+          "check": "Match both passes on test lines; a break spanning both passes is still an open.",
+          "sourceIds": [
+            "flex-ptnr-si"
+          ],
+          "only": [
+            "square",
+            "narrow",
+            "wide",
+            "rodent"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Locate alloy disks",
+          "tools": [
+            "03-03",
+            "02-03"
+          ],
+          "detail": "Pattern the Cr/Pt base and co-deposited Pt–Ag alloy at individual recording sites; associate each disk with the correct trace.",
+          "check": "Only a co-sputter setup with independently supported metals and validated geometry qualifies. A generic sputter label is not evidence.",
+          "sourceIds": [
+            "flex-ptnr-si"
+          ],
+          "only": [
+            "square",
+            "narrow",
+            "wide",
+            "rodent"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Passivate and cut windows",
+          "tools": [
+            "03-08",
+            "04-01",
+            "02-03"
+          ],
+          "detail": "Apply the upper parylene. Pattern a hard mask for contacts, fluid-relief holes and outline; dry-etch the film. Perforations are not electrical pads.",
+          "check": "Test for covered sites, disconnected islands and pinholes into the long fanout.",
+          "sourceIds": [
+            "flex-ptnr-si"
+          ],
+          "only": [
+            "square",
+            "narrow",
+            "wide",
+            "rodent"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Release before final dealloying",
+          "tools": [
+            "04-06",
+            "13-01"
+          ],
+          "detail": "Strip the hard mask; remove the film from its carrier in water, then selectively remove Ag from exposed alloy. Preserve the order in Supplement §1.3.",
+          "check": "In simulation distinguish a bare Pt–Ag disk from a released, porous Pt-rich contact; do not infer residual Ag concentration from color.",
+          "sourceIds": [
+            "flex-ptnr-si"
+          ],
+          "only": [
+            "square",
+            "narrow",
+            "wide",
+            "rodent"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Bond extender and measure",
+          "tools": [
+            "08-10",
+            "12-01",
+            "09-01",
+            "09-12"
+          ],
+          "detail": "Pattern conductive epoxy onto the extender PCB and align/bond the flex, then measure each mapped site in the bench cell.",
+          "check": "Test a dry conductor open against poor electrochemical contact; registration errors can map a good site to a wrong channel.",
+          "sourceIds": [
+            "flex-ptnr-si"
+          ],
+          "only": [
+            "square",
+            "narrow",
+            "wide",
+            "rodent"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check conformity on an inert shape",
+          "tools": [
+            "06-10",
+            "12-01"
+          ],
+          "detail": "Compare a perforated grid with a matched unperforated witness on a curved, wet inert mold. This isolates trapped-fluid or air gaps from conductor faults.",
+          "check": "Inspect observed contact area before interpreting an apparent electrical dead zone; the source shows a mold comparison.",
+          "sourceIds": [
+            "flex-ptnr-si"
+          ],
+          "only": [
+            "square",
+            "narrow",
+            "wide",
+            "rodent"
+          ]
+        }
+      ],
+      "gaps": [
+        "The paper names an MLA150 on a roughly 180 × 180 mm glass carrier. Carrier edge ≠ active pattern edge. Check the mount/chuck, patterned extents, field placement and overlay independently against the named register configuration (150 × 150 mm standard writing area); another accessory is not automatically its installed configuration. If either substrate or pattern cannot be handled, use a clearly reduced coupon or an external full-panel line. No local Pt/Ag co-sputter composition or qualification has been verified.",
+        "Microscope morphology or a simulated circuit does not prove an absolute PtNR impedance, device yield or implant suitability."
+      ]
+    },
+    {
+      "id": "flex-display",
+      "title": "PtNR recording array plus addressable microdisplay",
+      "family": "Optoelectronic surface stack",
+      "evidence": "partial",
+      "devices": [
+        "76-ieeg-microdisplay-ptnr-led-array"
+      ],
+      "summary": "This is a co-registered recording/display stack, not a light-emitting replacement for the PtNR contacts. Changing color architecture changes the pixel map and process.",
+      "sources": [
+        {
+          "id": "flex-display-display",
+          "title": "Tchoe et al., recording/display stack and supplementary Methods",
+          "url": "https://iebl.ucsd.edu/sites/default/files/iebl/2024-04/An%20electroencephalogram%20microdisplay%20to%20visualize%20neuronal%20activity%20on%20the%20brain%20surface.pdf",
+          "note": "Figure 1 and fabrication supplement distinguish the PtNR sheet, GaN microLED assembly, and inkjet color conversion."
+        },
+        {
+          "id": "flex-display-paper",
+          "title": "Primary author manuscript",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11093107/",
+          "note": "Single-color and dual-color configurations each have 1,024 recording sites; the latter has 2,048 pixels."
+        }
+      ],
+      "variants": [
+        {
+          "id": "single",
+          "label": "1,024 sites + 1,024 single-color pixels",
+          "status": "documented",
+          "description": "One recording contact per display pixel count. The acquisition-to-pixel map is still explicit."
+        },
+        {
+          "id": "dual",
+          "label": "1,024 sites + 2,048 dual-color pixels",
+          "status": "documented",
+          "description": "Two color pixels per recording site in count; the paper reports different vertical spacing for light versus recording."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Build the designated electrode layout",
+          "tools": [
+            "01-01",
+            "02-03",
+            "03-08",
+            "03-03",
+            "04-01"
+          ],
+          "detail": "Use the display-matched PtNR layout, including interconnects and holes for its particular scale. Color conversion does not alter how an electrode records.",
+          "check": "Check all contact-to-connector assignments independently of the LED matrix.",
+          "sourceIds": [
+            "flex-display-display"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Obtain and assemble the GaN emitter array",
+          "tools": [
+            "08-05",
+            "11-10"
+          ],
+          "detail": "Treat epitaxial GaN emitters and any specialized mass-transfer processes as externally supplied. The assembly tools can model placement; they cannot synthesize a validated emitter wafer.",
+          "check": "Reject dead or swapped pixels with optical and electrical measurements on the separate display array.",
+          "sourceIds": [
+            "flex-display-display"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Create the color-conversion layer",
+          "tools": [],
+          "detail": "The dual-color system uses patterned indium-phosphide quantum-dot ink on GaN pixels. The register lacks a qualified QD inkjet module; do not substitute a resin printer or assume different LED drive alone gives the reported output.",
+          "check": "Inspect color leakage and alignment on an optical coupon.",
+          "sourceIds": [
+            "flex-display-display"
+          ],
+          "varies": [
+            "dual"
+          ],
+          "only": [
+            "dual"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Register and join the layers",
+          "tools": [
+            "08-05",
+            "12-01",
+            "11-06"
+          ],
+          "detail": "Keep electrode and emitter orientations distinct. Physically align the two arrays and map contact readings to display elements according to the chosen layout.",
+          "check": "Test corner landmarks, row/column direction and illuminated location, including an intentional missing input.",
+          "sourceIds": [
+            "flex-display-paper"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Bench end-to-end replay",
+          "tools": [
+            "09-06",
+            "10-09",
+            "11-08"
+          ],
+          "detail": "Apply a synthetic spatial pattern through an electrical dummy connector, transform it to the displayed field and image the light distribution without a biological specimen.",
+          "check": "A bright pixel with a wrong contact address fails even if every pixel illuminates.",
+          "sourceIds": [
+            "flex-display-paper"
+          ]
+        }
+      ],
+      "gaps": [
+        "No GaN epitaxy or validated mass-transfer/QD inkjet capability is inferred from the lab's optoelectronic assembly station. No tissue exposure or clinical display criterion is modeled."
+      ]
+    },
+    {
+      "id": "flex-si-mux",
+      "title": "Transfer-printed silicon on flexible active matrices",
+      "family": "Active flexible ECoG",
+      "evidence": "documented",
+      "devices": [
+        "29-active-matrix-flexible-ecog-array-viventi",
+        "65-active-microecog-auditory-cortex-array"
+      ],
+      "summary": "Flexible silicon-membrane arrays use two field-effect transistors per electrode for buffering and row selection. Physical recording sites, transistor count and external wire count are different metrics.",
+      "sources": [
+        {
+          "id": "flex-si-mux-v",
+          "title": "Viventi et al., 2011, active 360-site matrix",
+          "url": "https://rogersgroup.northwestern.edu/files/2011/nneuroepilepsy.pdf",
+          "note": "Figure 1 and Online Methods: donor ribbons, transfer printing, active cells, encapsulation and surface metallization."
+        },
+        {
+          "id": "flex-si-mux-e",
+          "title": "Escabí et al., 2014, auditory-cortex matrix",
+          "url": "https://escabilab.uconn.edu/wp-content/uploads/sites/557/2022/08/Escabi-et-al-ECoG-Array-J-Neurphys-2014-1.pdf",
+          "note": "Electrode fabrication and Figure 1: 14 × 14 sites, 392 transistors and 29 interface wires, not 196 wires."
+        }
+      ],
+      "variants": [
+        {
+          "id": "v360",
+          "label": "Viventi: 360 recording sites",
+          "status": "documented",
+          "description": "720 transistors; 500 µm contact spacing. Use its own row and column map, not the auditory-array map."
+        },
+        {
+          "id": "e196",
+          "label": "Escabí: 14 × 14 recording sites",
+          "status": "documented",
+          "description": "196 recording sites, 392 transistors and 29 interface wires; 250 µm site pitch."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Define row, column and active cell masks",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Lay out a source follower and address switch for every electrode. Budget the separate row controls and shared readout columns.",
+          "check": "Count the active cells and transistor pairs without confusing external pads with physical sites.",
+          "sourceIds": [
+            "flex-si-mux-v",
+            "flex-si-mux-e"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Prepare the silicon nanomembrane donor",
+          "tools": [],
+          "detail": "The papers use doped single-crystal silicon nanomembranes from a donor wafer. Qualified diffusion, donor release and validated transistor processing are external dependencies, not functions provided by a generic box furnace.",
+          "check": "Accept a traceable donor lot with ribbon dimensions and electrical witness devices; reject material substitution by film appearance.",
+          "sourceIds": [
+            "flex-si-mux-v",
+            "flex-si-mux-e"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Transfer ribbons to PI",
+          "tools": [],
+          "detail": "Place silicon on an adhesive-coated PI support by transfer printing. A general flip-chip bonder is not a qualified elastomeric nanomembrane transfer printer.",
+          "check": "Missing or rotated ribbons should identify faulty cells before interconnection.",
+          "sourceIds": [
+            "flex-si-mux-v",
+            "flex-si-mux-e"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Connect the active devices",
+          "tools": [
+            "02-06",
+            "03-01",
+            "03-09",
+            "09-02"
+          ],
+          "detail": "Pattern the transistor gates, dielectrics, wiring levels and interlayer vias according to the cited architecture. Use the register as a process-class map; parylene is not substituted for the reported PI/epoxy insulation.",
+          "check": "Record transistor transfer curves, row selectivity and a distinct stuck-row signature.",
+          "sourceIds": [
+            "flex-si-mux-v",
+            "flex-si-mux-e"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Passivate vias and expose Pt sites",
+          "tools": [
+            "02-07",
+            "03-09",
+            "04-01",
+            "03-01"
+          ],
+          "detail": "Build the insulating layers with offset vias and metallize the electrode faces with Pt. The duplicate interlayer/encapsulation thickness descriptions are not uniform total-device thicknesses.",
+          "check": "Separate wet leakage and gate failure from a defective surface electrode.",
+          "sourceIds": [
+            "flex-si-mux-v",
+            "flex-si-mux-e"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify multiplexed output",
+          "tools": [
+            "09-06",
+            "09-04",
+            "09-10",
+            "09-12"
+          ],
+          "detail": "Drive a spatially coded electrical phantom, read rows/columns and compare the recovered map against unique electrode addresses.",
+          "check": "One faulty select line must create a row-correlated defect, unlike a single-pad open.",
+          "sourceIds": [
+            "flex-si-mux-v",
+            "flex-si-mux-e"
+          ]
+        }
+      ],
+      "gaps": [
+        "Public device processes and architecture are not local tool qualifications; no transistor yield or NSR/implantable status transfers to a simulation.",
+        "The 2014 matrix is a separate layout, not justification for using its interconnect count in the 2011 design."
+      ]
+    },
+    {
+      "id": "flex-clear",
+      "title": "CLEAR: four transferred graphene layers",
+      "family": "Transparent carbon arrays",
+      "evidence": "documented",
+      "devices": [
+        "68-clear-transparent-graphene-microecog"
+      ],
+      "summary": "A 16-electrode parylene-C array with four stacked graphene monolayers. The rat and mouse versions occupy different active areas. This is not the UCSD double-layer/Pt electrode.",
+      "sources": [
+        {
+          "id": "flex-clear-p",
+          "title": "Park et al., CLEAR (2014)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4218963/",
+          "note": "Figure 1 and Methods specify stack, electrodes, transfers and circuit carrier; Figure 2 compares wavelength-dependent transmission."
+        }
+      ],
+      "variants": [
+        {
+          "id": "rat",
+          "label": "Rat-size footprint",
+          "status": "documented",
+          "description": "Reported 3.1 × 3.1 mm electrode area."
+        },
+        {
+          "id": "mouse",
+          "label": "Mouse-size footprint",
+          "status": "documented",
+          "description": "Reported 1.9 × 1.9 mm electrode area; ZIF connector shown."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Place gold fanout outside the optical region",
+          "tools": [
+            "03-08",
+            "02-01",
+            "03-01"
+          ],
+          "detail": "Build on silicon with a lower parylene film; define metal routing and pads before the graphene stack. The transparent recording field and opaque connector have different materials.",
+          "check": "Check optical-field boundaries, substrate thickness and pad registration.",
+          "sourceIds": [
+            "flex-clear-p"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Grow or receive donor graphene",
+          "tools": [],
+          "detail": "Obtain traceable monolayer films. The source used CVD graphene; the register does not establish graphene growth or transfer capability by listing a PECVD tool.",
+          "check": "Check Raman and sheet-resistance witnesses for each input film.",
+          "sourceIds": [
+            "flex-clear-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Transfer four layers and pattern",
+          "tools": [
+            "04-06",
+            "04-01",
+            "05-10"
+          ],
+          "detail": "Wet transfer and stack four monolayers, then define graphene sites and interconnects with the protective film and plasma steps described in Methods. Wet work is a handling analogue, not an automated transfer line.",
+          "check": "Reject discontinuities after each transfer; inspect the overlap with the metal.",
+          "sourceIds": [
+            "flex-clear-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Open windows and release the sheet",
+          "tools": [
+            "03-08",
+            "04-01",
+            "12-01",
+            "16-13"
+          ],
+          "detail": "Expose the 16 contacts and mating terminals through the upper parylene, release the flex film and attach the connector.",
+          "check": "Confirm that there is a contact window at every site and no stray window over a lead.",
+          "sourceIds": [
+            "flex-clear-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Measure electrical and optical performance separately",
+          "tools": [
+            "05-07",
+            "05-10",
+            "09-01",
+            "11-05",
+            "11-06"
+          ],
+          "detail": "Compare sheet/trace resistance and saline EIS with a blank parylene reference. Measure optical transmission relative to a matched blank at the same wavelength.",
+          "check": "Raman verifies the carbon material; it cannot by itself validate optical transmission, electrochemical noise or optical artifacts.",
+          "sourceIds": [
+            "flex-clear-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "A wavelength-calibrated transmission setup, CVD donor films, transfer handling and exact local process yield remain unqualified. CLEAR is not four times the performance of a single layer."
+      ]
+    },
+    {
+      "id": "flex-id-dlg",
+      "title": "UCSD high-density interlayer-doped graphene with Pt nanoparticles",
+      "family": "Transparent carbon arrays",
+      "evidence": "documented",
+      "devices": [
+        "69-ucsd-high-density-transparent-graphene-array"
+      ],
+      "summary": "The two key changes address different failure modes: a second doped graphene layer reduces trace failures, and Pt nanoparticles change the impedance of the exposed small contact.",
+      "sources": [
+        {
+          "id": "flex-id-dlg-p",
+          "title": "Ramezani et al., transparent high-density graphene (2024)",
+          "url": "https://komiyamalab.biosci.ucsd.edu/wp-content/uploads/2024/02/s41565-023-01576-z-1.pdf",
+          "note": "Methods: transparent array fabrication, PtNP deposition and EIS; the authors compare double versus single layer and coated versus uncoated sites."
+        }
+      ],
+      "variants": [
+        {
+          "id": "dl",
+          "label": "Double layer with Pt nanoparticles",
+          "status": "documented",
+          "description": "Supports up to 256 channels with 20 µm contact diameter; 256 is a capacity, not the channel count in every experiment."
+        },
+        {
+          "id": "control",
+          "label": "Bare double-layer comparison",
+          "status": "documented",
+          "description": "Remove the Pt nanoparticle step explicitly; the exposed graphene/electrolyte interface has a different circuit."
+        },
+        {
+          "id": "clear",
+          "label": "Copy the CLEAR stack",
+          "status": "incompatible",
+          "description": "Four undoped transfers are not the UCSD interlayer-doped pair. A common material name does not make the devices interchangeable."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Prepare parylene on a release film",
+          "tools": [
+            "02-07",
+            "03-08",
+            "03-03",
+            "04-06"
+          ],
+          "detail": "Use the parylene-C/PMGI carrier system and define metal pads and conductors outside the clear field.",
+          "check": "Check that no opaque routing intrudes into the specified observation area.",
+          "sourceIds": [
+            "flex-id-dlg-p"
+          ],
+          "varies": [
+            "dl",
+            "control"
+          ],
+          "only": [
+            "dl",
+            "control"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Supply two carbon donor sheets",
+          "tools": [],
+          "detail": "The study used transferred graphene. Receive film lots with defect and uniformity data; the register has no qualified reactor/transfer module for the complete graphene supply chain.",
+          "check": "Retain sheet-resistance and blank optical data before processing.",
+          "sourceIds": [
+            "flex-id-dlg-p"
+          ],
+          "varies": [
+            "dl",
+            "control"
+          ],
+          "only": [
+            "dl",
+            "control"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Stack, dope and define carbon traces",
+          "tools": [
+            "04-06",
+            "04-01",
+            "05-06"
+          ],
+          "detail": "Transfer the first sheet, dope it before adding the second, then lithographically define the paired carbon traces. A discontinuity spanning both sheets still creates an open.",
+          "check": "Map line resistance against line length and check the metal-to-graphene junction.",
+          "sourceIds": [
+            "flex-id-dlg-p"
+          ],
+          "varies": [
+            "dl",
+            "control"
+          ],
+          "only": [
+            "dl",
+            "control"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Add etch stop, encapsulation and windows",
+          "tools": [
+            "03-03",
+            "03-08",
+            "04-01",
+            "04-06"
+          ],
+          "detail": "Cover the graphene with a protective oxide before parylene encapsulation. Open the windows and remove the stop only where contact is intended; free the film from its carrier.",
+          "check": "Verify that the protective oxide is gone at sensing sites but conducting leads remain insulated.",
+          "sourceIds": [
+            "flex-id-dlg-p"
+          ],
+          "varies": [
+            "dl",
+            "control"
+          ],
+          "only": [
+            "dl",
+            "control"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Add or omit the nanoparticle interface",
+          "tools": [
+            "09-01",
+            "09-12"
+          ],
+          "detail": "Electrochemically deposit platinum nanoparticles on the exposed contacts for the coated variant. The two-electrode deposition circuit is not the three-electrode EIS test. The register’s electrochemistry station and test cell can represent characterization, not a calibrated plating bath or film-growth simulation; that operation remains external.",
+          "check": "Compare a pre/post impedance spectrum, not just the appearance of the site.",
+          "sourceIds": [
+            "flex-id-dlg-p"
+          ],
+          "varies": [
+            "dl"
+          ],
+          "only": [
+            "dl"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Measure the transparent array",
+          "tools": [
+            "05-10",
+            "09-01",
+            "09-12",
+            "11-06"
+          ],
+          "detail": "Compare bare and coated contact spectra, trace continuity and optical transmission on a common wavelength/geometry basis.",
+          "check": "Keep the spatial footprint, sheet resistance, contact impedance and terminal mapping as separate outputs.",
+          "sourceIds": [
+            "flex-id-dlg-p"
+          ],
+          "varies": [
+            "dl",
+            "control"
+          ],
+          "only": [
+            "dl",
+            "control"
+          ]
+        }
+      ],
+      "gaps": [
+        "Dimensional accuracy of every mask, uniform nanoparticle coverage and the true spectral response depend on empirical material and optical measurements. No imaging or decoding claim follows from an electrical test."
+      ]
+    },
+    {
+      "id": "flex-delft-graph",
+      "title": "Transfer-free graphene on fused silica",
+      "family": "Transparent carbon arrays",
+      "evidence": "documented",
+      "devices": [
+        "209-tu-delft-transfer-free-multilayer-graphene-mea"
+      ],
+      "summary": "The substrate remains rigid. Graphene is synthesized directly at a patterned Mo catalyst, rather than transferred onto a soft-film carrier; Au outer leads and a parylene-C cover perform different jobs.",
+      "sources": [
+        {
+          "id": "flex-delft-graph-p",
+          "title": "Alvarez de Eulate et al., DBI2 transfer-free array (2026)",
+          "url": "https://doi.org/10.1002/advs.202517524",
+          "note": "Figure 1 and Experimental Section: contact layout, catalyst, Ti/Al protective cap, Ti/Au outer leads, parylene and recording-site openings."
+        }
+      ],
+      "variants": [
+        {
+          "id": "original",
+          "label": "Transfer-free multilayer MEA",
+          "status": "documented",
+          "description": "Rigid, transparent four-inch fused silica, twelve varied MEA layouts on the reported wafer; the count is not twelve channels."
+        },
+        {
+          "id": "film",
+          "label": "Release it as a cortical foil",
+          "status": "incompatible",
+          "description": "Silica is the retained substrate. A parylene cover does not make a free-standing flexible CLEAR-like array."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Create a catalyst map on transparent silica",
+          "tools": [
+            "02-01",
+            "03-03",
+            "04-06"
+          ],
+          "detail": "Pattern a Mo film on fused silica where the carbon conductors belong. Keep the designations for inner graphene/Mo runs and outer metal runs separate.",
+          "check": "Check continuity and spatial registration of the catalyst pattern before carbon growth.",
+          "sourceIds": [
+            "flex-delft-graph-p"
+          ],
+          "varies": [
+            "original"
+          ],
+          "only": [
+            "original"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Grow multilayer carbon in place",
+          "tools": [],
+          "detail": "The paper uses catalytic high-temperature graphene CVD. A generic dielectric PECVD entry is not evidence of the required reactor or qualified process.",
+          "check": "Require Raman and a calibrated transmission measurement for incoming samples or the resulting coupon.",
+          "sourceIds": [
+            "flex-delft-graph-p"
+          ],
+          "varies": [
+            "original"
+          ],
+          "only": [
+            "original"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Protect the recording region and connect tracks",
+          "tools": [
+            "03-01",
+            "02-01",
+            "04-06"
+          ],
+          "detail": "Pattern a sacrificial Ti/Al protection stack and form Ti/Au outer tracks and bond pads. The authors document functional losses during a separate wet-patterning trial.",
+          "check": "Record which contact surfaces require protection before any plasma pass.",
+          "sourceIds": [
+            "flex-delft-graph-p"
+          ],
+          "varies": [
+            "original"
+          ],
+          "only": [
+            "original"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Open parylene; clear contacts",
+          "tools": [
+            "03-08",
+            "04-01",
+            "04-06"
+          ],
+          "detail": "Deposit parylene-C, expose pads and contacts, then remove the protective layers and the designated catalyst from the sensing region. Retain the leads and the supporting fused silica.",
+          "check": "An apparent transparent aperture with an open inner track is a failed electrode.",
+          "sourceIds": [
+            "flex-delft-graph-p"
+          ],
+          "varies": [
+            "original"
+          ],
+          "only": [
+            "original"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Interface PCB and check optical/electrical properties",
+          "tools": [
+            "08-11",
+            "05-10",
+            "09-01",
+            "09-12",
+            "11-06"
+          ],
+          "detail": "Assemble the rigid MEA with its PCB, characterize saline impedance and optical throughput, and compare against the unpatterned carrier.",
+          "check": "An absorbance-derived layer estimate is not a direct count of monolayers. Check individual electrode behavior, not mean transmission alone.",
+          "sourceIds": [
+            "flex-delft-graph-p"
+          ],
+          "varies": [
+            "original"
+          ],
+          "only": [
+            "original"
+          ]
+        }
+      ],
+      "gaps": [
+        "Graphene growth, calibrated optical spectra and a confirmed Mo-compatible process require separate equipment qualification. A free-standing flex-foil release is incompatible."
+      ]
+    },
+    {
+      "id": "flex-layer7",
+      "title": "Layer 7 research arrays: PI and Ti/Pt/Ti",
+      "family": "Polymer surface arrays",
+      "evidence": "documented",
+      "devices": [
+        "42-precision-layer-7-cortical-interface"
+      ],
+      "summary": "Primary research Methods disclose the flexible thin-film process. The separate 529- and 1,024-contact maps are public configurations, not interchangeable masks, and a regulatory product is not reconstructed from those facts.",
+      "sources": [
+        {
+          "id": "flex-layer7-p",
+          "title": "Hettick et al., scalable cortical arrays (2025)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13278958/",
+          "note": "Fabrication and electrochemical characterization describe the first process stack; figures distinguish electrode diameter groups, contact roles and routing."
+        }
+      ],
+      "variants": [
+        {
+          "id": "p529",
+          "label": "529 contacts, 300 µm pitch",
+          "status": "documented",
+          "description": "Separate diameter classes of 20, 50, 100 and 200 µm on the research array."
+        },
+        {
+          "id": "p1024",
+          "label": "1,024 contacts, 400 µm pitch",
+          "status": "documented",
+          "description": "977 recording, 42 stimulation-optimized and five references; this does not mean 1,024 recording contacts."
+        },
+        {
+          "id": "prod",
+          "label": "Finished commercial Layer 7-T",
+          "status": "external",
+          "description": "The article is not a released, revision-controlled production traveler or complete qualification record."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Specify the layout and roles",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Carry each contact diameter or function into the netlist. Distinguish stimulation-optimized sites from references before selecting a bench test.",
+          "check": "Assert that the research role counts balance; do not fold references into the sensed channels.",
+          "sourceIds": [
+            "flex-layer7-p"
+          ],
+          "varies": [
+            "p529",
+            "p1024"
+          ],
+          "only": [
+            "p529",
+            "p1024"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Form PI and buried metal",
+          "tools": [
+            "02-07",
+            "03-09",
+            "03-01",
+            "02-01"
+          ],
+          "detail": "On the disclosed first-process route, a cured PI base supports patterned Ti/Pt/Ti conductors. Treat the layers' nominal thickness as research documentation rather than final assembled thickness.",
+          "check": "Measure film thickness and line resistance on witnesses before burying the routes.",
+          "sourceIds": [
+            "flex-layer7-p"
+          ],
+          "varies": [
+            "p529",
+            "p1024"
+          ],
+          "only": [
+            "p529",
+            "p1024"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Seal conductors; open faces and edge",
+          "tools": [
+            "03-12",
+            "02-07",
+            "03-09",
+            "04-01"
+          ],
+          "detail": "Surface activation, another PI film and a patterned hard mask define the contour and contact windows. The exposed electrode face must be platinum.",
+          "check": "Measure insulation leakage separately from the open-area fraction; verify the interface metal rather than assuming any bright film is Pt.",
+          "sourceIds": [
+            "flex-layer7-p"
+          ],
+          "varies": [
+            "p529",
+            "p1024"
+          ],
+          "only": [
+            "p529",
+            "p1024"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern the backend and recover flex",
+          "tools": [
+            "03-01",
+            "04-06",
+            "03-12"
+          ],
+          "detail": "Pattern the Ti/Pt/Au bonding region and complete surface cleaning. Recovery and packaging of the studied flex are not a commercial package specification.",
+          "check": "Visually inspect apertures, tail and backend; verify pad roles with a known pin assignment.",
+          "sourceIds": [
+            "flex-layer7-p"
+          ],
+          "varies": [
+            "p529",
+            "p1024"
+          ],
+          "only": [
+            "p529",
+            "p1024"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Characterize on the bench",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "detail": "Run the paper's type of three-electrode impedance and cyclic-voltammetry tests on selected sizes and document which contacts were sampled.",
+          "check": "Do not label testing of one size class as 100% end-of-line yield.",
+          "sourceIds": [
+            "flex-layer7-p"
+          ],
+          "varies": [
+            "p529",
+            "p1024"
+          ],
+          "only": [
+            "p529",
+            "p1024"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Demand production transfer evidence",
+          "tools": [],
+          "detail": "The full product release would require the actual manufacturing revision, approved tooling, channel mapping and acceptance records. Leave this branch external.",
+          "check": "Do not describe a teaching coupon as an approved commercial device.",
+          "sourceIds": [
+            "flex-layer7-p"
+          ],
+          "varies": [
+            "prod"
+          ],
+          "only": [
+            "prod"
+          ]
+        }
+      ],
+      "gaps": [
+        "The wafer-level stack is published for the described research fabrication. Model-specific release, connectors, verification and manufacturing controls may differ for a commercial product."
+      ]
+    },
+    {
+      "id": "flex-simit-256",
+      "title": "SIMIT 256-site Au/polyimide surface array",
+      "family": "Polymer surface arrays",
+      "evidence": "documented",
+      "devices": [
+        "188-simit-256-channel-high-density-uecog"
+      ],
+      "summary": "This 16 × 16 grid uses gold conductors between two unequal PI layers, with distinct contact and perfusion openings. The reported bench acceptance distribution is available as a comparator.",
+      "sources": [
+        {
+          "id": "flex-simit-256-p",
+          "title": "Chronically stable high-resolution µECoG BCI (2025)",
+          "url": "https://doi.org/10.1002/advs.202506663",
+          "note": "Experimental section and Figure S4: PI/metal stack, pattern transfer, perforations, and pre-use EIS/noise in PBS."
+        }
+      ],
+      "variants": [
+        {
+          "id": "grid",
+          "label": "256-site surface grid",
+          "status": "documented",
+          "description": "Sixteen by sixteen channels; test site yields independently of reference and connector faults."
+        },
+        {
+          "id": "witness",
+          "label": "Unperforated local witness",
+          "status": "reference",
+          "description": "An inert bench comparison for film sag or trapped liquid; not a reported product variant."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Set up the carrier and base film",
+          "tools": [
+            "02-07",
+            "03-09",
+            "05-01"
+          ],
+          "detail": "Support a nominal 7 µm PI base on silicon. Keep this film distinct from the thicker outer cap.",
+          "check": "Map support flatness and compare film thickness in array and tail regions.",
+          "sourceIds": [
+            "flex-simit-256-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern Cr/Au and upper insulation",
+          "tools": [
+            "02-01",
+            "03-01",
+            "04-06",
+            "02-07"
+          ],
+          "detail": "Define the thin adhesion/metal routing by evaporation and lift-off, then encapsulate under nominal 13 µm PI. The site and the pad have different roles.",
+          "check": "Run pad-to-site resistance and isolation on a fabricator's test comb before covering it.",
+          "sourceIds": [
+            "flex-simit-256-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Etch holes, then release",
+          "tools": [
+            "04-01",
+            "04-06",
+            "12-01"
+          ],
+          "detail": "Transfer the aluminum hard-mask pattern into the polymer for electrodes, perfusion holes and perimeter; release the film from the wafer.",
+          "check": "Electrically open contacts and physical fluid passageways must not be counted as the same feature.",
+          "sourceIds": [
+            "flex-simit-256-p"
+          ],
+          "only": [
+            "grid"
+          ]
+        },
+        {
+          "title": "Omit the fluid holes on the comparison coupon",
+          "detail": "Keep electrode and perimeter openings but leave the polymer between contacts intact. Release a small inert coupon and compare against a perforated coupon of the same material.",
+          "tools": [
+            "04-01",
+            "04-06",
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "Measure local lift or trapped water on the same curved fixture; the paper’s complete-array yield is not inherited.",
+          "sourceIds": [
+            "flex-simit-256-p"
+          ],
+          "only": [
+            "witness"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Make the fixture connection",
+          "tools": [
+            "16-13",
+            "05-07"
+          ],
+          "detail": "Route a measured pad map into a shielded bench receiver; the published 256-site count alone does not fix a connector pinout.",
+          "check": "Use an identifiable corner/checkerboard stimulus to reject a transposed map.",
+          "sourceIds": [
+            "flex-simit-256-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Benchmark with saline",
+          "tools": [
+            "09-01",
+            "09-12",
+            "09-10"
+          ],
+          "detail": "Compare individual 1 kHz impedances and RMS noise with the paper's PBS distribution: over 95% below 1 MΩ and reported RMS below 2 µV.",
+          "check": "Store bandwidth, reference, sample condition and number of working electrodes. Published results are comparators, not prescribed local yield.",
+          "sourceIds": [
+            "flex-simit-256-p"
+          ],
+          "only": [
+            "grid"
+          ]
+        }
+      ],
+      "gaps": [
+        "The design is not identical to the 256-channel NeuroXess grid. The paper's device data do not establish commercial mask ownership, local moisture lifetime or a complete released pinout."
+      ]
+    },
+    {
+      "id": "flex-gel-adhesive",
+      "title": "aGel-µECoG: adhesive overlay on a metal/PI array",
+      "family": "Hydrogel electronic hardware",
+      "evidence": "documented",
+      "devices": [
+        "197-cibr-agel-hydrogel-micro-ecog"
+      ],
+      "summary": "In this multilayer device, metal provides long-range electrical routing, PEDOT:PSS coats the contacts, and the adhesive hydrogel supplies a mechanical interface. It is not an all-hydrogel conductor.",
+      "sources": [
+        {
+          "id": "flex-gel-adhesive-p",
+          "title": "Chen et al., adhesive-hydrogel µECoG (2025)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12713035/",
+          "note": "Experimental Section distinguishes electrode coating, adhesive coating and the different 64- and 1,024-channel packaging routes."
+        }
+      ],
+      "variants": [
+        {
+          "id": "c64",
+          "label": "64-channel connector branch",
+          "status": "documented",
+          "description": "Flat flexible cable attached using anisotropic conductive film."
+        },
+        {
+          "id": "c1024",
+          "label": "1,024-channel connector branch",
+          "status": "documented",
+          "description": "Gold ball bonds to a flexible cable and connector assembly."
+        },
+        {
+          "id": "disc",
+          "label": "4 mm control disc",
+          "status": "documented",
+          "description": "Control geometry, not a 1,024-site readout; do not assign it a channel map."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Fabricate the metal/PI insert",
+          "tools": [
+            "02-07",
+            "03-09",
+            "03-01",
+            "02-01"
+          ],
+          "detail": "Two nominal 3 µm PI layers surround patterned Ti/Au on a silicon carrier. Pattern openings and outline by reactive-ion etch and release into water.",
+          "check": "Distinguish routes and contact windows from the separate non-channel control geometry.",
+          "sourceIds": [
+            "flex-gel-adhesive-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Prepare electrode interface",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "detail": "Electroplate the conducting-polymer contact coating on the electrical variants. Keep baseline site maps and compare pre/post impedance. The register’s electrochemistry station and test cell can represent characterization, not a calibrated plating bath or film-growth simulation; that operation remains external.",
+          "check": "A bare Au trace, coated site and adhesive gel layer are three different interfaces.",
+          "sourceIds": [
+            "flex-gel-adhesive-p"
+          ],
+          "varies": [
+            "c64",
+            "c1024"
+          ],
+          "only": [
+            "c64",
+            "c1024"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Attach the low-count cable",
+          "tools": [
+            "08-04",
+            "16-13"
+          ],
+          "detail": "Use the reported anisotropic conductive-film path; local bonder use is conditional on suitable tooling and validated film/contact geometry.",
+          "check": "Check neighboring pad isolation under bonding pressure.",
+          "sourceIds": [
+            "flex-gel-adhesive-p"
+          ],
+          "varies": [
+            "c64"
+          ],
+          "only": [
+            "c64"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Attach the high-count cable",
+          "tools": [
+            "08-01",
+            "08-06",
+            "16-13"
+          ],
+          "detail": "Ball-bond the higher-count cable as the authors describe. Changing the connector is a physical branch, not a channel-counter setting.",
+          "check": "Distinguish broken ball bonds from electrode-film defects with continuity revisited after flexing.",
+          "sourceIds": [
+            "flex-gel-adhesive-p"
+          ],
+          "varies": [
+            "c1024"
+          ],
+          "only": [
+            "c1024"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Apply the hydrogel overlay",
+          "tools": [
+            "06-10",
+            "16-03"
+          ],
+          "detail": "Add the PVA/PTPM adhesive heteronetwork coating to the array and condition it; the reported process uses a spread film, pulsed irradiation and solvent exchange. Those specific coating/exposure fixtures need qualification.",
+          "check": "Track coating continuity, wet thickness and swelling separately from the base conductor resistance.",
+          "sourceIds": [
+            "flex-gel-adhesive-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Compare an inert wetted coupon",
+          "tools": [
+            "14-01",
+            "14-10",
+            "14-11",
+            "09-01"
+          ],
+          "detail": "Measure peel force per width or controlled pull on a named inert substrate; compare impedance before and after wet conditioning.",
+          "check": "Do not use a phantom peel force to claim tissue adhesion, biological response, fibrosis resistance or clinical lifetime.",
+          "sourceIds": [
+            "flex-gel-adhesive-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "The 4 mm control is not a channel array. Verified local UV exposure, metered coating and dry/wet process calibration are absent; only electronic and inert mechanical tests are in scope."
+      ]
+    },
+    {
+      "id": "flex-gel-conductor",
+      "title": "CHIP: all-organic hydrogel recording conductors",
+      "family": "Hydrogel electronic hardware",
+      "evidence": "documented",
+      "devices": [
+        "193-tsinghua-sz-chip-hydrogel-ecog"
+      ],
+      "summary": "Here the conducting hydrogel itself forms both interconnects and sensor sites. This is distinct from putting an adhesive gel over metal, and distinct from printing living or cellular material.",
+      "sources": [
+        {
+          "id": "flex-gel-conductor-p",
+          "title": "Zhu et al., conductive hydrogel interfaces (2026)",
+          "url": "https://doi.org/10.1073/pnas.2532840123",
+          "note": "Methods and supporting figures contrast aerosol printing and blade-coated lithographic patterning; PAAm-alginate supports are bonded to parylene."
+        }
+      ],
+      "variants": [
+        {
+          "id": "print",
+          "label": "Printed 128-channel array",
+          "status": "documented",
+          "description": "Aerosol-printed CHIP defines conductor paths. The printhead and ink behavior require their own qualification."
+        },
+        {
+          "id": "litho",
+          "label": "Fine lithographic conductor pattern",
+          "status": "documented",
+          "description": "An alternative demonstrated way to pattern blade-coated ink; an alternative method is not evidence that a second 128-channel device was characterized."
+        },
+        {
+          "id": "metal",
+          "label": "Use Au as the final wire",
+          "status": "incompatible",
+          "description": "Au can be a sacrificial mask in fine patterning, not a permanent trace substituted for CHIP."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Prepare hydrated substrate and adhesion interface",
+          "tools": [
+            "03-12",
+            "06-10",
+            "16-03"
+          ],
+          "detail": "Support the PAAm-alginate substrate against treated parylene. Track dry fabrication dimensions and hydrated geometry independently.",
+          "check": "Measure in-plane swelling on a marked, inert coupon before defining its routing map.",
+          "sourceIds": [
+            "flex-gel-conductor-p"
+          ],
+          "varies": [
+            "print",
+            "litho"
+          ],
+          "only": [
+            "print",
+            "litho"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Aerosol-print the conductors",
+          "tools": [],
+          "detail": "The paper's printed route requires an aerosol printer and calibrated ink deposition; an extrusion bioprinter or resin printer is not an equivalent tool.",
+          "check": "Inspect line edges and continuity across a printed comb, not just nominal line width.",
+          "sourceIds": [
+            "flex-gel-conductor-p"
+          ],
+          "varies": [
+            "print"
+          ],
+          "only": [
+            "print"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern the cast conductor lithographically",
+          "tools": [
+            "02-01",
+            "03-01",
+            "04-01"
+          ],
+          "detail": "For the alternate patterned route, blade-coat the conductive film and pattern it using a sacrificial Au mask and plasma transfer. Dedicated blade coating is external; the register supplies lithography/etch analogues.",
+          "check": "Confirm that no temporary Au remains to carry current in place of the intended organic conductor.",
+          "sourceIds": [
+            "flex-gel-conductor-p"
+          ],
+          "varies": [
+            "litho"
+          ],
+          "only": [
+            "litho"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Define exposure apertures",
+          "tools": [
+            "04-01",
+            "12-01"
+          ],
+          "detail": "Use the published prepared mask system to define electrode openings; tooling for the prepatterned film is distinct from the electrode routing layer.",
+          "check": "Test for pinholes into insulated wiring and for electrode apertures obscured by hydrogel.",
+          "sourceIds": [
+            "flex-gel-conductor-p"
+          ],
+          "varies": [
+            "print",
+            "litho"
+          ],
+          "only": [
+            "print",
+            "litho"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Terminate and condition",
+          "tools": [
+            "16-13",
+            "14-11",
+            "05-07"
+          ],
+          "detail": "Use a protected terminal adapter and measure the film in a defined hydration state. Compare orthogonal dimensions, four-terminal witness resistance and terminal continuity before and after soaking.",
+          "check": "A dry resistance cannot validate a wet device; infer no readout channel simply from the surface texture.",
+          "sourceIds": [
+            "flex-gel-conductor-p"
+          ],
+          "varies": [
+            "print",
+            "litho"
+          ],
+          "only": [
+            "print",
+            "litho"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check the complete electrical array",
+          "tools": [
+            "09-01",
+            "09-12",
+            "14-01"
+          ],
+          "detail": "Map a patterned electrical phantom and characterize contact impedance with known electrolyte. Use peeling or bending only on a defined surrogate.",
+          "check": "Do not claim tissue performance or copy a single conductivity value across hydration conditions.",
+          "sourceIds": [
+            "flex-gel-conductor-p"
+          ],
+          "varies": [
+            "print",
+            "litho"
+          ],
+          "only": [
+            "print",
+            "litho"
+          ]
+        }
+      ],
+      "gaps": [
+        "Aerosol printing, precision blade coating, light exposure, and mask fabrication require actual calibration; no chemical synthesis of the raw electronic material or biological validation is simulated."
+      ]
+    },
+    {
+      "id": "flex-edura",
+      "title": "e-dura: stretchable metal, soft contacts and a fluidic channel",
+      "family": "Stretchable soft interfaces",
+      "evidence": "documented",
+      "devices": [
+        "28-e-dura-electronic-dura-mater"
+      ],
+      "summary": "An elastomer, patterned ultrathin Cr/Au, soft platinum/silicone contacts and optional fluidic structures make up this platform. The model stops at an inert fluid-and-electrical fixture.",
+      "sources": [
+        {
+          "id": "flex-edura-p",
+          "title": "Minev et al., e-dura Supplementary Materials",
+          "url": "https://infoscience.epfl.ch/server/api/core/bitstreams/dcdbff5d-c42a-493c-87de-725acb6892bc/content",
+          "note": "Soft e-dura materials and fabrication and Figure S1 identify spin-coated PDMS, thermal evaporation, passivation and device-specific overlays."
+        }
+      ],
+      "variants": [
+        {
+          "id": "spinal",
+          "label": "Seven-site spinal layout",
+          "status": "documented",
+          "description": "Published spinal configuration with its own electrode arrangement and chemotrode."
+        },
+        {
+          "id": "cortical",
+          "label": "Nine-site cortical layout",
+          "status": "documented",
+          "description": "A distinct geometry. Do not concatenate the two contact counts or assume every local cross section contains the fluidic module."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Form the compliant support",
+          "tools": [
+            "02-07",
+            "06-10",
+            "06-11"
+          ],
+          "detail": "Use a released-later PDMS base supported by a carrier. Preserve registration marks for the metal traces, contact sites and any channel ports.",
+          "check": "Measure film thickness on the flat region; do not infer a uniform total at a thick fluidic feature.",
+          "sourceIds": [
+            "flex-edura-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Create microcracked interconnects",
+          "tools": [
+            "03-02",
+            "12-01"
+          ],
+          "detail": "Pattern the thin Cr/Au tracks through a shadow mask rather than assuming photolithographic metal lift-off. Their crack morphology matters under strain.",
+          "check": "Measure resistance at rest and under strain; a photograph cannot establish strain-dependent conductivity.",
+          "sourceIds": [
+            "flex-edura-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Open electrodes and add Pt/silicone",
+          "tools": [
+            "02-07",
+            "06-10",
+            "12-01"
+          ],
+          "detail": "Use the layered elastomer masks/passivation to define contact openings and apply the compliant composite at the pads. Remove sacrificial layers without stripping the functional cap.",
+          "check": "Inspect boundary coverage and check that composite does not inadvertently bridge two adjacent paths.",
+          "sourceIds": [
+            "flex-edura-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Assemble fluidic layer and package",
+          "tools": [
+            "06-10",
+            "03-12",
+            "08-10",
+            "16-13"
+          ],
+          "detail": "Register and bond the channel to the intended device region and connect its inlet separately from the electrical backend. Release and handle the assembly on its carrier fixture.",
+          "check": "On an inert fixture, distinguish electrical isolation from leakage of a benign test fluid.",
+          "sourceIds": [
+            "flex-edura-p"
+          ],
+          "varies": [
+            "spinal"
+          ],
+          "only": [
+            "spinal"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Bench mechanical/electrical verification",
+          "tools": [
+            "14-01",
+            "14-10",
+            "09-01",
+            "06-07"
+          ],
+          "detail": "Track resistance and contact impedance while stretching an inert coupon; where applicable, map pressure–flow and channel leaks with water.",
+          "check": "Do not treat one successful bend as a clinical lifetime or as proof of target-specific delivery.",
+          "sourceIds": [
+            "flex-edura-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Exact fixture and shadow-mask identifiers and published tissue outcomes are not imported into the educational workflow. Channel-region thickness is not the thickness of the entire carrier."
+      ]
+    },
+    {
+      "id": "flex-neurocam",
+      "title": "NeuroCam: metal-oxide TFT backplane",
+      "family": "Active flexible ECoG",
+      "evidence": "partial",
+      "devices": [
+        "192-tsinghua-neurocam-4096-channel-tft-ecog"
+      ],
+      "summary": "This device scans 4,096 gold-facing electrodes with a 64-row × 64-column TFT backplane. It is an industrial display-style architecture, not the two-transistor silicon transfer-print process of Viventi.",
+      "sources": [
+        {
+          "id": "flex-neurocam-p",
+          "title": "Xie et al., NeuroCam (2025)",
+          "url": "https://files.sciengine.com/pdfs/2095-9273/CA0DD379C55D44BDAA4D595C3DCB86EE.pdf",
+          "note": "Figure 1 and pages 4133–4135 give the Ln-IZO TFT architecture, PI/Mo/Au stack, industrial panel, gate lines and acquisition tests."
+        }
+      ],
+      "variants": [
+        {
+          "id": "scan",
+          "label": "64 × 64 dynamic scan",
+          "status": "documented",
+          "description": "Time-division multiplexing addresses physical sites via 64 gates and 64 sources. Distinguish 128 interconnects from simultaneous samples."
+        },
+        {
+          "id": "fixed",
+          "label": "Static selected row",
+          "status": "documented",
+          "description": "A separate measurement mode with different noise and sampled subset; do not apply static-mode noise to a full scan."
+        },
+        {
+          "id": "panel",
+          "label": "Directly expose production panels on MLA150",
+          "status": "incompatible",
+          "description": "The published panel is 200 × 200 mm. A named 150 mm writer does not establish carrier or one-field compatibility."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Lay out an active-cell matrix",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Maintain a 64 × 64 table of row gate, shared column and electrode identity; the stack employs one Ln-IZO TFT switch at each pixel.",
+          "check": "Map 4,096 unique addresses to 128 row/column lines without counting gates as contacts.",
+          "sourceIds": [
+            "flex-neurocam-p"
+          ],
+          "varies": [
+            "scan",
+            "fixed"
+          ],
+          "only": [
+            "scan",
+            "fixed"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Source the industrial TFT panel",
+          "tools": [],
+          "detail": "The reported industrial flow combines a PI base, Ln-IZO transistors, multilayer insulating barriers, Mo interconnects and Au sites. Exact masks, qualified manufacturing equipment and yield controls are not reproduced here.",
+          "check": "Require traceable panel electrical data; do not reclassify a passive coupon as a functional TFT backplane.",
+          "sourceIds": [
+            "flex-neurocam-p"
+          ],
+          "varies": [
+            "scan",
+            "fixed"
+          ],
+          "only": [
+            "scan",
+            "fixed"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Characterize witness cells",
+          "tools": [
+            "09-02",
+            "05-07"
+          ],
+          "detail": "Measure drain response versus gate drive, switching ratio and bandwidth. Test the pixel electrically before interpreting any full-array acquisition measurement.",
+          "check": "Separate gate-line opens, disabled columns and individual failed pixels.",
+          "sourceIds": [
+            "flex-neurocam-p"
+          ],
+          "varies": [
+            "scan",
+            "fixed"
+          ],
+          "only": [
+            "scan",
+            "fixed"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Scan or hold a row",
+          "tools": [
+            "09-06",
+            "09-04",
+            "01-05"
+          ],
+          "detail": "Use a synthetic waveform to distinguish row-selected scans from a static subset. Reconstruct samples with the correct address and time stamp.",
+          "check": "Compare crosstalk along the source direction against the gate direction; do not relabel per-converter rate as per-site acquisition.",
+          "sourceIds": [
+            "flex-neurocam-p"
+          ],
+          "varies": [
+            "scan",
+            "fixed"
+          ],
+          "only": [
+            "scan",
+            "fixed"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Bend and soak a dummy array",
+          "tools": [
+            "14-10",
+            "14-11",
+            "09-12"
+          ],
+          "detail": "Repeat the same electrical tests after a defined deformation or soak, recording changes in gain and site yield separately.",
+          "check": "A platform-wide mean must not conceal an entire inactive gate line or moisture-driven loss.",
+          "sourceIds": [
+            "flex-neurocam-p"
+          ],
+          "varies": [
+            "scan",
+            "fixed"
+          ],
+          "only": [
+            "scan",
+            "fixed"
+          ]
+        }
+      ],
+      "gaps": [
+        "No display-fab panel line or proprietary local calibration is established. The voltage/time relationships and noise of a simulation are not measured production specifications."
+      ]
+    },
+    {
+      "id": "flex-flex2chip",
+      "title": "Flex2Chip: suspended electrical landing pads",
+      "family": "Flexible-to-CMOS assemblies",
+      "evidence": "documented",
+      "devices": [
+        "90-flex2chip-cmos-flexible-interface"
+      ],
+      "summary": "A compliant pad held on narrow beams deforms toward a matching CMOS pixel; capillary action establishes contact. This works differently from wire bonding, ACF, or solder bump bonding.",
+      "sources": [
+        {
+          "id": "flex-flex2chip-p",
+          "title": "Zhao et al., Flex2Chip (2023)",
+          "url": "https://huguenardlab.stanford.edu/reprints/199_Zhao_Sci_Adv_2023.pdf",
+          "note": "Figures 1–2 and Methods describe the released landing pads, 2 µm lead pitch, wet placement and electrical mapping."
+        }
+      ],
+      "variants": [
+        {
+          "id": "small",
+          "label": "720-connection design",
+          "status": "documented",
+          "description": "An interconnect design, not a claim that every terminal records independently."
+        },
+        {
+          "id": "large",
+          "label": "2,200-connection design",
+          "status": "documented",
+          "description": "A physical contact capacity. Distinguish it from the CMOS pixel count, active channels and 504-sensing-site ECoG configuration."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Design a free pad and beams",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Design the flexible electrode, lead and spring pads together. The reported pad and three support beams need free space to move relative to the rest of the sheet.",
+          "check": "Verify pad-to-trace connectivity and a nonzero clearance around every free beam.",
+          "sourceIds": [
+            "flex-flex2chip-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern the PI/Pt/PI stack",
+          "tools": [
+            "02-07",
+            "03-09",
+            "03-01",
+            "04-01"
+          ],
+          "detail": "Create the Pt wiring and thin PI encapsulation, opening and freeing the landing pads and their supporting beams. Retain their geometric relationship to the target pixel array.",
+          "check": "A released but stuck beam and an open Pt lead are separate reject modes.",
+          "sourceIds": [
+            "flex-flex2chip-p"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive the commercial CMOS chip",
+          "tools": [],
+          "detail": "Treat the high-density CMOS-MEA/readout as an incoming component. The flex process fabricates neither its 26,400 pixels nor its internal routing fabric.",
+          "check": "Verify pixel geometry, exposed metal state, mapping availability and selectable-channel capacity.",
+          "sourceIds": [
+            "flex-flex2chip-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Align; form contact by capillary collapse",
+          "tools": [
+            "12-01",
+            "16-03"
+          ],
+          "detail": "Align released flex I/O to the metallized CMOS pixels. Controlled liquid removal lets the thin pads flex down; an optional encapsulant stabilizes an established interface.",
+          "check": "Test for noncontact, one-pad-to-two-pixel, and misregistered neighboring rows before final stabilization.",
+          "sourceIds": [
+            "flex-flex2chip-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Map the hybrid electrical assembly",
+          "tools": [
+            "05-07",
+            "09-06",
+            "09-04"
+          ],
+          "detail": "Interrogate known flex terminals through the receiving chip using test signals; maintain a crosswalk linking sensing site, flex I/O and selected acquisition channel.",
+          "check": "A recognizable waveform is insufficient if its position maps to the wrong physical site.",
+          "sourceIds": [
+            "flex-flex2chip-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Substrate qualification, wet handling, conductivity after assembly and access to the commercial CMOS routing are separate. An equipment simulator with wire bonder graphics does not implement Flex2Chip."
+      ]
+    },
+    {
+      "id": "flex-net-2017",
+      "title": "NET-50 and NET-10 submicron SU-8 threads",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "27-nanoelectronic-thread-net-probes"
+      ],
+      "summary": "NET-50 has eight planar recording sites; NET-10 carries four sites on two opposing faces. They differ in layer order and window orientation, not only width.",
+      "sources": [
+        {
+          "id": "flex-net-2017-p",
+          "title": "Luan et al., ultraflexible nanoelectronic probes (2017)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5310823/",
+          "note": "Methods and structure figures specify SU-8, Ni release, contact geometries and retained backend on silicon."
+        }
+      ],
+      "variants": [
+        {
+          "id": "net50",
+          "label": "NET-50: 8 sites",
+          "status": "documented",
+          "description": "Four-layer architecture, with larger single-face sites."
+        },
+        {
+          "id": "net10",
+          "label": "NET-10: 4 sites",
+          "status": "documented",
+          "description": "Seven-layer architecture, with sensing surfaces on opposite faces. The 33-pin connector is not a 33-site device."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Establish release and anchor zones",
+          "tools": [
+            "01-01",
+            "03-01",
+            "02-01"
+          ],
+          "detail": "Use the Ni release layer under the flexible region on oxidized silicon. Keep the connector area mechanically supported.",
+          "check": "A free-standing shank and a still-attached backend should coexist after release.",
+          "sourceIds": [
+            "flex-net-2017-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern polymer and conductors",
+          "tools": [
+            "02-07",
+            "02-01",
+            "03-01"
+          ],
+          "detail": "Build the SU-8 dielectric with registered thin-film interconnects and electrode masks. Keep one-sided and two-sided site definitions separate.",
+          "check": "Verify that a nominal 10 × 20 µm NET-10 site is on its intended face, not simply duplicated on top.",
+          "sourceIds": [
+            "flex-net-2017-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Expose the sites; connect before release",
+          "tools": [
+            "02-01",
+            "12-01",
+            "16-13"
+          ],
+          "detail": "Mount the FFC connector to matching pads on the supported region. Preserve bond and net identity before the ultrathin section is free.",
+          "check": "Record continuity from each site to its assigned terminal, isolated from its neighbors.",
+          "sourceIds": [
+            "flex-net-2017-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Release only the shank",
+          "tools": [
+            "04-06",
+            "12-01"
+          ],
+          "detail": "Remove the sacrificial Ni under the shank; the proximal region stays supported. Record folding and stiction as mechanical defects separate from insulation failure.",
+          "check": "Compare the observed free length and number of intact traces to the released drawing.",
+          "sourceIds": [
+            "flex-net-2017-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Measure bench EIS and leakage",
+          "tools": [
+            "05-07",
+            "09-01",
+            "09-12"
+          ],
+          "detail": "Use a saline fixture to compare sites of matched area and material before drawing any conclusion about impedance dispersion.",
+          "check": "A 33-pin connector does not guarantee 33 signals; an open bottom contact is not an unavailable top contact.",
+          "sourceIds": [
+            "flex-net-2017-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "No patient or animal placement, proprietary mask files, expected local yield or chronic performance prediction. Direct lithography tool interchangeability must be verified at the required critical dimension."
+      ]
+    },
+    {
+      "id": "flex-net-modules",
+      "title": "Modular high-density NET arrays and stackable headstages",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "71-modular-net-high-density-arrays"
+      ],
+      "summary": "A 128-site module is the repeat unit. Count shanks and sites per shank first; then distinguish electronically connected modules from merely fabricated or placed modules.",
+      "sources": [
+        {
+          "id": "flex-net-modules-p",
+          "title": "Zhao et al., modular NET arrays",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10067539/",
+          "note": "NET array design, fabrication and assembly, Figure 1 and Extended Data compare three 128-site modules and show distinct assembly configurations."
+        }
+      ],
+      "variants": [
+        {
+          "id": "module",
+          "label": "128-site module",
+          "status": "documented",
+          "description": "The 8-shank × 16-site module is a documented layout; other paper-specific types retain their own geometries."
+        },
+        {
+          "id": "eight",
+          "label": "Eight-module 1,024-site system",
+          "status": "documented",
+          "description": "Eight separately addressed modules with individual FPCs and stackable electronics."
+        },
+        {
+          "id": "ten",
+          "label": "Ten-module, 1,280-site case",
+          "status": "documented",
+          "description": "80 shanks in the stated case. Do not treat it as the standard eight-module rack."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Select the spatial module",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Define per-shank electrode order and register module identity before duplicating anything. Shared references and mechanical footprint are not extra electrodes.",
+          "check": "An 8 × 16 test module yields exactly 128 unique physical sites.",
+          "sourceIds": [
+            "flex-net-modules-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern and free the sensing sections",
+          "tools": [
+            "02-07",
+            "02-01",
+            "03-01",
+            "04-06"
+          ],
+          "detail": "Use multilayer planar fabrication with a sacrificial layer under the flexible sections; do not transfer a particular metal or stack count from the 2017 NET paper unless the module revision supports it.",
+          "check": "Verify shank-to-backend continuity after release and preserve the orientation of each separate flex.",
+          "sourceIds": [
+            "flex-net-modules-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Terminate modules and build the stack",
+          "tools": [
+            "08-11",
+            "16-13",
+            "12-01"
+          ],
+          "detail": "Wire the flex to its FPC and combine distinct headstage modules. Active amplification and digital routing reside downstream of passive sensors.",
+          "check": "Label every module × local-channel pair; reject an address map that restarts at zero and collides between modules.",
+          "sourceIds": [
+            "flex-net-modules-p"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Source readout electronics",
+          "tools": [],
+          "detail": "A stackable headstage is a separate electronic assembly; mapping a lab board to it is not a reconstruction of its IC process.",
+          "check": "Require the receiving electronics' input capacity and actual interface map.",
+          "sourceIds": [
+            "flex-net-modules-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Replay an address-coded fixture",
+          "tools": [
+            "09-06",
+            "10-10",
+            "01-05"
+          ],
+          "detail": "Drive or emulate distinct patterns by module and compare the returned map with the physical register. Test disconnection of one module.",
+          "check": "For the eight-module fixture, one completely disconnected module removes 128 of 1,024 possible paths, not every eighth site without a specified interleave.",
+          "sourceIds": [
+            "flex-net-modules-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Public assembly counts do not reveal a complete proprietary electronics or instrument pin map. The numerical failure example assumes a one-to-one, fully populated fixture."
+      ]
+    },
+    {
+      "id": "flex-roots",
+      "title": "NeuroRoots: independent parylene tendrils and captured tips",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "64-neuroroots-independent-flexible-tendrils"
+      ],
+      "summary": "The primary paper resolves two layouts of 32 independent contacts and a separate polymer-coated pad option. Distinct endpoint distributions are encoded in the planar artwork before capillary assembly.",
+      "sources": [
+        {
+          "id": "flex-roots-p",
+          "title": "Ferro et al., NeuroRoots (2024)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11309783/",
+          "note": "Figure 1 and device fabrication/assembly distinguish 600 vs 100 µm tip distributions, parylene/Pt structure, PEDOT:PSS alternative and capillary assembly."
+        }
+      ],
+      "variants": [
+        {
+          "id": "d1",
+          "label": "Design 1: distributed tips",
+          "status": "documented",
+          "description": "32 endpoints spread across approximately 600 µm longitudinally."
+        },
+        {
+          "id": "d2",
+          "label": "Design 2: compact tips",
+          "status": "documented",
+          "description": "32 endpoints within approximately 100 µm longitudinally."
+        },
+        {
+          "id": "ped",
+          "label": "Alternative coated rectangular electrode",
+          "status": "documented",
+          "description": "PEDOT:PSS on an elongated exposed area rather than assuming every root ends in a bare circular Pt pad."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Design independent roots",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Draw the length and endpoint of each separate tendril, one path per site, and match the endpoints to the selected distribution.",
+          "check": "Do not invent a rectangular tip grid once the bundle is assembled.",
+          "sourceIds": [
+            "flex-roots-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Form a Pt/parylene sandwich",
+          "tools": [
+            "03-08",
+            "02-01",
+            "03-01",
+            "04-01"
+          ],
+          "detail": "Form the parylene support, platinum leads and upper insulation. Define distal windows and separate narrow roots without joining them into one sheet.",
+          "check": "Check all proximal pads against their respective distal contacts before assembly.",
+          "sourceIds": [
+            "flex-roots-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Select electrode surface",
+          "tools": [
+            "02-07",
+            "12-01"
+          ],
+          "detail": "Use the reported polymer-coated rectangular contact for the alternative version. Bare circular Pt contacts are the primary comparison; do not assign their geometric area to the alternate.",
+          "check": "Compare the surface-specific area and impedance within the same shape group.",
+          "sourceIds": [
+            "flex-roots-p"
+          ],
+          "varies": [
+            "ped"
+          ],
+          "only": [
+            "ped"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Release and collect on a wire fixture",
+          "tools": [
+            "04-06",
+            "10-07",
+            "12-01"
+          ],
+          "detail": "Free the tendrils and use liquid surface tension to align them on a handling wire. Bench assembly ends at the fixture, with no tissue insertion.",
+          "check": "Check that the longitudinal contact pattern survives bundling; label an unknown azimuth as unknown.",
+          "sourceIds": [
+            "flex-roots-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Remap after a wet release",
+          "tools": [
+            "09-01",
+            "09-12",
+            "12-01"
+          ],
+          "detail": "After release from the temporary support in an inert bath, characterize the same terminal-to-site pairs. Compare an electrically open site against an intact but displaced tendril.",
+          "check": "Do not equate phantom clearance or assembled cross-section with performance in tissue.",
+          "sourceIds": [
+            "flex-roots-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "The paper supplies layouts and materials, not a complete three-dimensional trajectory or an anatomical deployment procedure. Capillary alignment in a bench fixture is not deterministic positioning of every free tip."
+      ]
+    },
+    {
+      "id": "flex-sewing",
+      "title": "Hanson research sewing-machine threads: PI/Pt and plated backend",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "66-sewing-machine-polymer-electrode-threads"
+      ],
+      "summary": "A 2019 research preprint describes 64 flexible threads with one site and a handling loop per thread. These are not the commercial Neuralink N1 threads or its robot.",
+      "sources": [
+        {
+          "id": "flex-sewing-p",
+          "title": "Hanson et al., sewing-machine preprint (2019)",
+          "url": "https://doi.org/10.1101/578542",
+          "note": "§2.2 and Figure 3 provide the PI/Pt stack, hard masks, metal plating buses, Ni backend pads and ultrasonic Al wire bonds."
+        }
+      ],
+      "variants": [
+        {
+          "id": "base",
+          "label": "64 single-site flexible threads",
+          "status": "documented",
+          "description": "One site per thread. The loop is a mechanical feature, not a second site."
+        },
+        {
+          "id": "barbed",
+          "label": "Optional dog-ear geometry",
+          "status": "documented",
+          "description": "Some electrode outlines include lateral features; retain them as artwork differences, not a change in contact count."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Place roots, loop and one electrical net per thread",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Pattern supported proximal pads, connecting traces and the distal mechanical loops. Draw optional outline features in the structural mask only.",
+          "check": "Verify 64 unique site nets without assigning a current path to the loop just because it is drawn.",
+          "sourceIds": [
+            "flex-sewing-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Build the central Pt layer in PI",
+          "tools": [
+            "02-07",
+            "03-09",
+            "02-01",
+            "03-01"
+          ],
+          "detail": "Spin and cure a PI base; pattern evaporated Pt traces, then add the upper PI film. Distinct thermal exposures occur before and after metallization.",
+          "check": "Check adhesion and trace continuity before defining the narrow outlines.",
+          "sourceIds": [
+            "flex-sewing-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Open array contours and form the pad mask",
+          "tools": [
+            "04-01",
+            "03-08",
+            "03-01"
+          ],
+          "detail": "The paper uses an oxide hard mask and oxygen etch for the PI structure, then temporary Cu plating buses and a patterned parylene/Al masking system for the backend.",
+          "check": "Verify that neighbor pads are isolated after removal of temporary metal; ECR oxide deposition needs a qualified method, not generic PECVD equivalence.",
+          "sourceIds": [
+            "flex-sewing-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Plate backend and bond to the board",
+          "tools": [
+            "09-01",
+            "08-02",
+            "08-10"
+          ],
+          "detail": "After Ni pad plating and device release, wedge-bond the contacts with Al wire and protect the backend. Keep the compliant thread region free. The register’s electrochemistry station and test cell can represent characterization, not a calibrated plating bath or film-growth simulation; that operation remains external.",
+          "check": "Use a sample bond-strength check and circuit continuity; a bent thread and a lifted bond are distinct failures.",
+          "sourceIds": [
+            "flex-sewing-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify separate threads on a test card",
+          "tools": [
+            "05-07",
+            "09-12",
+            "09-01"
+          ],
+          "detail": "Use an inert fixture to record electrical access and tail coupling; no robot, deployment or penetration is part of this array workflow.",
+          "check": "Report fabricated paths versus electrically functioning paths, not a hypothetical implanted count.",
+          "sourceIds": [
+            "flex-sewing-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "The primary source is a preprint. The ECR oxide process, proprietary production equipment and any surgical robot are not reproduced by this fabrication map."
+      ]
+    },
+    {
+      "id": "flex-mod-poly",
+      "title": "Chung modular polymer shanks with a discrete headstage",
+      "family": "Polymer penetrating arrays",
+      "evidence": "partial",
+      "devices": [
+        "67-modular-polymer-probe-recording-system"
+      ],
+      "summary": "The published platform uses two- or four-shank arrays, each shank carrying sixteen Pt/PEDOT:PSS contacts. Detachable modules, not a monolithic implant wafer, set the system count.",
+      "sources": [
+        {
+          "id": "flex-mod-poly-p",
+          "title": "Chung et al., modular polymer electrode system (2019)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326834/",
+          "note": "Figure 1 and STAR Methods describe electrode layouts, electrochemical coating, stacked interface electronics and separate temporary supports."
+        }
+      ],
+      "variants": [
+        {
+          "id": "two",
+          "label": "Two shanks × 16 sites",
+          "status": "documented",
+          "description": "32 contacts in a single array."
+        },
+        {
+          "id": "four",
+          "label": "Four shanks × 16 sites",
+          "status": "documented",
+          "description": "64 contacts in a single array; the 250 µm shank separation is edge-to-edge."
+        },
+        {
+          "id": "stack",
+          "label": "Up to 1,024 channels in the system",
+          "status": "documented",
+          "description": "Requires multiple arrays, active headstages and wiring; not one 1,024-site shank."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Freeze sensing and backend layout",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Preserve the reported 20 µm circular sites and the distinction between 20 µm edge gaps and a center pitch. Budget two- versus four-shank fanout separately.",
+          "check": "Check site order per shank and total per module.",
+          "sourceIds": [
+            "flex-mod-poly-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Fabricate or obtain the planar polymer array",
+          "tools": [
+            "02-07",
+            "02-01",
+            "03-01",
+            "04-01"
+          ],
+          "detail": "Use a temporary carrier, polymer insulation, patterned Pt conductor and accessible windows as a bench reference. The cited channel geometry is not an exact mask or a qualified traveler for every fabrication revision.",
+          "check": "Measure inter-site distance using the same edge/center convention as the source.",
+          "sourceIds": [
+            "flex-mod-poly-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Treat the recording sites",
+          "tools": [
+            "09-01",
+            "09-12"
+          ],
+          "detail": "Electrodeposit PEDOT:PSS onto the Pt contacts. Mask or exclude backend pads from the coating step. The register’s electrochemistry station and test cell can represent characterization, not a calibrated plating bath or film-growth simulation; that operation remains external.",
+          "check": "Map coating uniformity and site impedance; an EDM-like resistance test alone does not measure the contact interface.",
+          "sourceIds": [
+            "flex-mod-poly-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Interface each active headstage",
+          "tools": [
+            "08-02",
+            "08-11",
+            "16-13"
+          ],
+          "detail": "Associate flex contacts with the amplifier/digitizer chip on the custom module and the mezzanine backend. The external chip is an incoming part.",
+          "check": "Verify serial path and module ID separately from the electrical continuity of the flexible shanks.",
+          "sourceIds": [
+            "flex-mod-poly-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Perform a modular fixture check",
+          "tools": [
+            "09-06",
+            "10-10",
+            "14-10"
+          ],
+          "detail": "Apply a known signal to one site per shank and replay the map after mechanical cycling. Track one module disconnection without filling missing channels with zeros.",
+          "check": "Report simultaneous wired capacity and electrode count separately.",
+          "sourceIds": [
+            "flex-mod-poly-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "The complete mask set, board fabrication, dies and factory assembly are not reproduced. Silicon stiffeners are separate handling hardware; no tissue procedure is modeled."
+      ]
+    },
+    {
+      "id": "flex-stimnet",
+      "title": "StimNET: capped sputtered-iridium-oxide microcontacts",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "98-stimnet-ultraflexible-stimulation-thread"
+      ],
+      "summary": "Compared with the original SU-8 NET, StimNET uses PI insulation, sputtered iridium oxide, and a local cap ring at the contact perimeter. A different coating alone does not describe the design.",
+      "sources": [
+        {
+          "id": "flex-stimnet-p",
+          "title": "Lycke et al., StimNET (2023)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10592461/",
+          "note": "Figure 1 and STAR Methods distinguish 32 addressed contacts, SIROF, interconnect material, and the cap ring."
+        }
+      ],
+      "variants": [
+        {
+          "id": "s32",
+          "label": "32-contact StimNET",
+          "status": "documented",
+          "description": "One 32-site shank, 60 µm centers; the elevated cap-ring region is not the baseline film thickness."
+        },
+        {
+          "id": "nocap",
+          "label": "Cap omitted on a teaching coupon",
+          "status": "reference",
+          "description": "A controlled hypothetical comparison; it is not an alternative reported product or a prediction of safe stimulation."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Pattern PI and interconnect levels",
+          "tools": [
+            "02-07",
+            "03-09",
+            "02-01",
+            "03-01"
+          ],
+          "detail": "Keep the PI substrate and gold routing distinct from the local stack under each exposed electrode. Define the 32 independent electrical addresses.",
+          "check": "Verify widths, overlaps and adjacent-line isolation.",
+          "sourceIds": [
+            "flex-stimnet-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Form the contact stack",
+          "tools": [
+            "03-03",
+            "02-01",
+            "04-06"
+          ],
+          "detail": "Form the Pt-based adhesion/underlayer system and sputtered iridium oxide at the site instead of assuming an electroplated Au or PEDOT coating.",
+          "check": "Qualify the target/atmosphere on a witness. Compare its film and EIS with the intended surface.",
+          "sourceIds": [
+            "flex-stimnet-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Define the PI perimeter ring and windows",
+          "tools": [
+            "02-07",
+            "02-01",
+            "04-01"
+          ],
+          "detail": "Register the ring around each SIROF contact to protect the edge of the multilayer stack. Track the aperture and underlap as independent dimensions.",
+          "check": "A centered ring may still cover too much active area. Record effective exposed area.",
+          "sourceIds": [
+            "flex-stimnet-p"
+          ],
+          "varies": [
+            "s32"
+          ],
+          "only": [
+            "s32"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Compare a ring-omission coupon",
+          "tools": [
+            "01-01",
+            "05-01"
+          ],
+          "detail": "Omit the ring only as a tagged virtual branch and keep all other mask geometry fixed.",
+          "check": "Expose any modeled differences as assumptions until paired electrochemical and mechanical tests exist.",
+          "sourceIds": [
+            "flex-stimnet-p"
+          ],
+          "varies": [
+            "nocap"
+          ],
+          "only": [
+            "nocap"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Release, connect and inspect",
+          "tools": [
+            "04-06",
+            "12-01",
+            "16-13"
+          ],
+          "detail": "Release the flexible region without assigning a proprietary or unverified release recipe; remap the proximal connector to the 32 sites.",
+          "check": "Check for a damaged electrode rim and conductor open independently.",
+          "sourceIds": [
+            "flex-stimnet-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Bench electrochemical characterization",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "detail": "Use saline EIS and cyclic voltammetry/control comparisons as published; the cap-ring geometry and material pair matter to interpretation.",
+          "check": "Report measurement configuration, not a tissue threshold or a transferable stimulation limit.",
+          "sourceIds": [
+            "flex-stimnet-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "No pulse recipe for people or animals and no independently qualified implantable process. Published electrochemistry does not validate local charge delivery or clinical safety."
+      ]
+    },
+    {
+      "id": "flex-tentacles",
+      "title": "UFTE: independent flex fibers and patterned PEDOT:PSS",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "92-ultra-flexible-tentacle-electrodes"
+      ],
+      "summary": "The main 256-site array consists of multiple bundles with one recording contact per independently flexible member. The separate four-site-per-fiber configuration is not the main layout.",
+      "sources": [
+        {
+          "id": "flex-tentacles-p",
+          "title": "Ultra-Flexible Tentacle Electrodes (2024)",
+          "url": "https://www.nature.com/articles/s41467-024-49226-9",
+          "note": "Figure 2 and Fabrication and characterization describe Ti/Au, PI, dry lift-off using sacrificial parylene, connector and fiber assembly."
+        }
+      ],
+      "variants": [
+        {
+          "id": "single",
+          "label": "256 contacts, four bundles",
+          "status": "documented",
+          "description": "Four bundles of 64 sites; one recording contact per fiber in the main configuration."
+        },
+        {
+          "id": "tetrode",
+          "label": "Four contacts on one fiber",
+          "status": "documented",
+          "description": "Separate tetrode arrangement; do not infer 1,024 channels by multiplying the main array by four."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Assign fibers and shared backend",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Draw each conducting path and a separate cut line between adjacent fibers. Encode the bundle and site-within-fiber explicitly.",
+          "check": "Check the topology before counting channels; a row in a picture is not a channel map.",
+          "sourceIds": [
+            "flex-tentacles-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Build PI/Ti/Au/PI on a carrier",
+          "tools": [
+            "02-07",
+            "03-09",
+            "03-01",
+            "02-03"
+          ],
+          "detail": "Pattern Ti/Au routes between PI layers. Define spaces between fibers, border and backend pad openings with aligned lithography.",
+          "check": "Inspect the separation canals for polymer bridges and the long conductors for opens.",
+          "sourceIds": [
+            "flex-tentacles-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern the site coating by dry lift-off",
+          "tools": [
+            "03-08",
+            "02-07",
+            "04-01",
+            "16-09"
+          ],
+          "detail": "Use temporary parylene to pattern spin-coated PEDOT:PSS. The sacrificial parylene is not the permanent substrate and the coating is not assumed electrodeposited.",
+          "check": "Confirm that the polymer coating remains at sites and not on routing or connectors.",
+          "sourceIds": [
+            "flex-tentacles-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Release and assemble the separate bundles",
+          "tools": [
+            "04-06",
+            "12-01",
+            "16-13"
+          ],
+          "detail": "Release the flexible geometry and collect fibers into the appropriate bundle fixture; keep identifiers through backend assembly.",
+          "check": "An intact aggregate bundle can contain one broken internal lead. Test continuity per fiber.",
+          "sourceIds": [
+            "flex-tentacles-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Compare spread/continuity in a dummy fixture",
+          "tools": [
+            "12-01",
+            "14-10",
+            "09-01",
+            "09-12"
+          ],
+          "detail": "Optically track tip positions when support is removed in a bench bath, and compare electrical maps before/after.",
+          "check": "Treat the released three-dimensional tip arrangement as measured or unspecified, not a known reconstruction of tissue positions.",
+          "sourceIds": [
+            "flex-tentacles-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Precise local assembly tooling, final anatomical trajectories and the exact absolute performance of every channel are not inferred. The separate tetrode layout is not an upscaling rule."
+      ]
+    },
+    {
+      "id": "flex-seeg-stylet",
+      "title": "µSEEG: thin-film hollow sheath and directional site row",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "100-microseeg-flexible-stylet-depth-electrode"
+      ],
+      "summary": "This is a directional planar electrode with an integrated, hollow stylet sheath. The titanium used to form the lumen must be removed. A solid shank with an external wire drawn next to it is not equivalent.",
+      "sources": [
+        {
+          "id": "flex-seeg-stylet-p",
+          "title": "Micro-stereo-EEG thin-film electrode (2024)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10794240/",
+          "note": "Figure 1, Supplementary Table 1 and fabrication Methods distinguish short 32, short 64 and long 128 configurations, layer options and site materials."
+        }
+      ],
+      "variants": [
+        {
+          "id": "s32",
+          "label": "Short, 32 contacts",
+          "status": "documented",
+          "description": "Published PEDOT:PSS or Pt-nanorod site options; select the option supported by the specific specimen."
+        },
+        {
+          "id": "s64",
+          "label": "Short, 64 contacts",
+          "status": "documented",
+          "description": "PEDOT:PSS contact option; applies its own layer/encapsulation specification."
+        },
+        {
+          "id": "l128",
+          "label": "Long, 128 contacts",
+          "status": "documented",
+          "description": "Pt-nanorod contact version; preserve U-neck and sheath topology, not ring electrodes."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Define separate sheath and electrode artworks",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Define the lateral sheath cavity, interlocking features, direction-facing sites and tail geometry. Contacts are not a conventional circumferential ring stack.",
+          "check": "Check lumen connectivity along the intended length without intersecting live traces.",
+          "sourceIds": [
+            "flex-seeg-stylet-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Build the sacrificial sheath core",
+          "tools": [
+            "02-07",
+            "03-09",
+            "03-01",
+            "02-01"
+          ],
+          "detail": "Separate the structural polymer levels with sacrificial Ti in the channel region. Include interlock locations between the structural layers to retain the seam.",
+          "check": "Compare true openings with interlock holes; failing to release the core must leave an unpassable channel.",
+          "sourceIds": [
+            "flex-seeg-stylet-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Add conductors, active face and cap",
+          "tools": [
+            "03-01",
+            "04-01",
+            "03-08"
+          ],
+          "detail": "Pattern the interconnects and the appropriate encapsulation. Use only each published variant's metal/coating choice; do not apply every layer listed to all three.",
+          "check": "Test exposed site identity, aperture and adjacency; keep short-versus-long routing lengths in the resistance budget.",
+          "sourceIds": [
+            "flex-seeg-stylet-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Form site treatment and open the lumen",
+          "tools": [
+            "03-03",
+            "04-06",
+            "12-01"
+          ],
+          "detail": "Use the material-specific treatment for the selected film, including alloy/dealloying only for a PtNR build. Remove temporary Ti and inspect sheath freedom.",
+          "check": "A low EIS value cannot prove the sheath is open. A passing gauge cannot establish that the site coating is correct.",
+          "sourceIds": [
+            "flex-seeg-stylet-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Fixture-test an empty sheath and dummy stylet",
+          "tools": [
+            "14-01",
+            "09-01",
+            "09-12",
+            "16-13"
+          ],
+          "detail": "Compare continuity with and without a blunt test mandrel engaged. A terminal map preserves proximal-to-distal order in the directional row.",
+          "check": "Report electrical map and mechanical gauge passage independently; no anatomical depth or application is modeled.",
+          "sourceIds": [
+            "flex-seeg-stylet-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Short/long versions and contact treatments are not arbitrary combinations. Full-size panel handling, real dealloy qualification and released manufacturer tooling are not assumed."
+      ]
+    },
+    {
+      "id": "flex-tassel",
+      "title": "Neurotassel: plane–mesh–filament to compact bundle",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "102-neurotassel-elastocapillary-filament-arrays"
+      ],
+      "summary": "Lithography defines planar insulated conductors. Liquid-mediated elastocapillary assembly changes their mechanical arrangement, not the electrical netlist.",
+      "sources": [
+        {
+          "id": "flex-tassel-p",
+          "title": "Elastocapillary self-assembled Neurotassels (2019)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6436924/",
+          "note": "Figure 1 and Methods give the carrier, aluminum release layer, Cr/Au, PI, exposed sites, electrodeposition and PEG assembly."
+        }
+      ],
+      "variants": [
+        {
+          "id": "t16",
+          "label": "16-filament reference",
+          "status": "documented",
+          "description": "Thicker, wider filaments than the densest versions; approximately 55 µm assembled bundle diameter in the cited example."
+        },
+        {
+          "id": "t128",
+          "label": "128 or 256 contacts",
+          "status": "documented",
+          "description": "V-shaped preassembly site group, narrower filaments than the 16-site type."
+        },
+        {
+          "id": "t512",
+          "label": "512 or 1,024 contacts",
+          "status": "documented",
+          "description": "Semicircular preassembly pattern and higher-density geometry. Reported 1,024-site bundle is approximately 100 µm across."
+        },
+        {
+          "id": "optic",
+          "label": "61-channel optical combination",
+          "status": "documented",
+          "description": "Published separate assembly around an optical fiber; not the 1,024-site layout plus one optical channel."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Design the three mechanical regions",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Maintain the transition from supported plane to mesh to individual filaments. This transition governs how the distal region bundles.",
+          "check": "Check continuity along every member of the transition, and distinguish lithographic site coordinates from post-assembly positions.",
+          "sourceIds": [
+            "flex-tassel-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern release and conductor levels",
+          "tools": [
+            "02-01",
+            "03-01",
+            "02-07",
+            "03-09"
+          ],
+          "detail": "Define an aluminum sacrificial layer on oxidized silicon, the PI substrate and Cr/Au wiring; cap with PI. Leave the supported pad region distinct.",
+          "check": "Acquire witness film thickness and identify which part is intended to detach.",
+          "sourceIds": [
+            "flex-tassel-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Etch, plate and free filaments",
+          "tools": [
+            "04-01",
+            "09-01",
+            "04-06"
+          ],
+          "detail": "Expose terminal and electrode sites and delineate the full plane–mesh–filament outline. Apply the published Pt electroplating and preserve proximal support through release. The register’s electrochemistry station and test cell can represent characterization, not a calibrated plating bath or film-growth simulation; that operation remains external.",
+          "check": "Verify independent site continuity before bundling; plate shorting adjacent contacts fails the electrical test.",
+          "sourceIds": [
+            "flex-tassel-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Collect by elastocapillary interaction",
+          "tools": [
+            "16-03",
+            "12-01"
+          ],
+          "detail": "Use the reported liquid-mediated PEG assembly to group free members in a benchtop fixture. An optional optical-fiber build requires a separately identified optical core.",
+          "check": "Compare bundle cross section for the selected variant without guessing hidden angular positions.",
+          "sourceIds": [
+            "flex-tassel-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check recovered contacts after simulated handling",
+          "tools": [
+            "09-12",
+            "05-07",
+            "11-05"
+          ],
+          "detail": "Remap electrical channels after the bundle is formed or the temporary material dissolves on an inert fixture. Check optical throughput only for the optical configuration.",
+          "check": "Bundle diameter is not a substitute for measured continuity, and optical throughput is not an electrical channel.",
+          "sourceIds": [
+            "flex-tassel-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Measured bundle diameters cannot resolve individual contacts' final 3D coordinates. No surgical insertion or unsupported lifetime claims."
+      ]
+    },
+    {
+      "id": "flex-merf",
+      "title": "MERF: two high-density PI shanks with edge contacts",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "185-merf-ultraflexible-nhp-array-cebsit"
+      ],
+      "summary": "MERF replaces the thin SU-8 of earlier NET references with PI, uses Ti/Au metallization and routes 64 sites along each of two shanks. Its material or channel map cannot be inherited from NET-10.",
+      "sources": [
+        {
+          "id": "flex-merf-p",
+          "title": "MERF flexible recording array (2023)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10667845/",
+          "note": "Methods and Figure 1 specify 1 µm structure, independent contact coatings, two 64-site shanks and a 128-channel backend."
+        }
+      ],
+      "variants": [
+        {
+          "id": "ir",
+          "label": "Iridium oxide site treatment",
+          "status": "documented",
+          "description": "The reported IrOx-coated variant; do not assign PEDOT-specific interfacial properties."
+        },
+        {
+          "id": "poly",
+          "label": "PEDOT:PSS site treatment",
+          "status": "documented",
+          "description": "Alternative coating on the metal contacts; the 2 × 64 conductor topology is unchanged."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Lay out two shanks and two site banks",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Maintain edge-contact geometry with a 30 µm along-shank pitch and two 64-path fans. The smallest reported line/space is 1.5 µm.",
+          "check": "Check the narrow-line portion and edge clearance; width and route spacing are not contact pitch.",
+          "sourceIds": [
+            "flex-merf-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern multilayer PI and Ti/Au",
+          "tools": [
+            "02-07",
+            "03-09",
+            "02-01",
+            "03-01",
+            "04-01"
+          ],
+          "detail": "Form PI insulation, thin adhesion/metal paths, then dry-pattern PI using a suitable oxygen plasma process. The earlier NET SU-8 structure is not a drop-in material substitution.",
+          "check": "A test comb catches bridges or metal loss; qualify overlay at the narrowest routes.",
+          "sourceIds": [
+            "flex-merf-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Define the electrochemical surface",
+          "tools": [
+            "09-01",
+            "09-12"
+          ],
+          "detail": "Keep the IrOx and PEDOT:PSS electrode variants separate; do not infer an identical deposition mechanism or spectrum from the shared contact diameter. The linked stations represent post-coating EIS, not qualified local coating tools; the material-deposition capability is external.",
+          "check": "Save pre/post coating spectra per site, including the measurement geometry.",
+          "sourceIds": [
+            "flex-merf-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Release and connect the flexible circuit",
+          "tools": [
+            "12-01",
+            "08-12",
+            "16-13"
+          ],
+          "detail": "Associate each site to a terminal on the reported 128-channel FPC. Keep temporary handling supports and their mechanical role out of the electrical count.",
+          "check": "Run a point-by-point continuity map on the FPC before and after handling.",
+          "sourceIds": [
+            "flex-merf-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Calibrate a two-bank test fixture",
+          "tools": [
+            "09-06",
+            "09-04",
+            "14-10"
+          ],
+          "detail": "Apply distinct signals to the two banks through an electrical phantom; inspect gain/crosstalk and the response to a single open wire.",
+          "check": "Independently verify coating-dependent impedance and backend addressing; neither proves biological performance.",
+          "sourceIds": [
+            "flex-merf-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Not an exact set of fabrication masks, and thin geometry does not establish tolerance to anatomical loading. The branch identifies contact coatings, not unverified local plating conditions."
+      ]
+    },
+    {
+      "id": "flex-simit-bionic",
+      "title": "SIMIT bionic probe: fine flex array, separate handling head",
+      "family": "Polymer penetrating arrays",
+      "evidence": "documented",
+      "devices": [
+        "186-simit-mosquito-mouthpart-bionic-neural-probe"
+      ],
+      "summary": "The recording component has four PI shanks and 32 sites on each shank. The separate printed alignment track, mechanical guides and tactile system are not additional electrode channels.",
+      "sources": [
+        {
+          "id": "flex-simit-bionic-p",
+          "title": "A mosquito mouthpart-like bionic neural probe (2023)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10336119/",
+          "note": "Fabrication of ultraflexible electrode array, Figure 1 and module fabrication: 128 sites, Ni release layer, PI, Cr/Ni/Au, PEDOT and backend reflow."
+        }
+      ],
+      "variants": [
+        {
+          "id": "elec",
+          "label": "128-channel flex array alone",
+          "status": "documented",
+          "description": "Four shanks × 32 contacts; owner of the signal paths is the flex array."
+        },
+        {
+          "id": "fixture",
+          "label": "Research handling assembly on a dummy fixture",
+          "status": "reference",
+          "description": "Add optical checks of printed guide-to-shank alignment only. Do not model penetration or anatomical placement."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Prepare the support and dielectric",
+          "tools": [
+            "03-01",
+            "02-07",
+            "03-09"
+          ],
+          "detail": "Begin with oxidized silicon and a patterned Ni release layer. The carrier and release Ni are distinct from nickel in the conductor stack.",
+          "check": "Track which Ni is sacrificial; treating all nickel as sacrificial would erase an intended metal layer.",
+          "sourceIds": [
+            "flex-simit-bionic-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern the conductive sandwich",
+          "tools": [
+            "02-01",
+            "03-01",
+            "04-06"
+          ],
+          "detail": "Create Cr/Ni/Au sites, pads and traces and bury the leads between PI films. The Methods and Results differ on reported site Au thickness; retain that uncertainty.",
+          "check": "Verify four independent groups of 32 electrical paths; record any chosen visual thickness as a modeling assumption.",
+          "sourceIds": [
+            "flex-simit-bionic-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Open sites, free the shanks and coat",
+          "tools": [
+            "04-01",
+            "04-06",
+            "09-01"
+          ],
+          "detail": "Use the hard mask and dry etch for site openings, release from the carrier and form the published PEDOT contact treatment. The register’s electrochemistry station and test cell can represent characterization, not a calibrated plating bath or film-growth simulation; that operation remains external.",
+          "check": "Check for wet-shunt leakage and distinguish a buried conductor open from a missing contact coating.",
+          "sourceIds": [
+            "flex-simit-bionic-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Terminate to the PCB",
+          "tools": [
+            "08-04",
+            "08-12",
+            "16-13"
+          ],
+          "detail": "Mate the released site's backend to the reflow-compatible board and two 64-way connectors. The finished package does not prove successful independent transmission from all 128 sites.",
+          "check": "Apply a known site pattern and identify connector swaps, opens and neighboring shorts.",
+          "sourceIds": [
+            "flex-simit-bionic-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check guide against dummy shanks",
+          "tools": [
+            "06-01",
+            "12-01"
+          ],
+          "detail": "If the fixture branch is selected, model the reported two-photon-printed track qualitatively and inspect alignment against nonbiological dummies.",
+          "check": "Do not treat a printed guide as proof of insertion, tactile safety, or structural survival in tissue.",
+          "sourceIds": [
+            "flex-simit-bionic-p"
+          ],
+          "varies": [
+            "fixture"
+          ],
+          "only": [
+            "fixture"
+          ]
+        }
+      ],
+      "gaps": [
+        "No manufacture of an implantation tool is claimed; the named guide is at most a passive bench fixture. Vendor-specific reflow, metal thickness divergence and controlled release need real qualification."
+      ]
+    },
+    {
+      "id": "flex-simit-silk",
+      "title": "SIMIT deformable double-sided array and folding fixture",
+      "family": "Deformable film arrays",
+      "evidence": "documented",
+      "devices": [
+        "187-simit-silk-intraventricular-interface"
+      ],
+      "summary": "A double-sided PI circuit links front recording sites to backside reflow pads. A separate silk structural support can fold and unfold the array; it is not part of the electrical netlist.",
+      "sources": [
+        {
+          "id": "flex-simit-silk-p",
+          "title": "Silk-enabled conformal interface (2025)",
+          "url": "https://www.nature.com/articles/s41467-025-64397-9",
+          "note": "Methods: fabrication of deformable MEA, separate T0/T1 shielding, backside pad fanout and reflow. No biological preparation is included here."
+        }
+      ],
+      "variants": [
+        {
+          "id": "t0",
+          "label": "T0: no shield",
+          "status": "documented",
+          "description": "Omit the coplanar shield on the interlayer PI. Back-to-front vias still exist."
+        },
+        {
+          "id": "t1",
+          "label": "T1: with shield",
+          "status": "documented",
+          "description": "Include the extra Cr/Au shield plane and declared termination."
+        },
+        {
+          "id": "compact",
+          "label": "Compact flip-chip fanout",
+          "status": "documented",
+          "description": "Published 160 µm pad-pitch small configuration versus a 0.6 mm-pitch conventional center. Keep the package choice distinct from shield choice."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Build backside pads on the release carrier",
+          "tools": [
+            "03-03",
+            "02-07",
+            "03-09",
+            "03-01"
+          ],
+          "detail": "Use sacrificial Al on silicon, a lower patterned PI film and Cr/Ni/Au backside contact pads. Track orientation reversal when inspecting from the opposite face.",
+          "check": "Map backend coordinates to eventual front-surface positions using a known handedness mark.",
+          "sourceIds": [
+            "flex-simit-silk-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern the interlayer and vias",
+          "tools": [
+            "02-07",
+            "04-01",
+            "03-03"
+          ],
+          "detail": "Use another PI layer and open vertical connections to the backside metallization. Connect front-facing tracks and electrodes to the proper vias.",
+          "check": "An apparent overlay cannot validate a conducting via; use an electrical test chain.",
+          "sourceIds": [
+            "flex-simit-silk-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Route or omit the coplanar shield",
+          "tools": [
+            "03-03",
+            "02-01"
+          ],
+          "detail": "For T1, add the interlayer Cr/Au shield; for T0, intentionally omit it. Keep the signal pinout constant in the comparison.",
+          "check": "Check shield-to-signal isolation and verify the intended shield terminal; a floating shield is a distinct case.",
+          "sourceIds": [
+            "flex-simit-silk-p"
+          ],
+          "varies": [
+            "t0",
+            "t1"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Encapsulate, open and release",
+          "tools": [
+            "02-07",
+            "04-01",
+            "04-06"
+          ],
+          "detail": "Add cap PI with matched windows and strain-relief features. Remove sacrificial Al and inspect the free mesh. Mate to its registered FPC variant.",
+          "check": "Check backside pad exposure separately from front site access.",
+          "sourceIds": [
+            "flex-simit-silk-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Observe folding and electrical recovery on an inert form",
+          "tools": [
+            "12-01",
+            "14-10",
+            "09-01"
+          ],
+          "detail": "Treat the documented silk support as supplied. Flex or unfold on a wet mechanical fixture and compare each path before and after while holding electrical conditions constant.",
+          "check": "A resistance change is not by itself a measurement of humidity-driven shape or shield performance.",
+          "sourceIds": [
+            "flex-simit-silk-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "Silk feedstock and its treatment, in-vivo delivery, catheter procedures and anatomical performance are not modeled. Conventional and compact pad spacing are not interchangeable layouts."
+      ]
+    },
+    {
+      "id": "flex-kirigami",
+      "title": "Kirigami-to-helix: flat addresses, deployed compliant geometry",
+      "family": "Deformable film arrays",
+      "evidence": "partial",
+      "devices": [
+        "199-cibr-kirigami-microelectrode-array-ki-mea"
+      ],
+      "summary": "A patterned spiral trace can deform into a three-dimensional spring. Drawing a helix is not a fabrication flow; the initial planar circuit, temporary carrier and electrical verification remain distinct.",
+      "sources": [
+        {
+          "id": "flex-kirigami-p",
+          "title": "Fang et al., kirigami microelectrode arrays (2026)",
+          "url": "https://doi.org/10.1038/s41928-025-01560-6",
+          "note": "Primary paper identifies a reconfigurable spiral-thread design. The module-level workflow below flags manufacturing details not established in this record."
+        }
+      ],
+      "variants": [
+        {
+          "id": "small",
+          "label": "120-contact small array",
+          "status": "documented",
+          "description": "A reported smaller configuration, not an assumption about the larger fanout."
+        },
+        {
+          "id": "large",
+          "label": "256-contact array",
+          "status": "documented",
+          "description": "Published higher-count configuration; aggregation across arrays is a separate operation."
+        },
+        {
+          "id": "coupon",
+          "label": "Parameterized inert spiral coupon",
+          "status": "reference",
+          "description": "Explore turns and clearance while preserving the same endpoints. An assumed metal stack is not attributed to the authors."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Freeze planar and deformed geometries",
+          "tools": [
+            "01-01",
+            "01-02"
+          ],
+          "detail": "Maintain a distinct planar spiral and a free three-dimensional trace. Define measured versus inferred coordinates wherever the source supplies only drawings.",
+          "check": "Check that both representations carry the same endpoints and connected components.",
+          "sourceIds": [
+            "flex-kirigami-p"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Require the verified process stack",
+          "tools": [],
+          "detail": "Metal/dielectric stack, exact masks and release chemistry are not independently reconstructed here. Obtain a documented process before claiming an exact ki-MEA build.",
+          "check": "Leave missing layers unknown rather than borrowing a stack from another kirigami paper.",
+          "sourceIds": [
+            "flex-kirigami-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Make a virtual planar surrogate",
+          "tools": [
+            "02-07",
+            "02-01",
+            "03-01",
+            "04-01"
+          ],
+          "detail": "For the coupon branch only, use a polymer/metal sandwich with openings and cut gaps as an explanatory comparison. A manufacturing analogue is not evidence of the manuscript's materials.",
+          "check": "Check fill, trace width, gap and connectivity after pattern transfer in the simplified design.",
+          "sourceIds": [
+            "flex-kirigami-p"
+          ],
+          "varies": [
+            "coupon"
+          ],
+          "only": [
+            "coupon"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Support, release and deform on an inert fixture",
+          "tools": [
+            "12-01",
+            "14-01",
+            "14-10"
+          ],
+          "detail": "Support free planar members on a removable carrier, then apply a controlled displacement between ends on a phantom fixture. Track strain relative to the selected constitutive model.",
+          "check": "Compare retained edge continuity before/after deformation. A modeled spring constant is not a measured property of their device.",
+          "sourceIds": [
+            "flex-kirigami-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Recheck terminal map and load path",
+          "tools": [
+            "05-07",
+            "09-12",
+            "09-01"
+          ],
+          "detail": "Distinguish an electrical open at a hard anchor from mechanical translation with intact impedance.",
+          "check": "Report electrical, optical shape and mechanical load independently; no clinical or tissue deployment claim.",
+          "sourceIds": [
+            "flex-kirigami-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "An exact multi-device routing diagram, final implanted positions, material-specific yield and local mechanical calibration are unavailable. Keep the 120/256 references distinct from the teaching coupon."
+      ]
+    },
+    {
+      "id": "flex-pmt-pedestal",
+      "title": "PMT disk grid and Blackrock pedestal: two research configurations",
+      "family": "Macroscopic surface grids",
+      "evidence": "partial",
+      "devices": [
+        "63-pmt-high-density-ecog-array-percutaneous-connector"
+      ],
+      "summary": "Two speech-interface studies identify a custom PMT grid with external Blackrock acquisition. Match the particular grid before inventing a mask, molding process, or connector map.",
+      "sources": [
+        {
+          "id": "flex-pmt-pedestal-p21",
+          "title": "Moses et al., 2021 speech neuroprosthesis",
+          "url": "https://doi.org/10.1056/NEJMoa2027540",
+          "note": "Methods and supplementary appendix identify the 128-contact 16 × 8 grid, 4 mm spacing, and connector."
+        },
+        {
+          "id": "flex-pmt-pedestal-p23",
+          "title": "Metzger et al., 2023 speech and avatar interface",
+          "url": "https://escholarship.org/content/qt5829g475/qt5829g475_noSplash_25cec01720c32c1ba4a4e783e588cdaf.pdf",
+          "note": "Implanted electrode array section distinguishes 253 disks on a 3 mm pitch, 1 mm exposed and 2 mm overall diameter."
+        }
+      ],
+      "variants": [
+        {
+          "id": "m128",
+          "label": "2021: 16 × 8 contacts, 4 mm center pitch",
+          "status": "documented",
+          "description": "128 total. The implant footprint is not its active center-to-center span."
+        },
+        {
+          "id": "m253",
+          "label": "2023: 253 contacts, 3 mm center pitch",
+          "status": "documented",
+          "description": "253 disks with separate exposed and overall diameters. No complete rectangular lattice is inferred."
+        },
+        {
+          "id": "witness",
+          "label": "Disk-grid teaching coupon",
+          "status": "reference",
+          "description": "A plausible manually assembled surface grid; alloy, jacket and joining details are local assumptions, not PMT factory specifications."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Reconstruct only the published contact layout",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Store counts, pitch convention and face diameter by study. A non-square count does not license filling or removing nonexistent corners on a guessed rectangular grid.",
+          "check": "For the 2021 grid, 16 × 8 produces 128. For the 2023 design, keep unknown coordinates unassigned.",
+          "sourceIds": [
+            "flex-pmt-pedestal-p21",
+            "flex-pmt-pedestal-p23"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive disk array and pedestal",
+          "tools": [],
+          "detail": "PMT supplied the electrode grid and Blackrock the separate percutaneous component. Actual molded-layer stack, joint process, die/tooling, alloy lot and production masks are not established by these speech studies.",
+          "check": "Require the appropriate revision and pinout; a similarly branded grid or pedestal is not a drop-in substitute.",
+          "sourceIds": [
+            "flex-pmt-pedestal-p21",
+            "flex-pmt-pedestal-p23"
+          ],
+          "varies": [
+            "m128",
+            "m253"
+          ],
+          "only": [
+            "m128",
+            "m253"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Construct an illustrative wired coupon",
+          "tools": [
+            "06-10",
+            "12-01",
+            "16-13"
+          ],
+          "detail": "Seat preformed conductive disks in an insulating carrier fixture, form individual insulated leads, strain-relieve the tail, and leave only the recording faces exposed. This is one possible assembly, not a PMT recipe.",
+          "check": "Check every disk's exposed face and adjacent insulation separately before joining it to the readout.",
+          "sourceIds": [
+            "flex-pmt-pedestal-p21",
+            "flex-pmt-pedestal-p23"
+          ],
+          "varies": [
+            "witness"
+          ],
+          "only": [
+            "witness"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify the cable-to-contact crosswalk",
+          "tools": [
+            "05-07",
+            "09-03",
+            "16-13"
+          ],
+          "detail": "Use an isolated test adapter and one-to-one continuity checks. Preserve left/right orientation and verify the reference and unused pins separately.",
+          "check": "A swapped disk address must fail even if all channel resistances appear normal.",
+          "sourceIds": [
+            "flex-pmt-pedestal-p21",
+            "flex-pmt-pedestal-p23"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Acquire a known phantom pattern",
+          "tools": [
+            "09-06",
+            "09-12",
+            "10-10"
+          ],
+          "detail": "Apply a known spatial stimulus to an inert fixture; verify raw electrical mapping prior to any feature extraction or decoder. A speech task is not an electrical acceptance test.",
+          "check": "Open one site and then the whole backend connector; distinguish a localized failure from a total readout loss.",
+          "sourceIds": [
+            "flex-pmt-pedestal-p21",
+            "flex-pmt-pedestal-p23"
+          ]
+        }
+      ],
+      "gaps": [
+        "No as-built manufacturing instructions, vendor wiring diagrams, material certification, implantation procedure or chronic safety inference. Do not borrow dimensions from unrelated PMT products."
+      ]
+    },
+    {
+      "id": "flex-inbrain",
+      "title": "INBRAIN graphene interface: nanoporous rGO, not a CLEAR film",
+      "family": "Nanoporous carbon arrays",
+      "evidence": "partial",
+      "devices": [
+        "176-inbrain-graphene-cortical-interface"
+      ],
+      "summary": "Manchester investigators report a thin flexible interface with twelve 1 mm macrocontacts and 48 separate 25 µm microcontacts made from nanoporous reduced graphene oxide. The grouped microstructures in a macrocontact are not all independent recording channels.",
+      "sources": [
+        {
+          "id": "flex-inbrain-gci",
+          "title": "Manchester investigators, graphene cortical interface interim abstract (2025)",
+          "url": "https://academic.oup.com/neuro-oncology/article/27/Supplement_5/v415/8319922",
+          "note": "The investigators identify INBRAIN as manufacturer, nanoporous reduced graphene oxide and the macro/micro contact configuration. This is a conference abstract, not a manufacturing traveler."
+        },
+        {
+          "id": "flex-inbrain-eg",
+          "title": "Viana et al., EGNITE nanoporous graphene research microelectrodes (2024)",
+          "url": "https://www.nature.com/articles/s41565-023-01570-5",
+          "note": "Materials, wafer-scale fabrication and Figure 1: GO filtration/transfer, hydrothermal reduction, PI with Au tracks. An academic comparator, not proof of the production GCI process."
+        },
+        {
+          "id": "flex-inbrain-inst",
+          "title": "Manchester BRC, completed first study (2026)",
+          "url": "https://www.manchesterbrc.nihr.ac.uk/news-and-events/study-shows-safety-of-worlds-first-human-graphene-based-brain-computer-interface-operation/",
+          "note": "Institutional account establishes that the clinical component was the INBRAIN graphene cortical interface; it does not disclose its factory layout."
+        }
+      ],
+      "variants": [
+        {
+          "id": "gci",
+          "label": "Clinical investigation GCI, as described",
+          "status": "documented",
+          "description": "12 macrocontacts plus 48 microcontacts; preserve reported hierarchy. The true factory traveler stays external."
+        },
+        {
+          "id": "ref",
+          "label": "EGNITE academic materials comparator",
+          "status": "reference",
+          "description": "Model a related film of reduced graphene oxide on a flexible circuit. Local fixtures map only to modules the evidence actually supports."
+        },
+        {
+          "id": "clear",
+          "label": "Replace rGO with transferred planar graphene",
+          "status": "incompatible",
+          "description": "CLEAR's four CVD graphene transfers and UCSD's doped double layer produce different interface structures; neither is the GCI process."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Assign macro and micro recording elements",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Distinguish a 1 mm composite macrocontact from a separate 25 µm microcontact. Granularity in a micrograph does not show how every constituent feature is wired.",
+          "check": "Check the twelve and 48 labels independently; do not multiply the number of macro sites by their sub-features to count acquisition channels.",
+          "sourceIds": [
+            "flex-inbrain-gci"
+          ],
+          "varies": [
+            "gci"
+          ],
+          "only": [
+            "gci"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Treat clinical manufacturing as a supplier boundary",
+          "tools": [],
+          "detail": "Material and some geometric evidence are public; product masks, netlist, deposition sequence, terminations and factory acceptance remain unavailable in these sources.",
+          "check": "Keep the released product traveler and qualified element-to-acquisition map unclaimed.",
+          "sourceIds": [
+            "flex-inbrain-gci",
+            "flex-inbrain-inst"
+          ],
+          "varies": [
+            "gci"
+          ],
+          "only": [
+            "gci"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Fabricate reference polymer wiring",
+          "tools": [
+            "02-07",
+            "03-09",
+            "02-01",
+            "03-01"
+          ],
+          "detail": "The academic EGNITE architecture places Au routing on PI. Establish the receiver and test metal lines before introducing carbon. This is not a disclosed GCI layer assignment.",
+          "check": "Check conductor isolation and location of the future carbon-to-metal overlap.",
+          "sourceIds": [
+            "flex-inbrain-eg"
+          ],
+          "varies": [
+            "ref"
+          ],
+          "only": [
+            "ref"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Prepare or receive the nanoporous carbon film",
+          "tools": [],
+          "detail": "The academic paper filters GO flakes to make a transferable film and uses hydrothermal reduction to produce porous conductive material. No qualified GO film line or hydrothermal reactor is established in the register.",
+          "check": "Inspect witness morphology, thickness and electrical properties; Raman alone cannot prove electrode charge behavior or clinical equivalence.",
+          "sourceIds": [
+            "flex-inbrain-eg"
+          ],
+          "varies": [
+            "ref"
+          ],
+          "only": [
+            "ref"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Encapsulate, expose and compare",
+          "tools": [
+            "02-01",
+            "04-01",
+            "05-10",
+            "09-01",
+            "09-12"
+          ],
+          "detail": "Follow the academic process class for protected tracks and exposed carbon. On an inert electrolyte fixture, record separate site spectra and trace continuity and compare same-area test contacts.",
+          "check": "Do not transfer capacity, clinical performance or qualification from the research comparator to the Manchester device.",
+          "sourceIds": [
+            "flex-inbrain-eg"
+          ],
+          "varies": [
+            "ref"
+          ],
+          "only": [
+            "ref"
+          ]
+        }
+      ],
+      "gaps": [
+        "Reduced graphene oxide is not synonymous with CVD bilayer graphene or a graphene field-effect transistor. Clinical hardware authenticity and complete manufacturing records are not supplied by the related academic process."
+      ]
+    },
+    {
+      "id": "flex-neuroxess-wired",
+      "title": "NeuroXess research ECoG: 256-site flex and headstage",
+      "family": "Integrated surface systems",
+      "evidence": "partial",
+      "devices": [
+        "179-neuroxess-flexible-ecog-256-channel-bci"
+      ],
+      "summary": "The original Chinese-speech study identifies a 256-contact surface film, flexible printed circuit, processing unit and titanium enclosure. This is not the later fully implanted Triple-F wireless configuration.",
+      "sources": [
+        {
+          "id": "flex-neuroxess-wired-p",
+          "title": "Real-time decoding of full-spectrum Chinese using brain-computer interface (2025)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12588286/",
+          "note": "Materials and Methods and Supplementary Figure S1 identify the 256 contacts, 1.3 mm contact diameter, 3 mm pitch, flex cable, processor and housing."
+        }
+      ],
+      "variants": [
+        {
+          "id": "clinical",
+          "label": "256-channel study assembly",
+          "status": "documented",
+          "description": "The published architecture; the die process, conductor stack, pin order and bonding chemistry are not recovered."
+        },
+        {
+          "id": "phantom",
+          "label": "Research flex-grid bench surrogate",
+          "status": "reference",
+          "description": "A deliberately assumed fanout and cable used to test stage interfaces; this is not a NeuroXess commercial process."
+        },
+        {
+          "id": "triple",
+          "label": "Copy Triple-F telemetry into this system",
+          "status": "incompatible",
+          "description": "A separate catalog device and later configuration. Do not borrow its radio, channel count, or full implant enclosure."
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Capture sensing geometry",
+          "tools": [
+            "01-01"
+          ],
+          "detail": "Record 256 electrode contacts and distinguish the reported 1.3 mm diameter from the 3 mm center spacing. Reconstruct only published positions; a rectangular raster is not a recovered mask.",
+          "check": "Validate count and spacing separately from assumed pin order.",
+          "sourceIds": [
+            "flex-neuroxess-wired-p"
+          ],
+          "varies": [
+            "clinical",
+            "phantom"
+          ],
+          "only": [
+            "clinical",
+            "phantom"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Represent the device as supplied modules",
+          "tools": [],
+          "detail": "The paper identifies the array, flexible circuit, processor and titanium enclosure; it does not give a full conductor/dielectric process, chip masks or feedthrough qualification.",
+          "check": "Demand an as-built bill of materials, layer map and acceptance record before claiming fabrication equivalence.",
+          "sourceIds": [
+            "flex-neuroxess-wired-p"
+          ],
+          "varies": [
+            "clinical"
+          ],
+          "only": [
+            "clinical"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Construct a passive grid stand-in",
+          "tools": [
+            "02-07",
+            "02-01",
+            "03-01",
+            "04-01"
+          ],
+          "detail": "Pattern an insulated flexible conductor with isolated exposed sites and a separate contact tail. Select and label a representative material stack solely for the stand-in.",
+          "check": "Reject traces exposed outside their windows and record the assumed layer stack in the fixture data.",
+          "sourceIds": [
+            "flex-neuroxess-wired-p"
+          ],
+          "varies": [
+            "phantom"
+          ],
+          "only": [
+            "phantom"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Interface the cable and test fixture",
+          "tools": [
+            "16-13",
+            "05-07",
+            "08-11"
+          ],
+          "detail": "Use a labeled test adapter to connect known pads to a dummy receiver. The study reports a processing unit; this step does not recreate the actual chip, connector or housing seal.",
+          "check": "Check mapping and signal path using known inputs before interpreting any feature extraction.",
+          "sourceIds": [
+            "flex-neuroxess-wired-p"
+          ],
+          "varies": [
+            "clinical",
+            "phantom"
+          ],
+          "only": [
+            "clinical",
+            "phantom"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify acquisition, independently of decoding",
+          "tools": [
+            "09-06",
+            "10-10",
+            "01-05"
+          ],
+          "detail": "Replay a known electrical pattern with raw-channel identifiers; downstream decimation and feature extraction are not wafer manufacturing stages.",
+          "check": "A working software decoder on injected data cannot establish that the physical array is intact, hermetic or suitable for use.",
+          "sourceIds": [
+            "flex-neuroxess-wired-p"
+          ],
+          "varies": [
+            "clinical",
+            "phantom"
+          ],
+          "only": [
+            "clinical",
+            "phantom"
+          ]
+        }
+      ],
+      "gaps": [
+        "The substrate chemistry, detailed array artwork, IC process, wiring pin assignment and seal qualification remain unverified here. No integration with the separate Triple-F configuration is claimed."
+      ]
+    }
+  ]
+}

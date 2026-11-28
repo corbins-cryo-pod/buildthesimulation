@@ -14,7 +14,7 @@ const associated = dossiers.filter(d=>d[2].includes(r.id));
 ---
 <Layout pageTitle={r.name} subtitle="" description={r.purpose}>
   <article class="equipment eq-sheet">
-    <nav class="eq-nav" aria-label="Register navigation"><a href={base}>← Equipment register</a><a href={base+'?zone='+zone.id}>Zone {zone.id} · {zone.name}</a><a href={base+'roadmap/'}>Ecosystem build plan</a></nav>
+    <nav class="eq-nav" aria-label="Register navigation"><a href={base}>← Equipment register</a><a href={base+'?zone='+zone.id}>Zone {zone.id} · {zone.name}</a><a href={base+'roadmap/'}>Ecosystem build plan</a><a href={`/simulations/foundry/atlas/#equipment=${r.id}`}>Mapped manufacturing workflows</a></nav>
     <header class="eq-mast"><span class="eq-meta">Equipment {r.id} &nbsp; / &nbsp; {r.priority}</span><h2>{r.model}</h2><p>{r.purpose}</p></header>
     <div class="rev-actions">
       {update && <a class="rev-button primary" data-crystal-latest href={update.href}>Open latest virtual preview →</a>}

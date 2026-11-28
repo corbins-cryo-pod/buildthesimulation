@@ -1,0 +1,1336 @@
+{
+  "profiles": [
+    {
+      "id": "kennedys-cone",
+      "title": "Kennedy cone · discrete wire in glass",
+      "family": "Microwire and glass",
+      "evidence": "partial",
+      "summary": "Published assembly uses an insulated gold recording wire or wire bundle inside a hollow glass cone. The atlas covers only the inert assembly and continuity fixture, not the living interface.",
+      "devices": [
+        "08-neurotrophic-electrode-kennedy-cone"
+      ],
+      "variants": [
+        {
+          "id": "single",
+          "label": "Original single-wire cone",
+          "description": "Early article describes one insulated gold wire fixed inside glass.",
+          "status": "documented"
+        },
+        {
+          "id": "multi",
+          "label": "Later multi-wire cone",
+          "description": "Later assembly paper describes three or four gold wires; connectors and implant-specific electronics remain external.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Select glass and wire blanks",
+          "detail": "Treat a taper-bearing open glass cone and insulated wires as incoming parts. The register has no qualified glass cone puller or part-specific glass-forming process.",
+          "tools": [
+            "02-12"
+          ],
+          "status": "external",
+          "check": "Optical silhouette and through-opening are visible, with no chipped edge.",
+          "sourceIds": [
+            "cone",
+            "assembly"
+          ]
+        },
+        {
+          "title": "Place and secure wires",
+          "detail": "Model separate conductor axes and a restrained, adhesive-fixed cone seat. An atlas dispenser stands in for the adhesive operation, not a claim that its chemistry was used.",
+          "tools": [
+            "08-10",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Check interior exposure and separation, and record final placements per wire.",
+          "sourceIds": [
+            "cone",
+            "assembly"
+          ]
+        },
+        {
+          "title": "Terminate to a bench breakout",
+          "detail": "Route inactive wire ends to a passive connector map or small fixture, without emulating implanted electronics.",
+          "tools": [
+            "08-11",
+            "08-12",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Each conductor maps to a distinct pin with no neighboring short.",
+          "sourceIds": [
+            "assembly"
+          ]
+        },
+        {
+          "title": "Check hydrated dummy load",
+          "detail": "Compare conductor continuity and leakage in a nonliving test cell. Separate dry electrical checks from any post-soak measurement.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "14-11"
+          ],
+          "status": "reference",
+          "check": "Archive an impedance sweep and record any wire insulation failure.",
+          "sourceIds": [
+            "assembly"
+          ]
+        }
+      ],
+      "gaps": [
+        "Original tooling, adhesive formulation, packaged electronics and all living components are outside this atlas."
+      ],
+      "sources": [
+        {
+          "id": "cone",
+          "title": "Kennedy (1989), original cone electrode",
+          "url": "https://doi.org/10.1016/0165-0270(89)90142-8",
+          "note": "Abstract establishes insulated gold conductor inside a hollow cone."
+        },
+        {
+          "id": "assembly",
+          "title": "Bartels et al. (2008), assembly article",
+          "url": "https://doi.org/10.1016/j.jneumeth.2008.06.030",
+          "note": "Assembly figures and text distinguish early single-wire and later multi-wire versions."
+        }
+      ]
+    },
+    {
+      "id": "transfer-microled-foil",
+      "title": "Transfer-printed µILEDs on flexible PET",
+      "family": "Optoelectronic hybrids",
+      "evidence": "documented",
+      "summary": "Published III–V light emitters are released from sapphire and transferred to a PET carrier. Keep light-emitter manufacture separate from flexible back-end integration and antenna/headstage selection.",
+      "devices": [
+        "30-injectable-micro-iled-optoelectronics"
+      ],
+      "variants": [
+        {
+          "id": "strip-wired",
+          "label": "Four-LED PET strip · wired",
+          "description": "Transferred emitters on PET; simple wired driver.",
+          "status": "documented"
+        },
+        {
+          "id": "strip-rf",
+          "label": "Four-LED PET strip · RF",
+          "description": "Same general four-emitter strip family, with a separate antenna and rectifier adapter. The RF link is a distinct acceptance gate.",
+          "status": "documented"
+        },
+        {
+          "id": "sensor-wired",
+          "label": "Multimodal stack · wired",
+          "description": "Temperature, photodiode or electrode module layers are independent documented options. A combined stack still needs a separately characterized input/output map.",
+          "status": "reference"
+        },
+        {
+          "id": "sensor-rf",
+          "label": "Multimodal stack · RF LED drive",
+          "description": "A bounded design scenario for the LED drive only. Do not assume the author’s RF harvester powers or transmits all sensors.",
+          "status": "reference"
+        },
+        {
+          "id": "coupon",
+          "label": "Off-the-shelf emitter coupon",
+          "description": "Reference only. Geometry, spectral response and bending behavior will differ from the transferred research device.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Start with III–V donor film",
+          "detail": "Epitaxial emitter donor, device mesas, contacts and selective release are upstream. Optical laser writing on the register is not sapphire-through laser lift-off.",
+          "tools": [],
+          "status": "external",
+          "check": "Check designated die map, pad side and supplier or qualified lab evidence.",
+          "sourceIds": [
+            "protocol",
+            "paper"
+          ],
+          "only": [
+            "strip-wired",
+            "strip-rf",
+            "sensor-wired",
+            "sensor-rf"
+          ]
+        },
+        {
+          "title": "Place emitters on PET",
+          "detail": "Track die pose and order on carrier-supported PET. Inspect placement as a virtual alignment result; a flip-chip bonder alone does not validate stamp transfer.",
+          "tools": [
+            "02-01",
+            "02-12",
+            "08-05"
+          ],
+          "status": "documented",
+          "check": "A fiducial overlay detects rotation or missing die per emitter without inferring contact continuity.",
+          "sourceIds": [
+            "protocol"
+          ],
+          "only": [
+            "strip-wired",
+            "strip-rf",
+            "sensor-wired",
+            "sensor-rf"
+          ]
+        },
+        {
+          "title": "Interconnect and isolate",
+          "detail": "Represent dielectric opening and separate Cr/Au traces on a temporarily supported film.",
+          "tools": [
+            "02-07",
+            "02-01",
+            "03-03",
+            "04-01"
+          ],
+          "status": "documented",
+          "check": "Inspect contact-window registration before confirming individual light emitters on the bench.",
+          "sourceIds": [
+            "protocol"
+          ],
+          "only": [
+            "strip-wired",
+            "strip-rf",
+            "sensor-wired",
+            "sensor-rf"
+          ]
+        },
+        {
+          "title": "Connect flex tail and optional sensors",
+          "detail": "Represent a pressure/heat ACF interface on the documented flexible strip. Optional photodiode, temperature and electrode films have their own incoming acceptance.",
+          "tools": [
+            "08-04",
+            "08-10",
+            "08-11"
+          ],
+          "status": "documented",
+          "check": "Verify connector pinout, emitter polarity and isolation before adding individual sensor channels.",
+          "sourceIds": [
+            "protocol"
+          ],
+          "varies": [
+            "sensor-wired",
+            "sensor-rf"
+          ],
+          "only": [
+            "strip-wired",
+            "strip-rf",
+            "sensor-wired",
+            "sensor-rf"
+          ]
+        },
+        {
+          "title": "Join the RF headstage",
+          "detail": "The documented detachable antenna and rectifier drive light output. The optional sensor output path is separately configured and not automatically wireless.",
+          "tools": [
+            "09-08",
+            "08-11",
+            "11-01"
+          ],
+          "status": "documented",
+          "check": "Check optical output against loaded RF input, rather than presuming a wired input sweep closes the RF power budget.",
+          "sourceIds": [
+            "protocol"
+          ],
+          "varies": [
+            "strip-rf",
+            "sensor-rf"
+          ],
+          "only": [
+            "strip-rf",
+            "sensor-rf"
+          ]
+        },
+        {
+          "title": "Obtain stock emitter for comparison",
+          "detail": "A discrete purchased emitter on a dummy carrier does not go through donor-wafer release or PMMA/stamp transfer.",
+          "tools": [
+            "08-11",
+            "08-12"
+          ],
+          "status": "reference",
+          "check": "Check pin orientation, mechanical height and nominal operating spectrum against its own data sheet.",
+          "sourceIds": [
+            "paper"
+          ],
+          "varies": [
+            "coupon"
+          ],
+          "only": [
+            "coupon"
+          ]
+        },
+        {
+          "title": "Compare optical and electrical checks",
+          "detail": "Use inert fixture, optical receiver and temperature readback. Only the RF configuration needs a separately loaded antenna calibration.",
+          "tools": [
+            "11-10",
+            "11-01",
+            "11-05",
+            "09-03",
+            "09-08",
+            "14-09"
+          ],
+          "status": "reference",
+          "check": "Record optical output per addressed emitter, temperature change and bench electrical input.",
+          "sourceIds": [
+            "protocol"
+          ]
+        }
+      ],
+      "gaps": [
+        "III–V epitaxy, laser donor release and documented stamp process remain external. Register tools are analogs, not installed or qualified equivalents. No biological procedures."
+      ],
+      "sources": [
+        {
+          "id": "paper",
+          "title": "Kim et al. (2013), Science",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3769938/",
+          "note": "Primary device paper: emitter dimensions and stack architecture."
+        },
+        {
+          "id": "protocol",
+          "title": "McCall et al. (2013), fabrication protocol",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4005292/",
+          "note": "Device-fabrication sections, Figure 1 and Box 1 establish carrier, transfer, wiring and optional sensor modules."
+        }
+      ]
+    },
+    {
+      "id": "mote-pvled-cmos",
+      "title": "MOTE · AlGaAs PVLED on mixed-signal CMOS",
+      "family": "Optoelectronic hybrids",
+      "evidence": "documented",
+      "summary": "One diode receives optical power and emits differently colored timing pulses. The diode and CMOS are made on separate lines and joined before encapsulation and device release.",
+      "devices": [
+        "135-mote-optoelectronic-tetherless-recorder-2025"
+      ],
+      "variants": [
+        {
+          "id": "reported",
+          "label": "2025 tetherless MOTE",
+          "description": "TSMC 180 nm mixed-signal CMOS beneath a transferred AlGaAs receiver/emitter; optical power and optical time-coded output.",
+          "status": "documented"
+        },
+        {
+          "id": "probe-coupon",
+          "label": "Diode and optical telemetry coupon",
+          "description": "Separate receiver and emitter on a wired fixture for validating counters and power balance only; cannot represent finished volume or packaging.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Obtain foundry ASIC",
+          "detail": "Make the amplifier, encoder and drive circuits on external 180 nm mixed-signal CMOS; the cleanroom register has no access to that PDK/process.",
+          "tools": [],
+          "status": "external",
+          "check": "Track die revision and identify front-end amplification and timing maps.",
+          "sourceIds": [
+            "mote"
+          ]
+        },
+        {
+          "title": "Obtain compound-semiconductor donor",
+          "detail": "Make AlGaAs PVLEDs on a separate epitaxy stack; retain emission and receive-band specifications and donor yield.",
+          "tools": [],
+          "status": "external",
+          "check": "Measure input responsivity and output spectrum independently.",
+          "sourceIds": [
+            "mote"
+          ]
+        },
+        {
+          "title": "Transfer and contact donor array",
+          "detail": "Represent matched-array film transfer onto the CMOS die, residue removal, heating under vacuum and subsequent contact integration. Register bonding instruments are analogs, not a validated PMMA transfer/release line.",
+          "tools": [
+            "02-12",
+            "08-05",
+            "03-09",
+            "05-07"
+          ],
+          "status": "documented",
+          "check": "Verify registration, diode polarity and optical leakage while biasing an inert test load.",
+          "sourceIds": [
+            "mote"
+          ]
+        },
+        {
+          "title": "Encapsulate and separate",
+          "detail": "Track multilayer ALD protection separately from singulation. The paper uses patterned top-side dielectric ICP-RIE, front silicon DRIE trenches, backside DRIE breakthrough and backside sputtered Pt. This is not blade dicing.",
+          "tools": [
+            "03-05",
+            "04-02",
+            "04-03",
+            "03-03",
+            "13-01",
+            "05-04"
+          ],
+          "status": "documented",
+          "check": "Create cross-section witness samples, inspect DRIE breakthrough and edge defects, then compare pre/post-soak leakage.",
+          "sourceIds": [
+            "mote"
+          ]
+        },
+        {
+          "title": "Close optical link test",
+          "detail": "Feed calibrated optical power, recover optical pulse position data and compare against known synthetic electrical input.",
+          "tools": [
+            "11-01",
+            "11-05",
+            "11-06",
+            "09-04",
+            "09-06",
+            "14-11"
+          ],
+          "status": "reference",
+          "check": "Plot decoded offset, missing frames and optical power headroom while varying fixture angle.",
+          "sourceIds": [
+            "mote"
+          ]
+        }
+      ],
+      "gaps": [
+        "External foundry and compound semiconductor supply are irreducible. Exact post-foundry transfers, fixture setup and process distribution are not reproduced by register instrument links."
+      ],
+      "sources": [
+        {
+          "id": "mote",
+          "title": "Lee et al. (2025), Nature Electronics",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12727521/",
+          "note": "Figure 2 and Integration fabrication document die origin, separate donor, transfer and compact encapsulation."
+        }
+      ]
+    },
+    {
+      "id": "scope-lensless-spad",
+      "title": "SCOPe · thin CMOS, optical filters and µLED array",
+      "family": "Optoelectronic hybrids",
+      "evidence": "partial",
+      "summary": "A wired cortical optical imager/stimulator using photon counters and lensless reconstruction. Public packaging details include a preprint and are not evidence of electrical neural recording or wireless operation.",
+      "devices": [
+        "137-scope-subdural-cmos-optical-probe"
+      ],
+      "variants": [
+        {
+          "id": "as-tested",
+          "label": "Wired optoelectronic interface",
+          "description": "Thinned CMOS, SPADs, dual-color LED groups, multilayer filter and lensless coded mask.",
+          "status": "documented"
+        },
+        {
+          "id": "coupon",
+          "label": "Coded-mask fluorescence coupon",
+          "description": "Passive bench target and external camera can isolate calibration and reconstruction errors without claiming the CMOS implant.",
+          "status": "reference"
+        },
+        {
+          "id": "wireless",
+          "label": "Optical/RF wireless redesign",
+          "description": "Not demonstrated for SCOPe. The reported digital link is wired.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Fabricate SPAD/digital die",
+          "detail": "External high-voltage CMOS combines SPADs and LED driver electronics with a wired readout.",
+          "tools": [],
+          "status": "external",
+          "check": "Track pixel count, inactive fractions, timing and test pads as distinct from LED count.",
+          "sourceIds": [
+            "scope-pre",
+            "scope-paper"
+          ]
+        },
+        {
+          "title": "Pattern optics on a separate stack",
+          "detail": "Build the coded chromium mask on a polymer spacer with electron-beam evaporation, UV contact lithography and wet pattern transfer; cut-outs are an outside excimer process. Deposit the interference filter separately on the CMOS branch before merging the two branches.",
+          "tools": [
+            "03-01",
+            "02-01",
+            "04-06",
+            "05-04",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Measure mask-to-sensor alignment and spacer thickness; characterize filter rejection on a separate witness.",
+          "sourceIds": [
+            "scope-pre"
+          ]
+        },
+        {
+          "title": "Assemble LED and sensor package",
+          "detail": "Flip-chip LEDs on the die, define absorbing structures around them, then represent thinning and flex interposer connection. Treat fragile die handling and optics alignment as separate yields.",
+          "tools": [
+            "08-04",
+            "08-05",
+            "08-10",
+            "04-08"
+          ],
+          "status": "documented",
+          "check": "Map nonemitting pixels and LEDs, assess datalink, and compare sensor background with excitation on/off.",
+          "sourceIds": [
+            "scope-pre",
+            "scope-paper"
+          ]
+        },
+        {
+          "title": "Verify an inert target",
+          "detail": "Feed a known fluorescent target through the lensless reconstruction pipeline, then vary standoff and contrast.",
+          "tools": [
+            "11-06",
+            "11-08",
+            "11-10",
+            "09-04",
+            "14-09"
+          ],
+          "status": "reference",
+          "check": "Export calibration map, raw counts, reconstruction residual and thermal bench readback separately.",
+          "sourceIds": [
+            "scope-pre"
+          ]
+        }
+      ],
+      "gaps": [
+        "130 nm HV CMOS supply and qualified multilayer optical coating are external. Preprint details are flagged; live implantation or wireless integration is not represented."
+      ],
+      "sources": [
+        {
+          "id": "scope-pre",
+          "title": "Pollmann et al., SCOPe preprint",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9934536/",
+          "note": "Device packaging figures and optical characterization specify the assembly stack."
+        },
+        {
+          "id": "scope-paper",
+          "title": "SCOPe, published Nature Electronics version",
+          "url": "https://doi.org/10.1038/s41928-024-01209-w",
+          "note": "Version of record confirms research instrument and implemented optical functions."
+        }
+      ]
+    },
+    {
+      "id": "tolstosheeva-flex-rigid",
+      "title": "Tolstosheeva flex-rigid ECoG · 124 sites",
+      "family": "Flexible cortical surface",
+      "evidence": "documented",
+      "summary": "A 16-stage virtual lab follows a published multilayer flex-rigid research array, moving the same virtual workpiece through thin films, interconnect, assembly and electrical check. The geometry is digitized from public figures, not production artwork.",
+      "devices": [],
+      "variants": [
+        {
+          "id": "bank",
+          "label": "Bank-local reference fixture",
+          "description": "Run an open on one of the four reference conductors; one 31-site bank becomes unavailable.",
+          "status": "reference"
+        },
+        {
+          "id": "shared",
+          "label": "Shared-reference fixture",
+          "description": "Compare the same defect with a shared reference path; the synthetic fixture does not prove clinical redundancy.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Form and pattern flexible stack",
+          "detail": "Model polymer insulation and sputtered routing. Keep the separate electroplated gold contact/pad finish external to the register. Track 124 recording contacts distinctly from four reference conductors.",
+          "tools": [
+            "02-01",
+            "02-07",
+            "03-03",
+            "04-01"
+          ],
+          "status": "documented",
+          "check": "Verify pad windows and exact site totals at the illustrated level.",
+          "sourceIds": [
+            "ecog"
+          ]
+        },
+        {
+          "title": "Form routing crossings and rigid interface",
+          "detail": "Keep insulated crossings and intentional connections distinct. The rigid piece is retained wafer silicon: backside etch and oxide clearance reveal the flex, with four connectors subsequently attached to the silicon. Registration and packaging tools are analogs only.",
+          "tools": [
+            "02-12",
+            "05-07",
+            "04-03",
+            "04-06",
+            "08-04",
+            "08-10"
+          ],
+          "status": "documented",
+          "check": "Audit the four reference conductors and crossing exercise without accepting reconstructed geometry as GDS.",
+          "sourceIds": [
+            "ecog"
+          ]
+        },
+        {
+          "title": "Compare reference topologies",
+          "detail": "Inject the same reference conductor open in each synthetic acquisition fixture.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "10-09"
+          ],
+          "status": "reference",
+          "check": "Compare 124 available channels against 93 in the bank-local case. Report synthetic waveforms separately from published EIS.",
+          "sourceIds": [
+            "ecog"
+          ]
+        }
+      ],
+      "gaps": [
+        "This public workflow has no exact reticle, calibrated layer variation or implantation claim. The virtual bank failure is an educational experiment."
+      ],
+      "sources": [
+        {
+          "id": "ecog",
+          "title": "Tolstosheeva et al. (2015), Sensors",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4327052/",
+          "note": "Fabrication sections and layout establish 124 recording sites, reference structure and the measurement context."
+        }
+      ],
+      "lab": "/simulations/flex-rigid-ecog-foundry/"
+    },
+    {
+      "id": "dong-soft-cuff",
+      "title": "Dong soft self-closing cuff · inert-mandrel lab",
+      "family": "Peripheral cuff",
+      "evidence": "documented",
+      "summary": "An 11-stage virtual lab separates a reported three-site phantom configuration from a larger comparison design. Voltage-dependent geometry is compared against published mean free-curvature measurements; geometric fit is not a force or surgical model.",
+      "devices": [],
+      "variants": [
+        {
+          "id": "published",
+          "label": "Published three-site soft cuff",
+          "description": "Use the measured-radius and impedance comparison case.",
+          "status": "documented"
+        },
+        {
+          "id": "comparison",
+          "label": "Virtual 28-site comparison",
+          "description": "The additional channels are a modeled design variant, not published measurements.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Represent active polymer/cuff stack",
+          "detail": "Track parylene and UV patterning, Ti/Au electron-beam evaporation and RIE separately from release. Spin-cast PEDOT:PSS recording sites are distinct from the electroformed PPy(DBS) actuator on gold. The register has no verified actuator plating module.",
+          "tools": [
+            "03-08",
+            "02-01",
+            "03-01",
+            "04-01",
+            "02-07",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Record cross-section and retained electrical routes before release.",
+          "sourceIds": [
+            "cuff"
+          ]
+        },
+        {
+          "title": "Constrain only with a virtual mandrel",
+          "detail": "Use measured curvature anchors for released geometry and a separately labeled teaching bound for the inert cylinder.",
+          "tools": [
+            "14-01",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Compare free vs constrained radius and the virtual wrap/reopen test without claiming contact pressure.",
+          "sourceIds": [
+            "cuff"
+          ]
+        },
+        {
+          "title": "Inspect electrical output",
+          "detail": "Track the same modeled channels after release and wrapping; compare reported and modeled spectra separately.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Confirm both continuity and impedance-frequency outputs; missing measured radii remain explicit.",
+          "sourceIds": [
+            "cuff"
+          ]
+        }
+      ],
+      "gaps": [
+        "No biological construct, clinical workflow, actuator force validation or production recipe is in scope."
+      ],
+      "sources": [
+        {
+          "id": "cuff",
+          "title": "Dong et al. (2024), Nature Materials",
+          "url": "https://doi.org/10.1038/s41563-024-01886-0",
+          "note": "Article, Figure 3 and source data support the free-curvature and cuff-geometry comparison."
+        }
+      ],
+      "lab": "/simulations/self-closing-cuff-foundry/"
+    },
+    {
+      "id": "axoft-soft-stack",
+      "title": "Fleuron soft depth probe · material demonstrator boundary",
+      "family": "Soft multilayer probes",
+      "evidence": "partial",
+      "summary": "The public clinical translation preprint describes a high-density ultrasoft implant interface; a separate material-platform paper gives a research stacking process. Do not transplant research stack rules into the human device config.",
+      "devices": [
+        "174-axoft-fleuron-ultrasoft-neural-probe"
+      ],
+      "variants": [
+        {
+          "id": "human",
+          "label": "Reported 128-channel acute study configuration",
+          "description": "Public registry and preprint anchor the use and channel count, not a manufacturing traveler.",
+          "status": "documented"
+        },
+        {
+          "id": "coupon",
+          "label": "Perfluorinated elastomer multilayer coupon",
+          "description": "Reference circuit on a temporary rigid support; insufficient to identify the exact finished probe.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Qualify substrate and materials",
+          "detail": "Treat formulation, primer and compatible process windows as part-specific incoming data. Common dielectric photoresists cannot stand in for an ultrasoft fluorinated elastomer.",
+          "tools": [],
+          "status": "external",
+          "check": "Record material identity and measure baseline storage modulus independently.",
+          "sourceIds": [
+            "fleuron",
+            "elastomer"
+          ]
+        },
+        {
+          "title": "Pattern a multilayer research coupon",
+          "detail": "Use a carrier to keep soft-film overlay and trace registration tractable. Treat interlayer adhesion and patterned site openings as separate verification events.",
+          "tools": [
+            "02-01",
+            "02-07",
+            "03-03",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Inspect registration and perform continuity before and after process release.",
+          "sourceIds": [
+            "elastomer"
+          ]
+        },
+        {
+          "title": "Measure interface with benign loads",
+          "detail": "Map contact IDs to a known dummy breakout, then compare dry, bending and soak impedance as separate states.",
+          "tools": [
+            "05-07",
+            "09-01",
+            "09-12",
+            "14-10",
+            "14-11"
+          ],
+          "status": "reference",
+          "check": "Record qualified/current meter setup, open/short yield and shift across the exposure.",
+          "sourceIds": [
+            "elastomer"
+          ]
+        }
+      ],
+      "gaps": [
+        "As-built release, film methods, formulation, device control plan and sterile manufacturing are unverified. The material analog is not a replica of the human device."
+      ],
+      "sources": [
+        {
+          "id": "fleuron",
+          "title": "Axoft et al. (2025), Fleuron clinical translation preprint",
+          "url": "https://doi.org/10.1101/2025.04.24.25326126",
+          "note": "Device variant and public study scope. Not peer reviewed."
+        },
+        {
+          "id": "elastomer",
+          "title": "Perfluorinated elastomer multilayer research platform",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38135719/",
+          "note": "Related research demonstrates soft dielectric multilayer 3D stacking. Epitomizes a platform, not the finished clinical probe."
+        },
+        {
+          "id": "study",
+          "title": "ClinicalTrials.gov protocol registration",
+          "url": "https://clinicaltrials.gov/study/NCT06673264",
+          "note": "Study identity only; no production method is implied."
+        }
+      ]
+    },
+    {
+      "id": "innp-nanoscale-spot",
+      "title": "SJTU INNP · local nano-site exposure",
+      "family": "Nanoprobe",
+      "evidence": "partial",
+      "summary": "The university reports a roughly 100 nm tip and sensing region exposed over about 40 nm. These specify the extent of the signal path, not a mask-manufacturing claim.",
+      "devices": [
+        "205-sjtu-implantable-nanoscale-neural-probe-innp"
+      ],
+      "variants": [
+        {
+          "id": "reported",
+          "label": "Published INNP geometry",
+          "description": "Reported tip and localized exposed site. No claims that another carbon-layer probe is identically fabricated.",
+          "status": "documented"
+        },
+        {
+          "id": "witness",
+          "label": "Oversized witness geometry",
+          "description": "Use a larger inert pattern to validate electrical isolation and measurement interpretation only.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Obtain verified tip and insulation",
+          "detail": "Treat the prototype tip, exact materials and nanoscale opening process as an external capability until the conference route is verified. A contact mask aligner, standard laser writer, and typical CAD layout are not evidence of controlled 40 nm tip exposure.",
+          "tools": [],
+          "status": "external",
+          "check": "Record supplier/lab process and challenge dimensional claims with traceable scale.",
+          "sourceIds": [
+            "sjtu"
+          ]
+        },
+        {
+          "title": "Characterize exposed port",
+          "detail": "Use FE-SEM or cross-section metrology only on representative witnesses. Beam imaging may modify the active surface and cannot establish electrochemistry.",
+          "tools": [
+            "13-01",
+            "13-02"
+          ],
+          "status": "reference",
+          "check": "Compare tip image with insulated sidewall; make length uncertainty explicit.",
+          "sourceIds": [
+            "sjtu"
+          ]
+        },
+        {
+          "title": "Check continuity and insulation in vitro fixture",
+          "detail": "Apply synthetic waveforms with a passive microfixture before interpreting a measured waveform. Record noise, leakage, and input impedance separately.",
+          "tools": [
+            "05-07",
+            "09-01",
+            "09-10",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "A simulated contact leak below the port appears as parasitic coupling, not an extra isolated readout.",
+          "sourceIds": [
+            "sjtu"
+          ]
+        }
+      ],
+      "gaps": [
+        "Public lab article gives limited device details; exact layer stack, free-tip release and implant protocol are not reconstructed."
+      ],
+      "sources": [
+        {
+          "id": "sjtu",
+          "title": "Shanghai Jiao Tong University, 2026 lab report",
+          "url": "https://news.sjtu.edu.cn/jdzh/20260209/219729.html",
+          "note": "Source research institution describes the accepted MEMS paper and tip/exposure geometry."
+        }
+      ]
+    },
+    {
+      "id": "sjtu-tir-nanotube",
+      "title": "SJTU optical/electrical nanotube probe",
+      "family": "Optoelectronic hybrids",
+      "evidence": "partial",
+      "summary": "The nanofiber core carries light and outer iridium oxide carries electrical signals; an optical isolation layer is distinct from the electrode insulation. This is not the INNP electrical-only route.",
+      "devices": [
+        "206-sjtu-opto-electrophysiology-nanotube-probe"
+      ],
+      "variants": [
+        {
+          "id": "tir",
+          "label": "Reported TIR-coated nanotube",
+          "description": "Laser-pulled structure with separate optical and electrical channels.",
+          "status": "documented"
+        },
+        {
+          "id": "control",
+          "label": "No-TIR comparison",
+          "description": "Bench comparison for optical leakage and light-correlated electrical artifacts, not an equivalent finished functional device.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pull coaxial tip",
+          "detail": "Laser-assisted pull is required for the reported nanotube. A maskless wafer writer and picosecond micromachining are not substitutes for a controlled puller.",
+          "tools": [],
+          "status": "external",
+          "check": "Confirm a concentric open cross-section and tip geometry against witness images.",
+          "sourceIds": [
+            "nano",
+            "sjtu"
+          ]
+        },
+        {
+          "title": "Build independent channels",
+          "detail": "Integrate the optical core and outer IrOx conductive layer with the reported optical confinement architecture. Register deposition positions are analogs only; the geometry and dielectric interface are unusually sensitive.",
+          "tools": [
+            "03-03",
+            "05-02",
+            "13-01"
+          ],
+          "status": "documented",
+          "check": "Inspect interface continuity with sacrificial cross-section and check circuit-path isolation.",
+          "sourceIds": [
+            "nano",
+            "sjtu"
+          ]
+        },
+        {
+          "title": "Compare optical/light artifacts on an inert bench",
+          "detail": "Use a known light command and synchronized dummy electrical trace, toggling the optical confinement branch in the simulation.",
+          "tools": [
+            "11-02",
+            "11-05",
+            "09-04",
+            "09-10"
+          ],
+          "status": "reference",
+          "check": "Report optical throughput and light-synchronous electrical residual separately.",
+          "sourceIds": [
+            "nano",
+            "sjtu"
+          ]
+        }
+      ],
+      "gaps": [
+        "Specialized puller and conformal nano-interface finishing are not established register capabilities. Optical and electrical process windows are unverified for this replica."
+      ],
+      "sources": [
+        {
+          "id": "nano",
+          "title": "Xu et al. (2024), ACS Nano",
+          "url": "https://doi.org/10.1021/acsnano.4c07379",
+          "note": "Publication identifies the optical/electrical architecture and artifact-control concept."
+        },
+        {
+          "id": "sjtu",
+          "title": "Shanghai Jiao Tong University, fabrication and characterization summary",
+          "url": "https://news.sjtu.edu.cn/jdzh/20240909/201670.html",
+          "note": "Figures describe laser pulling, nano-fiber and IrOx layer and TIR comparison."
+        }
+      ]
+    },
+    {
+      "id": "living-constructs",
+      "title": "Living constructs · no equipment-to-product route",
+      "family": "Scope boundary",
+      "evidence": "out-of-scope",
+      "summary": "The payload in these entries is a living neural or tissue-engineered construct, not a passive chip or electrode assembly. The equipment register alone cannot establish an end-to-end fabrication path, and the atlas does not outline biological production.",
+      "devices": [
+        "215-upenn-cullen-living-electrodes-axonal-tracts",
+        "216-upenn-micro-tenn-living-neural-networks",
+        "217-innervace-tissue-engineered-nigrostriatal-pathway",
+        "218-axonova-tissue-engineered-nerve-graft"
+      ],
+      "variants": [],
+      "steps": [],
+      "gaps": [
+        "Track any separately disclosed inert scaffold or electronics as a separate route. No biology procedures or production claims."
+      ],
+      "sources": [
+        {
+          "id": "tracts",
+          "title": "Serruya et al., engineered axonal tracts",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34045935/",
+          "note": "Primary research identifies living axonal tracts as the active component."
+        },
+        {
+          "id": "tenn",
+          "title": "Cullen lab, living micro-TENNs",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4652241/",
+          "note": "Primary study identifies the living neural construct."
+        },
+        {
+          "id": "path",
+          "title": "Engineered nigrostriatal pathway",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6416379/",
+          "note": "Primary work identifies a living pathway design."
+        },
+        {
+          "id": "graft",
+          "title": "Axon-based nerve graft research",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8610031/",
+          "note": "Primary work identifies the graft as a living tissue product."
+        }
+      ]
+    },
+    {
+      "id": "science-biohybrid-hardware-boundary",
+      "title": "Science biohybrid concepts · separate scaffold and electronics",
+      "family": "Scope boundary",
+      "evidence": "partial",
+      "summary": "The surface microwell experiment and proposed penetrating electronic biohybrid are different configurations. Only an inert patterned-shell analog is mapped here; neither a living payload nor a finished electronic biohybrid is inferred from the other.",
+      "devices": [
+        "20-science-biohybrid-cortical-engraftment-microwell",
+        "21-science-biohybrid-neuronal-embedded-penetrating-probe"
+      ],
+      "variants": [
+        {
+          "id": "published",
+          "label": "Surface microwell demonstration",
+          "description": "Company-hosted preprint describes the separate scaffold demonstration.",
+          "status": "documented"
+        },
+        {
+          "id": "concept",
+          "label": "Neuronal-embedded electronic architecture",
+          "description": "Architecture illustration only; no disclosed production route.",
+          "status": "external"
+        },
+        {
+          "id": "inert",
+          "label": "Inert patterned scaffold coupon",
+          "description": "Reference geometry to inspect cavity and wall consistency; does not represent any cells or payload.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Define inert layout analog",
+          "detail": "Compare a published surface array pictorial outline with a generic CAD well field. Tool assignment depends on feature resolution, sidewall and material rather than a photo match.",
+          "tools": [
+            "02-03",
+            "06-01",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Record cavity width, throat, wall continuity and pixel/voxel discretization separately.",
+          "sourceIds": [
+            "scaffold"
+          ],
+          "varies": [
+            "inert"
+          ]
+        },
+        {
+          "title": "Keep electronics concept unassigned",
+          "detail": "Do not transfer surface study dimensions or fabrication steps to the unreported embedded electronics.",
+          "tools": [],
+          "status": "external",
+          "check": "A design-specific primary source is required before assigning contacts, routing or release.",
+          "sourceIds": [
+            "concept"
+          ],
+          "varies": [
+            "concept"
+          ]
+        }
+      ],
+      "gaps": [
+        "No biological process, implant replication, electrode map or clinical use claim."
+      ],
+      "sources": [
+        {
+          "id": "scaffold",
+          "title": "Brown et al. (2024), surface biohybrid preprint",
+          "url": "https://doi.org/10.1101/2024.11.22.624907",
+          "note": "Disclosed surface demonstration is a different object from the embedded electronics concept."
+        },
+        {
+          "id": "concept",
+          "title": "Science Corporation, architecture disclosure",
+          "url": "https://science.xyz/news/biohybrid-neural-interfaces/",
+          "note": "Original company explanation and schematic, not a specification or process disclosure."
+        }
+      ]
+    },
+    {
+      "id": "mend-ceramic-nanodiscs",
+      "title": "MEND core–double-shell nanodiscs · materials route",
+      "family": "Inorganic particulate devices",
+      "evidence": "partial",
+      "summary": "This is a nanoparticle materials system, not a wired chip, package, or coil. The population of magnetoelectric ceramic nanodiscs has distribution-level characterization rather than individually addressed contacts.",
+      "devices": [
+        "132-mend-magnetoelectric-nanodiscs-2024"
+      ],
+      "variants": [
+        {
+          "id": "core",
+          "label": "Magnetite core control",
+          "description": "Parent disc establishes the uncoated material and geometric distribution.",
+          "status": "documented"
+        },
+        {
+          "id": "first-shell",
+          "label": "Cobalt-ferrite shell control",
+          "description": "Intermediate magnetic core–shell design without the final piezoelectric ceramic.",
+          "status": "documented"
+        },
+        {
+          "id": "mend",
+          "label": "Full ceramic core–double-shell material",
+          "description": "Adds BaTiO₃ as a piezoelectric outer shell; material-response characterization is separate from any biological result.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Identify the incoming magnetite template",
+          "detail": "Track disc population diameter, thickness and phase. Particle preparation is an outside inorganic materials capability, not a wafer route.",
+          "tools": [],
+          "status": "external",
+          "check": "Batch identity and sampled particle distribution should accompany geometry, not a single nominal diameter.",
+          "sourceIds": [
+            "materials"
+          ]
+        },
+        {
+          "title": "Distinguish coating interfaces",
+          "detail": "Model the first ferrite shell and a separate outer piezoelectric ceramic shell. The paper describes material growth, which cannot be substituted with a catalog planar ALD or sputter model.",
+          "tools": [],
+          "status": "external",
+          "check": "Check each intermediate population for geometry, phase and elemental distribution on independently prepared witnesses.",
+          "sourceIds": [
+            "materials"
+          ]
+        },
+        {
+          "title": "Compare measured material response",
+          "detail": "Use TEM and X-ray diffraction only for compatible material specimens; a magnetoelectric coupling instrument and inert calibrated fixture are external.",
+          "tools": [
+            "13-05",
+            "05-12"
+          ],
+          "status": "reference",
+          "check": "Compare measured response against modeled predictions. Do not turn simulated strain enhancement into experimental conversion efficiency.",
+          "sourceIds": [
+            "materials"
+          ]
+        }
+      ],
+      "gaps": [
+        "Register does not cover verified colloidal synthesis, shell growth or calibrated magnetoelectric particle metrology. No biological testing or administration is described."
+      ],
+      "sources": [
+        {
+          "id": "materials",
+          "title": "Magnetoelectric nanodiscs, Nature Nanotechnology article",
+          "url": "https://doi.org/10.1038/s41565-024-01798-9",
+          "note": "Figure 1 and materials sections distinguish single-core, first-shell and complete core–double-shell distributions and characterization."
+        }
+      ]
+    },
+    {
+      "id": "stairmed-wrs-and-ufine",
+      "title": "StairMed WRS · public electrode precedent vs sealed wireless systems",
+      "family": "Flexible threads and wireless packages",
+      "evidence": "partial",
+      "summary": "The published uFINE research module documents an electrode fabrication and assembly flow, but is not evidence that the wireless or power subsystem, package, or geometry of WRS and WRS02 follows the same process.",
+      "devices": [
+        "178-stairmed-wrs-ultraflexible-wireless-bci",
+        "181-stairmed-wrs02-256-channel-wireless-bci"
+      ],
+      "variants": [
+        {
+          "id": "ufine",
+          "label": "Published uFINE intraoperative wired research module",
+          "description": "Polyimide/metal multilayer with discrete flexible board and headstage. This is not the packaged WRS.",
+          "status": "documented"
+        },
+        {
+          "id": "wrs",
+          "label": "WRS early wireless system",
+          "description": "Investigator trial establishes system class, not internal fabrication.",
+          "status": "external"
+        },
+        {
+          "id": "wrs02",
+          "label": "WRS02 higher-channel generation",
+          "description": "Public WRS02 architecture and trial evidence do not validate reuse of first-generation masks or package.",
+          "status": "external"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Form polyimide/metal research stack",
+          "detail": "In the uFINE electrode methods, a carrier supports the base polyimide, patterned pad metallization, thin signal interconnects and top insulation. The product reticles remain unknown.",
+          "tools": [
+            "02-01",
+            "02-07",
+            "03-01",
+            "03-09"
+          ],
+          "status": "documented",
+          "check": "Check overlay across interconnect and pad levels; do not copy the academic traveler into either product lane.",
+          "sourceIds": [
+            "ufine"
+          ],
+          "varies": [
+            "ufine"
+          ]
+        },
+        {
+          "title": "Open and finish research contacts",
+          "detail": "A hard mask supports polyimide etching. Platinum and IrOx contact regions serve different design features in the published variants.",
+          "tools": [
+            "04-01",
+            "03-01",
+            "03-03",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Distinguish layer intent and check isolation before release.",
+          "sourceIds": [
+            "ufine"
+          ],
+          "varies": [
+            "ufine"
+          ]
+        },
+        {
+          "title": "Dice, connect and selectively release academic probe",
+          "detail": "The authors dice the substrate, solder the FPC to the pads, then release the active segment while retaining the proximal region. This differs from simply releasing the entire flex before connection.",
+          "tools": [
+            "04-07",
+            "08-04",
+            "04-06"
+          ],
+          "status": "documented",
+          "check": "Compare distal freedom and proximal support against the paper and confirm pin-map continuity.",
+          "sourceIds": [
+            "ufine"
+          ],
+          "varies": [
+            "ufine"
+          ]
+        },
+        {
+          "title": "Fence off sealed device manufacture",
+          "detail": "The uFINE research paper is not a production traveler for the wireless acquisition module. Require device-specific manufacturing and RF/barrier evidence for either WRS generation.",
+          "tools": [],
+          "status": "external",
+          "check": "Record exact revision of sensor, package, reader and interface before any claim of equivalence.",
+          "sourceIds": [
+            "ri",
+            "wreg"
+          ],
+          "varies": [
+            "wrs",
+            "wrs02"
+          ]
+        }
+      ],
+      "gaps": [
+        "Unknown product design rules, sealed package, internal electronics and full-system acceptance. The register blade-dicing and clean chemistry stations here are conceptual analogs only."
+      ],
+      "sources": [
+        {
+          "id": "ufine",
+          "title": "Large-scale single-neuron recording with uFINE (2026)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13249945/",
+          "note": "Fabrication and assembly sections document the separate academic uFINE probe module."
+        },
+        {
+          "id": "ri",
+          "title": "ClinicalTrials.gov, StairMed RISE",
+          "url": "https://clinicaltrials.gov/study/NCT06829212",
+          "note": "Scope of early wireless system research; not a mask or package source."
+        },
+        {
+          "id": "wreg",
+          "title": "Registry record, StairMed multicenter study",
+          "url": "https://www.chictr.org.cn/hvshowproject.html?id=302569&v=1.0",
+          "note": "Sponsor-confirmed study system. Does not disclose component process or authorize treating study aliases as identical."
+        },
+        {
+          "id": "hne",
+          "title": "StairMed HNE research product page",
+          "url": "https://www.stairmed.com/en/hnechaorouxingweinadianji.html",
+          "note": "Several research-electrode variants are listed separately from wireless-use systems."
+        }
+      ]
+    },
+    {
+      "id": "zhiran-ultra-boundary",
+      "title": "Zhiran LEAP · flexible electrodes and wireless collector",
+      "family": "Flexible threads and wireless packages",
+      "evidence": "proprietary",
+      "summary": "The study site and engineering team identify an over-100-channel intracortical interface with an implanted wireless acquisition module. No public line flow establishes geometry, flex materials, packaging chemistry or transmission modes at each process state.",
+      "devices": [
+        "184-zhiran-ultra-100-channel-flexible-bci-leap"
+      ],
+      "variants": [
+        {
+          "id": "leap",
+          "label": "LEAP study configuration",
+          "description": "Publicly identified wireless fully implanted system; exact production data not disclosed.",
+          "status": "external"
+        },
+        {
+          "id": "two-block",
+          "label": "Independent two-block electronics coupon",
+          "description": "A generic flex pinout and a wired dummy collector for a bench isolation test. Not a Zhiran product copy.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Keep interface and acquisition module separate",
+          "detail": "The public architecture has a soft distributed interface and a separate acquisition block. Keep unknowns open for contact materials, tip morphology, conductor pitch, feedthrough and RF link.",
+          "tools": [],
+          "status": "external",
+          "check": "Only identify study hardware at the level of evidence, not its inferred manufacturing stack.",
+          "sourceIds": [
+            "leap",
+            "early"
+          ],
+          "varies": [
+            "leap"
+          ]
+        },
+        {
+          "title": "Validate inert route analog",
+          "detail": "Use an independent flexible continuity coupon that mates to a dummy collection board. Any register tool choices here apply to the coupon alone.",
+          "tools": [
+            "02-01",
+            "03-03",
+            "08-11",
+            "05-07",
+            "09-04"
+          ],
+          "status": "reference",
+          "check": "Injected open and short faults are distinguishable across the chosen dummy contact map.",
+          "sourceIds": [
+            "early"
+          ],
+          "varies": [
+            "two-block"
+          ]
+        }
+      ],
+      "gaps": [
+        "No product mask, flex layup, ASIC, hermetic process, charging or protocol release identified. A coupon is not a fully integrated implant workflow."
+      ],
+      "sources": [
+        {
+          "id": "leap",
+          "title": "Beijing Tiantan Hospital, LEAP study launch",
+          "url": "https://www.bjtth.cn/Html/News/Articles/214568.html",
+          "note": "Clinical site identifies the sponsor and wireless product class for the LEAP trial."
+        },
+        {
+          "id": "early",
+          "title": "Jilin University hospital report",
+          "url": "https://news.jlu.edu.cn/info/1306/60022.htm",
+          "note": "Reports prior flexible electro­des and wireless acquisition module without disclosing manufacture."
+        }
+      ]
+    }
+  ]
+}

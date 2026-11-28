@@ -1,0 +1,832 @@
+{
+  "profiles": [
+    {
+      "id": "n1-prime-2024-boundary",
+      "title": "Neuralink N1 · 2024 PRIME manufacturing boundary",
+      "family": "Flexible intracortical threads",
+      "evidence": "proprietary",
+      "devices": [
+        "02-neuralink-n1"
+      ],
+      "summary": "A dated reconstruction of the 64-thread, 1,024-site investigational N1 from Neuralink’s 2024 disclosures. Follow the known film, electronics and package handoffs without filling in the proprietary fabrication route. This is neither the 2019 wired precursor nor the GB-PRIME 128-thread description.",
+      "variants": [
+        {
+          "id": "prime-64x16",
+          "label": "PRIME April–August 2024: 64 × 16",
+          "status": "documented",
+          "description": "The company published 64 threads and 1,024 total physical sites; Seo reports 16 sites at nominal 200 µm pitch. Preserve this dated description when comparing the other profile."
+        },
+        {
+          "id": "pi-stack-coupon",
+          "label": "Polyimide/metal/polyimide continuity coupon",
+          "status": "reference",
+          "description": "A non-implantable coupon can model overlay, open and short defects, and film delamination. Coarse test conductors and an external connector do not produce an N1 implant."
+        },
+        {
+          "id": "closed-enclosure-proxy",
+          "label": "Passive charging/window alignment demonstrator",
+          "status": "reference",
+          "description": "Use an inert case model, coupled dummy coils and a passive load to inspect alignment and heating tendencies. Neither the internal N1 coil nor its radio or heat paths are reproduced."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Freeze the public 64-thread geometry",
+          "status": "documented",
+          "detail": "Use separate IDs for ribbons, physical contacts and later acquired channels. A first-hand interview describes an approximate 16–84 µm thread width range and a quarter-sized package about 9 mm thick. Preserve reported ranges without tracing undisclosed coordinates: the full thread lengths, exposed site areas, reference net assignments, and complete routing are not known.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Count 64 × 16 = 1,024 physical locations; synthetic pad ordering is not an acquisition map.",
+          "sourceIds": [
+            "prime",
+            "seo"
+          ],
+          "varies": [
+            "prime-64x16",
+            "pi-stack-coupon"
+          ]
+        },
+        {
+          "title": "Receive wafer and define film stack witnesses",
+          "status": "documented",
+          "detail": "The company photographs thin-film arrays on silicon wafers. The 2024 interview gives two approximately 2 µm polyimide layers sandwiching about 0.4 µm of Ti/Pt/Au/Pt/Ti conductors. This specifies an illustrative cross-section, not a cure schedule, exact per-metal thickness, or actual release layer.",
+          "tools": [
+            "02-07",
+            "02-08",
+            "05-01",
+            "05-04",
+            "16-11"
+          ],
+          "check": "Keep deposition totals, individual layer values and adhesion as separate unknowns; compare a nominal 4.4 µm stack on a witness and the model separately.",
+          "sourceIds": [
+            "prime",
+            "seo"
+          ],
+          "varies": [
+            "prime-64x16",
+            "pi-stack-coupon"
+          ]
+        },
+        {
+          "title": "Pattern and open a reduced test structure",
+          "status": "reference",
+          "detail": "The interview describes about 2 µm conductors and iridium-oxide sites; it does not identify the writer, contact opening sequence or deposition method. Compare direct-write and projection only on a sacrificial coupon. Do not apply the MLA Mode II resolution spec as an overlay or final yield promise.",
+          "tools": [
+            "02-03",
+            "02-06",
+            "03-01",
+            "03-03",
+            "04-01",
+            "05-07"
+          ],
+          "check": "Flag conductor necks and shorts with witness metrology and independent continuity/isolation pads; no unmeasured pitch, etch or IrOx recipe is assumed.",
+          "sourceIds": [
+            "seo",
+            "prime"
+          ],
+          "varies": [
+            "pi-stack-coupon"
+          ]
+        },
+        {
+          "title": "Release, handle, terminate and bring up channels",
+          "status": "external",
+          "detail": "The current sacrificial interface, wafer release, thread capture, flex-to-feedthrough/chip attachment, assembly tolerances and revision-specific ASIC are not disclosed. The 2019 gold-stud shuttle and USB package are not evidence of any N1 operation.",
+          "tools": [],
+          "check": "In a virtual netlist an open conductor should remove one mapped site, while a deliberately modeled bank connection may remove multiple. Record native channel mapping as unknown.",
+          "sourceIds": [
+            "prime",
+            "jmir",
+            "tech"
+          ],
+          "varies": [
+            "prime-64x16",
+            "pi-stack-coupon"
+          ]
+        },
+        {
+          "title": "Represent the sealed implant and its wireless handoffs",
+          "status": "external",
+          "detail": "Custom low-power electronics, a sealed body, inductive charging and outbound data are public. Feedthrough layout and materials, ceramic window if any, seam or joining method, rechargeable cell, firmware, and factory test endpoints are not disclosed. No specific seam welder is claimed to make this enclosure.",
+          "tools": [],
+          "check": "In a block-level model, distinguish signal continuity, dummy-load power transfer and package integrity; passing one cannot qualify the other two.",
+          "sourceIds": [
+            "prime",
+            "tech"
+          ],
+          "varies": [
+            "prime-64x16",
+            "closed-enclosure-proxy"
+          ]
+        },
+        {
+          "title": "Compare independent reliability witnesses",
+          "status": "reference",
+          "detail": "The company illustrates a custom accelerated lifetime rack. The register can illustrate coupon electrical impedance, cyclic flex and soak drift, or qualitative dummy-load heating; these cannot reconstruct the proprietary aging rack or validate a target lifetime.",
+          "tools": [
+            "09-01",
+            "09-07",
+            "09-12",
+            "14-09",
+            "14-10",
+            "14-11"
+          ],
+          "check": "Archive the raw coupon traces and bound conditions. A disconnected net, rising coupling, case leak proxy and warm dummy coil are distinct cases, not one implant pass/fail metric.",
+          "sourceIds": [
+            "prime",
+            "tech"
+          ],
+          "varies": [
+            "pi-stack-coupon",
+            "closed-enclosure-proxy"
+          ]
+        }
+      ],
+      "gaps": [
+        "Exact wafer type/size, qualified film recipe, release process, mask set, physical channel map and electrode surface geometry are not released in the cited sources.",
+        "Custom IC manufacturing, packaging/interconnect, validated electromagnetic and thermal design, and device-level hermetic, biocompatibility and reliability tests require manufacturer evidence.",
+        "A register tool link indicates a candidate for a bench coupon or inspection only. The ordinary pinout and instrument aliases here do not imply availability of a Neuralink tool chain."
+      ],
+      "sources": [
+        {
+          "id": "prime",
+          "title": "Neuralink, PRIME Study Progress Update (April 2024)",
+          "url": "https://neuralink.com/updates/prime-study-progress-update/",
+          "note": "System overview and Figs. 2, 3 and 5: 64 threads, 1,024 sites, inductive power, inspected film-bearing silicon wafer, and maker-specific aging rack. No production traveler shown."
+        },
+        {
+          "id": "seo",
+          "title": "Neuralink engineer DJ Seo, 2024 interview, 02:03:33 and 02:11:42–02:15:00",
+          "url": "https://lexfridman.com/elon-musk-and-neuralink-team-transcript/",
+          "note": "First-hand but informal engineering description: 200 µm along-thread site pitch, 16 sites per thread, metal trace stack and approximate polymer thicknesses. Not a mask set or acceptance specification."
+        },
+        {
+          "id": "tech",
+          "title": "Neuralink, Technology: N1 implant",
+          "url": "https://neuralink.com/technology/",
+          "note": "Implant and charger descriptions establish sealed enclosure, low-power custom chips, rechargeable power and flexible threads; they do not disclose bonded interconnect, package process or radio design."
+        },
+        {
+          "id": "jmir",
+          "title": "Musk and Neuralink, research system (2019), Threads and Electronics",
+          "url": "https://www.jmir.org/2019/10/e16194/",
+          "note": "Threads, Fig. 1 and Tables 1–2 distinguish wafer-level trace patterning, contact coatings, flip-chip assembly, packaging and two wired prototype builds; not later N1 production."
+        },
+        {
+          "id": "uclh",
+          "title": "UCLH, GB-PRIME study description (July 2025)",
+          "url": "https://www.uclh.nhs.uk/news/uclh-evaluate-safety-and-functionality-neuralinks-brain-computer-interface-bci-technology",
+          "note": "What is Neuralink describes 128 threads with eight electrodes each, a round enclosure, wireless communication and a rechargeable battery for this study; no equivalent 2024 process or dimensions specified."
+        }
+      ]
+    },
+    {
+      "id": "n1-uk-2025-boundary",
+      "title": "Neuralink N1 · 2025 GB-PRIME boundary",
+      "family": "Flexible intracortical threads",
+      "evidence": "proprietary",
+      "devices": [
+        "02-neuralink-n1"
+      ],
+      "summary": "UCLH describes its GB-PRIME N1 as a round rechargeable implant with 128 threads and eight electrodes per thread. This is a dated study configuration, not a blanket replacement for all N1 variants or a public factory route.",
+      "variants": [
+        {
+          "id": "uk-128x8",
+          "label": "GB-PRIME public 128 × 8 geometry",
+          "status": "documented",
+          "description": "Track 128 distinct thread labels and eight physical sites per thread. The same total count as 2024 does not imply equal netlist, site pitch, or package."
+        },
+        {
+          "id": "prime-import",
+          "label": "Transfer the complete 2024 N1 design",
+          "status": "incompatible",
+          "description": "Do not import the 2024 thread pitch, widths, electrode-only geometry or flex hierarchy without a GB-PRIME-specific source; total contact count cannot resolve differences."
+        },
+        {
+          "id": "logical-coupon",
+          "label": "Electrical branch-count fixture",
+          "status": "reference",
+          "description": "Represent synthetic branch opens and gate missing acquisition channels without presuming the manufacturer’s crossbar, pinout or firmware."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Capture the institutional study configuration",
+          "status": "documented",
+          "detail": "Create a GB-PRIME record for 128 flexible threads with eight contacts along each thread and a round enclosure. No overall release drawing, tip coordinates or contact exposure is public in this source.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Verify 1,024 site IDs in 128 groups and preserve the different hierarchy from the 64-thread profile.",
+          "sourceIds": [
+            "uclh",
+            "prime"
+          ],
+          "varies": [
+            "uk-128x8",
+            "prime-import",
+            "logical-coupon"
+          ]
+        },
+        {
+          "title": "Stop at the private film and system manufacture",
+          "status": "external",
+          "detail": "Substrate details, mask hierarchy, conductor isolation, release and assembly procedures, chip process, package seal, charger and radio implementation are unconfirmed for this version. Similar functions are not evidence of shared part revisions.",
+          "tools": [],
+          "check": "Keep all implementation dimensions and process operations null rather than copying the 2024 values into the GB record.",
+          "sourceIds": [
+            "uclh",
+            "prime",
+            "tech"
+          ],
+          "varies": [
+            "uk-128x8",
+            "prime-import"
+          ]
+        },
+        {
+          "title": "Run a labeled synthetic connectivity comparison",
+          "status": "reference",
+          "detail": "Use load/continuity analogues and synthetic channels to illustrate consequences of a shared return fault or a missing cable group; use no trial data or manufacturer pinout.",
+          "tools": [
+            "01-01",
+            "05-07",
+            "09-06",
+            "09-04"
+          ],
+          "check": "With a teaching one-thread open, eight virtual sites are unavailable instead of sixteen. This checks only the assumed fault topology.",
+          "sourceIds": [
+            "uclh"
+          ],
+          "varies": [
+            "logical-coupon"
+          ]
+        }
+      ],
+      "gaps": [
+        "UCLH provides public architecture and study identity, not independently validated manufacturing, an as-built mechanical drawing or a traveler for 128 threads.",
+        "Never infer availability, product clearance, signal quality, or reliability from the same total of physical electrodes."
+      ],
+      "sources": [
+        {
+          "id": "uclh",
+          "title": "UCLH, GB-PRIME study description (July 2025)",
+          "url": "https://www.uclh.nhs.uk/news/uclh-evaluate-safety-and-functionality-neuralinks-brain-computer-interface-bci-technology",
+          "note": "What is Neuralink describes 128 threads with eight electrodes each, a round enclosure, wireless communication and a rechargeable battery for this study; no equivalent 2024 process or dimensions specified."
+        },
+        {
+          "id": "prime",
+          "title": "Neuralink, PRIME Study Progress Update (April 2024)",
+          "url": "https://neuralink.com/updates/prime-study-progress-update/",
+          "note": "System overview and Figs. 2, 3 and 5: 64 threads, 1,024 sites, inductive power, inspected film-bearing silicon wafer, and maker-specific aging rack. No production traveler shown."
+        },
+        {
+          "id": "tech",
+          "title": "Neuralink, Technology: N1 implant",
+          "url": "https://neuralink.com/technology/",
+          "note": "Implant and charger descriptions establish sealed enclosure, low-power custom chips, rechargeable power and flexible threads; they do not disclose bonded interconnect, package process or radio design."
+        }
+      ]
+    },
+    {
+      "id": "neuralink-2019-thread-prototype",
+      "title": "Neuralink research prototype · 2019 patterned threads and wired readout",
+      "family": "Flexible intracortical threads",
+      "evidence": "partial",
+      "devices": [],
+      "summary": "The 2019 research paper describes wafer-scale polyimide/Au thread fabrication, a parylene support film, coated electrodes and multilevel-stud/flip-chip integration into a wired research headstage. This comparator is not the sealed wireless N1. Nominal dimensions and benchmarks belong only to the paper.",
+      "variants": [
+        {
+          "id": "linear-edge",
+          "label": "Linear Edge geometry, 32 sites at 50 µm spacing",
+          "status": "documented",
+          "description": "Published Fig. 1A example. Its recording window and mask topology are distinct from Tree, even when routed into the same type of sensor region."
+        },
+        {
+          "id": "tree",
+          "label": "Tree geometry, 32 sites at 75 µm spacing",
+          "status": "documented",
+          "description": "Published Fig. 1B example. Treat as a separate geometry, not a universal ship configuration."
+        },
+        {
+          "id": "system-a",
+          "label": "System A: 1,536 system channels",
+          "status": "documented",
+          "description": "48 × 32 matches the lower nominal channel count. Table 2 and Electrophysiology distinguish 1,536 physical/system channels from 1,344 simultaneous and 19.3 kHz."
+        },
+        {
+          "id": "system-b",
+          "label": "System B: 3,072 system channels",
+          "status": "documented",
+          "description": "96 × 32 matches the higher count; Fig. 5 and Table 2 describe its 12-chip package, 3,072 simultaneous channels and 18.6 kHz."
+        },
+        {
+          "id": "pedot",
+          "label": "PEDOT:PSS contact-treatment cohort",
+          "status": "documented",
+          "description": "Fig. 1D reports a 1 kHz impedance distribution for 257 electrodes. No inference about which clinical N1 production revision uses this material."
+        },
+        {
+          "id": "irox",
+          "label": "IrOx contact-treatment cohort",
+          "status": "documented",
+          "description": "Fig. 1D reports a separate 1 kHz cohort of 588 electrodes. Comparing cohorts does not establish identical mask geometry or an interchangeable qualified coating recipe."
+        },
+        {
+          "id": "coarse",
+          "label": "Coarse passive stepper-to-direct-write comparison",
+          "status": "reference",
+          "description": "Widen teaching structures and pad spacing to compare predicted registration, continuity and site coverage. Do not claim the same die density or thread footprint."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Separate thread, contact, reference and sensor regions",
+          "status": "documented",
+          "detail": "The paper describes 48 or 96 threads, 32 sites per thread, several layouts, and separate-thread or on-thread references. Thread width was in the 5 to 50 µm range and nominal thickness 4–6 µm across builds. Ten 3,072-site thin films per wafer refers to the reported dense layout, not every variant.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Count physical site IDs, reference conductors, sensor pads and acquisition channels separately. Verify the 50 or 75 µm pitch only for the named Figure 1 geometry.",
+          "sourceIds": [
+            "jmir"
+          ],
+          "varies": [
+            "linear-edge",
+            "tree",
+            "system-a",
+            "system-b",
+            "coarse"
+          ]
+        },
+        {
+          "title": "Map the published stepper-defined Au/polyimide process",
+          "status": "documented",
+          "detail": "A stepped projection process defines submicron metal features; polyimide insulates gold conductors. The paper reports up to three insulating and two conductor layers. 02-06 is a projection candidate, not the identified manufacturer tool; 02-03 is only for a rescaled analog.",
+          "tools": [
+            "02-06",
+            "02-03",
+            "02-08",
+            "03-01",
+            "05-01",
+            "05-07"
+          ],
+          "check": "Use a witness for overlay, film stack thickness, opens, isolation and pad geometry. Deposition method, mask bias, cure and release details remain open.",
+          "sourceIds": [
+            "jmir"
+          ],
+          "varies": [
+            "linear-edge",
+            "tree",
+            "coarse"
+          ]
+        },
+        {
+          "title": "Represent exposed contact and treatment witnesses",
+          "status": "documented",
+          "detail": "Gold contacts receive either PEDOT:PSS or iridium oxide in the reported comparison. The potentiostat is a measurement candidate, not evidence of a qualified coating station. No process parameters are inferred from the impedance endpoint.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "check": "Use the 1 kHz benchmarks only as source references: approximately 37.0 kΩ (PEDOT:PSS) and 56.5 kΩ (IrOx), not acceptance limits.",
+          "sourceIds": [
+            "jmir"
+          ],
+          "varies": [
+            "pedot",
+            "irox"
+          ]
+        },
+        {
+          "title": "Keep the temporary carrier distinct from thread insulation",
+          "status": "documented",
+          "detail": "A parylene-C backing holds the fine threads during handling; bulk thread insulation is polyimide. Model an inert handling coupon and its release boundaries, not the robotic procedure.",
+          "tools": [
+            "03-08",
+            "12-01",
+            "16-11"
+          ],
+          "check": "Confirm backing, polymer layers and defined electrode windows are separate material/mesh IDs. A backing adhesion defect is distinct from a conductor open.",
+          "sourceIds": [
+            "jmir"
+          ],
+          "varies": [
+            "coarse"
+          ]
+        },
+        {
+          "title": "Align the film carrier and attach the custom chips",
+          "status": "documented",
+          "detail": "The 2019 assembly uses gold stud features on a PCB and a custom shuttle to locate the flexible film, then bonds chips to film and PCB contacts. The register’s flip-chip and bond tools are only analogues; actual die, bumps, fixture and approved bond stack are external.",
+          "tools": [
+            "08-01",
+            "08-04",
+            "08-06"
+          ],
+          "check": "Check stud/film fiducial overlap, open/short matrix and a sacrificial bond witness before treating a synthetic channel as connected.",
+          "sourceIds": [
+            "jmir"
+          ],
+          "varies": [
+            "system-a",
+            "system-b",
+            "coarse"
+          ]
+        },
+        {
+          "title": "Assemble the wired research headstage",
+          "status": "documented",
+          "detail": "The prototype combines custom ASICs, FPGA/support electronics, a titanium case with parylene-C coating and USB-C for wired data and power. This is not a validated N1 enclosure or its link architecture.",
+          "tools": [
+            "08-11",
+            "08-12",
+            "16-13"
+          ],
+          "check": "Trace input net to its digitizer then to a labeled USB stream. Keep the PCB mockup and case visualization separate from the unreleased HDI board and active parts.",
+          "sourceIds": [
+            "jmir"
+          ],
+          "varies": [
+            "system-a",
+            "system-b"
+          ]
+        },
+        {
+          "title": "Verify acquisition bookkeeping on a synthetic source",
+          "status": "reference",
+          "detail": "Replay one known bench waveform per modeled input. Use the paper’s system-specific capacities and sample rates only to format teaching output, not to claim measured device performance.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "01-05"
+          ],
+          "check": "System A may select only 1,344 simultaneous channels in the paper, while B reports all 3,072; omitted data is different from a disconnected contact.",
+          "sourceIds": [
+            "jmir"
+          ],
+          "varies": [
+            "system-a",
+            "system-b",
+            "coarse"
+          ]
+        }
+      ],
+      "gaps": [
+        "No mask files, complete traveler, exact coating process or stepper/tool qualification are published in the paper.",
+        "A traced film and package do not substitute for custom ASIC supply, custom alignment/shuttle fixtures or the architecture-specific board stack.",
+        "The two geometry examples, two contact treatments and two detector packages are separate observed facets. Their arbitrary Cartesian combinations were not all documented."
+      ],
+      "sources": [
+        {
+          "id": "jmir",
+          "title": "Musk and Neuralink, research system (2019), Threads and Electronics",
+          "url": "https://www.jmir.org/2019/10/e16194/",
+          "note": "Threads, Fig. 1 and Tables 1–2 distinguish wafer-level trace patterning, contact coatings, flip-chip assembly, packaging and two wired prototype builds; not later N1 production."
+        },
+        {
+          "id": "prime",
+          "title": "Neuralink, PRIME Study Progress Update (April 2024)",
+          "url": "https://neuralink.com/updates/prime-study-progress-update/",
+          "note": "System overview and Figs. 2, 3 and 5: 64 threads, 1,024 sites, inductive power, inspected film-bearing silicon wafer, and maker-specific aging rack. No production traveler shown."
+        }
+      ]
+    },
+    {
+      "id": "connexus-module-boundary",
+      "title": "Paradromics Connexus · cortical module and transceiver boundary",
+      "family": "Microwire-to-electronics integration",
+      "evidence": "proprietary",
+      "devices": [
+        "09-paradromics-connexus-acute-first-in-human"
+      ],
+      "summary": "The approximately 1 cm circular cortical module provides 421 PtIr electrodes at reported 300 µm spacing, described as sampling about 1.5 mm below the surface. Public sources show the signal handoff to a sealed transceiver but do not reveal the commercial-intent assembly traveler. The Argo research recorder is a separate atlas route.",
+      "variants": [
+        {
+          "id": "circular-421",
+          "label": "Circular 421-electrode clinical-study design",
+          "status": "documented",
+          "description": "Pin the current company description and 2024 circular photo. Count and pitch are published; the circular truncation/coordinate map, tip profile and exact thickness remain unresolved."
+        },
+        {
+          "id": "bench-wire",
+          "label": "Reduced rigid wire/holder fixture",
+          "status": "reference",
+          "description": "A small labeled geometry analog tests pitch bookkeeping, wire coplanarity, conduction and isolation using a dummy interface. It cannot reproduce the device’s contacts or fits."
+        },
+        {
+          "id": "dummy-link",
+          "label": "Separate optical data and inductive power link",
+          "status": "reference",
+          "description": "Use an inert module/lead/load and isolated optical TX/RX demonstration. Not the Connexus waveform, near-infrared signal budget, power or package validation."
+        },
+        {
+          "id": "argo-copy",
+          "label": "Insert the Argo compression-bond flow into Connexus",
+          "status": "incompatible",
+          "description": "Commercial device disclosure does not support this. Argo’s stochastic PtIr bundle, X-FAB recording ASIC, reversible press and wired fiber link are not a Connexus parts list."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Freeze the public geometry and external hardware graph",
+          "status": "documented",
+          "detail": "Model arithmetic and envelopes: 421 sites, nominal 300 µm spacing, reported 1.5 mm recording depth, and a circular cortical module approximately 1 cm across. Site location/order, taper and conductive area stay unspecified. The 1.5 mm is not automatically a wire stock length or manufacturing tolerance.",
+          "tools": [
+            "01-01",
+            "12-01"
+          ],
+          "check": "Verify that CAD site identifiers are not electrical channel identifiers; only a reconstruction can contain an explicit 421-point layout.",
+          "sourceIds": [
+            "conn",
+            "spacing",
+            "photo"
+          ],
+          "varies": [
+            "circular-421",
+            "bench-wire"
+          ]
+        },
+        {
+          "title": "Stop at private microwire processing and placement",
+          "status": "external",
+          "detail": "Current device PtIr is public. Incoming wire finish, insulation or bare region, glass/ceramic anchoring, package array assembly, contact forming, joining, and part tolerances are not identified for this module. Do not transfer Argo plasma, ALD or electro-sharpening parameters to Connexus.",
+          "tools": [],
+          "check": "No guessed operations receive a production status. Keep contact exposure and placement/yield limits unknown.",
+          "sourceIds": [
+            "photo",
+            "materials",
+            "argo"
+          ],
+          "varies": [
+            "circular-421",
+            "argo-copy"
+          ]
+        },
+        {
+          "title": "Inspect an inert mechanical/electrical coupon",
+          "status": "reference",
+          "detail": "A custom holder demonstrates pitch and tip-height errors using nonfunctional wire representations; an alternate electrical coupon checks opens and shorts at an exposed diagnostic pad. Material, finish and any micromachined fixture must be selected separately.",
+          "tools": [
+            "04-11",
+            "05-02",
+            "05-07",
+            "12-01",
+            "13-01"
+          ],
+          "check": "A recessed wire and a short are separate failure modes; use microscopy or profilometry for geometry and continuity/isolation for the circuit. External contact-parallel tolerance stays unmeasured.",
+          "sourceIds": [
+            "spacing",
+            "photo",
+            "argo"
+          ],
+          "varies": [
+            "bench-wire"
+          ]
+        },
+        {
+          "title": "Stop at module junction, flexible lead and package seal",
+          "status": "external",
+          "detail": "The sources distinguish module, flexible lead and implanted transceiver and claim hermetic design, but do not identify the feedthrough stack, ceramic–metal joining, cable construction, ASIC, sealing process or qualification limits. A CAD perimeter and a test tool cannot infer proprietary packaging.",
+          "tools": [],
+          "check": "Track pre- and post-package continuity, strain transition, and leak as separate evidence requirements. Never infer a physical seal from a missing measurement.",
+          "sourceIds": [
+            "conn",
+            "materials"
+          ],
+          "varies": [
+            "circular-421",
+            "argo-copy"
+          ]
+        },
+        {
+          "title": "Trace separate optical data and inductive-power handoffs",
+          "status": "documented",
+          "detail": "The flex passes data to a transceiver; the company separately describes a near-infrared optical path to the external unit and inductive power. Neither implies that fixture photometry or a network analyzer is the factory tester.",
+          "tools": [
+            "01-01",
+            "09-04",
+            "09-07",
+            "09-08"
+          ],
+          "check": "In a dummy-load model distinguish lost optical signal from lost power, and classify missing link-budget information as missing rather than zero.",
+          "sourceIds": [
+            "conn"
+          ],
+          "varies": [
+            "dummy-link",
+            "circular-421"
+          ]
+        },
+        {
+          "title": "Demonstrate bounded package-test analogues",
+          "status": "reference",
+          "detail": "An isolated weld/seal witness and a separate inert test cell can illustrate perimeter/tool reach, a helium test trace, flex endurance, or electrical drift. The pressure methods are not interchangeable; an external soak, gross seal demo and calibrated leak result answer different questions.",
+          "tools": [
+            "08-08",
+            "08-09",
+            "09-01",
+            "09-12",
+            "14-10",
+            "14-11"
+          ],
+          "check": "Require a qualified witness or synthetic trace label for each measurement. Do not extrapolate patient safety, longevity or validated performance from a virtual test.",
+          "sourceIds": [
+            "conn",
+            "materials"
+          ],
+          "varies": [
+            "bench-wire",
+            "dummy-link"
+          ]
+        }
+      ],
+      "gaps": [
+        "No as-built wire array CAD, mounting/carrier recipe, connector drawings, channel map, adhesive/join process, or chip files in the cited product material.",
+        "No named machine at the site register is equipment-proven for current Connexus wire processing or package fabrication.",
+        "Argo data are not Connexus measurements; medical claim, revision and bench qualifiers must stay attached to their sources."
+      ],
+      "sources": [
+        {
+          "id": "conn",
+          "title": "Paradromics, Connexus device and system architecture",
+          "url": "https://paradromics.com/connexus/",
+          "note": "Product architecture and data-link sections: 421 contacts, 1.5 mm below surface, sealed assembly, flexible lead, chest transceiver, near-infrared optical data and inductive power. The page distinguishes investigational use from marketing authorization."
+        },
+        {
+          "id": "spacing",
+          "title": "Paradromics, SfN 2025 Part 2 (published 2026)",
+          "url": "https://paradromics.com/blog/paradromics-sfn-part-2/",
+          "note": "Figure 3 discussion identifies a two-dimensional array at 300 µm spacing and uniform reported 1.5 mm recording depth. The source does not supply tip registration or an as-built electrode map."
+        },
+        {
+          "id": "photo",
+          "title": "Paradromics, circular cortical module (May 2024)",
+          "url": "https://paradromics.com/blog/neurotech-that-lasts/",
+          "note": "Photo and design description establish an approximately 1 cm circular module and platinum–iridium interface; discussion identifies metals/ceramics, without a continuous fabrication record."
+        },
+        {
+          "id": "materials",
+          "title": "Paradromics, platform material and package design (July 2026)",
+          "url": "https://paradromics.com/blog/building-brain-computer-interfaces-3-pillars/",
+          "note": "Company-authored materials section describes solid PtIr electrodes and hermetic packaging. It neither discloses the constituent joining steps nor establishes quantitative seal acceptance criteria."
+        },
+        {
+          "id": "argo",
+          "title": "Sahasrabuddhe et al. (2021), Argo wiring + CMOS methods",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8607496/",
+          "note": "Distinct published recorder: Fig. 2 and Methods report wire-bundle preparation, PtIr, discrete CMOS sensor and reversible compressive interconnect. Neither the method nor chip/readout dimensions establish a Connexus process."
+        }
+      ]
+    },
+    {
+      "id": "layer7t-cleared-assembly",
+      "title": "Precision Layer 7-T · cleared passive array and qualification boundary",
+      "family": "Flexible cortical surface arrays",
+      "evidence": "partial",
+      "devices": [
+        "42-precision-layer-7-cortical-interface"
+      ],
+      "summary": "The FDA 510(k) summary documents the K242618 passive 1,024-contact assembly, its sixteen 64-channel ribbons, DIN breakout yokes and optional stand, plus finished-device tests. Research 529/1,024 fabrication is a separate atlas route. The cleared array is not the planned chronic wireless BCI.",
+      "variants": [
+        {
+          "id": "k242618",
+          "label": "K242618 Layer 7-T, 1,024-contact passive assembly",
+          "status": "documented",
+          "description": "FDA summary identifies a two-layer polyimide structure with platinum electrodes and traces, 400 µm spacing and a 50–500 µm range of contact diameters. It does not disclose the order or map of every contact diameter."
+        },
+        {
+          "id": "one-yoke",
+          "label": "Individual 64-channel DIN breakout witness",
+          "status": "reference",
+          "description": "Use one synthetic ribbon group and a known test map to demonstrate breakout continuity; do not claim a 64-channel Layer 7-T product."
+        },
+        {
+          "id": "no-wireless",
+          "label": "Treat Layer 7-T as a fully implanted wireless BCI",
+          "status": "incompatible",
+          "description": "The cleared configuration is passive with no software or wireless interface. The future wireless system is not covered by the cited clearance."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Receive unidentified film process outputs",
+          "status": "external",
+          "detail": "At the wafer-level input, stop at polyimide/passivation, platinum electrodes, conductors and exposed windows. The FDA summary does not establish mask topology, film layer thickness, resist, chamber chemistry, release method or trace metallurgy. Do not copy the research hard-mask or trace-metal recipe into this product record.",
+          "tools": [],
+          "check": "Require revision-controlled instructions to advance a manufacturing traveler; only reported final construction can be used in the virtual model.",
+          "sourceIds": [
+            "fda",
+            "paper"
+          ],
+          "varies": [
+            "k242618",
+            "no-wireless"
+          ]
+        },
+        {
+          "title": "Represent the passive array and backside pocket",
+          "status": "documented",
+          "detail": "K242618 describes the two polyimide layers and platinum electrodes, a backside polyimide pocket attached by silicone, and gold radiopaque markers embedded in the adhesive. Do not equate the source’s accessory description with a manufacturing alignment plan or infer the paper’s bonding chemistry.",
+          "tools": [
+            "01-01",
+            "12-01",
+            "05-02"
+          ],
+          "check": "Keep pocket keep-out, marker clearance, conductor breakage and active-contact window obstruction as different fixture faults. Do not infer patient outcomes.",
+          "sourceIds": [
+            "fda",
+            "paper"
+          ],
+          "varies": [
+            "k242618"
+          ]
+        },
+        {
+          "title": "Map film to ribbons, PCB and connector breakout",
+          "status": "documented",
+          "detail": "The cleared headstage consists of a rigid PCB package linked via sixteen 64-channel ribbons; the FDA summary also describes DIN breakout yokes and an optional yoke stand. The passive interface is not a recorder. A virtual wiring map must disclose synthetic order and keep the actual connector pinout unknown.",
+          "tools": [
+            "01-01",
+            "08-11",
+            "16-13"
+          ],
+          "check": "Check 16 × 64 = 1,024 possible array paths in the teaching graph. Deliberately disconnect one synthetic ribbon to isolate the unavailable group; this is not a device fault diagnosis.",
+          "sourceIds": [
+            "fda"
+          ],
+          "varies": [
+            "k242618",
+            "one-yoke",
+            "no-wireless"
+          ]
+        },
+        {
+          "title": "Check the virtual interfaces independently",
+          "status": "reference",
+          "detail": "The FDA performance table reports dimensional, durability, electrochemical/continuity, platinum dissolution, noise, reliability and compatibility categories. Our modeled checks are easier: open/short mapping, dry connector excursion and isolated saline-EIS concepts on a nonmedical coupon.",
+          "tools": [
+            "05-07",
+            "09-01",
+            "09-04",
+            "09-06",
+            "09-12",
+            "14-01",
+            "14-10",
+            "14-11"
+          ],
+          "check": "Keep continuity, partial resistance, cross-channel short, and soak drift fields separate. No pass/fail threshold is imported from research cohorts or a regulatory summary.",
+          "sourceIds": [
+            "fda"
+          ],
+          "varies": [
+            "k242618",
+            "one-yoke"
+          ]
+        },
+        {
+          "title": "Stop at sterile barrier, shelf life and controlled release",
+          "status": "external",
+          "detail": "The FDA summary documents validated packaging categories and ethylene-oxide sterilization for the cleared product. The equipment register does not supply that qualification; its steam autoclave cannot substitute for an ethylene-oxide process or released barrier system. Clinical and regulatory manufacturing records lie outside this virtual map.",
+          "tools": [],
+          "check": "A labeled demo fixture never receives sterile, clinically compatible or FDA-cleared status. Document only what the actual regulated manufacturer submitted and what remains unknown.",
+          "sourceIds": [
+            "fda",
+            "release"
+          ],
+          "varies": [
+            "k242618",
+            "no-wireless"
+          ]
+        }
+      ],
+      "gaps": [
+        "Exact process stack, mask set, pinout, channel-class geometry, wire and PCB assembly details, adhesives specification and acceptance/yield reports are not disclosed by the 510(k) summary.",
+        "Standard bench test tools are context only; packaging validation, ethylene-oxide sterilization qualification, biocompatibility work and production acceptance require controlled external facilities.",
+        "Do not merge published research modular arrays or the in-development permanent wireless BCI into the passive commercial record."
+      ],
+      "sources": [
+        {
+          "id": "fda",
+          "title": "FDA K242618 clearance summary and decision, March 30, 2025",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf24/K242618.pdf#page=5",
+          "note": "PDF pp. 5–6 describe the passive 1,024-site film/ribbon/yoke architecture. PDF pp. 11–14 document pitch, contact diameter range, and nonclinical assembly, electrical, package and sterilization test categories. It is not a process traveler."
+        },
+        {
+          "id": "release",
+          "title": "Precision, public announcement of Layer 7 clearance (April 2025)",
+          "url": "https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array",
+          "note": "Explains that the cleared temporary-use array is one component, not clearance for the permanent wireless BCI system in development."
+        },
+        {
+          "id": "paper",
+          "title": "Hettick et al., published Layer 7 research arrays (2025)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13278958/",
+          "note": "Figure 1 and Methods document distinct 529- and 1,024-channel research arrays. The research methods cannot be assigned to the K242618 production assembly without revision-specific evidence."
+        }
+      ]
+    }
+  ]
+}

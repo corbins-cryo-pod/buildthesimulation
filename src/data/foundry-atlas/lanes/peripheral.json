@@ -1,0 +1,3275 @@
+{
+  "profiles": [
+    {
+      "id": "pni-time",
+      "title": "TIME-4H | folded thin film",
+      "family": "Transverse thin film",
+      "evidence": "documented",
+      "summary": "Follow the Freiburg TIME-4H from a flat silicon-supported laminate to two opposed faces and a cabled 16-net output. The original 2010 TIME and this later build are not interchangeable.",
+      "devices": [
+        "06-time-transverse-intrafascicular-multichannel-electrode"
+      ],
+      "variants": [
+        {
+          "id": "h4",
+          "label": "TIME-4H, 2021",
+          "description": "Fourteen independent 80 µm active sites plus two grouped ground nets; seven active sites per face.",
+          "status": "documented"
+        },
+        {
+          "id": "early",
+          "label": "Original TIME, 2010",
+          "description": "Earlier family: the PI/Pt construction is documented, but the 4H contact count, ground pattern and SIROF finish must not be backfilled.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lay out the two faces",
+          "detail": "On the flat layout distinguish crossings from contacts. Each 4H side has a 0.75 mm site pitch; the opposing face shifts by 0.375 mm. Ground apertures belong to a common net on that side.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "A mask with 109 separate ground wires is invalid; the openings form one connected ground per face.",
+          "sourceIds": [
+            "h4"
+          ],
+          "varies": [
+            "h4"
+          ],
+          "only": [
+            "h4"
+          ]
+        },
+        {
+          "title": "Form the polymer and metal laminate",
+          "detail": "The silicon wafer is a temporary support. The 4H uses polyimide, Pt conductors and a SiC adhesion promoter. Registered deposition and patterning tools are candidates, not a transferred masking sequence.",
+          "tools": [
+            "02-07",
+            "02-01",
+            "03-03"
+          ],
+          "status": "documented",
+          "check": "Compare contact-to-terminal continuity before opening the contacts.",
+          "sourceIds": [
+            "h4",
+            "orig"
+          ]
+        },
+        {
+          "title": "Keep the original TIME branch separate",
+          "detail": "The original report establishes a PI-insulated platinum thin film and experimental interface characterization, but does not certify the later 4H build. Continue the early branch only with results attributable to this version.",
+          "tools": [
+            "02-12",
+            "09-01"
+          ],
+          "status": "reference",
+          "check": "Do not report 14 independent contacts, grouped SIROF grounds or a 16-wire cable as properties proven for the original article.",
+          "sourceIds": [
+            "orig"
+          ],
+          "varies": [
+            "early"
+          ],
+          "only": [
+            "early"
+          ]
+        },
+        {
+          "title": "Expose and finish the contacts",
+          "detail": "RIE opens the insulation; the 4H uses sputtered iridium oxide on the active areas. Keep the ground openings separate from active contact area in the data model.",
+          "tools": [
+            "04-01",
+            "03-03",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Reject blocked apertures and an aperture reaching two distinct nets.",
+          "sourceIds": [
+            "h4"
+          ],
+          "varies": [
+            "h4"
+          ],
+          "only": [
+            "h4"
+          ]
+        },
+        {
+          "title": "Peel and fold the flat article",
+          "detail": "Peeling off silicon and folding the U-shaped film into the assembled L geometry places sites on opposite sides. Folding reverses the viewing orientation but does not renumber the wires.",
+          "tools": [
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Verify seven active sites and one ground per face after flipping the sample.",
+          "sourceIds": [
+            "h4"
+          ],
+          "varies": [
+            "h4"
+          ],
+          "only": [
+            "h4"
+          ]
+        },
+        {
+          "title": "Connect ceramic and cable",
+          "detail": "The publication uses a screen-printed ceramic and microflex interconnection, then a 16-wire helically wound MP35N cable, silicone protection and a connector. No qualified ceramic-print/MFI line is identified here.",
+          "tools": [],
+          "status": "external",
+          "check": "Keep ceramic, cable and connector sourcing explicit; do not substitute a soldered film by default.",
+          "sourceIds": [
+            "h4"
+          ],
+          "varies": [
+            "h4"
+          ],
+          "only": [
+            "h4"
+          ]
+        },
+        {
+          "title": "Inspect the protected interface",
+          "detail": "Represent cable termination and connector-side silicone protection separately from the porous contact face. Use a passive load and test fixture for endpoint mapping.",
+          "tools": [
+            "08-10",
+            "08-12",
+            "09-03",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "A swapped left/right contact remains conductive but fails the expected site-to-pin identity.",
+          "only": [
+            "h4"
+          ]
+        }
+      ],
+      "gaps": [
+        "No production masks, qualified film thicknesses, MFI tooling, bond recipe, or calibrated interface model.",
+        "The output is a passive folded interface, not the separate STIMEP controller or 64 independently acquired neural channels."
+      ],
+      "sources": [
+        {
+          "id": "h4",
+          "title": "2021 TIME-4H assembly and thin film",
+          "url": "https://www.mdpi.com/1424-8220/21/21/7219",
+          "note": "Methods §§2.2.1–2.2.2 and Fig. 2: stack, openings, fold, references, ceramic interconnect and cable."
+        },
+        {
+          "id": "orig",
+          "title": "Boretius et al., original TIME (2010)",
+          "url": "https://doi.org/10.1016/j.bios.2010.05.010",
+          "note": "Original PI/Pt architecture; not a source for the 4H geometry."
+        }
+      ]
+    },
+    {
+      "id": "pni-spiral",
+      "title": "Self-sizing silicone spiral cuff | CWRU / Ardiem",
+      "family": "Peripheral cuffs",
+      "evidence": "partial",
+      "summary": "A cuff is built around a flat conductor layout, then allowed to curl. A visible contact need not be an independently addressable channel; the clinical research deployment and vendor options are tracked separately.",
+      "devices": [
+        "10-spiral-nerve-cuff-electrode-helical",
+        "13-cwru-spiral-cuff-radial-nerve-sensory-amputees"
+      ],
+      "variants": [
+        {
+          "id": "ind",
+          "label": "Standard radial, independent circuits",
+          "description": "Ardiem lists one to four radial Pt contacts, 2–10 mm standard inner diameters and a special 1 mm option; not a verified Cartesian product of every combination.",
+          "status": "documented"
+        },
+        {
+          "id": "serial",
+          "label": "Monopolar research wiring",
+          "description": "Christie describes four physical contacts in series on some one-channel cuffs.",
+          "status": "documented"
+        },
+        {
+          "id": "tan",
+          "label": "Tan radial research example",
+          "description": "One four-contact, 4 mm spiral is distinguished from the eight-contact FINE in the same study.",
+          "status": "documented"
+        },
+        {
+          "id": "axial",
+          "label": "Axial or daisy-chained special",
+          "description": "Ardiem lists custom topologies up to six circuits. Exact combinations are a vendor decision, not freely interchangeable.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Define the circumference and circuits",
+          "detail": "Choose the cuff diameter, contact orientation, return path and actual number of independent wires. Save contact locations separately from pin identities.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "reference",
+          "check": "A shared conductor reduces addressable circuits even if all metal islands remain visible.",
+          "sourceIds": [
+            "ardi",
+            "christ",
+            "tan"
+          ]
+        },
+        {
+          "title": "Embed conductors on a flat sheath",
+          "detail": "The original CWRU design embeds conductors in a self-curling insulating sheath. In the documented manufacturer family Pt contacts connect to insulated coiled leads. The contemporary joint process is not disclosed.",
+          "tools": [
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Record Pt and connector identity for the vendor option; do not transfer those dimensions to the historical prototype.",
+          "sourceIds": [
+            "nap",
+            "ardi"
+          ]
+        },
+        {
+          "title": "Bias the laminate to curl",
+          "detail": "Naples describes bonding stretched and unstretched silicone layers. Model a residual-strain mismatch rather than commanding all diameters to close on the same fixed radius.",
+          "tools": [
+            "06-10",
+            "06-11"
+          ],
+          "status": "documented",
+          "check": "A no-mismatch teaching coupon should not self-roll through differential strain alone.",
+          "sourceIds": [
+            "nap"
+          ]
+        },
+        {
+          "title": "Route and protect leads",
+          "detail": "The documented commercial construction has insulated 316 stainless leads coiled in silicone tubing. Flying leads and specific connector terminations are options, not one universal connector.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "Verify pin count from the ordered topology, not metal contact count.",
+          "sourceIds": [
+            "ardi"
+          ]
+        },
+        {
+          "title": "Mandrel and isolation test",
+          "detail": "Inspect the released cuff both without constraint and on an inert mandrel. Measure lead-to-contact continuity, inter-net isolation and continuity after repeated gentle flex in a fixture.",
+          "tools": [
+            "12-01",
+            "09-03",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "A cuff can pass electrical continuity and fail mechanical closure, or pass closure and fail isolation."
+        }
+      ],
+      "gaps": [
+        "No manufacturer lead-joining traveler or lot-specific curl tolerances. Mandrel fit is not pressure safety, long-term stability or recruitment selectivity.",
+        "The electrode family and the upper-limb deployment share a profile; they are not counted as two independently reconstructed foundries."
+      ],
+      "sources": [
+        {
+          "id": "nap",
+          "title": "Naples et al., spiral cuff design and manufacture",
+          "url": "https://doi.org/10.1109/10.8670",
+          "note": "1988 original design: self-sizing, sheath mechanism, formation and validation."
+        },
+        {
+          "id": "ardi",
+          "title": "Ardiem: Neural Cuff options",
+          "url": "https://www.ardiemmedical.com/neural-cuff/",
+          "note": "Vendor describes diameter options, Pt contact topology, lead wire and terminations."
+        },
+        {
+          "id": "christ",
+          "title": "Christie et al., long-term spiral-cuff study",
+          "url": "https://doi.org/10.1186/s12984-017-0285-3",
+          "note": "Methods: research cuff diameters and circuit groups."
+        },
+        {
+          "id": "tan",
+          "title": "Tan et al., two distinct implanted cuff constructions",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5517311/",
+          "note": "Device-specific spiral and FINE research configurations; not vendor process evidence."
+        }
+      ]
+    },
+    {
+      "id": "pni-fine",
+      "title": "Flat-interface cuff | PEEK-framed contact rows",
+      "family": "Peripheral cuffs",
+      "evidence": "documented",
+      "summary": "Unlike a round spiral, this cuff deliberately preserves a flat lumen with a PEEK contact carrier. Dweiri provides a detailed hand-assembly sequence; a separate human eight-contact design is a geometry comparison only.",
+      "devices": [
+        "14-fine-flat-interface-nerve-electrode"
+      ],
+      "variants": [
+        {
+          "id": "dwe",
+          "label": "Dweiri high-density FINE",
+          "description": "Pt/10% Ir contact strips around a 125 µm PEEK frame plus four references; count is a design variable, not fixed by the family name.",
+          "status": "documented"
+        },
+        {
+          "id": "shield",
+          "label": "Shielded recording build",
+          "description": "The authors recommend an added shielding layer for recording cuffs. It is not an extra active contact.",
+          "status": "documented"
+        },
+        {
+          "id": "human",
+          "label": "Tan eight-contact FINE",
+          "description": "10 × 1.0 or 10 × 1.5 mm lumens in that series. The Dweiri manufacturing stack is not thereby established for those articles.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lay out frame, contacts, spacers and windows",
+          "detail": "Keep edge flexibility distinct from lateral rigidity. Exposed strip width and spacing follow the guide channels, not the outer cuff width.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Measure frame-channel spacing and clearance against the flat drawing.",
+          "sourceIds": [
+            "dwe"
+          ],
+          "only": [
+            "dwe",
+            "shield"
+          ]
+        },
+        {
+          "title": "Prepare and join incoming parts",
+          "detail": "The protocol laser-cuts the PEEK and metal elements, then spot-welds each lead to a strip or reference. A package seam welder is not a qualified miniature resistance spot welder.",
+          "tools": [],
+          "status": "external",
+          "check": "Require correct weld orientation and pull-test coupons before assembly; source the actual process externally.",
+          "sourceIds": [
+            "dwe"
+          ],
+          "only": [
+            "dwe",
+            "shield"
+          ]
+        },
+        {
+          "title": "Fold strips onto the PEEK carrier",
+          "detail": "Place each strip in its guide channel with the weld and lead on the prescribed side. Position paired frame assemblies, references and spacers on the flat silicone layout.",
+          "tools": [
+            "12-01",
+            "06-10"
+          ],
+          "status": "documented",
+          "check": "Inspect whether any contact moved out of its guide; compare contact spacing across the row.",
+          "sourceIds": [
+            "dwe"
+          ],
+          "only": [
+            "dwe",
+            "shield"
+          ]
+        },
+        {
+          "title": "Build insulating faces",
+          "detail": "Silicone sheets, local uncured silicone and curing steps fix positions and routes. Shielding is a separate layer for the recording branch, not a default on all cuffs.",
+          "tools": [
+            "06-10",
+            "06-11",
+            "08-10"
+          ],
+          "status": "documented",
+          "check": "Check for window occlusion, trapped bubbles and continuity to the shield.",
+          "sourceIds": [
+            "dwe"
+          ],
+          "only": [
+            "dwe",
+            "shield"
+          ]
+        },
+        {
+          "title": "Add shield if the recording variant calls for it",
+          "detail": "The manufacturing protocol adds shielding sheets to the external faces after the central array is assembled. Treat shield continuity and its isolation from signal nets as separate tests.",
+          "tools": [
+            "06-10",
+            "06-11",
+            "09-03"
+          ],
+          "status": "documented",
+          "check": "No shield contact is to be counted as an additional active site.",
+          "sourceIds": [
+            "dwe"
+          ],
+          "varies": [
+            "shield"
+          ],
+          "only": [
+            "shield"
+          ]
+        },
+        {
+          "title": "Finish the lumen and closures",
+          "detail": "Cut excess silicone and finish the opening. Keep a flat fixture model distinct from a self-rolling design.",
+          "tools": [
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Check flange registration and opposing faces using an inert flat mandrel.",
+          "sourceIds": [
+            "dwe"
+          ],
+          "only": [
+            "dwe",
+            "shield"
+          ]
+        },
+        {
+          "title": "Separate geometric and electrical yield",
+          "detail": "Measure width/height of the free lumen and conductor resistance separately. Compare reference continuity with active-net isolation before and after fixture bending.",
+          "tools": [
+            "12-01",
+            "09-03",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "An open reference must fail its own net test even if all active strips still conduct.",
+          "only": [
+            "dwe",
+            "shield"
+          ]
+        },
+        {
+          "title": "Compare the documented eight-contact article",
+          "detail": "Tan reports eight contacts in the FINE and different lumen heights for different sites; the older clinical lead does not inherit the PEEK stack from the later Dweiri protocol.",
+          "tools": [
+            "01-01",
+            "12-01"
+          ],
+          "status": "external",
+          "check": "Hold manufacturing details as unknown when the device report gives only geometry and use.",
+          "sourceIds": [
+            "tan"
+          ],
+          "varies": [
+            "human"
+          ],
+          "only": [
+            "human"
+          ]
+        }
+      ],
+      "gaps": [
+        "The flat carrier and hand assembly are documented for one protocol; other FINEs do not inherit its PEEK thickness, contacts or pitch.",
+        "No calibrated closure pressure, tissue effects or clinical equivalence. Fixture machining, foil stock and qualified welds require external sourcing."
+      ],
+      "sources": [
+        {
+          "id": "dwe",
+          "title": "Dweiri et al., fabrication of a high-density FINE",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5092158/",
+          "note": "Protocol §§1–8, Figs. 1–3: cut and weld, PEEK guides, flat assembly, spacers and optional shielding."
+        },
+        {
+          "id": "tan",
+          "title": "Tan et al., FINE and spiral clinical configurations",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5517311/",
+          "note": "Methods distinguishes 8-contact flat cuffs from 4-contact spiral."
+        }
+      ]
+    },
+    {
+      "id": "pni-life",
+      "title": "LIFE / DIME | fine-wire contact windows",
+      "family": "Fine-wire interfaces",
+      "evidence": "documented",
+      "summary": "A LIFE is a wire with a local contact window, not a planar shank. A DIME combines multiple LIFEs with strain relief; there is no universal contact pitch.",
+      "devices": [
+        "15-life-longitudinal-intrafascicular-electrode"
+      ],
+      "variants": [
+        {
+          "id": "single",
+          "label": "Single wire from the 2015 DIME",
+          "description": "25 µm Pt/Ir core plus 6 µm radial PTFE gives 37 µm insulated diameter; the approximately 1 mm exposed window is not an end cut.",
+          "status": "documented"
+        },
+        {
+          "id": "six",
+          "label": "Six-wire DIME",
+          "description": "The example bundles six individually routed LIFEs. Three six-wire leads in the reported assembly are distinct from 18 contacts at one location.",
+          "status": "documented"
+        },
+        {
+          "id": "ref",
+          "label": "Recording reference option",
+          "description": "One of six wires can serve as a reference rather than an additional independent recording site.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Specify incoming coated wire",
+          "detail": "Treat core stock and insulation as purchased materials. Store one net per conductor and mark the exposed window separately from the distal end.",
+          "tools": [
+            "01-01",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "If the model uses the 2015 wire, its insulated diameter is 25 + 2 × 6 µm.",
+          "sourceIds": [
+            "dime"
+          ]
+        },
+        {
+          "title": "Create and inspect the local contact window",
+          "detail": "The 2015 device has a de-insulated segment away from the end. Use the stereo inspection station for window length and unintended damage, not as a substitute for the preparation tool.",
+          "tools": [
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Continuity alone cannot detect a second undesired window; inspect the neighboring shaft and test leakage.",
+          "sourceIds": [
+            "dime"
+          ]
+        },
+        {
+          "title": "Bundle and sheath the leads",
+          "detail": "Only the DIME branch coils the wires as a bundle within silicone sheathing, leaving independent ends. Make the mapping at the connector explicit; no uniform tissue-site placement is assumed.",
+          "tools": [
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Unfolding or splaying free ends must not change the terminal identity of any LIFE.",
+          "sourceIds": [
+            "dime"
+          ],
+          "varies": [
+            "six",
+            "ref"
+          ],
+          "only": [
+            "six",
+            "ref"
+          ]
+        },
+        {
+          "title": "Separate the custom joining operation",
+          "detail": "The source describes a welded distal article and a protected connection. Qualified microjoining and supplier-specific wire preparation are external, not a generic solder or crimp instruction.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not mark a joined assembly complete if only the bare wire has been verified.",
+          "sourceIds": [
+            "dime"
+          ]
+        },
+        {
+          "title": "Close the loop on an inert load",
+          "detail": "Apply continuity and insulation checks to each named wire/return, then repeat during a controlled bend of the sheath. Store the reference identity alongside the active map.",
+          "tools": [
+            "09-03",
+            "09-12",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "An open wire should affect one named branch; a failed common reference has a different signature."
+        }
+      ],
+      "gaps": [
+        "No clinical placement, interface safety, exact metal surface area or physiological response is derived from these checks.",
+        "Microwire stock manufacturing and historical versus more recent LIFE dimensions are not interchangeable."
+      ],
+      "sources": [
+        {
+          "id": "dime",
+          "title": "Thota et al., DIME manufacture and prototype",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4312748/",
+          "note": "Methods/Fig. 1: local wire exposure, coiled/sheath assembly and multi-lead routing."
+        },
+        {
+          "id": "dimerec",
+          "title": "Peer-reviewed DIME record and Figures",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25092497/",
+          "note": "Distinct lead, individual LIFE and three-lead reference configuration."
+        }
+      ]
+    },
+    {
+      "id": "pni-veith-sieve",
+      "title": "Hyperflexible sieve | square and mixed porosity",
+      "family": "Perforated membranes & channels",
+      "evidence": "documented",
+      "summary": "Two ultrathin SU-8/metal meshes have different pore and interconnect topologies. The 100- and 84-site figures are fabrication designs, not simultaneous neural channel measurements.",
+      "devices": [
+        "16-hyperflexible-regenerative-sieve-electrode-veith-2021"
+      ],
+      "variants": [
+        {
+          "id": "sq",
+          "label": "Original square mesh",
+          "description": "60 µm square pores and 100 sites. This earlier mesh fractured in the reported experiments.",
+          "status": "documented"
+        },
+        {
+          "id": "mp",
+          "label": "Redesigned mixed mesh",
+          "description": "80 µm circular pores plus four larger 280 µm openings; 84 sites. Do not transplant the original square-mesh contact graph.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Draw the mesh and release carrier",
+          "detail": "Select the square or mixed design before drawing openings. The source starts from oxidized silicon with a sacrificial nickel layer. Published geometry is not a recovered author mask.",
+          "tools": [
+            "01-01",
+            "03-01"
+          ],
+          "status": "documented",
+          "check": "Count large apertures separately from contacts, and never use pore diameter as electrode pitch.",
+          "sourceIds": [
+            "v"
+          ]
+        },
+        {
+          "title": "Pattern insulating and conducting layers",
+          "detail": "Gold routing lies between two lithographically patterned SU-8 layers. The publication describes approximately 0.4–0.5 µm per insulating layer in the initial design.",
+          "tools": [
+            "02-07",
+            "02-01"
+          ],
+          "status": "documented",
+          "check": "On a witness coupon compare the overall submicrometre-scale stack with the reported thickness; a top-view image alone cannot verify thickness.",
+          "sourceIds": [
+            "v"
+          ]
+        },
+        {
+          "title": "Register vias and finish pads",
+          "detail": "Vias in the upper insulator connect the exposed electrodes to the internal metal. Nickel/gold contact pads form the external interface; nickel release material is not an exposed active electrode by default.",
+          "tools": [
+            "02-12",
+            "05-01"
+          ],
+          "status": "documented",
+          "check": "Distinguish an open via, an open trace and a missing physical pad.",
+          "sourceIds": [
+            "v"
+          ]
+        },
+        {
+          "title": "Release and transfer the membrane",
+          "detail": "Removing the sacrificial nickel leaves a free membrane. Map wet handling and positioning between the two silicone cuff ends, with the pore field kept clear.",
+          "tools": [
+            "04-06",
+            "12-01",
+            "08-10"
+          ],
+          "status": "documented",
+          "check": "Inspect the free mesh for folds, tears and obstructed pores.",
+          "sourceIds": [
+            "v"
+          ]
+        },
+        {
+          "title": "Check pores independently of leads",
+          "detail": "Compare the two geometry maps at fixed scale; inspect free pores and electrical net continuity if an external fixture is present.",
+          "tools": [
+            "12-01",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "An electrically continuous coupon can have a torn mechanical mesh. Report those as separate failures."
+        }
+      ],
+      "gaps": [
+        "No author mask set, recovered measured device-by-device pore map or chronic electrical readout across the mesh.",
+        "Mechanical and electrical coupon checks do not predict regeneration; living tissue, growth factors and surgical preparation are not modeled."
+      ],
+      "sources": [
+        {
+          "id": "v",
+          "title": "Veith et al., hyperflexible sieve electrode",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9939235/",
+          "note": "Mesh Electrode Fabrication and Figs. 1, 3: stack, release, square mesh and redesigned mixed-pore mesh."
+        }
+      ]
+    },
+    {
+      "id": "pni-macro-sieve",
+      "title": "MacEwan macro-sieve | eight sites, nine openings",
+      "family": "Perforated membranes & channels",
+      "evidence": "partial",
+      "summary": "Nine physical transit zones and eight electrically connected sites are deliberately different counts. The report describes the custom polyimide article and downstream assembly in much greater detail than the internal fab traveler.",
+      "devices": [
+        "17-macro-sieve-electrode-macewan-2016"
+      ],
+      "variants": [
+        {
+          "id": "center",
+          "label": "Four central curved sites",
+          "description": "Four individually connected curved sites border the central opening, approximately 33,000 µm² each.",
+          "status": "documented"
+        },
+        {
+          "id": "outer",
+          "label": "Four alternating peripheral sites",
+          "description": "Four straight sites occupy alternating spokes at approximately 24,000 µm² each; both site types are on the same article, not two chip generations.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Define the porous and conductive graphs",
+          "detail": "The 2 mm region contains one central approximately 600 µm circular opening and eight peripheral transit zones. Draw eight independent metal paths, not nine.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Four central sites plus four peripheral sites equals eight; nine holes must remain after layout.",
+          "sourceIds": [
+            "m"
+          ]
+        },
+        {
+          "title": "Receive the custom polyimide sieve",
+          "detail": "The paper names NeuroNexus as the custom manufacturer. Figures identify a PI substrate, gold traces and platinized sites; the process traveler and actual masks are not supplied.",
+          "tools": [],
+          "status": "external",
+          "check": "Stop at this boundary rather than inventing nominal layer thicknesses or claiming local replication.",
+          "sourceIds": [
+            "m"
+          ]
+        },
+        {
+          "title": "Bond the ring PCB and attach the harness",
+          "detail": "The article reports ultrasonic bonding to a circular micro-PCB and soldered wire leads to a 20-pin connector. The ring board clears the open center; a 20-pin connector does not imply 20 active sites.",
+          "tools": [
+            "08-12",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Ring clearance, orientation and eight distinct end-to-end routes must all agree. The exact ultrasonic bond setup is unverified.",
+          "sourceIds": [
+            "m"
+          ]
+        },
+        {
+          "title": "Protect connections and center the conduits",
+          "detail": "Epoxy protects interconnects; silicone conduit sections frame the two faces. Keep encapsulant off window and transit regions.",
+          "tools": [
+            "08-10",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "A misplaced frame that blocks a hole must fail mechanical inspection even if all leads conduct.",
+          "sourceIds": [
+            "m"
+          ]
+        },
+        {
+          "title": "Compare pre-use impedance",
+          "detail": "The authors report 2.3–6.3 kΩ at 1 kHz across their tested sites (4.2 ± 0.9 kΩ). Use that value only as a contextual pre-use comparison, not a vendor acceptance band.",
+          "tools": [
+            "09-01",
+            "09-12"
+          ],
+          "status": "documented",
+          "check": "Store test frequency, fixture, site identity and measurement provenance with the reading.",
+          "sourceIds": [
+            "m"
+          ]
+        }
+      ],
+      "gaps": [
+        "NeuroNexus process details, recovered masks and assembly bond settings are absent.",
+        "Sieve acquisition is not inferred from the separate electrodes used for the study assays; no biological growth model."
+      ],
+      "sources": [
+        {
+          "id": "m",
+          "title": "MacEwan et al., 2016 macro-sieve",
+          "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2016.00557/full",
+          "note": "Methods: Fabrication and Assemblies; Figs. 1–2 and pre-use impedance results."
+        }
+      ]
+    },
+    {
+      "id": "pni-rolled-channel",
+      "title": "Rolled microchannel scaffold | PDMS, SU-8 and optional wires",
+      "family": "Perforated membranes & channels",
+      "evidence": "documented",
+      "summary": "The walls are patterned flat, capped and then rolled. A lumen is a fluidic/geometric feature, not an electrical channel; only the separately instrumented version contains selected metal wire contacts.",
+      "devices": [
+        "18-microchannel-regenerative-scaffold-srinivasan-2015"
+      ],
+      "variants": [
+        {
+          "id": "w50",
+          "label": "50 µm width / 143 lumens",
+          "description": "At 100 µm nominal height, this design had 143 channels. It is not an eight-wire build by default.",
+          "status": "documented"
+        },
+        {
+          "id": "w100",
+          "label": "100 µm width / 84 lumens",
+          "description": "This nominal 100 × 100 µm configuration has 84 lumens.",
+          "status": "documented"
+        },
+        {
+          "id": "w150",
+          "label": "150 µm width / 59 lumens",
+          "description": "This width accommodated 59 channels for approximately the same overall diameter.",
+          "status": "documented"
+        },
+        {
+          "id": "open",
+          "label": "Open planar test scaffold",
+          "description": "Authors also report an unrolled open construct without the top membrane; not an equivalent closed conduit.",
+          "status": "documented"
+        },
+        {
+          "id": "wired",
+          "label": "Separate wired readout article",
+          "description": "Eight selected channels contain stainless-steel microwires; the source distinguishes selectable bipolar and tripolar references. This is not 84 independent channels.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Design one of three wall masks",
+          "detail": "The three source masks target 50, 100 or 150 µm channel width at constant nominal 100 µm wall height. Define the cover and wire options separately.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "The channel count must follow the selected design; no electrode contacts appear from adding lumen walls.",
+          "sourceIds": [
+            "sr"
+          ]
+        },
+        {
+          "title": "Cast base and pattern standing walls",
+          "detail": "Ti/Au on glass aids release; it is not the sensing conductor. Spin the PDMS base and photopattern the SU-8 walls above it.",
+          "tools": [
+            "03-01",
+            "02-07",
+            "02-01",
+            "06-10"
+          ],
+          "status": "documented",
+          "check": "Measure free wall height, pitch and any missing wall before capping.",
+          "sourceIds": [
+            "sr"
+          ]
+        },
+        {
+          "title": "Cap or retain the open control",
+          "detail": "The closed route adds a separately cast thin PDMS cover to activated walls. The flat open route stops before closure and rolling.",
+          "tools": [
+            "03-12",
+            "06-10",
+            "06-11",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Look for detached cover, joined adjacent channels or a clogged lumen.",
+          "sourceIds": [
+            "sr"
+          ],
+          "only": [
+            "w50",
+            "w100",
+            "w150",
+            "wired"
+          ]
+        },
+        {
+          "title": "Stop at the uncapped planar article",
+          "detail": "The open comparison does not include a cover, roll, reference wires or an enclosed flow circuit. Inspect open walls and spacing.",
+          "tools": [
+            "12-01",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "An open groove cannot be scored by leakage criteria for a closed conduit.",
+          "sourceIds": [
+            "sr"
+          ],
+          "varies": [
+            "open"
+          ],
+          "only": [
+            "open"
+          ]
+        },
+        {
+          "title": "Release, roll, inspect the cut face",
+          "detail": "The study cuts the roll to 3 mm length and reports geometry variation with radial position. Keep a central void distinct from an intended channel.",
+          "tools": [
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Count entrances and check actual cross-section at inner and outer radii; do not preserve a perfect flat-pitch grid by assumption.",
+          "sourceIds": [
+            "sr"
+          ],
+          "varies": [
+            "w50",
+            "w100",
+            "w150",
+            "wired"
+          ],
+          "only": [
+            "w50",
+            "w100",
+            "w150",
+            "wired"
+          ]
+        },
+        {
+          "title": "Add the wired article only when selected",
+          "detail": "Methods §2.2 gives eight 304 stainless microwires with 0.5 mm de-insulated ends in selected lumens; reference wires are separate. Gold in Fig. 1B is a possible alternative layout, not these wires.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "Count eight instrumented lumens, identify the separate reference path and check space around each conductor.",
+          "sourceIds": [
+            "sr"
+          ],
+          "varies": [
+            "wired"
+          ],
+          "only": [
+            "wired"
+          ]
+        },
+        {
+          "title": "Test continuity and lumen patency separately",
+          "detail": "Use benign test liquid in a fixture for a pressure/flow comparison and a dummy electrical load for the optional wire circuit.",
+          "tools": [
+            "06-07",
+            "09-03",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "An electrical open must not delete a lumen. A blocked channel must not create a fictitious electrical open."
+        }
+      ],
+      "gaps": [
+        "The author masks and realized one-to-one lumen geometry have not been recovered.",
+        "Dry/wet geometry and simple obstruction measurements do not establish tissue growth, nerve repair, or clinical function."
+      ],
+      "sources": [
+        {
+          "id": "sr",
+          "title": "Srinivasan et al., Biomaterials 2015",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4324612/",
+          "note": "Methods §§2.1–2.2, Figs. 1–3: channel masks, cap, roll, actual eight-wire instrumented assembly and alternatives."
+        }
+      ]
+    },
+    {
+      "id": "pni-rpni-readout",
+      "title": "RPNI | electrode-to-EMG readout, not a fabricated graft",
+      "family": "Biological interface / hardware boundary",
+      "evidence": "out-of-scope",
+      "summary": "An RPNI is not something a wafer or polymer foundry fabricates. This route represents only the sourced bipolar electrode and readout chain. TEENI, despite appearing in the catalog URL, is a different construction.",
+      "devices": [
+        "19-teeni-rpni"
+      ],
+      "variants": [
+        {
+          "id": "bipolar",
+          "label": "Indwelling bipolar recording electrode",
+          "description": "The 2023 study used eight bipolar electrode pairs per participant, divided between RPNIs and residual muscles, not eight RPNIs.",
+          "status": "documented"
+        },
+        {
+          "id": "phantom",
+          "label": "Differential signal phantom",
+          "description": "A passive electrical phantom stands in for the two input nodes; it has no biological amplification.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Record what is outside the foundry",
+          "detail": "There is no wafer stack or mask set for the biological RPNI. The only modeled object is its electrical readout.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not assign a cleanroom recipe to living grafts.",
+          "sourceIds": [
+            "vu"
+          ]
+        },
+        {
+          "title": "Identify the recording hardware",
+          "detail": "Map the purchased bipolar lead, return paths, cable and recording front end. The clinical article does not supply a traceable conductor manufacturing flow.",
+          "tools": [
+            "16-13"
+          ],
+          "status": "external",
+          "check": "Keep RPNI sites and residual-muscle sites separate, and pair the positive and negative inputs.",
+          "sourceIds": [
+            "vu"
+          ]
+        },
+        {
+          "title": "Inject a differential test signal",
+          "detail": "Feed a dummy test signal to both leads and reverse them. Use a bench preamplifier and oscilloscope, not an inference about living EMG amplitude.",
+          "tools": [
+            "09-06",
+            "09-10",
+            "09-04"
+          ],
+          "status": "reference",
+          "check": "Reversing input order inverts the differential signal; equal ideal inputs give zero differential signal.",
+          "only": [
+            "phantom"
+          ]
+        }
+      ],
+      "gaps": [
+        "No biological construction, patient-specific lead positioning or tissue performance.",
+        "Documented physiological recordings are not manufactured device yield."
+      ],
+      "sources": [
+        {
+          "id": "vu",
+          "title": "Vu et al., implanted EMG and RPNIs",
+          "url": "https://chestekresearch.engin.umich.edu/wp-content/uploads/sites/189/2023/05/Vuetal_JNE_2023.pdf",
+          "note": "2023 Methods, electrode implant and acquisition; inputs include RPNIs and residual muscles."
+        }
+      ]
+    },
+    {
+      "id": "pni-rozman",
+      "title": "ITIS/Ljubljana spiral cuff | 33-contact article",
+      "family": "Peripheral cuffs",
+      "evidence": "documented",
+      "summary": "An assembly-led example: rolled platinum foil contacts, resistance-welded stranded leads and a prestressed silicone cuff. The authors call the article a 33-contact cuff but one passage describes 13 groups of three; a precise channel map cannot be derived from that sentence.",
+      "devices": [
+        "208-itis-33-contact-spiral-cuff"
+      ],
+      "variants": [
+        {
+          "id": "paper",
+          "label": "2018 reported 33-contact device",
+          "description": "2.5 mm nominal initial lumen, 17 mm axial length and 1.5 resting turns; nominal contact count and spatial map evidence are intentionally separate.",
+          "status": "documented"
+        },
+        {
+          "id": "grid",
+          "label": "Blind 3 × 13 map",
+          "description": "Incompatible: 39 is not 33. Do not silently replace the paper’s conflicting statement with an invented 11 × 3 map.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Define physical count without false indexing",
+          "detail": "Save the 33-contact claim and geometry from the diagram separately from unverified connector assignments.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "A 39-net reconstruction must fail the stated count; a 33-net drawing alone still does not verify pin order.",
+          "sourceIds": [
+            "roz"
+          ]
+        },
+        {
+          "title": "Source or commission the foil",
+          "detail": "The article reports purifying/forming stock by cold work and annealing to a 0.03 mm Pt foil. The rolling mill and its material qualification are not in the equipment register.",
+          "tools": [],
+          "status": "external",
+          "check": "Incoming foil thickness and provenance precede any coupon mapping.",
+          "sourceIds": [
+            "roz"
+          ],
+          "only": [
+            "paper"
+          ]
+        },
+        {
+          "title": "Form and connect discrete contacts",
+          "detail": "Cut-and-fold Pt strips mount on a silicone sheet. Each stranded stainless lead is joined by a dedicated resistance micro-spot weld. The hermetic seam welder is a different process.",
+          "tools": [],
+          "status": "external",
+          "check": "Use sacrificial weld cross-sections or pull coupons; a low-resistance join alone does not establish strength.",
+          "sourceIds": [
+            "roz"
+          ],
+          "only": [
+            "paper"
+          ]
+        },
+        {
+          "title": "Form the self-curling article",
+          "detail": "Bond stretched and relaxed silicone sheets and release the cured laminate. Treat the contact-bearing sheet as separate from the two biasing layers.",
+          "tools": [
+            "06-10",
+            "06-11",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Measure resting turns and diameter on release; compare before/after adding the contact-bearing laminate.",
+          "sourceIds": [
+            "roz"
+          ],
+          "only": [
+            "paper"
+          ]
+        },
+        {
+          "title": "Inspect every lead on an inert fixture",
+          "detail": "Use a known pin-to-contact fixture to test isolation and continuity while gently opening the cuff. Keep any unknown pin position unknown.",
+          "tools": [
+            "09-03",
+            "12-01",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "An unassigned pin earns no passed channel even if a visible surface is conductive.",
+          "only": [
+            "paper"
+          ]
+        }
+      ],
+      "gaps": [
+        "Custom foil manufacture and microwelding remain external. No author pinout, production tolerances or released process file.",
+        "A claimed channel count is not proof of exact spatial mapping."
+      ],
+      "sources": [
+        {
+          "id": "roz",
+          "title": "Rozman et al., methods for the multi-electrode spiral cuff",
+          "url": "https://www.nature.com/articles/s41598-018-19318-w",
+          "note": "Methods and Figs. 1–4: counts, dimensions, foil, laminate, wiring and the internal layout-count inconsistency."
+        }
+      ]
+    },
+    {
+      "id": "pni-ferro-cuff",
+      "title": "SIAT photothermal / ferroelectric self-rolling cuff",
+      "family": "Peripheral cuffs",
+      "evidence": "partial",
+      "summary": "The documented device combines a bilayer hydrogel with a CNT photothermal layer and ferroelectric P(VDF-TrFE). Heat-driven polarization changes, not a generic wired metal contact, are the intended electronic mechanism.",
+      "devices": [
+        "202-siat-ferroelectric-bioelectronic-vagus-cuff"
+      ],
+      "variants": [
+        {
+          "id": "lam",
+          "label": "Published heterostructure",
+          "description": "Bilayer self-rolling support integrated with CNT and P(VDF-TrFE). The publication identifies the mechanism and material stack.",
+          "status": "documented"
+        },
+        {
+          "id": "dummy",
+          "label": "Inert mandrel and load",
+          "description": "An engineering analog separates shape change, heating and electrical output. No nerve stimulation or tissue model.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Identify the functional layers",
+          "detail": "Keep the two hydrogel layers, photothermal CNT component and ferroelectric polymer distinct. The receiving bench handles only a prequalified inert coupon in this reconstruction.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not replace the transducer with a bare resistive metal strip while calling it the published construction.",
+          "sourceIds": [
+            "siat"
+          ]
+        },
+        {
+          "title": "Inspect curl without excitation",
+          "detail": "On an inert mandrel, record unloaded shape, loaded conformation and dimensions in a defined hydration state.",
+          "tools": [
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "Distinguish spontaneous curl from contact with the test fixture."
+        },
+        {
+          "title": "Check coupled optical, thermal and electrical paths",
+          "detail": "In a calibrated optical fixture, compare heating and collected electrical response on an inert load. The register includes thermal imaging and electrical measurement, but a matched near-infrared source, sensor and polarization fixture must be separately identified.",
+          "tools": [
+            "14-09",
+            "09-04",
+            "09-10"
+          ],
+          "status": "reference",
+          "check": "Use a dark control and a no-ferroelectric coupon; heating alone is not proof of polarization-generated output."
+        },
+        {
+          "title": "Separate adhesion and output checks",
+          "detail": "Compare conformability on an inert mandrel and loaded electrical transients as different tests. Do not claim that the setup measures retention on a living nerve.",
+          "tools": [
+            "14-01",
+            "09-04"
+          ],
+          "status": "reference",
+          "check": "A change in electrical output with unchanged curvature can be a transducer failure, not a geometric failure."
+        }
+      ],
+      "gaps": [
+        "The route does not reproduce the hydrogel preparation, poling fixture, calibrated irradiance, measured transient, or clinical behavior.",
+        "Not interchangeable with the electrochemically actuated Dong soft cuff."
+      ],
+      "sources": [
+        {
+          "id": "siat",
+          "title": "Zhu et al., Advanced Materials (2026)",
+          "url": "https://doi.org/10.1002/adma.73023",
+          "note": "Primary report: bilayer hydrogel, CNT photothermal conversion and P(VDF-TrFE) ferroelectric interface. DOI verified via PMID 41954219."
+        }
+      ]
+    },
+    {
+      "id": "pni-actigait",
+      "title": "ActiGait | four-channel cuff and triggered controller",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "The physical scope is a circumferential cuff, implant cable, stimulator, external control and heel-switch event. Public sources disclose the system and size options, not its fabrication traveler.",
+      "devices": [
+        "12-actigait-implantable-drop-foot-stimulator"
+      ],
+      "variants": [
+        {
+          "id": "sizes",
+          "label": "Four documented cuff diameters",
+          "description": "The technical manual lists 4.5, 5.4, 6.4 and 7.6 mm inner diameters and 23 mm cuff length.",
+          "status": "documented"
+        },
+        {
+          "id": "quadrant",
+          "label": "Quadrant/channel inspection",
+          "description": "Model four functional channels at 90° intervals without inferring the number or materials of individual metal pads.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Identify angular channels",
+          "detail": "The published article separates the implanted cuff and wired stimulator body from its external controller. Give every channel a stable angle and label the heel switch as an input, not an electrode.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Four selectable channels span the circumference; interleaved channels are not a pad manufacturing diagram.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Prototype an instrumented cylinder",
+          "detail": "Use an inert mandrel, four marker positions and a cabled dummy load. Keep the chosen inner diameter coupled to that simulated build.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Rotate the cuff reference and show that a wrongly assigned wire can pass resistance but fail angular identity."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Laser patterns, contact alloy, welds, molding, receiver electronics and calibration for a production ActiGait are not established here.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Check trigger versus physical wiring",
+          "detail": "Provide an off/on logic event to a reference controller and observe transitions at dummy channels. Test a severed lead separately.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "09-03"
+          ],
+          "status": "reference",
+          "check": "A missing switch event affects timing; a single open lead affects one load, not the physical event sensor."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "ActiGait 36-month study: device architecture",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7790182/",
+          "note": "Methods: four channels at 90 degrees, external heel-switch/controller and implanted body/cuff."
+        },
+        {
+          "id": "manual",
+          "title": "ActiGait technical manual: implant specifications",
+          "url": "https://fccid.io/m/9bed2c8fde431a965c33b4e243be7c961d89de70b3282cd5a5e2a141b04dcbec.pdf",
+          "note": "Manufacturer manual §14.11: cuff length, marketed size variants and interleaved channels."
+        }
+      ]
+    },
+    {
+      "id": "pni-sentiva",
+      "title": "SenTiva | generator and helical Model 302 lead reference",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "Track the helical lead as a separate subsystem from the generator. Only the explicitly named Model 302 cable is assigned the construction details below; other leads require their own compatibility check.",
+      "devices": [
+        "157-livanova-vns-therapy-sentiva"
+      ],
+      "variants": [
+        {
+          "id": "lead",
+          "label": "Model 302 lead",
+          "description": "The FDA description specifies two Pt ribbon electrodes, silicone insulation, quadrifilar MP35N wire and a proximal 3.2 mm connector.",
+          "status": "documented"
+        },
+        {
+          "id": "generator",
+          "label": "SenTiva generator",
+          "description": "The heart-rate sensing and electronics are in the system architecture, not a property fabricated into each helical Pt ribbon.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Create the hardware bill and topology",
+          "detail": "Separate electrically active helices, any mechanical anchor and the proximal connector. Record the specific lead model before mapping materials.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "A fixation element may be helical without being a third active electrode.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Model a reference lead coupon",
+          "detail": "Order the helical metal ribbons and multistrand cable as distinct parts; propose an insulated, terminated dummy specimen on a mandrel.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Confirm conductor topology from pin to ribbon rather than counting individual wire filars as output electrodes."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Actual ribbon formation and joining, encapsulation, feedthrough fabrication and heart-rate detection firmware are external.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Load and flex the lead coupon",
+          "detail": "Verify both paths and their mutual isolation while gently flexing a lead specimen. Log load identity separately from the simulated generator event.",
+          "tools": [
+            "09-03",
+            "09-04",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "A broken helix feed does not create or remove the second mechanical winding."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA VNS lead description: Model 302",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf/P970003S050B.pdf",
+          "note": "SSED lead description names Pt ribbons, silicone, quadrifilar MP35N and connector."
+        },
+        {
+          "id": "gen",
+          "title": "LivaNova SenTiva technical guide",
+          "url": "https://www.livanova.com/getcontentasset/2c75dc2a-113a-4dc1-b329-ace3ee78e7b2/dfc3d011-8f63-43f6-9ed8-4b444333a1d0/sentecgd19u1-rev-3-sentiva-technical-guide-final.pdf",
+          "note": "Manufacturer generator construction and sensing context; do not transfer lead material assumptions across models."
+        }
+      ]
+    },
+    {
+      "id": "pni-inspire",
+      "title": "Inspire | separate-sensor and integrated-sensor architectures",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "The same name spans different hardware. A separate respiratory lead belongs in the earlier bill of materials, not automatically in the Inspire V build.",
+      "devices": [
+        "158-inspire-upper-airway-stimulation"
+      ],
+      "variants": [
+        {
+          "id": "old",
+          "label": "Model 3024 system",
+          "description": "2014 labeled system: IPG, Model 4063 self-sizing stimulation cuff lead and Model 4323 respiratory sensing lead.",
+          "status": "documented"
+        },
+        {
+          "id": "new",
+          "label": "Model 3150 / Inspire V",
+          "description": "The Model 3150 manual describes a generator with integrated inspiration sensing plus a 4063 stimulation lead; no separate implanted respiratory lead.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lock the generation and split its paths",
+          "detail": "Track a cuff, connector and stimulator path in both generations. Treat the independent sensing membrane/lead of the earlier system as a separate input subsystem, not an output electrode.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "An assembly mixing a 3150 generation claim with a required 4323 sensing lead fails this document-based configuration check.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Account for the independent pressure-sensing lead",
+          "detail": "Model 3024 has distinct sensing and stimulation lead interfaces. Receive the pressure lead as an externally fabricated subsystem; a dummy sensing signal should enter that port rather than the cuff output.",
+          "tools": [],
+          "status": "external",
+          "check": "Expect two distinct ports on this older IPG architecture.",
+          "sourceIds": [
+            "spec"
+          ],
+          "varies": [
+            "old"
+          ],
+          "only": [
+            "old"
+          ]
+        },
+        {
+          "title": "Account for sensing inside the generator",
+          "detail": "Model 3150 integrates inspiration sensing into the generator. Use the 4063 stimulation lead with no separate implanted respiratory sensing lead in this branch.",
+          "tools": [],
+          "status": "external",
+          "check": "Inserting a mandatory pressure-lead assembly into this bill of materials fails the 3150 configuration check.",
+          "sourceIds": [
+            "v5"
+          ],
+          "varies": [
+            "new"
+          ],
+          "only": [
+            "new"
+          ]
+        },
+        {
+          "title": "Map the flexible cuff and cable",
+          "detail": "The 4063 lead has electrodes on its inner face and a self-sizing cuff. Use a reference cable and inert mandrel to inspect overlap and connector assignment.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Exterior photos establish the component shape, not the OEM weld stack or active-surface finish."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Production material processing, proprietary sensor electronics, firmware, product tests and package qualification are not public travelers.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Check sensing and output independently",
+          "detail": "In a logic-and-load analogue, mark a source event, observe the selected output and remove only the external sensor input on the separate-sensor branch.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "09-03"
+          ],
+          "status": "reference",
+          "check": "Generation V is not allowed to depend on a fictitious respiratory lead."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA original Inspire system manual",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf13/P130008D.pdf",
+          "note": "Component descriptions for Models 3024, 4063 and 4323."
+        },
+        {
+          "id": "v5",
+          "title": "Inspire V system manual: 3150 and 4063",
+          "url": "https://manuals.inspiresleep.com/content/widgets/manual.php?NjA2fDF8MQ=%3D",
+          "note": "Implanted component descriptions: generator integrates sensing and is paired with a stimulation lead."
+        }
+      ]
+    },
+    {
+      "id": "pni-setpoint",
+      "title": "SetPoint | integrated implant in a silicone pod",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "The functional implant and its flexible silicone pod are separate physical articles. A charger/dock is another separate assembly, not a long stimulation lead.",
+      "devices": [
+        "159-setpoint-vagus-nerve-stimulation-ra"
+      ],
+      "variants": [
+        {
+          "id": "received",
+          "label": "Implant seated in the pod",
+          "description": "The FDA describes an integrated neurostimulator placed in a flexible silicone pod. Compliant fit and active electronics are distinct.",
+          "status": "documented"
+        },
+        {
+          "id": "coupon",
+          "label": "Inert package/pod fit check",
+          "description": "A dimensional proxy checks retention in an inert fixture; it cannot validate electrodes, charging or chronic function.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Define package and pod",
+          "detail": "Treat the sealed powered component and flexible silicone retaining component as separate records. Preserve the position and orientation of the two stimulus electrodes on the public assembly.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Removing a pod in a mechanical drawing must not rewrite the electronics bill of materials.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Model passive fit on a fixture",
+          "detail": "Make a dimensioned surrogate only when dimensions are sourced; use a mechanical reference coupon and a soft holder to explore fit/contact exposure.",
+          "tools": [
+            "06-10",
+            "12-01",
+            "14-01"
+          ],
+          "status": "reference",
+          "check": "Distinguish latch/retention failure on the fixture from an electrical open."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Miniaturized implant electronics, cell, electrode processing, charging implementation and qualified pod production remain external.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Check electronics and fit separately",
+          "detail": "Use a paired inductive dummy link and a resistive output load as a facility analogue only; test misalignment, open load and passive retention as separate faults.",
+          "tools": [
+            "09-04",
+            "09-07",
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "Mechanical retention alone cannot pass output continuity or charging."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA SetPoint System SSED (P240039)",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf24/P240039B.pdf",
+          "note": "Device description and pod/implant evaluations establish the components and separate their roles."
+        }
+      ]
+    },
+    {
+      "id": "pni-axonics",
+      "title": "Axonics | four-ring tined sacral lead",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "A cylindrical four-electrode lead is not a cuff. Public specifications identify its contact, conductor and retention architecture; posterior generator fabrication and lead tooling remain undisclosed.",
+      "devices": [
+        "160-axonics-sacral-neuromodulation"
+      ],
+      "variants": [
+        {
+          "id": "four",
+          "label": "Documented four-electrode tined lead",
+          "description": "Four cylindrical contacts in-line, Pt/Ir electrodes/contacts and MP35N conductor wires; tines secure the lead but are not a fifth contact.",
+          "status": "documented"
+        },
+        {
+          "id": "trial",
+          "label": "Separate trial hardware",
+          "description": "The external trial stimulator with extension/PNE options is not an implanted generator replication; configurations have different connectors and limits.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Book the sourced components",
+          "detail": "Separate conductor filars, four Pt/Ir electrodes, distal retention features, proximal contacts and the generator. Bind the exact table of dimensions to the tined-lead model.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Tines are mechanically present and electrically non-addressable in the model.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Build a four-ring nonclinical surrogate",
+          "detail": "Fit ring surrogates and connect them to a four-way breakout. Add a separate visible retention mockup so mechanical loading does not silently change electrical topology.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "A reversed proximal-to-distal ring sequence fails the identity check even if four channels conduct."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "The winding, ring joining, polymer processing and implant-generator package methods are proprietary; a lab prototype cannot substitute for the labeled system.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Inspect mapping under flex",
+          "detail": "Read individual continuity together with inter-ring leakage and a comparative flex test. Use a passive load for both trial and permanent schematic branches.",
+          "tools": [
+            "09-03",
+            "14-10",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "Require four separately traceable conductive paths and no unplanned pairwise bridge."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA Axonics SSED, tined lead specifications",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf18/P180046B.pdf",
+          "note": "Device description/Table 2: contacts, conductor materials, tined and trial components."
+        }
+      ]
+    },
+    {
+      "id": "pni-altius",
+      "title": "Altius | size-matched twin-band silicone cuff",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "A two-band cuff has one bipolar path; the IPG can support one or two cuffs. Do not collapse band count, cuff count and generator channels into a single number.",
+      "devices": [
+        "162-neuros-altius-hfac-nerve-block"
+      ],
+      "variants": [
+        {
+          "id": "small",
+          "label": "Small: 4–6 mm nominal range",
+          "description": "FDA Table 3: cuff width 15 mm, inter-band spacing 5 mm.",
+          "status": "documented"
+        },
+        {
+          "id": "medium",
+          "label": "Medium: 6–9 mm",
+          "description": "Width 20 mm and inter-band spacing 7 mm.",
+          "status": "documented"
+        },
+        {
+          "id": "large",
+          "label": "Large: 9–13 mm",
+          "description": "Width 28 mm and inter-band spacing 11 mm. All three sizes list two bands and a bipolar IS-1 connection.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Select the coupled geometry",
+          "detail": "Read the size table as three paired, measured configurations. The FDA lists silicone for the cuff/lead and 90/10 Pt/Ir electrode bands.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Reject a hybrid calling itself the small model while specifying the large model’s 11 mm inter-band separation.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Represent the wrapped band article",
+          "detail": "Use a passive two-band mockup on a dimensioned inert cylinder and route to a bipolar breakout. Other skin-contacting/device package steps are not inferred.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Each cuff retains two—not four—metal band surfaces when both IPG ports are used."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Band joining and overmold tooling, IPG and rechargeable package fabrication, qualified calibration and release procedures are unavailable.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Verify band spacing independently of the circuit",
+          "detail": "Measure the band spacing at rest and identify each terminal, then verify isolation and response into a dummy impedance.",
+          "tools": [
+            "12-01",
+            "09-03",
+            "09-04"
+          ],
+          "status": "reference",
+          "check": "One failed band connection disables its bipolar path but does not change mechanical cuff size."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA Altius SSED, Tables 3 and 4",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf23/P230020B.pdf",
+          "note": "Cuff sizes, widths, band count/spacing, connector, silicone and Pt/Ir; component-level benchmarks only."
+        }
+      ]
+    },
+    {
+      "id": "pni-revi",
+      "title": "Revi | batteryless tibial implant and worn antenna",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "The implant has no battery. The rechargeable battery and flexible antenna belong to the external wearable that pairs to one implant.",
+      "devices": [
+        "163-bluewind-revi-tibial-neuromodulation"
+      ],
+      "variants": [
+        {
+          "id": "implant",
+          "label": "Passive-power receiving implant",
+          "description": "The implant and its output are packaged together. The released system description does not supply a foundry mask set.",
+          "status": "documented"
+        },
+        {
+          "id": "wearable",
+          "label": "Paired rechargeable wearable",
+          "description": "The external device supplies energy and communicates by magnetic coupling; charging the wearable is distinct from powering the implant.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Separate the power domains",
+          "detail": "Model the wearable battery and antenna, the coupling interface, the implant receiver and output path as four distinct nodes.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Do not invent a rechargeable cell in the implant.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Prototype power-transfer coupons",
+          "detail": "Use passive coil and load fixtures for a relative alignment sweep. No assumption is made about proprietary turns, frequency or pairing protocol.",
+          "tools": [
+            "09-06",
+            "09-07",
+            "09-04"
+          ],
+          "status": "reference",
+          "check": "Confirm that a deliberately uncoupled receiver cannot be powered by itself."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "The ASIC, antenna design and controller/pairing protocol, electrode manufacture and sealed assembly are not released manufacturing files.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Disambiguate coupling loss and output fault",
+          "detail": "On a nonclinical emulator, monitor the receiver node and resistive load separately as the fixture alignment changes.",
+          "tools": [
+            "09-04",
+            "09-03"
+          ],
+          "status": "reference",
+          "check": "Received power with open-load output is a different fault from no power at the receiver."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA De Novo review for Revi (DEN220073)",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN220073.pdf",
+          "note": "Device Description: external power and communication, paired wearable and batteryless implant."
+        }
+      ]
+    },
+    {
+      "id": "pni-sprint",
+      "title": "SPR SPRINT | coiled percutaneous MicroLead",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "A flexible coiled wire and a wearable external pulse generator are the manufacturing partitions. There is no implanted active generator to assign to a semiconductor foundry.",
+      "devices": [
+        "164-spr-sprint-percutaneous-pns"
+      ],
+      "variants": [
+        {
+          "id": "one",
+          "label": "One MicroLead",
+          "description": "One flexible coiled stainless wire lead plus external stimulator.",
+          "status": "documented"
+        },
+        {
+          "id": "two",
+          "label": "Two MicroLeads",
+          "description": "The submitted configuration also permits two percutaneous leads. Two supplied leads do not describe a four-ring implant.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Identify geometry and electrical return",
+          "detail": "The FDA summary describes one or two coiled stainless MicroLeads and external pulse generator. Represent the external return separately from any active lead.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "No implanted battery or receiver coil is added to the wire assembly.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Build a flexible coiled-wire surrogate",
+          "detail": "Use an externally sourced coil or custom-wound dummy coupon, a connector breakout and a passive test load. The coil production process and release dimensions are not specified.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Record coil relaxation and axial extension separately from resistance."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Qualified medical wire winding, termination, coating, sterile packaging and release of the actual product remain manufacturer-controlled.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Check the branch count",
+          "detail": "Measure each dummy lead separately during small fixture bends, then disconnect one branch on the two-lead model.",
+          "tools": [
+            "09-03",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "A failed branch must not be reported as a defect in the still-connected second lead."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA SPRINT K223306",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf",
+          "note": "System description and comparison: stainless coiled MicroLead, wearable and one/two-lead offering."
+        }
+      ]
+    },
+    {
+      "id": "pni-nalu",
+      "title": "Nalu PNS | eight-ring leads and external Therapy Disc",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "An externally powered implanted generator drives a distinct lead system. This record is scoped to the PNS device and leads in K183579, not every later SCS or PNS revision.",
+      "devices": [
+        "172-nalu-neurostimulation-system-pns"
+      ],
+      "variants": [
+        {
+          "id": "one",
+          "label": "One eight-electrode lead",
+          "description": "FDA summary identifies eight distal cylindrical Pt/Ir electrodes per polyurethane-insulated lead.",
+          "status": "documented"
+        },
+        {
+          "id": "dual",
+          "label": "Dual-lead configuration",
+          "description": "Single- and dual-lead system alternatives must carry distinct connector topology; two leads do not mean sixteen measured independent outputs.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Partition disc, IPG and lead",
+          "detail": "Keep the worn external energy/control component, miniature implanted pulse generator and distal contact arrays separate in the bill of materials.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Distinguish a contact identifier such as lead B/site 3 from a software output channel.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Configure a cylindrical lead coupon",
+          "detail": "Use the specified ring count on an inert surrogate and expose each terminal at a diagnostic breakout. Record polymer jacket and Pt/Ir data as device specifications, not process settings.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Eight terminal-to-ring identities per attached coupon; a swapped cable can pass aggregate resistance."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Ring-to-wire joining, actual wireless link electronics, implanted enclosure and production process controls are external.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Test the power and lead paths separately",
+          "detail": "Use an emulator as the power source, monitor a fixed dummy-load bank and inspect one known open net before and after changing configuration.",
+          "tools": [
+            "09-03",
+            "09-04"
+          ],
+          "status": "reference",
+          "check": "The failing ring influences only its modeled electrical path; the passive physical ring count stays eight."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA Nalu system K183579",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf",
+          "note": "Subject-device comparison and lead description: PNS system, external and implanted components and eight-contact lead types."
+        }
+      ]
+    },
+    {
+      "id": "pni-stimrouter",
+      "title": "StimRouter | receiver electrode and three output rings",
+      "family": "Peripheral leads & packages",
+      "evidence": "proprietary",
+      "summary": "The receiver surface and stimulation contacts have different roles on the same lead. Counting the receiver as a fourth stimulation ring produces the wrong architecture.",
+      "devices": [
+        "173-bioness-stimrouter-pns"
+      ],
+      "variants": [
+        {
+          "id": "lead",
+          "label": "K211965 modified device",
+          "description": "The receiver is a 12 mm electrode; three cylindrical Pt/Ir electrodes are at the stimulation end.",
+          "status": "documented"
+        },
+        {
+          "id": "bench",
+          "label": "Four labeled surfaces, two roles",
+          "description": "Teaching test fixture distinguishes the three distal contacts from the receiver electrode; no proprietary coupling model.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Assign each surface a role",
+          "detail": "Read the subject-versus-predicate table carefully: an unchanged lead feature still belongs to the modified device. Separate receiver-end surface and distal contacts.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Count three stimulating electrodes and one receiver, not four independent stimulus outputs.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Recreate a passive topology fixture",
+          "detail": "Provide dummy distal rings and a separate receiver boundary. Do not infer how each output is internally switched merely from the number of rings.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Mark routing unknown rather than assuming four isolatable channels on account of four visible regions."
+        },
+        {
+          "title": "Unreleased manufacturing boundary",
+          "detail": "Internal signal capture, contact processing, wire termination, package manufacture and factory verification protocols are proprietary.",
+          "tools": [],
+          "status": "external",
+          "check": "No vendor-exact claim unless a released manufacturing traveler, tooling record and acceptance specification support it.",
+          "sourceIds": [
+            "spec"
+          ]
+        },
+        {
+          "title": "Trace receiver and load independently",
+          "detail": "Use a reference circuit and external signal source; observe a test load separately from the fixture’s receiver node.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "09-03"
+          ],
+          "status": "reference",
+          "check": "A missing source and an open load should be separately identifiable in the reference witness fixture."
+        }
+      ],
+      "gaps": [
+        "The registered instruments describe a possible bench coupon or inspection station, not the OEM facility or a qualified implant.",
+        "Sensing, power and load tests are workbench checks; they do not establish patient performance, treatment efficacy or regulatory conformity."
+      ],
+      "sources": [
+        {
+          "id": "spec",
+          "title": "FDA modified StimRouter K211965",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf",
+          "note": "Equivalence table identifies receiver end, distal electrodes and external transmitter."
+        }
+      ]
+    },
+    {
+      "id": "pni-carbon-fibre",
+      "title": "Michigan carbon fibres | rigid carrier or flex PCB",
+      "family": "Fine-wire interfaces",
+      "evidence": "documented",
+      "summary": "A discrete carbon filament is attached to a board and insulated before its tip is opened. The 2015 PEDOT:pTS and 2020 bare-carbon flex variants do not share the same surface preparation.",
+      "devices": [
+        "26-carbon-fiber-electrode-arrays-michigan"
+      ],
+      "variants": [
+        {
+          "id": "f15",
+          "label": "2015 two-sided reference",
+          "description": "Sixteen nominal traces on two faces. A 6.8 µm carbon core with 0.8 µm radial Parylene C gives 8.4 µm OD. Nominal trace count is not working-fibre yield.",
+          "status": "documented"
+        },
+        {
+          "id": "flex20",
+          "label": "2020 flex-PCB reference",
+          "description": "A 100 µm polyimide PCB supports a 2 × 8 fibre build; every other trace is populated. Bare laser/plasma-processed sites are not the 2015 PEDOT finish.",
+          "status": "documented"
+        },
+        {
+          "id": "back",
+          "label": "2015 silicon support comparison",
+          "description": "A silicon support with grooves is a distinct assembly option. The reported stacked prototype did not route every nominal site independently.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pick the carrier before assigning pitch",
+          "detail": "Compare the 2015 two-face PCB and 2020 commercial flex. Their pitch, strain relief and connector registration are specific to each build.",
+          "tools": [
+            "01-01",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Preserve every-other-trace spacing on the 2020 branch; do not substitute published average spacing from the other article.",
+          "sourceIds": [
+            "p15",
+            "p20"
+          ]
+        },
+        {
+          "title": "Attach a carbon filament to a trace",
+          "detail": "The authors use conductive silver epoxy for each connection and insulate the joint. An adhesive bridge creates a short even when both fibres are present.",
+          "tools": [
+            "08-10",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Check isolation of neighboring contacts before covering the joints.",
+          "sourceIds": [
+            "p15",
+            "p20"
+          ]
+        },
+        {
+          "title": "Passivate and expose the 2015 end faces",
+          "detail": "Parylene C coats the wire; opening the distal carbon end and electrochemically functionalizing it with PEDOT:pTS creates the documented 2015 tip.",
+          "tools": [
+            "03-08",
+            "09-01",
+            "09-12"
+          ],
+          "status": "documented",
+          "check": "A fully coated end, opened bare end and finished end must be treated as different electrical states.",
+          "sourceIds": [
+            "p15"
+          ],
+          "varies": [
+            "f15",
+            "back"
+          ],
+          "only": [
+            "f15",
+            "back"
+          ]
+        },
+        {
+          "title": "Prepare the flex-array tips separately",
+          "detail": "The 2020 process exposes and plasma-ashes the ends. The carbon surface supports its own electrochemical measurements; it is not automatically overcoated with the 2015 polymer.",
+          "tools": [
+            "04-05",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Check inspected tip shape and bare-carbon status against the selected article. Laser system material compatibility is a facility gap.",
+          "sourceIds": [
+            "p20"
+          ],
+          "varies": [
+            "flex20"
+          ],
+          "only": [
+            "flex20"
+          ]
+        },
+        {
+          "title": "Register the separate silicon carrier",
+          "detail": "The silicon branch adds grooved support shanks. In the three-layer example only four of twelve sites were electrically wired. The support assembly is not a second coating on every bare fibre.",
+          "tools": [
+            "12-01",
+            "09-03"
+          ],
+          "status": "documented",
+          "check": "Report 12 physical positions and 4 wired paths only for that illustrated stack; do not copy this ratio to a 16-site flex array.",
+          "sourceIds": [
+            "p15"
+          ],
+          "varies": [
+            "back"
+          ],
+          "only": [
+            "back"
+          ]
+        },
+        {
+          "title": "Record a per-wire acceptance map",
+          "detail": "Test continuity, adjacent shorts and bath impedance; distinguish a present wire from a functioning channel. The 2015 paper reports pre/post stage impedance comparisons.",
+          "tools": [
+            "09-03",
+            "09-01",
+            "09-12"
+          ],
+          "status": "documented",
+          "check": "Store the reference electrode, frequency and physical wire number with each reading.",
+          "sourceIds": [
+            "p15",
+            "p20"
+          ]
+        }
+      ],
+      "gaps": [
+        "Commercial carbon filament, production flex circuitry and precise laser/optional silicon support tooling need external procurement or qualification.",
+        "The 2020 functional outcomes are from distinct measurement arrangements; no claim of concurrent chemical and electrophysiological performance for every electrode."
+      ],
+      "sources": [
+        {
+          "id": "p15",
+          "title": "Patel et al., 2015 carbon-fibre array",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4789140/",
+          "note": "Fabrication and Figs. 1–4: two-face PCB, supports, coating and electrodeposition."
+        },
+        {
+          "id": "p20",
+          "title": "Patel et al., 2020 high-density carbon-fibre arrays",
+          "url": "https://mint.engin.umich.edu/wp-content/uploads/sites/50/2021/07/Patel2020Highdensitycarbon.pdf",
+          "note": "Methods §2.1, Figs. 1–3: commercial flex PCB, per-side assembly and end preparation."
+        }
+      ]
+    },
+    {
+      "id": "pni-argo",
+      "title": "Argo | pressed PtIr bundle and external CMOS",
+      "family": "Fine-wire interfaces",
+      "evidence": "partial",
+      "summary": "The bundle and X-FAB readout chip are manufactured on separate paths. A stochastic wire-to-pixel contact map is measured after pressing; the 65,536 CMOS pixels are not 65,536 physical wires.",
+      "devices": [
+        "94-argo-microwire-cmos-recording-system"
+      ],
+      "variants": [
+        {
+          "id": "penetrating",
+          "label": "Penetrating, sharpened array",
+          "description": "The source reports escalating 100–1,300-wire arrays; the illustrated 1,300-wire array is not the >30,000-channel surface experiment.",
+          "status": "documented"
+        },
+        {
+          "id": "surface",
+          "label": "Coplanar, nonpenetrating array",
+          "description": "The distal face is polished flat rather than electrosharpened. One surface acquisition measured 30,146 connected pixels; connectivity is a measured result, not a lithographic count.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Obtain the readout die externally",
+          "detail": "Paradromics and Caeleste co-designed a 256 × 256 amplifier array fabricated by X-FAB in 180 nm CMOS. Neither a post-processing register nor a probe station constitutes that foundry.",
+          "tools": [],
+          "status": "external",
+          "check": "Map returning die, reference and multiplexed output separately from wire stock.",
+          "sourceIds": [
+            "argo"
+          ]
+        },
+        {
+          "title": "Prepare and pack the wires",
+          "detail": "The article sets spacing with a sacrificial Parylene C coating on PtIr microwires and holds the bundle in heat-shrink tubing. The resulting positions are stochastic.",
+          "tools": [
+            "03-08",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Do not derive a perfect mask grid or an exact static channel map from mean spacing.",
+          "sourceIds": [
+            "argo"
+          ]
+        },
+        {
+          "title": "Finish the selected distal geometry",
+          "detail": "The penetrating variant uses sharpened tips and defines exposed length after shaft insulation; the surface variant has a coplanar polished distal face. A thermal ALD tool in the register is an analogue, not the paper’s exact Savannah S200 process.",
+          "tools": [
+            "04-05",
+            "03-05",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "A coplanar flat-tip array must not inherit sharpened-tip geometry; check thickness only for its relevant branch.",
+          "sourceIds": [
+            "argo"
+          ]
+        },
+        {
+          "title": "Expose a planar distal array",
+          "detail": "For the nonpenetrating variant, polish the distal tips to a common plane. This is not the earlier electrosharpening stage used on penetrating assemblies.",
+          "tools": [
+            "05-02",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "A deliberately recessed wire may miss its intended contact plane even when its conductor passes continuity.",
+          "sourceIds": [
+            "argo"
+          ],
+          "varies": [
+            "surface"
+          ],
+          "only": [
+            "surface"
+          ]
+        },
+        {
+          "title": "Define the penetrating distal shafts",
+          "detail": "This variant adds alumina insulation to the released shafts and a controlled exposed region on the sharpened tips. The paper describes 20–30 nm alumina on these shafts; it does not assign this thickness to arbitrary bundles.",
+          "tools": [
+            "03-05",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Distinguish a damaged dielectric along the shaft from a purposely exposed distal tip.",
+          "sourceIds": [
+            "argo"
+          ],
+          "varies": [
+            "penetrating"
+          ],
+          "only": [
+            "penetrating"
+          ]
+        },
+        {
+          "title": "Prepare the chip-end interface",
+          "detail": "The researchers polish the proximal face, expose wire tips and press the face against the sensor. Alignment, flatness and local asperities change electrical contact.",
+          "tools": [
+            "04-05",
+            "05-02",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Record contacted pixel IDs and classify geometrically possible but electrically open sites.",
+          "sourceIds": [
+            "argo"
+          ]
+        },
+        {
+          "title": "Map connectivity and signals on a dummy load",
+          "detail": "Compare wire count, contact-positive pixel count and independent input channels as different counters. Acquire a known synthetic waveform before interpreting noise maps.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "A lost mechanical contact can remove a pixel even with an unbroken wire; the fabricated pixel count stays constant."
+        }
+      ],
+      "gaps": [
+        "ASIC masks, original device-specific stochastic map, custom pressing fixture and backend firmware are not local fabrication assets.",
+        "Quoted article results are not the yield or signal quality of a generic virtual array."
+      ],
+      "sources": [
+        {
+          "id": "argo",
+          "title": "Sahasrabuddhe et al., The Argo (2021)",
+          "url": "https://caeleste.be/wp-content/uploads/2024/02/Sahasrabuddhe_2021_J._Neural_Eng._18_015002.pdf",
+          "note": "§2: distinct distal finishes, X-FAB 180 nm die, spacing, pressing and performance examples."
+        }
+      ]
+    },
+    {
+      "id": "pni-stanford-microwire",
+      "title": "Obaid / Stanford | packed wire-to-pixel connector",
+      "family": "Fine-wire interfaces",
+      "evidence": "partial",
+      "summary": "Here the CMOS chip acts as an enormous connector. Sacrificial coat thickness controls the spacing between wires, while the chip and distal ends of the same wire have different surface preparation.",
+      "devices": [
+        "96-stanford-microwire-cmos-bundles-2020"
+      ],
+      "variants": [
+        {
+          "id": "in",
+          "label": "135–251-wire recording bundles",
+          "description": "PtIr mouse recording articles, separate from the 138-wire retinal demonstration.",
+          "status": "documented"
+        },
+        {
+          "id": "ret",
+          "label": "138-wire article",
+          "description": "The publication’s ex vivo recording bundle is not the large connectivity demonstration.",
+          "status": "documented"
+        },
+        {
+          "id": "contact",
+          "label": "8,640-wire test",
+          "description": "A contact/assembly demonstration on a camera-derived chip, not 8,640 simultaneously recorded neural channels.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Select the stock and underlying CMOS",
+          "detail": "The paper evaluates different wire metals and independent receiving chips. The MEA includes 26,400 pixels, of which 1,024 can be selected simultaneously; those figures do not describe every chip tested.",
+          "tools": [],
+          "status": "external",
+          "check": "Start from a supplied CMOS receiver with a known pin/pixel map, not model-imagined ASIC masks.",
+          "sourceIds": [
+            "ob"
+          ]
+        },
+        {
+          "title": "Place a sacrificial spacer on insulated wires",
+          "detail": "Retain an electrical insulation layer and use deposited Parylene C as the removable inter-wire spacer. Packing a wire bundle does not remove that distinction.",
+          "tools": [
+            "03-08",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Changing the spacer thickness should change pitch, not the source metal core diameter.",
+          "sourceIds": [
+            "ob"
+          ]
+        },
+        {
+          "title": "Aggregate, immobilize and polish",
+          "detail": "The bundle is packed, infiltrated with epoxy and its proximal face polished. Keep the opposite, released distal ends physically distinct.",
+          "tools": [
+            "08-10",
+            "05-02",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Check proximal coplanarity and avoid filling the exposed distal contact region.",
+          "sourceIds": [
+            "ob"
+          ]
+        },
+        {
+          "title": "Expose mating ends and release free length",
+          "detail": "Etch-back at the chip end and removal of sacrificial material at the distal end define two different physical interfaces. A collet supports the sample.",
+          "tools": [
+            "04-05",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Measure protrusion and free wire length independently; a tilted face can contact only a subset of pixels.",
+          "sourceIds": [
+            "ob"
+          ]
+        },
+        {
+          "title": "Measure rather than presume the pixel map",
+          "detail": "Apply a bench reference signal and select electrically contacted inputs. Compare uniqueness of loaded wires with pixel count and selectable readout bandwidth.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "The 8,640-wire photo establishes scale; an electrically responsive pixel is not independently certified as a unique working neural channel.",
+          "sourceIds": [
+            "ob"
+          ]
+        }
+      ],
+      "gaps": [
+        "Opaque CMOS manufacture, exact pressing load and landing map for a future bundle remain external.",
+        "Packing and etch fixtures, wire finishes and chip surface treatments differ between examples; do not merge these with Argo or CHIME."
+      ],
+      "sources": [
+        {
+          "id": "ob",
+          "title": "Obaid et al., high-density microwire-CMOS interface",
+          "url": "https://med.stanford.edu/content/dam/sm/chichilnisky/documents/publications/Obaid2020.pdf",
+          "note": "2020 Methods and Figs. 1–4 differentiate etched ends, materials, receiving chips and large-scale connectivity test."
+        }
+      ]
+    },
+    {
+      "id": "pni-chime",
+      "title": "CHIME | glass-insulated Au wires and plated mating bumps",
+      "family": "Fine-wire interfaces",
+      "evidence": "partial",
+      "summary": "CHIME connects the polished chip-side ends of glass-insulated gold microwires using electrodeposited gold bumps. It is explicitly a different mating strategy from simply etching back the glass on a related bundle.",
+      "devices": [
+        "109-chime-glass-gold-microwire-cmos"
+      ],
+      "variants": [
+        {
+          "id": "mea",
+          "label": "MEA1k host",
+          "description": "The paper reports a 26,400-pixel chip with 1,024 selected simultaneously; actual attached wires are counted separately.",
+          "status": "documented"
+        },
+        {
+          "id": "camera",
+          "label": "Cheetah640CL-derived host",
+          "description": "640 × 512 input pixels give 327,680 amplifier inputs, not the number of wires or independently recorded units.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Receive wire and host independently",
+          "detail": "Gold-core, glass-insulated wire is purchased stock. A CMOS sensor is a separate supplied component, not an output of the electrode fabrication sequence.",
+          "tools": [],
+          "status": "external",
+          "check": "Distinguish wire OD, metal core diameter, wire count and host pixel capacity.",
+          "sourceIds": [
+            "ch"
+          ]
+        },
+        {
+          "title": "Make and inspect the chip-end plane",
+          "detail": "The published assembly uses bundles with a polished proximal face. A polished wire alone can present an inadequate electrical landing area.",
+          "tools": [
+            "12-01",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Inspect chipped glass, surface debris and exposed gold before adding bumps.",
+          "sourceIds": [
+            "ch"
+          ]
+        },
+        {
+          "title": "Build independent chip-end and tip interfaces",
+          "detail": "Gold bumps enlarge the proximal mating faces; distal electrode surfaces receive Au/IrOx according to the paper. No chemical formulation or specialized process qualification is supplied by this atlas.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Do not confuse a proximal bump providing chip contact with a distal electrochemical coating.",
+          "sourceIds": [
+            "ch"
+          ]
+        },
+        {
+          "title": "Mate to host and measure electrical coupling",
+          "detail": "The conductors need not register one-to-one with dense pixels. Surface mapping is measured after assembly, not calculated from a nominal square pitch.",
+          "tools": [
+            "05-07",
+            "09-06",
+            "09-04"
+          ],
+          "status": "documented",
+          "check": "A wire touching several pixels must not be counted as several independent physical sites.",
+          "sourceIds": [
+            "ch"
+          ]
+        },
+        {
+          "title": "Separate conduction from interface quality",
+          "detail": "Compare continuity, saline impedance and a known electrical waveform on the chosen receiver. Report connected pixels, wire count and unique mapped paths separately.",
+          "tools": [
+            "09-03",
+            "09-01",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "A connected metal path with poor distal surface preparation may pass DC and fail the impedance comparison."
+        }
+      ],
+      "gaps": [
+        "Qualified glass/metal wire manufacture, raw camera/MEA die manufacture, plating facilities and custom mating hardware are outside this register mapping."
+      ],
+      "sources": [
+        {
+          "id": "ch",
+          "title": "Kollo et al., CHIME (2020)",
+          "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.00834/full",
+          "note": "Materials and Methods: independent chip/tissue ends, gold bumps versus glass etching, receivers and wire counts."
+        }
+      ]
+    },
+    {
+      "id": "pni-drawn-polymer",
+      "title": "Canales | all-polymer multimodal draw",
+      "family": "Multimodal fibres",
+      "evidence": "partial",
+      "summary": "An optically guiding polymer preform contains conductive-polyethylene electrodes and hollow channels. Thermal fibre drawing is not spin coating, electrospinning, or wafer etching.",
+      "devices": [
+        "143-mit-drawn-multimodal-polymer-fiber-2015"
+      ],
+      "variants": [
+        {
+          "id": "d1",
+          "label": "Design I",
+          "description": "Published section has two conductive-polyethylene electrodes, a waveguide and fluidic ports.",
+          "status": "documented"
+        },
+        {
+          "id": "d2",
+          "label": "Design II",
+          "description": "Different concentric cross-section with four recording sites; keep its layout and optical loss distinct from Design I.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Plan the multimaterial preform",
+          "detail": "Draw the conducting domains, PC/COC optical interfaces and hollow cavities at preform scale. Preserve intended functions and optical interfaces throughout reduction.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "A void, transparent waveguide and conductive region may look similar in section but must remain different objects.",
+          "sourceIds": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Source the consolidated thermal draw",
+          "detail": "The paper scales a macroscale assembled preform in a draw tower. The equipment register contains no qualified thermal fibre tower with controlled feed, draw and tension.",
+          "tools": [],
+          "status": "external",
+          "check": "The fibre cannot be declared locally made by assigning a generic furnace, electrospinner or printer to this step.",
+          "sourceIds": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Inspect scaled transverse sections",
+          "detail": "Use optics and geometry comparison for the section actually chosen; distortion and channel collapse affect fluidics independently of conductor continuity.",
+          "tools": [
+            "12-01",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Count distinct connected electrodes and through-lumens for the chosen cross-section.",
+          "sourceIds": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Fan out the three modalities",
+          "detail": "Optical coupling, electrical fanout and tubing convey different signals. The exact backside connector fixtures remain custom; register items cover elementary metrology, not the full assembly technology.",
+          "tools": [
+            "16-13",
+            "12-01",
+            "11-06"
+          ],
+          "status": "reference",
+          "check": "Map every electrical output, microfluidic lumen and optical waveguide separately.",
+          "sourceIds": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Qualify one modality at a time",
+          "detail": "Use optical power in/out, passive fluid throughput and electrode resistance/impedance as independent readouts. A good optical signal does not verify an open lumen.",
+          "tools": [
+            "11-05",
+            "06-07",
+            "09-03",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "Record sample length and launch/collection reference for optical comparisons.",
+          "sourceIds": [
+            "ca"
+          ]
+        }
+      ],
+      "gaps": [
+        "Unregistered thermal draw tower, source preform, control settings, fanout and measured geometry for an individual fibre.",
+        "Source references about modalities are not a local foundry release."
+      ],
+      "sources": [
+        {
+          "id": "ca",
+          "title": "Canales et al., multimodal fibre platform",
+          "url": "https://www.nature.com/articles/nbt.3093",
+          "note": "2015 Fig. 1 and supplement: Design I/II, drawing, conductivity, optical and fluidic checks."
+        }
+      ]
+    },
+    {
+      "id": "pni-drawn-tin",
+      "title": "Canales | thermally drawn tin multielectrode fibre",
+      "family": "Multimodal fibres",
+      "evidence": "partial",
+      "summary": "A second architecture in the same paper uses metallic tin conductors in a polymer jacket. Neither the sacrificial outer diameter nor the 36-conductor demonstration should be read as a chronic 36-channel functional specification.",
+      "devices": [
+        "144-mit-drawn-tin-multielectrode-fiber-2015"
+      ],
+      "variants": [
+        {
+          "id": "seven",
+          "label": "Seven tin electrodes",
+          "description": "Seven-conductor drawn structure; one illustrated section changes from 416 µm to 85 µm after sacrificial cladding removal.",
+          "status": "documented"
+        },
+        {
+          "id": "thirtysix",
+          "label": "36-electrode fabrication example",
+          "description": "Demonstrates fabrication scale, not 36 simultaneously recorded independent units.",
+          "status": "documented"
+        },
+        {
+          "id": "nine",
+          "label": "Nine-electrode hollow layout",
+          "description": "A distinct drawn structure places electrodes around a hollow channel. Do not add a fluidic channel to every tin fibre.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Choose a preform hierarchy",
+          "detail": "Record the core count and sleeve materials for the specific layout. The sacrificial outside layer serves a manufacturing purpose distinct from permanent conductor insulation.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "The seven-, nine- and 36-conductor branches are mutually distinct examples in Fig. 3.",
+          "sourceIds": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Require the appropriate co-draw line",
+          "detail": "The authors thermally draw a composite conductor/polymer structure with a dedicated tower. An electrospinner does not preserve the same cross-sectional preform.",
+          "tools": [],
+          "status": "external",
+          "check": "Hold the traveler here without an external co-drawn component and documented section.",
+          "sourceIds": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Expose final outer dimensions",
+          "detail": "Selected sacrificial cladding is removed from the documented example. Use measured section diameters before and after, never a single all-variants number.",
+          "tools": [
+            "04-06",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "A smaller final OD does not imply small/shorted metal cores; keep insulating boundaries intact.",
+          "sourceIds": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Build an electrical breakout",
+          "detail": "Use a test fixture that exposes distal and proximal ends with explicit connectivity; do not assume every microscale metal body reaches its own digitizer.",
+          "tools": [
+            "05-07",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "The accepted readout count is the number of mapped terminal pairs, not wires visible in an SEM."
+        },
+        {
+          "title": "Check the optional lumen only where present",
+          "detail": "Inspect conductor separation and continuity for all variants; check fluid throughput only on the documented hollow version.",
+          "tools": [
+            "09-03",
+            "06-07",
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "The software must not produce a flow reading for a solid seven-conductor section.",
+          "only": [
+            "nine"
+          ],
+          "varies": [
+            "nine"
+          ]
+        }
+      ],
+      "gaps": [
+        "No thermal draw tower or per-design fanout fixture in the register. The soluble cladding and exact cross-section depend on design; they are not universal."
+      ],
+      "sources": [
+        {
+          "id": "ca",
+          "title": "Canales et al., tin-fibre variants",
+          "url": "https://www.nature.com/articles/nbt.3093/figures/3",
+          "note": "Fig. 3 shows section before/after cladding removal, the seven-electrode structure and distinct higher-count/hollow variants."
+        }
+      ]
+    },
+    {
+      "id": "pni-graphite-draw",
+      "title": "Park | graphite-composite electrodes in a multifunctional fibre",
+      "family": "Multimodal fibres",
+      "evidence": "partial",
+      "summary": "This 2017 design integrates a polymer waveguide, six graphite-enhanced conductive-polymer electrodes and two lumens in one drawn section. The graphite is part of the electrode composite, not a coating of all exposed faces.",
+      "devices": [
+        "146-mit-graphite-polymer-multifunctional-fiber-2017"
+      ],
+      "variants": [
+        {
+          "id": "paper",
+          "label": "Published six-electrode article",
+          "description": "Two fluidic channels flank a core/cladding optical path. The selected experimental section was approximately 200 µm, within a reported range.",
+          "status": "documented"
+        },
+        {
+          "id": "bench",
+          "label": "Modality-dropout coupon",
+          "description": "Deliberately block an inert test lumen while leaving all six electrical and the optical paths untouched.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Construct the material cross-section",
+          "detail": "The source incorporates graphite-enhanced conductive-polyethylene regions alongside PC core/COC optical cladding and fluidic cavities, with a protective sacrificial outer layer.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Each of the six conductive domains must remain isolated from its neighbors in the reference model.",
+          "sourceIds": [
+            "park"
+          ]
+        },
+        {
+          "title": "Commission composite feedstock and thermal drawing",
+          "detail": "The paper builds a macroscopic preform and reduces the whole assembly with a fibre draw. Neither a wafer furnace nor extrusion bioprinter provides the required control of this material system.",
+          "tools": [],
+          "status": "external",
+          "check": "The manufacturing route is incomplete without a registered or external qualified draw line.",
+          "sourceIds": [
+            "park"
+          ]
+        },
+        {
+          "title": "Inspect section and backend",
+          "detail": "Compare actual electrode and lumen shapes across several sections. Terminate the optical, fluidic and electrical branches independently.",
+          "tools": [
+            "12-01",
+            "11-06",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "Distinguish an incompletely formed lumen from connector blockage downstream.",
+          "sourceIds": [
+            "park"
+          ]
+        },
+        {
+          "title": "Measure independent transfers",
+          "detail": "Inspect optical transmission, flow at known pressure and resistance/impedance per electrode, identifying sample length and chosen reference.",
+          "tools": [
+            "11-05",
+            "06-07",
+            "09-01",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "A crossing conductor detected electrically does not imply damage to the waveguide, or vice versa.",
+          "sourceIds": [
+            "park"
+          ]
+        }
+      ],
+      "gaps": [
+        "Graphite composite processing, consolidation tower, optical fanout and exact back-end jig need sourcing. Limits from one section cannot be generalized to all draw ratios."
+      ],
+      "sources": [
+        {
+          "id": "park",
+          "title": "Park et al., multifunctional fibres (2017)",
+          "url": "https://www.nature.com/articles/nn.4510",
+          "note": "Fig. 1 / Online Methods: graphite-doped conductor, PC/COC preform, draw and independent characterization."
+        }
+      ]
+    },
+    {
+      "id": "pni-hybrid-draw",
+      "title": "Hydrogel-hybrid fibre | separately drawn components",
+      "family": "Multimodal fibres",
+      "evidence": "partial",
+      "summary": "This later MIT design assembles separately drawn components in a compliant matrix. It is not the single co-drawn section of the earlier Canales/Park designs: twenty-one visible tin wires are not twenty-one independent recording outputs.",
+      "devices": [
+        "79-hydrogel-hybrid-multifunctional-fiber-probe"
+      ],
+      "variants": [
+        {
+          "id": "dry",
+          "label": "Dry geometry",
+          "description": "The published mechanical comparison distinguishes dry and hydrated assemblies; preserve the state in every dimension/load record.",
+          "status": "documented"
+        },
+        {
+          "id": "wet",
+          "label": "Hydrated hybrid",
+          "description": "Three seven-wire fibres and three fluidic tubes alternate around one central optical waveguide. The paper describes collective back-end connectorization inside each seven-wire component.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Source the three functional fibre types",
+          "detail": "The study uses PC/COC guides, PEI tubes and PEI-insulated seven-wire tin electrode fibres. Each is made first by a thermal draw—not by the matrix assembly station.",
+          "tools": [],
+          "status": "external",
+          "check": "Require lot identity and measured cross-section for each external draw rather than inventing a single monolithic preform.",
+          "sourceIds": [
+            "hhy"
+          ]
+        },
+        {
+          "title": "Register components in the guide fixture",
+          "detail": "One central guide, three electrical fibres and three fluidic tubes are aligned with a custom polyimide guide. Preserve the alternating arrangement in the physical layout.",
+          "tools": [
+            "12-01",
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "The physical count is 7 fibres containing 21 tin wires in total, not 21 independent backend channels.",
+          "sourceIds": [
+            "hhy"
+          ]
+        },
+        {
+          "title": "Embed and condition the inert composite",
+          "detail": "The study compares adhesion of different hydrogel matrix systems and distinguishes dry from wet mechanics. The facility analogue handles a pre-made nonliving matrix only; do not equate simple contact with successful bonding.",
+          "tools": [
+            "06-10",
+            "14-01",
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "Inspect delamination and component migration, storing state before comparing flexural responses.",
+          "sourceIds": [
+            "hhy"
+          ]
+        },
+        {
+          "title": "Map back-end grouping",
+          "detail": "Track electrical groups, the single lightguide and each of the three lumens separately. The original connectorization limits independence of the seven wires in each component.",
+          "tools": [
+            "16-13",
+            "11-06"
+          ],
+          "status": "documented",
+          "check": "If a fixture ties seven wires, a continuity-positive group does not certify seven independently addressable sites.",
+          "sourceIds": [
+            "hhy"
+          ]
+        },
+        {
+          "title": "Verify transfers before and after bending",
+          "detail": "Use benign liquid, optical power and small-signal electrical measurements to separate leakage, attenuation and electrical loss.",
+          "tools": [
+            "06-07",
+            "11-05",
+            "09-03",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "A blocked tube can fail with unchanged light power; a shared terminal can mask individual wire opens."
+        }
+      ],
+      "gaps": [
+        "No thermal draw line or source matrix bonding station; no simulated implantation, device/tissue mechanics, or biological claim.",
+        "The real device’s electronic connector grouping cannot be fixed by merely renaming geometrical wires as channels."
+      ],
+      "sources": [
+        {
+          "id": "hhy",
+          "title": "Adaptive and multifunctional hydrogel hybrid probes (2021)",
+          "url": "https://www.nature.com/articles/s41467-021-23802-9",
+          "note": "Fig. 1, Methods and Discussion: independent functional fibres, guide fixture, matrix bonding and readout limitations."
+        }
+      ]
+    },
+    {
+      "id": "pni-neuroworm",
+      "title": "NeuroWorm | patterned elastic film rolled into a fibre",
+      "family": "Multimodal fibres",
+      "evidence": "partial",
+      "summary": "NeuroWorm starts flat. Rolling a patterned Au/elastomer laminate creates a multichannel fibre; it is neither a drawn conductor bundle nor a monolithic cylindrical metal wire.",
+      "devices": [
+        "191-siat-neuroworm-movable-fibre-electrode"
+      ],
+      "variants": [
+        {
+          "id": "sixty",
+          "label": "60-channel reference",
+          "description": "The published figures include a 60-channel article and study how patterned-film geometry changes diameter and stretchability.",
+          "status": "documented"
+        },
+        {
+          "id": "coupon",
+          "label": "Unmagnetized electrical coupon",
+          "description": "Compare flat and rolled circuits on an inert fixture without modeling magnetic movement or any procedure.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lay out traces on the film",
+          "detail": "Draw separate sites and return connections on a planar workpiece. Save a persistent net identity through the later rolled transformation.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "An overlap in a projected rolled view is not a physical electrical connection.",
+          "sourceIds": [
+            "nw"
+          ]
+        },
+        {
+          "title": "Form the soft patterned laminate",
+          "detail": "The source describes patterned Au on an elastomeric SEBS film. Thickness and conductor width matter to mechanical response; do not treat one reported test condition as a universal product specification.",
+          "tools": [
+            "03-01",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Evaluate continuity and resistance on a flat witness sample before rolling. Exact metal deposition setup requires qualification.",
+          "sourceIds": [
+            "nw"
+          ]
+        },
+        {
+          "title": "Release and roll",
+          "detail": "Rolling the composite changes cross-section and contact accessibility. Keep a carrier handling fixture distinct from a thermal fibre draw tower.",
+          "tools": [
+            "12-01",
+            "10-07"
+          ],
+          "status": "documented",
+          "check": "Inspect outside diameter, visible site openings and any damage at film edges.",
+          "sourceIds": [
+            "nw"
+          ]
+        },
+        {
+          "title": "Separate magnetic hardware from the passive coupon",
+          "detail": "The original design includes an optional magnetic-guidance implementation. The actuation, tracking and external magnetic guidance apparatus are outside this workbench profile.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not label a passive electrical coupon a movable system or infer magnetic behavior from trace continuity.",
+          "sourceIds": [
+            "nw"
+          ],
+          "only": [
+            "sixty"
+          ]
+        },
+        {
+          "title": "Map electrical retention under strain",
+          "detail": "Compare resistance on each flat path to the same rolled path. In an inert mechanical fixture, repeated strain can affect both interfaces and conductor integrity.",
+          "tools": [
+            "09-03",
+            "14-01",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "One failed conductor changes one net, not the number of originally patterned sites."
+        }
+      ],
+      "gaps": [
+        "Specific film transfer tools, precise roll geometry, connector design and magnetic subsystem remain unqualified. No in vivo movement or therapeutic claims are made."
+      ],
+      "sources": [
+        {
+          "id": "nw",
+          "title": "Nature: A movable long-term implantable soft microfibre (2025)",
+          "url": "https://www.nature.com/articles/s41586-025-09344-w",
+          "note": "Fabrication / extended Fig. 1: composite film, rolling, trace-width and thickness tests, 60-channel reference."
+        }
+      ]
+    },
+    {
+      "id": "pni-hydrogel-fibre",
+      "title": "SINANO | 16-channel all-hydrogel fibre array",
+      "family": "Multimodal fibres",
+      "evidence": "partial",
+      "summary": "The reported microscale conductor is a PEDOT:PSS hydrogel fibre shaped by wet spinning, stretching and annealing. The observable result depends on hydration and load, not just a dry fibre diameter.",
+      "devices": [
+        "204-sinano-neuron-scale-all-hydrogel-fibre-array"
+      ],
+      "variants": [
+        {
+          "id": "array",
+          "label": "Published 16-channel array",
+          "description": "The paper reports controllable 1–20 µm conductor diameter and a 16-channel assembly. That range is not a list of separately validated complete 16-channel configurations.",
+          "status": "documented"
+        },
+        {
+          "id": "coup",
+          "label": "Single-fibre witness",
+          "description": "A witness fibre isolates hydration-dependent diameter and electrical behavior; it has no multichannel routing.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Keep the three objects distinct",
+          "detail": "Model fibre formation, interface insulation/support and multicontact fanout as distinct components. Geometric fibre diameter does not specify contact area, electrical channel count or exact pad routing.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Compare a single observed fibre and the 16-channel assembly without equating them.",
+          "sourceIds": [
+            "hf"
+          ]
+        },
+        {
+          "title": "Obtain qualified spun, stretched fibre",
+          "detail": "The authors coordinate spinning, elongation and annealing of conductive hydrogel fibres. A syringe pump offers only a feed subsystem: the register has no qualified take-up/stretch/anneal line for this process.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not assign an electrospinner simply because the article calls its process spinning.",
+          "sourceIds": [
+            "hf"
+          ]
+        },
+        {
+          "title": "Compare conditioned witness sections",
+          "detail": "Hold a documented hydration state for diameter comparisons. Short sections and representative longitudinal micrographs serve different measurements.",
+          "tools": [
+            "12-01",
+            "13-01"
+          ],
+          "status": "reference",
+          "check": "Separate hydrated optical observations from dried vacuum micrographs; use the same state for control/comparison."
+        },
+        {
+          "title": "Assemble and map the breakout",
+          "detail": "The published array has 16 channels. A bench surrogate needs an explicit interface map, intact insulation and protected contact transitions. Exact package and termination tooling are not assumed.",
+          "tools": [
+            "12-01",
+            "16-13"
+          ],
+          "status": "reference",
+          "check": "Sixteen conductors in view are not sixteen independently tested outputs.",
+          "sourceIds": [
+            "hf"
+          ]
+        },
+        {
+          "title": "Measure conduction and mechanics",
+          "detail": "For a named hydration state, compare electrical continuity/impedance and flex response on nonliving samples; repeat after conditioning.",
+          "tools": [
+            "09-03",
+            "09-01",
+            "09-12",
+            "14-10"
+          ],
+          "status": "reference",
+          "check": "If the terminal resistance dominates or several fibres share a return, report that ambiguity rather than a bulk material property."
+        }
+      ],
+      "gaps": [
+        "The exact process line, per-fibre connector mapping, manufacturing yield and direct equivalence of dry and wet fibre dimensions remain unavailable here."
+      ],
+      "sources": [
+        {
+          "id": "hf",
+          "title": "Wang et al., Matter: neuron-scale all-hydrogel array",
+          "url": "https://doi.org/10.1016/j.matt.2026.102798",
+          "note": "2026 primary report: PEDOT:PSS fibre, stretched/annealed construction, 1–20 µm range and the 16-channel architecture."
+        }
+      ]
+    },
+    {
+      "id": "pni-mri-fibre",
+      "title": "Fudan | susceptibility-matched PEDOT:PSS fibre coupon",
+      "family": "Multimodal fibres",
+      "evidence": "partial",
+      "summary": "Here the conducting core is wet-spun PEDOT:PSS, and the jacket is PDMS. A reduced magnetic-susceptibility artifact in a particular experiment is not a general MRI-safety label.",
+      "devices": [
+        "207-fudan-pedot-pss-mri-compatible-fiber-electrode"
+      ],
+      "variants": [
+        {
+          "id": "paper",
+          "label": "Reported insulated fibre",
+          "description": "The primary paper illustrates an approximately 15 µm PEDOT:PSS core and a PDMS insulating layer; electrochemical results must retain their specimen diameter and exposed length.",
+          "status": "documented"
+        },
+        {
+          "id": "phantom",
+          "label": "Passive MRI comparison",
+          "description": "A nonliving geometry fixture compares artifacts only under the stated field, orientation and sequence; not an MR Conditional system claim.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Obtain wet-spun fibre",
+          "detail": "The source describes wet spinning followed by conditioning to alter the fibre structure/flexibility. An exact wet-spinning/take-up system rather than an electrospinner is required.",
+          "tools": [],
+          "status": "external",
+          "check": "Record conductor identity and the conditioning state independently of downstream silicone insulation.",
+          "sourceIds": [
+            "mfe"
+          ]
+        },
+        {
+          "title": "Add jacket and expose chosen region",
+          "detail": "PDMS insulates the core along its shaft; exposed conductor differs from the total visible fibre. An optical witness section is useful to distinguish surface exposure from metal-like shine.",
+          "tools": [
+            "06-10",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Measure exposed geometry, shaft isolation and resistance separately.",
+          "sourceIds": [
+            "mfe"
+          ]
+        },
+        {
+          "title": "Characterize electrical interface",
+          "detail": "Use inert electrolyte and reference/counter electrodes to compare impedance with the cited specimen. Electrode length, diameter and frequency must accompany any impedance number.",
+          "tools": [
+            "09-01",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "Do not apply a 20 µm specimen measurement to a 15 µm specimen as if geometry were unchanged.",
+          "sourceIds": [
+            "mfe"
+          ]
+        },
+        {
+          "title": "Separate the MRI comparison from safety",
+          "detail": "The paper reports experiments up to 11.7 T. The register’s 7 T scanner is not the source’s 11.7 T experiment. A passive phantom can examine artifact under a specified local sequence only.",
+          "tools": [
+            "15-05"
+          ],
+          "status": "reference",
+          "check": "No field-strength equivalence, heating, safety label, or patient inference follows from a small image artifact.",
+          "sourceIds": [
+            "mfe"
+          ]
+        }
+      ],
+      "gaps": [
+        "Supplier-grade fibre formation, terminal sealing, matched phantom conditions, source field/coil/sequence and full system MRI behavior are unqualified."
+      ],
+      "sources": [
+        {
+          "id": "mfe",
+          "title": "Li et al., MRI-compatible soft fibre bioelectronics",
+          "url": "https://doi.org/10.1093/nsr/nwag325",
+          "note": "Fabrication and MRI compatibility / Fig. 2: wet-spun PEDOT:PSS, PDMS insulation, comparison of imaging artifacts. Research results only."
+        }
+      ]
+    }
+  ]
+}

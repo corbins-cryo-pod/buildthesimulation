@@ -1,0 +1,199 @@
+01-01|M|layout|Restricted GDSII and planar net checks do not establish foundry DRC, LVS or an approved PDK.
+01-02|M|physics|The implemented electrical case is a uniform slab; do not claim a CMOS, electrothermal or tissue-coupled solver.
+01-03|S|visual|GPU queue and memory budgets are synthetic; this node does not fabricate material or predict throughput on arbitrary hardware.
+01-04|S|visual|Tile seams and label coordinates are tested on a synthetic volume, not a fabrication metrology dataset.
+01-05|I|analysis|Aligns labeled events in synthetic data. It neither performs spike sorting nor acquires a device output.
+01-06|S|traceability|Synthetic archive, fit and power ledgers do not imply a physical NAS, backups or controlled manufacturing records.
+01-07|M|draft|A scale overlay can reveal plan mismatch; it is not a certified drawing, mask or manufacturability check.
+02-01|M|contact-litho|NIST documents 1 µm print resolution and up to 150 mm substrates for its Gen4 configuration. The virtual contact/proximity model is not a universal result for every resist, gap or chuck.
+02-02|M|contact-litho|Coupon-sized manual contact alignment is not a substitute for a verified full-wafer stepper or backside aligner.
+02-03|M|direct-litho|Mode II reference: 1 µm minimum feature and 1.2 µm line/space; do not apply the optional Mode I 0.45 µm figure to this configuration. The browser models only two writing stripes.
+02-04|I|mask|Dry preview preserves pattern tone and alignment; no physical mask is exposed, developed or transferred to a wafer.
+02-05|M|ebeam-litho|An analytic electron-exposure calculation does not prove sub-resolution operation or compatibility with a particular conductor, resist or active CMOS metal stack.
+02-06|M|stepper|Geometric projection and overlay omit photoresist transfer, actual field aberrations and full process qualification.
+02-07|M|coat|The AZ 1512 spin curve and illustrative spatial map are not calibrated for arbitrary polyimide, photoresist or flexible substrates.
+02-08|M|coat,bake|Spin and pre-bake maps use bounded user calibration. Film after hard cure, solvent content and residual stress are not measured.
+02-09|M|prime|The modeled EPFL configuration is HMDS priming. Do not use its event history as measured adhesion or as a plasma-activation result.
+02-10|M|develop|Threshold and finite-rate contrast models need a relevant resist calibration. Numerical dose-to-clear is not measured CD or residue.
+02-11|I|coat,handle|The 200 mm simulator models dry wafer handling and fixture rejection only, not resist dispense, film deposition or bake.
+02-12|M|optical-inspect|A calibrated field of view on a synthetic reflected image does not resolve every defect or verify buried conductors.
+03-01|I|evaporate|Demonstrates carrier fit and directional shadowing by an optical analogy only; does not compute deposited material or metal thickness.
+03-02|I|evaporate|The Edwards AUTO 306 example compares two fixed synthetic thickness maps. It does not run thermal deposition or calculate arbitrary flux.
+03-03|M|sputter|The witness-coupon solver needs an appropriate rate/profile. Target options, adhesion, stress and functional TiN or Pt properties are not implicit.
+03-04|I|sputter|A second sputter platform is not automatically interchangeable with 03-03; only inert fit and fixed layer inspection are implemented.
+03-05|I|ald|The Savannah S100 page checks circular carrier fit only. An ALD precursor, barrier composition, film growth or hermeticity is not represented.
+03-06|E|ald|This static Fiji G2 enclosure is not an ALD reaction. A plasma process is not automatically compatible with polymer or post-CMOS surfaces.
+03-07|I|pecvd|Fixed sample maps and fit do not model plasma or establish silicon nitride/oxide composition, stress or deposition temperature.
+03-08|I|parylene|The Utah PDS 2010 reference establishes the tool family. The simulator checks normal offsets and mask geometry, not actual deposition, adhesion or pinholes.
+03-09|I|anneal,bake|The tube furnace variant is not locked. The cold clearance gauge does not establish inert-atmosphere cure, oxidation or a temperature schedule.
+03-10|I|anneal|Empty-tray geometry provides no evidence of wafer handling, implant-grade processing, atmosphere or an achievable thermal profile.
+03-11|I|anneal|RTP-600xp dry clearance is not lamp heating, implant activation or a verified rapid thermal budget.
+03-12|E|activate|A static enclosure and independent footprint cue do not predict surface composition, bonding energy or an activation process.
+04-01|M|rie|The site demonstrates an empirical patterned nitride example; do not transfer etch rates or mask selectivity to parylene, metals or uncharacterized materials.
+04-02|M|rie|The silicon ICP example admits a single published power pair or imported calibration. Outside its calibration domain, sidewalls and depth are unknown.
+04-03|M|drie|The site models a six-inch silicon Bosch geometry case. A Cobra 300 name alone does not identify a gas or wafer configuration; a III–V chamber is not a substitute.
+04-04|M|ion-mill|Directional shadowing and removal are idealized. An explicitly disabled redeposition term is not proof of a clean metal sidewall.
+04-05|E|activate|A detached paper footprint is not an ashing or descum model. Do not assign released films a cleanliness result.
+04-06|E|wet|This is a custom containment reference, not an installed chemical set or validated lift-off, release or wet etch.
+04-07|I|dice|The grid can be inspected; the simulator does not separate a wafer, generate a physical kerf or predict chipping.
+04-08|I|thin|Reads a detached drawing. The actual thinning process, carrier support, subsurface damage and final TTV remain unmodeled.
+04-09|I|planarize|The radial diagram is not a removal field. Material-specific pads, slurries, dishing and stop layers are not established.
+04-10|I|laser-machine|The R4 is a candidate. Printed-width comparison does not model ablation, drilling, stent cutting or thermal damage.
+04-11|E|mill|An immutable CAD circle is not a machined jig. Machine travel, tool access and achieved dimension require independent evidence.
+04-12|E|wafer-bond|EVG501 bonding variants require compatible chucks and alignment. The detached drawing does not simulate bonding, alignment transfer, leaks or yield.
+05-01|M|profile|Stylus geometry limits narrow or soft features; a height witness does not measure buried layers.
+05-02|M|profile|Ideal coherence scanning can flag unavailable points. A candidate ContourGT-K does not guarantee usable data on steep or transparent films.
+05-03|M|profile|The virtual rigid hemisphere broadens narrow features; this image is not exact sidewall shape or an elastic material measurement.
+05-04|M|optical-film|The inverse thickness may be nonunique; wrong optical constants or stack topology can fit a misleading thickness.
+05-05|M|optical-film|The model is a bounded single film. Do not use a good fit as a reconstruction of arbitrary multilayer passivation.
+05-06|M|sheet-r|Sheet-resistance estimates depend on probe spacing, sample size and contact/edge correction; not a direct via or bond resistance.
+05-07|M|probe,iv|A virtual 200 mm manual probe station and ideal I–V do not establish contact to an actual pad or isolate a short without a test structure.
+05-08|M|surface|A silhouette fit yields an apparent contact angle, not a direct measure of adhesion strength or surface chemistry.
+05-09|M|surface|The example fits an isolated reference line; arbitrary peak assignment, depth profiling and buried contamination are not implemented.
+05-10|M|surface|The silicon/polystyrene reference spectra do not identify arbitrary thin-film mixtures or quantify doping without a calibration.
+05-11|M|surface|This synthetic ATR/FFT trace is not a measured polymer composition, purity or cure fraction.
+05-12|M|surface|A synthetic Bragg profile and silicon-spacing comparison do not determine arbitrary phase fractions or multilayer mechanical properties.
+06-01|I|microprint|A detached geometric ruler does not model two-photon exposure, printed resolution or developed master geometry.
+06-02|E|microprint|Only a hypothetical inert printed-polymer carrier is in scope, conditional on a compatible head and formulation. No fabrication operation, metallization or biological workflow is represented.
+06-03|E|microprint|A passive photocurable fixture is a conditional candidate only. The detached illustration is not a mask aligner, qualified printed part, or biological process.
+06-04|I|microprint|The Form 4 is a candidate fixture printer. The model tests detached clearance only, not printed accuracy or a material's suitability.
+06-05|E|fiber-form|A detached shape comparison is not fiber manufacture, pore distribution or wire/fiber drawing.
+06-06|E|fiber-form|NS LAB is named for nonwoven sheet formation; its virtual drawing cannot establish fiber orientation, thickness or a conductive lead.
+06-07|E|fluid-check|This is a pressure-controller reference, not a verified pump, flow measurement, casting station or benchtop flow solver.
+06-08|E|fluid-check|Independent reference drawing only. Channel pressure does not by itself establish downstream volume or flow.
+06-09|E|fluid-check|No delivery or hydraulic operation is modeled. Do not use this station as evidence of formation of a mesh or catheter.
+06-10|I|cast|Static bench and footprint check do not create a master or predict PDMS shrinkage, channel patency or bonding.
+06-11|E|bake|The OF-12G is a convection oven reference, not a vacuum degasser. The illustration does not expose a sample to heat.
+06-12|M|mechanics|A dry ideal spring and beam correction are not a nonlinear, time-dependent or tissue measurement.
+07-01|I|outside|Cabinet sash/occupancy replay is not a cleanroom particle qualification or a foundry manufacturing operation.
+07-02|M|outside|Chamber environmental replay is not polymer aging, fabrication cleanliness or process qualification. No living-specimen workflow is part of this atlas.
+07-03|M|micro-image|A reticle-calibrated camera and simple contrast modes may illustrate inspection; this instrument is not a lithography exposure system.
+07-04|I|outside|An immutable inert image is not acquisition or manufacturing metrology. This time-lapse system is outside the device flow.
+07-05|E|outside|A static display is neither live acquisition nor device processing.
+07-06|E|outside|The illustrated statics diagram is unrelated to substrate spin coating; the centrifuge is not a substitute for a resist coater.
+07-07|E|outside|Counting diagram only; no device-manufacturing operation assigned.
+07-08|E|outside|A tissue-research instrument is not a device-foundry station; only an independent drawing is displayed.
+07-09|E|outside|Not an electronics fabrication, ESD or electrode-test station; no research operation is represented.
+07-10|E|outside|Not a wafer sorter or a test of device yield; detached geometry demonstration only.
+07-11|E|outside|A fixed graphic readout does not measure packaged optoelectronic efficiency or a test coupon.
+07-12|E|outside|Outside the passive materials and electrical device workflow; not a qualifying thermal-cycling test for an implant.
+07-13|E|outside|A cryostorage cabinet is not a device fabrication or cryogenic electronics qualification tool here.
+07-14|E|outside|A freezer is not a qualified thermal shock chamber. The simulator has no thermal or inventory model.
+07-15|E|outside|A rotary research bioreactor is outside device manufacturing and is not an electroplating or soak station.
+08-01|M|ball-bond|Ordered pad/loop geometry and connectivity do not measure pull strength, adhesion or resistance of a joint.
+08-02|M|wedge-bond|Footprint and ribbon clearance do not determine a valid bond recipe, wetting, fatigue or bond strength.
+08-03|M|wire-bond|The F&S 56i family needs its exact head and wire configuration confirmed; accepted graph edges are not high-yield joints.
+08-04|M|flip-chip|Rigid fiducial fit and pad overlap are dry placement only. Electrical attachment and reflow must be evidenced separately.
+08-05|M|optical-align,flip-chip|Passive symmetric mode overlap is not active optical alignment of an arbitrary emitter, fiber or incompatible wavelength.
+08-06|M|bond-test|The WP100g-cartridge example replays a synthetic force record. It does not certify untested joints or package-level fatigue.
+08-07|M|activate|Face-specific eligibility is logic, not a plasma chemistry or bond strength model.
+08-08|I|seam-weld|AMADA workstation model is pending. The simulator checks seam perimeter fit without welding; hermeticity remains unknown.
+08-09|M|leak|The HLT 160 calibrated synthetic replay is not evidence that a given assembly has been tested, sealed or aged.
+08-10|M|encapsulate|The volumetric model can test contact keep-outs but omits curing chemistry, barrier performance and voids.
+08-11|I|pcb|Single-layer copper graph and gap inspection only; no milling, plated vias, solder mask, multilayer stack or controlled-impedance production.
+08-12|M|solder|A polarized two-pin graph check does not qualify a solder paste, fine-pitch assembly, wire bond or medical-grade connection.
+09-01|M|echem|The legacy Gamry 600+ supports EIS; the site simulates an ideal passive cell. No PEDOT, Pt-black, iridium oxide or other deposition line is made available by that fact.
+09-02|M|iv|The B1500A station represents named HRSMU and capacitance units with passive fixtures. It does not design, build or functionally qualify ASICs.
+09-03|M|dc,iv|An ideal source-measure unit can flag compliance or an open on a passive model; a virtual reading is not traceable to actual hardware.
+09-04|M|wave|A sampled single-channel oscilloscope trace needs adequate bandwidth and sampling. It cannot establish a multichannel neural recording.
+09-05|M|wave|Analog timebase and clipping illustrate display behavior, not a calibrated digital capture or numerical electrical transfer.
+09-06|M|wave|The Thevenin/load example is a bench signal only; specifying generator amplitude is not measuring what appears at the load.
+09-07|M|ac|Impedance with an SMD fixture is not automatically an electrode/electrolyte measurement; fixture open/short corrections are model-specific.
+09-08|M|rf|The two-port passive THRU example is not a matching design, wireless link budget, antenna qualification or full multiport model.
+09-09|M|dc|Steady-state CV/CC with resistive loads does not model battery chemistry, a production cell or a dynamic implant load.
+09-10|M|wave|Idealized gain/filter behavior does not establish system noise for a specific electrode, cable and acquisition front end.
+09-11|M|ac,wave|Dual-phase RC behavior is a bounded demodulation model; it is not a broad-spectrum potentiostat or an independently calibrated instrument.
+09-12|M|electrical-fixture,echem|A custom passive three-terminal cell and optional RC network require a separate instrument. The simulated bath is neither a plating facility nor a biological measurement.
+10-01|M|electrical-fixture,wave|The passive current/voltage clamp example is for electronic bench behavior, not device manufacture or experimental cell protocols.
+10-02|M|acquire|An ideal ADC/ramp check covers scaling and sample timing; it is not a recovered recording or an anti-alias validation for an arbitrary source.
+10-03|M|wave|Inert conductance steps through a Bessel chain do not measure a newly manufactured interface or a biological channel.
+10-04|M|electrical-fixture,wave|Only the shared passive clamp adapter is represented; model-specific operational performance is not established.
+10-05|M|micro-image|Marked-plane optics on an inert target are not a cleanroom alignment tool or characterization of a real specimen.
+10-06|I|outside|The puller is represented by a dry gauge. It is not an implant microwire drawing line or a validated production station.
+10-07|M|position|Virtual travel and transforms do not establish vibration, repeatability under load or a bonding/alignment capability.
+10-08|E|outside|A fictitious facet annotation neither manufactures metal electrode tips nor predicts their impedance.
+10-09|I|acquire|The Intan RHS example aligns synthetic data only. No physical stimulation, new recording or pad-to-headstage mapping follows automatically.
+10-10|M|acquire|Gen 3 synthetic counter gaps and marker alignment validate time bookkeeping, not a new neural recording or compatibility with every headstage.
+10-11|I|acquire|MaxOne's passive site selection and marker replay are not a mask set, CMOS foundry or proof of a selectable hardware channel.
+10-12|I|acquire|MaxTwo six-well coordinates and fixed synthetic traces do not represent wafer processing or an actual acquisition.
+10-13|I|acquire|The replay uses a pinned Neuropixels 1.0 map. Do not apply it to 2.0 banks or treat the recorded device as a CMOS manufacturing tool.
+10-14|I|electrical-fixture|The organ-bath fixture is dry inert geometry only. It neither measures a nerve nor verifies the electrical performance of a cuff.
+10-15|E|outside|De-energized shape and label matching only; not an operational stimulator, device manufacturing tool or test of delivered pulses.
+10-16|I|outside|A geometry fit inside the slicer is not cutting or an enclosure/wafer singulation process.
+11-01|E|optical-bench|The detached unitless exercise does not drive an LED; an emitter and optical detector must be specified separately.
+11-02|E|optical-bench|Closed module reference only: no emitted light, fiber coupling, spectral model or driver compatibility is established.
+11-03|E|optical-bench|Timing hardware is named but inactive. The drawing neither synchronizes physical sources nor computes delivered light.
+11-04|E|outside|A photometry console is not a waveguide insertion-loss meter, wafer writer or optics foundry process.
+11-05|E|optical-bench|PM100D is a console; the head and wavelength response must be selected separately. Unit conversion alone is not power measurement.
+11-06|M|position,optical-bench|25 mm lattice fit and collision imply neither optical alignment nor active vibration isolation.
+11-07|E|optical-bench|The fiber LED reference is not an epitaxial emitter source or a light model; a fixed unit conversion does not demonstrate coupling.
+11-08|E|optical-bench|Inert camera exterior and independent ruler do not establish detector acquisition, calibration or a production optical measurement.
+11-09|E|outside|A holographic research-optics reference is not an optical lithography station or a validated illumination model.
+11-10|E|optical-bench|A detached passive circuit illustration does not test a fabricated microLED, electrical-to-optical efficiency, crosstalk or heating.
+12-01|M|micro-image,optical-inspect|Scale and ideal stereo disparity are useful for gross assembly inspection, not multilayer overlay or nanoscale features.
+12-02|M|micro-image|The reticle example demonstrates field of view and pitch, not an arbitrary field of view or depth response for every objective.
+12-03|I|micro-image|A synthetic plane-width check is not physical confocal acquisition or automatic verification of a multilayer thickness.
+12-04|I|micro-image|The fixed synthetic width comparison does not establish real sub-diffraction resolution for an arbitrary material.
+12-05|I|micro-image|Offline synthetic grid registration is separate from spinning-disk acquisition, sample contrast and distortion calibration.
+12-06|I|micro-image|Read-only XY/XZ inspection has no excitation model. Do not substitute this microscope for the two-photon polymerization printer.
+12-07|I|micro-image|A calibrated synthetic plane reference does not acquire or register a volume from a fabricated device.
+12-08|I|micro-image|Stack inspection only. No acquisition, bleaching, field calibration or product lifetime result is implied.
+12-09|I|micro-image|A staged grating/Fourier comparison is not a complete SIM reconstruction or a universal resolution guarantee.
+12-10|I|micro-image|Synthetic tile registration does not establish physical image calibration or make a slide scanner a wafer-inspection line.
+12-11|E|outside|Laser microdissection is not a general-purpose implant micromachining route; only an independent polygon board is represented.
+13-01|I|em-image|Synthetic grating pitch may illustrate the scale bar; no electron-beam acquisition, real surface roughness or chamber compatibility is established.
+13-02|I|em-image|The FIB-SEM viewer has no milling or volume-acquisition process. Do not route wafer-scale etching or production vias here.
+13-03|I|em-image|An inert cavity cross-section has no physical removal. PFIB analysis is not a manufacturing-volume substitute for DRIE.
+13-04|I|em-image|Preauthored section labels and volume/gap calculations do not acquire or align real serial sections.
+13-05|I|em-image|An offline lattice pitch reference is not TEM acquisition, sample preparation or defect identification.
+13-06|I|em-image|A synthetic image archive does not qualify cryogenic materials, electronics or a fabricated electrode.
+13-07|I|em-prep|The UC7 displays a synthetic fiducial to measure. It does not section a sample or characterize a destructive preparation artifact.
+13-08|E|outside|Outline annotation is not sample preservation, wafer cooling, package quenching or a production stage.
+13-09|E|outside|Freeze-substitution reference only, not a foundry process or material treatment.
+13-10|I|em-prep|The specimen coater's fixed coupon geometry does not qualify a device-grade metal, thickness, bond pad, adhesion layer or barrier coating.
+13-11|E|em-prep|A depicted critical-point dryer is not a released-MEMS dry process. Solvent compatibility and stiction-free yield are unverified.
+13-12|E|em-prep|This grid cleaner and immutable drawing are not a general-purpose wafer plasma descum or a calibrated bonding process.
+13-13|I|outside|An oblique-coordinate diagram neither slices a sample nor qualifies cryogenic device fabrication.
+13-14|I|outside|An inert CAD drafting exercise is not physical microtomy or wafer material removal.
+13-15|I|ct|A read-only slice ruler demonstrates z sampling; it does not guarantee resolution of subvoxel gaps or perform X-ray scanning.
+14-01|M|mechanics|An ideal coupon force–displacement check neither guarantees real strain transfer nor qualifies an implant on tissue.
+14-02|M|mechanics|Ideal three-point flexure is specimen- and span-specific. It does not replace a high-cycle wire fatigue test.
+14-03|M|mechanics|Newtonian and single-mode Maxwell models apply only over their assumed regime and geometry; they are not a cure or processing simulation.
+14-04|M|mechanics|Constant kinetic friction and sinusoidal kinematics do not predict wear debris or real friction between unknown material pairs.
+14-05|M|mechanics|The ideal Hertz case on inert sites does not capture adhesion, finite film thickness, anisotropy or viscoelastic response.
+14-06|M|mechanics|Inert film-tension dynamics and harmonic response do not establish fatigue life, chronic durability or arbitrary loading behavior.
+14-07|M|thermal|A synthetic tare/blank-corrected thermogram is not measured decomposition temperature or approved processing temperature.
+14-08|M|thermal|An integrated transition on a synthetic scan is not a measured cure completion or phase transition of the actual encapsulant.
+14-09|M|thermal|Band-integrated surface radiometry depends on emissivity and reflections; it does not recover buried junction temperature or predict physiological heating.
+14-10|M|reliability,mechanics|The cycle-100 open is a teaching fixture, not a measured cycle-to-failure distribution or a general acceptance threshold.
+14-11|M|reliability,echem|Relative, contact-specific synthetic impedance drift is not a hermetic leak test, validated aging acceleration or chronic lifetime estimate.
+14-12|M|reliability,thermal|A candidate chamber and lumped thermal response do not verify humidity ingress or a specific device environmental qualification.
+15-01|E|outside|A stereotaxic frame is outside foundry/bench manufacturing. No physical placement procedure is represented.
+15-02|E|outside|The surgical stereo microscope is a documentary reference with a detached chart, not production alignment equipment.
+15-03|E|outside|Gait equipment is not a fabrication station, assembly fixture or device continuity test.
+15-04|E|outside|Waypoint inspection on a static graphic is not qualification of an electronic interface.
+15-05|E|outside|An MRI outline provides no implant compatibility, RF heating result, package evidence or manufacturing operation.
+15-06|E|ct|For a device-only illustration, this is a detached shape archive without scanning or calibration. Do not infer voxel-scale feature visibility.
+15-07|E|outside|A fixed graphic ruler on an ultrasound reference is not nondestructive inspection, transducer manufacturing or exposure.
+15-08|E|outside|An independent width comparison is not acquisition or fabrication of an ultrasound array.
+15-09|E|outside|Static grayscale codes do not establish optical device efficiency or emitter manufacture.
+15-10|E|outside|The retinal OCT exhibit is not an optical coating measurement, patient test, or device fabrication station.
+15-11|E|outside|A synthetic pattern does not test a fabricated retinal system or establish clinical performance.
+15-12|I|outside|Offline peak index is a display exercise; the bench does not fabricate or physically qualify a cochlear system.
+15-13|I|electrical-fixture|Only passive interface fit is modeled. Cochlear lead casting, contact wiring and functional acceptance are separate.
+15-14|I|optical-bench|The retinal platform's dry clearances are not a photovoltaic or electrical test. Illumination, output and acceptance are not simulated here.
+16-01|M|utility,position|Fixture placement and analytic vertical isolation do not qualify the environment against a real vibration spectrum.
+16-02|M|utility|An illustrative pickup factor is not measured shielding effectiveness, controlled grounding or a certified EMC test.
+16-03|S|utility,handle|Bench slot occupancy is not a manufacturing transformation, controlled storage or a validated clean zone.
+16-04|S|utility|The water ledger and resistivity conversion do not purify actual water or certify particle, ion or organic contamination.
+16-05|I|utility|An empty carrier fit does not run an autoclave cycle or demonstrate a sterile, functional implant.
+16-06|M|weigh|Tare, rounding and a synthetic gain exercise do not supply a calibration certificate or characterize an actual material.
+16-07|M|thermal|The inert first-order bath model does not establish uniformity, chemistry or accelerated soak lifetime.
+16-08|I|handle|Dry tip fit and inventory tracking are not gravimetric calibration or proof of a wet dispense amount.
+16-09|M|bake,utility|An equilibrium thermal phantom is not a calibrated bake, chemical treatment or wafer-level uniformity measurement.
+16-10|I|utility|A dry interrupted mock log cannot validate cleaning, residue, particle levels or protection of a fragile array.
+16-11|S|handle,traceability|The example transfers a 100 mm inert wafer and rejects a 75 mm carrier; other diameters and contamination control are not implied.
+16-12|S|handle,traceability|Container pose and dry occupancy preserve identity, not material compatibility, sterility or process completion.
+16-13|M|interconnect|The example checks a passive BNC route only. SMA/triax/FFC/headstage pinout, impedance and actual compatibility require separate evidence.
+16-14|S|utility|A blind marker panel demonstrates Boolean continuity, not gas composition, plumbing, vacuum level or equipment readiness in a real facility.
+16-15|S|utility|Cabinet, task-light and storage state are room context, not cleanroom certification, process control or manufacturing coverage.

@@ -11,13 +11,19 @@ const labs = [
 ---
 <Layout pageTitle="Device foundry" subtitle="" description="Explore interactive virtual fabrication workflows for silicon probes, flexible ECoG arrays and a self-closing peripheral cuff.">
   <article class="equipment eq-sheet foundry">
-    <nav class="eq-nav" aria-label="Simulation resources"><a href="/simulations/equipment/">Equipment register</a><a href="/simulations/">All simulations</a></nav>
+    <nav class="eq-nav" aria-label="Simulation resources"><a href="/simulations/foundry/atlas/">Manufacturing workflow atlas</a><a href="/simulations/equipment/">Equipment register</a><a href="/simulations/">All simulations</a></nav>
     <p class="eq-lede">Follow one virtual workpiece through fabrication, assembly and inspection. Change a process input, then see whether the geometry or electrical check changes downstream.</p>
+    <section class="atlas-entry" aria-label="Manufacturing workflow atlas">
+      <div><p class="eq-meta">Catalog coverage · Process routes · Tool compatibility</p><h2>Manufacturing workflow atlas</h2><p>Find a catalog device, compare fabrication configurations, and see which steps have a register match, need an outside facility, or are not publicly known.</p></div>
+      <a href="/simulations/foundry/atlas/">Open the Atlas →</a>
+    </section>
     <ul class="lab-grid" aria-label="Foundry workspaces">{labs.map(l=><li><p class="eq-meta">{l.id} · {l.kind}</p><h2>{l.name}</h2><p>{l.desc}</p><a href={l.link} aria-label={'Open ' + l.name + ' lab'}>Open lab →</a></li>)}</ul>
     <p class="limits"><strong>Scope.</strong> These are teaching simulations. Each lab distinguishes published geometry and process information from modeled parameters, synthetic data, and fictional inspection thresholds. They are not operating instructions or calibrated manufacturing replicas.</p>
   </article>
 </Layout>
 <style>
+  .atlas-entry { border:1px solid var(--border); padding:1.2rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }
+  .atlas-entry h2 { margin:.1rem 0; } .atlas-entry p { max-width:65ch; margin:.25rem 0; }
   .lab-grid { list-style:none; margin:1.4rem 0 1.6rem; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
   .lab-grid li { border:1px solid var(--border); padding:1.1rem; background:var(--panel); display:flex; flex-direction:column; min-width:0; }
   .lab-grid h2 { margin:.1rem 0 .4rem; font-size:1.38rem; }

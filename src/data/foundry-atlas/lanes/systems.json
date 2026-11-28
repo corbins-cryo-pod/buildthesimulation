@@ -1,0 +1,2506 @@
+{
+  "profiles": [
+    {
+      "id": "systems-dbs",
+      "title": "Directional DBS lead and generator",
+      "family": "Implantable stimulation leads",
+      "evidence": "partial",
+      "summary": "Eight contacts are not necessarily eight axial levels. This traveler keeps the conductive segments, insulating gaps, proximal connector, extension and generator as distinct parts. Manufacturers document the interfaces much better than the manufacturing line.",
+      "devices": [
+        "151-medtronic-percept-sensight-dbs",
+        "152-abbott-liberta-rc-dbs",
+        "153-boston-scientific-vercise-genus-dbs"
+      ],
+      "variants": [
+        {
+          "id": "sen-short",
+          "label": "SenSight B33005",
+          "description": "0.5 mm spacing between axial levels; 33 or 42 cm lead. Two middle levels split into three contacts each.",
+          "status": "documented"
+        },
+        {
+          "id": "sen-wide",
+          "label": "SenSight B33015",
+          "description": "1.5 mm spacing with the same 1–3–3–1 topology. Optional bilateral markers are not electrodes.",
+          "status": "documented"
+        },
+        {
+          "id": "cartesia",
+          "label": "Vercise Cartesia X / HX",
+          "description": "Sixteen-contact directional lead options; use the matching Boston Scientific connector and a model-specific contact drawing.",
+          "status": "documented"
+        },
+        {
+          "id": "liberta",
+          "label": "Abbott Liberta RC",
+          "description": "Rechargeable generator family. Choose a labeled Abbott lead or keep the lead unspecified; do not inherit Medtronic dimensions.",
+          "status": "documented"
+        },
+        {
+          "id": "cross",
+          "label": "Cross-vendor connector swap",
+          "description": "Similar diameters and contact counts do not establish shared pinout, fit or labeling.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Freeze the reference configuration",
+          "detail": "Select a manufacturer, axial layout, distal orientation marker, length and compatible extension; index each conductive segment independently.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Count physical contact faces and levels separately; on SenSight four levels map to eight independent electrodes.",
+          "sourceIds": [
+            "systems-dbs-s",
+            "systems-dbs-v",
+            "systems-dbs-a"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Source contacts, conductor subassemblies and jacket",
+          "detail": "Precision contact forming, fine insulated conductors and polymer processing are specialist inputs. An FDA supplement explicitly identifies lead-stringing and coil-subassembly inspection for SenSight, not the production work instruction.",
+          "tools": [],
+          "check": "Hold the lot if a part or orientation record is unknown; do not replace it with a flat thin-film mask.",
+          "sourceIds": [
+            "systems-dbs-string",
+            "systems-dbs-s"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Build a registration and continuity fixture",
+          "detail": "Locate supplier rings/segments in a cylindrical surrogate, preserve rotational indexing, and route to labeled connector test points. The modeled joints are not a vendor weld specification.",
+          "tools": [
+            "04-11",
+            "12-01",
+            "09-03"
+          ],
+          "check": "A rotated segment can pass DC continuity; require both measured azimuth and one-to-one pin mapping.",
+          "sourceIds": [
+            "systems-dbs-s",
+            "systems-dbs-v"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check insulation, flex and generator separation",
+          "detail": "Use a sacrificial lead, cyclic-bend fixture and four-wire or guarded measurement as appropriate; separate isolated contact resistance from connector resistance.",
+          "tools": [
+            "14-10",
+            "09-03",
+            "09-12"
+          ],
+          "check": "After flex, compare per-pin DC continuity and off-diagonal leakage with the starting matrix.",
+          "sourceIds": [
+            "systems-dbs-s"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Connect the generator as a supplied black box",
+          "detail": "Battery, sensing ASIC, firmware and qualified feedthrough package are separate supplier-controlled processes. The virtual generator only drives an inert electrical load.",
+          "tools": [],
+          "check": "Do not report a prototype coupon as a completed clinical generator.",
+          "sourceIds": [
+            "systems-dbs-s",
+            "systems-dbs-v",
+            "systems-dbs-a"
+          ]
+        }
+      ],
+      "gaps": [
+        "No validated segment forming/welding, multilumen extrusion or OEM connector line is established in the register.",
+        "A molded polymer is not proof of hermeticity; acceptance here is model/coupon continuity, not patient use."
+      ],
+      "sources": [
+        {
+          "id": "systems-dbs-s",
+          "title": "Medtronic · SenSight variants and spacing",
+          "url": "https://www.medtronic.com/en-ie/healthcare-professionals/products/neurological/deep-brain-stimulation/dbs-therapy-leads/sensight-directional-lead.html",
+          "note": "Ordering and device-specification tables distinguish 0.5/1.5 mm spacing, markers and extensions."
+        },
+        {
+          "id": "systems-dbs-string",
+          "title": "FDA · SenSight manufacturing supplement P960009/S407",
+          "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P960009S407",
+          "note": "Describes an additional inspection in lead stringing for the coil subassembly; not a released recipe."
+        },
+        {
+          "id": "systems-dbs-v",
+          "title": "Boston Scientific · Cartesia X and HX",
+          "url": "https://www.bostonscientific.com/en-EU/products/deep-brain-stimulation-systems/vercise-cartesia-x-and-hx-directional-leads.html",
+          "note": "Ordering tables and lead schematics distinguish 16-contact models."
+        },
+        {
+          "id": "systems-dbs-a",
+          "title": "Abbott · Liberta RC DBS",
+          "url": "https://www.neuromodulation.abbott/int/en/healthcare-professionals/movement-disorders/rechargeable-dbs.html",
+          "note": "Generator and associated DBS system overview, not drawings of the manufacturing tooling."
+        }
+      ]
+    },
+    {
+      "id": "systems-scs",
+      "title": "Spinal lead, connector and sensing loop",
+      "family": "Implantable stimulation leads",
+      "evidence": "partial",
+      "summary": "The Saluda benchmark has a concrete pin map and feedback path. Other systems may use a different lead silhouette, different currents or no ECAP feedback. This is a family of separate travelers, not one interchangeable spinal implant.",
+      "devices": [
+        "154-medtronic-inceptiv-closed-loop-scs",
+        "155-nevro-senza-hfx-iq-scs",
+        "156-saluda-evoke-closed-loop-scs",
+        "167-onward-arc-im-implantable-spinal-stimulation",
+        "170-abbott-proclaim-xr-spinal-cord-stimulation",
+        "171-boston-scientific-wavewriter-spinal-cord-stimulation"
+      ],
+      "variants": [
+        {
+          "id": "evoke",
+          "label": "Saluda Evoke",
+          "description": "Two 12-contact leads can be supported; ECAP measurement uses two contacts not delivering the pulse. FDA describes controlled and fixed-output modes.",
+          "status": "documented"
+        },
+        {
+          "id": "inceptiv",
+          "label": "Medtronic Inceptiv",
+          "description": "ECAP feedback is documented. Component-specific contact geometry is retained only when identified.",
+          "status": "documented"
+        },
+        {
+          "id": "senza",
+          "label": "Nevro Senza / HFX iQ",
+          "description": "High-frequency stimulation family. Do not assume Evoke sensing or control rules.",
+          "status": "documented"
+        },
+        {
+          "id": "proclaim",
+          "label": "Abbott Proclaim",
+          "description": "Select a labeled electrode/lead and primary-cell generator combination; do not silently assign a rechargeable generator.",
+          "status": "documented"
+        },
+        {
+          "id": "wave",
+          "label": "Boston Scientific WaveWriter",
+          "description": "Alpha and Alpha Prime are distinct generator configurations. Require a specified compatible lead.",
+          "status": "documented"
+        },
+        {
+          "id": "arc",
+          "label": "ONWARD ARC-IM",
+          "description": "Implantable spinal platform; infer only a labeled system-level route where the project does not release the production processes.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Partition the system BOM",
+          "detail": "Distinguish lead, extension where applicable, output generator, telemetry and external controller. Lock a real device family before testing.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "The chosen record must not silently acquire another system’s leads or battery.",
+          "sourceIds": [
+            "systems-scs-e",
+            "systems-scs-m",
+            "systems-scs-n",
+            "systems-scs-a",
+            "systems-scs-b",
+            "systems-scs-o"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Obtain a lead and sealed generator",
+          "detail": "Precision ring/flat contacts, conductor-to-contact joints, jacket extrusion/molding, supplier leads and generator package are outside the available validated line.",
+          "tools": [],
+          "check": "Attach the relevant part number or explicitly mark geometry unavailable.",
+          "sourceIds": [
+            "systems-scs-e",
+            "systems-scs-n"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Build a lead-to-load breakout",
+          "detail": "Use a labeled connector emulator and resistive/capacitive channel loads; give each distal contact a distinct identity. A paddle requires a planar contact fixture, not a round lead collar.",
+          "tools": [
+            "08-11",
+            "08-12",
+            "09-03"
+          ],
+          "check": "Check the resistance matrix, then introduce one open and one adjacent short; both must be localized.",
+          "sourceIds": [
+            "systems-scs-e"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify stimulus and sense isolation",
+          "detail": "Replay an artificial evoked signal into a separate sense pair; add a stimulus artefact blanking interval. Fixed-output mode never interprets amplitude change as a feedback command.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "09-10"
+          ],
+          "check": "With the sensing input disconnected, the display must flag missing feedback rather than hallucinate a response.",
+          "sourceIds": [
+            "systems-scs-e",
+            "systems-scs-m"
+          ],
+          "varies": [
+            "evoke",
+            "inceptiv"
+          ],
+          "only": [
+            "evoke",
+            "inceptiv"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify a waveform into a dummy impedance",
+          "detail": "Record current or voltage across a known load; compare commanded and measured output within a stated uncertainty. Keep this as electrical QA, not a therapy program.",
+          "tools": [
+            "09-04",
+            "09-07"
+          ],
+          "check": "Report compliance clipping or a disconnected load as a failure; do not infer neural recruitment.",
+          "sourceIds": [
+            "systems-scs-e",
+            "systems-scs-n",
+            "systems-scs-a",
+            "systems-scs-b",
+            "systems-scs-o"
+          ]
+        }
+      ],
+      "gaps": [
+        "The register does not supply the commercial pulse generators’ CMOS, firmware or qualified mold/lead tooling.",
+        "A synthetic ECAP helps validate signal routing only; it is not measured spinal physiology."
+      ],
+      "sources": [
+        {
+          "id": "systems-scs-e",
+          "title": "FDA · Evoke SSED P190002",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190002B.pdf",
+          "note": "Sections V and preclinical studies give leads, controller, open-/closed-loop distinctions and bench endpoints."
+        },
+        {
+          "id": "systems-scs-m",
+          "title": "Medtronic · Inceptiv",
+          "url": "https://news.medtronic.com/2024-04-26-Medtronic-receives-FDA-approval-for-Inceptiv-TM-closed-loop-spinal-cord-stimulator",
+          "note": "Manufacturer identifies sensing and closed-loop ECAP control, not a lead production process."
+        },
+        {
+          "id": "systems-scs-n",
+          "title": "FDA · Senza P130022",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf13/P130022B.pdf",
+          "note": "Original device description and bench tests for Senza; not a current iQ firmware schematic."
+        },
+        {
+          "id": "systems-scs-a",
+          "title": "FDA · Abbott SCS P010032/S191",
+          "url": "https://www.fda.gov/medical-devices/recently-approved-devices/abbott-spinal-cord-stimulation-scs-systems-p010032s191",
+          "note": "Description of implanted system, leads and external accessories."
+        },
+        {
+          "id": "systems-scs-b",
+          "title": "FDA · WaveWriter supplement P030017/S363",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf3/P030017S363B.pdf",
+          "note": "Summary covers the device family; no released metal/jacket assembly drawing."
+        },
+        {
+          "id": "systems-scs-o",
+          "title": "ONWARD Medical · ARC-IM",
+          "url": "https://www.onwd.com/therapy/arc-im/",
+          "note": "Manufacturer overview of the implanted platform; not ARC-EX."
+        }
+      ]
+    },
+    {
+      "id": "systems-rns",
+      "title": "Responsive cranial stimulator and four-contact leads",
+      "family": "Responsive recording systems",
+      "evidence": "partial",
+      "summary": "The documented 2013 RNS-300M architecture has two four-contact lead inputs. Strip and depth configurations are different physical assemblies even when their connector channel counts agree.",
+      "devices": [
+        "150-neuropace-rns-system"
+      ],
+      "variants": [
+        {
+          "id": "depth",
+          "label": "Depth lead",
+          "description": "Axial contacts on a cylindrical lead: test longitudinal order and adjacent insulation.",
+          "status": "documented"
+        },
+        {
+          "id": "strip",
+          "label": "Cortical strip lead",
+          "description": "Four Pt–Ir contacts arranged 1 × 4 on a cortical strip; the original FDA table gives 10 mm spacing. Verify face exposure and channel order.",
+          "status": "documented"
+        },
+        {
+          "id": "mixed",
+          "label": "Mixed bench inputs",
+          "description": "Run one of each source-defined type as separate four-contact inputs, retaining the connector and reference wiring.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Read the original model and port map",
+          "detail": "Use the original FDA description of the RNS-300M, depth lead and cortical strip lead; newer generator revisions are not automatically included.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Two distinct input ports and four physical contacts per connected lead are accounted for.",
+          "sourceIds": [
+            "systems-rns-f"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Take the generator and leads as purchased parts",
+          "detail": "Cranial enclosure, hermetic feedthroughs, battery, ASIC and electrode joining processes are not disclosed at traveler depth.",
+          "tools": [],
+          "check": "Unknown stack or port pinout is not inferred from a sibling product.",
+          "sourceIds": [
+            "systems-rns-f"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Build separate depth and strip fixtures",
+          "detail": "A cylindrical phantom accepts the depth reference; a flat fixture accepts the strip. Each contact routes to its own guarded dummy channel.",
+          "tools": [
+            "04-11",
+            "06-04",
+            "09-03"
+          ],
+          "check": "A swapped adjacent contact must be detected even if total resistance is unchanged.",
+          "sourceIds": [
+            "systems-rns-f"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Replay a synthetic detection event",
+          "detail": "Inject an artificial waveform across known inputs and record the emulator’s trigger and output into an isolated dummy load. Timing logic is a teaching surrogate, not the manufacturer’s detector.",
+          "tools": [
+            "09-06",
+            "09-04"
+          ],
+          "check": "Known event fires once; a below-threshold fixture does not fire. Save input, trigger timestamp and load trace.",
+          "sourceIds": [
+            "systems-rns-f"
+          ]
+        }
+      ],
+      "gaps": [
+        "Clinical classifier, implant firmware, exact power management, lead material joins and production tests are not reproduced."
+      ],
+      "sources": [
+        {
+          "id": "systems-rns-f",
+          "title": "FDA · RNS-300M P100026",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf10/P100026b.pdf",
+          "note": "Section V describes the neurostimulator, lead types, port and electrode configuration. The initial approval scope is preserved."
+        }
+      ]
+    },
+    {
+      "id": "systems-cochlear",
+      "title": "Cochlear receiver and flexible contact carrier",
+      "family": "Auditory interfaces",
+      "evidence": "partial",
+      "summary": "The tapered electrode carrier and the receiver/stimulator are separate manufacturing streams. Distinguish the number of conductive pieces from the number of electrical channels; the MED-EL case makes this particularly clear.",
+      "devices": [
+        "161-cochlear-nucleus-implant-system",
+        "168-med-el-cochlear-implant-system",
+        "169-advanced-bionics-hires-ultra-3d-cochlear-implant"
+      ],
+      "variants": [
+        {
+          "id": "nexa",
+          "label": "Nucleus Nexa",
+          "description": "CI1022 Slim Straight and CI1032 Slim Modiolar are distinct labeled geometries. CI1012 Contour Advance is another; the fixture cannot straighten away their free shapes.",
+          "status": "documented"
+        },
+        {
+          "id": "flex",
+          "label": "MED-EL FLEX28",
+          "description": "19 physical platinum contacts on 12 stimulation channels for this FLEX configuration, not 19 independently wired channels.",
+          "status": "documented"
+        },
+        {
+          "id": "hi",
+          "label": "HiRes Ultra 3D",
+          "description": "16 platinum contacts, Pt–Ir wires and a flexible silicone carrier; SlimJ and Mid-Scala are separate HiFocus shapes.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Select model, array and return",
+          "detail": "Read the electrode-specific drawing before setting carrier taper, curvature and order. Keep receiver coil, magnet, ground and extracochlear return outside the active-site count.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "List contact count, independent channel count and return arrangement as separate fields.",
+          "sourceIds": [
+            "systems-cochlear-n",
+            "systems-cochlear-m",
+            "systems-cochlear-h"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Source contact-and-wire subassemblies",
+          "detail": "Take precut contacts, individually insulated conductors and a registered forming/attachment tool as external parts. A patent describes one possible carrier process, not the as-built process of all vendors.",
+          "tools": [],
+          "check": "Assign a physical contact to a net before casting; paired pieces on one net must not be double-counted.",
+          "sourceIds": [
+            "systems-cochlear-p",
+            "systems-cochlear-m",
+            "systems-cochlear-h"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Immobilize and cast the reference carrier",
+          "detail": "Use a micromilled mold analog and register each contact face, route flexible wires and fill a silicone surrogate without covering active faces. An educational casting bench is not a medical silicone production line.",
+          "tools": [
+            "04-11",
+            "06-10",
+            "08-10",
+            "12-01"
+          ],
+          "check": "Inspect exposed contact edges, bubbles, free curvature and taper against the selected drawing only.",
+          "sourceIds": [
+            "systems-cochlear-p",
+            "systems-cochlear-h",
+            "systems-cochlear-n"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Join the array to the receiver",
+          "detail": "The vendor receiver, hermetic feedthrough, radio coil and magnet assembly are supplied, not fabricated by the mold step.",
+          "tools": [],
+          "check": "No equivalence between a potted PCB and qualified cochlear receiver.",
+          "sourceIds": [
+            "systems-cochlear-h",
+            "systems-cochlear-n",
+            "systems-cochlear-m"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check circuits and geometry in a phantom",
+          "detail": "Map net-to-contact continuity, off-net leakage and contact impedance; use a clear spiral fixture or micro-CT for bend/shape inspection, with inert media only.",
+          "tools": [
+            "09-03",
+            "09-01",
+            "13-15",
+            "15-13"
+          ],
+          "check": "Moving the lead must not swap the maps; a deliberately obscured aperture changes the electrochemical response, not the assigned channel.",
+          "sourceIds": [
+            "systems-cochlear-h",
+            "systems-cochlear-m",
+            "systems-cochlear-n"
+          ]
+        }
+      ],
+      "gaps": [
+        "Wire joining and extrusion dies, carrier formulation, electronics package and acceptance tolerances remain supplier-controlled.",
+        "The phantom does not predict insertion trauma, hearing performance or an individual cochlea."
+      ],
+      "sources": [
+        {
+          "id": "systems-cochlear-n",
+          "title": "Cochlear · CI1000/Nexa implant specifications",
+          "url": "https://assets.cochlear.com/api/public/content/D2070159_6_2025-06-13?v=85e5f1a3",
+          "note": "Model-specific geometry tables distinguish Slim Straight, Slim Modiolar and Contour Advance."
+        },
+        {
+          "id": "systems-cochlear-m",
+          "title": "MED-EL · SYNCHRONY 2",
+          "url": "https://www.medel.com/hearing-solutions/cochlear-implants/synchrony2",
+          "note": "Technical data and electrode array list distinguish active channels and physical FLEX contacts; use the specific array selected."
+        },
+        {
+          "id": "systems-cochlear-h",
+          "title": "Advanced Bionics · HiRes Ultra 3D technical manual",
+          "url": "https://www.advancedbionics.com/content/dam/advancedbionics/documents/regional/en-us/professionals/HiRes-Ultra-3D-Surgeons-Manual-FDA.pdf",
+          "note": "Technical specifications give 16 platinum sites, Pt–Ir wires, silicone and HiFocus array alternatives."
+        },
+        {
+          "id": "systems-cochlear-p",
+          "title": "Advanced Bionics · electrode carrier patent EP3548137A2",
+          "url": "https://patents.google.com/patent/EP3548137A2/en",
+          "note": "Claims and illustrations describe a possible staged contact/wire and mold assembly. Patent examples do not verify production practice."
+        }
+      ]
+    },
+    {
+      "id": "systems-abi",
+      "title": "Auditory brainstem paddle and receiver",
+      "family": "Auditory interfaces",
+      "evidence": "partial",
+      "summary": "These are surface paddles and cable/receiver assemblies, not tapered cochlear leads. A flat fixture can falsify the contact map without making claims about spatial hearing.",
+      "devices": [
+        "55-auditory-brainstem-implant",
+        "190-nurotron-wh-01a-auditory-brainstem-implant"
+      ],
+      "variants": [
+        {
+          "id": "coch",
+          "label": "Cochlear ABI541",
+          "description": "21-contact surface paddle; use an ABI-specific drawing, not a CI600/CI1000 carrier.",
+          "status": "documented"
+        },
+        {
+          "id": "wh",
+          "label": "Nurotron WH-01A",
+          "description": "Manufacturer reports 16 electrodes in a 5.5 × 3.5 mm silicone paddle, with a distinct positioning ridge.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Freeze planar footprint and surface orientation",
+          "detail": "Identify which side exposes metal and label each conductor. A different receiver family changes both the distal contacts and connector semantics.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Verify 21 vs 16 and the identity of the selected paddle; the contact axis is not a cochlear spiral.",
+          "sourceIds": [
+            "systems-abi-c",
+            "systems-abi-w"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Obtain the qualified material and interconnect",
+          "detail": "Production tooling, joining method and buried conductor paths are not verified. Model a supplier input, not invented trace layers.",
+          "tools": [],
+          "check": "Store undisclosed paths as unknown, not shortest straight lines labeled as true.",
+          "sourceIds": [
+            "systems-abi-c",
+            "systems-abi-w"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Make a coupon mold and loading plate",
+          "detail": "Use the reported outline to create a keyed inert silicone paddle surrogate, with one face exposed and a relieved cable exit.",
+          "tools": [
+            "04-11",
+            "06-10",
+            "12-01"
+          ],
+          "check": "Optical inspection checks carrier boundaries, face presentation and signs of pad burial.",
+          "sourceIds": [
+            "systems-abi-c",
+            "systems-abi-w"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Test one net at a time",
+          "detail": "Use protected dummy contact loads, followed by a saline cell to compare site interfaces and a flex test near the cable exit.",
+          "tools": [
+            "09-03",
+            "09-12",
+            "14-10"
+          ],
+          "check": "Pin i must reach only mapped site i; a cut conductor must not be inferred from layout alone.",
+          "sourceIds": [
+            "systems-abi-c",
+            "systems-abi-w"
+          ]
+        }
+      ],
+      "gaps": [
+        "Neither supplier’s production tooling, electronic design files, bond parameters or qualified hermetic package are present."
+      ],
+      "sources": [
+        {
+          "id": "systems-abi-c",
+          "title": "Cochlear · ABI541 electrode portfolio",
+          "url": "https://assets.cochlear.com/api/public/content/842935be6aa549e2acaf84699198382f?v=33a77f35",
+          "note": "ABI541 row and diagram define a brainstem paddle."
+        },
+        {
+          "id": "systems-abi-w",
+          "title": "Nurotron · WH-01A institutional device description",
+          "url": "https://nurotron.com/news/560.html",
+          "note": "Manufacturer describes the distinct 16-contact paddle and dimensions; no production method."
+        }
+      ]
+    },
+    {
+      "id": "systems-photovoltaic",
+      "title": "Photovoltaic retina: SOI pixel to optical-load test",
+      "family": "Visual interfaces",
+      "evidence": "partial",
+      "summary": "PRIMA is a passive photovoltaic array, not a camera-on-a-chip and not an Argus-style radio implant. The public eight-mask Stanford predecessor is a particularly useful foundry reference; it is not represented as the commercial PRIMA traveler.",
+      "devices": [
+        "177-science-prima-subretinal-photovoltaic-implant"
+      ],
+      "variants": [
+        {
+          "id": "prima",
+          "label": "First-generation PRIMA",
+          "description": "Clinical device: 378 hexagonal 100 µm pixels, 2 mm wide and 30 µm thick; local returns. Use only geometry and architecture from the PRIMA study.",
+          "status": "documented"
+        },
+        {
+          "id": "wang",
+          "label": "Wang 2012 family",
+          "description": "Public SOI fabrication route covers different research pixel sizes and series-connected diode geometries. Do not silently scale a 2012 mask into the human-grade device.",
+          "status": "documented"
+        },
+        {
+          "id": "rf",
+          "label": "Replace photovoltaic input with a receiver coil",
+          "description": "Incompatible with the untethered, light-powered pixel architecture.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Define and isolate diode islands",
+          "detail": "On the published reference SOI wafer, pattern trench masks and deep etch the device layer; isolation requires the buried oxide. Generic DRIE is a station-class match only.",
+          "tools": [
+            "01-01",
+            "02-01",
+            "04-03"
+          ],
+          "check": "Check through-layer isolation and inspect trench continuity, not merely drawn pixel pitch.",
+          "sourceIds": [
+            "systems-photovoltaic-w"
+          ],
+          "varies": [
+            "wang"
+          ],
+          "only": [
+            "wang"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Build insulating walls and conductive junctions",
+          "detail": "Thermal oxidation, conformal LPCVD polysilicon fill and selective diffusion/implantation form the documented diode structures; CMP planarizes the fill. No qualified diffusion/implant line or LPCVD poly reactor is identified here.",
+          "tools": [
+            "04-09"
+          ],
+          "check": "Incoming wafer records must establish doping polarity, planarization and isolation; a PECVD cabinet is not a dopant implanter.",
+          "sourceIds": [
+            "systems-photovoltaic-w"
+          ],
+          "varies": [
+            "wang"
+          ],
+          "only": [
+            "wang"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Connect, passivate and expose optical/electrode surfaces",
+          "detail": "The 2012 flow uses first vias and Ti/Pt, then a PECVD nitride optical coating and second openings. XeF₂ reopens selected trenches; photoresist spray coating and iridium-oxide patterning follow. A spin coater is not this conformal spray process.",
+          "tools": [
+            "02-01",
+            "03-01",
+            "03-03",
+            "03-07",
+            "04-01"
+          ],
+          "check": "Verify the three photodiodes of the research pixel join in series and that active/return are not bridged.",
+          "sourceIds": [
+            "systems-photovoltaic-w"
+          ],
+          "varies": [
+            "wang"
+          ],
+          "only": [
+            "wang"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Release and inspect the die",
+          "detail": "After front-side work the paper describes backside grinding, wet thinning and controlled breakage of the remaining suspended buried oxide. Generic removal tools are only operation-class analogs, not a qualified release.",
+          "tools": [
+            "04-08",
+            "04-06",
+            "05-01",
+            "12-01"
+          ],
+          "check": "A residual handle leaves the cross-section inconsistent with the released design.",
+          "sourceIds": [
+            "systems-photovoltaic-w"
+          ],
+          "varies": [
+            "wang"
+          ],
+          "only": [
+            "wang"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive the PRIMA array as an identified die",
+          "detail": "The 378-pixel human-grade configuration is documented. Its product masks, per-module traveler, release conditions and lot-test limits are not public here.",
+          "tools": [],
+          "check": "Never apply the published predecessor’s fabrication status to this product.",
+          "sourceIds": [
+            "systems-photovoltaic-p"
+          ],
+          "varies": [
+            "prima"
+          ],
+          "only": [
+            "prima"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Map optical conversion on a dummy load",
+          "detail": "Measure dark and illuminated per-pixel I–V or pulsed response using a calibrated light path, test load, current readout and recorded optical power; compare functional and intentionally shaded pixels.",
+          "tools": [
+            "11-05",
+            "09-03",
+            "09-04",
+            "15-14"
+          ],
+          "check": "A shaded test pixel falls toward its dark response; equal illuminated area does not guarantee identical output under a different load.",
+          "sourceIds": [
+            "systems-photovoltaic-p",
+            "systems-photovoltaic-w"
+          ]
+        }
+      ],
+      "gaps": [
+        "External SOI production, thermal oxidation, implantation/diffusion, LPCVD polysilicon, XeF₂ trench reopening and conformal spray resist are explicit gaps. A PECVD equipment preview does not validate film performance.",
+        "No visual percepts, expected acuity, or retinal safety threshold are computed by this traveler."
+      ],
+      "sources": [
+        {
+          "id": "systems-photovoltaic-w",
+          "title": "Wang et al. · Photovoltaic retinal prosthesis: implant fabrication and performance",
+          "url": "https://doi.org/10.1088/1741-2560/9/4/046014",
+          "note": "2012 paper, Fig. 1 and §§2–3: eight masks, trench isolation, diode processing, contacts, SIROF and measured photoresponse. Research predecessor only."
+        },
+        {
+          "id": "systems-photovoltaic-p",
+          "title": "Palanker et al. · PRIMA subretinal prosthesis",
+          "url": "https://doi.org/10.1038/s41467-022-28125-x",
+          "note": "Fig. 1 and Device Description: first-generation PRIMA physical geometry and photovoltaic pixel design."
+        }
+      ]
+    },
+    {
+      "id": "systems-epiretinal",
+      "title": "Argus II: cabled epiretinal array and receiver",
+      "family": "Visual interfaces",
+      "evidence": "partial",
+      "summary": "The FDA describes a 6 × 10 array driven by a cabled implanted receiver and an external camera/processor. The receiver coil supplies power and exchanges data. It is not a PRIMA photovoltaic pixel array.",
+      "devices": [
+        "165-argus-ii-retinal-prosthesis"
+      ],
+      "variants": [
+        {
+          "id": "implant",
+          "label": "Implanted assembly",
+          "description": "Platinum contacts, thin-film cable, receiver coil and electronics case; distinguish cable conductors from contacts.",
+          "status": "documented"
+        },
+        {
+          "id": "external",
+          "label": "Camera to electrical test load",
+          "description": "Use an external scene encoder and a virtual receiver to test mapping only; a synthetic electrode pattern is not perceived vision.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Freeze the approved reference architecture",
+          "detail": "Separate the glasses/camera and video processor from the implanted coil, electronics case, cable and array. Use numbered electrode positions rather than cable-pad positions.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Can the expected 60 array contacts be counted without including a receiver coil terminal?",
+          "sourceIds": [
+            "systems-epiretinal-f",
+            "systems-epiretinal-l"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Make a patterned flexible test coupon",
+          "detail": "Use a separately labeled flexible metal/polymer reference and aperture mask to model cable continuity and open exposed sites; available patterning tools do not prove the Argus polymer stack or exact masks.",
+          "tools": [
+            "02-03",
+            "03-03",
+            "04-01",
+            "05-07"
+          ],
+          "check": "Verify continuity end-to-end plus isolation between adjacent traces; do not infer a complete product from the test coupon.",
+          "sourceIds": [
+            "systems-epiretinal-f"
+          ],
+          "only": [
+            "implant"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Obtain the original electronics and assembly",
+          "detail": "Coil, electronics case, package seals, case-to-cable joining and implant fixation components are not a documented transferable process.",
+          "tools": [],
+          "check": "Keep proprietary package details, firmware and vendor tooling external.",
+          "sourceIds": [
+            "systems-epiretinal-f"
+          ],
+          "only": [
+            "implant"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Inspect led-out array transfer",
+          "detail": "Simulate a single illuminated image cell moving across a synthetic scene. Record address selected at the emulator and current into an electrical load, not into tissue.",
+          "tools": [
+            "01-05",
+            "15-14",
+            "09-04"
+          ],
+          "check": "A deliberate row/column transpose moves the electrical response to the wrong labeled contact. A covered contact changes load, not address.",
+          "sourceIds": [
+            "systems-epiretinal-f"
+          ]
+        }
+      ],
+      "gaps": [
+        "This discontinued model is a historical, educational reference. A pad map cannot recreate original telemetry or qualify an implant package."
+      ],
+      "sources": [
+        {
+          "id": "systems-epiretinal-f",
+          "title": "FDA · Second Sight Argus II H110002 summary",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf11/H110002B.pdf",
+          "note": "Device Description: camera, processor, receiver, cable and epiretinal array."
+        },
+        {
+          "id": "systems-epiretinal-l",
+          "title": "FDA · Argus II device labeling",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf11/h110002c.pdf",
+          "note": "Chapter 2 diagrams of labeled implanted and external components and electrode array."
+        }
+      ]
+    },
+    {
+      "id": "systems-cortical-vision",
+      "title": "Cortical visual systems: camera to mapped electrical loads",
+      "family": "Visual interfaces",
+      "evidence": "reference",
+      "summary": "A shared camera-to-stimulator concept does not mean shared fabrication. Dobelle’s historical system, Cortigent Orion, Mindtrix and Neuralink Blindsight have different disclosure levels. Only the optoelectronic signal chain and inert channel-map test are common.",
+      "devices": [
+        "34-dobelle-cortical-visual-prosthesis",
+        "43-neuralink-blindsight",
+        "166-cortigent-orion-visual-cortical-prosthesis",
+        "183-mindtrix-cortical-visual-reconstruction-system"
+      ],
+      "variants": [
+        {
+          "id": "dob",
+          "label": "Dobelle historical system",
+          "description": "Published external video camera and processing linked to cortical stimulation; no new mask release is presumed.",
+          "status": "documented"
+        },
+        {
+          "id": "orion",
+          "label": "Orion",
+          "description": "The manufacturer reports a 60-electrode cortical-surface system. Retinal Argus geometry and spatial numbering do not transfer.",
+          "status": "documented"
+        },
+        {
+          "id": "mind",
+          "label": "Mindtrix",
+          "description": "Company-level camera, processing and stimulation system; publicly available architecture is not an electrode traveler.",
+          "status": "reference"
+        },
+        {
+          "id": "blind",
+          "label": "Blindsight",
+          "description": "Program announcement rather than a verified array mask, contact count or complete product bill of materials.",
+          "status": "external"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Separate the display target from the manufacturing method",
+          "detail": "Mark cortical target and an external camera/encoding chain where the source declares it. Do not label these products as retinal photovoltaic arrays.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Record which details are known for the specific source and leave implantation depth or contact geometry blank if absent.",
+          "sourceIds": [
+            "systems-cortical-vision-d",
+            "systems-cortical-vision-o",
+            "systems-cortical-vision-m",
+            "systems-cortical-vision-b"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Acquire a specific lead or array and driver",
+          "detail": "A program announcement cannot specify site pitch, substrate, driver ASIC or routing. Enter each as an external input unless source-controlled.",
+          "tools": [],
+          "check": "Do not copy N1 thread dimensions to Blindsight or map the Argus retinal array to Orion.",
+          "sourceIds": [
+            "systems-cortical-vision-d",
+            "systems-cortical-vision-o",
+            "systems-cortical-vision-m",
+            "systems-cortical-vision-b"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Assemble a configurable map phantom",
+          "detail": "Break out virtual row/column or channel labels only where a target count is supplied; otherwise accept an explicitly arbitrary sized demonstrator.",
+          "tools": [
+            "08-11",
+            "08-12",
+            "09-03"
+          ],
+          "check": "Known channel count is documented or marked hypothetical, never deduced from a product name.",
+          "sourceIds": [
+            "systems-cortical-vision-o",
+            "systems-cortical-vision-m"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Trace a changing test image",
+          "detail": "Use reference image patches and a lookup table to select inert load outputs; introduce a transposed address or an open to distinguish a digital map error from an analog interconnect fault.",
+          "tools": [
+            "01-05",
+            "09-06",
+            "09-04"
+          ],
+          "check": "Display raw commanded index and observed channel side by side; do not render a synthetic phosphene as measured vision.",
+          "sourceIds": [
+            "systems-cortical-vision-d",
+            "systems-cortical-vision-o"
+          ]
+        }
+      ],
+      "gaps": [
+        "No transferable product assembly drawings, configuration-specific masks or proprietary encoder/decoder calibration are established for these models."
+      ],
+      "sources": [
+        {
+          "id": "systems-cortical-vision-d",
+          "title": "Dobelle · Artificial vision for the blind",
+          "url": "https://doi.org/10.1097/00002480-200001000-00002",
+          "note": "Author report documents the digital camera/computer/electrical stimulation architecture."
+        },
+        {
+          "id": "systems-cortical-vision-o",
+          "title": "Cortigent · Orion program",
+          "url": "https://cortigent.com/clinical-development/",
+          "note": "Manufacturer documents the 60-electrode visual cortical configuration; no retinal mask equivalence."
+        },
+        {
+          "id": "systems-cortical-vision-m",
+          "title": "Mindtrix · technology",
+          "url": "https://www.mindtrix.cn/technology",
+          "note": "Manufacturer identifies array and stimulation subsystem without releasing their foundry work instructions."
+        },
+        {
+          "id": "systems-cortical-vision-b",
+          "title": "Neuralink · Blindsight program announcement",
+          "url": "https://neuralink.com/updates/neuralink-receives-breakthrough-device-designation-for-blindsight/",
+          "note": "Program identity only; designation does not disclose a production stack or establish functional bench equivalence."
+        }
+      ]
+    },
+    {
+      "id": "systems-stent",
+      "title": "Endovascular stent-electrode, from scaffold to continuity",
+      "family": "Endovascular interfaces",
+      "evidence": "partial",
+      "summary": "An unusually concrete public construction exists for Oxley’s 2016 Stentrode. A purchased NiTi stent carried small wired platinum discs. A later 16-site clinical version and Nankai’s independent platform must not inherit the research traveler.",
+      "devices": [
+        "03-stentrode-synchron",
+        "189-nankai-rongyuan-interventional-bci"
+      ],
+      "variants": [
+        {
+          "id": "ox",
+          "label": "Oxley 2016 prototype",
+          "description": "Fig. 2c shows eight 750 µm platinum discs; 50 µm disc thickness, insulated platinum–tungsten wire and a commercial Solitaire SAB scaffold are in the methods.",
+          "status": "documented"
+        },
+        {
+          "id": "sw",
+          "label": "Later Synchron system",
+          "description": "Human data describe a 16-contact array and separate receiver-transmitter. Electrode sizes and references vary by publication; do not back-port these to 2016.",
+          "status": "documented"
+        },
+        {
+          "id": "nk",
+          "label": "Nankai / Rongyuan",
+          "description": "Independent stent-electrode and wireless unit; reported architecture, not a copy of Synchron’s electrode materials, number or wire routing.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "external",
+          "title": "Accept the scaffold or integrated supplier assembly",
+          "detail": "The 2016 method buys a self-expanding nitinol stent; there is no evidence of making it on the register. Current Synchron and Nankai scaffold manufacturing remain external.",
+          "tools": [],
+          "check": "Identify the exact reference and nominal scaffold geometry; never populate unknowns from another manufacturer.",
+          "sourceIds": [
+            "systems-stent-x",
+            "systems-stent-k",
+            "systems-stent-n"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Prepare the 2016 disk-to-wire element",
+          "detail": "The study used laser-cut platinum discs and resistance-welded insulated Pt/W wire. A package seam welder is not the documented resistance welder.",
+          "tools": [],
+          "check": "Inspect a representative joint optically, then measure resistance and pull on a sacrificial control; exact welder unavailable.",
+          "sourceIds": [
+            "systems-stent-x"
+          ],
+          "varies": [
+            "ox"
+          ],
+          "only": [
+            "ox"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Retain expansion while attaching the electrodes",
+          "detail": "In the 2016 study discs are adhesively attached on strut crossings and wires follow the stent lattice. Map a dispenser only to adhesive placement, not to documented UV cure equipment.",
+          "tools": [
+            "08-10",
+            "12-01"
+          ],
+          "check": "On an inert expansion mandrel, confirm the physical site remains on the intended crossover and wires do not pin the lattice shut.",
+          "sourceIds": [
+            "systems-stent-x"
+          ],
+          "varies": [
+            "ox"
+          ],
+          "only": [
+            "ox"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Treat newer interfaces as separate black boxes",
+          "detail": "The verified later recording function does not release an updated joint recipe. Register a separate acquisition assembly for each platform.",
+          "tools": [],
+          "check": "Fail the traveler if the later 16-site count or the Nankai geometry silently overwrites the 2016 specimen.",
+          "sourceIds": [
+            "systems-stent-k",
+            "systems-stent-n"
+          ],
+          "varies": [
+            "sw",
+            "nk"
+          ],
+          "only": [
+            "sw",
+            "nk"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Measure reversible deformation and channel isolation",
+          "detail": "Compare before/after on an inert tube with an expansion fixture, optical views, DC continuity and electrode-to-scaffold isolation. Record a separate impedance spectrum for each address.",
+          "tools": [
+            "14-01",
+            "12-01",
+            "09-03",
+            "09-01",
+            "09-12"
+          ],
+          "check": "A wire short to the frame should fail isolation even if every disc is visible; a broken lead can retain normal appearance.",
+          "sourceIds": [
+            "systems-stent-x"
+          ]
+        }
+      ],
+      "gaps": [
+        "Dedicated stent manufacturing and heat setting, micro-resistance welding and qualified UV-cure fixture are not shown in the register. A candidate laser cannot automatically substitute.",
+        "Flow or deployment in an inert fixture does not qualify biological patency or clinical use."
+      ],
+      "sources": [
+        {
+          "id": "systems-stent-x",
+          "title": "Oxley et al. · original Stentrode fabrication",
+          "url": "https://doi.org/10.1038/nbt.3428",
+          "note": "Fig. 2c and “Stentrode fabrication” identify a bought stent, welded disc/wire, UV-cured mounting and lead routing."
+        },
+        {
+          "id": "systems-stent-k",
+          "title": "Kacker et al. · later human stent-array study",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/",
+          "note": "Methods and channel tables document a later 16-contact configuration, not an updated fabrication flow."
+        },
+        {
+          "id": "systems-stent-n",
+          "title": "Nankai University · interventional BCI platform",
+          "url": "https://en.nankai.edu.cn/2025/0911/c22796a577326/page.htm",
+          "note": "Institutional release establishes its separate endovascular architecture without disclosing its contact-process details."
+        }
+      ]
+    },
+    {
+      "id": "systems-cranial-can",
+      "title": "Wireless cortical package: feedthrough, case, window and link",
+      "family": "Wireless recording packages",
+      "evidence": "partial",
+      "summary": "The 2013 Brown titanium/sapphire package and the 64-channel WIMAGINE system illustrate two different package-to-array architectures. Only the former’s sapphire window is transferred into its bench reconstruction.",
+      "devices": [
+        "07-wimagine-cea-clinatec-epidural-wireless-ecog",
+        "32-brown-implantable-wireless-neural-interface-borton"
+      ],
+      "variants": [
+        {
+          "id": "brown",
+          "label": "Borton / Brown 2013",
+          "description": "Remote 100-element silicon array, wire bundle, custom metal/ceramic feedthrough, rechargeable electronics, titanium can and sapphire window.",
+          "status": "documented"
+        },
+        {
+          "id": "wi",
+          "label": "WIMAGINE",
+          "description": "64 epidural Pt–Ir contacts, electronics in titanium housing and inductive remote power. Do not add Brown’s window, 100-channel map or rechargeable battery.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Separate contact array from sealed volume",
+          "detail": "Register contact IDs, the reference, lead or direct connection, die/board pads and their package crossings. Count channels rather than treating every pin as an electrode.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Pinned net map accounts for all electrode and non-electrode terminals.",
+          "sourceIds": [
+            "systems-cranial-can-br",
+            "systems-cranial-can-wi",
+            "systems-cranial-can-test"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive the critical feedthrough and enclosure",
+          "detail": "Brown’s custom hermetic feedthrough and sapphire window are component-level prerequisites. Machining a coupon or operating a wire bonder does not create a qualified ceramic-to-metal seal.",
+          "tools": [],
+          "check": "Package BOM identifies the window only on the Brown reference, with supplier material and feedthrough design held externally.",
+          "sourceIds": [
+            "systems-cranial-can-br",
+            "systems-cranial-can-wi"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Mount electronics and characterize joints",
+          "detail": "Use board fixtures, microscopically inspect test interconnects and pull sample bonds if a compatible pad map and wire metallurgy are defined. Keep parylene or silicone strain relief outside the leak barrier.",
+          "tools": [
+            "08-01",
+            "08-02",
+            "08-06",
+            "08-10"
+          ],
+          "check": "The test coupon must preserve continuity through the feedthrough, before and after lead flex.",
+          "sourceIds": [
+            "systems-cranial-can-br",
+            "systems-cranial-can-wi"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Close the Brown reference package",
+          "detail": "The Brown prototype used laser seam welding around its titanium enclosure. The register seam workstation illustrates the same operation class; its mechanism is not the source machine or a calibrated recipe.",
+          "tools": [
+            "08-08"
+          ],
+          "check": "Inspect a witness seam and recheck continuity. A good-looking seam is not sufficient evidence of hermeticity.",
+          "sourceIds": [
+            "systems-cranial-can-br"
+          ],
+          "varies": [
+            "brown"
+          ],
+          "only": [
+            "brown"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Separate leak, telemetry and signal QA",
+          "detail": "A tracer-gas test on a suitable sealed witness package, dummy multichannel signals and a known-distance link each test distinct functions. Inductive powering differs from acquisition bandwidth.",
+          "tools": [
+            "08-09",
+            "09-06",
+            "09-04",
+            "09-08"
+          ],
+          "check": "Log leak result, link dropouts and channel identity independently; good packets alone cannot validate a seal.",
+          "sourceIds": [
+            "systems-cranial-can-br",
+            "systems-cranial-can-wi"
+          ]
+        }
+      ],
+      "gaps": [
+        "Qualified brazed feedthroughs/windows, custom ASICs and manufacturer sealing criteria remain external. Register equipment is a capability reference, not an assertion of fit or validated seal lifetime."
+      ],
+      "sources": [
+        {
+          "id": "systems-cranial-can-br",
+          "title": "Borton et al. · implantable wireless neural interface",
+          "url": "https://doi.org/10.1088/1741-2560/10/2/026010",
+          "note": "Packaging and assembly methods distinguish the titanium case, feedthrough, sapphire window, array and wireless electronics."
+        },
+        {
+          "id": "systems-cranial-can-wi",
+          "title": "Mestais et al. · WIMAGINE 64-channel implant",
+          "url": "https://doi.org/10.1109/TNSRE.2014.2333541",
+          "note": "System electronics/housing description for the distinct inductively powered cortical recorder."
+        },
+        {
+          "id": "systems-cranial-can-test",
+          "title": "Sauter-Starace et al. · WIMAGINE hardware and testing",
+          "url": "https://doi.org/10.3389/fnins.2019.00847",
+          "note": "Methods, Device section and figures distinguish 64 contacts, powering, acquisition and implant layout."
+        }
+      ]
+    },
+    {
+      "id": "systems-external-headstage",
+      "title": "External wireless headstage and percutaneous interface",
+      "family": "External acquisition hardware",
+      "evidence": "partial",
+      "summary": "Yin’s 2014 neurosensor sits outside the body. Its input map contains 96 neural signals and four auxiliary inputs. It does not have the hermetic titanium/sapphire architecture of Brown’s 2013 implant.",
+      "devices": [
+        "33-wireless-neurosensor-yin-2014"
+      ],
+      "variants": [
+        {
+          "id": "neural",
+          "label": "Ninety-six neural inputs",
+          "description": "Record a deterministic electrode-channel fixture separately from the accelerometer and calibration inputs.",
+          "status": "documented"
+        },
+        {
+          "id": "aux",
+          "label": "Four auxiliary paths",
+          "description": "Three accelerometer axes plus one calibration path: do not count these as four more electrodes.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Define pedestal-to-headstage topology",
+          "detail": "Separate electrode array, percutaneous connector, external headstage and remote radio receiver; the implant-to-pedestal lead is not this package.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Label 96 neural inputs, three motion channels and one calibration path.",
+          "sourceIds": [
+            "systems-external-headstage-y"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive custom electronics and connector interface",
+          "detail": "The radio and front-end ASICs and qualified connector mechanics are not synthesized by the PCB mill. Record unknown die internals as external.",
+          "tools": [],
+          "check": "No fictitious CMOS mask steps for the three chip blocks.",
+          "sourceIds": [
+            "systems-external-headstage-y"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Assemble a keyed test interposer and enclosure",
+          "detail": "For a virtual replica, build a breakout that preserves the pedestal contact order and routes through representative front-end electronics.",
+          "tools": [
+            "08-11",
+            "08-12",
+            "16-13"
+          ],
+          "check": "A connector rotation is detectable at the pin map; enclosure collision/strain is a separate mechanical failure.",
+          "sourceIds": [
+            "systems-external-headstage-y"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check stream identity and quality",
+          "detail": "Inject a known sequence, reconstruct the frame with the neural and auxiliary tags and compare received vs sent samples; record dropouts separately from electrical noise.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "01-05"
+          ],
+          "check": "A single open affects one neural path, not the accelerometer orientation or every RF packet.",
+          "sourceIds": [
+            "systems-external-headstage-y"
+          ]
+        }
+      ],
+      "gaps": [
+        "The source has conflicting battery chemistry descriptions. No battery chemistry is chosen for this route. This external package is not a validated implant can."
+      ],
+      "sources": [
+        {
+          "id": "systems-external-headstage-y",
+          "title": "Yin et al. · wireless neurosensor (Neuron, 2014)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25482026/",
+          "note": "Methods and system architecture distinguish neural/auxiliary channels, physical headstage and wireless receiver."
+        }
+      ]
+    },
+    {
+      "id": "systems-ultrasonic-motes",
+      "title": "Ultrasonic motes: flex, piezo and modulation",
+      "family": "Miniature wireless nodes",
+      "evidence": "partial",
+      "summary": "Two Berkeley generations share acoustic powering and backscatter, not a pin map or purpose. Seo’s 2016 mote modulates an acoustic echo with an analog differential signal. Piech’s 2020 StimDust delivers electrical pulses and returns status, not a neural recording.",
+      "devices": [
+        "22-neural-dust-ultrasonic-backscatter-mote",
+        "111-stimdust-ultrasonic-nerve-stimulator"
+      ],
+      "variants": [
+        {
+          "id": "seo",
+          "label": "2016 recording mote",
+          "description": "Piezocrystal plus transistor on flexible PCB. Two gold pads form one differential input; external receiver recovers the signal.",
+          "status": "documented"
+        },
+        {
+          "id": "piech",
+          "label": "2020 StimDust",
+          "description": "1.7 mm³ mote (reported nominal assembly, cuff volume separate): piezo, storage capacitor and control IC with a separate stimulation interface.",
+          "status": "documented"
+        },
+        {
+          "id": "rf",
+          "label": "A coil instead of piezo",
+          "description": "RF backscatter and ultrasonic acoustic-load backscatter are different transducers and require different test rigs.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "status": "external",
+          "title": "Accept piezo and electronics",
+          "detail": "Source a cut, poled acoustic element of the design size. Accept the 2016 transistor or 2020 IC and capacitor as distinct purchased/foundry components; an optical lithography tool is not a piezoceramic line.",
+          "tools": [],
+          "check": "Check dimensions, terminal metallization and polarization orientation against the chosen component.",
+          "sourceIds": [
+            "systems-ultrasonic-motes-s",
+            "systems-ultrasonic-motes-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Map the transducer to its branch circuitry",
+          "detail": "The 2016 assembly has two recording pads and a transistor-modulated acoustic load. The 2020 build connects an active stimulator circuit to the piezo and charge reservoir.",
+          "tools": [
+            "01-01",
+            "12-01"
+          ],
+          "check": "Never count the differential pair as two sampled channels or a StimDust status symbol as a recorded action potential.",
+          "sourceIds": [
+            "systems-ultrasonic-motes-s",
+            "systems-ultrasonic-motes-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Assemble and protect a carrier witness",
+          "detail": "Populate a flex carrier surrogate, inspect the piezo attachment and local protected joints, and keep the coupling face and intentional contacts available. This is not the production specialty flex PCB.",
+          "tools": [
+            "08-10",
+            "08-12",
+            "12-01",
+            "09-07"
+          ],
+          "check": "Measure impedance spectrum of the received transducer before and after attachment; large resonance shifts suggest bond loading.",
+          "sourceIds": [
+            "systems-ultrasonic-motes-s",
+            "systems-ultrasonic-motes-p"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Provide the acoustic source and calibration",
+          "detail": "An aligned external transducer, acoustic tank, calibrated hydrophone and receive path are required. A diagnostic ultrasound scanner is not automatically calibrated as this powering rig.",
+          "tools": [],
+          "check": "Require a measured pressure field and alignment reference; a voltage command alone is not incident acoustic power.",
+          "sourceIds": [
+            "systems-ultrasonic-motes-s",
+            "systems-ultrasonic-motes-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Recover known differential input from the analog echo",
+          "detail": "Change a deterministic differential input on the recording-mote surrogate. Demodulate the acoustic return and compare recovered phase/amplitude with the test signal; the 2016 architecture has no neural-data ADC in the mote.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "01-05"
+          ],
+          "check": "A changed input produces the matching modulation; a static echo alone does not count as recovered analog signal.",
+          "sourceIds": [
+            "systems-ultrasonic-motes-s"
+          ],
+          "only": [
+            "seo"
+          ]
+        },
+        {
+          "title": "Measure a stimulus load and status return",
+          "detail": "On the stimulation mote, compare an independently observed current waveform into an inert electrical load with status decoded from backscatter. A received command or returned status is not proof of load current.",
+          "tools": [
+            "09-04",
+            "09-03",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "An open load must not be counted as stimulated even if the communication link reports a status symbol.",
+          "sourceIds": [
+            "systems-ultrasonic-motes-p"
+          ],
+          "only": [
+            "piech"
+          ]
+        }
+      ],
+      "gaps": [
+        "Piezoceramic synthesis/poling, source ASIC production and a calibrated transmit/hydrophone fixture are not supplied by the register. The coating is not lifetime hermetic qualification."
+      ],
+      "sources": [
+        {
+          "id": "systems-ultrasonic-motes-s",
+          "title": "Seo et al. · ultrasonic neural dust",
+          "url": "https://doi.org/10.1016/j.neuron.2016.06.034",
+          "note": "Mote Assembly, system schematic and experimental backscatter path identify the passive recording electronics."
+        },
+        {
+          "id": "systems-ultrasonic-motes-p",
+          "title": "Piech et al. · millimetre-scale ultrasonic stimulator",
+          "url": "https://doi.org/10.1038/s41551-020-0518-9",
+          "note": "Main figures and supplement distinguish mote, cuff, ultrasound link, stimulation and uplink status. Do not substitute earlier conference builds."
+        }
+      ]
+    },
+    {
+      "id": "systems-neurograins",
+      "title": "Neurograins: RF-powered chiplet and network test",
+      "family": "Miniature wireless nodes",
+      "evidence": "partial",
+      "summary": "Each node is a personalized foundry chiplet with an on-chip coil, not a Utah electrode connected to an external headstage. Recording and stimulation chips are different circuit variants; an addressable node is not proof of a successful recording.",
+      "devices": [
+        "25-neurograins-wireless-microimplant-network"
+      ],
+      "variants": [
+        {
+          "id": "rec",
+          "label": "2021 recording chiplet",
+          "description": "Two gold contacts feed one differential recording input. The documented 48-node acute ensemble is not a 48-unit guaranteed recording yield.",
+          "status": "documented"
+        },
+        {
+          "id": "stim",
+          "label": "Stimulation chiplet",
+          "description": "A distinct stimulation ASIC; an added microwire is a post-processing variant, not an electrode coordinate on the recording chip.",
+          "status": "documented"
+        },
+        {
+          "id": "scale",
+          "label": "Larger network comparison",
+          "description": "More nodes are a reference scheduling/load case, not a measured capacity or demonstration.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "status": "external",
+          "title": "Receive the foundry ASIC",
+          "detail": "The transceiver, address logic, coil and front end share the foundry chip. The two ASIC revisions have different inputs/outputs.",
+          "tools": [],
+          "check": "A register-owned stepper is not a CMOS PDK or a verified finished mask set.",
+          "sourceIds": [
+            "systems-neurograins-p"
+          ],
+          "only": [
+            "rec",
+            "stim"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Select recording or stimulation interface",
+          "detail": "Use the source’s packaged geometry (650 × 650 × 250 µm). Avoid equating it with the smaller bare ASIC drawing; register contact surfaces and antenna separately.",
+          "tools": [
+            "01-01",
+            "12-01"
+          ],
+          "check": "Reject an archive that uses package thickness as a measured semiconductor layer or maps a recording node to a stim wire.",
+          "sourceIds": [
+            "systems-neurograins-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Assemble a relay-coil and node fixture",
+          "detail": "Place node coordinates relative to a separate external RF hub and relay coil; emulator IDs and electrical interconnects are distinct.",
+          "tools": [
+            "08-11",
+            "08-12",
+            "09-08"
+          ],
+          "check": "Inspect the coil response, then label active node IDs; a coil reflection alone does not establish data lock.",
+          "sourceIds": [
+            "systems-neurograins-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify network addressing and load",
+          "detail": "Inject a synthetic signal to a recording surrogate, or address a stimulation surrogate into a resistor. Log each node’s power, response, missed packet and duplicate address independently.",
+          "tools": [
+            "09-06",
+            "09-04",
+            "01-05"
+          ],
+          "check": "Command ID B: ID A must remain unchanged. A packet without detectable signal is not a usable recording channel.",
+          "sourceIds": [
+            "systems-neurograins-p"
+          ]
+        }
+      ],
+      "gaps": [
+        "RF CMOS layout and qualified backend release are external. The acute silicone/PDMS configuration is not chronic hermetic certification."
+      ],
+      "sources": [
+        {
+          "id": "systems-neurograins-p",
+          "title": "Lee et al. · networks of wireless microimplants",
+          "url": "https://doi.org/10.1038/s41928-021-00631-8",
+          "note": "Figs. 1–3 and supplementary materials identify physical configurations, RF power chain, network architecture and functional tests."
+        }
+      ]
+    },
+    {
+      "id": "systems-me-asic",
+      "title": "Magnetoelectric laminate, ASIC and storage capacitor",
+      "family": "Magnetoelectric devices",
+      "evidence": "partial",
+      "summary": "A magnetostrictive/piezoelectric laminate converts alternating magnetic drive into AC voltage; rectification, energy storage and the output circuit do different jobs. MagNI, ME-BIT and the addressed network use distinct chips and packaging.",
+      "devices": [
+        "113-mebit-magnetoelectric-endovascular-stimulator",
+        "124-puf-addressed-magnetoelectric-multisite-stimulator",
+        "126-magni-current-controlled-magnetoelectric-implant"
+      ],
+      "variants": [
+        {
+          "id": "magni",
+          "label": "MagNI",
+          "description": "Current-controlled 180 nm integrated circuit on flexible polyimide; compare received power with load-delivered power rather than citing circuit efficiency as end-to-end efficiency.",
+          "status": "documented"
+        },
+        {
+          "id": "bit",
+          "label": "ME-BIT",
+          "description": "Direct-contact and cased leaded variants are distinct. The endovascular version is not a stent-electrode or a cortical DOT package.",
+          "status": "documented"
+        },
+        {
+          "id": "puf",
+          "label": "PUF-addressed multisite",
+          "description": "A physical unclonable function gives an eight-bit address. A shared transmitter does not guarantee unique, reliable addressing; check for collisions.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "external",
+          "title": "Receive the laminate stock and CMOS die",
+          "detail": "Supply magnetostrictive foil, poled piezoceramic and the correct foundry ASIC/PDK externally. Neither a sputter tool nor a wafer bonder supplies these material properties on its own.",
+          "tools": [],
+          "check": "Require identified transducer and die revision; reserve cracks, polarity and unknown bond loss as test variables.",
+          "sourceIds": [
+            "systems-me-asic-m",
+            "systems-me-asic-b",
+            "systems-me-asic-p"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Identify power, storage, address and output terminals",
+          "detail": "The designs separate the AC laminate, rectifier, reservoir and stimulus output. The address test is only applicable to the addressed design.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "A power node is not a stimulating electrode; for the PUF verify the recorded ID for each physical node.",
+          "sourceIds": [
+            "systems-me-asic-m",
+            "systems-me-asic-b",
+            "systems-me-asic-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Make an assembly witness and dry electrical test",
+          "detail": "Model a carrier, pressure-insensitive joint and dummy load. Characterize the laminate resonance unloaded and under the intended electrical load before using an assumed power budget.",
+          "tools": [
+            "08-10",
+            "09-07",
+            "09-04"
+          ],
+          "check": "A frequency shift or damping after packaging invalidates a free-film voltage prediction.",
+          "sourceIds": [
+            "systems-me-asic-m",
+            "systems-me-asic-b",
+            "systems-me-asic-p"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Specify magnetic metrology",
+          "detail": "A field source, positioning fixture and calibrated AC/DC field probe, with known orientation and distance, are external to the listed bench instruments.",
+          "tools": [],
+          "check": "Do not infer transferred power just from the voltage at a drive coil.",
+          "sourceIds": [
+            "systems-me-asic-m",
+            "systems-me-asic-b",
+            "systems-me-asic-p"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify energy and digital selection on a load",
+          "detail": "Collect received AC power, stored energy, DC output and load-delivered pulse separately; replay two addresses for the multisite variant.",
+          "tools": [
+            "09-04",
+            "09-03",
+            "01-05"
+          ],
+          "check": "A targeting test passes only if one addressed load responds. Report efficiency denominator and measurement position.",
+          "sourceIds": [
+            "systems-me-asic-m",
+            "systems-me-asic-b",
+            "systems-me-asic-p"
+          ]
+        },
+        {
+          "title": "Verify PUF identity on a shared transmitter",
+          "detail": "Capture each node’s hardware-derived address, then send a synthetic command to one address at a time with distinct monitored loads. This is not a claim of addressable electronics for MagNI.",
+          "tools": [
+            "09-04",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Log collisions, missing responses and cross-address leakage distinctly; a targeted command must not actuate an unaddressed test load.",
+          "sourceIds": [
+            "systems-me-asic-p"
+          ],
+          "only": [
+            "puf"
+          ]
+        }
+      ],
+      "gaps": [
+        "No validated field generator/calibration set or public mask database for the original chips. An epoxy/saline test is not a chronic isolation proof for a lead-containing ceramic."
+      ],
+      "sources": [
+        {
+          "id": "systems-me-asic-m",
+          "title": "Yu et al. · MagNI engineering prototype",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8712272/",
+          "note": "Circuit, package, power chain and electrical characterization; not the PUF-addressed version."
+        },
+        {
+          "id": "systems-me-asic-b",
+          "title": "ME-BIT · endovascular magnetoelectric prototype",
+          "url": "https://doi.org/10.1038/s41551-022-00873-7",
+          "note": "Figs. 1–4 distinguish the laminated transducer, CMOS electronics and direct vs cased/lead configurations."
+        },
+        {
+          "id": "systems-me-asic-p",
+          "title": "Yu et al. · PUF-addressed magnetoelectric implants",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9581110/",
+          "note": "The circuit and address sections distinguish harvested power, storage and eight-bit hardware addressing."
+        }
+      ]
+    },
+    {
+      "id": "systems-me-packages",
+      "title": "Magnetoelectric generator: glass caps, catheter or network box",
+      "family": "Magnetoelectric devices",
+      "evidence": "partial",
+      "summary": "DOT’s borosilicate cap electrodes, the endocisternal device’s remote catheter electrodes and the 2025 network’s externalized commercial lead connections are not the same package. The product program is not the prototype’s undisclosed production line.",
+      "devices": [
+        "115-magnetoelectric-network-spinal-stimulators-2025",
+        "117-dot-magnetoelectric-epidural-stimulator-2024",
+        "120-endocisternal-catheter-me-interface",
+        "175-motif-dot-magnetoelectric-brain-stimulator"
+      ],
+      "variants": [
+        {
+          "id": "dot",
+          "label": "Published DOT research device",
+          "description": "Two ME films, bias magnet, PCB, glass body and cap electrodes with through-glass connections. Authors do not claim full hermeticity.",
+          "status": "documented"
+        },
+        {
+          "id": "motif",
+          "label": "Motif DOT program",
+          "description": "Related product/program, not verification that every research coating, dimension or process is unchanged.",
+          "status": "external"
+        },
+        {
+          "id": "endo",
+          "label": "Endocisternal interface",
+          "description": "Remote leaded catheter contact configuration rather than electrodes fabricated on two glass caps. Preprint dimensions are not promoted to verified final data.",
+          "status": "documented"
+        },
+        {
+          "id": "net",
+          "label": "Distributed network IPGs",
+          "description": "A separate 2025 assembly uses a temporary printed/epoxy package and lead per node; six bench builds is not six simultaneously tested implants in every experiment.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Lock output topology and power chain",
+          "detail": "Select cap-contact, catheter, or remote lead topology. The transducer, control circuit and electrodes have separate revisions and test obligations.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Prevent a glass-cap electrode from appearing on the remote catheter lead variant.",
+          "sourceIds": [
+            "systems-me-packages-d",
+            "systems-me-packages-e",
+            "systems-me-packages-n"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Obtain specialist laminate and package parts",
+          "detail": "Accept the magnetic laminate, appropriate bias magnet where specified and electronics. DOT through-glass vias are supplied; no qualified tungsten through-glass-via line is identified.",
+          "tools": [],
+          "check": "Track known dimensions only for their own publication. For the commercial Motif program, no engineering change equivalence is implied.",
+          "sourceIds": [
+            "systems-me-packages-d",
+            "systems-me-packages-c",
+            "systems-me-packages-e",
+            "systems-me-packages-n"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Pattern contacts on research DOT caps",
+          "detail": "The paper identifies sputtered metal/IrOx contacts on the glass caps and connection through glass. Generic sputter represents the operation class; the glass work and via fabrication are distinct.",
+          "tools": [
+            "03-03",
+            "12-01"
+          ],
+          "check": "Inspect both contact surfaces and confirm each cap via routes to the correct terminal.",
+          "sourceIds": [
+            "systems-me-packages-d"
+          ],
+          "varies": [
+            "dot"
+          ],
+          "only": [
+            "dot"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Verify the remote lead or catheter branch",
+          "detail": "Reference fixtures check distal contact to generator connections without attempting to reproduce in-body use. The 2025 network’s temporary package is not the glass DOT package.",
+          "tools": [
+            "16-13",
+            "09-03",
+            "14-10"
+          ],
+          "check": "Flex near the join while measuring continuity; qualify distal contacts independently of wireless power.",
+          "sourceIds": [
+            "systems-me-packages-e",
+            "systems-me-packages-n"
+          ],
+          "varies": [
+            "endo",
+            "net"
+          ],
+          "only": [
+            "endo",
+            "net"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Perform load and soak comparison",
+          "detail": "Run a dummy-load control at a recorded field, pose and spacing; compare open/short, misalignment, and soaked witness against a dry control. Magnetic calibration remains external.",
+          "tools": [
+            "09-04",
+            "09-03",
+            "14-11"
+          ],
+          "check": "Do not interpret an intact exterior or functioning short-duration soak as hermetic. Keep each node’s response separate.",
+          "sourceIds": [
+            "systems-me-packages-d",
+            "systems-me-packages-e",
+            "systems-me-packages-n"
+          ],
+          "only": [
+            "dot",
+            "endo",
+            "net"
+          ]
+        }
+      ],
+      "gaps": [
+        "Critical glass micromachining/through-glass vias, characteristic magnetic films and a calibrated magnetic bench are not registered production capabilities.",
+        "The power circuit and terminal metal differ across the four configurations."
+      ],
+      "sources": [
+        {
+          "id": "systems-me-packages-d",
+          "title": "Published DOT · miniature battery-free cortical stimulator",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11014439/",
+          "note": "Methods/assembly and package characterization: PCB, films, magnet, glass caps, metallization, epoxy and limitations."
+        },
+        {
+          "id": "systems-me-packages-e",
+          "title": "Endocisternal interfaces · 2024 paper",
+          "url": "https://doi.org/10.1038/s41551-024-01281-9",
+          "note": "Peer-reviewed description of catheter electrodes coupled to wireless ME electronics; not a stentrode or glass cap electrode."
+        },
+        {
+          "id": "systems-me-packages-n",
+          "title": "Distributed battery-free ME implants · 2025 paper",
+          "url": "https://doi.org/10.1038/s41551-025-01489-3",
+          "note": "Network bench tests and spinal system hardware; packaged boards and commercial leads are separate from 2024 DOT."
+        },
+        {
+          "id": "systems-me-packages-c",
+          "title": "Motif · trial registry",
+          "url": "https://clinicaltrials.gov/study/NCT07594483",
+          "note": "Program identity only; does not release a product manufacturing traveler."
+        }
+      ]
+    },
+    {
+      "id": "systems-me-discrete",
+      "title": "Discrete two-film magnetoelectric converter or rectifying laminate",
+      "family": "Magnetoelectric devices",
+      "evidence": "partial",
+      "summary": "A two-film, two-phase source is not a two-channel implant. An entirely different design puts the rectifier in semiconductor layers on the laminate itself; that branch needs neither the discrete bridge nor a CMOS ASIC.",
+      "devices": [
+        "122-self-rectifying-magnetoelectric-metamaterial",
+        "128-singer-pvdf-two-film-headstage-2020",
+        "129-singer-pzt-fully-implanted-stimulator-2020"
+      ],
+      "variants": [
+        {
+          "id": "pvdf",
+          "label": "Singer PVDF/Metglas",
+          "description": "Head-mounted discrete electronics with two resonant films. Each frequency-selective branch drives one phase of the output.",
+          "status": "documented"
+        },
+        {
+          "id": "pzt",
+          "label": "Singer PZT/Metglas",
+          "description": "The separate packaged PZT configuration used directly joined discrete components and a bipolar output. Its geometry and encapsulation differ from the PVDF headstage.",
+          "status": "documented"
+        },
+        {
+          "id": "mnm",
+          "label": "Self-rectifying metamaterial",
+          "description": "The 2023/24 material interface rectifies through a deposited/attached semiconductor junction. Schottky and p-Si/ZnO junction variants are not interchangeable with a discrete bridge.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "external",
+          "title": "Receive poled and magnetic stock",
+          "detail": "PVDF and PZT are alternative piezoelectric materials, not two names for the same laminate. The core of the rectifying metamaterial uses another specified stack.",
+          "tools": [],
+          "check": "Record material, orientation, layer architecture and pre-existing poling rather than inventing a materials foundry.",
+          "sourceIds": [
+            "systems-me-discrete-s",
+            "systems-me-discrete-r"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Assemble the resonant laminate",
+          "detail": "For the Singer reference, bond the specified magnetostrictive and piezoelectric films; parylene is a coating, not a guarantee of long-term hermeticity.",
+          "tools": [
+            "03-08",
+            "12-01"
+          ],
+          "check": "Two distinct resonances are required to address the two discrete branches independently.",
+          "sourceIds": [
+            "systems-me-discrete-s"
+          ],
+          "varies": [
+            "pvdf",
+            "pzt"
+          ],
+          "only": [
+            "pvdf",
+            "pzt"
+          ]
+        },
+        {
+          "status": "documented",
+          "title": "Choose the rectification mechanism",
+          "detail": "The discrete designs use separate rectification branches for the opposing phases. The metamaterial uses a semiconductor rectifying interface instead, with no ASIC or discrete bridge.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "Verify polarity from the measured loaded waveform; do not infer two independent channels from two resonances.",
+          "sourceIds": [
+            "systems-me-discrete-s",
+            "systems-me-discrete-r"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Check material-level diode behavior",
+          "detail": "Scan I–V on a semiconductor witness; a rectifying contact and an ohmic control should show distinct symmetry. Film preparation and contact process depend on the selected junction.",
+          "tools": [
+            "05-07",
+            "09-02"
+          ],
+          "check": "Compare forward and reverse curves, not a single apparent DC point.",
+          "sourceIds": [
+            "systems-me-discrete-r"
+          ],
+          "varies": [
+            "mnm"
+          ],
+          "only": [
+            "mnm"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Test with controlled field and dummy load",
+          "detail": "With an externally characterized field fixture, compare resonance, unloaded voltage and loaded waveform before and after a controlled soak.",
+          "tools": [
+            "09-07",
+            "09-04",
+            "14-11"
+          ],
+          "check": "Swapping an active branch changes polarity; loss of rectification must not be hidden by reporting peak-to-peak AC alone.",
+          "sourceIds": [
+            "systems-me-discrete-s",
+            "systems-me-discrete-r"
+          ]
+        }
+      ],
+      "gaps": [
+        "A calibrated magnetic excitation fixture is external. Thin coatings and short-duration material tests do not qualify a finished implanted assembly."
+      ],
+      "sources": [
+        {
+          "id": "systems-me-discrete-s",
+          "title": "Singer et al. · discrete magnetoelectric materials",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/",
+          "note": "Fabrication and characterization plus Table 1 distinguish PVDF and PZT configurations and two-film rectification."
+        },
+        {
+          "id": "systems-me-discrete-r",
+          "title": "Self-rectifying magnetoelectric metamaterials",
+          "url": "https://doi.org/10.1038/s41563-023-01680-4",
+          "note": "Material-stack and methods sections document the semiconductor rectifier, distinct from MCU/CMOS ME systems."
+        }
+      ]
+    },
+    {
+      "id": "systems-surface-wireless",
+      "title": "Wireless cortical surface systems: electrode, power, telemetry",
+      "family": "Wireless recording packages",
+      "evidence": "proprietary",
+      "summary": "For these systems the public evidence describes what crosses the implant boundary better than how the seal or array was made. Model the signal chain for each program; never assume the same link carries both power and data.",
+      "devices": [
+        "41-neo-neuracle-tsinghua-epidural-bci",
+        "45-beinao-1-cibr-neucyber",
+        "180-neuroxess-triple-f-fully-implanted-subdural-bci",
+        "210-cortec-brain-interchange-closed-loop-bci",
+        "211-ability-neurotech-fully-implantable-communication-bci"
+      ],
+      "variants": [
+        {
+          "id": "neo",
+          "label": "Tsinghua / Neuracle NEO",
+          "description": "Epidural electrodes; inductive remote power and wireless data in the institutional disclosure. Do not invent a battery or transceiver die.",
+          "status": "documented"
+        },
+        {
+          "id": "beinao",
+          "label": "CIBR / NeuCyber Beinao No. 1",
+          "description": "Developer reports a 128-channel flexible μECoG system. The encapsulation stack and mask artwork are undisclosed.",
+          "status": "documented"
+        },
+        {
+          "id": "triple",
+          "label": "NeuroXess Triple-F",
+          "description": "Fully implanted battery-powered platform with a wireless data chain. Do not use the temporary 256-channel array as a product bill of materials.",
+          "status": "documented"
+        },
+        {
+          "id": "cortec",
+          "label": "CorTec Brain Interchange",
+          "description": "Manufacturer specifies 32 recording channels and selectable stimulation channels; one contact can support either role.",
+          "status": "documented"
+        },
+        {
+          "id": "ability",
+          "label": "ABILITY",
+          "description": "Manufacturer distinguishes inductive power from optical data telemetry; up to 128 recording channels is not proof every connector position is populated.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Lock the implant-to-external block diagram",
+          "detail": "Identify where contacts, signal conditioning, digitization, transmitter and external receiver reside; track power separately. Keep model-specific known/contact counts in their own records.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "The batteryless variants do not acquire a rechargeable generator; ABILITY data are not labeled as inductive power transfer.",
+          "sourceIds": [
+            "systems-surface-wireless-n",
+            "systems-surface-wireless-b",
+            "systems-surface-wireless-t",
+            "systems-surface-wireless-c",
+            "systems-surface-wireless-a"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive vendor electrode stack, ASICs and enclosure",
+          "detail": "Exact masks and interconnect metallurgy, feedthrough arrangement, firmware, batteries and seal qualification are either proprietary or variant-specific.",
+          "tools": [],
+          "check": "Leave unknowns null. A publicly pictured package is not a cross-sectional drawing.",
+          "sourceIds": [
+            "systems-surface-wireless-n",
+            "systems-surface-wireless-b",
+            "systems-surface-wireless-t",
+            "systems-surface-wireless-c",
+            "systems-surface-wireless-a"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Build a tagged channel emulator",
+          "detail": "Use a breakout and deterministic voltage patterns to check electrical identification without assuming OEM connectors or dangerous current delivery. For CorTec explicitly mark which contacts are sensing vs acting as dummy-load outputs.",
+          "tools": [
+            "08-11",
+            "16-13",
+            "09-06",
+            "09-04"
+          ],
+          "check": "A deliberately reversed pin or omitted reference produces a distinct bench failure; a black-box link can still pass packets.",
+          "sourceIds": [
+            "systems-surface-wireless-b",
+            "systems-surface-wireless-c",
+            "systems-surface-wireless-a"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Separate power margin and data recovery",
+          "detail": "Replay a known packet train while varying the receive-link geometry in a phantom model; in the optical ABILITY branch, test optical alignment separately from inductive coil alignment.",
+          "tools": [
+            "09-08",
+            "09-04",
+            "11-05",
+            "01-05"
+          ],
+          "check": "Record power margin, payload ID/timestamp and dropout count separately. A badge saying “wireless” is not a tested power path.",
+          "sourceIds": [
+            "systems-surface-wireless-n",
+            "systems-surface-wireless-t",
+            "systems-surface-wireless-c",
+            "systems-surface-wireless-a"
+          ]
+        },
+        {
+          "title": "Test ABILITY’s optical payload independently",
+          "detail": "In an inert fixture, insert an optical attenuator while keeping inductive coil coupling unchanged, then misalign the power coil with a clear optical path. This decouples power loss from loss of data visibility.",
+          "tools": [
+            "11-05",
+            "09-04",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Two faults have different observables: available power and recovered optical signal. No other platform inherits this optical transmitter.",
+          "sourceIds": [
+            "systems-surface-wireless-a"
+          ],
+          "only": [
+            "ability"
+          ]
+        }
+      ],
+      "gaps": [
+        "Real RF/inductive/optical link implementation, implants, package acceptance and firmware are not reproduced. A sample-case seal check cannot establish decades of lifetime."
+      ],
+      "sources": [
+        {
+          "id": "systems-surface-wireless-n",
+          "title": "Tsinghua University · NEO architecture",
+          "url": "https://www.tsinghua.edu.cn/en/info/1420/12707.htm",
+          "note": "Fig. 1 and accompanying text distinguish the epidural array, miniaturized electronics and remote inductive power."
+        },
+        {
+          "id": "systems-surface-wireless-b",
+          "title": "CIBR · NeuCyber Matrix system",
+          "url": "https://en.cibr.ac.cn/detail/cibrNewsnews/b8dbf43633cc4311a9798874fb0d435e",
+          "note": "Team description documents the wireless 128-channel flexible μECoG interface, not its foundry masks."
+        },
+        {
+          "id": "systems-surface-wireless-t",
+          "title": "NeuroXess · Triple-F program",
+          "url": "https://en.neuroxess.com/clinical-medicine/",
+          "note": "Manufacturer describes the fully implanted system and placement of power modules; not a production traveler."
+        },
+        {
+          "id": "systems-surface-wireless-c",
+          "title": "CorTec · Brain Interchange",
+          "url": "https://cortec-neuro.com/bci/brain-interchange/",
+          "note": "Technical specifications describe 32 recording channels, selectable stimulation and the system components."
+        },
+        {
+          "id": "systems-surface-wireless-a",
+          "title": "ABILITY · implant architecture",
+          "url": "https://abilityneuro.com/technology/implant/",
+          "note": "The developer identifies optical data transmission, inductive power and up to 128 channels."
+        }
+      ]
+    },
+    {
+      "id": "systems-brain-spine",
+      "title": "Brain–spine paired system and synthetic command handoff",
+      "family": "Paired recording/stimulation systems",
+      "evidence": "reference",
+      "summary": "The Fudan program documents two physical interfaces linked by decoding and stimulation. A traveler that stops at one electrode array omits half the system. Geometry, protocol and manufacturing details remain external.",
+      "devices": [
+        "182-shenfu-jianxing-brain-spine-interface-fudan"
+      ],
+      "variants": [
+        {
+          "id": "pair",
+          "label": "Documented two-ended architecture",
+          "description": "Brain signal acquisition → decode → command → epidural stimulation subsystem. Exact interfaces and component manufacture are not released here.",
+          "status": "documented"
+        },
+        {
+          "id": "loss",
+          "label": "Dropped-command bench variant",
+          "description": "A reference implementation uses a time-tagged synthetic command and inert load to verify timeout handling.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Draw the two independent interfaces",
+          "detail": "Separate recording electrode, acquisition chain, digital decoder, stimulator and epidural lead. A shared software diagram is not proof of a single physical chip.",
+          "tools": [
+            "01-01"
+          ],
+          "check": "The system inventory has a recording and output side; each has independent identity.",
+          "sourceIds": [
+            "systems-brain-spine-f"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive assemblies as external modules",
+          "detail": "Architecture is institutionally documented. Exact electrode masks, commercial supplier equivalence, ASIC design, package and communication timing cannot be assumed.",
+          "tools": [],
+          "check": "Do not assign Medtronic or ONWARD components without source-specific provenance.",
+          "sourceIds": [
+            "systems-brain-spine-f"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Route a synthetic intent signal to a tagged command",
+          "detail": "Emulate two isolated boards, with fixed dummy channel IDs, one artificial feature, and explicit timestamps for sampling, inference and delivery.",
+          "tools": [
+            "01-05",
+            "09-06",
+            "09-04"
+          ],
+          "check": "Write a full timestamp chain. An end-to-end latency derived from this model is synthetic, not the Fudan measurement.",
+          "sourceIds": [
+            "systems-brain-spine-f"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Measure the output into an inert load",
+          "detail": "For the received command, measure an electrical test waveform at the selected load; deliberately drop or duplicate a command in a simulation.",
+          "tools": [
+            "09-04",
+            "09-07"
+          ],
+          "check": "Missing, out-of-order and duplicated commands are reported explicitly; no output must be inferred merely from receipt.",
+          "sourceIds": [
+            "systems-brain-spine-f"
+          ]
+        }
+      ],
+      "gaps": [
+        "No actual decoding algorithm, wireless protocol, implant package, proprietary lead or functional movement is reproduced."
+      ],
+      "sources": [
+        {
+          "id": "systems-brain-spine-f",
+          "title": "Fudan University · brain–spinal interface program",
+          "url": "https://news.fudan.edu.cn/2025/1212/c235a147745/page.htm",
+          "note": "Institutional program announcement establishes linked cortical/spinal components; no public manufacturing files in this source."
+        }
+      ]
+    },
+    {
+      "id": "systems-external-stimulator",
+      "title": "External stimulator, splitter harness and electrode pads",
+      "family": "External electrical systems",
+      "evidence": "partial",
+      "summary": "ARC-EX has no implanted array, feedthrough or implanted pulse generator. The relevant production streams are electronics, enclosure, wiring and skin-contact pad supply. Function here ends at a resistive/capacitive phantom.",
+      "devices": [
+        "219-onward-arc-ex-transcutaneous-spinal-stimulation"
+      ],
+      "variants": [
+        {
+          "id": "console",
+          "label": "ARC-EX benchtop electrical chain",
+          "description": "FDA describes external stimulator, splitter, cables and surface electrodes. Model the connection and fault detection, not a prescribed waveform.",
+          "status": "documented"
+        },
+        {
+          "id": "emulator",
+          "label": "Harness and load emulator",
+          "description": "Build only an inert breakout and synthetic output source; the commercial generator and firmware remain outside the model.",
+          "status": "reference"
+        },
+        {
+          "id": "implant",
+          "label": "Substitute ARC-IM",
+          "description": "Incompatible: ARC-IM includes implanted components. Similar branding does not imply compatible cables, programming or fabrication.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "status": "documented",
+          "title": "Trace the external electrical connections",
+          "detail": "Draw the stimulator-to-splitter-to-pad chain and include connectors, detachable cables and distinct return paths from the device description.",
+          "tools": [
+            "01-01",
+            "16-13"
+          ],
+          "check": "The bill of materials has no implanted case, feedthrough or intracortical electrode.",
+          "sourceIds": [
+            "systems-external-stimulator-f"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Receive manufacturer electronics and pads",
+          "detail": "Power electronics, isolation design, firmware, exact hydrogel formulation and production limits remain supplied components.",
+          "tools": [],
+          "check": "Do not substitute generic craft hydrogels or a research pulse generator for a cleared system.",
+          "sourceIds": [
+            "systems-external-stimulator-f"
+          ],
+          "only": [
+            "console"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Assemble a representative inert harness",
+          "detail": "Build a labeled splitter surrogate, continuity test each connection and place separate known loads at the pad positions.",
+          "tools": [
+            "08-11",
+            "08-12",
+            "09-03"
+          ],
+          "check": "A broken branch must fail its own loop without opening the intact branches in the net map.",
+          "sourceIds": [
+            "systems-external-stimulator-f"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Test telemetry and electrical output independently",
+          "detail": "Read a differential test voltage across a known load, log simulated controls and lead disconnect. Treat any valid load waveform as electronics QA only.",
+          "tools": [
+            "09-04",
+            "09-07",
+            "01-05"
+          ],
+          "check": "Changing a load changes measured output as expected; no transfer to a human dose, sensation or efficacy is claimed.",
+          "sourceIds": [
+            "systems-external-stimulator-f"
+          ]
+        }
+      ],
+      "gaps": [
+        "Isolation circuitry and product firmware are external. A passing phantom recording is neither human electrical-safety certification nor a patient setup."
+      ],
+      "sources": [
+        {
+          "id": "systems-external-stimulator-f",
+          "title": "FDA · ARC-EX De Novo review DEN240014",
+          "url": "https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN240014.pdf",
+          "note": "Device Description with diagram of external stimulator, splitter, extension, cables and surface electrodes; nonclinical engineering tests."
+        }
+      ]
+    },
+    {
+      "id": "systems-fusi",
+      "title": "External ultrasound-on-chip probe and flow-phantom acquisition",
+      "family": "External imaging systems",
+      "evidence": "proprietary",
+      "summary": "Bridge/Butterfly describe a noninvasive fUSI research platform. The target signal is a hemodynamic imaging signal, not an implanted electrode voltage. A flow phantom is enough to test the acquisition chain without making physiological decoding claims.",
+      "devices": [
+        "212-bridge-neurotech-fusi-noninvasive-bci"
+      ],
+      "variants": [
+        {
+          "id": "bridge",
+          "label": "Bridge research platform",
+          "description": "Use the disclosed ultrasound-on-chip partnership and external sensing objective only. No released transducer design or fixed clinical product configuration is assumed.",
+          "status": "documented"
+        },
+        {
+          "id": "phantom",
+          "label": "Flow-phantom surrogate",
+          "description": "Reference tube/flow standard with known motion and an attenuating slab; not transcranial validation or a substitute for the Bridge device.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "status": "external",
+          "title": "Receive the active transducer/ASIC module",
+          "detail": "The manufacturer’s MEMS/semiconductor transducer is an external input. The local presence of a silicon etcher does not supply membrane stack, cavity bond, ASIC or acoustic-matching design.",
+          "tools": [],
+          "check": "Require supplier identity, mounted array orientation and electronic channel availability; do not invent pitch or cap dimensions.",
+          "sourceIds": [
+            "systems-fusi-b",
+            "systems-fusi-t"
+          ],
+          "only": [
+            "bridge"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Design an inert flow reference",
+          "detail": "Construct a known channel phantom, use controlled flow with inert scatterers, mark transmit/receive geometry and record the acoustic coupling layer.",
+          "tools": [
+            "06-10",
+            "06-07",
+            "11-06"
+          ],
+          "check": "Compare zero flow to known flow. A nonzero signal in an empty field cannot count as demonstrated hemodynamic sensitivity.",
+          "sourceIds": [
+            "systems-fusi-b"
+          ]
+        },
+        {
+          "status": "reference",
+          "title": "Acquire and time-lock a repeatable change",
+          "detail": "An appropriate ultrasound scanner or fUS research console can serve as a reference modality, not a drop-in Bridge transducer programmer. Record the actual acquisition conditions or identify simulation explicitly.",
+          "tools": [
+            "15-08",
+            "01-05"
+          ],
+          "check": "Flow-on/flow-off with fixed geometry tests the instrument independent of a person or a neural decoder.",
+          "sourceIds": [
+            "systems-fusi-b",
+            "systems-fusi-t"
+          ]
+        },
+        {
+          "status": "external",
+          "title": "Calibrate the acoustic field and reconstruction separately",
+          "detail": "An active transducer, hydrophone, receiver calibration and product-specific beamforming are required to claim absolute field accuracy or reproduce the device.",
+          "tools": [],
+          "check": "No assertion of transcranial penetration, behavioral decoding accuracy or medical-system qualification follows from the phantom.",
+          "sourceIds": [
+            "systems-fusi-b",
+            "systems-fusi-t"
+          ]
+        }
+      ],
+      "gaps": [
+        "MEMS transducer die and sealing, analog/digital backend, validated acoustic calibration and vendor algorithms are not public. Register diagnostic systems are comparison references, not foundry substitutes."
+      ],
+      "sources": [
+        {
+          "id": "systems-fusi-b",
+          "title": "Bridge / Butterfly · primary partnership disclosure",
+          "url": "https://www.butterflynetwork.com/press-releases/bridge-neurotech-partnership",
+          "note": "Identifies external fUSI, research scope and the chosen ultrasound-on-chip platform; not a factory recipe."
+        },
+        {
+          "id": "systems-fusi-t",
+          "title": "Butterfly Network · ultrasound-on-chip technology",
+          "url": "https://www.butterflynetwork.com/technology",
+          "note": "Manufacturer publicly identifies semiconductor MEMS technology but does not disclose an entire manufacturing stack."
+        }
+      ]
+    }
+  ]
+}

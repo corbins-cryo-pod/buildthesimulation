@@ -45,6 +45,8 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
       <div class="kicker">Catalog specification sheet - {entry.data.modality}</div>
       <h2 class="title">{titleNoPrefix}</h2>
 
+      <p class="siteLink"><a class="siteBtn" href={`/simulations/foundry/atlas/#device=${encodeURIComponent(entry.slug)}`}>Manufacturing workflow →</a></p>
+
       {entry.data.website ? (
         <p class="siteLink">
           <a class="siteBtn" href={entry.data.website} target="_blank" rel="noopener noreferrer">Primary source →</a>

@@ -1,0 +1,476 @@
+{
+  "meta": {
+    "revision": "test-fixture",
+    "updated": "2026-01-01",
+    "overview": "Interface test only. The named entries are synthetic."
+  },
+  "devices": [
+    {
+      "slug": "sample-1",
+      "title": "Widget 1",
+      "code": "FX-001",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-1/",
+      "profileIds": [
+        "alpha",
+        "beta"
+      ],
+      "status": "documented"
+    },
+    {
+      "slug": "sample-2",
+      "title": "Widget 2",
+      "code": "FX-002",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-2/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-3",
+      "title": "Widget 3",
+      "code": "FX-003",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-3/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-4",
+      "title": "Widget 4",
+      "code": "FX-004",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-4/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-5",
+      "title": "Widget 5",
+      "code": "FX-005",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-5/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-6",
+      "title": "Widget 6",
+      "code": "FX-006",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-6/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-7",
+      "title": "Widget 7",
+      "code": "FX-007",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-7/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-8",
+      "title": "Widget 8",
+      "code": "FX-008",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-8/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-9",
+      "title": "Widget 9",
+      "code": "FX-009",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-9/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-10",
+      "title": "Widget 10",
+      "code": "FX-010",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-10/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-11",
+      "title": "Widget 11",
+      "code": "FX-011",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-11/",
+      "profileIds": [],
+      "status": "queued"
+    },
+    {
+      "slug": "sample-12",
+      "title": "Widget 12",
+      "code": "FX-012",
+      "family": "Fixture series",
+      "description": "Synthetic, non-biological UI fixture.",
+      "url": "/devices/sample-12/",
+      "profileIds": [],
+      "status": "queued"
+    }
+  ],
+  "equipment": [
+    {
+      "id": "FX-01",
+      "name": "Fixture instrument 1",
+      "url": "/simulations/equipment/FX-01/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-02",
+      "name": "Fixture instrument 2",
+      "url": "/simulations/equipment/FX-02/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-03",
+      "name": "Fixture instrument 3",
+      "url": "/simulations/equipment/FX-03/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-04",
+      "name": "Fixture instrument 4",
+      "url": "/simulations/equipment/FX-04/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-05",
+      "name": "Fixture instrument 5",
+      "url": "/simulations/equipment/FX-05/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-06",
+      "name": "Fixture instrument 6",
+      "url": "/simulations/equipment/FX-06/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-07",
+      "name": "Fixture instrument 7",
+      "url": "/simulations/equipment/FX-07/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-08",
+      "name": "Fixture instrument 8",
+      "url": "/simulations/equipment/FX-08/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-09",
+      "name": "Fixture instrument 9",
+      "url": "/simulations/equipment/FX-09/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-10",
+      "name": "Fixture instrument 10",
+      "url": "/simulations/equipment/FX-10/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-11",
+      "name": "Fixture instrument 11",
+      "url": "/simulations/equipment/FX-11/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    },
+    {
+      "id": "FX-12",
+      "name": "Fixture instrument 12",
+      "url": "/simulations/equipment/FX-12/",
+      "zone": "Inspection",
+      "capabilities": [
+        "Read a mock field."
+      ],
+      "limitations": [
+        "No physical functionality."
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "id": "alpha",
+      "title": "Alpha fixture route",
+      "family": "Test route",
+      "evidence": "documented",
+      "summary": "Synthetic interface test only.",
+      "devices": [
+        "sample-1"
+      ],
+      "lab": null,
+      "variants": [
+        {
+          "id": "flat",
+          "label": "Flat tag",
+          "description": "Check the fixture in the flat branch.",
+          "status": "documented"
+        },
+        {
+          "id": "curved",
+          "label": "Curved tag",
+          "description": "No real geometry is asserted.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Read dummy label",
+          "detail": "Inspect the test name.",
+          "tools": [
+            "FX-01"
+          ],
+          "status": "documented",
+          "check": "Read the exact synthetic name.",
+          "sourceIds": [
+            "fig-a"
+          ],
+          "varies": [
+            "flat"
+          ]
+        },
+        {
+          "title": "Route dummy handoff",
+          "detail": "Place the dummy handoff on the second row.",
+          "tools": [
+            "FX-02"
+          ],
+          "status": "reference",
+          "check": "Confirm two user-interface rows.",
+          "sourceIds": [
+            "fig-a"
+          ],
+          "varies": []
+        }
+      ],
+      "gaps": [
+        "There is no physical device in this fixture."
+      ],
+      "sources": [
+        {
+          "id": "fig-a",
+          "title": "Fixture citation label",
+          "url": "https://example.org/",
+          "note": "Source-link rendering only; not a manufacturing source."
+        }
+      ]
+    },
+    {
+      "id": "beta",
+      "title": "Beta fixture route",
+      "family": "Test route",
+      "evidence": "reference",
+      "summary": "Synthetic interface test only.",
+      "devices": [
+        "sample-1"
+      ],
+      "lab": null,
+      "variants": [
+        {
+          "id": "flat",
+          "label": "Flat tag",
+          "description": "Check the fixture in the flat branch.",
+          "status": "documented"
+        },
+        {
+          "id": "curved",
+          "label": "Curved tag",
+          "description": "No real geometry is asserted.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Read dummy label",
+          "detail": "Inspect the test name.",
+          "tools": [
+            "FX-01"
+          ],
+          "status": "documented",
+          "check": "Read the exact synthetic name.",
+          "sourceIds": [
+            "fig-a"
+          ],
+          "varies": [
+            "flat"
+          ]
+        },
+        {
+          "title": "Route dummy handoff",
+          "detail": "Place the dummy handoff on the second row.",
+          "tools": [
+            "FX-02"
+          ],
+          "status": "reference",
+          "check": "Confirm two user-interface rows.",
+          "sourceIds": [
+            "fig-a"
+          ],
+          "varies": []
+        }
+      ],
+      "gaps": [
+        "There is no physical device in this fixture."
+      ],
+      "sources": [
+        {
+          "id": "fig-a",
+          "title": "Fixture citation label",
+          "url": "https://example.org/",
+          "note": "Source-link rendering only; not a manufacturing source."
+        }
+      ]
+    },
+    {
+      "id": "orphan",
+      "title": "Orphan fixture route",
+      "family": "Test route",
+      "evidence": "documented",
+      "summary": "Synthetic interface test only.",
+      "devices": [],
+      "lab": "/simulations/foundry/",
+      "variants": [
+        {
+          "id": "flat",
+          "label": "Flat tag",
+          "description": "Check the fixture in the flat branch.",
+          "status": "documented"
+        },
+        {
+          "id": "curved",
+          "label": "Curved tag",
+          "description": "No real geometry is asserted.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Read dummy label",
+          "detail": "Inspect the test name.",
+          "tools": [
+            "FX-01"
+          ],
+          "status": "documented",
+          "check": "Read the exact synthetic name.",
+          "sourceIds": [
+            "fig-a"
+          ],
+          "varies": [
+            "flat"
+          ]
+        },
+        {
+          "title": "Route dummy handoff",
+          "detail": "Place the dummy handoff on the second row.",
+          "tools": [
+            "FX-02"
+          ],
+          "status": "reference",
+          "check": "Confirm two user-interface rows.",
+          "sourceIds": [
+            "fig-a"
+          ],
+          "varies": []
+        }
+      ],
+      "gaps": [
+        "There is no physical device in this fixture."
+      ],
+      "sources": [
+        {
+          "id": "fig-a",
+          "title": "Fixture citation label",
+          "url": "https://example.org/",
+          "note": "Source-link rendering only; not a manufacturing source."
+        }
+      ]
+    }
+  ]
+}

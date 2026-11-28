@@ -1,0 +1,75 @@
+layout|Design|Define masks, reusable cells, nets or a fixture drawing|Carry units, layer meaning, polarity, revision and fiducials through an export/import round-trip.
+physics|Design|Model an idealized electrical or mechanical response|Check the domain, boundary conditions, units and an analytic limiting case; never substitute for a foundry design kit.
+visual|Design|Inspect or render a digital asset|Preserve coordinates and scale; visual plausibility is not dimensional metrology.
+analysis|Design|Align and inspect digital signal data|Preserve sample timing, channel identity and provenance; a software interface is not an input transducer.
+traceability|Infrastructure|Record lineage, occupancy and custody|Preserve unique specimen and revision IDs with no duplicate or lost transfer.
+draft|Design|Check plan geometry against a reference|Record dimensions, scale and tolerances separately from origin or authorship.
+prime|Fabrication|Prepare a surface for resist adhesion|Use a compatible substrate and adhesion witness; film quality is not established by a prime event.
+coat|Fabrication|Apply a spin-cast resist or polymer film|Specify the formulation, substrate and fixture; verify thickness and coverage using a witness.
+bake|Fabrication|Thermally condition a compatible coating|Track thermal budget and evidence for the actual formulation; a timing record is not a cure measurement.
+mask|Fabrication|Prepare or inspect a photomask|Check tone, scale, writing field and fiducials; a mask is not the product wafer.
+contact-litho|Fabrication|Align and expose through a contact mask|Check mask, chuck, substrate size, alignment sides and critical dimension at the intended gap.
+direct-litho|Fabrication|Write a resist image from maskless artwork|Check write mode, feature versus line/space limits, field seams and alignment budget.
+ebeam-litho|Fabrication|Write an electron-beam resist pattern|Require compatible writing field, substrate charging management and a witness pattern; not interchangeable with optical lithography.
+stepper|Fabrication|Project a reticle field repeatedly onto a wafer|Verify reduction, field boundaries, mark system, focus and critical dimension in the chosen resist.
+develop|Fabrication|Develop a resist image|Check tone and dissolution compatibility; inspect residual film, line width and clearing before transfer.
+optical-inspect|Metrology|Inspect a surface, feature or alignment optically|Compare a calibrated scale and a traceable test feature; image intensity is not thickness.
+evaporate|Fabrication|Deposit a film by directional evaporation|Confirm source material, tool approval, geometry and thickness witness; shadowing differs from sputter coverage.
+sputter|Fabrication|Deposit a target-derived film by sputtering|Require target, material policy and measured thickness/resistivity; no installed target or film properties are presumed.
+ald|Fabrication|Conformally deposit an ALD barrier or dielectric|Verify exact precursor and tool configuration, thermal budget and conformality on the actual topography.
+pecvd|Fabrication|Deposit an insulating film by PECVD|Require stack-specific film stress, temperature, thickness and pinhole/leakage witnesses.
+parylene|Fabrication|Deposit a conformal parylene film|Test adhesion, film thickness and exposed openings; the polymer grade and deposited shape must be specified separately.
+anneal|Fabrication|Thermally cure or anneal a compatible material|Check atmosphere, temperature capability and previously deposited materials; not evidence of dopant activation or oxidation.
+activate|Fabrication|Clean or activate a compatible surface|Confirm actual treatment capability and adhesion or cleanliness independently; event labels do not measure surface chemistry.
+rie|Fabrication|Transfer a pattern by reactive-ion or plasma etching|Require material, mask selectivity, tolerances and endpoint evidence; a generic etcher is not a transferable recipe.
+drie|Fabrication|Shape thick silicon by deep etching|Check silicon-compatible configuration, mask, aspect ratio, depth uniformity and release handling.
+ion-mill|Fabrication|Remove exposed material directionally by ion milling|Check selectivity, shadowing, redeposition and thermal burden on the chosen stack.
+wet|Fabrication|Process a compatible substrate at a wet bench|A bench is containment and handling, not proof of installed chemistry, selectivity or safe material release.
+dice|Fabrication|Separate dies or cut streets with a dicing saw|Check blade, carrier, street and registered keep-outs. Post-cut edge damage is not bounded by a CAD line.
+thin|Fabrication|Thin a wafer or carrier by grinding|Check support, achievable total-thickness variation and damage; thickness alone is not surface quality.
+planarize|Fabrication|Planarize a material stack by polishing|Check stack-specific slurry, pad, stop layer and selectivity; dishing and erosion require evidence.
+laser-machine|Fabrication|Cut or ablate a compatible material by laser|Check wavelength/material coupling, kerf and heat-affected zone; no equivalence to stent or ceramic cutting implied.
+mill|Fabrication|Machine a rigid fixture or prototype|Confirm tool envelope, runout, minimum wall and access; a machinable fixture is not necessarily an implant component.
+wafer-bond|Assembly|Join wafer-level parts|Identify bond type, aligner, chuck, surface preparation and thermal budget; verify shear, voids or leakage independently.
+profile|Metrology|Measure film step or surface topography|Match lateral and vertical resolution to the feature and account for tip shape, roughness or optical access.
+optical-film|Metrology|Estimate film thickness by optical response|Verify optical constants, layer count and spectral model; reject ambiguous thickness solutions.
+sheet-r|Metrology|Estimate sheet resistance|Verify contact geometry, finite-size correction and instrument limits; thickness is needed for bulk resistivity.
+probe|Metrology|Make contact to pads on a wafer or coupon|Check probe pitch, contact footprints, current compliance and uncontacted controls.
+surface|Metrology|Characterize surface composition, structure or wetting|Use a pertinent reference and sampling depth; no universal acceptance threshold across different materials.
+microprint|Fabrication|Make a passive microstructured master, fixture or scaffold|Require feature, resin and release compatibility; an external material specification remains necessary.
+fiber-form|Fabrication|Form an inert fibrous sheet or mat|Requires approved material system and dimensional verification; electrospun fibres are not drawn metal leads or optical fiber.
+fluid-check|Verification|Check passive fluid-fixture interfaces|Require a medium, calibrated pressure/flow measurement and validated fixture; no coupling to living specimens in this atlas.
+cast|Fabrication|Replicate a passive polymer form from a master|Verify master geometry, surface compatibility, shrinkage, demolding and electrical isolation where relevant.
+mechanics|Verification|Characterize a passive coupon mechanically|Check specimen dimensions, fixture compliance, deformation range and an independent reference.
+outside|Outside foundry|Not assigned as a device-manufacturing station|Treat as a catalogue cross-reference only; does not close an electronics, MEMS or package manufacturing step.
+ball-bond|Assembly|Join pads by ball/stitch wire bonding|Verify compatible pad and wire metallurgy, geometry and destructive bond-test evidence.
+wedge-bond|Assembly|Join pads by wedge wire or ribbon bonding|Match wire/ribbon, tool and pad surfaces. Wedge and ball layouts are not drop-in substitutes.
+wire-bond|Assembly|Place multiple wire interconnects|Check bonder head, pads, wire, clearance and net identity; inspect bonds beyond nominal adjacency.
+flip-chip|Assembly|Align a die to a carrier|Require compatible interconnects and reflow/attach evidence; dry pad overlap does not make an electrical bond.
+optical-align|Assembly|Align an optical die or passive coupler|Check optical mode, wavelength, height, position and measured coupling; geometric overlap is not optical power.
+bond-test|Verification|Test a bonded joint|Retain applied load, failure mode, specimen ID and destructive-test status.
+seam-weld|Assembly|Close a compatible metal package seam|Require actual material, qualified weld and appropriate leakage tests; an outline fitting a lid is not a seal.
+leak|Verification|Test a sealed package for tracer leakage|Require calibrated blank, package volume, test method, detection floor and uncertainty; not a lifetime guarantee.
+encapsulate|Assembly|Dispense protective material around an attachment|Check formulation, keep-outs, cure, adhesion and unintended contact coverage; polymer fill is not hermetic sealing.
+pcb|Fabrication|Prototype or inspect PCB artwork|Confirm layer count, trace spacing, vias, plating and substrate; coupon routing is not multilayer board fabrication.
+solder|Assembly|Assemble or rework compatible board components|Respect component polarity and thermal budget; verify continuity and shorts after assembly.
+echem|Verification|Measure electrochemical response of a test electrode|Specify the cell, references, frequency/amplitude domain, blank and exposed area; not production plating.
+iv|Verification|Characterize electrical I–V or C–V|Require fixture calibration, compliance and parasitic controls; fitted values do not identify a unique process defect.
+dc|Verification|Drive or measure a limited passive DC load|Define compliance, terminals and resistance range; a fixture is not a neural stimulation prescription.
+wave|Verification|Generate, acquire or measure a bench waveform|State amplitude, bandwidth, load and sampling clock; distinguish generated signal from measured physical output.
+ac|Verification|Measure passive AC impedance or gain|Require calibration, lead/frequency ranges and a reference element; not a substitute for three-electrode electrochemistry.
+rf|Verification|Characterize a passive RF network|Specify reference plane, port impedance, termination and calibration. No implant telemetry certification follows.
+electrical-fixture|Verification|Provide a passive electrolyte or electronic test fixture|Require a compatible electrical instrument, defined terminals, dimensions and calibrated input; fixture alone is not measurement.
+position|Infrastructure|Position a sample or optical fixture|Check travel, obstruction, stability and repeatable coordinate transforms.
+acquire|Verification|Inspect a bench acquisition or channel map|Separate site count, available channels and simultaneous acquisition; replays do not record a new source.
+optical-bench|Verification|Check a passive photonics or optical test setup|Require a compatible source, sensor, wavelength and reference; a chassis or display cannot measure optical power.
+micro-image|Metrology|Inspect a dimensioned microscopy image or stack|Calibrate axes, sampling and resolving power; a synthetic image is not a fabricated-sample micrograph.
+em-image|Metrology|Inspect an electron microscopy reference or cross-section|Confirm sample preparation, calibration and resolution; static images are not instrument acquisition.
+em-prep|Verification|Prepare an inert reference for microscopy|Track original geometry, sample preparation and possible artifacts; not a production-coating qualification.
+ct|Metrology|Inspect internal geometry in a volumetric image|Check voxel size, contrast, artifact and missing-plane handling; an exported ruler is not a CT scan.
+thermal|Verification|Characterize a material or package thermally|Match thermal history, baseline and heat transfer; never infer uncontrolled conditions or patient temperature.
+reliability|Verification|Trend a coupon under a bounded durability test|Record fixture, cycle or exposure history and failed ID; an accelerated trend is not verified chronic lifetime.
+utility|Infrastructure|Provide shared laboratory or digital support|Do not assign this item as a standalone pattern, material transformation or product qualification step.
+weigh|Metrology|Measure mass on an appropriate balance|Check tare, range and resolution for the actual object.
+handle|Infrastructure|Handle a passive wafer, coupon or container|Confirm specimen and fixture sizes, orientation, custody, clean compatibility and release without damage.
+interconnect|Infrastructure|Join compatible test leads or connectors|Check family, mechanical keying, pinout, voltage/current rating and load separately from the presence of a cable.

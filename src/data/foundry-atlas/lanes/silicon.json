@@ -1,0 +1,2254 @@
+{
+  "profiles": [
+    {
+      "id": "si-utah",
+      "title": "Utah: isolated out-of-plane silicon needles",
+      "family": "Bulk silicon microneedles",
+      "evidence": "partial",
+      "summary": "Two perpendicular saw passes create needles normal to the wafer. Glass isolates their roots. Height pattern, conductive site exposure and the connector map are independent decisions; neither a 10 × 10 array nor an intact tip guarantees 100 wired channels.",
+      "devices": [
+        "01-utah-microelectrode-array",
+        "05-utah-slanted-electrode-array-usea"
+      ],
+      "variants": [
+        {
+          "id": "level",
+          "label": "Uniform-height Utah / NeuroPort comparison",
+          "description": "Jones’ glass-isolated geometry is the process reference. A 100-position, 96-connected example uses its own documented package map.",
+          "status": "documented"
+        },
+        {
+          "id": "slant",
+          "label": "Utah Slant, 400 µm pitch",
+          "description": "A row-dependent height profile changes handling and tip exposure. Blackrock lists 16–96 channels; use the ordered assembly map.",
+          "status": "documented"
+        },
+        {
+          "id": "hd",
+          "label": "HD-USEA research comparison",
+          "description": "Wark reports a distinct 25 electrodes/mm² arrangement. Do not shrink a 400 µm commercial route and assume the same process window.",
+          "status": "documented"
+        },
+        {
+          "id": "junction",
+          "label": "Earlier junction-isolated prototype",
+          "description": "A junction-isolated base is an alternative material architecture, not a glass-filled array with glass disabled. Its doping/thermomigration route is outside this glass workflow.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Register wafer faces and array coordinates",
+          "detail": "Keep the pad-side coordinate origin, needle-side view and row-length vector distinct. A mirror transform appears when the die is flipped.",
+          "tools": [
+            "01-01",
+            "16-11"
+          ],
+          "status": "reference",
+          "check": "An asymmetric corner mark must land on the correct pad after two flips.",
+          "sourceIds": [
+            "uea-glass",
+            "uea-ifu"
+          ],
+          "only": [
+            "level",
+            "slant",
+            "hd"
+          ]
+        },
+        {
+          "title": "Cut or pattern the root isolation grid",
+          "detail": "Define channels between future conductive silicon roots on the backside. This grid is not the deeper needle-forming cut.",
+          "tools": [
+            "04-07",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Cross-sections show continuous silicon islands separated at each planned boundary.",
+          "sourceIds": [
+            "uea-patent"
+          ],
+          "varies": [
+            "level",
+            "slant",
+            "hd"
+          ],
+          "only": [
+            "level",
+            "slant",
+            "hd"
+          ]
+        },
+        {
+          "title": "Fill the grid with insulating glass and expose the roots",
+          "detail": "The glass-silicon composite supports isolated columns. The original vacuum glass-filling setup is not a qualified process on the register; polishing and cross-section inspection represent only the finishing steps.",
+          "tools": [
+            "04-09",
+            "13-01"
+          ],
+          "status": "documented",
+          "check": "Reject a conductive bridge or a void traversing the isolation region; measure between adjacent root pads.",
+          "sourceIds": [
+            "uea-patent",
+            "uea-glass"
+          ],
+          "varies": [
+            "level",
+            "slant",
+            "hd"
+          ],
+          "only": [
+            "level",
+            "slant",
+            "hd"
+          ]
+        },
+        {
+          "title": "Register backside metal and the front height envelope",
+          "detail": "Locate each bonding pad on its isolated island. For the slant branch, a defined height pattern precedes or accompanies formation of the columns; its exact production fixture is not public.",
+          "tools": [
+            "02-01",
+            "03-01",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "The pad footprint stays on a single island; row heights vary only on the selected slant branch.",
+          "sourceIds": [
+            "uea-patent",
+            "uea-slant"
+          ],
+          "varies": [
+            "level",
+            "slant",
+            "hd"
+          ],
+          "only": [
+            "level",
+            "slant",
+            "hd"
+          ]
+        },
+        {
+          "title": "Saw columns, then shape tips",
+          "detail": "Orthogonal front-side cuts determine pitch and the inter-column clearance. Subsequent silicon shaping rounds and tapers the sawn posts; die-edge and interior posts can differ.",
+          "tools": [
+            "04-07",
+            "04-06",
+            "13-01"
+          ],
+          "status": "documented",
+          "check": "Compare the tip and root geometry at center and perimeter. Do not transfer equal-height wafer etch uniformity to a slant part.",
+          "sourceIds": [
+            "uea-etch",
+            "uea-hd"
+          ],
+          "varies": [
+            "level",
+            "slant",
+            "hd"
+          ],
+          "only": [
+            "level",
+            "slant",
+            "hd"
+          ]
+        },
+        {
+          "title": "Metallize, insulate and expose active tips",
+          "detail": "Separate tip conductor from dielectric sidewall, then expose only the intended area. Coating and de-insulation options depend on the array generation; the HD research paper compares two exposures.",
+          "tools": [
+            "03-03",
+            "03-08",
+            "04-01",
+            "13-01"
+          ],
+          "status": "documented",
+          "check": "Record exposed area and sidewall breaches per needle. A large contact can lower impedance while indicating unwanted sidewall exposure.",
+          "sourceIds": [
+            "uea-patent",
+            "uea-hd"
+          ],
+          "varies": [
+            "level",
+            "slant",
+            "hd"
+          ],
+          "only": [
+            "level",
+            "slant",
+            "hd"
+          ]
+        },
+        {
+          "title": "Map package leads and electrically screen",
+          "detail": "A bench map binds the physical (row,column) to the connected pad/pin; unused sites stay unconnected. Preserve the original package-specific mapping rather than assigning channels in geometric order.",
+          "tools": [
+            "08-02",
+            "08-06",
+            "09-01",
+            "09-12"
+          ],
+          "status": "reference",
+          "check": "Keep physical count, connected count, open circuits, adjacent leakage and site impedance at the stated frequency as separate readouts.",
+          "sourceIds": [
+            "uea-ifu",
+            "uea-glass"
+          ],
+          "varies": [
+            "level",
+            "slant",
+            "hd"
+          ],
+          "only": [
+            "level",
+            "slant",
+            "hd"
+          ]
+        }
+      ],
+      "gaps": [
+        "No validated vacuum glass-reflow or proprietary production fixture is implied by a box furnace, dicing saw or wet bench.",
+        "The Utah geometry simulator is an educational subset, not a hardware qualification or electrical recorder. HD excimer optics are not the generic picosecond laser."
+      ],
+      "sources": [
+        {
+          "id": "uea-glass",
+          "title": "Jones, Campbell & Normann (1992): glass/silicon composite array",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/1510294/",
+          "note": "The authors distinguish isolation by glass from the junction isolation in an earlier array and report the 10 × 10 structure."
+        },
+        {
+          "id": "uea-patent",
+          "title": "University of Utah: three-dimensional electrode device",
+          "url": "https://patents.google.com/patent/US5215088A/en",
+          "note": "Figures 6–13 and fabrication description: kerfs, dielectric filling, machining, surface contacts and insulation. A public example, not the current vendor traveler."
+        },
+        {
+          "id": "uea-etch",
+          "title": "Bhandari et al. (2010): wafer-scale shank etching",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/20706618/",
+          "note": "Array dicing, isotropic shaping, spatial nonuniformity and surrounding sacrificial features on an equal-height wafer-scale demonstrator."
+        },
+        {
+          "id": "uea-slant",
+          "title": "Blackrock: Utah Slant Array",
+          "url": "https://blackrockneurotech.com/products/slant-array/",
+          "note": "Manufacturer’s slanted array geometry and connection options; site pitch and addressable count are distinct."
+        },
+        {
+          "id": "uea-ifu",
+          "title": "Blackrock: NeuroPort Electrode user instructions, rev. 3",
+          "url": "https://blackrockneurotech.com/wp-content/uploads/2023/04/LB-0612_NeuroPort_Array_IFU.pdf",
+          "note": "Instrument identity and example electrode mapping, not a release of foundry masks or a manufacturing recipe."
+        },
+        {
+          "id": "uea-hd",
+          "title": "Wark et al. (2013): high-density Utah slanted array",
+          "url": "https://doi.org/10.1088/1741-2560/10/4/045003",
+          "note": "Research variant, 25 electrodes/mm²; optical and hybrid excimer/plasma tip-opening options. Not a default production Slant configuration."
+        }
+      ],
+      "lab": "/simulations/utah-array-fabrication/"
+    },
+    {
+      "id": "si-pdms-tip",
+      "title": "Silicon microneedles with a removable tip mask",
+      "family": "Bulk silicon microneedles",
+      "evidence": "documented",
+      "summary": "The Semi-CAS process is not simply a Utah replica. Its tips touch PDMS during Parylene-C deposition. Removing the mask opens the contact mechanically rather than using a post-coat etch.",
+      "devices": [
+        "201-semi-cas-silicon-microneedle-array-local-deinsulation"
+      ],
+      "variants": [
+        {
+          "id": "full",
+          "label": "10 × 10 fabrication array",
+          "description": "Distinguish uniformity across the 100-position wafer-made array from the data of a separate smaller sample.",
+          "status": "documented"
+        },
+        {
+          "id": "small",
+          "label": "4 × 4 wired demonstration",
+          "description": "The smaller 16-channel device is not evidence that every electrode in an arbitrary 100-channel build is connected.",
+          "status": "documented"
+        },
+        {
+          "id": "etched",
+          "label": "Etch-opened tip in place of PDMS",
+          "description": "A valid comparison technology, but not the published local de-insulation branch.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Define roots before front-side needles",
+          "detail": "On double-polished silicon, pattern and ICP-etch a backside pillar array. The resulting roots will become isolated conductors before the front-side shanks are shaped.",
+          "tools": [
+            "02-01",
+            "04-02",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Inspect island placement and depth on this face before flipping.",
+          "sourceIds": [
+            "cas-tip"
+          ],
+          "only": [
+            "full",
+            "small"
+          ]
+        },
+        {
+          "title": "Form silicon–glass backboard and pad contacts",
+          "detail": "Bond glass, allow the published glass-filling operation, then polish until conductive silicon ends are exposed. Pattern Cr/Au backside pads on those ends. Register machines represent bonding, polish and PVD roles only.",
+          "tools": [
+            "04-12",
+            "04-09",
+            "03-01",
+            "02-01"
+          ],
+          "status": "documented",
+          "check": "A metal pad contacts one silicon end without bridging a glass boundary.",
+          "sourceIds": [
+            "cas-tip"
+          ],
+          "only": [
+            "full",
+            "small"
+          ]
+        },
+        {
+          "title": "Saw and sharpen the front pillars",
+          "detail": "Form the array of posts by orthogonal sawing, shape their tips by wet etching and deposit the front metal. Peripheral support features should not be counted as recording sites.",
+          "tools": [
+            "04-07",
+            "04-06",
+            "03-03",
+            "13-01"
+          ],
+          "status": "documented",
+          "check": "Compare corner/edge and center profiles; confirm metal coverage at each intended tip.",
+          "sourceIds": [
+            "cas-tip"
+          ],
+          "only": [
+            "full",
+            "small"
+          ]
+        },
+        {
+          "title": "Exclude the tips during polymer coating",
+          "detail": "A controlled PDMS layer seats the ends while Parylene-C coats the shafts. Separating the mask leaves exposed ends; this is not oxygen-plasma removal.",
+          "tools": [
+            "06-10",
+            "03-08",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Measure exposed length distribution rather than treating a single approximately 50 µm value as a universal spec.",
+          "sourceIds": [
+            "cas-tip"
+          ],
+          "varies": [
+            "full",
+            "small"
+          ],
+          "only": [
+            "full",
+            "small"
+          ]
+        },
+        {
+          "title": "Plate and package only the intended sites",
+          "detail": "Platinum black changes active area compared with bare Au. Wedge-bond insulated leads to a PCB, encapsulate the connections, and retain the defined channels for that package.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "08-02",
+            "08-10"
+          ],
+          "status": "documented",
+          "check": "Differentiate genuine low site impedance from shorted leads with a neighboring-site isolation check.",
+          "sourceIds": [
+            "cas-tip"
+          ],
+          "only": [
+            "full",
+            "small"
+          ]
+        },
+        {
+          "title": "Characterize the bench specimen",
+          "detail": "Compare masked contacts optically and collect impedance for Au and Pt-black finishes under matched conditions. The paper reports 33.2 kΩ at 1 kHz for its Pt-black sites: a comparison value, not a pass threshold for every part.",
+          "tools": [
+            "13-01",
+            "09-01",
+            "09-12"
+          ],
+          "status": "documented",
+          "check": "Report individual sites, dispersion and missing measurements rather than extrapolating 16 channels to 100.",
+          "sourceIds": [
+            "cas-tip"
+          ],
+          "only": [
+            "full",
+            "small"
+          ]
+        }
+      ],
+      "gaps": [
+        "The anodic bonding, glass flow and PDMS insertion fixture need process-specific qualification; equipment-category names are not a guarantee.",
+        "The 4 × 4 biological demonstration is not simulated, and its neural yield is not assigned to a new batch."
+      ],
+      "sources": [
+        {
+          "id": "cas-tip",
+          "title": "Zhao, Wei et al. (2025): local de-insulation of microneedle arrays",
+          "url": "https://doi.org/10.1038/s41378-025-00922-6",
+          "note": "Figure 1 process flow, de-insulation experiments and electrochemical characterization; the 100-position array and 16-channel demonstration are distinct."
+        }
+      ]
+    },
+    {
+      "id": "si-np1",
+      "title": "Neuropixels 1.0: post-CMOS foundry to synthetic acquisition",
+      "family": "Active CMOS shank",
+      "evidence": "partial",
+      "summary": "The public imec wafer-to-shank module order is known. It begins with a completed 130 nm foundry wafer, not blank silicon at the lab stepper. An electrical recording site and a digitizer channel are different objects.",
+      "devices": [
+        "04-neuropixels-probe"
+      ],
+      "variants": [
+        {
+          "id": "production",
+          "label": "1.0 production reference",
+          "description": "10 mm shank; 960 sites, 384 selectable channels; manufacturer geometry is 70 × 24 µm in cross-section.",
+          "status": "documented"
+        },
+        {
+          "id": "paper",
+          "label": "2017 published probe",
+          "description": "Jun et al. report a 70 × 20 µm shank in their implementation. Do not average paper and production thicknesses.",
+          "status": "documented"
+        },
+        {
+          "id": "dummy",
+          "label": "Nonfunctional dummy",
+          "description": "A mechanical fit article cannot pass an electrical acquisition test.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Accept completed foundry electronics",
+          "detail": "Track incoming wafer, top metal and die coordinates. The source explicitly starts with 200 mm wafers at a 130 nm node. The transistor stack and foundry design kit are external.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not mark FEOL/BEOL manufactured merely because lithography or deposition tools exist in the register.",
+          "sourceIds": [
+            "imec-flow"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        },
+        {
+          "title": "Balance stress and open vias",
+          "detail": "The published sequence balances stress before via formation on 200 mm wafers. The registered 04-02 model accepts 100 mm, not this wafer. Full-wafer processing is external; no recipe or thickness follows from the module diagram.",
+          "tools": [],
+          "status": "external",
+          "check": "Measure wafer bow before/after compensation and test a via-chain witness; success on a smaller coupon does not qualify the production wafer.",
+          "sourceIds": [
+            "imec-flow"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        },
+        {
+          "title": "Define and protect electrode sites",
+          "detail": "Pattern the recording interfaces; TiN sites must stay connected to their corresponding electrical readout path. Protection separates site formation from later substrate processing.",
+          "tools": [
+            "02-06",
+            "03-03",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Overlay site windows against vias. An open via can disable one physical site without killing every site on the readout channel.",
+          "sourceIds": [
+            "imec-flow",
+            "np-jun"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        },
+        {
+          "title": "Open pad windows and deep-etch front side",
+          "detail": "Open connection pads and define the front-side deep silicon boundary on the 200 mm workpiece. The registered 04-02 model accepts 100 mm and the 04-03 fixture 150 mm; neither represents this full-wafer etch.",
+          "tools": [],
+          "status": "external",
+          "check": "Keep pad exposure, outline continuity and clearance from active traces as distinct inspection gates.",
+          "sourceIds": [
+            "imec-flow"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        },
+        {
+          "title": "Thin and finish from the backside",
+          "detail": "Back-grind and deep-etch to complete the shank. A grinder cannot replace the final selective etch; the 150 mm 04-03 fixture cannot accept the source’s 200 mm wafer, so the complete production module remains external.",
+          "tools": [],
+          "status": "external",
+          "check": "Match the thickness to the selected production or paper configuration rather than accepting either value.",
+          "sourceIds": [
+            "imec-flow",
+            "np-config",
+            "np-jun"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        },
+        {
+          "title": "Exercise a separately sized witness, not the 200 mm wafer",
+          "detail": "The listed tools illustrate deposition, openings and mechanical thinning on supported test pieces. A 100 mm carrier is the modeled 04-02 input; 04-03 requires its own 150 mm fixture. A coupon is a substitute test article only where a specific mount is qualified.",
+          "tools": [
+            "03-07",
+            "04-02",
+            "04-03",
+            "04-08",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Track dimensions and holder at each handoff. Never feed the 200 mm production wafer to these limited tools or use coupon measurements as its process record.",
+          "sourceIds": [
+            "imec-flow"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        },
+        {
+          "title": "Package and protect the base",
+          "detail": "Mount the die on its rigid board/flex and shield light-sensitive circuitry. The outsourced package drawing and build tolerances are not supplied by the module slide.",
+          "tools": [
+            "08-02",
+            "08-10",
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "Inspect bonds and compare dark and illuminated baselines without interpreting optical noise as neural signal.",
+          "sourceIds": [
+            "np-config",
+            "imec-flow"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        },
+        {
+          "title": "Verify selected sites with a known input",
+          "detail": "Apply a synthetic signal through the site map and compare expected AP/LFP streams. 384 live selections do not turn 960 sites into simultaneous channels.",
+          "tools": [
+            "10-13",
+            "09-06",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Move the selector away from a single disabled physical site, then back; distinguish site-local and channel-wide failures.",
+          "sourceIds": [
+            "np-jun",
+            "np-config"
+          ],
+          "varies": [
+            "production",
+            "paper"
+          ],
+          "only": [
+            "production",
+            "paper"
+          ]
+        }
+      ],
+      "gaps": [
+        "Exact masks, transistor deck, film stress targets, etch profiles, production yields and proprietary packaging remain outside the public reconstruction.",
+        "Zone 10-13 is a recording-system reference, not a CMOS fabrication tool."
+      ],
+      "sources": [
+        {
+          "id": "imec-flow",
+          "title": "Majeed (imec), Neuropixels process flow, slide 11",
+          "url": "https://www.semi.org/sites/semi.org/files/2025-06/08_Bivragh%20Majeed.pdf#page=11",
+          "note": "Slide 11 identifies the incoming 200 mm, 130 nm foundry wafer and four subsequent 1.0 modules. Slide 13 is a separate hybrid demonstrator, not the production 1.0 recipe."
+        },
+        {
+          "id": "np-config",
+          "title": "Neuropixels Central: probe configurations and signal chain",
+          "url": "https://www.neuropixelscentral.org/technology",
+          "note": "Program comparison of form factor, site selection, packaging and acquisition. Describes multiple Ultra generations and the NXT prototype separately."
+        },
+        {
+          "id": "np-jun",
+          "title": "Jun et al. (2017): integrated high-density silicon probes",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5955206/",
+          "note": "Design, Figure 1 and Methods distinguish physical sites, switch-selected channels and the separate AP/LFP digitization paths of the 2017 device."
+        },
+        {
+          "id": "np-support",
+          "title": "imec: probe, cable and headstage compatibility",
+          "url": "https://www.neuropixels.org/support",
+          "note": "Product-specific order codes distinguish, among others, the Quad Base headstage/cable and the 1.0 and 2.0 systems."
+        }
+      ],
+      "lab": "/simulations/neuropixels-foundry/"
+    },
+    {
+      "id": "si-np2",
+      "title": "Neuropixels 2.0 alpha: one- and four-shank paths",
+      "family": "Active CMOS shank",
+      "evidence": "partial",
+      "summary": "The 2021 alpha is a monolithic switching probe. Changing the number of shanks changes the release geometry and the legal switch selections, but the probe still outputs 384 full-band channels in either configuration.",
+      "devices": [
+        "88-neuropixels-20-alpha-probe"
+      ],
+      "variants": [
+        {
+          "id": "single",
+          "label": "Single shank · 1,280 sites",
+          "description": "Two vertically aligned columns. The 384-channel selection must respect 32-site mapping groups.",
+          "status": "documented"
+        },
+        {
+          "id": "four",
+          "label": "Four shanks · 5,120 sites",
+          "description": "Four shanks at 250 µm center pitch share 384 readout channels. Documented patterns include 96 sites on each shank.",
+          "status": "documented"
+        },
+        {
+          "id": "qb",
+          "label": "1,536-channel Quad Base",
+          "description": "This is a different base, headstage and channel allocation; it is not an alpha software mode.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Choose the shank mask family and map",
+          "detail": "The 2021 single/four-shank layouts both use aligned 12 µm TiN squares; 15 µm row spacing along the shank differs from the staggered 1.0 layout. Geometry selects possible sites, not arbitrary channel wiring.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Count 1,280 per shank. Verify that changing masks changes the outline and collection of valid site maps.",
+          "sourceIds": [
+            "np-steinmetz"
+          ],
+          "only": [
+            "single",
+            "four"
+          ]
+        },
+        {
+          "title": "Accept the 130 nm custom wafer",
+          "detail": "Shank switches and base readout are co-fabricated. The PDK, masks, electronics yield and post-processing recipe are not supplied by the alpha paper.",
+          "tools": [],
+          "status": "external",
+          "check": "Require a known tested base rather than assembling generic transistors in the probe lab.",
+          "sourceIds": [
+            "np-steinmetz"
+          ],
+          "only": [
+            "single",
+            "four"
+          ]
+        },
+        {
+          "title": "Define sites, compensate bow and release shanks",
+          "detail": "Compare TiN window registration and outline with the alpha data; thinning/deep-etch stations represent a plausible family route, not a demonstrated 2.0-specific process order.",
+          "tools": [
+            "03-03",
+            "04-03",
+            "04-08",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "The alpha specification is a 70 × 24 µm section and less than 100 µm base-to-tip deflection for each shank, not an across-shank mean.",
+          "sourceIds": [
+            "np-steinmetz",
+            "imec-flow"
+          ],
+          "only": [
+            "single",
+            "four"
+          ]
+        },
+        {
+          "title": "Attach die to the alpha rigid-flex",
+          "detail": "Wire bonds and epoxy secure the base to the rigid PCB; the flexible ribbon connects the matching headstage.",
+          "tools": [
+            "08-02",
+            "08-10",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Inspect the bond fanout separately from the four physical shanks. An open package net may affect an entire stream.",
+          "sourceIds": [
+            "np-steinmetz"
+          ],
+          "only": [
+            "single",
+            "four"
+          ]
+        },
+        {
+          "title": "Exercise a valid selection against a dummy input",
+          "detail": "Use an alpha-compatible map. For a single shank, test an allowed contiguous block. For four shanks, test a legal 96-per-shank or same-shank selection. Read out 384 full-band streams; AP and LFP can be derived, not independent 1.0 ADC banks.",
+          "tools": [
+            "10-13",
+            "09-06",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Verify 30 ksample/s full-band sample timing, 14-bit alpha digitization and the same total channel budget for both options.",
+          "sourceIds": [
+            "np-steinmetz"
+          ],
+          "varies": [
+            "single",
+            "four"
+          ],
+          "only": [
+            "single",
+            "four"
+          ]
+        }
+      ],
+      "gaps": [
+        "Do not apply the public 1.0 module sequence to 2.0 as a disclosed exact production process.",
+        "ASIC masks, proprietary back-end windows, generation-specific calibration and exact release fixtures remain external."
+      ],
+      "sources": [
+        {
+          "id": "np-steinmetz",
+          "title": "Steinmetz et al. (2021): Neuropixels 2.0",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8244810/",
+          "note": "Methods, “Neuropixels 2.0 device design”: single/four-shank alpha variants, aligned sites, mechanical specifications, packaging and different maps. These results are alpha-specific."
+        },
+        {
+          "id": "imec-flow",
+          "title": "Majeed (imec), Neuropixels process flow, slide 11",
+          "url": "https://www.semi.org/sites/semi.org/files/2025-06/08_Bivragh%20Majeed.pdf#page=11",
+          "note": "Slide 11 identifies the incoming 200 mm, 130 nm foundry wafer and four subsequent 1.0 modules. Slide 13 is a separate hybrid demonstrator, not the production 1.0 recipe."
+        },
+        {
+          "id": "np-config",
+          "title": "Neuropixels Central: probe configurations and signal chain",
+          "url": "https://www.neuropixelscentral.org/technology",
+          "note": "Program comparison of form factor, site selection, packaging and acquisition. Describes multiple Ultra generations and the NXT prototype separately."
+        }
+      ]
+    },
+    {
+      "id": "si-np-ultra",
+      "title": "Neuropixels Ultra: dense-site switching window",
+      "family": "Active CMOS shank",
+      "evidence": "partial",
+      "summary": "The studied Ultra trades sampled length for contact density without increasing the 384 simultaneous readouts. A 384-site window is an address pattern, not the full shank or the number of fabricated contacts.",
+      "devices": [
+        "83-neuropixels-ultra-high-density-probe"
+      ],
+      "variants": [
+        {
+          "id": "dense",
+          "label": "48 × 8 dense window",
+          "description": "All eight columns sampled over 48 rows; 384 selected sites.",
+          "status": "documented"
+        },
+        {
+          "id": "medium",
+          "label": "96 × 4 selection",
+          "description": "More rows and fewer selected columns; still 384 channels.",
+          "status": "documented"
+        },
+        {
+          "id": "narrow",
+          "label": "192 × 2 selection",
+          "description": "A longer, narrower sampling pattern.",
+          "status": "documented"
+        },
+        {
+          "id": "line",
+          "label": "384 × 1 selection",
+          "description": "Longest of the four stated patterns, without manufacturing a new die.",
+          "status": "documented"
+        },
+        {
+          "id": "other",
+          "label": "Earlier 6,528-site or fixed 384-site revisions",
+          "description": "Separately described by the program; do not combine those counts with the studied 6,144-site device.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Freeze revision and contact geometry",
+          "detail": "Choose the Ye et al. layout. On this die the 6,144 available sites are not all connected simultaneously. The dense window arithmetic is 48 rows × 8 columns.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Store total physical sites, selection dimensions, row pitch and width of a site as separate fields.",
+          "sourceIds": [
+            "np-ultra"
+          ],
+          "only": [
+            "dense",
+            "medium",
+            "narrow",
+            "line"
+          ]
+        },
+        {
+          "title": "Accept external switch/readout die design",
+          "detail": "The 1.0-family readout and dense routing are not reproduced by direct writing an array of squares. Treat full upstream CMOS design and fabrication as supplied.",
+          "tools": [],
+          "status": "external",
+          "check": "A reference array with the same pitch is not labeled a functional Ultra.",
+          "sourceIds": [
+            "np-ultra",
+            "np-config"
+          ],
+          "only": [
+            "dense",
+            "medium",
+            "narrow",
+            "line"
+          ]
+        },
+        {
+          "title": "Check small contact openings and uniformity",
+          "detail": "Model patterning and TiN inspection on an interface coupon. A 5 µm square site on 6 µm pitch has 1 µm nominal edge clearance along aligned rows; overlay loss and unintended merging are distinct faults.",
+          "tools": [
+            "02-06",
+            "03-03",
+            "13-01",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Use the edge-to-edge clearance, not 6 µm, as the nominal gap. Reject shorted neighbors in a continuity mock-up.",
+          "sourceIds": [
+            "np-ultra"
+          ],
+          "only": [
+            "dense",
+            "medium",
+            "narrow",
+            "line"
+          ]
+        },
+        {
+          "title": "Reconstruct shank release and package envelope",
+          "detail": "Use a 1.0-like silicon shank/external readout as the reference, with mechanical checks independent of the electronics. Do not extrapolate a small contact crop into a recovered full mask.",
+          "tools": [
+            "04-03",
+            "04-08",
+            "05-02",
+            "08-10"
+          ],
+          "status": "reference",
+          "check": "Match the shank form and selected revision. Log unknown die-outline and process tolerances.",
+          "sourceIds": [
+            "np-ultra",
+            "np-config"
+          ],
+          "only": [
+            "dense",
+            "medium",
+            "narrow",
+            "line"
+          ]
+        },
+        {
+          "title": "Verify the switching window with known signals",
+          "detail": "Replay a defined input using each documented 384-site layout. Changing software selection reallocates the existing channels; it does not change the manufactured site count.",
+          "tools": [
+            "10-13",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Each of 48×8, 96×4, 192×2 and 384×1 selects exactly 384 sites. No map produces 6,144 independent simultaneous signals.",
+          "sourceIds": [
+            "np-ultra"
+          ],
+          "varies": [
+            "dense",
+            "medium",
+            "narrow",
+            "line"
+          ],
+          "only": [
+            "dense",
+            "medium",
+            "narrow",
+            "line"
+          ]
+        }
+      ],
+      "gaps": [
+        "The documented selection shapes are not a complete published wire-level netlist or a recovered foundry mask.",
+        "Earlier UHD revisions distinguished by Neuropixels Central are not evidence against the later study-specific count."
+      ],
+      "sources": [
+        {
+          "id": "np-ultra",
+          "title": "Ye et al. (2025): Neuropixels Ultra",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/",
+          "note": "Figure 1, Figure S1 and Methods: the reported 6,144-site version, 5 µm sites on 6 µm centers and selectable layouts."
+        },
+        {
+          "id": "np-config",
+          "title": "Neuropixels Central: probe configurations and signal chain",
+          "url": "https://www.neuropixelscentral.org/technology",
+          "note": "Program comparison of form factor, site selection, packaging and acquisition. Describes multiple Ultra generations and the NXT prototype separately."
+        }
+      ]
+    },
+    {
+      "id": "si-np-nhp",
+      "title": "Neuropixels NHP: stitched long-shank silicon",
+      "family": "Active CMOS shank",
+      "evidence": "partial",
+      "summary": "A 45 mm shank is longer than the exposure field. Its CMOS features must join at reticle seams. Widening lines and compensating film stress are structural changes, not a visual stretch of the rodent design.",
+      "devices": [
+        "85-neuropixels-10-nhp-long-shank"
+      ],
+      "variants": [
+        {
+          "id": "long",
+          "label": "45 mm study version · 4,416/384",
+          "description": "125 µm wide, 90 µm thick, 4,416 selectable sites and 384 concurrent channels. The study used a beveled tip.",
+          "status": "documented"
+        },
+        {
+          "id": "medium",
+          "label": "25 mm family comparison · 2,496/384",
+          "description": "The program also documents a shorter hardware variant; do not reuse the long probe’s stitch count or trace resistance.",
+          "status": "documented"
+        },
+        {
+          "id": "scaled",
+          "label": "Scale up a 24 µm 1.0 rodent shank",
+          "description": "This does not implement the documented stiffness, pitch and reticle constraints.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Tile a long die across exposure fields",
+          "detail": "The long probe is a monolithic die assembled lithographically from tip, repeated middle sections and base patterns. Overlapping exposures form electrical seams, not physically joined silicon parts.",
+          "tools": [
+            "01-01",
+            "02-06"
+          ],
+          "status": "documented",
+          "check": "Overlay adjacent fields and check test conductors across every seam; a register stepper is only a visualization of this constraint.",
+          "sourceIds": [
+            "np-nhp"
+          ],
+          "varies": [
+            "long"
+          ],
+          "only": [
+            "long"
+          ]
+        },
+        {
+          "title": "Receive custom stitched CMOS",
+          "detail": "The foundry forms the 130 nm SOI switching and readout circuits, with modified interconnect widths, isolation spacing, supply routing and decoupling.",
+          "tools": [],
+          "status": "external",
+          "check": "Keep stitch overlay, continuity and crosstalk on separate records. No full foundry masks are public here.",
+          "sourceIds": [
+            "np-nhp"
+          ],
+          "only": [
+            "long",
+            "medium"
+          ]
+        },
+        {
+          "title": "Qualify the thinned, stress-balanced shank",
+          "detail": "Inspect for out-of-plane bow and thickness at multiple stations along the shank. Long-probe stress compensation and increased thickness must not be copied from rodent reference geometry.",
+          "tools": [
+            "04-08",
+            "04-03",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Use length-resolved data; the 45 mm study sample should not inherit a nominal 24 µm thickness.",
+          "sourceIds": [
+            "np-nhp"
+          ],
+          "only": [
+            "long",
+            "medium"
+          ]
+        },
+        {
+          "title": "Inspect seams and optional side bevel",
+          "detail": "Compare the published two-axis tip and metal seam micrographs; study authors used a modified EG-402 grinder, not the registered stationary glass-electrode beveler.",
+          "tools": [
+            "13-01",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Log line narrowing separately from an actual open. Validate side bevel only for the documented sharpened version.",
+          "sourceIds": [
+            "np-nhp"
+          ],
+          "varies": [
+            "long"
+          ],
+          "only": [
+            "long"
+          ]
+        },
+        {
+          "title": "Attach and exercise the readout on a fixture",
+          "detail": "Use the matched package and known electrical input to compare noise/coupling at sites near and far from a stitch. Do not simply repeat a rodent spectrum at every depth.",
+          "tools": [
+            "05-07",
+            "09-06",
+            "10-13",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Record the selected site’s position and channel. Limit to 384 concurrent channels for both listed lengths.",
+          "sourceIds": [
+            "np-nhp",
+            "np-config"
+          ],
+          "only": [
+            "long",
+            "medium"
+          ]
+        }
+      ],
+      "gaps": [
+        "The register cannot qualify the 130 nm multilayer reticle stitching or reproduce the modified study grinder.",
+        "Probe geometry does not establish a fracture load or permit any biological performance prediction."
+      ],
+      "sources": [
+        {
+          "id": "np-nhp",
+          "title": "Trautmann et al. (2025): long Neuropixels NHP",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12229894/",
+          "note": "Results, Technology, Figure 1 and Extended Data Figure 2: reticle stitching, 45 mm shank, stitch-line narrowing, bow compensation and tip grinding."
+        },
+        {
+          "id": "np-config",
+          "title": "Neuropixels Central: probe configurations and signal chain",
+          "url": "https://www.neuropixelscentral.org/technology",
+          "note": "Program comparison of form factor, site selection, packaging and acquisition. Describes multiple Ultra generations and the NXT prototype separately."
+        }
+      ]
+    },
+    {
+      "id": "si-np-quad",
+      "title": "Neuropixels 2.0 Quad Base: four fixed readout banks",
+      "family": "Active CMOS shank",
+      "evidence": "partial",
+      "summary": "This device gives each of four shanks its own 384-channel base section. It differs both from a 384-total alpha probe and from the 1,536-channel NXT with movable capacity.",
+      "devices": [
+        "104-neuropixels-20-quad-base-probe"
+      ],
+      "variants": [
+        {
+          "id": "four-independent",
+          "label": "Four banks of 384",
+          "description": "5,120 physical sites, with at most 384 simultaneous selections per shank.",
+          "status": "documented"
+        },
+        {
+          "id": "caps",
+          "label": "Capped and uncapped ordering variants",
+          "description": "Use NP2020/NP2021-specific package drawings and accessory matching, not a change to site count.",
+          "status": "documented"
+        },
+        {
+          "id": "nxt",
+          "label": "Move 912 channels onto one shank",
+          "description": "Not a Quad Base setting; NXT has a different switching architecture.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Specify the four-section electrical architecture",
+          "detail": "Divide the 1,536-output contract into four shank-local sets; each 1,280-site shank supplies 384 valid connections.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "A selection asking for 385 independent channels on one shank fails even if the total stays below 1,536.",
+          "sourceIds": [
+            "np-qb",
+            "np-config"
+          ],
+          "only": [
+            "four-independent",
+            "caps"
+          ]
+        },
+        {
+          "title": "Obtain dedicated device silicon",
+          "detail": "Upstream CMOS, masks, foundry integration, process controls and packaging tooling are not given by the buying specifications.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not substitute four generic 2.0 dies for the documented device.",
+          "sourceIds": [
+            "np-qb"
+          ],
+          "only": [
+            "four-independent",
+            "caps"
+          ]
+        },
+        {
+          "title": "Inspect shank quartet and package connectivity",
+          "detail": "Virtually check shank windows, alignment and all four bond groups; a 2.0-family CMP/etch route, if shown, remains an analogy rather than the Quad Base process record.",
+          "tools": [
+            "12-01",
+            "05-02",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Distinguish one failed site, one lost shank bank, and a completely unavailable headstage.",
+          "sourceIds": [
+            "np-qb",
+            "np-config"
+          ],
+          "only": [
+            "four-independent",
+            "caps"
+          ]
+        },
+        {
+          "title": "Match the interface components",
+          "detail": "Use the dedicated HS_2020 headstage and CBL_2020 cable; the manufacturer lists PXIe_1000 or OneBox on the acquisition side.",
+          "tools": [
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "Reject a generic or standard alpha headstage match as unsupported; an acquisition chassis alone is not the interface.",
+          "sourceIds": [
+            "np-support"
+          ],
+          "only": [
+            "four-independent",
+            "caps"
+          ]
+        },
+        {
+          "title": "Check four bank maps and transport together",
+          "detail": "In a digital fixture, inject a unique tag per shank and check mapping, timestamps and sample counts separately across all four banks.",
+          "tools": [
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Each bank outputs at most 384 independent tags; the full configured set has 1,536, not 5,120.",
+          "sourceIds": [
+            "np-qb",
+            "np-config"
+          ],
+          "varies": [
+            "four-independent",
+            "caps"
+          ],
+          "only": [
+            "four-independent",
+            "caps"
+          ]
+        }
+      ],
+      "gaps": [
+        "No vendor production masks or calibrated 4-bank wafer acceptance limits were identified.",
+        "Mechanical cap variants are not separate signal-processing architectures."
+      ],
+      "sources": [
+        {
+          "id": "np-qb",
+          "title": "imec: Neuropixels 2.0 Quad Base",
+          "url": "https://www.neuropixels.org/probe2-0-qb-multi-shank",
+          "note": "Manufacturer confirms four shanks, 1,280 sites per shank, 1,536 readouts and the dedicated HS_2020 interface."
+        },
+        {
+          "id": "np-support",
+          "title": "imec: probe, cable and headstage compatibility",
+          "url": "https://www.neuropixels.org/support",
+          "note": "Product-specific order codes distinguish, among others, the Quad Base headstage/cable and the 1.0 and 2.0 systems."
+        },
+        {
+          "id": "np-config",
+          "title": "Neuropixels Central: probe configurations and signal chain",
+          "url": "https://www.neuropixelscentral.org/technology",
+          "note": "Program comparison of form factor, site selection, packaging and acquisition. Describes multiple Ultra generations and the NXT prototype separately."
+        }
+      ]
+    },
+    {
+      "id": "si-np-nxt",
+      "title": "Neuropixels NXT: prototype and external foundry boundary",
+      "family": "Active CMOS shank",
+      "evidence": "proprietary",
+      "summary": "The program reports a four-shank 1,536-channel prototype using 2.0 site geometry. A higher concentration of channels on one shank is public; the exact switch network and production sequence are not.",
+      "devices": [
+        "106-neuropixels-nxt-np30-prototype"
+      ],
+      "variants": [
+        {
+          "id": "balanced",
+          "label": "Four-shank architecture",
+          "description": "The public description fixes total capacity; it is not a released list of every legal site tuple.",
+          "status": "documented"
+        },
+        {
+          "id": "concentrated",
+          "label": "Up to 912 on one shank",
+          "description": "A reported upper bound, not evidence that every arbitrary 912-site subset can be selected.",
+          "status": "documented"
+        },
+        {
+          "id": "demonstrator",
+          "label": "Assume the 2.0 hybrid die-to-wafer demonstrator is the NXT recipe",
+          "description": "The separate imec report is not evidence that this exact prototype or product uses that complete process.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pin the prototype definition",
+          "detail": "Use the NXT/3.0 identity, four shanks and 2.0-style site geometry. Keep the revision/firmware field unspecified where public material is silent.",
+          "tools": [
+            "01-01"
+          ],
+          "status": "documented",
+          "check": "Inventory entries for Quad Base and NXT must not alias to one hardware definition.",
+          "sourceIds": [
+            "np-config",
+            "np-nxt"
+          ],
+          "only": [
+            "balanced",
+            "concentrated"
+          ]
+        },
+        {
+          "title": "Hold the upstream fabrication boundary",
+          "detail": "ASIC design, mask floorplan, layer order, PDK, interconnect details and wafer acceptance flow are not published in the program announcement.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not convert slide 13 of a related imec demonstrator into an NXT production step.",
+          "sourceIds": [
+            "np-config",
+            "imec-flow"
+          ],
+          "only": [
+            "balanced",
+            "concentrated"
+          ]
+        },
+        {
+          "title": "Inspect an interface coupon, not proprietary NXT silicon",
+          "detail": "Use metrology against disclosed shank geometry and known contacts only. Any local patterning/inspection is a teaching reference, not a cleared fabrication route.",
+          "tools": [
+            "02-12",
+            "05-02",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Geometry agreement without connectivity evidence never marks the external electronics path complete.",
+          "sourceIds": [
+            "np-config"
+          ],
+          "only": [
+            "balanced",
+            "concentrated"
+          ]
+        },
+        {
+          "title": "Exercise reported capacity bounds",
+          "detail": "Validate a synthetic allocation against the public 1,536 total and up-to-912-on-one-shank statements. The result is a constraint screen, not a complete channel-map validator.",
+          "tools": [
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Reject 1,537 total and 913 on one shank. Treat an otherwise bounded but undocumented set as unverified, not accepted hardware.",
+          "sourceIds": [
+            "np-config"
+          ],
+          "varies": [
+            "balanced",
+            "concentrated"
+          ],
+          "only": [
+            "balanced",
+            "concentrated"
+          ]
+        }
+      ],
+      "gaps": [
+        "Per-site mapping rules, part-specific packaging and a verified production traveler are unavailable here.",
+        "A future release forecast does not demonstrate production yield or present availability."
+      ],
+      "sources": [
+        {
+          "id": "np-config",
+          "title": "Neuropixels Central: probe configurations and signal chain",
+          "url": "https://www.neuropixelscentral.org/technology",
+          "note": "Program comparison of form factor, site selection, packaging and acquisition. Describes multiple Ultra generations and the NXT prototype separately."
+        },
+        {
+          "id": "np-nxt",
+          "title": "Neuropixels Central: NXT/3.0 access challenge",
+          "url": "https://www.neuropixelscentral.org/post/neuropixels-nxt-3-0-probe-access-challenge-pac",
+          "note": "Program announcement distinguishes prototype availability and future planned access from volume production."
+        },
+        {
+          "id": "imec-flow",
+          "title": "Majeed (imec), Neuropixels process flow, slide 11",
+          "url": "https://www.semi.org/sites/semi.org/files/2025-06/08_Bivragh%20Majeed.pdf#page=11",
+          "note": "Slide 11 identifies the incoming 200 mm, 130 nm foundry wafer and four subsequent 1.0 modules. Slide 13 is a separate hybrid demonstrator, not the production 1.0 recipe."
+        }
+      ]
+    },
+    {
+      "id": "si-np-opto",
+      "title": "Neuropixels Opto: electrical shank with a photonic layer",
+      "family": "Optoelectronic CMOS shank",
+      "evidence": "partial",
+      "summary": "This is a fiber-fed photonic circuit above a 1.0 recording IC, not a row of bonded LEDs. The optical path and the electrode vias pass through different layers and need separate tests.",
+      "devices": [
+        "107-neuropixels-opto-photonic-prototype"
+      ],
+      "variants": [
+        {
+          "id": "blue",
+          "label": "450 nm optical path",
+          "description": "One of 14 blue emitters; published blue-path loss and crosstalk differ from red.",
+          "status": "documented"
+        },
+        {
+          "id": "red",
+          "label": "638 nm optical path",
+          "description": "One of 14 red emitters; an emitter selection does not change the available 384 electrical readouts.",
+          "status": "documented"
+        },
+        {
+          "id": "led",
+          "label": "Replace the fiber/switch tree with a bonded microLED",
+          "description": "An entirely different architecture that has no validity as an Opto configuration.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Accept the recording IC",
+          "detail": "Six-metal 130 nm SOI aluminum CMOS carries the recording circuitry. The authors identify it as the 1.0 recording design; its transistor fabrication remains external.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not infer a device-specific lithographic mask set from the probe’s public cross-section.",
+          "sourceIds": [
+            "np-opto"
+          ],
+          "only": [
+            "blue",
+            "red"
+          ]
+        },
+        {
+          "title": "Build the optical circuit above the CMOS",
+          "detail": "The 200 mm photonics flow adds shielding and a reflector, 150 nm PECVD silicon-nitride guides, grating couplers and heater-controlled switches. Its full-wafer etch is external: the register’s 04-02 model accepts a 100 mm input, not this wafer.",
+          "tools": [],
+          "status": "external",
+          "check": "Compare grating overlay and waveguide thickness separately from continuity of the buried readout.",
+          "sourceIds": [
+            "np-opto"
+          ],
+          "only": [
+            "blue",
+            "red"
+          ]
+        },
+        {
+          "title": "Reconnect the recording electrodes and manage bow",
+          "detail": "The added optical stack needs deeper vias for heaters and recording sites and a stress compensation layer. A complete 200 mm module is outside the verified 100 mm 04-02 model.",
+          "tools": [],
+          "status": "external",
+          "check": "Inspect the via-chain and released-shank bow independently; a light-output check cannot diagnose an open electrical via.",
+          "sourceIds": [
+            "np-opto"
+          ],
+          "only": [
+            "blue",
+            "red"
+          ]
+        },
+        {
+          "title": "Compare film, vias and bow on supported witnesses",
+          "detail": "Register deposition, etching and metrology can represent separate optical-film or via witnesses. The 04-02 software demonstration is 100 mm and does not validate photonic multilayer etching; the whole 200 mm wafer cannot be substituted.",
+          "tools": [
+            "03-07",
+            "03-03",
+            "04-02",
+            "05-04",
+            "05-02",
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Tie each reported result to the specimen and method. A coupon’s thickness or continuity cannot qualify a 200 mm wafer or an optical switching tree.",
+          "sourceIds": [
+            "np-opto"
+          ],
+          "only": [
+            "blue",
+            "red"
+          ]
+        },
+        {
+          "title": "Prepare the tethered optical/electrical package",
+          "detail": "Align the fiber array to the couplers and connect the electronics. Electrical and optical ports require independent registration. A package die bonder is an analogy; it is not a verified multi-fiber alignment fixture.",
+          "tools": [
+            "08-05",
+            "11-06",
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "Read back an optical transfer measurement per port; a mechanically centered image is insufficient.",
+          "sourceIds": [
+            "np-opto"
+          ],
+          "only": [
+            "blue",
+            "red"
+          ]
+        },
+        {
+          "title": "Calibrate wavelength-specific routing",
+          "detail": "Compare selected-emitter output, neighboring-port leakage and propagation loss for each wavelength. The prototype’s blue leakage is a known limitation; do not silently use red extinction for blue.",
+          "tools": [
+            "11-02",
+            "11-05",
+            "11-06"
+          ],
+          "status": "reference",
+          "check": "The paper measures full-probe loss with an integrating sphere. A meter console alone cannot collect total emitted power or establish insertion loss. Record collection method and wavelength for each result.",
+          "sourceIds": [
+            "np-opto"
+          ],
+          "varies": [
+            "blue",
+            "red"
+          ],
+          "only": [
+            "blue",
+            "red"
+          ]
+        },
+        {
+          "title": "Separate electronic and optical readouts",
+          "detail": "Apply an electronic calibration signal with light off, then evaluate a blank under optical switching. Keep the 960 physical sites, 384 electrical channels and 2 × 14 photonic emitters as independent counts.",
+          "tools": [
+            "05-07",
+            "09-06",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Optically induced artifact in a blank must not be labeled simulated neural activity.",
+          "sourceIds": [
+            "np-opto"
+          ],
+          "varies": [
+            "blue",
+            "red"
+          ],
+          "only": [
+            "blue",
+            "red"
+          ]
+        }
+      ],
+      "gaps": [
+        "CMOS masks, photonic PDK and detailed process traveler are not available. The published modules describe architecture, not a complete 740-step recreation.",
+        "Register lasers, optics bench and meter require the right source wavelengths, detector, coupling and return-path configuration."
+      ],
+      "sources": [
+        {
+          "id": "np-opto",
+          "title": "Lakunina et al. (2026): Neuropixels Opto",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13259958/",
+          "note": "Design and fabrication; Figure 1 and Extended Data Figure 1. Identifies the added photonic modules, fiber coupling, emitter layout, loss and prototype leakage."
+        }
+      ]
+    },
+    {
+      "id": "si-wise",
+      "title": "Wise 1970: planar gold electrodes on an etched silicon carrier",
+      "family": "Passive planar silicon shank",
+      "evidence": "documented",
+      "summary": "The 1970 article describes a passive probe made with integrated-circuit techniques. The unsupported gold recording end can project past the silicon carrier; there is no need to invent active transistors to explain the term “integrated-circuit.”",
+      "devices": [
+        "35-wise-integrated-circuit-microprobe-1970"
+      ],
+      "variants": [
+        {
+          "id": "single",
+          "label": "Single-site probe",
+          "description": "The paper shows its cross-section and separate etched carrier.",
+          "status": "documented"
+        },
+        {
+          "id": "multiple",
+          "label": "Multiple lithographic sites",
+          "description": "The same sequence with different masks yields multiple electrodes; the paper depicts the double-site example. No universal channel count is inferred.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Start from oxidized silicon with two coordinate faces",
+          "detail": "The historical starting wafer was approximately 50 µm thick. Reference marks link the two faces before shaping. Thermal oxidation is an upstream supply/process boundary when its specific furnace is not registered.",
+          "tools": [
+            "02-01",
+            "05-04"
+          ],
+          "status": "documented",
+          "check": "Test backside alignment on a witness: front and back marks must transform into the same projected coordinates.",
+          "sourceIds": [
+            "wise1970"
+          ]
+        },
+        {
+          "title": "Etch the backside mesa and define oxide masks",
+          "detail": "A patterned backside oxide protects raised silicon during the first etch; reoxidation separates the carrier-shaping mask from the front insulating base.",
+          "tools": [
+            "04-06",
+            "05-01"
+          ],
+          "status": "documented",
+          "check": "A backside topographic map distinguishes a partially formed mesa from a through-released carrier.",
+          "sourceIds": [
+            "wise1970"
+          ]
+        },
+        {
+          "title": "Photoform the gold electrodes",
+          "detail": "The paper describes a plated and etched Au structure with thin nickel aiding adhesion to oxide. This differs from simply evaporating a flat Au film and calling it the historical contact. A qualified historical plating fixture is not in the register.",
+          "tools": [
+            "02-01",
+            "05-07"
+          ],
+          "status": "documented",
+          "check": "Check continuous conductor from pad to tip; distinguish nominal gold width from its final exposed aperture.",
+          "sourceIds": [
+            "wise1970"
+          ]
+        },
+        {
+          "title": "Insulate and selectively expose the tips",
+          "detail": "Top-side deposited oxide is selectively removed over recording ends; only the small contact area becomes electrolyte-accessible. A research PECVD station is a modern dielectric analogy, not the original RF apparatus.",
+          "tools": [
+            "03-07",
+            "02-01",
+            "04-06"
+          ],
+          "status": "documented",
+          "check": "Inspect the aperture footprint and insulated shoulders, keeping the supporting oxide and surface overcoat distinct.",
+          "sourceIds": [
+            "wise1970"
+          ]
+        },
+        {
+          "title": "Release by silicon undercut and package",
+          "detail": "The final isotropic silicon etch forms an overhang. Authors attached output wire by thermocompression, mounted it in a capillary handle and insulated the connection.",
+          "tools": [
+            "04-06",
+            "12-01",
+            "08-10"
+          ],
+          "status": "documented",
+          "check": "Verify a projecting contact, distinct from an unwanted fractured tip; reject a connection leak even when the metal is continuous.",
+          "sourceIds": [
+            "wise1970"
+          ]
+        },
+        {
+          "title": "Bench-check electrode versus interelectrode response",
+          "detail": "Use a defined electrolyte fixture and known input to distinguish individual site impedance from mutual coupling and leakage.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "09-06"
+          ],
+          "status": "reference",
+          "check": "For a two-site specimen, report a pair of site impedances plus the interelectrode measurement.",
+          "sourceIds": [
+            "wise1970"
+          ]
+        }
+      ],
+      "gaps": [
+        "The register has no verified equivalent for the historical electroforming, oxidation and thermocompression stations.",
+        "This is the 1970 silicon carrier design, not a later Michigan boron etch-stop or CMOS probe."
+      ],
+      "sources": [
+        {
+          "id": "wise1970",
+          "title": "Wise, Angell & Starr (1970): integrated-circuit microprobe",
+          "url": "https://escholarship.org/content/qt5374x0rj/qt5374x0rj.pdf",
+          "note": "Section I.B, Figures 2–7: oxidized 50 µm silicon wafer, double-sided alignment, etched mesas, electroformed gold/Ni, top oxide openings and assembly."
+        }
+      ]
+    },
+    {
+      "id": "si-neuronexus",
+      "title": "NeuroNexus families: passive carriers, assemblies and active pixels",
+      "family": "Silicon probe platforms",
+      "evidence": "reference",
+      "summary": "Select the vendor family before assigning manufacturing steps. A planar passive array, two arrays bonded back-to-back, a 3D stack and an active-pixel ASIC cannot share a single finished-device traveler. Public academic flows are explicitly comparators.",
+      "devices": [
+        "213-neuronexus-silicon-probe-array-families"
+      ],
+      "variants": [
+        {
+          "id": "planar",
+          "label": "Passive planar / clustered sites",
+          "description": "One- or multi-shank masks with linear, tetrode or clustered contact layouts; exact geometry depends on the SKU.",
+          "status": "documented"
+        },
+        {
+          "id": "fusion",
+          "label": "Fusion: two back-to-back arrays",
+          "description": "An assembly of two probes, not two-sided metallization on one monolithic wafer.",
+          "status": "documented"
+        },
+        {
+          "id": "matrix",
+          "label": "Matrix: assembled 3D array",
+          "description": "Multiple planar arrays, assembled at a defined spacing. A top-view reticle alone is not the final geometry.",
+          "status": "documented"
+        },
+        {
+          "id": "sinaps",
+          "label": "SiNAPS active-pixel",
+          "description": "Active electronics require foundry silicon. An open academic single-die process is a comparator only.",
+          "status": "documented"
+        },
+        {
+          "id": "ucla",
+          "label": "Open UCLA comparator",
+          "description": "Its published 64D masks/maps are usable for a labeled lab exercise, never as a vendor mask set.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lock SKU, shank and assembly revision",
+          "detail": "Start from manufacturer drawings or the explicitly identified academic comparator, including cable, contact count, pad numbering and acquisition mode.",
+          "tools": [
+            "01-01",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "Reject configurations that assign an active pixel or mirrored second face to a one-sided passive SKU.",
+          "sourceIds": [
+            "nn-families"
+          ]
+        },
+        {
+          "title": "Pattern and release an open planar comparator",
+          "detail": "For the UCLA reference, distinguish metal routing, exposed contact/pad windows and silicon outline masks, then carry the correct shank through release. For a vendor passive comparison these are analogies, not disclosed masks.",
+          "tools": [
+            "02-01",
+            "03-01",
+            "03-07",
+            "04-03",
+            "04-06"
+          ],
+          "status": "reference",
+          "check": "Require each trace to reach its own pad and the insulator opening to land on its site. Never use the UCLA map as a vendor channel map.",
+          "sourceIds": [
+            "ucla-open",
+            "ucla-paper"
+          ],
+          "varies": [
+            "planar",
+            "fusion",
+            "matrix",
+            "ucla"
+          ],
+          "only": [
+            "planar",
+            "fusion",
+            "matrix",
+            "ucla"
+          ]
+        },
+        {
+          "title": "Transform planar pieces into an assembly",
+          "detail": "Fusion reverses a second probe; Matrix uses multiple planes. Keep shank-to-carrier spacing, face normals, pad orientation and attachment clearance in the assembly record. The fixture remains unspecified.",
+          "tools": [
+            "08-05",
+            "08-10",
+            "12-01",
+            "05-02"
+          ],
+          "status": "reference",
+          "check": "Run a location/orientation test through the connector map; a reversed plane is not repaired by renumbering sites geometrically.",
+          "sourceIds": [
+            "nn-families"
+          ],
+          "varies": [
+            "fusion",
+            "matrix"
+          ],
+          "only": [
+            "fusion",
+            "matrix"
+          ]
+        },
+        {
+          "title": "Use external silicon for the active branch",
+          "detail": "Store the incoming active-pixel die as an external dependency. Orban et al. demonstrate a 512-channel research die with spray-coated die lithography, metallic shielding, thinning and dry shaping. It is not the manufacturer production record.",
+          "tools": [],
+          "status": "external",
+          "check": "Do not infer a recoverable ASIC netlist, exact 512-channel vendor model, or qualify a standard spin coater for die-edge spray coverage.",
+          "sourceIds": [
+            "nn-families",
+            "sinaps-die"
+          ],
+          "varies": [
+            "sinaps"
+          ],
+          "only": [
+            "sinaps"
+          ]
+        },
+        {
+          "title": "Connect to the correct headstage and test continuity/map",
+          "detail": "A specific passive connector may route to an external amplifier; an active probe can multiplex and digitize on-board. Keep these test paths separate and require an actual pin table before reporting channel identities.",
+          "tools": [
+            "05-07",
+            "16-13",
+            "09-06",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "Independent tagged inputs must appear on the intended outputs; absent pin tables are unknown, not identity ordering.",
+          "sourceIds": [
+            "nn-families",
+            "ucla-paper"
+          ]
+        }
+      ],
+      "gaps": [
+        "Family-level vendor information does not supply every SKU, mask, lot process or bonding fixture. Patient or animal performance is not inferred.",
+        "Commercial SiNAPS and the published academic 512-channel post-process comparison are intentionally not marked interchangeable."
+      ],
+      "sources": [
+        {
+          "id": "nn-families",
+          "title": "NeuroNexus: silicon probe series",
+          "url": "https://www.neuronexus.com/products/electrodes/probes",
+          "note": "Manufacturer distinguishes planar, clustered, back-to-back Fusion, assembled Matrix and active-pixel SiNAPS series; documents families, not production travelers."
+        },
+        {
+          "id": "ucla-open",
+          "title": "UCLA Masmanidis Lab: silicon microprobe design release",
+          "url": "https://github.com/sotmasman/Silicon-microprobes/tree/4bb0c3a7a4114be53866ccf2aaddf6b134ccc897",
+          "note": "The 2017/2019 reticle files, PCB Gerbers and mapping scripts provide a separately attributable open comparator. These are not NeuroNexus masks."
+        },
+        {
+          "id": "ucla-paper",
+          "title": "Open source silicon microprobes for high throughput neural recording",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7227378/",
+          "note": "Sections 2.2–2.5: three mask roles, release, assembly and mapping of the UCLA designs, not the vendor’s flow."
+        },
+        {
+          "id": "sinaps-die",
+          "title": "Orban et al. (2026): single-die SiNAPS MEMS post-processing",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12942394/",
+          "note": "A distinct 512-channel academic optical-fiber-ready prototype: die-level contacts/light shielding, thinning, dry etch and measurement limits. Not a recipe for all NeuroNexus SiNAPS products."
+        }
+      ]
+    },
+    {
+      "id": "si-multitransm",
+      "title": "MultiTransm: two functional finishes on a dual-shank silicon probe",
+      "family": "Multimodal silicon MEMS",
+      "evidence": "documented",
+      "summary": "A shared patterned Ti/Pt conductor layer serves functionally different sites. The on-probe reference, counter, small recording contacts and larger chemical sensing contact must retain separate identities through surface modification.",
+      "devices": [
+        "196-aircas-multitransm-dopamine-electrophysiology-mea"
+      ],
+      "variants": [
+        {
+          "id": "dual",
+          "label": "Published dual-mode assembly",
+          "description": "Two 5.70 mm shanks have unequal widths. The larger chemical contact and smaller recording sites are not exchangeable.",
+          "status": "documented"
+        },
+        {
+          "id": "base",
+          "label": "Bare and partially coated control sites",
+          "description": "Use the reported unmodified/partially modified surfaces as comparison specimens, not extra sites on the finished array.",
+          "status": "reference"
+        },
+        {
+          "id": "uniform",
+          "label": "Uniform coat on every site",
+          "description": "This defeats the published selective interface architecture and changes reference behavior.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepare the oxide-on-SOI base",
+          "detail": "The work starts from SOI and specifically uses low-pressure CVD for the initial oxide. The register’s PECVD tool represents a later step only.",
+          "tools": [],
+          "status": "external",
+          "check": "Identify the supplied initial dielectric and its provenance. Do not substitute PECVD for LPCVD without requalification.",
+          "sourceIds": [
+            "mt-jia"
+          ],
+          "only": [
+            "dual",
+            "base"
+          ]
+        },
+        {
+          "title": "Route Ti/Pt bilayer conductors",
+          "detail": "Pattern site, conductor and pad geometry; deposit Ti/Pt layers and lift off. Roles include a working site, Pt counter, integrated reference and electrophysiology contacts.",
+          "tools": [
+            "02-01",
+            "03-01",
+            "04-06",
+            "05-07"
+          ],
+          "status": "documented",
+          "check": "Check net isolation between working, counter, reference and independent recording contacts.",
+          "sourceIds": [
+            "mt-jia"
+          ],
+          "only": [
+            "dual",
+            "base"
+          ]
+        },
+        {
+          "title": "Passivate and open the sensing windows",
+          "detail": "The published top stack is 300 nm silicon oxide plus 500 nm silicon nitride from PECVD. Open required electrode areas before shaping the probe.",
+          "tools": [
+            "03-07",
+            "02-01",
+            "04-01",
+            "05-04"
+          ],
+          "status": "documented",
+          "check": "Register windows over metal and compare film thicknesses separately; an apparent open could be a residual dielectric.",
+          "sourceIds": [
+            "mt-jia"
+          ],
+          "only": [
+            "dual",
+            "base"
+          ]
+        },
+        {
+          "title": "Shape and release the asymmetric shanks",
+          "detail": "Define the silicon/oxide outline, then release by wet etching. Preserve the two distinct widths rather than mirroring one shank.",
+          "tools": [
+            "04-02",
+            "04-06",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Inspect both released profiles and compare their separation with the device drawing.",
+          "sourceIds": [
+            "mt-jia"
+          ],
+          "only": [
+            "dual",
+            "base"
+          ]
+        },
+        {
+          "title": "Apply electrochemical finishes by site role",
+          "detail": "The electrophysiology and working interfaces use Pt nanoparticles/PEDOT:PSS; the dopamine working site adds Nafion. The reference gets IrOx rather than the recording-site finish.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "13-01"
+          ],
+          "status": "documented",
+          "check": "Track the electrode addressed at each deposition and inspect for cross-contamination. Keep Pt counter identity independent.",
+          "sourceIds": [
+            "mt-jia"
+          ],
+          "varies": [
+            "dual",
+            "base"
+          ],
+          "only": [
+            "dual",
+            "base"
+          ]
+        },
+        {
+          "title": "Validate two signals against different references",
+          "detail": "In a bench reconstruction, compare site impedance, chemical sensitivity and reference drift separately. Add a blank and interference control rather than treating low impedance as proof of analyte selectivity.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "09-06",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "A simulated electrical tone uses voltage units; a calibration series uses known analyte concentration and current. An arbitrary voltage ripple cannot validate a concentration estimate.",
+          "sourceIds": [
+            "mt-jia"
+          ],
+          "varies": [
+            "dual",
+            "base"
+          ],
+          "only": [
+            "dual",
+            "base"
+          ]
+        }
+      ],
+      "gaps": [
+        "Exact mask patterns, authorized LPCVD hardware and film chemistry qualification are unverified here.",
+        "A site-labeled electrochemical workflow is not a biological experiment. No in vivo signals, clinical performance or tissue chemistry are simulated."
+      ],
+      "sources": [
+        {
+          "id": "mt-jia",
+          "title": "Jia et al. (2025): targeted MultiTransm microelectrode arrays",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12509213/",
+          "note": "Materials and Methods: fabrication, targeted site modification, in vitro calibration; Figures 1–3 distinguish electrophysiology, analyte and reference surfaces."
+        }
+      ]
+    },
+    {
+      "id": "si-resorbable",
+      "title": "Transient silicon: cavity pressure and temperature sensor",
+      "family": "Transient silicon MEMS",
+      "evidence": "documented",
+      "summary": "A sealed cavity turns pressure into membrane strain. The same silicon gauge material away from the cavity tracks temperature. End of electrical function and disappearance of all material are separate endpoints.",
+      "devices": [
+        "31-bioresorbable-silicon-brain-sensors"
+      ],
+      "variants": [
+        {
+          "id": "porous",
+          "label": "Nanoporous Si support",
+          "description": "A PLGA diaphragm seals an etched cavity on the nanoporous silicon support.",
+          "status": "documented"
+        },
+        {
+          "id": "mg",
+          "label": "Magnesium support",
+          "description": "The paper also uses Mg foil as a distinct support; the resulting dissolution and mechanical behavior are not the silicon values.",
+          "status": "documented"
+        },
+        {
+          "id": "module",
+          "label": "External telemetry or separately integrated NFC",
+          "description": "Telemetry is a different assembly. The demonstrated NFC chain includes nonresorbing electronics; do not call the whole communications system fully resorbable.",
+          "status": "documented"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Obtain defined silicon nanomembranes",
+          "detail": "Boron-doped device silicon comes from a prepared SOI source. The required doping process is not a registered, qualified diffusion line.",
+          "tools": [],
+          "status": "external",
+          "check": "Track nanomembrane provenance and reject an undoped-film substitution as a known gauge.",
+          "sourceIds": [
+            "kang-pressure"
+          ]
+        },
+        {
+          "title": "Transfer, pattern and protect a serpentine gauge",
+          "detail": "Release the thin silicon and transfer to a temporary carrier. Pattern serpentine resistors, add insulation, and transfer the mesh to PLGA. A manual stamp/alignment fixture remains necessary.",
+          "tools": [
+            "02-01",
+            "04-06",
+            "03-01",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Measure end-to-end resistance before and after transfer; broken serpentine turns are not pressure effects.",
+          "sourceIds": [
+            "kang-pressure"
+          ]
+        },
+        {
+          "title": "Form the cavity and laminate the diaphragm",
+          "detail": "Prepare a relief in the chosen porous Si or Mg support, then align and seal the PLGA film. The pressure gauge must lie at the cavity edge; the temperature reference sits away from it.",
+          "tools": [
+            "04-06",
+            "05-02",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Under a dummy pressure load, distinguish membrane response from rigid-support temperature response and seal leakage.",
+          "sourceIds": [
+            "kang-pressure"
+          ],
+          "varies": [
+            "porous",
+            "mg"
+          ]
+        },
+        {
+          "title": "Connect dissolvable interconnects to the chosen reader",
+          "detail": "The article distinguishes dissolvable wires and Mo contact films from the external radio or the partly resorbable NFC assembly. Specifying the readout changes the bill of materials.",
+          "tools": [
+            "03-03",
+            "16-13"
+          ],
+          "status": "documented",
+          "check": "A component inventory must mark the conventional electronics/capacitors as nonresorbing where applicable.",
+          "sourceIds": [
+            "kang-pressure"
+          ]
+        },
+        {
+          "title": "Calibrate pressure and temperature together",
+          "detail": "Apply a pressure reference and known bath temperatures independently to separate piezoresistive response from thermal drift. Register pressure and resistance instruments are bench analogues of the reported fixture.",
+          "tools": [
+            "06-07",
+            "09-03",
+            "16-07"
+          ],
+          "status": "reference",
+          "check": "At fixed temperature, pressure should dominate the cavity-edge gauge; at fixed pressure, compare both gauges.",
+          "sourceIds": [
+            "kang-pressure"
+          ]
+        },
+        {
+          "title": "Track functional lifetime separately from dissolution",
+          "detail": "Repeat the electrical calibration over soak time and track material thickness on separate witness samples. Elevated-temperature accelerated behavior is not automatically the same as ambient service life.",
+          "tools": [
+            "14-11",
+            "05-01",
+            "09-03"
+          ],
+          "status": "documented",
+          "check": "Record time to loss of calibration and time to measured material loss as distinct outcomes, with bath conditions.",
+          "sourceIds": [
+            "kang-pressure"
+          ]
+        }
+      ],
+      "gaps": [
+        "No qualification for donor doping, transfer alignment, membrane adhesion or sensor lifetime is implied by the register.",
+        "This device senses pressure/temperature rather than extracellular spikes. No biological or clinical prediction follows from the bench calibration."
+      ],
+      "sources": [
+        {
+          "id": "kang-pressure",
+          "title": "Kang et al. (2016): bioresorbable silicon sensors",
+          "url": "https://cheng.matse.illinois.edu/files/2017/01/2016-Kang-S.-Nature.pdf",
+          "note": "Figures 1–2, Extended Data Figure 1 and Methods separate cavity-edge gauge, temperature reference, substrate variants, transfer process and partially resorbable wireless system."
+        }
+      ]
+    },
+    {
+      "id": "si-bisc",
+      "title": "BISC: flexible thinned wireless CMOS tile",
+      "family": "Wireless surface CMOS",
+      "evidence": "partial",
+      "summary": "Unlike a flexible polymer electrode alone, this device integrates electrodes, electronics and wireless interfaces on one custom chip. The authors disclose two real post-foundry paths, with different thinning and dicing orders.",
+      "devices": [
+        "73-bisc-wireless-subdural-cmos-array"
+      ],
+      "variants": [
+        {
+          "id": "coupon",
+          "label": "Coupon / die processing",
+          "description": "Separate dies before mechanical thinning/polishing; backside Parylene-C is applied after thinning.",
+          "status": "documented"
+        },
+        {
+          "id": "wafer",
+          "label": "200 mm wafer post-processing",
+          "description": "Thin the supported wafer by wet etch before laser singulation. Front-end foundry and the reported 200 mm post-processing site are not the same claim.",
+          "status": "documented"
+        },
+        {
+          "id": "passive",
+          "label": "Passive ECoG grid with a remote ADC",
+          "description": "Not equivalent: the 256 × 256 physical contacts sit on an integrated active RF/AFE chip.",
+          "status": "incompatible"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Receive the BISC ASIC",
+          "detail": "The input is a 12 × 12 mm custom TSMC 0.13 µm BCD die/wafer. Analog/digital circuitry and RF design are not made on the register.",
+          "tools": [],
+          "status": "external",
+          "check": "Hold commercial PDK and vendor wafer manufacture external even though later processing is described.",
+          "sourceIds": [
+            "bisc-jung"
+          ],
+          "only": [
+            "coupon",
+            "wafer"
+          ]
+        },
+        {
+          "title": "Create TiN contacts and front passivation",
+          "detail": "Pattern and sputter contact material, insulate the front with PI, reopen sites and add the later TiN layer. The registered 02-01 exposure station is limited to 150 mm: use it as an analogy only for a pre-separated die/coupon in a qualified holder, never on the full 200 mm wafer.",
+          "tools": [
+            "02-01",
+            "03-03",
+            "02-07",
+            "03-09",
+            "04-01"
+          ],
+          "status": "reference",
+          "check": "Inspect site windows and continuity; verify the coupon holder and orientation before this local analogy.",
+          "sourceIds": [
+            "bisc-jung"
+          ],
+          "varies": [
+            "coupon"
+          ],
+          "only": [
+            "coupon"
+          ]
+        },
+        {
+          "title": "Full-wafer front photolithography: external",
+          "detail": "The paper also describes a 200 mm wafer-scale flow. This requires a compatible exposure tool and wafer handling; the registered 150 mm 02-01 is physically incompatible, even if its resolution would suffice.",
+          "tools": [],
+          "status": "external",
+          "check": "Check installed wafer diameter and handling before any design-rule or overlay comparison.",
+          "sourceIds": [
+            "bisc-jung"
+          ],
+          "varies": [
+            "wafer"
+          ],
+          "only": [
+            "wafer"
+          ]
+        },
+        {
+          "title": "Coupon path: dice, mount, mechanically thin",
+          "detail": "For individual dies, the authors separate first, support frontside-down, then grind and polish to about 25 µm silicon. Inspect for grinding damage before calling the tile flexible.",
+          "tools": [
+            "04-07",
+            "04-08",
+            "04-09",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Measure the silicon core thickness separately from encapsulated total thickness; inspect residual scratches and edge chips.",
+          "sourceIds": [
+            "bisc-jung"
+          ],
+          "varies": [
+            "coupon"
+          ],
+          "only": [
+            "coupon"
+          ]
+        },
+        {
+          "title": "Wafer path: support, wet-thin, then singulate",
+          "detail": "The wafer path uses supported wet thinning and aligned laser singulation. The study’s laser dicer and its stop-on-adhesive capability are external; a generic saw is not the same method.",
+          "tools": [
+            "04-06",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Record thickness map before singulation and alignment to streets. Do not run the coupon dicing order on the wafer branch.",
+          "sourceIds": [
+            "bisc-jung"
+          ],
+          "varies": [
+            "wafer"
+          ],
+          "only": [
+            "wafer"
+          ]
+        },
+        {
+          "title": "Backside and edge encapsulation",
+          "detail": "Deposit backside Parylene-C. Wafer processing uses an additional laser trim leaving an edge overhang, whereas coupon handling uses a different trimming allowance. The register coater only represents deposition.",
+          "tools": [
+            "03-08",
+            "12-01"
+          ],
+          "status": "documented",
+          "check": "Inspect full edge coverage and distinguish the front face, silicon core, backside barrier and perimeter overhang.",
+          "sourceIds": [
+            "bisc-jung"
+          ],
+          "only": [
+            "coupon",
+            "wafer"
+          ]
+        },
+        {
+          "title": "Bench-test RF, channel selection and leakage",
+          "detail": "Compare a known electrical pattern to the selected response on the matched relay. Separate power/link failures from single-site defects. The published 65,536 surface electrodes do not give 65,536 concurrently recorded data channels.",
+          "tools": [
+            "09-06",
+            "09-08",
+            "09-12",
+            "01-05"
+          ],
+          "status": "reference",
+          "check": "A complete hardware test needs the specific relay, geometry and operating mode; cap concurrent recorded channels at 1,024.",
+          "sourceIds": [
+            "bisc-jung"
+          ],
+          "only": [
+            "coupon",
+            "wafer"
+          ]
+        }
+      ],
+      "gaps": [
+        "No TSMC BCD PDK, production chip masks or validated RF relay implementation are released here.",
+        "The register does not establish the excimer trim, full wafer fixtures, lossless encapsulation, yield or medical qualification. No biological performance is inferred."
+      ],
+      "sources": [
+        {
+          "id": "bisc-jung",
+          "title": "Jung et al. (2025): wireless subdural-contained BISC",
+          "url": "https://sld.cs.columbia.edu/pubs/jung_nature25.pdf",
+          "note": "Methods and Supplementary Figure 5: TSMC 0.13 µm BCD, coupon versus wafer processing, two TiN steps, polyimide front, parylene backside, thinning and singulation. Figure 1: RF power and data path."
+        }
+      ]
+    }
+  ]
+}
