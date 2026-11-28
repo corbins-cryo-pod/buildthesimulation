@@ -11,8 +11,18 @@ function pnum(value,prev){const n=Number(value);return Number.isInteger(n)&&n?Ma
 let liveTimer;
 function status(t){clearTimeout(liveTimer);$('live').textContent='';liveTimer=setTimeout(()=>$('live').textContent=t,20)}
 const stageMotion=matchMedia('(prefers-reduced-motion: reduce)'), STATION_DWELL=1850;
-let stageTimer,stageAnimation,playState='ready';
+let stageTimer,stageAnimation,playState='ready',cleanroom,cleanroomImport;
+ const roomDetails=()=>({branch:mode,operation:N.modes[mode].route[cur().stage].title});
+ function loadRoom(){
+  if(!/^https?:/.test(location.protocol))return;
+  cleanroomImport??=import('/simulations/foundry/cleanroom-player.js').then(m=>{
+   const host=document.createElement('div');$('stage-player').after(host);
+   cleanroom=m.mountTimedCleanroom(host,'neurogrid-oect-foundry');
+  }).catch(()=>{});
+  return cleanroomImport;
+ }
 function renderPlayback(){
+ if(cleanroom&&playState==='ready')cleanroom.preview(cur().stage,roomDetails());
  const a=cur(),count=N.modes[mode].route.length,b=$('stage-play');
  b.textContent={ready:'Play workflow',playing:'Pause workflow',paused:'Resume workflow',complete:'Replay workflow'}[playState];
  $('stage-player').dataset.state=playState;
@@ -21,7 +31,7 @@ function renderPlayback(){
  const p=$('stage-play-progress');p.max=count;p.value=a.stage+1;
 }
 function stopPlayback(next='paused',notify=false){
- clearTimeout(stageTimer);stageTimer=undefined;stageAnimation?.cancel();
+ clearTimeout(stageTimer);stageTimer=undefined;stageAnimation?.cancel();if(next==='paused')cleanroom?.pause();else cleanroom?.reset();
  playState=next;renderPlayback();
  if(notify)status('Workflow paused at station '+(cur().stage+1)+'.');
 }
@@ -32,30 +42,30 @@ function showPlaybackFrame(){
  if(!stageMotion.matches&&plate.animate)
   stageAnimation=plate.animate([{opacity:.42},{opacity:1}],{duration:300,easing:'ease-out'});
 }
-function queueStation(){
+function queueStation(resume=false){
  clearTimeout(stageTimer);
- stageTimer=setTimeout(()=>{
+ function step(){
   stageTimer=undefined;
   if(playState!=='playing')return;
   const next=cur().stage+1,last=N.modes[mode].route.length-1;
-  stgo(next);
-  if(next>=last){playState='complete';renderPlayback();}
-  showPlaybackFrame();
-  if(next<last)queueStation();
- },STATION_DWELL);
+  if((cleanroom?next>last:next>=last)){if(!cleanroom)stgo(last);playState='complete';renderPlayback();return;}
+  stgo(next);showPlaybackFrame();queueStation();
+ }
+ if(cleanroom){if(!resume||!cleanroom.resume())cleanroom.start(cur().stage,roomDetails(),step,stageMotion.matches?STATION_DWELL:undefined);}
+ else stageTimer=setTimeout(step,STATION_DWELL);
 }
 function togglePlayback(){
  if(playState==='playing'){stopPlayback('paused',true);return;}
  const restart=playState!=='paused'||cur().stage>=N.modes[mode].route.length-1;
- playState='playing';cur().map=false;stgo(restart?0:cur().stage);
+ if(restart)cleanroom?.reset();playState='playing';cur().map=false;stgo(restart?0:cur().stage);
  const scene=$('stage-detail'),art=$('plate');
  if(art.getBoundingClientRect().bottom>innerHeight)scene.scrollIntoView({block:'start',behavior:'auto'});
- showPlaybackFrame();queueStation();
+ showPlaybackFrame();Promise.resolve(loadRoom()).then(()=>{if(playState==='playing')queueStation(!restart);});
 }
 if(stageMotion.addEventListener)stageMotion.addEventListener('change',()=>{if(stageMotion.matches)stageAnimation?.cancel();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&playState==='playing')stopPlayback('paused');});
 window.addEventListener('pagehide',()=>{if(playState==='playing')stopPlayback('paused');});
-function stgo(stage,scroll=false){const a=cur();a.stage=Math.max(0,Math.min(7,stage));if(playState==='complete'&&a.stage<7)playState='ready';a.reached=Math.max(a.stage,a.reached);render();if(scroll){const s=$('stage-title');s.setAttribute('tabindex','-1');s.focus({preventScroll:true});$('stage-detail').scrollIntoView({block:'start'})}status('Station '+(a.stage+1)+': '+N.modes[mode].route[a.stage].title)}
+function stgo(stage,scroll=false){const a=cur();a.stage=Math.max(0,Math.min(7,stage));if(playState==='complete'&&a.stage<7)playState='ready';a.reached=Math.max(a.stage,a.reached);render();if(playState!=='playing')cleanroom?.preview(a.stage,roomDetails());if(scroll){const s=$('stage-title');s.setAttribute('tabindex','-1');s.focus({preventScroll:true});$('stage-detail').scrollIntoView({block:'start'})}status('Station '+(a.stage+1)+': '+N.modes[mode].route[a.stage].title)}
 const line=(x1,y1,x2,y2,c=colors.m,w=2,rest='')=>'<path d="M'+x1+' '+y1+'L'+x2+' '+y2+'" stroke="'+c+'" fill="none" stroke-width="'+w+'" '+rest+'/>';
 const rect=(x,y,w,h,f,s=colors.m,rest='')=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+f+'" stroke="'+s+'" '+rest+'/>';
 const text=(x,y,t,s=15,c=colors.ink,a='start')=>'<text x="'+x+'" y="'+y+'" fill="'+c+'" text-anchor="'+a+'" font-family="ui-monospace,monospace" font-size="'+s+'">'+esc(t)+'</text>';

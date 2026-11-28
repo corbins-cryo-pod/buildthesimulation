@@ -38,6 +38,29 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
   let timer = 0;
   let reason = "";
   let motion = [];
+  let rooms=[], roomImport=null;
+  const slug=location.pathname.split("/").filter(Boolean).at(-1);
+  function ensureRooms(){
+    if(!/^https?:/.test(location.protocol))return Promise.resolve(false);
+    if(!roomImport){
+      roomImport=import("/simulations/foundry/cleanroom-player.js").then(m=>{
+        const tracks=spec.cleanroomTracks||[{read:()=>{const p=spec.read();return {index:Math.max(0,p.completed-1),operation:p.text};}}];
+        rooms=tracks.map(track=>{
+          const host=document.createElement("div");panel.after(host);
+          return {player:m.mountTimedCleanroom(host,slug),track};
+        });
+        if(rooms.length>1) panel.nextElementSibling.after(panel.nextElementSibling.nextElementSibling);
+        return !!rooms.length;
+      }).catch(()=>false);
+    }
+    return roomImport;
+  }
+  function preview(){
+    for(const {player,track} of rooms){
+      const {index,...details}=track.read();
+      player.preview(index,details);
+    }
+  }
   const interaction = [
     "button", "select", "input", "textarea", "summary", "a", "canvas", "[role=button]",
     "[data-foundry-inspect]"
@@ -70,6 +93,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
     clearTimeout(timer);
     timer = 0;
     cancelMotion();
+    rooms.forEach(({player})=>player.pause());
     notify(detail);
   }
   function flash() {
@@ -81,8 +105,18 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
       }
     }
   }
-  function schedule() {
-    timer = setTimeout(advance, spec.delay || 1300);
+  function schedule(resume=false) {
+    if(!rooms.length){timer=setTimeout(advance,spec.delay||1300);return;}
+    if(resume&&rooms[0].player.resume()){rooms.slice(1).forEach(({player})=>player.resume());return;}
+    const n=spec.read(), wasDone=n.done;
+    rooms.forEach(({player,track},i)=>{
+      const {index,...details}=track.read();
+      player.start(index,details,i===rooms.length-1?()=>{
+        if(!running)return;
+        if(wasDone){running=false;notify("Workflow finished. Press Replay workflow to review from the beginning.");}
+        else advance();
+      }:null,reduced.matches?Math.max(850,spec.delay||1300):undefined);
+    });
   }
   function advance() {
     if (!running) return;
@@ -96,6 +130,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
       const next = spec.read();
       flash();
       if (next.done) {
+        if(rooms.length&&!spec.cleanroomCommits){sync();schedule();return;}
         running = false;
         timer = 0;
         notify("Workflow finished. Press Replay workflow to review from the beginning.");
@@ -112,7 +147,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
   }
   spec.button.addEventListener("click", () => {
     if (running) return pause();
-    if (spec.read().done) spec.replay();
+    if (spec.read().done) {rooms.forEach(({player})=>player.reset());spec.replay();}
     const next = spec.read();
     if (next.done) return sync();
     running = true;
@@ -126,16 +161,16 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
         panel.scrollIntoView({block:"start", behavior:"instant"});
       }
     }
-    schedule();
+    ensureRooms().then(()=>{if(running)schedule(true);});
   });
   function manual(ev) {
-    if (!running) return;
     if (ev.type === "keydown" && ev.key === "Escape") { pause(); return; }
     const target = ev.target instanceof Element ? ev.target : null;
     if (!target || target.closest("[data-foundry-playback]") ||
         !target.closest(interaction)) return;
     if (ev.type === "keydown" && ["Tab", "Shift", "Control", "Alt", "Meta"].includes(ev.key)) return;
     pause("Playback paused for manual inspection. Press Play workflow to resume.");
+    if(["click","input","change"].includes(ev.type))queueMicrotask(()=>{if(!running&&rooms.length)preview();});
   }
   for (const name of ["pointerdown", "click", "input", "change", "keydown"]) {
     document.addEventListener(name, manual, true);
@@ -4202,6 +4237,7 @@ function Tr(){let i=Ie.n;ue("stageLabel").textContent=i===16?"Traveler / complet
 `)+`
 `,"flex-ecog-124ch-eis.csv","text/csv"),ue("fileStatus").textContent="Exported 10,044 complex EIS rows: 81 frequencies \xD7 124 sites."};ue("draw").onclick=()=>{let i=ue("focus").value;Fr(Dr(Xi(Ie,vt,i),Hs(i,Ie.n<14&&i==="device",vt),!0),"flex-ecog-plan.svg","image/svg+xml")};ue("mesh").onclick=async()=>{try{ue("mesh").disabled=!0,ue("fileStatus").textContent="Preparing physical-scale mesh\u2026",Fr(await Ku(Ie),"flex-ecog.glb","model/gltf-binary"),ue("fileStatus").textContent="Exported metre-scale glTF assembly from the current workpiece."}catch(i){ue("fileStatus").textContent="Mesh export failed: "+i.message}finally{ue("mesh").disabled=Ie.n<14}};ue("file").onchange=async()=>{try{let i=ue("file").files[0];if(!i||i.size>5e5)throw Error("invalid file size");let e=JSON.parse(await i.text());if(e.format!=="flex-ecog/1"||!Number.isInteger(e.selected)||e.selected<0||e.selected>123||!["local","shared"].includes(e.reference))throw Error("invalid format or site");let t=Vo(e.ledger),n=Lo(t,e.selected,e.reference);for(let r of["channels","selected_sweep_ohm","selected_signal_uV"])if(JSON.stringify(n[r])!==JSON.stringify(e[r]))throw Error("output does not match replay");foundryReplayInputs=null,Ie=t,vt=e.selected,Gt=e.reference,Rr="Reconstructed all saved stages.",Tr(),ue("fileStatus").textContent="Run verified: derived channel map, spectrum and signal match the supplied output."}catch(i){ue("fileStatus").textContent="Run refused: "+i.message+". The current lot was preserved."}finally{ue("file").value=""}};ue("hero").innerHTML=Dr(Xi($u("nominal"),0,"unit"),[-12,-13,88,26]);ue("evidenceBody").innerHTML='<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4327052/">Elena Tolstosheeva, V\xEDctor Gordillo-Gonz\xE1lez, Volker Biefeld, Ludger Kempen, Sunita Mandon, Andreas K. Kreiter and Walter Lang (2015)</a>, <i>Sensors</i> 15:832\u2013854. This is their Bremen prototype, not a generic commercial grid.</p><div class="twocol"><p><b>Documented.</b> Three arrays share a 4-inch wafer. The two PI films are each 5 \xB5m. The 15 \xB5m traces have a nominal minimum 15 \xB5m spacing in the crowded center. Each pin is a package path, not an independent sensing electrode: 124 signal paths + 4 paths from a single common reference.</p><p><b>Figure-derived geometry.</b> Figure 1D supplied 109 centroid locations on six concentric hexagons and the center. Two points obscured by arrows were repaired using symmetry and panel B. The 15 outer small contacts are reconstructed as nine and six. Pixel classification gives 55 / 42 / 27 sites of 100 / 300 / 500 \xB5m. IDs, electrical pin mapping, routing, release contours, reference shape and connector shells are illustrative, not recovered mask or CAD files.</p><p><b>Dimensions in context.</b> The source gives 380 \xB5m for the incoming Si and describes the island as about 400 \xB5m; this model retains the starting thickness. The platform is 24 \xD7 7.5 mm; Figs. 1\u20132 distinguish the 83 mm overall length, 6 mm tail width and nominal pad dimensions from the smaller 520 \xD7 160 \xB5m solder opening in Fig. 8. The quoted 2.5 \xB5m nominal plating and about 2 \xB5m Fig. 8 pad description are not identical.</p><p><b>Packaging evidence.</b> Four connectors per specimen type produced 0\u20133 opens/32 on rigid oxide/silicon pads, versus 15\u201327/32 on PI-supported pads. The presets impose an example count on each bank; they are not trial-level data, a probability distribution, or a prediction for another lot. Locations are deterministic inventions. Two surviving sub-lines still make one electrical path, not two channels.</p><p><b>Two independent impedance records.</b> The three means in Table 1 drive the illustrative ideal circuit. The filled diamond reads Fig. 13 at 100 Hz (approx. 405, 41 and 15 k\u03A9). The measurements are not recovered raw spectra. The published area column (0.031, 0.283, 0.783 mm\xB2) is ~4\xD7 the geometric disk area for the stated diameters (0.00785, 0.07069, 0.19635 mm\xB2). The simulator uses the diameters for geometry and indexes each fitted parameter set by its printed diameter, without correcting the authors\u2019 table.</p><p><b>Limits.</b> The source does not give production masks, a complete package pinout, measured in-plane coordinates, raw recordings, a probability law for defects, or a complete reference-electrode fit. No neural tissue is modeled. The posterior reference tongue is illustrative. Numerical simulations here are not clinical measurements or a qualified fabrication recipe.</p></div><details><summary>Table 1 \xB7 source fit and independent 100 Hz comparison</summary><div class="refbox"><table><thead><tr><th>Diameter</th><th>R\u209B (k\u03A9)</th><th>R\u209A (M\u03A9)</th><th>C (nF)</th><th>Ideal |Z|</th><th>Fig. 13 \u2248</th></tr></thead><tbody>'+[100,300,500].map(i=>{let e=Ts[i];return"<tr><td>"+i+" \xB5m</td><td>"+e[0]/1e3+"</td><td>"+e[1]/1e6+"</td><td>"+Ci(e[2]*1e9)+"</td><td>"+Mr(Bi(i,100).mag)+"</td><td>"+Mr(Fs[i])+"</td></tr>"}).join("")+'</tbody></table></div><p class="help">These are reported mean fit parameters, not a fit to Fig. 13 points. Site count by size is our digitization, not a reported sample size.</p></details>';ue("gallery").innerHTML=Zu.map(i=>'<figure><img loading="lazy" src="'+i.uri+'" alt="'+i.alt+'"><figcaption><b>Fig. '+i.n+"</b> \xB7 "+i.alt+' \xB7 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4327052/figure/f'+i.n+'-sensors-15-00832/">original figure</a></figcaption></figure>').join("")+'<p class="help">Figures by Tolstosheeva et al. (2015), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Resized for display; the separate rendered workpiece is an adaptation, not a facsimile mask.</p>';window.flexEcog=()=>({n:Ie.n,ledger:Ie.ledger,field:Ie.field,webgl:Ju.webgl,count:_u,selected:vt,mode:Gt,counts:Oo(Ie,Gt),selectedStatus:Qt(Ie,vt,Gt),sample:Ie.sample,area:Ie.area});
 foundryPlayer=window.installFoundryPlayback({
+  cleanroomCommits:true,cleanroomTracks:[{read:()=>({index:Math.min(Ie.n,In.length-1),operation:In[Math.min(Ie.n,In.length-1)][0]})}],
   button:ue("play-flex"), frames:[ue("model"),ue("section")],
   read:()=>({completed:Ie.n,total:In.length,done:Ie.n===In.length,
     text:Ie.n+" / "+In.length+" committed · "+(Ie.n===In.length?"Bench ready":"Next: "+In[Ie.n][0])}),

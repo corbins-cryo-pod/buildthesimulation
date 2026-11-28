@@ -101,6 +101,8 @@ function mountWorkflow(rec){
  const el=$('workflow-player'),p=mode==='profiles'?rec:routeFor(rec);
  if(!el||!p)return;
  workflowPlayer=window.AtlasWorkflowPlayer.create(el,p,selectedVariant(p),{
+  lookupEquipment(id){return equipMap.get(id);},
+  stationUrl(url){return safeURL(url);},
   selectBranch(id){
    changeDetail(p.id,id,'variant');
    workflowPlayer?.start?.();

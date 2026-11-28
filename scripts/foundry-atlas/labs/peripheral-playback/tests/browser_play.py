@@ -80,7 +80,7 @@ with sync_playwright() as p:
    width()
    hit(ctl('replay'));assert act.inner_text()=='Pause' and get('step')=='1'
    ctl('speed').select_option('2')
-   page.clock.run_for(26000)
+   page.clock.run_for(sceneCounts[slug]*3600+1500)
    assert get('step')==str(sceneCounts[slug]) and get('state')=='finished' and act.inner_text()=='Replay workflow',(slug,viewport,get('step'),get('state'),errors)
    assert initial_state()==before,(slug,viewport, before, initial_state())
    if args.write_screens and viewport=='desktop':

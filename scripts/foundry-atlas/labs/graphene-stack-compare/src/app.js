@@ -140,6 +140,7 @@ $('download').onclick=()=>{
 };
 setmode('plan');
 foundryPlayer=window.installFoundryPlayback({
+  cleanroomTracks:samples.map(k=>({read:()=>({index:ruler[k],branch:k,operation:E.SAMPLE[k].stages[ruler[k]][0]})})),
   button:$('run-all'), frames:samples.map(k=>$(id(k,'figure'))),
   read:()=>({completed:ruler.clear+ruler.delft+2,total:24,done:samples.every(k=>ruler[k]===11),
     text:'CLEAR '+(ruler.clear+1)+' / 12 · Delft '+(ruler.delft+1)+' / 12'}),

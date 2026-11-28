@@ -4245,11 +4245,37 @@ version 0.8.2
     refresh(body);
   }
   function pause(body="Paused. Play continues from the current native state."){
-    if(state==="running")halt("paused",body);
+    if(state==="running"){cleanroom?.pause();halt("paused",body);}
+  }
+  let cleanroom=null,roomImport=null,stationShown=-1;
+  function loadRoom(){
+    if(!/^https?:/.test(location.protocol))return Promise.resolve();
+    roomImport??=import("/simulations/foundry/cleanroom-player.js").then(m=>{
+      const host=document.createElement("div");root.after(host);cleanroom=m.mountTimedCleanroom(host,type);
+    }).catch(()=>{});
+    return roomImport;
+  }
+  function roomDetail(label){
+    let controls=qa('#params label,#parameters label').filter(x=>x.querySelector('input,select')).slice(0,7);
+    if(!controls.length)controls=qa('input[id^="param-"],input[id^="p-"]').slice(0,7).map(n=>n.closest('label')).filter(Boolean);
+    const settings=controls.map(row=>{
+      const input=row.querySelector('input,select');
+      return ["Current virtual control · "+(input.labels?.[0]?.querySelector('span')?.textContent||row.childNodes[0]?.textContent?.trim()||input.id),input.selectedOptions?.[0]?.textContent||input.value];
+    });
+    for(const id of type==="utah-array-fabrication"?["scenario"]:type==="neuropixels-family"?["model","pattern","fault"]:type==="neuropixels-foundry"?["die"]:["field","face"]){
+      if($(id)?.selectedOptions?.[0])settings.push(["Current virtual selection · "+id,text($(id).selectedOptions[0])]);
+    }
+    return {operation:label,settings};
   }
   function tick(){
     if(state!=="running")return;
     if(document.hidden){pause("Paused while this page is in the background.");return;}
+    const current=adapter.state(), index=type==="neuropixels-family"?current.count:current.position-1;
+    if(cleanroom&&stationShown!==index&&index<current.total){
+      stationShown=index;
+      cleanroom.start(index,roomDetail(current.label),tick,motion.matches?900:undefined);
+      return;
+    }
     let r;
     try{r=adapter.next();}catch{halt("blocked","Playback could not continue. The native controls remain available.");return;}
     if(r.target&&(r.target!==focusTarget||r.delay!==180))highlight(r.target);
@@ -4264,7 +4290,9 @@ version 0.8.2
     // Native downloads are never clicked by the player.
     state="running";
     refresh("Showing the next native step…");
-    timer=setTimeout(tick,350);
+    Promise.resolve(loadRoom()).then(()=>{
+      if(state==="running"&&!cleanroom?.resume())timer=setTimeout(tick,350);
+    });
   }
   function restart(){
     if(!adapter.ready()){
@@ -4277,7 +4305,7 @@ version 0.8.2
       halt("blocked","The native workflow could not start a new run.");
       return;
     }
-    manualSinceStart=false;owned=true;
+    stationShown=-1;cleanroom?.reset();manualSinceStart=false;owned=true;
     clearTimeout(timer);state="paused";begin();
   }
   play.addEventListener("click",()=>state==="running"?pause():begin());
@@ -4298,6 +4326,11 @@ version 0.8.2
     if(e.type==="keydown"&&(e.key==="Tab"||e.key==="Escape"||e.ctrlKey||e.metaKey||e.altKey))return;
     manualSinceStart=true;
     pause("Paused for your manual interaction. Play uses the state you leave.");
+    if(cleanroom&&["click","input","change"].includes(e.type))queueMicrotask(()=>{
+      if(state==="running")return;
+      const a=adapter.state();stationShown=-1;
+      cleanroom.preview(type==="neuropixels-family"?Math.min(a.count,a.total-1):a.position-1,roomDetail(a.label));
+    });
   }
   for(const k of ["pointerdown","click","keydown","input","change"])document.addEventListener(k,manual,true);
   document.addEventListener("visibilitychange",()=>{if(document.hidden)pause("Paused while this page is in the background.");});

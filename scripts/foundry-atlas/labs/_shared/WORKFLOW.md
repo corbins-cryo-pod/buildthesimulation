@@ -20,3 +20,21 @@ The optional actual-route browser suite runs with Python/Playwright and Playwrig
     python scripts/foundry-atlas/labs/_shared/test-workflow-play.py
 
 It serves the public files locally and uses the Playwright clock to test playback without sixteen real interactions. It checks all four labs at desktop, touch and narrow widths. Touch emulation is not physical Safari. No remote resources or feature telemetry depart a playing lab.
+
+## Cleanroom walkthrough
+
+Each native workflow remains the process and playback authority. The shared browser module at
+`public/simulations/foundry/cleanroom-player.js` renders the workpiece transfer, load, setup, run and
+unload using normalized phase progress. It never advances or assigns a manufacturing recipe.
+`cleanroom-models.js` lists existing Equipment Register geometry and the subset with bounded
+dry-handling paths. Keep explicit workpiece shape and size distinct from a fixture's demonstration
+defaults. A mismatch is a hold, not an insertion. A display-only cabinet can be inspected without
+asserting what the inside or actual load path looks like. Physical geometry and derived cross-sections
+remain independent of the native lab's engineering results.
+
+Use the three explicit layer/artifact data modules and the native phase keys for alternate routes.
+The retinal annotations are regenerated with `node scripts/foundry-atlas/labs/_shared/build-cleanroom-evidence.cjs`.
+Run `python scripts/foundry-atlas/update_lab_ledger.py` after generating the public HTML.
+The browser smoke test is `python scripts/foundry-atlas/tests/cleanroom.browser.py --include-benches`
+(use `CHROME_BIN` if Chromium is not installed in Playwright's default cache).
+Run the Foundry Node checks, including `tests/foundry-cleanroom.mjs`, before publication.

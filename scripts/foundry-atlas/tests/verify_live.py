@@ -20,7 +20,7 @@ atlas='/simulations/foundry/atlas/'
 hub='/simulations/foundry/'
 atlas_expected=digest(expected('public'+atlas+'index.html'))
 def get(path):
-    assert re.fullmatch(r'/simulations/(?:[a-z0-9-]+/)+',path),path
+    assert re.fullmatch(r'/simulations/(?:[a-z0-9-]+/)+(?:[A-Za-z0-9-]+\.(?:js|css|txt))?',path),path
     return subprocess.check_output(['curl','-fLsS','--max-time','15',HOST+path])
 def verify():
     b=get(atlas);assert digest(b)==atlas_expected,('Atlas bytes',digest(b),atlas_expected)
@@ -32,7 +32,17 @@ def verify():
         return url,digest_seen
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as work:
         verified=list(work.map(check,apps.values()))
-    print(json.dumps({'status':'PASS','atlas':atlas,'sha256':atlas_expected,'verifiedLabs':verified},indent=2))
+    modules=['cleanroom-player.js','cleanroom-player.css','cleanroom-models.js',
+             'cleanroom-data.js','cleanroom-silicon.js','cleanroom-flex.js',
+             'cleanroom-peripheral.js','cleanroom-retinal.js','cleanroom-gltf.js','cleanroom-buffer.js']
+    def check_asset(name):
+        url=hub+name
+        want=digest(expected('public'+url));seen=digest(get(url))
+        assert seen==want,(url,seen,want)
+        return name
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as work:
+        verified_assets=list(work.map(check_asset,modules))
+    print(json.dumps({'status':'PASS','atlas':atlas,'sha256':atlas_expected,'verifiedLabs':verified,'verifiedCleanroomAssets':verified_assets},indent=2))
 for i in range(a.attempts):
     try:verify();break
     except (AssertionError,subprocess.CalledProcessError) as err:

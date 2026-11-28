@@ -7,3 +7,5 @@
 @media(max-width:660px){.handoff-play{grid-template-columns:minmax(0,1fr);gap:.6rem}.handoff-play-controls{justify-content:space-between}}
 @media(prefers-reduced-motion:reduce){#handoff-token{transition:none}}
 #handoff-port[data-transit=source] #handoff-token{transition:none}
+[data-bench-cleanroom]{grid-column:1/-1;min-width:0;container-type:inline-size}
+@container (max-width:560px){[data-bench-cleanroom] .cr-grid{grid-template-columns:1fr}}

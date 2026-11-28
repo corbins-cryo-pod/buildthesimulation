@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a self-contained HTML atlas. No third-party dependencies or network calls."""
+"""Render a static HTML atlas with offline schematic and optional online equipment playback."""
 from pathlib import Path
 import argparse,json
 p=argparse.ArgumentParser()
@@ -12,7 +12,7 @@ for k in ('meta','devices','profiles','equipment'):
 doc=(root/'atlas.template.html').read_text()
 blocks = {
     '__ATLAS_STYLES__': ['atlas.css', 'atlas-player.css'],
-    '__ATLAS_SCRIPT__': ['atlas-player.js', 'atlas.js'],
+    '__ATLAS_SCRIPT__': ['atlas-cleanroom.js', 'atlas-player.js', 'atlas.js'],
 }
 for token, paths in blocks.items():
     if doc.count(token)!=1: raise ValueError(f'bad marker: {token}')

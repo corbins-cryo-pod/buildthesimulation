@@ -21,3 +21,18 @@
 .workflow-player[data-player-plan=boundary] .workflow-copy{padding-bottom:11px}
 @media(max-width:700px){.workflow-controls{align-items:stretch;gap:5px;padding-inline:9px}.workflow-controls button{font-size:.72rem;padding-inline:7px;min-height:43px}.wf-speed{margin-left:0}.wf-speed select{font-size:16px;min-height:43px}.workflow-player{margin-top:12px}.workflow-top{padding-top:11px}.workflow-note,.workflow-preview{font-size:.75rem}.workflow-copy h5{font-size:1.02rem}.workflow-copy .text-btn{min-height:39px}}
 @media print{.workflow-player{display:none!important}}
+.workflow-equipment-view{min-width:0;border-block:1px solid var(--line2);background:#142d28}
+.workflow-equipment-view[hidden],.workflow-plate[hidden],.workflow-stations[hidden]{display:none!important}
+.workflow-stations{padding:8px clamp(12px,2.3vw,19px);border-bottom:1px solid var(--line);background:var(--well);min-width:0}
+.workflow-station-list{display:flex;flex-wrap:wrap;gap:5px;margin:4px 0 2px}
+.workflow-station-note{font:650 .69rem/1.3 var(--mono);color:var(--soft);letter-spacing:.01em}
+.workflow-station-list button{border:1px solid var(--line2);background:var(--sheet);color:var(--link);padding:4px 7px;border-radius:3px;min-height:33px;font:650 .73rem/1.25 var(--sans);text-align:left;overflow-wrap:anywhere;max-width:100%}
+.workflow-station-list button:hover{background:var(--selection)}.workflow-station-list button[aria-current=step]{border-color:var(--accent);color:var(--on);background:var(--accent)}
+.workflow-station-link{display:flex;flex-wrap:wrap;align-items:center;gap:3px 9px}
+.workflow-station-link a,.workflow-station-link span{font:630 .69rem/1.2 var(--sans)}
+.workflow-station-link a{color:var(--link);text-underline-offset:2px;padding-block:6px}
+.workflow-station-link span{color:var(--soft)}
+@media(max-width:700px){.workflow-station-list button,.workflow-station-link a{min-height:43px}.workflow-station-link a{display:inline-flex;align-items:center}}
+.workflow-equipment-view{container-type:inline-size}
+.workflow-equipment-view .cr-room{margin:0;border:0;border-radius:0;box-shadow:none}
+@container(max-width:590px){.workflow-equipment-view .cr-grid{grid-template-columns:minmax(0,1fr)}}

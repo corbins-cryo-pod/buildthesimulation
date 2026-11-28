@@ -65,7 +65,21 @@ const fitPlay=$('fit-play'),fitBack=$('fit-back'),fitNext=$('fit-next');
 const stagesFor={intake:'Requirement',reference:'Documentation',virtual:'Virtual experiment',result:'Decision'};
 const briefStatus={within:'Within this gate',outside:'Outside configuration',unknown:'Not established'};
 let recent,plan=[],pair=[],seenStep=-1;
-const player=FoundryBenchPlay.create({paint:showStage,delay:2300});
+const fitRoom=FoundryBenchCleanroom.create($('fit-cleanroom'),'tool-fit');
+const player=FoundryBenchPlay.create({paint:showStage,delay:FoundryBenchCleanroom.duration});
+function fitRoomStage(current,stage){
+ if(!current||pair.length!==2)return null;
+ const names=pair.map((r,i)=>(i?'B':'A')+' · '+r.id+' '+r.model);
+ const verdict=current.gates
+  ?current.gates.map((g,i)=>(i?'B':'A')+': '+(g?briefStatus[g.status]+' — '+g.title:'no additional gate')).join(' · ')
+  :current.results
+   ?current.results.map((result,i)=>(i?'B':'A')+': documentation '+F.labels[result.reference.status]+'; virtual experiment '+F.labels[result.virtual.status]).join(' · ')
+   :'The same requirement is queued for both stations. No device is loaded.';
+ return {phaseId:'fit-'+stage,kind:'handoff',effect:'handoff',machine:'Two-station comparison bay',
+  operation:current.title,specimen:'Digital requirement card',before:current.note,after:verdict,
+  settings:[['Station A',names[0]],['Station B',names[1]],['Programming and loading','None; this page does not execute either station.']],
+  evidence:'Compare the published configuration and the implemented software independently. This is a review of fit evidence, not physical processing or qualification.'};
+}
 function summaryFor(d){
  const val=(x,u)=>Number.isFinite(x)?fmt(x)+' '+u:'not specified';
  if(d.job==='optical'){
@@ -129,6 +143,7 @@ function showStage(state){
   const headline=current?('Stage '+progress+' of '+total+'. '+current.title+'. '+(current.gates?current.gates.filter(Boolean).map(g=>g.title).join('; '):'')):'Playback reset to the current comparison.';
   $('fit-announce').textContent=headline;seenStep=progress;
  }
+ fitRoom.update(state,fitRoomStage(current,progress));
 }
 fitPlay.addEventListener('click',()=>player.toggle());
 fitBack.addEventListener('click',()=>player.previous());

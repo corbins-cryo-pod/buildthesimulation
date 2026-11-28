@@ -2,6 +2,7 @@
 window.BTSFoundryPlay = (() => {
 'use strict';
 const W=600,H=267;
+const ROOM_MODULE='/simulations/foundry/cleanroom-player.js', MIN_SCENE_MS=7000;
 const C={bg:'#183c34',paper:'#edf2d5',muted:'#a9c1a4',iron:'#55756b',steel:'#7ca1a0',si:'#74949b',glass:'#87a8a8',gold:'#e8b572',amber:'#c79856',poly:'#8fbeae',dark:'#234c3e',pink:'#d99c9c',red:'#ed8d73',mint:'#9de5bf',blue:'#97d2de',night:'#15332c'};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
@@ -34,18 +35,60 @@ function seqPoints(pts,u){
 }
 const lengthLabel=(x,y,w,s)=>line(x,y,x+w,y,C.muted,1)+line(x,y-4,x,y+4,C.muted,1)+line(x+w,y-4,x+w,y+4,C.muted,1)+label(x+w/2,y+16,s,{color:C.muted,size:11,anchor:'middle'});
 const gfx={W,H,C,esc,clamp,ease,mix,num,attrs,rect,line,dot,poly,path,label,ell,group,arrow,tick,guide,opacityAttr,panel,stretch,seqPoints,lengthLabel};
-function attach({plate,extra=[],interrupt,build,compact=false}){
+function attach({plate,extra=[],interrupt,build,slug,compact=false}){
  if(!plate||typeof build!=='function')return null;
  let host=document.createElement('section');host.className='fp-player';host.id='foundry-workflow-player';host.setAttribute('aria-label','Workflow animation');host.dataset.state='idle';
  host.innerHTML='<div class="fp-head"><button type="button" data-fp="action" aria-controls="fp-expanded" aria-expanded="false">Play workflow</button><button type="button" data-fp="replay" hidden>Replay</button><button type="button" data-fp="close" hidden>Close animation</button><span class="fp-head-note" data-fp="summary">Watch each modeled step. Playback does not change the specimen.</span></div>'+
  '<div class="fp-expanded" id="fp-expanded" hidden><div class="fp-card"><div class="fp-kicker"><span data-fp="position" class="fp-progress-text"></span> · PROCESS PREVIEW</div><div class="fp-label" data-fp="title" aria-live="polite"></div><div class="fp-note" data-fp="description"></div></div>'+
+ '<div class="fp-cleanroom" data-fp="roomWrap" hidden><p class="fp-kicker fp-drawing-title">Workstation and specimen handoff</p><div class="fp-cleanroom-body" data-fp="room" aria-label="Cleanroom equipment and specimen preview"></div><p class="fp-kicker fp-drawing-title">Companion process schematic</p></div>'+
  '<svg class="fp-scene" data-fp="scene" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Animated process plate"></svg>'+
- '<div class="fp-card"><div class="fp-track" aria-hidden="true"><div class="fp-bar" data-fp="bar"></div></div><div class="fp-info" data-fp="timing">Display time is not a process parameter.</div>'+
+ '<div class="fp-card"><progress class="fp-track" data-fp="bar" max="1" value="0" aria-label="Workflow playback progress"></progress><div class="fp-info" data-fp="timing">Display time is not a process parameter.</div>'+
  '<div class="fp-transport"><button type="button" data-fp="prev" aria-label="Previous animation scene">← Scene</button><button type="button" data-fp="next" aria-label="Next animation scene">Scene →</button><label>Speed<select data-fp="speed"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label class="fp-choose">Animation scene<select data-fp="jump"></select></label></div></div></div>';
  plate.before(host);
  const idx=Object.fromEntries([...host.querySelectorAll('[data-fp]')].map(el=>[el.dataset.fp,el])),box=host.querySelector('.fp-expanded');
- const motion=matchMedia('(prefers-reduced-motion: reduce)');let scenes=[],phase='idle',scene=0,elapsed=0,last=null,raf=0,lastDraw=-Infinity,reduced=motion.matches,visualVersion=-1,opened=false,speed=1,staticPreview=false;
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');let scenes=[],phase='idle',scene=0,elapsed=0,last=null,raf=0,lastDraw=-Infinity,reduced=motion.matches,visualVersion=-1,opened=false,speed=1,staticPreview=false,branch=null;
+ const roomEnabled=Boolean(slug)&&/^https?:$/.test(location.protocol);
+ let room=null,roomRequest=null,roomGeneration=0,roomUnavailable=false,lastRoomScene=-1,lastRoomProgress=-1;
  const replace=[plate,...extra].filter(Boolean);
+ function disposeRoom(state='closed'){
+   const prior=room;
+   roomGeneration++;room=null;roomRequest=null;lastRoomScene=-1;lastRoomProgress=-1;
+   try{prior?.destroy();}catch{/* The original schematic remains the fallback. */}
+   idx.room.replaceChildren();idx.roomWrap.hidden=true;
+   if(roomEnabled)host.dataset.cleanroomState=state;
+ }
+ function paintRoom(a,fraction,force=false){
+   if(!room)return;
+   const p=(reduced||staticPreview)?1:fraction;
+   if(!force&&lastRoomScene===scene&&lastRoomProgress===p)return;
+   try{
+     room.paint(scene,p,{operation:a.name,after:a.detail,branch,phaseId:a.id});
+     lastRoomScene=scene;lastRoomProgress=p;
+   }catch{
+     roomUnavailable=true;disposeRoom('unavailable');
+   }
+ }
+ function resetRoomRoute(){
+   lastRoomScene=-1;lastRoomProgress=-1;
+   try{room?.reset?.();}catch{roomUnavailable=true;disposeRoom('unavailable');}
+ }
+ function mountRoom(){
+   if(!roomEnabled||room||roomRequest||roomUnavailable)return;
+   const gen=roomGeneration;
+   host.dataset.cleanroomState='loading';
+   roomRequest=import(ROOM_MODULE).then(({mountLabCleanroom})=>{
+     // A pending import may outlive a manual step or a branch change. Never attach stale scenery.
+     if(gen!==roomGeneration||!opened||!host.isConnected)return;
+     idx.roomWrap.hidden=false;
+     room=mountLabCleanroom(idx.room,slug);
+     if(!room||typeof room.paint!=='function'||typeof room.destroy!=='function')throw Error('Cleanroom renderer did not mount');
+     host.dataset.cleanroomState='ready';
+     const a=scenes[scene];
+     if(a)paintRoom(a,clamp(elapsed/duration(a)),true);
+   }).catch(()=>{
+     if(gen===roomGeneration){roomUnavailable=true;disposeRoom('unavailable');}
+   }).finally(()=>{if(gen===roomGeneration)roomRequest=null;});
+ }
  function visible(on){
    opened=on;box.hidden=!on;idx.action.setAttribute('aria-expanded',String(on));
    for(const a of replace)a.classList.toggle('fp-native-hidden',on);
@@ -57,7 +100,7 @@ function attach({plate,extra=[],interrupt,build,compact=false}){
    idx.replay.hidden=!opened||p==='finished';
    idx.summary.textContent=msg||({idle:'Watch each modeled step. Playback does not change the specimen.',playing:'Read-only playback. Manual controls still work.',paused:'Paused. Resume here or choose another scene.',finished:'Animation complete. The specimen is unchanged.'})[p];
  }
- const duration=s=>s.duration||2300;
+ const duration=s=>Math.max(MIN_SCENE_MS,s.duration||0);
  const sceneCount=()=>scenes.length;
  function render(force=false){
    const a=scenes[scene];if(!a)return;
@@ -74,8 +117,10 @@ function attach({plate,extra=[],interrupt,build,compact=false}){
      idx.scene.innerHTML=a.draw(u);
      host.dataset.frame=String(Math.round(u*1000));
    }
-   idx.bar.style.width=(100*(scene+(reduced?Number(fraction>=1):fraction))/sceneCount()).toFixed(2)+'%';
-   idx.timing.textContent=reduced?'Reduced motion: stage snapshots. Display time is not a process parameter.':'Display time is not a process parameter.';
+   idx.bar.value=(scene+(staticPreview?0:reduced?Number(fraction>=1):fraction))/sceneCount();
+   const pace='At least 7 seconds per scene at 1×. Display time is not a process parameter.';
+   idx.timing.textContent=reduced?'Reduced motion: stage snapshots. '+pace:pace;
+   paintRoom(a,fraction,force);
  }
  function loop(t){
    if(phase!=='playing')return;
@@ -98,18 +143,20 @@ function attach({plate,extra=[],interrupt,build,compact=false}){
  function begin(){
    const b=build(),list=Array.isArray(b)?b:b?.scenes;
    if(!list?.length){updatePhase('idle','No documented process playback for this branch.');return;}
-   scenes=list;scene=0;elapsed=0;staticPreview=false;visualVersion=-1;lastDraw=-Infinity;
+   scenes=list;branch=b?.branch??null;scene=0;elapsed=0;staticPreview=false;visualVersion=-1;lastDraw=-Infinity;
+   resetRoomRoute();
    idx.jump.replaceChildren(...scenes.map((a,i)=>new Option(String(i+1).padStart(2,'0')+' · '+a.name,String(i))));
-   visible(true);render(true);play();
+   visible(true);render(true);mountRoom();play();
  }
  function close(focus=false){
    if(!opened)return;
-   stop();visible(false);visualVersion=-1;phase='idle';elapsed=0;scene=0;delete host.dataset.step;delete host.dataset.total;delete host.dataset.scene;delete host.dataset.frame;
+   stop();disposeRoom(roomUnavailable?'unavailable':'closed');visible(false);visualVersion=-1;phase='idle';elapsed=0;scene=0;delete host.dataset.step;delete host.dataset.total;delete host.dataset.scene;delete host.dataset.frame;
    idx.scene.replaceChildren();updatePhase('idle');if(focus)idx.action.focus();
  }
  function manual(n){
    if(!opened||n<0||n>=sceneCount())return;
    scene=n;elapsed=0;staticPreview=true;visualVersion=-1;pause('Manual animation scene. The specimen is unchanged.');
+   resetRoomRoute();
    render(true);
  }
  idx.action.onclick=()=>{if(phase==='playing')pause();else if(phase==='paused')play();else begin();};
@@ -122,6 +169,8 @@ function attach({plate,extra=[],interrupt,build,compact=false}){
  const setMotion=e=>{reduced=e.matches;if(opened)render(true);};
  if(motion.addEventListener)motion.addEventListener('change',setMotion);else motion.addListener(setMotion);
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&phase==='playing')pause('Paused when this tab was hidden. Resume here when ready.');});
+ window.addEventListener('pagehide',()=>{if(opened){if(phase==='playing')pause();disposeRoom('closed');}});
+ window.addEventListener('pageshow',()=>{if(opened)mountRoom();});
  if(compact)host.classList.add('fp-compact');
  return {close};
 }

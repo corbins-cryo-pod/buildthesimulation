@@ -4,7 +4,11 @@ This bundle adds a device-specific illustrated tour inside each lab’s existing
 process plate. It snapshots the chosen configuration and preserves all manual
 traveler, fixture and acceptance states. A manual interaction exits the tour.
 The retinal sequence follows the published research predecessor, not the
-commercial PRIMA process.
+commercial PRIMA process. The normal pace spends at least seven display seconds
+on each scene; this is not fabrication time. When opened over HTTP(S), Play
+also tries to mount the site's shared cleanroom workstation renderer. The same
+clock drives its equipment scene and the schematic immediately below it. Local
+files and unavailable web assets leave the complete schematic tour intact.
 
 Run the injector after building the unpatched lab pages, with separate input
 and output simulations directories:

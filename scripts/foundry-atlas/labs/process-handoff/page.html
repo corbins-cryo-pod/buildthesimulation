@@ -11,6 +11,7 @@
 <section class="handoff-play" id="handoff-player" aria-labelledby="handoff-play-title" data-playback="ready">
  <div class="handoff-play-controls"><div><p class="index">Guided playback</p><h2 id="handoff-play-title">Follow the record</h2></div><button type="button" class="primary" id="handoff-play">Play workflow</button><label class="handoff-count" for="handoff-meter"><span id="handoff-play-count">0 checks inspected</span><progress id="handoff-meter" max="1" value="0"></progress></label></div>
  <div class="handoff-stage"><div class="handoff-stage-head"><p id="handoff-stage-name">Ready to inspect</p><p id="handoff-stage-result" class="chip ready">Virtual receipt</p></div><p id="handoff-stage-detail">Play visits each check in order. Select a new source or receiver, or use the manual inspect buttons at any time.</p></div>
+ <div data-bench-cleanroom hidden><div id="handoff-cleanroom"></div></div>
 </section>
 <section aria-label="Test the handoff" class="bench">
 <article class="source"><p class="index">02 / Source record</p><label for="artifact">What is handed off?</label><select id="artifact"></select><div id="record"></div></article>

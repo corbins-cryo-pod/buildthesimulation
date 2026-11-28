@@ -21,7 +21,7 @@ def index(page):return page.locator('#workflow-player').get_attribute('data-play
 def scene(page):return page.locator('#workflow-player').get_attribute('data-player-scene')
 def assert_clean(errors,requests):
  assert not errors,errors
- assert not [x for x in requests if not x.startswith(home)],requests
+ assert not [x for x in requests if not x.startswith(home) and x!=home.rsplit('/',1)[0]+'/simulations/foundry/cleanroom-player.js'],requests
 passed=[]
 try:
  with sync_playwright() as pw:
@@ -38,6 +38,8 @@ try:
    page=browser.new_page(**profile);page.set_default_timeout(6500);page.clock.install()
    errs,req=[],[]
    page.on('pageerror',lambda e:errs.append(str(e)));page.on('request',lambda r:req.append(r.url))
+   # Deliberately exercise the original static/offline player.
+   page.route('**/simulations/foundry/cleanroom-player.js',lambda route:route.abort())
    def button(selector):
     x=page.locator(selector)
     if profile.get('has_touch'):x.tap()

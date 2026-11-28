@@ -38,7 +38,8 @@ capability cannot establish a material-approved real tool configuration.
 ## Rebuild and verify
 
 Run with Python 3 and PyYAML from the repo root. The generated production document
-bundles data, styling and code; it needs no network requests during normal use.
+bundles its data, styling, navigator and fallback schematic player. The online
+walkthrough additionally loads same-origin Equipment Register assets.
 Use the current source catalog and exact base commit on the branch being updated.
 
 ```sh
@@ -81,18 +82,30 @@ stays visible even when the playback skips other configurations. Pause, resume,
 previous/next, replay, and four presentation speeds are independent of the
 original traveler. The current animation pauses when opening its detailed
 handoff or going to another browser tab. Reduced-motion preferences show static
-plates with the same text and controls.
+poses with the same phase labels and controls. The station chips select a paused
+incoming/outgoing preview within the current handoff.
 
-The diagrams are original schematic cues for process classes, not machine or
-device geometries. A cited document identifies the operation, not the exact
-diagram or elapsed time. External/unverified steps draw an evidence boundary
-instead of a fabrication step; incompatible and out-of-scope configurations
-explain why no manufacturing sequence plays. Standalone foundry labs remain the
-place to find device-specific controls and bench models.
+The online cleanroom player walks through transfer, load, operator setup, run
+and unload. It reuses original Equipment Register models where the modeled
+specimen and holder have a compatible loading path. For other instruments the
+explicitly labeled cutaway has a separate original-model inspection option when
+available. The control panel distinguishes source-defined setup intentions from
+undisclosed machine parameters. It does not qualify a tool or create a machine
+program. In source-backed multi-station examples, distinct coupons and later
+supplied components restart custody rather than magically changing size or
+inheriting a missing operation. Elsewhere a cited candidate is illustrated by
+role; a list of candidates is not silently promoted to a process sequence.
+
+External/unverified steps show an evidence boundary without executing an
+operation; incompatible and out-of-scope configurations have no manufacturing
+sequence. Opening the HTML directly or without the equipment module retains the
+original schematic player. Standalone foundry labs remain the place to find
+device-specific controls and bench models.
 
 ```sh
-node --test tests/foundry-atlas-playback.mjs
+node --test tests/foundry-atlas-playback.mjs tests/foundry-atlas-cleanroom.mjs
 CHROME_BIN=/path/to/chromium python scripts/foundry-atlas/tests/playback.py public/simulations/foundry/atlas/index.html
+CHROME_BIN=/path/to/chromium python scripts/foundry-atlas/tests/cleanroom.py public/simulations/foundry/atlas/index.html --public-root public --expect-native
 ```
 
 When standalone labs change, refresh the exact hub release ledger before

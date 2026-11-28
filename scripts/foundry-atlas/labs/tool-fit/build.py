@@ -14,7 +14,7 @@ def build(source,out):
  assert all(k in d['sources'] for k in used)
  for r in rs:assert all(o in d['operations'] for o in r['operations']) and all(s in d['sources'] for s in r['sources'])
  data={'snapshot':{k:d['snapshot'][k] for k in ['repo','commit','checked']},'dictionarySha256':hashlib.sha256(raw).hexdigest(),'sources':{k:{s:d['sources'][k][s] for s in ['title','url']} for k in sorted(used)},'records':rs,'operations':{k:v['label'] for k,v in d['operations'].items()}}
- template=(here/'page.html').read_text();parts={'@@DATA@@':compact(data),'@@ENGINE@@':(here/'engine.cjs').read_text(),'@@UI@@':(here/'ui.js').read_text(),'@@PLAY@@':(here.parent/'bench-play.js').read_text(),'@@STYLE@@':(here/'style.css').read_text()}
+ template=(here/'page.html').read_text();parts={'@@DATA@@':compact(data),'@@ENGINE@@':(here/'engine.cjs').read_text(),'@@UI@@':(here/'ui.js').read_text(),'@@PLAY@@':'\n'.join((here.parent/f).read_text() for f in ['bench-play.js','bench-cleanroom.js']),'@@STYLE@@':(here/'style.css').read_text()}
  for k,v in parts.items():
   assert template.count(k)==1;template=template.replace(k,v)
  Path(out).parent.mkdir(parents=True,exist_ok=True);Path(out).write_text(template);print(f'{len(rs)} equipment records · {Path(out).stat().st_size} bytes · equipment SHA-256 {data["dictionarySha256"]}')

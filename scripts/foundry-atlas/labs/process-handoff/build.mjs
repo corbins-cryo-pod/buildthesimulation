@@ -133,7 +133,7 @@ const proofs={
 };
 const data={dictionary:{repository:eq.snapshot.repo,commit:eq.snapshot.commit,date:eq.snapshot.checked,sha256:hash(fs.readFileSync(equipmentPath))},equipment,profiles,records,evidence,proofs};
 const text=(f)=>fs.readFileSync(path.join(dir,f),'utf8');let html=text('page.html');
-const inserts={'@@STYLE@@':text('style.css'),'@@ENGINE@@':text('engine.cjs'),'@@UI@@':text('ui.js'),'@@PLAY@@':text('../bench-play.js'),'@@DATA@@':JSON.stringify(data).replaceAll('<','\\u003c').replaceAll('&','\\u0026')};
+const inserts={'@@STYLE@@':text('style.css'),'@@ENGINE@@':text('engine.cjs'),'@@UI@@':text('ui.js'),'@@PLAY@@':[text('../bench-play.js'),text('../bench-cleanroom.js')].join('\n'),'@@DATA@@':JSON.stringify(data).replaceAll('<','\\u003c').replaceAll('&','\\u0026')};
 for(const [k,v] of Object.entries(inserts)){assert.equal(html.split(k).length,2);html=html.replace(k,()=>v);}
 fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,html);
 console.log(JSON.stringify({records:Object.keys(records).length,stations:Object.keys(equipment).length,atlasProfiles:Object.keys(profiles).length,softwareImports:2,provenDirectRejections:5,htmlBytes:Buffer.byteLength(html),sha256:hash(html)}));

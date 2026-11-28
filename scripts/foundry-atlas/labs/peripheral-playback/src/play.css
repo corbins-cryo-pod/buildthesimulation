@@ -17,8 +17,14 @@
 .fp-player .fp-label{margin:4px 0;font:650 16px/1.28 system-ui,-apple-system,Segoe UI,sans-serif;color:#fff4d9;overflow-wrap:anywhere}
 .fp-player .fp-note{margin:4px 0 6px;font-size:12px;color:#deebd8;line-height:1.4;min-height:2.8em}
 .fp-player .fp-scene{display:block;width:100%;height:auto;max-width:none;min-height:0;background:#16372f;border-top:1px solid #6e8c7c;border-bottom:1px solid #6e8c7c}
-.fp-track{height:5px;background:#597568;margin:8px 0 4px;overflow:hidden;border-radius:4px}
-.fp-bar{height:100%;width:0;background:#e9b274;transform-origin:left;will-change:width}
+.fp-player .fp-track{display:block;width:100%;height:7px;margin:8px 0 4px;overflow:hidden;border:0;border-radius:4px;background:#597568;accent-color:#e9b274}
+.fp-track::-webkit-progress-bar{background:#597568;border-radius:4px}.fp-track::-webkit-progress-value{background:#e9b274}.fp-track::-moz-progress-bar{background:#e9b274}
+.fp-cleanroom{border-top:1px solid #6e8c7c;background:#142e2a;min-width:0}
+.fp-cleanroom[hidden]{display:none!important}
+.fp-drawing-title{padding:7px 10px;background:#23433b}
+.fp-cleanroom-body{min-width:0;min-height:5rem;width:100%;padding:5px;container-type:inline-size}
+.fp-cleanroom-body:empty::before{display:block;padding:1.35rem .62rem;color:#dce8dc;font-size:.82rem;content:'Preparing the virtual workstation…'}
+@container (max-width:545px){.fp-cleanroom-body .cr-grid{grid-template-columns:1fr}}
 .fp-player .fp-info{font:400 11px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#dce8dc}
 .fp-transport{margin-top:8px;align-items:end}
 .fp-transport label{margin:0;font:600 11px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;color:#deebd8;display:block;min-width:0}

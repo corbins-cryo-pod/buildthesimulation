@@ -30,7 +30,26 @@ function format(k,v){
 }
 const opt=(value,title)=>{const z=plain('option',title);z.value=value;return z;};
 let cs, proof, lastAnnounced=0, ledgerProof;
-const player=FoundryBenchPlay.create({paint:render,delay:2300});
+const handoffRoom=FoundryBenchCleanroom.create($('handoff-cleanroom'),'process-handoff');
+const player=FoundryBenchPlay.create({paint:render,delay:FoundryBenchCleanroom.duration});
+function handoffRoomStage(current,gatesSeen,complete){
+ if(!current)return null;
+ const source=data.records[art.value],need=H.demands[dem.value],receiver=data.equipment[need.station];
+ const sender=data.equipment[data.evidence[source.sources[0]]?.station];
+ const hold=proof.gates.slice(0,gatesSeen).find(g=>g.status!=='match');
+ let out=hold?'Held at the inspection boundary · '+colors[hold.status]+': '+hold.gate+'.'
+  :'Still under inspection; no handoff accepted until every gate is reviewed.';
+ if(complete&&proof.status==='match'){
+  const receipt=dem.value==='developer'&&art.value==='contact'?data.proofs.developer:dem.value==='adc'&&art.value==='volts'?data.proofs.adc:null;
+  out=receipt?'Matched in software. '+receipt.id+' · revision '+receipt.inputRevision+' → '+receipt.outputRevision+'. Only the recorded virtual import is established.'
+   :'Matches the named digital demand. No physical transfer or material change is established.';
+ }
+ return {phaseId:'handoff-'+cs.id+'-'+gatesSeen,kind:'handoff',effect:'handoff',machine:receiver?.model||'External acceptance boundary',
+  equipmentId:receiver?.id,transferFrom:sender?.model||'Digital source record',operation:current.gate,specimen:'Digital '+source.kind.replace(/-/g,' ')+' record',
+  before:source.title+' · '+source.schema,after:out,
+  settings:[['Gate result',colors[current.status]],['Receiving contract',need.title],['Current test',current.reason]],
+  evidence:'These are checks on the pinned artifact and receiving requirement. The bench does not start a machine or supply a missing importer or recipe.'};
+}
 const inputs=new URLSearchParams(location.search);
 for(const c of H.cases){const b=plain('button');b.type='button';b.dataset.case=c.id;b.append(plain('b',c.number),plain('span',c.name));b.addEventListener('click',()=>choose(c.id));group.append(b);}
 const text=(k,t)=>{$(k).textContent=t;};
@@ -119,6 +138,7 @@ function render(state){
   if(existing)existing.replaceWith(li);else list.append(li);
  });
  text('notes',complete?(proof.status==='match'?'This selection meets only the digital demand printed above. It does not qualify a physical article.':proof.status==='incompatible'?'At least one supplied field or record conflicts with this specific demand. A different documented artifact could change the decision.':'No explicit contradiction was found in the compared gates, but at least one required fact or adapter is unproven. Stop the chain here.'):'The overall decision appears after all gates are inspected. Read any incompatible or unproven gate before treating a virtual chain as connected.');
+ handoffRoom.update(state,handoffRoomStage(current,revealed,complete));
 }
 function announceStep(){
  const state=player.snapshot(),gate=proof.gates[state.progress-1];

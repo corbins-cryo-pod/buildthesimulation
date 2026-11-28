@@ -8,6 +8,8 @@
 @media(max-width:660px){.handoff-play{grid-template-columns:minmax(0,1fr);gap:.6rem}.handoff-play-controls{justify-content:space-between}}
 @media(prefers-reduced-motion:reduce){#handoff-token{transition:none}}
 #handoff-port[data-transit=source] #handoff-token{transition:none}
+[data-bench-cleanroom]{grid-column:1/-1;min-width:0;container-type:inline-size}
+@container (max-width:560px){[data-bench-cleanroom] .cr-grid{grid-template-columns:1fr}}
 </style></head>
 <body><main>
 <nav aria-label="Section"><a href="/simulations/foundry/">Foundry</a><a href="/simulations/foundry/atlas/">Workflow atlas</a><a href="/simulations/foundry/tool-fit/">Tool fit bench</a><span aria-current="page">Process handoff bench</span></nav>
@@ -20,6 +22,7 @@
 <section class="handoff-play" id="handoff-player" aria-labelledby="handoff-play-title" data-playback="ready">
  <div class="handoff-play-controls"><div><p class="index">Guided playback</p><h2 id="handoff-play-title">Follow the record</h2></div><button type="button" class="primary" id="handoff-play">Play workflow</button><label class="handoff-count" for="handoff-meter"><span id="handoff-play-count">0 checks inspected</span><progress id="handoff-meter" max="1" value="0"></progress></label></div>
  <div class="handoff-stage"><div class="handoff-stage-head"><p id="handoff-stage-name">Ready to inspect</p><p id="handoff-stage-result" class="chip ready">Virtual receipt</p></div><p id="handoff-stage-detail">Play visits each check in order. Select a new source or receiver, or use the manual inspect buttons at any time.</p></div>
+ <div data-bench-cleanroom hidden><div id="handoff-cleanroom"></div></div>
 </section>
 <section aria-label="Test the handoff" class="bench">
 <article class="source"><p class="index">02 / Source record</p><label for="artifact">What is handed off?</label><select id="artifact"></select><div id="record"></div></article>
@@ -248,6 +251,76 @@ function create({paint,delay=2100,clock=globalThis}){
 }
 return {create,playLabel};
 });
+
+/* Display-only bridge for Tool Fit and Process Handoff. Their existing clock owns gate advancement. */
+window.FoundryBenchCleanroom = (() => {
+ 'use strict';
+ const PATH='/simulations/foundry/cleanroom-player.js',duration=7000;
+ function create(node,slug){
+  const supported=Boolean(node)&&/^https?:$/.test(location.protocol);
+  if(!supported)return {update(){},close(){}};
+  const wrap=node.closest('[data-bench-cleanroom]'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+  let room=null,pending=null,generation=0,failed=false,frame=0,at=0,progress=0,active=null,advancing=false;
+  function stop(){
+   cancelAnimationFrame(frame);frame=0;
+   if(at){progress=Math.min(1,progress+(performance.now()-at)/duration);at=0;}
+  }
+  function close(){
+   stop();generation++;pending=null;
+   try{room?.destroy();}catch{/* The digital ledger is not tied to the preview. */}
+   room=null;active=null;progress=0;advancing=false;wrap.hidden=true;node.replaceChildren();
+   wrap.dataset.state=failed?'unavailable':'closed';
+  }
+  function fail(){failed=true;close();}
+  function paint(p){
+   if(!room||!active)return;
+   try{room.paint(active.index,motion.matches?1:p,active.detail);}
+   catch{fail();}
+  }
+  function mount(){
+   if(failed||room||pending||!active)return;
+   const serial=generation;
+   wrap.dataset.state='loading';
+   pending=import(PATH).then(({mountLabCleanroom})=>{
+    if(serial!==generation||!active||!node.isConnected)return;
+    wrap.hidden=false;room=mountLabCleanroom(node,slug);
+    if(!room||typeof room.paint!=='function'||typeof room.destroy!=='function')throw Error('Cleanroom did not mount');
+    wrap.dataset.state='ready';
+    paint(Math.min(1,progress+(at?(performance.now()-at)/duration:0)));
+   }).catch(()=>{if(serial===generation)fail();}).finally(()=>{if(serial===generation)pending=null;});
+  }
+  function tick(now){
+   if(!advancing||!active||failed)return;
+   if(!at)at=now;
+   const p=Math.min(1,progress+(now-at)/duration);
+   paint(p);
+   if(p<1)frame=requestAnimationFrame(tick);
+   else{progress=1;at=0;frame=0;}
+  }
+  function update(state,detail){
+   const index=state.progress-1;
+   if(index<0||!detail){close();return;}
+   if(failed)return;
+   const same=active?.index===index;
+   const wasRunning=advancing;
+   stop();
+   if(!same){
+    if(!wasRunning||index!==active?.index+1){
+     try{room?.reset?.();}catch{fail();return;}
+    }
+    progress=state.running?0:1;
+   }else if(!state.running&&!wasRunning)progress=1;
+   active={index,detail};advancing=state.running;
+   mount();paint(progress);
+   if(advancing&&progress<1)frame=requestAnimationFrame(tick);
+  }
+  const onMotion=()=>paint(Math.min(1,progress+(at?(performance.now()-at)/duration:0)));
+  motion.addEventListener?.('change',onMotion);
+  window.addEventListener('pagehide',stop);
+  return {update,close};
+ }
+ return {create,duration};
+})();
 </script><script>(function(){
 'use strict';
 const $=id=>document.getElementById(id), data=JSON.parse($('handoff-data').textContent), H=Handoff;
@@ -280,7 +353,26 @@ function format(k,v){
 }
 const opt=(value,title)=>{const z=plain('option',title);z.value=value;return z;};
 let cs, proof, lastAnnounced=0, ledgerProof;
-const player=FoundryBenchPlay.create({paint:render,delay:2300});
+const handoffRoom=FoundryBenchCleanroom.create($('handoff-cleanroom'),'process-handoff');
+const player=FoundryBenchPlay.create({paint:render,delay:FoundryBenchCleanroom.duration});
+function handoffRoomStage(current,gatesSeen,complete){
+ if(!current)return null;
+ const source=data.records[art.value],need=H.demands[dem.value],receiver=data.equipment[need.station];
+ const sender=data.equipment[data.evidence[source.sources[0]]?.station];
+ const hold=proof.gates.slice(0,gatesSeen).find(g=>g.status!=='match');
+ let out=hold?'Held at the inspection boundary · '+colors[hold.status]+': '+hold.gate+'.'
+  :'Still under inspection; no handoff accepted until every gate is reviewed.';
+ if(complete&&proof.status==='match'){
+  const receipt=dem.value==='developer'&&art.value==='contact'?data.proofs.developer:dem.value==='adc'&&art.value==='volts'?data.proofs.adc:null;
+  out=receipt?'Matched in software. '+receipt.id+' · revision '+receipt.inputRevision+' → '+receipt.outputRevision+'. Only the recorded virtual import is established.'
+   :'Matches the named digital demand. No physical transfer or material change is established.';
+ }
+ return {phaseId:'handoff-'+cs.id+'-'+gatesSeen,kind:'handoff',effect:'handoff',machine:receiver?.model||'External acceptance boundary',
+  equipmentId:receiver?.id,transferFrom:sender?.model||'Digital source record',operation:current.gate,specimen:'Digital '+source.kind.replace(/-/g,' ')+' record',
+  before:source.title+' · '+source.schema,after:out,
+  settings:[['Gate result',colors[current.status]],['Receiving contract',need.title],['Current test',current.reason]],
+  evidence:'These are checks on the pinned artifact and receiving requirement. The bench does not start a machine or supply a missing importer or recipe.'};
+}
 const inputs=new URLSearchParams(location.search);
 for(const c of H.cases){const b=plain('button');b.type='button';b.dataset.case=c.id;b.append(plain('b',c.number),plain('span',c.name));b.addEventListener('click',()=>choose(c.id));group.append(b);}
 const text=(k,t)=>{$(k).textContent=t;};
@@ -369,6 +461,7 @@ function render(state){
   if(existing)existing.replaceWith(li);else list.append(li);
  });
  text('notes',complete?(proof.status==='match'?'This selection meets only the digital demand printed above. It does not qualify a physical article.':proof.status==='incompatible'?'At least one supplied field or record conflicts with this specific demand. A different documented artifact could change the decision.':'No explicit contradiction was found in the compared gates, but at least one required fact or adapter is unproven. Stop the chain here.'):'The overall decision appears after all gates are inspected. Read any incompatible or unproven gate before treating a virtual chain as connected.');
+ handoffRoom.update(state,handoffRoomStage(current,revealed,complete));
 }
 function announceStep(){
  const state=player.snapshot(),gate=proof.gates[state.progress-1];

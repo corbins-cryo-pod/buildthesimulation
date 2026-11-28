@@ -10,6 +10,29 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
   let timer = 0;
   let reason = "";
   let motion = [];
+  let rooms=[], roomImport=null;
+  const slug=location.pathname.split("/").filter(Boolean).at(-1);
+  function ensureRooms(){
+    if(!/^https?:/.test(location.protocol))return Promise.resolve(false);
+    if(!roomImport){
+      roomImport=import("/simulations/foundry/cleanroom-player.js").then(m=>{
+        const tracks=spec.cleanroomTracks||[{read:()=>{const p=spec.read();return {index:Math.max(0,p.completed-1),operation:p.text};}}];
+        rooms=tracks.map(track=>{
+          const host=document.createElement("div");panel.after(host);
+          return {player:m.mountTimedCleanroom(host,slug),track};
+        });
+        if(rooms.length>1) panel.nextElementSibling.after(panel.nextElementSibling.nextElementSibling);
+        return !!rooms.length;
+      }).catch(()=>false);
+    }
+    return roomImport;
+  }
+  function preview(){
+    for(const {player,track} of rooms){
+      const {index,...details}=track.read();
+      player.preview(index,details);
+    }
+  }
   const interaction = [
     "button", "select", "input", "textarea", "summary", "a", "canvas", "[role=button]",
     "[data-foundry-inspect]"
@@ -42,6 +65,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
     clearTimeout(timer);
     timer = 0;
     cancelMotion();
+    rooms.forEach(({player})=>player.pause());
     notify(detail);
   }
   function flash() {
@@ -53,8 +77,18 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
       }
     }
   }
-  function schedule() {
-    timer = setTimeout(advance, spec.delay || 1300);
+  function schedule(resume=false) {
+    if(!rooms.length){timer=setTimeout(advance,spec.delay||1300);return;}
+    if(resume&&rooms[0].player.resume()){rooms.slice(1).forEach(({player})=>player.resume());return;}
+    const n=spec.read(), wasDone=n.done;
+    rooms.forEach(({player,track},i)=>{
+      const {index,...details}=track.read();
+      player.start(index,details,i===rooms.length-1?()=>{
+        if(!running)return;
+        if(wasDone){running=false;notify("Workflow finished. Press Replay workflow to review from the beginning.");}
+        else advance();
+      }:null,reduced.matches?Math.max(850,spec.delay||1300):undefined);
+    });
   }
   function advance() {
     if (!running) return;
@@ -68,6 +102,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
       const next = spec.read();
       flash();
       if (next.done) {
+        if(rooms.length&&!spec.cleanroomCommits){sync();schedule();return;}
         running = false;
         timer = 0;
         notify("Workflow finished. Press Replay workflow to review from the beginning.");
@@ -84,7 +119,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
   }
   spec.button.addEventListener("click", () => {
     if (running) return pause();
-    if (spec.read().done) spec.replay();
+    if (spec.read().done) {rooms.forEach(({player})=>player.reset());spec.replay();}
     const next = spec.read();
     if (next.done) return sync();
     running = true;
@@ -98,16 +133,16 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
         panel.scrollIntoView({block:"start", behavior:"instant"});
       }
     }
-    schedule();
+    ensureRooms().then(()=>{if(running)schedule(true);});
   });
   function manual(ev) {
-    if (!running) return;
     if (ev.type === "keydown" && ev.key === "Escape") { pause(); return; }
     const target = ev.target instanceof Element ? ev.target : null;
     if (!target || target.closest("[data-foundry-playback]") ||
         !target.closest(interaction)) return;
     if (ev.type === "keydown" && ["Tab", "Shift", "Control", "Alt", "Meta"].includes(ev.key)) return;
     pause("Playback paused for manual inspection. Press Play workflow to resume.");
+    if(["click","input","change"].includes(ev.type))queueMicrotask(()=>{if(!running&&rooms.length)preview();});
   }
   for (const name of ["pointerdown", "click", "input", "change", "keydown"]) {
     document.addEventListener(name, manual, true);

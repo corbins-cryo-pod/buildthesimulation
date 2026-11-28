@@ -5,6 +5,8 @@
 .fit-player{border:1px solid var(--edge);border-left:4px solid var(--teal);padding:.85rem 1rem;margin:0 0 1.35rem;background:var(--paper)}.fit-play-controls{display:flex;justify-content:space-between;align-items:center;gap:.65rem 1rem;flex-wrap:wrap}.fit-play-actions{display:flex;gap:.35rem;flex-wrap:wrap}#fit-play{background:var(--teal);border-color:var(--teal);color:var(--paper);min-width:9.25rem}#fit-play:hover{filter:brightness(1.12)}.fit-play-actions button:disabled{opacity:.55;cursor:default}.fit-phases{list-style:none;padding:0;margin:.7rem 0 .38rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.27rem}.fit-phases li{font:650 .74rem/1.4 system-ui,sans-serif;min-width:0;overflow-wrap:anywhere;padding:.32rem .48rem;border:1px solid var(--edge);border-top:3px solid var(--edge);color:var(--muted)}.fit-phases li[aria-current=step]{border-top-color:var(--teal);color:var(--teal);background:var(--bg);font-weight:760}.fit-meter{font-size:.75rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.55rem;align-items:center;margin:.45rem 0}.fit-meter progress{width:100%;height:.6rem;accent-color:var(--teal)}.fit-stage{min-width:0;position:relative;isolation:isolate;overflow:hidden;padding:.6rem .65rem;border:1px solid var(--edge);border-left:4px solid var(--teal);background:var(--bg)}.fit-stage:before{content:"";position:absolute;pointer-events:none;z-index:-1;inset:0;background:linear-gradient(95deg,transparent,color-mix(in srgb,var(--teal) 11%,transparent),transparent);transform:translateX(-105%);transition:transform 380ms ease}.fit-player[data-playback=running] .fit-stage[data-phase=reference]:before,.fit-player[data-playback=running] .fit-stage[data-phase=result]:before{transform:translateX(105%)}.fit-stage h3{font-size:1.15rem}.fit-stage>p{font-size:.86rem;margin-top:.25rem}.fit-stage-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.38rem .6rem;margin-top:.5rem}.fit-stage-card{min-width:0;padding:.42rem .54rem;border:1px solid var(--edge);background:var(--paper);overflow-wrap:anywhere}.fit-stage-card .caption{margin:0;color:var(--teal);font-weight:690}.fit-stage-card h4{margin:.12rem 0 .28rem;font-size:.97rem}.fit-gate-label{display:flex;gap:.26rem .4rem;flex-wrap:wrap;align-items:baseline;font-size:.86rem;margin-top:.2rem}.fit-reason{font-size:.86rem;margin:.28rem 0 0}.gates li.fit-current-gate{border-left:3px solid var(--teal);padding-left:.48rem;background:var(--bg)}
 @media(max-width:630px){.fit-player{padding:.65rem .7rem}.fit-meter{display:block}.fit-phases{grid-template-columns:repeat(2,minmax(0,1fr))}.fit-stage-cards{grid-template-columns:minmax(0,1fr)}.fit-play-actions button{min-width:0;padding:.36rem .44rem}.fit-play-controls h2{font-size:1.42rem}}
 @media(prefers-reduced-motion:reduce){.fit-stage:before{display:none;transition:none}}
+[data-bench-cleanroom]{min-width:0;container-type:inline-size}
+@container (max-width:560px){[data-bench-cleanroom] .cr-grid{grid-template-columns:1fr}}
 .fit-ruler{position:relative;height:.35rem;margin:0 .3rem .48rem;background:repeating-linear-gradient(90deg,var(--edge),var(--edge) 1px,transparent 1px,transparent 5%);border-bottom:1px solid var(--edge)}#fit-scan-marker{position:absolute;left:var(--fit-travel,0%);top:-.05rem;width:.42rem;height:.42rem;background:var(--teal);transform:translateX(-50%) rotate(45deg);transition:left .42s ease-out}.fit-player[data-playback=ready] #fit-scan-marker{transition:none}
 @media(prefers-reduced-motion:reduce){#fit-scan-marker{transition:none}}
 </style></head>
@@ -18,6 +20,7 @@
  <ol class="fit-phases" aria-label="Comparison stages"><li data-fit-phase="intake">Requirement</li><li data-fit-phase="reference">Documentation</li><li data-fit-phase="virtual">Virtual experiment</li><li data-fit-phase="result">Decision</li></ol>
  <label class="fit-meter" for="fit-progress"><span id="fit-count">0 stages reviewed</span><progress id="fit-progress" max="1" value="0"></progress></label><div class="fit-ruler" aria-hidden="true"><span id="fit-scan-marker"></span></div>
  <div class="fit-stage" id="fit-stage" data-phase="intake"><h3 id="fit-stage-title">Ready to compare</h3><p id="fit-stage-note"></p><div class="fit-stage-cards" id="fit-stage-cards"></div></div>
+ <div data-bench-cleanroom hidden><div id="fit-cleanroom"></div></div>
  <p id="fit-announce" class="visually-hidden" role="status" aria-live="polite"></p>
 </section>
 <section aria-labelledby="req-h"><div class="section-title"><div><p class="eyebrow">02 &nbsp; / &nbsp; Request</p><h2 id="req-h">Define the requirement</h2></div></div><div class="workarea"><form id="request" autocomplete="off" novalidate>
@@ -225,6 +228,76 @@ function create({paint,delay=2100,clock=globalThis}){
 }
 return {create,playLabel};
 });
+
+/* Display-only bridge for Tool Fit and Process Handoff. Their existing clock owns gate advancement. */
+window.FoundryBenchCleanroom = (() => {
+ 'use strict';
+ const PATH='/simulations/foundry/cleanroom-player.js',duration=7000;
+ function create(node,slug){
+  const supported=Boolean(node)&&/^https?:$/.test(location.protocol);
+  if(!supported)return {update(){},close(){}};
+  const wrap=node.closest('[data-bench-cleanroom]'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+  let room=null,pending=null,generation=0,failed=false,frame=0,at=0,progress=0,active=null,advancing=false;
+  function stop(){
+   cancelAnimationFrame(frame);frame=0;
+   if(at){progress=Math.min(1,progress+(performance.now()-at)/duration);at=0;}
+  }
+  function close(){
+   stop();generation++;pending=null;
+   try{room?.destroy();}catch{/* The digital ledger is not tied to the preview. */}
+   room=null;active=null;progress=0;advancing=false;wrap.hidden=true;node.replaceChildren();
+   wrap.dataset.state=failed?'unavailable':'closed';
+  }
+  function fail(){failed=true;close();}
+  function paint(p){
+   if(!room||!active)return;
+   try{room.paint(active.index,motion.matches?1:p,active.detail);}
+   catch{fail();}
+  }
+  function mount(){
+   if(failed||room||pending||!active)return;
+   const serial=generation;
+   wrap.dataset.state='loading';
+   pending=import(PATH).then(({mountLabCleanroom})=>{
+    if(serial!==generation||!active||!node.isConnected)return;
+    wrap.hidden=false;room=mountLabCleanroom(node,slug);
+    if(!room||typeof room.paint!=='function'||typeof room.destroy!=='function')throw Error('Cleanroom did not mount');
+    wrap.dataset.state='ready';
+    paint(Math.min(1,progress+(at?(performance.now()-at)/duration:0)));
+   }).catch(()=>{if(serial===generation)fail();}).finally(()=>{if(serial===generation)pending=null;});
+  }
+  function tick(now){
+   if(!advancing||!active||failed)return;
+   if(!at)at=now;
+   const p=Math.min(1,progress+(now-at)/duration);
+   paint(p);
+   if(p<1)frame=requestAnimationFrame(tick);
+   else{progress=1;at=0;frame=0;}
+  }
+  function update(state,detail){
+   const index=state.progress-1;
+   if(index<0||!detail){close();return;}
+   if(failed)return;
+   const same=active?.index===index;
+   const wasRunning=advancing;
+   stop();
+   if(!same){
+    if(!wasRunning||index!==active?.index+1){
+     try{room?.reset?.();}catch{fail();return;}
+    }
+    progress=state.running?0:1;
+   }else if(!state.running&&!wasRunning)progress=1;
+   active={index,detail};advancing=state.running;
+   mount();paint(progress);
+   if(advancing&&progress<1)frame=requestAnimationFrame(tick);
+  }
+  const onMotion=()=>paint(Math.min(1,progress+(at?(performance.now()-at)/duration:0)));
+  motion.addEventListener?.('change',onMotion);
+  window.addEventListener('pagehide',stop);
+  return {update,close};
+ }
+ return {create,duration};
+})();
 </script><script>(function(){
 'use strict';
 const $=id=>document.getElementById(id),db=JSON.parse($('equipment-data').textContent),F=ToolFit;
@@ -292,7 +365,21 @@ const fitPlay=$('fit-play'),fitBack=$('fit-back'),fitNext=$('fit-next');
 const stagesFor={intake:'Requirement',reference:'Documentation',virtual:'Virtual experiment',result:'Decision'};
 const briefStatus={within:'Within this gate',outside:'Outside configuration',unknown:'Not established'};
 let recent,plan=[],pair=[],seenStep=-1;
-const player=FoundryBenchPlay.create({paint:showStage,delay:2300});
+const fitRoom=FoundryBenchCleanroom.create($('fit-cleanroom'),'tool-fit');
+const player=FoundryBenchPlay.create({paint:showStage,delay:FoundryBenchCleanroom.duration});
+function fitRoomStage(current,stage){
+ if(!current||pair.length!==2)return null;
+ const names=pair.map((r,i)=>(i?'B':'A')+' · '+r.id+' '+r.model);
+ const verdict=current.gates
+  ?current.gates.map((g,i)=>(i?'B':'A')+': '+(g?briefStatus[g.status]+' — '+g.title:'no additional gate')).join(' · ')
+  :current.results
+   ?current.results.map((result,i)=>(i?'B':'A')+': documentation '+F.labels[result.reference.status]+'; virtual experiment '+F.labels[result.virtual.status]).join(' · ')
+   :'The same requirement is queued for both stations. No device is loaded.';
+ return {phaseId:'fit-'+stage,kind:'handoff',effect:'handoff',machine:'Two-station comparison bay',
+  operation:current.title,specimen:'Digital requirement card',before:current.note,after:verdict,
+  settings:[['Station A',names[0]],['Station B',names[1]],['Programming and loading','None; this page does not execute either station.']],
+  evidence:'Compare the published configuration and the implemented software independently. This is a review of fit evidence, not physical processing or qualification.'};
+}
 function summaryFor(d){
  const val=(x,u)=>Number.isFinite(x)?fmt(x)+' '+u:'not specified';
  if(d.job==='optical'){
@@ -356,6 +443,7 @@ function showStage(state){
   const headline=current?('Stage '+progress+' of '+total+'. '+current.title+'. '+(current.gates?current.gates.filter(Boolean).map(g=>g.title).join('; '):'')):'Playback reset to the current comparison.';
   $('fit-announce').textContent=headline;seenStep=progress;
  }
+ fitRoom.update(state,fitRoomStage(current,progress));
 }
 fitPlay.addEventListener('click',()=>player.toggle());
 fitBack.addEventListener('click',()=>player.previous());

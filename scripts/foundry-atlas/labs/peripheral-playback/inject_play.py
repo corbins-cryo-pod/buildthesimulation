@@ -28,13 +28,13 @@ buildOf = {
         const witness = E.nominal();
         for(let i=0;i<log.length;i++) witness[i]=log[i];
         if(log.length<witness.length) witness[log.length]=getfields(log.length);
-        return window.FoundryCuffScenes(E,D,E.inspect(witness),d);
+        return {scenes:window.FoundryCuffScenes(E,D,E.inspect(witness),d),branch:'dong-2018'};
         """
     ),
-    'stent': ("$('geometry')", "[]", "return window.FoundryStentScenes(E,{...state});"),
-    'time': ("$('process')", "[$('processCap')]", "return window.FoundryTimeScenes(E,{...cfg});"),
-    'roll': ("$('process')", "[$('stageCaption')]", "return window.FoundryRollScenes(E,{...draft},result);"),
-    'retinal': ("$('drawing')", "[$('drawing-caption')]", "return route==='wang' && mode==='traveler'?window.FoundryRetinalScenes(E,M,{...specimen}):[];")
+    'stent': ("$('geometry')", "[]", "return {scenes:window.FoundryStentScenes(E,{...state}),branch:'oxley-2016'};"),
+    'time': ("$('process')", "[$('processCap')]", "return {scenes:window.FoundryTimeScenes(E,{...cfg}),branch:'time-4h'};"),
+    'roll': ("$('process')", "[$('stageCaption')]", "return {scenes:window.FoundryRollScenes(E,{...draft},result),branch:draft.mode};"),
+    'retinal': ("$('drawing')", "[$('drawing-caption')]", "return route==='wang' && mode==='traveler'?{scenes:window.FoundryRetinalScenes(E,M,{...specimen}),branch:'wang'}:[];")
 }
 slugs={
     'self-closing-cuff-foundry':'cuff',
@@ -59,9 +59,10 @@ def bundled(text, key):
     ep=check_close[0].start()
     assert 'getElementById' in closure[:ep],key
     p,also,body=buildOf[key]
+    slug=next(slug for slug,ident in slugs.items() if ident==key)
     hook=f"""
 if(window.BTSFoundryPlay)window.BTSFoundryPlay.attach({{
-  plate:{p},extra:{also},interrupt:{json.dumps(interrupt[key])},
+  plate:{p},extra:{also},interrupt:{json.dumps(interrupt[key])},slug:{json.dumps(slug)},
   build:()=>{{ {body.lstrip()} }}
 }});
 """

@@ -127,6 +127,7 @@ function init(){
  if(matchMedia('(max-width:730px)').matches)$('traveler-box').open=false;
  $('model-ui').hidden=false;update(true);
  foundryPlayer=window.installFoundryPlayback({
+  cleanroomTracks:[{read:()=>({index:state.stage,operation:D.stages[state.stage].title})}],
   button:$('play-ptnr'), frames:[$('scene')],
   read:()=>({completed:state.stage+1,total:D.stages.length,done:state.stage>=D.stagesLast,
     text:(state.stage+1)+' / '+D.stages.length+' · '+D.stages[state.stage].title}),

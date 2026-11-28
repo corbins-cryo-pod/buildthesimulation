@@ -28,7 +28,9 @@ orphan=next((p for p in profiles if not any(p['id'] in d['profileIds'] for d in 
 class Serve(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 srv=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Serve,directory=arg.html.parent));threading.Thread(target=srv.serve_forever,daemon=True).start()
-home=f'http://127.0.0.1:{srv.server_port}/{arg.html.name}'
+origin=f'http://127.0.0.1:{srv.server_port}'
+home=f'{origin}/{arg.html.name}'
+renderer=origin+'/simulations/foundry/cleanroom-player.js'
 checks=[]
 def put(test):checks.append(test)
 def visible_count(page,sel):return page.locator(sel).count()
@@ -86,7 +88,7 @@ try:
    else:
     # page number only affects the desktop view.
     ids=page.locator('#mobile-select option').evaluate_all('(opts)=>opts.map(o=>o.value)');page.locator('#mobile-select').select_option(ids[-1]);assert page.locator('#detail-heading').inner_text()==E[ids[-1]]['name'];assert_layout(page)
-   assert not errors,errors;assert not [u for u in req if not (u.startswith(home) or u.startswith('blob:'))],req
+   assert not errors,errors;assert not [u for u in req if not (u.startswith(home) or u.startswith('blob:') or u==renderer)],req
    put(label+': invalid link fallback, mobile native picker/desktop paging, no overflow/JS errors/external requests');ctx.close()
   page=browser.new_page();visit(page,arg.html.as_uri()+'#profile='+route['id']);assert page.locator('#detail-heading').inner_text()==route['title'];assert page.locator('.mast .brand').get_attribute('href')=='https://buildthesimulation.com/';assert_layout(page);put('Standalone file: no-server rendering with usable site links')
   browser.close()

@@ -49,6 +49,7 @@ function Tr(){let i=Ie.n;''')
     h=exact(h,'sample:Ie.sample,area:Ie.area});Tr();})();',
       '''sample:Ie.sample,area:Ie.area});
 foundryPlayer=window.installFoundryPlayback({
+  cleanroomCommits:true,cleanroomTracks:[{read:()=>({index:Math.min(Ie.n,In.length-1),operation:In[Math.min(Ie.n,In.length-1)][0]})}],
   button:ue("play-flex"), frames:[ue("model"),ue("section")],
   read:()=>({completed:Ie.n,total:In.length,done:Ie.n===In.length,
     text:Ie.n+" / "+In.length+" committed · "+(Ie.n===In.length?"Bench ready":"Next: "+In[Ie.n][0])}),

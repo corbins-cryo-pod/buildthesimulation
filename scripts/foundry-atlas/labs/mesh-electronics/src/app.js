@@ -221,6 +221,7 @@
   if(siteRoot) Q('a[href^="/"]').forEach(a=>a.setAttribute('href',siteRoot+a.getAttribute('href')));
   config(options,false);
   foundryPlayer=window.installFoundryPlayback({
+    cleanroomTracks:[{read:()=>({index:step-1,operation:E.STAGES[step-1].name})}],
     button:$('run'),frames:[$('specimen')],
     read:()=>({completed:step,total:E.STAGES.length,done:step===E.STAGES.length,
       text:step+' / '+E.STAGES.length+' · '+E.STAGES[step-1].name}),

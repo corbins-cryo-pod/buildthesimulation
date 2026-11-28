@@ -289,35 +289,49 @@ const workflow=[
  {key:'continuity',short:'Continuity',title:'Trace virtual output identity',basis:'06 / SYNTHETIC BENCH',body:'Touching or removing glass does not by itself create a modeled conductor. The existing Boolean fixture counts only the geometry assumptions and faults selected below.'}
 ];
 const reducedWorkflow=matchMedia('(prefers-reduced-motion: reduce)'), WORKFLOW_DWELL=1850;
-let workflowStage=0,workflowState='ready',workflowTimer,workflowMotion;
+let workflowStage=0,workflowState='ready',workflowTimer,workflowMotion,cleanroom,cleanroomImport;
+ const roomDetails=()=>({operation:workflow[workflowStage].title,phaseId:workflow[workflowStage].key});
+ function loadRoom(){
+  if(!/^https?:/.test(location.protocol))return;
+  cleanroomImport??=import('/simulations/foundry/cleanroom-player.js').then(m=>{
+   const host=document.createElement('div');$('workflow-player').after(host);
+   cleanroom=m.mountTimedCleanroom(host,'utah-slant-compare');
+  }).catch(()=>{});
+  return cleanroomImport;
+ }
 const Wdrop=()=>{clearTimeout(workflowTimer);workflowTimer=undefined;workflowMotion?.cancel();};
 function workflowAnnounce(s){$('workflow-live').textContent=s;}
 function workflowStop(notify=false){
  if(workflowState!=='playing')return;
- Wdrop();workflowState='paused';renderWorkflow();
+ Wdrop();cleanroom?.pause();workflowState='paused';renderWorkflow();
  if(notify)workflowAnnounce('Workflow paused at step '+(workflowStage+1)+'.');
 }
 function workflowReplay(){
  if(workflowState==='playing'){workflowStop(true);return;}
  if(!q||q.error)return;
- if(workflowState!=='paused'||workflowStage===workflow.length-1)workflowStage=0;
+ const restart=workflowState!=='paused';
+ if(restart){workflowStage=0;cleanroom?.reset();}
  workflowState='playing';workflowShow(workflowStage,true);
  if($('workflow-plate').getBoundingClientRect().bottom>innerHeight)$('workflow-player').scrollIntoView({block:'start',behavior:'auto'});
- workflowQueue();
+ Promise.resolve(loadRoom()).then(()=>{if(workflowState==='playing')workflowQueue(!restart);});
 }
-function workflowQueue(){
+function workflowQueue(resume=false){
  clearTimeout(workflowTimer);
- workflowTimer=setTimeout(()=>{
+ function step(){
   workflowTimer=undefined;
   if(workflowState!=='playing')return;
-  const next=workflowStage+1;
-  if(next>=workflow.length-1)workflowState='complete';
-  workflowShow(next,true);
-  if(workflowState==='playing')workflowQueue();
- },WORKFLOW_DWELL);
+  const next=workflowStage+1,last=workflow.length-1;
+  if((cleanroom?next>last:next>=last)){
+   workflowState='complete';workflowShow(last,true);return;
+  }
+  workflowShow(next,true);workflowQueue();
+ }
+ if(cleanroom){if(!resume||!cleanroom.resume())cleanroom.start(workflowStage,roomDetails(),step,reducedWorkflow.matches?WORKFLOW_DWELL:undefined);}
+ else workflowTimer=setTimeout(step,WORKFLOW_DWELL);
 }
 function workflowShow(i,motion=false){
  workflowStage=clamp(i,0,workflow.length-1);
+ if(workflowState!=='playing')cleanroom?.preview(workflowStage,roomDetails());
  if(workflowStage===workflow.length-1&&!q?.error&&!q?.outOfEnvelope)test();
  renderWorkflow();
  workflowAnnounce('Step '+(workflowStage+1)+', '+workflow[workflowStage].title+(workflowState==='complete'?'. Workflow complete.':'.'));
