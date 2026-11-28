@@ -19,7 +19,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
         const tracks=spec.cleanroomTracks||[{read:()=>{const p=spec.read();return {index:Math.max(0,p.completed-1),operation:p.text};}}];
         rooms=tracks.map(track=>{
           const host=document.createElement("div");panel.after(host);
-          return {player:m.mountTimedCleanroom(host,slug),track};
+          return {player:m.mountTimedCleanroom(host,slug,{speed:tracks.length===1}),track};
         });
         if(rooms.length>1) panel.nextElementSibling.after(panel.nextElementSibling.nextElementSibling);
         return !!rooms.length;
@@ -138,11 +138,11 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
   function manual(ev) {
     if (ev.type === "keydown" && ev.key === "Escape") { pause(); return; }
     const target = ev.target instanceof Element ? ev.target : null;
-    if (!target || target.closest("[data-foundry-playback]") ||
+    if (!target || target.closest("[data-foundry-playback],.cr-room") ||
         !target.closest(interaction)) return;
     if (ev.type === "keydown" && ["Tab", "Shift", "Control", "Alt", "Meta"].includes(ev.key)) return;
     pause("Playback paused for manual inspection. Press Play workflow to resume.");
-    if(["click","input","change"].includes(ev.type))queueMicrotask(()=>{if(!running&&rooms.length)preview();});
+    if(["click","input","change"].includes(ev.type))requestAnimationFrame(()=>{if(!running&&rooms.length)preview();});
   }
   for (const name of ["pointerdown", "click", "input", "change", "keydown"]) {
     document.addEventListener(name, manual, true);

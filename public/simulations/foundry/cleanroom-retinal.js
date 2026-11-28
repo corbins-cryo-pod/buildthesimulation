@@ -119,7 +119,7 @@ export default [
   {
     "machine": "G&P POLI-500 AC",
     "equipmentId": "04-09",
-    "effect": "dice",
+    "effect": "polish",
     "operation": "Remove polysilicon overburden",
     "kind": "fabrication",
     "before": "Oxide-lined trenches temporarily filled with polysilicon",

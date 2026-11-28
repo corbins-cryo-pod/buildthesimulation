@@ -8,6 +8,12 @@
 
 .inline-traveler{border-top:1px solid var(--softline);display:flex;align-items:center;justify-content:space-between;gap:6px;padding:8px 12px;background:var(--well)}.inline-traveler .help{font-family:var(--mono);margin:0;font-variant-numeric:tabular-nums}.inline-traveler button{min-height:39px}@media(max-width:730px){.inline-traveler{padding:7px}.inline-traveler button{min-height:42px;padding:6px 8px;font-size:.75rem}}
 
+/* At phone width the native WebKit select popup reserves its longest option.
+   A full-width field preserves the text and focus ring without a scrollable page. */
+@media (max-width: 460px) {
+  .diagnosis .params { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* Foundry workflow controls */
 .foundry-playback{display:flex;align-items:center;gap:8px 12px;min-width:0;padding:8px 10px;margin:0;background:#e4ece0;color:#203b38;border:1px solid #b6c5b7;border-radius:2px;line-height:1.24;scroll-margin-block-start:8px}
 .foundry-playback button[data-foundry-play]{padding:7px 10px;min-height:43px;flex:none;line-height:1.15;white-space:nowrap;background:#274f4c;color:#fff7e6;border:1px solid #274f4c;border-radius:3px;font-size:13px;font-weight:725;cursor:pointer}
@@ -78,7 +84,7 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
         const tracks=spec.cleanroomTracks||[{read:()=>{const p=spec.read();return {index:Math.max(0,p.completed-1),operation:p.text};}}];
         rooms=tracks.map(track=>{
           const host=document.createElement("div");panel.after(host);
-          return {player:m.mountTimedCleanroom(host,slug),track};
+          return {player:m.mountTimedCleanroom(host,slug,{speed:tracks.length===1}),track};
         });
         if(rooms.length>1) panel.nextElementSibling.after(panel.nextElementSibling.nextElementSibling);
         return !!rooms.length;
@@ -197,11 +203,11 @@ window.installFoundryPlayback = function installFoundryPlayback(spec) {
   function manual(ev) {
     if (ev.type === "keydown" && ev.key === "Escape") { pause(); return; }
     const target = ev.target instanceof Element ? ev.target : null;
-    if (!target || target.closest("[data-foundry-playback]") ||
+    if (!target || target.closest("[data-foundry-playback],.cr-room") ||
         !target.closest(interaction)) return;
     if (ev.type === "keydown" && ["Tab", "Shift", "Control", "Alt", "Meta"].includes(ev.key)) return;
     pause("Playback paused for manual inspection. Press Play workflow to resume.");
-    if(["click","input","change"].includes(ev.type))queueMicrotask(()=>{if(!running&&rooms.length)preview();});
+    if(["click","input","change"].includes(ev.type))requestAnimationFrame(()=>{if(!running&&rooms.length)preview();});
   }
   for (const name of ["pointerdown", "click", "input", "change", "keydown"]) {
     document.addEventListener(name, manual, true);

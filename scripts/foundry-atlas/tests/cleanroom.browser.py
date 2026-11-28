@@ -48,13 +48,13 @@ with sync_playwright() as pw:
   play.click()
   room=page.locator('.cr-room')
   room.wait_for()
-  page.wait_for_function("document.querySelector('.cr-room')?.dataset.phase==='load'",timeout=7000)
+  page.wait_for_function("document.querySelector('.cr-room')?.dataset.phase==='load'",timeout=40000)
   page.get_by_role('button',name='Pause workflow',exact=True).click()
   stamp=room.get_attribute('data-phase')
   page.wait_for_timeout(1300)
   assert stamp==room.get_attribute('data-phase')
   play.click()
-  page.wait_for_function("document.querySelector('.cr-room')?.dataset.phase==='unload'",timeout=9000)
+  page.wait_for_function("document.querySelector('.cr-room')?.dataset.phase==='unload'",timeout=45000)
   assert room.locator('.cr-card').last.get_attribute('data-revealed')=='true'
   page.close()
   # Pin one known native model and an incompatible-size rejection independently of a catalog route.
@@ -65,14 +65,20 @@ with sync_playwright() as pw:
     const node=document.createElement('div');document.body.prepend(node);
     window.proof=mountCleanroom(node);
     proof.setStep({equipmentId:'02-10',operation:'Develop latent image',workpieceShape:'wafer',sizeMm:150,before:'Exposed resist wafer',after:'Developed resist wafer',settings:[['Mode','Virtual film witness']]});
-    proof.setProgress(.46);
+    proof.setProgress(0);
   }""")
-  page.locator('.cr-room[data-render=register] canvas').wait_for(timeout=20000)
+  page.wait_for_function("document.querySelector('canvas[data-cleanroom-world]')?.dataset.stageModel==='register'",timeout=20000)
+  canvas=page.locator('.cr-room[data-render=register] canvas[data-cleanroom-world]')
+  assert canvas.get_attribute('data-equipment')=='02-10' and canvas.get_attribute('data-fit')=='native-dry'
+  uid=canvas.get_attribute('data-track-id')
   if args.screens:page.locator('.cr-room').screenshot(path=args.screens/'register-developer.png')
   page.evaluate("""()=>{
     proof.setStep({equipmentId:'04-03',operation:'Deep silicon etch',workpieceShape:'wafer',sizeMm:200,before:'Patterned wafer',after:'Etched wafer'});
     proof.setProgress(.46);
   }""")
-  assert page.locator('.cr-room').get_attribute('data-render')=='schematic'
-  print('PASS: stage clock and pause, actual 3D model and incompatible geometry fallback')
+  page.wait_for_function("document.querySelector('canvas[data-cleanroom-world]')?.dataset.fit==='blocked'",timeout=8000)
+  canvas=page.locator('canvas[data-cleanroom-world]')
+  assert canvas.get_attribute('data-stage-model')!='register' and canvas.get_attribute('data-track-id')==uid
+  assert page.locator('.cr-room').get_attribute('data-render')=='teaching-3d'
+  print('PASS: stage clock/pause, original 3D register asset, continuously rendered 3D mismatch gate (no insertion)')
   browser.close()

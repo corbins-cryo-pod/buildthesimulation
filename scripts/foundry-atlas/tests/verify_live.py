@@ -34,7 +34,10 @@ def verify():
         verified=list(work.map(check,apps.values()))
     modules=['cleanroom-player.js','cleanroom-player.css','cleanroom-models.js',
              'cleanroom-data.js','cleanroom-silicon.js','cleanroom-flex.js',
-             'cleanroom-peripheral.js','cleanroom-retinal.js','cleanroom-gltf.js','cleanroom-buffer.js']
+             'cleanroom-peripheral.js','cleanroom-retinal.js','cleanroom-gltf.js','cleanroom-buffer.js',
+             'cleanroom-world-3d.js','cleanroom-decorator-3d.js','cleanroom-console-3d.js',
+             'cleanroom-machines-3d.js','cleanroom-workpiece-3d.js','cleanroom-64d-artwork.js',
+             'cleanroom-utah-3d.js','cleanroom-device-profiles-3d.js','cleanroom-retinal-3d.js']
     def check_asset(name):
         url=hub+name
         want=digest(expected('public'+url));seen=digest(get(url))

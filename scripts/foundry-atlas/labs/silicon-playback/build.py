@@ -1,4 +1,4 @@
-"""Insert the standalone player without modifying the existing simulation scripts."""
+"""Install the standalone player and a read-only Masmanidis witness adapter."""
 from pathlib import Path
 import argparse, hashlib, re
 P=Path(__file__).resolve().parent
@@ -10,8 +10,9 @@ NAMES={
 }
 css=(P/'src/player.css').read_bytes()
 js=(P/'src/player.js').read_bytes()
+mas_witness=(P/'src/mas64-witness.js').read_bytes()
 base=(
- '<section class="bts-workflow-player" aria-label="Workflow playback" data-workflow="{slug}">\n'
+ '<section class="bts-workflow-player" id="foundry-playback" aria-label="Workflow playback" data-workflow="{slug}">\n'
  '<div class="bts-flow-row"><div class="bts-flow-name" data-flow-role="name">Workflow playback</div>'
  '<div class="bts-flow-buttons"><button class="primary" type="button" data-flow-role="play">Play workflow</button>'
  '<button type="button" data-flow-role="replay">Replay workflow</button></div></div>\n'
@@ -36,6 +37,12 @@ MARKERS=(
 )
 def strip_player(html):
  """Remove only this renderer's three complete installed blocks, or fail safely."""
+ starts=html.count(b'/* bts-mas64-witness:start */')
+ endings=html.count(b'/* bts-mas64-witness:end */')
+ if starts!=endings or starts>1:raise ValueError('Partial or duplicate 64D witness adapter')
+ if starts:
+  html,n=re.subn(rb'/\* bts-mas64-witness:start \*/[\s\S]*?/\* bts-mas64-witness:end \*/\n',b'',html,count=1)
+  if n!=1:raise ValueError('Malformed 64D witness adapter')
  count=[html.count(marker) for marker,_ in MARKERS]
  if count==[0,0,0]:
   return html
@@ -49,6 +56,7 @@ def strip_player(html):
 def inject(src,slug):
  """Update the installed wrapper on an already wrapped file, or install on a clean one."""
  html=strip_player(src)
+ if slug=='masmanidis-64d-foundry':html=one(html,'window.mas64=()=>',mas_witness)
  html=one(html,'</head>',b'\n<style data-bts-workflow-player>\n'+css+b'</style>\n')
  html=one(html,NAMES[slug],base.format(slug=slug).encode())
  assert html.count(b'</body>')==1

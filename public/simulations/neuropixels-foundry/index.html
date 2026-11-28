@@ -24,7 +24,7 @@
 </head><body><main>
 <header><a href="/simulations/foundry/" style="color:inherit;font-size:.85rem">← Device foundry</a><span class="caps">NP1000 · Teaching simulation</span></header>
 <section class="hero"><div><span class="caps">Silicon-on-insulator → dual-band data</span><h1>Neuropixels <em>Foundry</em></h1><p>Follow a single die through modeled fabrication, wafer probe, packaging and readout. Change a process parameter and measure how that change carries all the way into the synthetic capture.</p></div><p class="note"><strong>Reference, not replica.</strong> The 200 mm 130 nm CMOS handoff and downstream module order are public. Earlier CMOS steps use a generic teaching flow. Coefficients, mask layouts, tolerances and wafer yield are not imec specifications.</p></section>
-<section class="bts-workflow-player" aria-label="Workflow playback" data-workflow="neuropixels-foundry">
+<section class="bts-workflow-player" id="foundry-playback" aria-label="Workflow playback" data-workflow="neuropixels-foundry">
 <div class="bts-flow-row"><div class="bts-flow-name" data-flow-role="name">Workflow playback</div><div class="bts-flow-buttons"><button class="primary" type="button" data-flow-role="play">Play workflow</button><button type="button" data-flow-role="replay">Replay workflow</button></div></div>
 <progress value="0" max="1" aria-label="Workflow progress" data-flow-role="progress"></progress>
 <div class="bts-flow-row"><span class="bts-flow-name" data-flow-role="now">Workflow</span><a data-flow-role="view" class="bts-flow-ready" hidden href="#">View current step ↓</a><a data-flow-role="output" class="bts-flow-ready" hidden href="#">View completed output ↓</a></div>
@@ -4153,6 +4153,14 @@ version 0.8.2
       output:cap,resets:true,state:s,ready:()=>allowed($("reset")),
       changed:()=>s().count>0||label.test(text($(identity))),
       restart(){inCapture=false;tries=0;return click($("reset"));},
+      prepareVisual(){
+        if(complete()||!allowed($("reset")))return;
+        const a=s();
+        if(a.position===total()||label.test(text($(identity))))return;
+        // Use the native dry preview on the current workpiece before animating it.
+        // The existing native commit guard remains the state authority.
+        click($("preview"));
+      },
       next(){
         if(complete()){inCapture=false;tries=0;return final("All modeled stations completed. The native same-seed synthetic output and run download are ready.",$(cap));}
         const a=s();
@@ -4272,7 +4280,16 @@ version 0.8.2
     for(const id of type==="utah-array-fabrication"?["scenario"]:type==="neuropixels-family"?["model","pattern","fault"]:type==="neuropixels-foundry"?["die"]:["field","face"]){
       if($(id)?.selectedOptions?.[0])settings.push(["Current virtual selection · "+id,text($(id).selectedOptions[0])]);
     }
-    return {operation:label,settings};
+    let specimenIdentity,nativeWitness;
+    if(type==="masmanidis-64d-foundry"){
+      const field=window.mas64?.().field||$("field")?.value;
+      const match=/^F([0-6])([0-6])$/.exec(field||"");
+      const channel=Number($("channel")?.value),face=$("face")?.value;
+      nativeWitness=window.mas64ProcessWitness?.();
+      if($("channel")?.selectedOptions[0])settings.push(["Selected physical site",text($("channel").selectedOptions[0])]);
+      if(match)specimenIdentity={label:field,fieldMm:[(+match[2]-3)*22,(+match[1]-3)*22],fieldSideMm:22,channel,face};
+    }
+    return {operation:label,settings,specimenIdentity,nativeWitness,dataset:type==='utah-array-fabrication'?{scenario:$('scenario')?.value}:undefined};
   }
   function tick(){
     if(state!=="running")return;
@@ -4280,6 +4297,7 @@ version 0.8.2
     const current=adapter.state(), index=type==="neuropixels-family"?current.count:current.position-1;
     if(cleanroom&&stationShown!==index&&index<current.total){
       stationShown=index;
+      if(type==="masmanidis-64d-foundry")adapter.prepareVisual?.();
       cleanroom.start(index,roomDetail(current.label),tick,motion.matches?900:undefined);
       return;
     }
@@ -4327,17 +4345,27 @@ version 0.8.2
   });
   role("restart").addEventListener("click",restart);
   role("keep").addEventListener("click",()=>{confirm.hidden=true;replay.focus({preventScroll:true});});
+  let manualRefresh=0;
+  function refreshManualRoom(){
+    const ticket=++manualRefresh;
+    let last='',tries=0;
+    const check=()=>{
+      if(ticket!==manualRefresh||!cleanroom||state==="running")return;
+      const s=adapter.state(),index=type==="neuropixels-family"?Math.min(s.count,s.total-1):s.position-1;
+      const detail=roomDetail(s.label),fingerprint=JSON.stringify([index,detail]);
+      if(fingerprint!==last){last=fingerprint;stationShown=-1;cleanroom.preview(index,detail);}
+      // Native async validation and click listeners must finish before the preview is bound.
+      if(++tries<4)setTimeout(check,80);
+    };
+    requestAnimationFrame(check);
+  }
   function manual(e){
     const n=e.target;
-    if(!e.isTrusted||!(n instanceof Element)||root.contains(n)||!n.closest(manualSelector))return;
+    if(!e.isTrusted||!(n instanceof Element)||root.contains(n)||n.closest(".cr-room")||!n.closest(manualSelector))return;
     if(e.type==="keydown"&&(e.key==="Tab"||e.key==="Escape"||e.ctrlKey||e.metaKey||e.altKey))return;
     manualSinceStart=true;
     pause("Paused for your manual interaction. Play uses the state you leave.");
-    if(cleanroom&&["click","input","change"].includes(e.type))queueMicrotask(()=>{
-      if(state==="running")return;
-      const a=adapter.state();stationShown=-1;
-      cleanroom.preview(type==="neuropixels-family"?Math.min(a.count,a.total-1):a.position-1,roomDetail(a.label));
-    });
+    if(cleanroom&&["click","input","change"].includes(e.type))refreshManualRoom();
   }
   for(const k of ["pointerdown","click","keydown","input","change"])document.addEventListener(k,manual,true);
   document.addEventListener("visibilitychange",()=>{if(document.hidden)pause("Paused while this page is in the background.");});

@@ -9,6 +9,7 @@ const phases = ['Transfer','Load','Set up','Run','Unload'];
 export const PHASE_ENDS = Object.freeze([.16,.32,.57,.81,1]);
 const clamp = (x) => Math.max(0,Math.min(1,Number(x)||0));
 export const registerMotion = p => p<=.32 ? clamp(p/.32) : p<=.81 ? 1 : clamp((1-p)/(1-.81));
+export const reducedPose = p => [0,.244,.445,.742,1][phaseIndex(p)];
 export const phaseIndex = p => Math.max(0, PHASE_ENDS.findIndex(end=>clamp(p)<=end));
 const mix=(a,b,t)=>a+(b-a)*t;
 const smooth=t=>{const x=clamp(t);return x*x*(3-2*x);};
@@ -177,137 +178,143 @@ function pose2D(p,style){
   return {x:mix(mix(78,319,load),158,out),y:mix(mix(223,sy,load),208,out),size:mix(mix(1,.58,load),.9,out)};
 }
 
-let webglAvailable;
-let glLoader;
-function getWebgl(){
-  if(webglAvailable===undefined){
-    try{
-      const c=document.createElement('canvas');
-      const gl=c.getContext('webgl2');
-      webglAvailable=!!gl;
-      gl?.getExtension('WEBGL_lose_context')?.loseContext();
-    }catch{webglAvailable=false;}
-  }
-  return webglAvailable;
+let worldModule;
+function moduleForWorld(){
+  return worldModule??=import('./cleanroom-world-3d.js');
 }
-function moduleForAsset(){
-  return glLoader ??= Promise.all([
-    import('/vendor/three/three.module.js'),
-    import('./cleanroom-gltf.js')
-  ]);
+function displayRecord(value){
+  const step=value||{};
+  const effect=effectOf(step);
+  const spec=step.nonphysical?'none':step.workpieceShape||specimenOf(step.specimen||'');
+  const afterSpec=step.outgoingShape||(step.afterSpecimen?specimenOf(step.afterSpecimen):spec);
+  const model=step.equipmentId?getCleanroomModel(step.equipmentId):null;
+  const shape=spec==='wafer'?'round':['die','panel'].includes(spec)&&step.sizeMm?'square':null;
+  const mm=step.sizeMm;
+  const canTrack=!!model?.wafer?.poses?.length&&shape;
+  const paired=canTrack&&mm?sampleCleanroomPose(model,.5,{shape,diameterMm:mm,sizeMm:mm}):null;
+  const fitLimit=paired?.status==='incompatible'?paired.fit.reason:'';
+  const imageFits=Boolean(model?.kind==='register-asset'&&canTrack&&mm&&model.handling!=='detached-witness'&&
+    (!model.wafer.shape||model.wafer.shape===shape)&&spec===afterSpec&&!['handoff','none'].includes(effect)
+    &&paired?.status==='match'&&step.allowModelMotion!==false&&!step.nativeHold);
+  return {...step,effect,spec,afterSpec,model,fitLimit,imageFits};
 }
-export function mountCleanroom(container){
+export function mountCleanroom(container,{onSpeedChange}={}){
   if(!cssRequested){
     const link=document.createElement('link'); link.rel='stylesheet'; link.href=new URL('cleanroom-player.css',base);
     document.head.append(link); cssRequested=true;
   }
   const room=document.createElement('section');room.className='cr-room';room.hidden=true;room.setAttribute('aria-label','Cleanroom walkthrough');
-  room.innerHTML=`<header><div class="cr-kicker">Cleanroom walkthrough</div><h3 class="cr-heading"></h3><div class="cr-status cr-route"></div><div class="cr-source"></div><button class="cr-model-toggle" type="button" hidden>View register model</button></header>
-  <div class="cr-grid"><section class="cr-machine" aria-label="Machine and specimen motion"><div class="cr-visual"><svg viewBox="0 0 560 305" aria-hidden="true"></svg></div><ol class="cr-phases" aria-label="Station sequence">${phases.map(x=>`<li>${x}</li>`).join('')}</ol><div class="cr-status cr-caption"></div></section>
+  room.innerHTML=`<header><div class="cr-kicker">Continuous 3D cleanroom</div><h3 class="cr-heading"></h3><div class="cr-status cr-route"></div><div class="cr-source"></div></header>
+  <div class="cr-grid"><section class="cr-machine" aria-label="Machine and specimen motion"><div class="cr-viewbar" aria-label="3D camera views" role="group" hidden>
+    <button type="button" data-cr-view="follow" aria-pressed="true">Follow specimen</button><button type="button" data-cr-view="room" aria-pressed="false">Room view</button>
+    <button type="button" data-cr-view="setup" aria-pressed="false">Operator panel</button>
+    <button type="button" data-cr-view="inspect" aria-pressed="false">Inspect 3D stack</button><button type="button" data-cr-view="reticle" aria-pressed="false" hidden>Source reticle</button><button type="button" data-cr-view="register" aria-pressed="false" hidden>Register model</button>
+    <button type="button" data-cr-explode aria-pressed="false" hidden>Separate layers</button>
+    <button type="button" data-cr-site-focus aria-pressed="false" hidden>Focus selected site</button><button type="button" data-cr-bond-focus aria-pressed="false" hidden>Focus die bond pad</button><button type="button" data-cr-enlarge aria-expanded="false">Enlarge 3D</button><label class="cr-speed" hidden>Tour speed <select aria-label="Tour speed"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+    </div><div class="cr-visual"><div class="cr-loading">Opening the 3D cleanroom…</div><div class="cr-artifact-label" aria-hidden="true" hidden></div><div class="cr-reticle-key" hidden></div><div class="cr-inset-label" aria-hidden="true">Magnified · 3D</div><div class="cr-cutaway-label" aria-hidden="true">Chamber cutaway · symbolic process cue</div><div class="cr-inspect-labels" hidden><span>Incoming 3D specimen</span><span>Outgoing 3D specimen</span></div><svg viewBox="0 0 560 305" aria-hidden="true"></svg></div><ol class="cr-phases" aria-label="Station sequence">${phases.map(x=>`<li>${x}</li>`).join('')}</ol><div class="cr-status cr-caption"></div><button type="button" class="cr-retry" hidden>Retry 3D</button></section>
   <section class="cr-controls" aria-label="Process programming"><h4></h4><p class="cr-status cr-command"></p><dl></dl></section></div>
   <div class="cr-compare"><div class="cr-card"><div class="cr-kicker">Incoming specimen</div><svg viewBox="0 0 240 58" aria-hidden="true"></svg><p></p></div><div class="cr-card"><div class="cr-kicker">Outgoing specimen</div><svg viewBox="0 0 240 58" aria-hidden="true"></svg><p class="cr-result"></p></div></div>
-  <p class="cr-qualify"></p>`;
+  <p class="cr-qualify"></p><dialog class="cr-dialog" aria-label="Enlarged 3D cleanroom"></dialog>`;
   container.append(room);
   const q=s=>room.querySelector(s),visual=q('.cr-visual'),svg=q('.cr-visual svg'),source=q('.cr-source'),caption=q('.cr-caption'),result=q('.cr-result');
-  const toggle=q('.cr-model-toggle');
+  const bar=q('.cr-viewbar'),visualLoading=q('.cr-loading'),inspectLabels=q('.cr-inspect-labels'),artifactLabel=q('.cr-artifact-label'),reticleKey=q('.cr-reticle-key');
+  const modeButtons=[...bar.querySelectorAll('[data-cr-view]')],explodeButton=q('[data-cr-explode]'),speedControl=q('.cr-speed');
+  const dialog=q('.cr-dialog'),machine=q('.cr-machine'),enlargeButton=q('[data-cr-enlarge]'),retry=q('.cr-retry'),siteButton=q('[data-cr-site-focus]'),bondButton=q('[data-cr-bond-focus]');
+  const machineAnchor=document.createComment('3D viewport home');machine.before(machineAnchor);
+  if(typeof dialog.showModal!=='function')enlargeButton.hidden=true;
+  function restoreViewport(){
+    if(machine.parentNode===dialog)machineAnchor.after(machine);
+    enlargeButton.setAttribute('aria-expanded','false');txt(enlargeButton,'Enlarge 3D');
+    requestAnimationFrame(()=>world?.refreshViewport());
+  }
+  dialog.addEventListener('close',restoreViewport);
+  enlargeButton.addEventListener('click',()=>{
+    if(dialog.open){dialog.close();return;}
+    dialog.append(machine);
+    try{
+      dialog.showModal();
+      enlargeButton.setAttribute('aria-expanded','true');txt(enlargeButton,'Exit enlarged view');
+      enlargeButton.focus({preventScroll:true});
+      requestAnimationFrame(()=>world?.refreshViewport());
+    }catch{restoreViewport();}
+  });
+  if(typeof onSpeedChange==='function'){speedControl.hidden=false;speedControl.lastElementChild.addEventListener('change',e=>onSpeedChange(Number(e.target.value)));}
   const [cardIn,cardOut]=room.querySelectorAll('.cr-card svg'),chips=[...room.querySelectorAll('.cr-phases li')];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  let token=0,scene=null,art=null,step={},model=null,stepProgress=0,e='none',spec='film',afterSpec='film',last=-1,programRow=-2,formChanged=false,modelOnly=false,fitLimit='';
-  function clear3D(){
-    token++;
-    if(scene){scene.free();scene=null;}
-    svg.hidden=false;
+  let world=null,initializing=false,failed=false,disposed=false,prepared=[],art=null,step={},model=null,stepProgress=0,e='none',spec='film',afterSpec='film',last=-1,programRow=-2,formChanged=false,fitLimit='',mode='follow',exploded=false,siteFocused='whole';
+  function fallback(){
+    if(disposed)return;
+    failed=true;world?.dispose();world=null;
+    if(dialog.open)dialog.close();
+    room.dataset.render='schematic';bar.hidden=true;inspectLabels.hidden=true;visualLoading.hidden=true;visual.removeAttribute('tabindex');retry.hidden=false;
+    txt(caption,'2D accessibility fallback · this browser could not start the 3D viewer');
   }
-  async function open3D(config,animation=true){
-    if(!config.assetUrl||(animation&&!config.wafer?.poses?.length)) return;
-    if(!getWebgl()){txt(caption,'Cutaway schematic · WebGL is unavailable on this device');return;}
-    const serial=token;
-    let renderer;
-    try{
-      let [T, {GLTFLoader}]=await moduleForAsset();
-      if(serial!==token)return;
-      const gltf=await new GLTFLoader().loadAsync(config.assetUrl);
-      const disposeModel=o=>{o.traverse(n=>{if(n.isMesh){
-        n.geometry?.dispose();for(const material of [n.material].flat().filter(Boolean)){for(const value of Object.values(material))if(value?.isTexture)value.dispose();material.dispose();}
-      }});};
-      if(serial!==token){disposeModel(gltf.scene);return;}
-      renderer=new T.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});
-      renderer.setPixelRatio(Math.min(1.5,devicePixelRatio||1));
-      const world=new T.Scene();world.background=new T.Color(0x1a2d27);
-      const station=gltf.scene, rot=config.assetRotation||[0,0,0], off=config.assetOffset||[0,0,0];
-      station.rotation.set(...rot);
-      station.position.set(...off);
-      if(Array.isArray(config.assetScale)) station.scale.set(...config.assetScale);
-      else station.scale.setScalar(config.assetScale||1);
-      world.add(station);
-      for(const name of animation?config.hideNodes||[]:[]){const n=station.getObjectByName(name);if(n)n.visible=false;}
-      world.add(new T.HemisphereLight(0xfdf9e2,0x496459,2.55));
-      const key=new T.DirectionalLight(0xe1f9e9,3);key.position.set(2,4,3);world.add(key);
-      const fill=new T.DirectionalLight(0xffeeb8,1.25);fill.position.set(-3,3,-2);world.add(fill);
-      const box=new T.Box3().setFromObject(station), floor=new T.GridHelper(Math.max(2.8,3*box.getSize(new T.Vector3()).length()),24,0x7f9e8b,0x3b584c);
-      floor.position.set((box.min.x+box.max.x)/2,box.min.y-.012,(box.min.z+box.max.z)/2); world.add(floor);
-      const camera=new T.PerspectiveCamera(35,1,.00002,70), target=config.camera?.target||[0,.6,0];
-      if(!animation||config.camera?.autoFit){
-        const center=box.getCenter(new T.Vector3()), rad=box.getSize(new T.Vector3()).length()*.5;
-        camera.position.copy(center).add(new T.Vector3(1.32,.95,2.2).multiplyScalar(Math.max(.01,rad)));
-        camera.lookAt(center);
-      }else {camera.position.set(...(config.camera?.eye||[2,1.55,2]));camera.lookAt(...target);}
-      const mm1=Number(step.sizeMm||config.wafer.nominalMm)||100;
-      const dia=mm1*.001,shape=spec==='wafer'?'round':'square';
-      const dims={shape,diameterMm:shape==='round'?mm1:undefined,sizeMm:shape==='square'?mm1:undefined};
-      const geometry=shape==='round'?new T.CylinderGeometry(dia*.5,dia*.5,Math.max(.0008,dia*.01),64):new T.BoxGeometry(dia,Math.max(.0008,dia*.01),dia);
-      const plate=new T.Mesh(geometry,new T.MeshStandardMaterial({color:0x93bbb5,roughness:.26,metalness:.17,emissive:0x203f39}));
-      world.add(plate);
-      renderer.domElement.setAttribute('aria-hidden','true');visual.append(renderer.domElement);
-      const draw=p=>{
-        const {position,rotation,visible,nodeOps}=(animation&&sampleCleanroomPose(config,registerMotion(p),dims)) || {};
-        for(const op of nodeOps||[]){
-          const n=station.getObjectByName(op.name);if(!n)continue;
-          if(op.position)n.position.set(...op.position);
-          if(op.rotation)n.rotation.set(...op.rotation);
-          if(op.visible!==undefined)n.visible=op.visible;
-        }
-        if(position)plate.position.set(...position); if(rotation)plate.rotation.set(...rotation);
-        plate.visible=visible!==false&&!!position;
-        plate.material.color.set(p>.8&&e!=='measure'&&e!=='none'?0xe9bd70:0x9bd7cc);
-        const w=visual.clientWidth,h=visual.clientHeight;if(!w||!h)return;
-        if(camera.aspect!==w/h){camera.aspect=w/h;camera.updateProjectionMatrix();}
-        const r=renderer.getSize(new T.Vector2());if(r.x!==w||r.y!==h)renderer.setSize(w,h,false);
-        renderer.render(world,camera);
-      };
-      const observer=typeof ResizeObserver==='function'?new ResizeObserver(()=>draw(stepProgress)):null;
-      observer?.observe(visual);
-      scene={draw,free(){
-        observer?.disconnect();disposeModel(station); plate.material.dispose();plate.geometry.dispose();floor.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();
-      }};
-      renderer.domElement.addEventListener('webglcontextlost',()=>{if(token===serial){
-        clear3D();room.dataset.render='schematic';txt(caption,'Schematic fallback. The register model could not stay active on this device.');
-      }});
-      svg.hidden=true;
-      txt(caption,animation?('3D Equipment Register model · '+(step.sizeMm?step.sizeMm+' mm virtual specimen':config.wafer.nominalMm+' mm Register demonstration specimen; workflow size not specified')+' · simplified dry motion'):'Original 3D Equipment Register model · inspection only; loading path not verified');
-      room.dataset.render='register';
-      draw(stepProgress);
-    }catch{
-      renderer?.dispose();if(serial===token)txt(caption,'Schematic fallback. The register model could not load on this device.');
-    }
+  function updateMode(){
+    for(const b of modeButtons)b.setAttribute('aria-pressed',String(b.dataset.crView===mode));
+    inspectLabels.hidden=mode!=='inspect';
+    explodeButton.hidden=mode!=='inspect';
+    explodeButton.setAttribute('aria-pressed',String(exploded));
+    txt(explodeButton,exploded?'Stack layers':'Separate layers');
+    room.dataset.view=mode;
+  }
+  function updateWorldStatus({render,hasExact,hasReticle,canInspect,canExplode,assetFailed}={}){
+    if(disposed||failed)return;
+    room.dataset.render=render||'teaching-3d';bar.hidden=false;visualLoading.hidden=true;retry.hidden=true;
+    const m=world?.getState().mode;
+    if(m)mode=m;
+    modeButtons.find(x=>x.dataset.crView==='inspect').hidden=!canInspect;
+    modeButtons.find(x=>x.dataset.crView==='register').hidden=!hasExact;
+    modeButtons.find(x=>x.dataset.crView==='reticle').hidden=!hasReticle;
+    updateMode();
+    explodeButton.disabled=!canExplode;
+    explodeButton.title=canExplode?'Separate supported layers vertically':'No separate layer spacing is supported for these states';
+    artifactLabel.hidden=!step.specimenIdentity?.label||mode==='inspect'||mode==='register'||mode==='setup';
+    reticleKey.hidden=mode!=='reticle';
+    const mapping=world?.getState().mapping;
+    let sourceSite=mode==='reticle'&&!!mapping&&step.surfaceFeatures?.reticleStage64D>=3;
+    siteButton.hidden=bondButton.hidden=!sourceSite;
+    siteButton.setAttribute('aria-pressed',String(siteFocused==='site'));
+    bondButton.setAttribute('aria-pressed',String(siteFocused==='bond'));
+    txt(siteButton,siteFocused==='site'?'Show full reticle':'Focus selected site');
+    txt(bondButton,siteFocused==='bond'?'Show full reticle':'Focus die bond pad');
+    txt(reticleKey,mapping?'CH '+mapping.channel+' · '+mapping.face+' PCB pin '+mapping.connectorPin+' · Intan index '+mapping.amplifierZero+ ' (0-based)'+(siteFocused==='site'?' · 90 µm recording-site detail':siteFocused==='bond'?' · 180 µm die-pad detail':''):'Source reticle witness · before pattern transfer where applicable');
+    const fit=step.nativeHold?'Native simulation hold · '+step.nativeHold:fitLimit?'Fit gate · '+fitLimit:step.kind==='unknown'?'External evidence boundary · no local process shown':
+      render==='register'?'Original 3D Equipment Register model · modeled dry handling':
+      assetFailed?'Register model unavailable · 3D teaching fixture shown':'3D teaching fixture · not an as-built machine';
+    txt(caption,mode==='reticle'?'Source mask witness · target geometry, not measured yield. Cyan marks the selected circuit; buried traces are diagnostic.':mode==='register'?'Original 3D register exterior · no specimen is processed in this view':
+      mode==='inspect'?(exploded?'Layer spacing and thickness are exaggerated. Only layers present in the teaching model are separated.':'Drag either 3D sample to rotate both. Layer height and feature width are enlarged.'):
+      mode==='setup'?'Virtual operator panel · shows documented or simulated inputs, not vendor operating instructions':fit);
+  }
+  function ensureWorld(){
+    if(world||initializing||failed||disposed)return;
+    initializing=true;room.dataset.render='loading-3d';visualLoading.hidden=false;retry.hidden=true;
+    moduleForWorld().then(({createCleanroomWorld})=>{
+      if(disposed)return;
+      world=createCleanroomWorld(visual,{onFailure:fallback,onState:updateWorldStatus});
+      if(!world){fallback();return;}
+      world.prepare(prepared);
+      if(art){world.setStep(step);world.setProgress(viewProgress(),reduced.matches);}
+    }).catch(fallback).finally(()=>{initializing=false;});
+  }
+  retry.addEventListener('click',()=>{
+    if(disposed||initializing)return;
+    failed=false;worldModule=null;mode='follow';exploded=false;updateMode();
+    visual.setAttribute('tabindex','0');ensureWorld();
+  });
+  function viewProgress(){
+    return reduced.matches?reducedPose(stepProgress):stepProgress;
   }
   function setStep(value){
-    step=value||{};room.hidden=false;clear3D();room.dataset.render='schematic';modelOnly=false;last=-1;programRow=-2;stepProgress=0;e=effectOf(step);
-    spec=step.nonphysical?'none':step.workpieceShape||specimenOf(step.specimen||'');
-    afterSpec=step.outgoingShape||(step.afterSpecimen?specimenOf(step.afterSpecimen):spec);
+    step=displayRecord(value);room.hidden=false;
+    last=-1;programRow=-2;stepProgress=0;
+    ({effect:e,spec,afterSpec,model,fitLimit}=step);
     formChanged=spec!==afterSpec;
-    model=step.equipmentId ? getCleanroomModel(step.equipmentId) : null;
-    const fitShape=spec==='wafer'?'round':spec==='die'&&step.sizeMm?'square':null;
-    let imageFits=model?.kind==='register-asset'&&!!model.wafer?.poses?.length&&model.handling!=='detached-witness'&&fitShape&&(!model.wafer.shape||model.wafer.shape===fitShape)&&!formChanged&&!['handoff','none'].includes(e);
-    fitLimit='';
-    if(model?.wafer?.poses?.length&&fitShape&&step.sizeMm){
-      const posed=sampleCleanroomPose(model,.5,{shape:fitShape,diameterMm:step.sizeMm,sizeMm:step.sizeMm});
-      if(posed?.status==='incompatible')fitLimit=posed.fit.reason;
-      if(!posed?.position||posed.visible===false) imageFits=false;
-    }
     const name=step.machine||model?.title||toolTypes[e]?.[0]||toolTypes.none[0];
+    const id=step.specimenIdentity;
+    txt(artifactLabel,id?.label?'Tracked field '+id.label+(id.channel?' · CH '+id.channel:''):'');
+    room.dataset.artifactIdentity=id?.label||'';
     txt(q('.cr-heading'),name);
-    txt(q('.cr-route'),[step.transferFrom?'From '+step.transferFrom:'',step.specimen,step.operation].filter(Boolean).join(' · '));
+    txt(q('.cr-route'),[step.transferFrom?'From '+step.transferFrom:'',id?.label?'Tracked field '+id.label:'',step.specimen,step.operation].filter(Boolean).join(' · '));
     source.replaceChildren();
     const href=model?.sourceUrl||(step.equipmentId?'/simulations/equipment/?id='+encodeURIComponent(step.equipmentId):'');
     if(href){
@@ -321,7 +328,7 @@ export function mountCleanroom(container){
       sampleShape(art.outgoing,afterSpec,({coat:'#d38eb1',deposit:'#ebc171',heat:'#a5cb9c',pattern:'#bca1d9',etch:'#9fc4d0',dice:'#bef3d9',assemble:'#dfbb78'})[e]||'#9ec5b9');
       if(e==='pattern'||e==='etch'||e==='dice')for(let i=-14;i<18;i+=7)path(art.outgoing,`M${i} -4 l-3 8`,'none','#406966',1);
     }
-    txt(caption,fitLimit?'Fit gate · '+fitLimit:imageFits?'Schematic while 3D is available to load · modeled loading path':'Cutaway schematic · not a claim about actual machine internals');
+    if(!world)txt(caption,failed?'2D accessibility fallback · this browser could not start the 3D viewer':'Loading 3D models and specimen geometry…');
     txt(q('.cr-controls h4'),(fitLimit||e==='handoff')?'Transfer gate':e==='measure'?'Inspection / readout setup':'Operator setup');
     const settings=q('.cr-controls dl');settings.replaceChildren();
     const rows=(step.settings||[]).filter(x=>Array.isArray(x)&&x.length===2);
@@ -336,30 +343,53 @@ export function mountCleanroom(container){
     cross(cardOut,afterSpec,stateChanges?e:visualCue(step.before||''),step.after);
     txt(q('.cr-qualify'),[
       step.evidence||'Illustrative operation only. No missing production recipe is inferred.',
+      step.nativeWitness?.summary?'Native candidate: '+step.nativeWitness.summary+'.':'',
       fitLimit?'The outgoing card describes the modeled or published target, not a result of this mismatched register fixture.':'',model?.limit||'', 'Motion and cross-sections are illustrative, not to scale. '+(step.context==='atlas'?'The Atlas shows evidence and handoffs, not physical production.':'The lab’s native controls run the process model.')
     ].filter(Boolean).join(' '));
-    toggle.hidden=!model?.assetUrl||!!imageFits;
-    txt(toggle,'View register model');
-    toggle.setAttribute('aria-pressed','false');
+    if(mode==='register'||(mode==='inspect'&&spec==='none'))mode='follow';
+    updateMode();
+    if(world)world.setStep(step);
+    else ensureWorld();
     setProgress(0);
-    if(imageFits)open3D(model);
   }
-  toggle.addEventListener('click',()=>{
-    if(!model?.assetUrl)return;
-    modelOnly=!modelOnly;clear3D();room.dataset.render='schematic';
-    toggle.setAttribute('aria-pressed',String(modelOnly));
-    txt(toggle,modelOnly?'Return to loading animation':'View register model');
-    if(modelOnly)open3D(model,false);
-    else txt(caption,'Cutaway schematic · no verified loading path for this specimen');
+  function setMode(next){
+    if(!world)return;
+    if(next==='inspect'&&spec==='none')return;
+    world.setMode(next);
+    const state=world.getState();mode=state.mode;
+    updateWorldStatus({render:state.model,hasExact:state.hasExact,hasReticle:state.hasReticle,canExplode:state.canExplode,assetFailed:state.assetFailed,canInspect:spec!=='none'});
+  }
+  for(const b of modeButtons)b.addEventListener('click',()=>setMode(b.dataset.crView));
+  function focusCircuit(part){
+    if(!world||mode!=='reticle'||!world.getState().mapping)return;
+    siteFocused=siteFocused===part?'whole':part;world.setSiteFocus(siteFocused);const state=world.getState();
+    updateWorldStatus({render:state.model,hasExact:state.hasExact,hasReticle:state.hasReticle,canExplode:state.canExplode,assetFailed:state.assetFailed,canInspect:spec!=='none'});
+  }
+  siteButton.addEventListener('click',()=>focusCircuit('site'));
+  bondButton.addEventListener('click',()=>focusCircuit('bond'));
+  explodeButton.addEventListener('click',()=>{
+    if(!world||mode!=='inspect'||!world.getState().canExplode)return;
+    exploded=!exploded;world.setExploded(exploded);const state=world.getState();
+    updateWorldStatus({render:state.model,hasExact:state.hasExact,hasReticle:state.hasReticle,canExplode:state.canExplode,assetFailed:state.assetFailed,canInspect:true});
   });
+  visual.addEventListener('keydown',ev=>{
+    if(!world)return;
+    const map={ArrowLeft:[-.14,0,0],ArrowRight:[.14,0,0],ArrowUp:[0,-.1,0],ArrowDown:[0,.1,0],'+':[0,0,-.12],'-':[0,0,.12]};
+    if(map[ev.key]){ev.preventDefault();world.adjust(...map[ev.key]);}
+    if(ev.key==='Home'){ev.preventDefault();world.resetCamera();}
+  });
+  visual.setAttribute('tabindex','0');
+  visual.setAttribute('aria-label','3D viewport. Drag or use arrow keys to orbit; pinch or use plus and minus to zoom; Home resets the camera.');
   function setProgress(value){
     if(!art)return;
-    const p=stepProgress=clamp(value),i=phaseIndex(p), drawP=reduced.matches?(i>=4?1:i>=1?.4:0):p;
+    const p=stepProgress=clamp(value),i=phaseIndex(p), drawP=reduced.matches?reducedPose(p):p;
     room.dataset.phase=phases[i].toLowerCase();
     if(i!==last){
       last=i;
       chips.forEach((ch,k)=>{ch.classList.toggle('cr-active',k===i);if(k===i)ch.setAttribute('aria-current','step');else ch.removeAttribute('aria-current');});
-      const command=fitLimit
+      const command=step.nativeHold
+        ? ['Bring the specimen to the modeled check.','Keep the specimen supported.','Review the native simulation result.','Hold: '+step.nativeHold,'No qualified outgoing workpiece is inferred.']
+        : fitLimit
         ? ['Carry the incoming specimen to the fit gate.','Stop before inserting the specimen.','Compare the workpiece and fixture dimensions.','No process runs on this fixture.','Review the expected output separately from this equipment check.']
         : e==='none'&&step.kind==='unknown'
         ? ['Identify the current workflow boundary.','No supported machine insertion.','Review what is and is not known.','No process is animated.','Do not infer material changes from this checkpoint.']
@@ -368,7 +398,11 @@ export function mountCleanroom(container){
         : e==='handoff'
         ? ['Bring the specimen to the boundary.','Stage the specimen in a transfer carrier.','Verify the handoff conditions.','Hold at the evidence boundary.','Show only the stated outgoing specimen.']
         : ['Carry the incoming specimen to this station.','Seat the specimen in the illustrated holder.','Review the known controls and recipe limits.','Run the modeled operation.','Remove the specimen and compare the result.'];
-      txt(q('.cr-command'),command[i]);
+      const carrier=step.surfaceFeatures;
+      const detail=carrier?.carrierBefore===false&&carrier?.carrierAfter===true&&i===3?'Turn the selected wafer front-side down onto the temporary support.':
+        carrier?.carrierBefore===true&&carrier?.carrierAfter===false&&i===3?'Separate the selected die from its temporary carrier, then inspect the released die on its own.':
+        carrier?.carrierBefore===true&&carrier?.carrierAfter===true&&i===4?'Unload the workpiece with its support still attached.':command[i];
+      txt(q('.cr-command'),detail);
 
       result.closest('.cr-card').dataset.revealed=String(i===4);
       cardOut.style.opacity=i<4?.38:1;
@@ -390,48 +424,93 @@ export function mountCleanroom(container){
     }
     if(art.door)art.door.setAttribute('transform',`translate(${-12*smooth(drawP/.24)+12*smooth((drawP-.38)/.19)-11*smooth((drawP-.8)/.15)} 0)`);
     if(art.zone)art.zone.setAttribute('opacity',(drawP>=.57&&drawP<.81)?(reduced.matches?.5:.20+.42*Math.sin(Math.PI*(drawP-.57)/.24)):0);
-    scene?.draw(drawP);
+    world?.setProgress(drawP,reduced.matches);
+  }
+  function reveal(){
+    if(disposed)return;
+    const run=()=>requestAnimationFrame(()=>{
+      const box=visual.getBoundingClientRect();
+      if(box.bottom>innerHeight+22||box.top<12)visual.scrollIntoView({block:'center',behavior:'instant'});
+    });
+    const stylesheet=document.querySelector('link[href$="cleanroom-player.css"]');
+    if(stylesheet&&!stylesheet.sheet)stylesheet.addEventListener('load',run,{once:true});
+    else run();
   }
   function onMotion(){setProgress(stepProgress);}
   reduced.addEventListener?.('change',onMotion);
-  return {setStep,setProgress,destroy(){reduced.removeEventListener?.('change',onMotion);clear3D();room.remove();}};
+  return {
+    setStep,setProgress,setMode,reveal,
+    prepare(steps=[]){prepared=steps.map(displayRecord);world?.prepare(prepared);},
+    reset(){prepared=[];mode='follow';exploded=false;siteFocused='whole';world?.reset();updateMode();},
+    getState(){return world?.getState()||{mode,hasWebGL:false,phase:stepProgress,render:room.dataset.render};},
+    destroy(){if(disposed)return;disposed=true;if(dialog.open)dialog.close();reduced.removeEventListener?.('change',onMotion);world?.dispose();room.remove();}
+  };
 }
 export const LAB_STAGE_MS=7000;
-export function mountLabCleanroom(container,slug){
-  const player=mountCleanroom(container);
-  let key='',previous=null,active=null;
+// A shader compile can stall a frame. Preserve a visible checkpoint without
+// making the rest of an ordinary 7-second station crawl on a slow browser.
+export function displayElapsed(delta,duration,rate=1){
+  return Math.max(0,Math.min(280,delta,duration*.12/rate))*rate;
+}
+export function mountLabCleanroom(container,slug,opts){
+  const player=mountCleanroom(container,opts);
+  let key='',previous=null,active=null,planned=false;
+  function prime(branch){
+    const total={'utah-array-fabrication':5,'utah-slant-compare':6,'neuropixels-foundry':20,
+      'masmanidis-64d-foundry':18,'neuropixels-family':5,'flex-rigid-ecog-foundry':16,
+      'ptnrgrid-foundry':19,'graphene-stack-compare':12,'mesh-electronics-foundry':10,'neurogrid-oect-foundry':8}[slug];
+    if(total)player.prepare(Array.from({length:total},(_,index)=>({...stageForLab(slug,index,{branch}),trackKey:slug+':'+index})));
+    planned=true;
+  }
   return {
     paint(index,p,details={}){
       const signature=JSON.stringify([index,details]);
+      if(active&&details.branch!==active.branch){
+        player.reset();planned=false;previous=null;active=null;key='';
+      }
+      if(!planned)prime(details.branch);
       if(signature!==key){
         let stage=stageForLab(slug,index,details);
         if(active&&active.index!==index)previous=active.stage;
-        stage={...stage,transferFrom:stage.transferFrom||(previous?.machine||'')};
+        stage={...stage,trackKey:slug+':'+(slug==='rolled-microchannels-foundry'?(details.phaseId||index):index),transferFrom:stage.transferFrom||(previous?.machine||'')};
         player.setStep(stage);
-        active={index,stage};
+        active={index,stage,branch:details.branch};
         key=signature;
       }
       player.setProgress(p);
     },
-    reset(){key='';previous=null;active=null;},
+    getState:player.getState,reveal:player.reveal,
+    reset(){key='';previous=null;active=null;planned=false;player.reset();},
     destroy:player.destroy,
   };
 }
 /* Clock used by lab players that previously advanced only via setTimeout. */
-export function mountTimedCleanroom(container,slug){
-  const lab=mountLabCleanroom(container,slug);
-  let raf=0,start=0,elapsed=0,duration=LAB_STAGE_MS,index=0,details={},live=false,done=null,inProgress=false;
+export function mountTimedCleanroom(container,slug,options={}){
+  let raf=0,start=0,loadedAt=0,opened=false,elapsed=0,duration=LAB_STAGE_MS,index=0,details={},live=false,done=null,inProgress=false,rate=1;
+  const setRate=value=>{
+    if(![.5,1,2].includes(value))return;
+    if(live&&start){
+      const now=performance.now();
+      elapsed=Math.min(duration,elapsed+displayElapsed(now-start,duration,rate));
+      start=now;
+    }
+    rate=value;
+  };
+  const lab=mountLabCleanroom(container,slug,{onSpeedChange:options.speed===false?undefined:setRate});
   const update=t=>{
     if(!live)return;
-    if(!start)start=t;
-    const u=Math.min(duration,elapsed+t-start);
+    if(!loadedAt)loadedAt=t;
+    if((lab.getState().render==='loading-3d'||lab.getState().hasWebGL&&!lab.getState().hasPresented)&&t-loadedAt<4500){raf=requestAnimationFrame(update);return;}
+    if(start)elapsed+=displayElapsed(t-start,duration,rate);
+    start=t;
+    const u=Math.min(duration,elapsed);
     lab.paint(index,u/duration,details);
     if(u<duration){raf=requestAnimationFrame(update);return;}
     live=false;inProgress=false;start=0;elapsed=0;const cb=done;done=null;cb?.();
   };
   return {
-    start(i,value,callback,time=LAB_STAGE_MS){cancelAnimationFrame(raf);index=i;details=value;done=callback;duration=time;start=0;elapsed=0;inProgress=true;live=true;lab.paint(index,0,details);raf=requestAnimationFrame(update);},
-    pause(){if(!live)return;elapsed+=start?performance.now()-start:0;start=0;live=false;cancelAnimationFrame(raf);},
+    start(i,value,callback,time=LAB_STAGE_MS){cancelAnimationFrame(raf);index=i;details=value;done=callback;duration=time;start=0;loadedAt=0;elapsed=0;inProgress=true;live=true;lab.paint(index,0,details);if(!opened){opened=true;lab.reveal();}raf=requestAnimationFrame(update);},
+    pause(){if(!live)return;elapsed+=start?displayElapsed(performance.now()-start,duration,rate):0;start=0;live=false;cancelAnimationFrame(raf);},
     resume(){if(!inProgress)return false;live=true;raf=requestAnimationFrame(update);return true;},
     preview(i,value){cancelAnimationFrame(raf);live=false;inProgress=false;done=null;lab.paint(i,1,value);},
     reset(){cancelAnimationFrame(raf);live=false;inProgress=false;done=null;lab.reset();}

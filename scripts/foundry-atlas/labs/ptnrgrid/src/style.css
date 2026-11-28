@@ -6,3 +6,9 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 
 .inline-traveler{border-top:1px solid var(--softline);display:flex;align-items:center;justify-content:space-between;gap:6px;padding:8px 12px;background:var(--well)}.inline-traveler .help{font-family:var(--mono);margin:0;font-variant-numeric:tabular-nums}.inline-traveler button{min-height:39px}@media(max-width:730px){.inline-traveler{padding:7px}.inline-traveler button{min-height:42px;padding:6px 8px;font-size:.75rem}}
+
+/* At phone width the native WebKit select popup reserves its longest option.
+   A full-width field preserves the text and focus ring without a scrollable page. */
+@media (max-width: 460px) {
+  .diagnosis .params { grid-template-columns: minmax(0, 1fr); }
+}

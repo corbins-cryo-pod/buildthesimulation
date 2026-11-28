@@ -10,8 +10,14 @@ test('foundry catalog links all three labs and two newly published engines remai
  assert.ok(reg.includes('href="/simulations/foundry/"'));
  assert.ok(hub.includes('/simulations/utah-array-fabrication/'));
  for(const [slug,hash] of Object.entries(paths)){
-  const html=read('public/simulations/'+slug+'/index.html'), code=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
-  assert.ok(code);assert.equal(sha(code),hash);assert.ok(hub.includes('/simulations/'+slug+'/'));
+  const html=read('public/simulations/'+slug+'/index.html'); let code=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(code);
+  if(slug==='masmanidis-64d-foundry'){
+    const bridge=read('scripts/foundry-atlas/labs/silicon-playback/src/mas64-witness.js');
+    assert.equal(code.split(bridge).length,2,'exactly one canonical read-only witness bridge');
+    code=code.replace(bridge,'');
+  }
+  assert.equal(sha(code),hash);assert.ok(hub.includes('/simulations/'+slug+'/'));
   assert.match(html,new RegExp('https://buildthesimulation.com/simulations/'+slug+'/'));
   assert.doesNotMatch(html,/libfile_[\w-]{15,}|sediment:\/\/| · Offline/);
  }

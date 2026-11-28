@@ -1,4 +1,4 @@
-/* Source-aware workflow playback: schematic keyframes, not fabrication parameters. */
+/* Source-aware 3D workflow playback; schematic fallback is available offline. */
 ((root)=>{
 'use strict';
 const list=x=>Array.isArray(x)?x:[];
@@ -122,11 +122,11 @@ function pose(parts,kind,t){
 const glyph='<svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16"><path fill="currentColor" d="M4 2v12l10-6z"/></svg>';
 const pauseGlyph='<svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16"><path fill="currentColor" d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg>';
 function create(el,profile,variant,actions={}){
- const plan=makePlan(profile,variant),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const plan=makePlan(profile,variant),motion=matchMedia('(prefers-reduced-motion: reduce)'),online=/^https?:$/.test(location.protocol);
  el.dataset.playerPlan=plan.kind;
  el.dataset.playerProfile=profile.id;el.dataset.playerVariant=variant?.id||'';
  if(plan.kind==='boundary'){
-  el.innerHTML='<div class="workflow-top"><div><p class="overline">Workflow player</p><h4 id="workflow-heading">Scope boundary</h4></div><span class="tag external">No playable sequence</span></div><p class="workflow-note"></p><div class="workflow-plate" aria-hidden="true">'+drawing('boundary')+'</div><div class="workflow-copy"><p>Read the route’s stated limitations. The atlas does not fill missing manufacturing information with a schematic recipe.</p></div>';
+  el.innerHTML='<div class="workflow-top"><div><p class="overline">Workflow player</p><h4 id="workflow-heading">Scope boundary</h4></div><span class="tag external">No playable sequence</span></div><p class="workflow-note"></p>'+(online?'':'<div class="workflow-plate" aria-hidden="true">'+drawing('boundary')+'</div>')+'<div class="workflow-copy"><p>Read the route’s stated limitations. The Atlas does not animate undisclosed operations.</p></div>';
   el.querySelector('.workflow-note').textContent=plan.message;
   return {destroy(){}};
  }
@@ -140,17 +140,55 @@ function create(el,profile,variant,actions={}){
   el.querySelector('#workflow-pick').addEventListener('click',()=>actions.focusBranch?.());
   return {destroy(){}};
  }
- el.innerHTML='<div class="workflow-top"><div><p class="overline">Workflow player</p><h4 id="workflow-heading">Play this sequence</h4></div><span class="tag" id="workflow-mode"></span></div><p class="workflow-note"></p><div class="workflow-controls" role="group" aria-label="Playback controls"><button type="button" class="wf-play" id="workflow-play">'+glyph+'Play workflow</button><button type="button" class="wf-control" id="workflow-prev" aria-label="Previous handoff">← Prev</button><button type="button" class="wf-control" id="workflow-next" aria-label="Next handoff">Next →</button><button type="button" class="wf-control" id="workflow-replay">Replay</button><label class="wf-speed" for="workflow-speed">Speed<select id="workflow-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label></div><div class="workflow-progress" aria-hidden="true"><span></span></div><div class="workflow-equipment-view" hidden></div><div class="workflow-plate"></div><div class="workflow-stations" hidden aria-label="Stations in this handoff"><p class="workflow-station-note"></p><div class="workflow-station-list" role="group" aria-label="Inspect a station"></div><div class="workflow-station-link"></div></div><div class="workflow-copy"><div class="workflow-position"><span class="detail-eyebrow" id="workflow-position"></span><span class="tag" id="workflow-evidence"></span></div><h5 id="workflow-step"></h5><p id="workflow-caption"></p><p id="workflow-context"></p><button type="button" class="text-btn" id="workflow-read">Open handoff details ↓</button></div><p class="wf-limits" id="workflow-limits"></p><p class="sr-only" id="workflow-live" role="status" aria-atomic="true"></p>';
+ el.innerHTML=`
+  <div class="workflow-top"><div><p class="overline">Workflow player</p><h4 id="workflow-heading">Foundry walkthrough</h4></div><span class="tag" id="workflow-mode"></span></div>
+  <p class="workflow-note"></p>
+  <div class="workflow-transport">
+   <div class="workflow-controls" role="group" aria-label="Playback controls">
+    <button type="button" class="wf-play" id="workflow-play">${glyph}Play workflow</button>
+    <button type="button" class="wf-control" id="workflow-prev" aria-label="Previous handoff">← Prev</button>
+    <button type="button" class="wf-control" id="workflow-next" aria-label="Next handoff">Next →</button>
+    <button type="button" class="wf-control" id="workflow-replay">Replay</button>
+    <label class="wf-speed" for="workflow-speed">Speed<select id="workflow-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+   </div>
+   <div class="workflow-position"><span class="detail-eyebrow" id="workflow-position"></span><span class="tag" id="workflow-evidence"></span></div>
+  </div>
+  <div class="workflow-progress" aria-hidden="true"><span></span></div>
+  <div class="workflow-loading" hidden><div><p class="overline">Equipment view</p><p>Preparing the cleanroom view…</p></div></div>
+  <div class="workflow-equipment-view" role="region" aria-label="Cleanroom equipment view" hidden></div>
+  <div class="workflow-plate" hidden></div>
+  <div class="workflow-stations" hidden aria-label="Stations in this handoff"><p class="workflow-station-note"></p><div class="workflow-station-list" role="group" aria-label="Inspect a station"></div><div class="workflow-station-link"></div></div>
+  <div class="workflow-copy"><h5 id="workflow-step"></h5><p id="workflow-caption"></p><p id="workflow-context"></p><button type="button" class="text-btn" id="workflow-read">Open handoff details ↓</button></div>
+  <p class="wf-limits" id="workflow-limits"></p><p class="sr-only" id="workflow-live" role="status" aria-atomic="true"></p>`;
  const $=s=>el.querySelector(s),bar=$('.workflow-progress span'),face=$('.workflow-plate');
- const equipped=$('.workflow-equipment-view'),rail=$('.workflow-stations'),railNote=$('.workflow-station-note'),stationList=$('.workflow-station-list'),stationLink=$('.workflow-station-link');
+ const equipped=$('.workflow-equipment-view'),loadingView=$('.workflow-loading'),rail=$('.workflow-stations'),railNote=$('.workflow-station-note'),stationList=$('.workflow-station-list'),stationLink=$('.workflow-station-link');
  const go=$('#workflow-play'),prev=$('#workflow-prev'),next=$('#workflow-next'),again=$('#workflow-replay'),pace=$('#workflow-speed');
  const header=$('#workflow-mode'),record=$('#workflow-position'),label=$('#workflow-evidence'),stageTitle=$('#workflow-step'),context=$('#workflow-context'),caption=$('#workflow-caption'),live=$('#workflow-live'),limits=$('#workflow-limits');
- const items=root.AtlasCleanroomScenes?.makeScenes(profile,variant,plan.steps, actions.lookupEquipment)||plan.steps;
- const total=items.reduce((n,item)=>n+(item.stations?.length||0),0);
+ const items=(root.AtlasCleanroomScenes?.makeScenes(profile,variant,plan.steps,actions.lookupEquipment)||plan.steps)
+  .map(item=>({...item,stations:list(item.stations).map((s,j)=>({...s,trackKey:[profile.id,variant?.id||'baseline',item.index,j].join(':')}))}));
+ const scenes=items.flatMap(item=>list(item.stations)),total=scenes.length;
  const offsets=items.reduce((a,item)=>[...a,a[a.length-1]+(item.stations?.length||0)],[0]);
- let state='ready',index=0,station=0,span=0,last=null,speed=1,ticket=0,parts={},renderer,dead=false,manualPose=false,painted=-1,visibleItem=-1;
+ let state='ready',index=0,station=0,span=0,last=null,speed=1,ticket=0,parts={},renderer,dead=false,manualPose=false,painted=-1,visibleItem=-1,viewWatch;
  const rich=()=>Boolean(renderer),duration=()=>rich()?equipmentDuration:plateDuration,current=()=>items[index]?.stations?.[station],stationCount=()=>rich()?(items[index]?.stations?.length||1):1;
  function cue(text){live.textContent=text;}
+ function resetCustody(){try{Promise.resolve(renderer?.reset?.()).catch(()=>{});}catch{/* Optional renderer capability. */}}
+ function closeRenderer(){
+  viewWatch?.disconnect();viewWatch=undefined;
+  resetCustody();try{renderer?.destroy()}catch{}renderer=undefined;
+ }
+ function waitingForView(){return el.dataset.playerRender==='loading'||el.dataset.playerView==='loading-3d';}
+ function reflectView(){
+  const kind=equipped.querySelector('.cr-room')?.dataset.render,old=el.dataset.playerView;
+  if(!kind||old===kind)return;
+  el.dataset.playerView=kind;
+  $('#workflow-heading').textContent=kind==='register'||kind==='teaching-3d'?'3D foundry walkthrough':'Foundry walkthrough';
+  if(old==='loading-3d'&&!waitingForView()&&state==='playing'){last=null;playCue();arm();}
+ }
+ function prewarm(){
+  // Set up only this branch's actual stations; do not queue other branches
+  // or wait on their assets before starting the current presentation.
+  try{Promise.resolve(renderer?.prepare?.(scenes)).catch(()=>{});}catch{/* Each asset can still load on demand. */}
+ }
  function form(){
   el.dataset.playerState=state;
   const copy=state==='playing'?'Pause':state==='paused'?'Resume':state==='finished'?'Play again':'Play workflow';
@@ -162,11 +200,11 @@ function create(el,profile,variant,actions={}){
  }
  function unavailable(){
   const ratio=clamp(span/duration());
-  try{renderer?.destroy()}catch{}
-  renderer=undefined;equipped.replaceChildren();equipped.hidden=true;face.hidden=false;rail.hidden=true;
+  closeRenderer();equipped.replaceChildren();equipped.hidden=true;loadingView.hidden=true;face.hidden=false;rail.hidden=true;
   station=0;span=ratio*plateDuration;painted=-1;
   el.dataset.playerRender='schematic';
-  delete el.dataset.playerStation;delete el.dataset.playerEquipment;delete el.dataset.playerStationKind;
+  $('#workflow-heading').textContent='Schematic walkthrough';
+  delete el.dataset.playerStation;delete el.dataset.playerEquipment;delete el.dataset.playerStationKind;delete el.dataset.playerView;
   limits.textContent=location.protocol==='file:'?'Offline view: workflow diagrams are available. Open the online atlas for equipment-model animation.':'Equipment models are unavailable here. This schematic player preserves the route, evidence and handoff controls.';
  }
  function paint(progress){
@@ -179,7 +217,7 @@ function create(el,profile,variant,actions={}){
     painted=poseAt;
     try{renderer.setProgress(poseAt)}catch{unavailable();show(manualPose);}
    }
-  }else pose(parts,items[index].kind,poseAt);
+  }else if(!face.hidden)pose(parts,items[index].kind,poseAt);
  }
  function updateStations(){
   const scene=current(),count=stationCount(),stations=items[index].stations;
@@ -229,15 +267,17 @@ function create(el,profile,variant,actions={}){
    try{renderer.setStep(scene);painted=-1;updateStations();}
    catch{unavailable();}
   }
-  if(!rich()){
+  if(!rich()&&!face.hidden){
    face.innerHTML=drawing(item.kind);parts=Object.fromEntries([...face.querySelectorAll('[data-part]')].map(x=>[x.dataset.part,x]));
    face.setAttribute('role','img');face.setAttribute('aria-label',lessons[item.kind][1]);
   }
   paint(final?1:clamp(span/duration()));form();
  }
  function stop(){cancelAnimationFrame(ticket);ticket=0;last=null;}
+ function arm(){if(!ticket&&state==='playing'&&el.isConnected&&!waitingForView())ticket=requestAnimationFrame(frame);}
  function frame(now){
-  if(state!=='playing'||!el.isConnected)return;
+  ticket=0;
+  if(state!=='playing'||!el.isConnected||waitingForView())return;
   if(last!==null)span+=Math.min(100,now-last)*speed;last=now;
   const length=duration();
   if(span>=length){
@@ -252,17 +292,23 @@ function create(el,profile,variant,actions={}){
    }
    show();
   }else paint(clamp(span/length));
-  ticket=requestAnimationFrame(frame);
+  arm();
+ }
+ function playCue(){
+  cue(waitingForView()?'Playback will begin when the equipment view is ready.':'Playing handoff '+(index+1)+': '+items[index].step.title+'.');
  }
  function start(reset=false){
   if(state==='playing'){if(!reset)return;stop();}
-  if(reset||state==='finished'){index=0;station=0;span=0;}
-  manualPose=false;state='playing';last=null;show();cue('Playing handoff '+(index+1)+': '+items[index].step.title+'.');
-  ticket=requestAnimationFrame(frame);
+  const restart=reset||state==='finished';
+  if(restart){resetCustody();prewarm();index=0;station=0;span=0;}
+  manualPose=false;state='playing';last=null;
+  if(restart)show();
+  else{form();paint(clamp(span/duration()));}
+  playCue();arm();
  }
  function pause(){if(state!=='playing')return;stop();state='paused';form();cue('Paused at handoff '+(index+1)+'.');}
  function isManual(i,j){
-  stop();state='paused';index=i;station=j;span=0;manualPose=true;show(true);
+  stop();resetCustody();prewarm();state='paused';index=i;station=j;span=0;manualPose=true;show(true);
   cue('Handoff '+(index+1)+': '+items[index].step.title+'. '+(rich()?'Station: '+current().stationLabel+'. ':'')+'Playback is paused.');
  }
  function manual(delta){const i=index+delta;if(i>=0&&i<items.length)isManual(i,0);}
@@ -278,25 +324,33 @@ function create(el,profile,variant,actions={}){
  });
  $('#workflow-read').addEventListener('click',()=>{pause();actions.readStep?.(items[index].index)});
  $('.workflow-note').textContent=plan.message;
- unavailable();show();
- if(total&&/^https?:$/.test(location.protocol)){
+ if(total&&online){
   el.dataset.playerRender='loading';
-  limits.textContent='Loading equipment models. Basic handoff diagrams are available now.';
+  loadingView.hidden=false;
+  limits.textContent='The 3D view is being prepared.';
+  show();
+  const fallback=()=>{if(!dead&&el.isConnected){unavailable();show(manualPose);if(state==='playing')playCue();arm();}};
   loadRenderer().then(mod=>{
    if(dead||!el.isConnected)return;
    const ratio=clamp(span/duration());
-   equipped.hidden=false;
+   loadingView.hidden=true;equipped.hidden=false;
    try{
-    renderer=mod.mountCleanroom(equipped);
+    renderer=mod.mountCleanroom(equipped,{context:'atlas'});
     if(!renderer||['setStep','setProgress','destroy'].some(k=>typeof renderer[k]!=='function'))throw Error('Invalid equipment player');
+    resetCustody();prewarm();
     face.hidden=true;span=ratio*equipmentDuration;
     el.dataset.playerRender='equipment';
+    viewWatch=new MutationObserver(reflectView);
+    viewWatch.observe(equipped,{attributes:true,subtree:true,attributeFilter:['data-render']});
     limits.textContent='Register models are teaching comparisons. Settings show what this handoff controls, not qualified machine values. The same carrier moves only where supported; separate witnesses and external handoffs are marked.';
     show(manualPose||state==='ready'||state==='finished');
-   }catch{unavailable();show(manualPose);}
-  }).catch(()=>{if(!dead&&el.isConnected){unavailable();show(manualPose);}});
- }
- return {start, destroy(){dead=true;stop();try{renderer?.destroy()}catch{}document.removeEventListener('visibilitychange',onVisibility);motion.removeEventListener?.('change',onMotion);}};
+    if(rich())reflectView();
+    if(state==='playing')playCue();
+    arm();
+   }catch{fallback();}
+  }).catch(fallback);
+ }else{unavailable();show();}
+ return {start, destroy(){dead=true;stop();closeRenderer();document.removeEventListener('visibilitychange',onVisibility);motion.removeEventListener?.('change',onMotion);}};
 }
 const api={makePlan,classify,create};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AtlasWorkflowPlayer=api;

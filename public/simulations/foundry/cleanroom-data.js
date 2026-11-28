@@ -17,6 +17,8 @@ const stent=[
  settings:[['Setup / goal',target],['Scope','Oxley research reconstruction; not the Synchron product process of record']],
  evidence:'The published research sequence and the simulated geometry and electrical fixtures are distinct. No production setup or missing qualification is inferred.'
 }));
+const beginsDigitally=new Set(['self-closing-cuff-foundry','time-4h-foundry','rolled-microchannels-foundry']);
+const deviceProfiles=new Set(['self-closing-cuff-foundry','time-4h-foundry','rolled-microchannels-foundry','stentrode-foundry','utah-array-fabrication','retinal-photovoltaic-foundry']);
 const lanes={...silicon,...flex,...peripheral,'stentrode-foundry':stent,'retinal-photovoltaic-foundry':retinal};
 export function stageForLab(slug,index,details={}){
   const lane=lanes[slug];
@@ -24,13 +26,18 @@ export function stageForLab(slug,index,details={}){
   const s=({...phase,...(details.branch&&phase?.branches?.[details.branch]||{})});
   const operation=s.operation||details.operation||'Virtual station';
   const extra=Array.isArray(details.settings)?details.settings:[];
+  const witness=slug==='masmanidis-64d-foundry'&&details.nativeWitness?.stage===index?details.nativeWitness:null;
+  const heldOnCarrier=index>=11&&witness?.release?.qualified===false;
+  const rejected=heldOnCarrier||witness?.candidate&&witness.blocked;
+  const nativeHold=rejected?(witness.issues?.[0]||witness.summary||(heldOnCarrier?'Release was rejected; the selected field stays on its temporary support':'The native witness did not qualify')):'';
+  const result=s.after||details.after||'Inspect the native lab’s outgoing state; no additional change inferred.';
   return {
-    operation,kind:s.kind||details.kind||'unknown',specimen:s.specimen||details.specimen||'Virtual workpiece',
-    machine:s.machine||details.machine,equipmentId:Object.hasOwn(s,'equipmentId')?s.equipmentId:details.equipmentId,afterSpecimen:s.afterSpecimen, workpieceShape:s.workpieceShape||details.workpieceShape||(slug==='neuropixels-family'?'none':undefined), outgoingShape:s.outgoingShape||details.outgoingShape, sizeMm:s.sizeMm||details.sizeMm,
-    before:s.before||details.before||'Incoming workpiece as shown by the native lab.',
-    after:s.after||details.after||'Inspect the native lab’s outgoing state; no additional change inferred.',
+    operation,kind:s.kind||details.kind||'unknown',specimen:heldOnCarrier?'Selected 64D field still supported on the modeled SOI wafer':s.specimen||details.specimen||'Virtual workpiece',
+    machine:s.machine||details.machine,equipmentId:Object.hasOwn(s,'equipmentId')?s.equipmentId:details.equipmentId,afterSpecimen:heldOnCarrier?'Nothing released from the temporary support':s.afterSpecimen, workpieceShape:heldOnCarrier?'wafer':s.workpieceShape||details.workpieceShape||(slug==='neuropixels-family'?'none':undefined), outgoingShape:heldOnCarrier?'wafer':s.outgoingShape||details.outgoingShape, sizeMm:heldOnCarrier?150:s.sizeMm||details.sizeMm, allowModelMotion:s.allowModelMotion??details.allowModelMotion, surfaceFeatures:heldOnCarrier?{...s.surfaceFeatures,carrierBefore:true,carrierAfter:true}:s.surfaceFeatures||details.surfaceFeatures,processFace:s.processFace||details.processFace,
+    before:heldOnCarrier?lanes[slug][11].before:s.before||details.before||'Incoming workpiece as shown by the native lab.',
+    after:nativeHold?'Held. '+nativeHold:result, nativeWitness:witness,nativeHold,
     settings:[...(s.settings||[['Native operation',operation],['Machine setup','No qualified process recipe inferred']]),...extra],
     evidence:s.evidence||details.evidence||'Teaching depiction. The native lab controls determine the actual virtual result.',
-    effect:s.effect||details.effect,transferFrom:details.transferFrom,
+    effect:s.effect||details.effect,transferFrom:details.transferFrom,specimenIdentity:details.specimenIdentity,routeKey:slug,deviceProfile:deviceProfiles.has(slug)?slug:null,profileStage:index,profilePhase:details.phaseId,profileBranch:details.branch,profileDataset:details.dataset,independent:s.independent??details.independent,nonphysical:s.nonphysical??details.nonphysical??(index===0&&beginsDigitally.has(slug)),inspectionChangesShape:s.inspectionChangesShape??details.inspectionChangesShape,
   };
 }

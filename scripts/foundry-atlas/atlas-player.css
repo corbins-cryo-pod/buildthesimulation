@@ -36,3 +36,23 @@
 .workflow-equipment-view{container-type:inline-size}
 .workflow-equipment-view .cr-room{margin:0;border:0;border-radius:0;box-shadow:none}
 @container(max-width:590px){.workflow-equipment-view .cr-grid{grid-template-columns:minmax(0,1fr)}}
+/* The live viewport leads; program and evidence remain below rather than
+   squeezing machine geometry into one half of a narrow traveler. */
+.workflow-transport{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:6px}
+.workflow-transport .workflow-controls{flex:0 1 auto;min-width:0}
+.workflow-transport .workflow-position{padding:0 clamp(12px,2.3vw,19px) 7px}
+.workflow-loading{display:grid;place-items:center;min-height:clamp(166px,30vw,325px);color:#e3eddf;background:radial-gradient(ellipse at center,#2a493e 0%,#142d28 62%);text-align:center;padding:16px}
+.workflow-loading[hidden]{display:none!important}
+.workflow-loading .overline{margin-bottom:6px;color:#e3ba74}
+.workflow-equipment-view .cr-room .cr-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}
+.workflow-equipment-view .cr-room .cr-machine{order:-1}
+.workflow-equipment-view .cr-room .cr-visual{aspect-ratio:1.85;min-height:190px;max-height:min(480px,60svh)}
+.workflow-equipment-view .cr-room .cr-controls dl{grid-template-columns:repeat(auto-fit,minmax(min(100%,10.75rem),1fr))}
+.workflow-equipment-view .cr-room .cr-controls dd{font-size:.86rem}
+@media(max-width:720px){
+ .workflow-transport{display:block}
+ .workflow-transport .workflow-position{padding-top:1px}
+ .workflow-equipment-view .cr-room .cr-grid{padding:.5rem}
+ .workflow-equipment-view .cr-room .cr-visual{min-height:166px;max-height:min(360px,49svh)}
+}
+@media(max-width:720px){.workflow-equipment-view .cr-room .cr-viewbar button{min-height:44px}}

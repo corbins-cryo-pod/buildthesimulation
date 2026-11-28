@@ -42,3 +42,5 @@
  .fp-card{padding:8px}
 }
 @media(prefers-reduced-motion:reduce){.fp-player *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* The procedural plate is a fallback, never the active 3D walkthrough. */
+.fp-expanded:has(.cr-room[data-render=register],.cr-room[data-render=teaching-3d]) .fp-scene{display:none}

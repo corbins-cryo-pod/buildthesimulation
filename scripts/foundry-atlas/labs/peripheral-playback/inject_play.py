@@ -28,13 +28,13 @@ buildOf = {
         const witness = E.nominal();
         for(let i=0;i<log.length;i++) witness[i]=log[i];
         if(log.length<witness.length) witness[log.length]=getfields(log.length);
-        return {scenes:window.FoundryCuffScenes(E,D,E.inspect(witness),d),branch:'dong-2018'};
+        return {scenes:window.FoundryCuffScenes(E,D,E.inspect(witness),d),branch:'dong-2018',dataset:{...E.inspect(witness).p,diameter:d}};
         """
     ),
-    'stent': ("$('geometry')", "[]", "return {scenes:window.FoundryStentScenes(E,{...state}),branch:'oxley-2016'};"),
-    'time': ("$('process')", "[$('processCap')]", "return {scenes:window.FoundryTimeScenes(E,{...cfg}),branch:'time-4h'};"),
-    'roll': ("$('process')", "[$('stageCaption')]", "return {scenes:window.FoundryRollScenes(E,{...draft},result),branch:draft.mode};"),
-    'retinal': ("$('drawing')", "[$('drawing-caption')]", "return route==='wang' && mode==='traveler'?{scenes:window.FoundryRetinalScenes(E,M,{...specimen}),branch:'wang'}:[];")
+    'stent': ("$('geometry')", "[]", "return {scenes:window.FoundryStentScenes(E,{...state}),branch:'oxley-2016',dataset:{...state}};"),
+    'time': ("$('process')", "[$('processCap')]", "return {scenes:window.FoundryTimeScenes(E,{...cfg}),branch:'time-4h',dataset:{...cfg}};"),
+    'roll': ("$('process')", "[$('stageCaption')]", "return {scenes:window.FoundryRollScenes(E,{...draft},result),branch:draft.mode,dataset:{...draft}};"),
+    'retinal': ("$('drawing')", "[$('drawing-caption')]", "return route==='wang' && mode==='traveler'?{scenes:window.FoundryRetinalScenes(E,M,{...specimen}),branch:'wang',dataset:{...specimen,coupon:M.coupon(specimen.size)}}:[];")
 }
 slugs={
     'self-closing-cuff-foundry':'cuff',

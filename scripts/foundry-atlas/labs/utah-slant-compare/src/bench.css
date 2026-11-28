@@ -28,3 +28,8 @@
 .workflow-scope{margin-top:8px;color:var(--muted)}
 .workflow-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(max-width:700px){.workflow-head{display:grid;gap:4px}.workflow-toolbar{min-width:0;width:100%;padding-inline:0}.workflow-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.workflow-frame{grid-template-columns:1fr;gap:5px}.workflow-caption{padding-top:2px}.workflow-player .deck{font-size:.83rem}}
+
+/* Long native preset menus need the full field width on narrow WebKit views. */
+@media (max-width: 460px) {
+  #configure .controlGrid { grid-template-columns: minmax(0, 1fr); }
+}

@@ -417,8 +417,34 @@ const register={
 
 const fallbackCamera={eye:[2.3,1.7,3],target:[0,.75,0],autoFit:true};
 const noWafer={shape:'none',nominalMm:null,acceptedMm:[],poses:[]};
+// Visually inspected original models, not transferable motion tracks. The
+// dimensions below describe authored teaching artifacts, not manufacturer
+// acceptance envelopes. Keep this separate from `curated`: a named chuck,
+// stage or workholder is not evidence that the workflow specimen may enter it.
+const referenceDetails={
+ '03-07':{
+  title:'Oxford Plasmalab 80 Plus · PECVD',
+  limit:'The original Oxford model contains a 120 mm dry reference circle. A centered 150 mm wafer extends 15 mm beyond its edge on each side. The hood cutaway is for inspection; it does not deposit a film or qualify a production chamber.',
+  evidence:['/equipment/03-07/vr.json','/equipment/03-07/dry-fit.mjs']
+ },
+ '02-12':{
+  title:'Nikon ECLIPSE LV100ND LED · reflected-light microscope',
+  limit:'The Nikon stage carries a 26 × 19 mm engraved teaching coupon. It demonstrates optical pitch and focus, not custody of a whole wafer or inspection of this particular released probe.',
+  evidence:['/equipment/02-12/model.py','/equipment/02-12/reference-cases.json']
+ },
+ '05-07':{
+  title:'Cascade Microtech Summit 11000B-AP · probe station',
+  limit:'The Summit has a modeled 200 mm chuck, but its electrical test accepts rectangular passive coupons 1–25 mm per side. Neither a full wafer nor a packaged probe inherits the example coupon’s pad map, mounting or continuity result.',
+  evidence:['/equipment/05-07/contract.schema.json','/equipment/05-07/coupon-example.json','/equipment/05-07/xr-manifest.json']
+ },
+ '08-02':{
+  title:'Kulicke & Soffa 4523D · wedge bonder',
+  limit:'The K&S workholder carries a 67 × 56 mm teaching package. Its ribbon-clearance example does not establish that another board is mounted, its pads are registered or its wires are bonded.',
+  evidence:['/equipment/08-02/geometry-source.mjs','/equipment/08-02/interactions.json','/equipment/08-02/reference-plan.json']
+ }
+};
 const modelEntries=Object.entries(register).map(([id,[assetUrl,stationName,realization,registerScope]])=>{
- const k=curated[id],kind=assetUrl?'register-asset':'schematic';
+ const k=curated[id]||referenceDetails[id],kind=assetUrl?'register-asset':'schematic';
  return [id,freeze({
   id,title:k?.title||stationName,kind,assetUrl,assetScale:1,assetRotation:zero,assetOffset:zero,
   stationName,realization,registerScope,sourceUrl:source(id),camera:k?.camera||fallbackCamera,

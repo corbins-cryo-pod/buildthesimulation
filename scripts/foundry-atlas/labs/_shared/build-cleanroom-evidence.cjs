@@ -5,7 +5,7 @@ const src=require('../retinal-photovoltaic/src/evidence.cjs');
 const out=path.resolve(__dirname,'../../../../public/simulations/foundry/cleanroom-retinal.js');
 const tool=['','02-01','04-03','','04-09','','','','03-01','03-07','','03-03','04-08'];
 const ext={soi:'External SOI supply',fill:'External liner growth and LPCVD', 'n-plus':'External dopant formation','p-plus':'External implantation',anneal:'External thermal oxidation and anneal',reopen:'External XeF₂ station'};
-const effect=['handoff','pattern','etch','handoff','dice','handoff','handoff','handoff','deposit','deposit','handoff','deposit','etch'];
+const effect=['handoff','pattern','etch','handoff','polish','handoff','handoff','handoff','deposit','deposit','handoff','deposit','etch'];
 const stages=src.stages.map((x,i)=>({
   machine:tool[i]?src.tools[tool[i]][0]:ext[x.id],
   equipmentId:tool[i],effect:effect[i],operation:x.title,

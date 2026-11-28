@@ -60,6 +60,8 @@
  .fp-card{padding:8px}
 }
 @media(prefers-reduced-motion:reduce){.fp-player *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* The procedural plate is a fallback, never the active 3D walkthrough. */
+.fp-expanded:has(.cr-room[data-render=register],.cr-room[data-render=teaching-3d]) .fp-scene{display:none}
 </style>
 </head>
 <body><a href="#workbench" class="skip">Skip to workbench</a>
@@ -371,7 +373,7 @@ function attach({plate,extra=[],interrupt,build,slug,compact=false}){
  '<div class="fp-transport"><button type="button" data-fp="prev" aria-label="Previous animation scene">← Scene</button><button type="button" data-fp="next" aria-label="Next animation scene">Scene →</button><label>Speed<select data-fp="speed"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label class="fp-choose">Animation scene<select data-fp="jump"></select></label></div></div></div>';
  plate.before(host);
  const idx=Object.fromEntries([...host.querySelectorAll('[data-fp]')].map(el=>[el.dataset.fp,el])),box=host.querySelector('.fp-expanded');
- const motion=matchMedia('(prefers-reduced-motion: reduce)');let scenes=[],phase='idle',scene=0,elapsed=0,last=null,raf=0,lastDraw=-Infinity,reduced=motion.matches,visualVersion=-1,opened=false,speed=1,staticPreview=false,branch=null;
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');let scenes=[],phase='idle',scene=0,elapsed=0,last=null,raf=0,lastDraw=-Infinity,reduced=motion.matches,visualVersion=-1,opened=false,speed=1,staticPreview=false,branch=null,profileDataset=null;
  const roomEnabled=Boolean(slug)&&/^https?:$/.test(location.protocol);
  let room=null,roomRequest=null,roomGeneration=0,roomUnavailable=false,lastRoomScene=-1,lastRoomProgress=-1;
  const replace=[plate,...extra].filter(Boolean);
@@ -387,7 +389,7 @@ function attach({plate,extra=[],interrupt,build,slug,compact=false}){
    const p=(reduced||staticPreview)?1:fraction;
    if(!force&&lastRoomScene===scene&&lastRoomProgress===p)return;
    try{
-     room.paint(scene,p,{operation:a.name,after:a.detail,branch,phaseId:a.id});
+     room.paint(scene,p,{operation:a.name,after:a.detail,branch,phaseId:a.id,dataset:profileDataset});
      lastRoomScene=scene;lastRoomProgress=p;
    }catch{
      roomUnavailable=true;disposeRoom('unavailable');
@@ -438,7 +440,8 @@ function attach({plate,extra=[],interrupt,build,slug,compact=false}){
      idx.scene.setAttribute('aria-label',label+': '+a.name+'. '+(a.alt||a.detail));
      idx.jump.value=String(scene);idx.prev.disabled=scene===0;idx.next.disabled=scene>=sceneCount()-1;
    }
-   if(force||!reduced){
+   const roomIs3D=Boolean(idx.room.querySelector('.cr-room[data-render=register],.cr-room[data-render=teaching-3d]'));
+   if((force||!reduced)&&!roomIs3D){
      idx.scene.innerHTML=a.draw(u);
      host.dataset.frame=String(Math.round(u*1000));
    }
@@ -468,7 +471,7 @@ function attach({plate,extra=[],interrupt,build,slug,compact=false}){
  function begin(){
    const b=build(),list=Array.isArray(b)?b:b?.scenes;
    if(!list?.length){updatePhase('idle','No documented process playback for this branch.');return;}
-   scenes=list;branch=b?.branch??null;scene=0;elapsed=0;staticPreview=false;visualVersion=-1;lastDraw=-Infinity;
+   scenes=list;branch=b?.branch??null;profileDataset=b?.dataset??null;scene=0;elapsed=0;staticPreview=false;visualVersion=-1;lastDraw=-Infinity;
    resetRoomRoute();
    idx.jump.replaceChildren(...scenes.map((a,i)=>new Option(String(i+1).padStart(2,'0')+' · '+a.name,String(i))));
    visible(true);render(true);mountRoom();play();
@@ -877,7 +880,7 @@ show('build');
 
 if(window.BTSFoundryPlay)window.BTSFoundryPlay.attach({
   plate:$('process'),extra:[$('stageCaption')],interrupt:"#tabbar button,#mode,#runTop,#reset,#step,#previous,#next,#advance,#focus,#faceAngle,#drift,#maskVisible,#wiresVisible",slug:"rolled-microchannels-foundry",
-  build:()=>{ return {scenes:window.FoundryRollScenes(E,{...draft},result),branch:draft.mode}; }
+  build:()=>{ return {scenes:window.FoundryRollScenes(E,{...draft},result),branch:draft.mode,dataset:{...draft}}; }
 });
 })();
 </script>
