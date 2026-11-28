@@ -8,6 +8,7 @@ import { organizationDisplayName, organizationSearchNames } from './organization
 import { cleanDiscoveryTitle } from './discovery.js';
 import { equipment, zones } from '../data/equipment/index.js';
 import { revisionById } from '../data/equipment-revisions.js';
+import prototypesRelease from '../data/equipment-prototypes-2026-11-27.json';
 
 // One search index per deployment, not an embedded copy in every HTML page.
 // Entries inherit titles, tags and status from the existing source catalogs.
@@ -60,6 +61,33 @@ export async function buildDiscoveryIndex() {
         keywords: [record.id, record.name ?? '', record.model ?? '', zoneName[record.id.slice(0, 2)] ?? ''],
       }));
     })(),
+    ...(() => {
+      const foundryLabs = [
+      ['Foundry 01 · Utah Array', '/simulations/utah-array-fabrication/', 'Carry a 10 x 10 workpiece through modeled dicing, glass fill, shaping and inspection.', 'utah array silicon geometry and isolation foundry fabrication virtual'],
+      ['Foundry 02 · Neuropixels 1.0', '/simulations/neuropixels-foundry/', 'Modeled lithography, deposition, polishing and etching; a blocked via changes synthetic AP and LFP recordings across bank selections.', 'neuropixels 1.0 active cmos, reference process foundry fabrication virtual'],
+      ['Foundry 03 · Masmanidis 64D', '/simulations/masmanidis-64d-foundry/', 'All 64 metal paths traced from UCLA’s 2017 reticle, SOI-to-PCB flow, open and nominal signal paths through the published pin mapping.', 'masmanidis 64d passive silicon, open gds foundry fabrication virtual'],
+      ['Foundry 04 · Flex-rigid ECoG', '/simulations/flex-rigid-ecog-foundry/', 'Patterning to assembly; one reference line on a 31-channel bank versus the shared-reference case.', 'flex-rigid ecog flexible surface array, 124 recording sites foundry fabrication virtual'],
+      ['Foundry 05 · Self-closing nerve cuff', '/simulations/self-closing-cuff-foundry/', 'Build the modeled flexible stack, close it around an inert mandrel, compare curvature, fit and channel continuity.', 'self-closing nerve cuff soft peripheral interface, benchtop model foundry fabrication virtual'],
+      ['Foundry 06 · Stentrode research prototype', '/simulations/stentrode-foundry/', 'Reconstructed eight-site scaffold; continuity and geometric seating on an inert test fixture.', 'stentrode research prototype endovascular scaffold, inert fixture foundry fabrication virtual'],
+      ['Foundry 07 · TIME-4H', '/simulations/time-4h-foundry/', 'Pattern and fold a modeled flexible circuit; two independent return nets and channel continuity on a benchtop fixture.', 'time-4h folded thin film, ground topology foundry fabrication virtual'],
+      ['Foundry 08 · Foundry tool fit', '/simulations/foundry/tool-fit/', 'Check size, resolution and process limits before assigning a register instrument.', 'foundry tool fit equipment compatibility, conditional gates foundry fabrication virtual'],
+      ['Foundry 09 · Neuropixels family bench', '/simulations/neuropixels-family/', 'Compare documented shank, site and channel limits across variants and an ideal fault on a synthetic signal.', 'neuropixels family bench active cmos, capacity and routing foundry fabrication virtual'],
+      ['Foundry 10 · PtNRGrid', '/simulations/ptnrgrid-foundry/', 'Compare array configurations and registered metal layers; which reconstructions need full-panel support or outside processing.', 'ptnrgrid large-panel thin film, pt-ag dealloying foundry fabrication virtual'],
+      ['Foundry 11 · Four-mask mesh electronics', '/simulations/mesh-electronics-foundry/', 'Four separate mask layers; reconstructed conductor paths against connector placement and continuity checks.', 'four-mask mesh electronics su-8 and au, flexible routing foundry fabrication virtual'],
+      ['Foundry 12 · Rolled microchannel scaffold', '/simulations/rolled-microchannels-foundry/', '84-lumen geometry versus the 59-lumen configuration; blockage and wire continuity as independent observations.', 'rolled microchannel scaffold passive microfluidics, geometry and continuity foundry fabrication virtual'],
+      ['Foundry 13 · Photovoltaic retinal pixel', '/simulations/retinal-photovoltaic-foundry/', 'Published silicon pixel process and ideal photoelectric isolation; PRIMA architecture without assuming its unpublished process.', 'photovoltaic retinal pixel published silicon predecessor, device boundary foundry fabrication virtual'],
+      ['Foundry 14 · Process handoff bench', '/simulations/foundry/process-handoff/', 'Why a candidate tool output does not automatically meet the next station’s conditions.', 'process handoff bench manufacturing handoffs, compatibility foundry fabrication virtual'],
+      ['Foundry 15 · NeuroGrid and OECT', '/simulations/neurogrid-oect-foundry/', 'Separate the passive electrode stack from an organic-transistor route; ideal impedance and transfer checks.', 'neurogrid and oect passive electrode vs active transistor foundry fabrication virtual'],
+      ['Foundry 16 · Utah and Slant geometry', '/simulations/utah-slant-compare/', 'Flat array versus measured slant envelope and modeled length gradients; dicing, isolation and continuity as separate checks.', 'utah and slant geometry bulk silicon, cut geometry foundry fabrication virtual'],
+      ['Foundry 17 · Transparent graphene stacks', '/simulations/graphene-stack-compare/', 'Compare distinct published transparent graphene routes and how layer identity changes optical and electrical checks.', 'transparent graphene stacks transfer and direct-growth references foundry fabrication virtual'],
+      ];
+      return foundryLabs.map(([title, href, summary, keywords]) => ({type: 'Tools', title, href, detail: 'Interactive lab', summary, keywords: keywords.split(' ')}));
+    })(),
+    ...prototypesRelease.devices.map(device => ({
+      type: 'Tools', title: `Prototype ${device.id} · ${device.title}`,
+      href: device.href, detail: 'Interactive 3D prototype', summary: device.summary,
+      keywords: [device.id, device.title, 'prototype', '3D', 'equipment'],
+    })),
     ...[
       ['Cochlear Implant Laboratory', '/simulations/cochlear-implant/', 'Sound processing, finite-contact fields, auditory-nerve cable dynamics and reproducible implant experiments', 'cochlear implant hearing auditory nerve Rattay CIS n-of-m vocoder electrode recruitment spike raster threshold'],
       ['Cochlear Implant Methods and Validation', '/simulations/cochlear-implant/methods/', 'Model equations, independent numerical references, interpretation boundaries and experiment guide', 'cochlear auditory nerve methods validation finite disk Greenwood Rattay pulse charge numerical convergence'],
@@ -91,6 +119,9 @@ export async function buildDiscoveryIndex() {
       ['Crystal Palace shared virtual lab', '/simulations/shared-virtual-lab/', 'One virtual lab plan, three connected experiment routes', 'crystal palace shared lab station experiment route handoff'],
       ['Revised equipment library', '/simulations/equipment/revised/', 'Revised Crystal Palace equipment previews by record, model and zone', 'revised equipment previews crystal palace library'],
       ['Lab updates', '/simulations/equipment/updates/', 'Crystal Palace equipment updates and verified workflows', 'lab updates equipment workflows verified'],
+      ['Device foundry', '/simulations/foundry/', 'Virtual fabrication workflows for silicon probes, flexible arrays and peripheral cuffs', 'foundry fabrication virtual labs devices manufacturing'],
+      ['Manufacturing workflow atlas', '/simulations/foundry/atlas/', 'Catalog devices, fabrication configurations, register matches and outside-facility steps', 'foundry atlas manufacturing workflow process route catalog'],
+      ['Interactive equipment prototypes', '/simulations/equipment/prototypes/', 'Browser-tested interactive 3D teaching prototypes from the equipment register', 'prototypes interactive 3d equipment teaching'],
     ].map(([title, href, summary, keywords]) => ({
       type: 'Tools', title, href, detail: 'Interactive tool', summary, keywords: [keywords],
     })),
