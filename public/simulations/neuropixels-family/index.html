@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Compare Neuropixels switching capacity, inspect selected electrode patterns and run a tagged digital fault test without connecting to hardware."><title>Neuropixels family | Routing bench</title>
+<style>:root{color-scheme:light;--paper:#f4f1e7;--card:#fcfaf2;--ink:#202d29;--dim:#47564f;--rule:#b7bcac;--green:#245447;--mint:#b8d8bc;--dark:#1c322e;--gold:#e1bd69;--bad:#994d30;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans)}main{max-width:1250px;margin:auto;padding:0 clamp(16px,4.5vw,64px)}header,footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:15px 0;border-bottom:1px solid var(--rule)}header a{font-family:var(--serif);font-size:1.22rem;font-weight:bold;text-decoration:none;color:var(--ink)}header a span{color:var(--dim);font-weight:normal}a{color:#235745;text-underline-offset:.23em}a:focus-visible,select:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #a36322;outline-offset:3px}button,select,textarea,input{font:inherit;color:var(--ink);max-width:100%}button,select,input,textarea{border:1px solid #919d8d;border-radius:4px;background:#fffdf6}button,select,input{min-height:44px}button{cursor:pointer;padding:7px 12px;transition:background .12s}button:hover{background:#e7eee0}button:disabled{opacity:.46;cursor:not-allowed}select,input,textarea{padding:8px 10px;width:100%}textarea{min-height:58px;resize:vertical}h1,h2,h3,p,figure{margin:0}h1,h2,h3{font-family:var(--serif);font-weight:normal;line-height:1.08}h1{font-size:clamp(3rem,7.8vw,6.4rem);letter-spacing:-.066em;line-height:.94;margin:.14em 0 .17em}h2{font-size:clamp(1.42rem,3.5vw,2.1rem);letter-spacing:-.035em}p+p{margin-top:.7em}.hero{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:37px 0 24px}.intro{max-width:62ch;color:var(--dim);font-size:1.04rem}.intro em{color:var(--green);font-style:normal;font-weight:650}.hero aside{display:flex;align-items:center;gap:10px;border-left:2px solid var(--green);padding-left:13px;color:var(--green);line-height:1.36;white-space:nowrap;font-size:.86rem}.hero aside small{color:var(--dim)}.lamp{width:10px;height:10px;border-radius:50%;background:#6a9674;box-shadow:0 0 0 4px #d7e4cc}.eyebrow,.flag,.badge{font:bold .68rem/1.45 var(--mono);text-transform:uppercase;letter-spacing:.09em}.eyebrow{color:var(--green);margin:0 0 6px}.flag{color:var(--dim)}.examples{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 0 19px;border-top:1px solid var(--rule)}.examples strong{font-size:.76rem;color:var(--dim);margin:0 10px 0 0;text-transform:uppercase;letter-spacing:.06em}.examples button{min-height:42px;background:transparent;font-size:.82rem}.examples button:hover{background:#e4eadd}.bench{display:grid;grid-template-columns:minmax(250px,.74fr) minmax(0,1.55fr);gap:12px}.panel{min-width:0;border:1px solid var(--rule);background:var(--card);border-radius:7px;padding:clamp(15px,2.25vw,27px)}.controls label,.faultbar label,.field label{display:block;font-size:.81rem;font-weight:660;margin:15px 0 4px}#specTitle{font:600 .94rem/1.35 var(--sans);color:var(--green)}.spec{border-top:1px solid var(--rule);margin-top:20px;padding-top:13px;font-size:.84rem;color:var(--dim)}.spec p{margin:.45em 0 .7em}.spec a, .reference a{font-size:.85rem}.scopehead,.readerhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.scope{background:var(--dark);border-color:#263e36;color:#f3f4e8}.scope .eyebrow{color:#c7ddc7}.badge{display:inline-block;letter-spacing:.025em;border:1px solid #92aa99;color:#cfebcd;border-radius:3px;padding:4px 7px}.badge.bounds{color:#f1d18d;border-color:#c2a75f}.badge.invalid{color:#ffd9bd;border-color:#db9b7e;background:#49382e}.numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #687b6c;border-bottom:1px solid #687b6c;margin:16px 0 10px;padding:12px 0}.numbers>div{padding:0 10px;border-left:1px solid #667b6d}.numbers>div:first-child{padding-left:0;border:none}.numbers strong{font:normal clamp(1.58rem,3.8vw,2.8rem)/1.05 var(--serif);display:block;font-variant-numeric:tabular-nums}.numbers span{display:block;font:600 .72rem/1.3 var(--sans);margin-top:5px;color:#e6ede1}.numbers small{display:block;font-weight:normal;color:#b6c6b9;font-size:.66rem}.scope svg{width:100%;display:block;background:#213832;border:1px solid #3f594b;border-radius:4px}.scope figcaption{color:#d9e4d7;font-size:.75rem;margin:6px 0 9px}.reason{padding:9px 0 0;border-top:1px solid #506d5b;font-size:.84rem;line-height:1.44;min-height:2rem}.reader{margin-top:12px}.readerhead{align-items:end}.sub{max-width:87ch;font-size:.93rem;color:var(--dim);margin:9px 0 11px}.faultbar{display:flex;align-items:end;gap:9px;flex-wrap:wrap}.faultbar>div:first-child{flex:1 1 230px;max-width:365px}.faultbar>div:not(:first-child){max-width:150px;flex:1 1 100px}.faultbar label{margin-top:2px}.primary{background:var(--green);border-color:var(--green);color:white;font-weight:650}.primary:hover{background:#153f34}.hint,#faultHint,.field p{font-size:.78rem;color:var(--dim);margin:.5em 0}.counts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 8px}.field label{margin:11px 0 3px}.exports{display:flex;gap:7px;flex-wrap:wrap}.exports button{font-size:.8rem}.reader #runStatus{background:#e9eddf;border-left:3px solid #728a69;padding:9px 11px;margin:13px 0;font-size:.92rem}.reader #runStatus.bad{background:#f6e9de;border-color:var(--bad)}#metrics{display:flex;gap:8px;flex-wrap:wrap}#metrics div{padding:7px 12px;min-width:98px;border-left:1px solid var(--rule);font-size:.76rem}#metrics div:first-child{border:none;padding-left:0}#metrics strong{font:normal 1.48rem/1.3 var(--serif);display:block}.wordgrid{display:grid;grid-template-columns:minmax(60px,1fr) minmax(78px,1.7fr) minmax(78px,1.7fr) minmax(44px,.8fr);gap:0 6px;max-width:730px;font:normal .76rem/1.38 var(--mono);align-items:center}.wordgrid>span{padding:4px 0;border-bottom:1px solid #dfe1d4}.wordgrid .thead{font:650 .68rem/1.2 var(--sans);color:var(--dim);margin-top:6px;align-self:end}.wordgrid .word{font-variant-numeric:tabular-nums;letter-spacing:.015em}.wordgrid .off{color:var(--bad);font-weight:bold}#words{margin:0 0 12px}.reference{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin:24px 0;padding:19px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}.reference h2{font-size:1.42rem;margin:0 0 7px}.reference p:not(.eyebrow),.reference li{font-size:.84rem;color:var(--dim)}.reference p+a{display:inline-block;margin-top:8px}.reference ul{list-style:none;margin:0;padding:0}.reference li{margin-bottom:7px}.reference li span{display:block}.reference li a{font-weight:630}footer{border:none;margin-bottom:22px;padding-top:0;font-size:.75rem;color:var(--dim)}.skip{position:absolute;left:-9999px}.skip:focus{position:static}.inlineNote{padding:7px 9px;border:1px solid var(--rule);font-size:.8rem;border-radius:3px;margin-top:10px;color:var(--dim)}[hidden]{display:none!important}
+@media(max-width:760px){.hero{margin:24px 0 19px}.hero aside{display:none}.bench{grid-template-columns:1fr}.scope{order:0}.examples strong{width:100%;margin-bottom:0}.reference{grid-template-columns:1fr;gap:15px}.readerhead>.flag{font-size:.59rem}.faultbar{gap:7px}.faultbar>div:first-child{max-width:none}.wordgrid{font-size:.7rem}.wordgrid .word{font-size:.65rem}.examples button{font-size:.77rem;padding:5px 8px}.spec p{max-width:72ch}}@media(max-width:420px){main{padding:0 13px}.panel{padding:14px}.wordgrid{grid-template-columns:52px minmax(0,1fr) minmax(0,1fr) 38px;gap:0 3px}.wordgrid .word{font-size:.58rem;letter-spacing:0}.readerhead{gap:5px}.numbers>div{padding:0 7px}.scope .badge{font-size:.6rem}.hero .intro{font-size:.95rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.numbers strong{overflow-wrap:anywhere}@media (max-width:760px){select,input,textarea{font-size:16px}}
+@media(max-width:530px){#metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}#metrics div:nth-child(odd){border:0;padding-left:0}.numbers span{font-size:.73rem}}
+</style></head>
+<body><a class="skip" href="#controls">Skip to instrument controls</a><main>
+<header><a href="/simulations/foundry/">BuildTheSimulation <span>/ Foundry</span></a><span class="flag">REFERENCE INSTRUMENT</span></header>
+<section class="hero"><div><p class="eyebrow">Bench electronics &nbsp; / &nbsp; Neuropixels</p><h1>The routing bench.</h1><p class="intro">Which electrodes can you read <em>at the same time?</em> Choose a probe, test a selection, then use a digital tag to tell a missing site from a missing readout.</p></div><aside><span class="lamp"></span><span>Virtual fixture<br><small>No hardware connected</small></span></aside></section>
+<nav class="examples" aria-label="Guided experiments"><strong>Try a comparison</strong><button data-demo="collision" type="button">01 &nbsp; Bank collision</button><button data-demo="fixed" type="button">02 &nbsp; Fixed vs shared</button><button data-demo="span" type="button">03 &nbsp; Ultra footprint</button></nav>
+<div class="bench">
+<section class="panel controls" id="controls" aria-labelledby="setuphead"><p class="eyebrow">01 &nbsp; / &nbsp; Configuration</p><h2 id="setuphead">Select an instrument</h2>
+<label for="model">Probe family and revision</label><select id="model"></select>
+<label for="pattern">Selection under test</label><select id="pattern"></select>
+<div id="specific"></div>
+<div class="spec"><strong id="specTitle"></strong><p id="specDescription"></p><a href="/simulations/foundry/atlas/" id="traveler">See its fabrication route ↗</a></div>
+</section>
+<section class="panel scope" aria-labelledby="scopehead"><div class="scopehead"><div><p class="eyebrow">02 &nbsp; / &nbsp; Live allocation</p><h2 id="scopehead">Selection envelope</h2></div><span id="status" class="badge" aria-live="polite"></span></div>
+<div class="numbers"><div><strong id="physical">–</strong><span>Physical sites <small>whole probe</small></span></div><div><strong id="available">–</strong><span>Readout ceiling <small>whole probe</small></span></div><div><strong id="requested">–</strong><span>Requested <small>this selection</small></span></div></div>
+<figure><svg role="img" id="diagram" viewBox="0 0 680 255" aria-labelledby="diagramTitle diagramDesc"><title id="diagramTitle">Selected shank or Ultra footprint</title><desc id="diagramDesc"></desc><g id="art"></g></svg><figcaption id="caption"></figcaption></figure>
+<p id="reason" class="reason"></p></section>
+</div>
+<section class="panel reader" aria-labelledby="testhead"><div class="readerhead"><div><p class="eyebrow">03 &nbsp; / &nbsp; Synthetic digital output</p><h2 id="testhead">Run an address loopback</h2></div><span class="flag">18-BIT FIXTURE TAGS</span></div>
+<p class="sub">Each selected input receives a distinct test word. The virtual receiver compares what it gets with the expected word. These are identifiers, not spikes, voltages or measured device data.</p>
+<div class="faultbar"><div><label for="fault">Injected fault</label><select id="fault"><option value="none">None · clean baseline</option><option value="site">Open one physical site</option><option value="lane">Drop one output lane</option><option value="shank">Disconnect a shank</option><option value="swap">Exchange the first two active outputs</option><option value="common">Lose the common link</option></select></div><div id="faultnumWrap"><label id="faultnumLabel" for="faultnum">Address</label><input id="faultnum" type="number" step="1" min="0" value="0"></div><div id="faultshankWrap"><label for="faultshank">Fault shank</label><select id="faultshank"></select></div><button id="run" class="primary" type="button">Run loopback →</button></div>
+<p id="faultHint" class="hint"></p>
+<div id="runStatus" role="status" aria-live="polite">No run yet. Run a clean baseline, then introduce a fault.</div><div id="metrics"></div><div id="words"></div>
+<div class="exports"><button id="csv" type="button" disabled>Export tag table · CSV</button><button id="json" type="button" disabled>Export run record · JSON</button></div><p class="hint">The URL saves the instrument and preset. The JSON record preserves exact inputs, injected fault, sources and output.</p>
+</section>
+<section class="reference"><div><p class="eyebrow">Evidence &amp; limitations</p><h2>What the result proves</h2><p>A rejected selection violates a modeled constraint. A shape documented in a paper still is not a complete pin map. Budget-only allocations can fail real switch rules. All non-1.0 “lanes” below are consecutive fixture slots, not validated hardware ADC indices.</p><p>Nominal capacity includes reference-related positions where the hardware uses them. It does not predict how many biological channels are usable. The bench does not create IMRO files or send commands.</p><a href="/simulations/neuropixels-foundry/">Open the separate 1.0 wafer-to-output foundry →</a></div><div><p class="eyebrow">Current instrument</p><h2>Primary references</h2><ul id="sources"></ul></div></section>
+<footer><a href="/simulations/foundry/atlas/">Manufacturing workflow atlas</a><span>BuildTheSimulation &nbsp; / &nbsp; virtual instrument series</span></footer>
+</main><script>/* Pure, hardware-disconnected model. No vendor tables or biological data are emitted. */
+(function(host){
+'use strict';
+const source={
+ family:['Neuropixels Central · family comparison','https://www.neuropixelscentral.org/technology','Probe family, available recording configurations and prototype boundaries.'],
+ np1:['Jun et al. · Neuropixels 1.0','https://pmc.ncbi.nlm.nih.gov/articles/PMC5955206/','Physical sites and concurrent recording channels are different quantities.'],
+ wiring:['Cortex Lab · selecting sites and banks','https://github.com/cortex-lab/neuropixels/wiki/Selecting-recording-electrodes','The original single-shank 1.0 probe shares a line across corresponding positions in successive 384-site banks.'],
+ np2:['Steinmetz et al. · Neuropixels 2.0','https://pmc.ncbi.nlm.nih.gov/articles/PMC8244810/','Figure 5 and accompanying text: single-shank block alignment, same-depth four-shank selections and diagonal stripes.'],
+ ultra:['Ye et al. · Ultra recording patterns','https://doi.org/10.1016/j.neuron.2025.08.030','Figures 1 and S1 distinguish four rectangular sampling configurations on the 6,144-site version.'],
+ nhp:['Trautmann et al. · long-shank Neuropixels','https://pmc.ncbi.nlm.nih.gov/articles/PMC12229894/','The 45 mm study device, and comparison with the medium-length version, must not be scaled from the rodent footprint.'],
+ quad:['imec · Quad Base specifications','https://www.neuropixels.org/probe2-0-qb-multi-shank','Four shanks, each with a dedicated 384-channel readout section.'],
+ nxt:['Neuropixels Central · NXT/3.0 prototype','https://www.neuropixelscentral.org/post/neuropixels-nxt-3-0-probe-access-challenge-pac','Access-program report is separate from the evidence for a released production revision.'],
+ imro:['SpikeGLX · IMRO formats','https://billkarsh.github.io/SpikeGLX/help/imroTables/','Published formats distinguish 1.0, 2.0, Ultra, Quad Base and NP3020. The latter uses shank, bank and site fields; this bench is not an IMRO generator.'],
+ opto:['Lakunina et al. · Neuropixels Opto','https://doi.org/10.1038/s41592-026-03076-z','Electrical channels and independently selected grating emitters are different paths. Measurements distinguish blue and red.']
+};
+const profiles={
+ np1:{name:'1.0 · standard shank',short:'1.0',spec:'Three site banks, shared readout',n:1,sites:960,total:384,per:384,ref:'si-np1',sources:['np1','wiring','imro'],text:'960 nominal sites feed 384 electrical lines. For the original 1.0 bank addressing, sites 0, 384 and 768 all compete for line 0. This test represents nominal routing; reference sites are not ordinary independent neural inputs.'},
+ np2s:{name:'2.0 alpha · single shank',short:'2.0 single',spec:'32-site alignment, scrambled within blocks',n:1,sites:1280,total:384,per:384,ref:'si-np2',sources:['np2','imro'],text:'A contiguous 384-site window can start at any multiple of 32 that fits. Within each 32-site block the physical-to-channel order is scrambled; drawn site addresses are not the ADC order.'},
+ np2m:{name:'2.0 alpha · four shanks',short:'2.0 four',spec:'Four shanks share one 384-channel pool',n:4,sites:1280,total:384,per:384,ref:'si-np2',sources:['np2','imro'],text:'The alpha device shares 384 readouts across all four shanks. The paper describes one-shank, four same-depth ribbons and four diagonal ribbons. The presets below show representative layouts rather than every valid selection.'},
+ ultra:{name:'Ultra · 6,144-site study probe',short:'Ultra',spec:'More columns trade off against axial span',n:1,sites:6144,total:384,per:384,ref:'si-np-ultra',sources:['ultra','family','imro'],text:'All four published rectangular patterns select 384 nominal sites from an eight-column, 6 µm-pitch array. Their axial coverage differs. This is the published 6,144-site study version, not an earlier fixed array.'},
+ nhp25:{name:'NHP · 25 mm shank',short:'NHP 25',spec:'2,496 nominal contacts, 384 readouts',n:1,sites:2496,total:384,per:384,ref:'si-np-nhp',sources:['nhp','family'],text:'The medium-length hardware has 2,496 selectable sites. A count check here does not establish which arbitrary 384 positions route together on the physical device.'},
+ nhp45:{name:'NHP · 45 mm shank',short:'NHP 45',spec:'Long stitched die, still 384 readouts',n:1,sites:4416,total:384,per:384,ref:'si-np-nhp',sources:['nhp','family'],text:'The 45 mm version has 4,416 sites and depends on reticle stitching and a long, reinforced shank. A longer die increases reach and site count, not the 384-channel readout capacity.'},
+ quad:{name:'2.0 · Quad Base',short:'Quad Base',spec:'Four fixed pools of 384',n:4,sites:1280,total:1536,per:384,ref:'si-np-quad',sources:['quad','imro'],text:'Each of four shanks has its own 384-channel budget. Extra capacity on shank 3 cannot rescue 385 requested on shank 0. The model checks these fixed boundaries, not the full site switch table.'},
+ nxt:{name:'NXT / 3.0 · four-shank prototype',short:'NXT prototype',spec:'Up to 912 concentrated on one shank',n:4,sites:null,total:1536,per:912,ref:'si-np-nxt',sources:['family','nxt','imro'],text:'The prototype program reports 1,536 readouts and up to 912 on one shank. NP3020 software describes 1,280 within-shank site addresses, but a format is not validation of a particular prototype and firmware. A bounded request here is never certified routable.'},
+ opto:{name:'Opto · electrical plus photonic paths',short:'Opto',spec:'384 electrical readouts, 2 × 14 optical emitters',n:1,sites:960,total:384,per:384,ref:'si-np-opto',sources:['opto','np1'],text:'The 960-site electrical array and 384-channel readout are separate from 14 blue and 14 red emitter positions. Choosing an emitter changes the optical address, not the electrical channel capacity.'}
+};
+const preset={
+ np1:[['b0','Bank 0 · 0–383'],['b1','Bank 1 · 384–767'],['b2','Upper half-bank · 768–959'],['manual','Custom site IDs / inclusive ranges'],['collision','Counterexample · sites 0 and 384']],
+ np2s:[['window','Aligned 384-site window'],['offset1','Unaligned window · test evidence limit']],
+ np2m:[['flat','Four ribbons at the same depth'],['diag','Diagonal · 96-site offset per shank'],['one','384-site window on one shank']],
+ ultra:[['u8','48 rows × 8 columns'],['u4','96 rows × 4 columns'],['u2','192 rows × 2 columns'],['u1','384 rows × 1 column']],
+ nhp25:[['capacity','384 active slots · budget only']],nhp45:[['capacity','384 active slots · budget only']],
+ quad:[['fixed','Full balanced banks · 384 each'],['oneOver','Counterexample · 385 on one shank']],
+ nxt:[['balanced','Balanced request · 384 each'],['dense','Concentrated request · 912 + 3 × 208'],['oneOver','Counterexample · 913 on one shank']],
+ opto:[['color','Electrical budget + optical address']]
+};
+for(const k of Object.keys(preset))preset[k].push(['counts','Custom counts · budget only']);
+const whole=x=>Number.isSafeInteger(x)&&x>=0, axis=['S0','S1','S2','S3'];
+function parseSites(input){
+ let s=String(input??'').trim();if(!s)return {error:'Enter one or more zero-based physical site IDs.'};
+ if(s.length>7000)return {error:'Site expression is too long.'};
+ const ids=[],seen=new Set();
+ for(const token of s.split(/[,\s]+/)){
+  const m=/^(\d{1,4})(?:-(\d{1,4}))?$/.exec(token);if(!m)return {error:'Use whole site IDs or inclusive ranges, such as 0–31 written as 0-31.'};
+  let lo=Number(m[1]),hi=m[2]?Number(m[2]):lo;
+  if(lo>hi||hi>959)return {error:'A 1.0 site range must run forward and stay between 0 and 959.'};
+  for(let i=lo;i<=hi;i++){if(seen.has(i))return {error:'Site '+i+' was requested more than once.'};seen.add(i);ids.push(i);}
+ }
+ return {ids};
+}
+function result(key,mode,code,why,counts,groups=[],extras={}){
+ const m=profiles[key];return {version:1,key,mode,code,why,counts,groups,n:m.n,total:m.total,per:m.per,requested:counts.reduce((a,b)=>a+(whole(b)?b:0),0),...extras};
+}
+function evaluate(key,mode,o={}){
+ const m=profiles[key];
+ if(!m||!preset[key].some(p=>p[0]===mode))return {code:'invalid',why:'Unknown instrument or preset.',counts:[],groups:[],requested:0};
+ const g=[],c=Array(m.n).fill(0);let next=0,acq='bounds',why='Counts respect the published capacity, but physical site and switch identities are not tested.',withoutSite=false;
+ let extras={};const reject=(msg,cc=c)=>result(key,mode,'invalid',msg,cc);
+ function push(sh,site,lane=null){g.push({sh,site,lane:lane??next,hardwareLane:lane!==null,local:c[sh]});c[sh]++;next++;}
+ function fill(n,sh=0,start=null){for(let i=0;i<n;i++)push(sh,start===null?null:start+i);}
+ function totals(v,success='bounds',note){
+  if(!Array.isArray(v)||v.length!==m.n||v.some(x=>!whole(x)))return reject('Each shank needs a nonnegative whole-number count.');
+  const req=v.reduce((a,b)=>a+b,0);
+  if(req===0)return reject('Select at least one line to run a nonempty test.',v);
+  const local=v.findIndex(x=>x>m.per);
+  if(local!==-1)return reject(axis[local]+' asks for '+v[local]+' but its published ceiling is '+m.per+'.'+(req>m.total?' The total also exceeds '+m.total+'.':''),v);
+  if(req>m.total)return reject('The shanks together request '+req+' lines; only '+m.total+' are available.',v);
+  for(let i=0;i<v.length;i++)fill(v[i],i);
+  return result(key,mode,success,note||why,c,g,{withoutSite:true});
+ }
+ if(mode==='counts')return totals(o.counts);
+ if(key==='np1'){
+  let ids=mode==='manual'?parseSites(o.sites):mode==='collision'?{ids:[0,384]}:{ids:Array.from({length:mode==='b2'?192:384},(_,i)=>i+(mode==='b2'?768:mode==='b1'?384:0))};
+  if(ids.error)return reject(ids.error);
+  let assigned=new Map();for(const id of ids.ids){let lane=id%384;if(assigned.has(lane))return reject('Sites '+assigned.get(lane)+' and '+id+' both need line '+lane+'. One 1.0 readout cannot distinguish both at once.',[ids.ids.length]);assigned.set(lane,id);push(0,id,lane);}
+  why='The selected zero-based 1.0 sites use distinct nominal lines (site ID modulo 384). Reference selection, disabled inputs and analog performance are outside this check.';acq='address';
+ }else if(key==='np2s'){
+  let start=mode==='offset1'?1:o.start??0;
+  if(!whole(start)||start>896)return reject('A 384-site window must fit inside sites 0–1,279; the largest possible start is 896.');
+  fill(384,0,start);extras.start=start;acq=start%32===0?'pattern':'bounds';
+  why=acq==='pattern'?'The paper supports 384 consecutive sites starting at a multiple of 32. Displayed slot ordering is illustrative, not the scrambled ADC map.':'Counts fit, but this window misses the documented 32-site alignment guarantee. Absence of a guarantee is not a proof of impossible wiring.';
+ }else if(key==='np2m'){
+  let sh=o.shank??0;if(!whole(sh)||sh>=4)return reject('Select one of the four shanks (0–3).');
+  if(mode==='one')fill(384,sh,0);else for(let i=0;i<4;i++)fill(96,i,mode==='diag'?96*i:0);
+  acq='pattern';why='This is a representative arrangement described for the four-shank alpha probe. Site blocks are shown; fixture slots are not the true per-ADC permutation.';
+ }else if(key==='ultra'){
+  const cols=Number(mode.slice(1)),rows=384/cols;fill(384);withoutSite=true;
+  extras={cols,rows,pitch:6,centerSpan:(rows-1)*6,edgeSpan:(rows-1)*6+5};acq='pattern';
+  why='Published shape, not a complete per-site switch map. Spans below refer to selected contact centers and 5 µm contact edges; the nominal row pitch is 6 µm.';
+ }else if(key==='quad'){
+  return totals(mode==='oneOver'?[385,383,384,384]:[384,384,384,384],'capacity','Four independent 384-channel banks are documented. This confirms the partition, not a particular list of 5,120 physical sites.');
+ }else if(key==='nxt'){
+  return totals(mode==='dense'?[912,208,208,208]:mode==='oneOver'?[913,207,208,208]:[384,384,384,384],'bounds','This allocation clears the 1,536 total and 912-per-shank upper bounds. The exact set must still be checked against revision-specific site routing.');
+ }else if(key==='opto'){
+  const wl=o.wavelength??450,emit=o.emitter??0;
+  if(![450,638].includes(wl)||!whole(emit)||emit>13)return reject('Select a documented wavelength (450 or 638 nm) and emitter index 0–13.');
+  extras={wavelength:wl,emitter:emit};withoutSite=true;fill(384);acq='capacity';why='The emitter index and color belong to a separate optical path. This bench neither adds these emitters to the readout count nor estimates irradiance or tissue response.';
+ }else{return totals([384],'capacity','The documented capacity is 384 across this shank. The bench has not applied an address-to-ADC switch table for the selected NHP hardware.');}
+ return result(key,mode,acq,why,c,g,{withoutSite,...extras});
+}
+function tags(ev,f={}){
+ if(!ev||ev.code==='invalid')return {error:'No loopback runs on a rejected request.',rows:[]};
+ const kind=f.kind??'none',n=f.num??0,sh=f.shank??0;
+ if(!['none','site','lane','shank','common','swap'].includes(kind))return {error:'Unknown fault type.',rows:[]};
+ if(!whole(n)||!whole(sh)||sh>=ev.n)return {error:'Use a nonnegative whole address and an available shank.',rows:[]};
+ if(kind==='site'&&(ev.withoutSite||ev.groups.every(x=>x.site===null)))return {error:'Site addresses are unspecified in this mode. Test a fixture slot, shank, or link instead.',rows:[]};
+ if(kind==='site'&&profiles[ev.key].sites!==null&&n>=profiles[ev.key].sites)return {error:'The physical site is outside the modeled shank.',rows:[]};
+ if(kind==='lane'&&n>=ev.total)return {error:'The lane is outside the modeled output capacity.',rows:[]};
+ if(kind==='swap'&&ev.groups.length<2)return {error:'Two active fixture outputs are needed for a swapped pair.',rows:[]};
+ const rows=ev.groups.map(rec=>{
+  const id=rec.site===null?100000+8192*rec.sh+rec.local:1+8192*rec.sh+rec.site;
+  const lost=kind==='common'||(kind==='shank'&&rec.sh===sh)||(kind==='site'&&rec.sh===sh&&rec.site===n)||(kind==='lane'&&rec.lane===n);
+  return {...rec,expected:id,observed:lost?null:id};
+ });
+ if(kind==='swap'){[rows[0].observed,rows[1].observed]=[rows[1].observed,rows[0].observed];}
+ const missing=rows.filter(r=>r.observed===null).length,wrong=rows.filter(r=>r.observed!==null&&r.expected!==r.observed).length;
+ return {rows,correct:rows.length-missing-wrong,missing,wrong,received:rows.length-missing,kind,shank:sh,num:n};
+}
+const api={profiles,preset,source,parseSites,evaluate,tags};if(typeof module!=='undefined'&&module.exports)module.exports=api;else host.NPBench=api;
+})(typeof globalThis==='object'?globalThis:this);
+</script><script>(()=>{'use strict';
+const E=NPBench,$=s=>document.getElementById(s),fmt=v=>typeof v==='number'?v.toLocaleString('en-US'):String(v),ns='http://www.w3.org/2000/svg';
+const sitePath=x=>location.protocol==='file:'?'https://buildthesimulation.com'+x:x;
+if(location.protocol==='file:')document.querySelectorAll('a[href^="/"]').forEach(a=>a.href=sitePath(a.getAttribute('href')));
+const statusNames={address:'1.0 line check passed',pattern:'Documented layout',capacity:'Documented capacity',bounds:'Within bounds only',invalid:'Rejected'};
+let selected=null,last=null,boot=true;
+const el=(tag,t='',a={})=>{let z=document.createElement(tag);if(t!=='')z.textContent=t;for(const [k,v] of Object.entries(a))z.setAttribute(k,v);return z;};
+const option=(v,t)=>el('option',t,{value:v});
+const svg=(parent,tag,a,t)=>{let z=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(a))z.setAttribute(k,v);if(t!==undefined)z.textContent=t;parent.append(z);return z;};
+function numeric(s){const x=String(s??'').trim();return /^\d+$/.test(x)?Number(x):NaN;}
+function labelInput(parent,id,label,type,attrs={}){
+ const group=el('div','','field'===type?{}:{class:'field'}),l=el('label',label,{for:id});group.append(l);const x=el(type,'',{id,...attrs});group.append(x);parent.append(group);return x;
+}
+function opts(node,arr){node.replaceChildren(...arr.map(([k,v])=>option(k,v)));}
+function changeModel(k,mode,vals={}){
+ const m=E.profiles[k];if(!m)return;
+ $('model').value=k;opts($('pattern'),E.preset[k]);$('pattern').value=E.preset[k].some(v=>v[0]===mode)?mode:E.preset[k][0][0];
+ opts($('faultshank'),Array.from({length:m.n},(_,i)=>[i,'Shank '+i]));$('fault').value='none';$('faultnum').value='0';
+ $('specTitle').textContent=m.spec;$('specDescription').textContent=m.text;$('traveler').href=sitePath('/simulations/foundry/atlas/#profile='+m.ref);
+ const src=$('sources');src.replaceChildren();for(let id of m.sources){const v=E.source[id],li=el('li'),a=el('a',v[0],{href:v[1],rel:'noreferrer'});li.append(a,el('span',v[2]));src.append(li);}
+ buildOptions(vals); update();
+}
+function buildOptions(o={}){
+ const k=$('model').value,mode=$('pattern').value,p=$('specific'),m=E.profiles[k];p.replaceChildren();
+ if(mode==='manual'){const a=labelInput(p,'siteList','Physical sites · zero-based','textarea',{spellcheck:'false',rows:2});a.value=o.sites??'0-7, 392';p.append(el('p','Use commas or spaces and a hyphen for inclusive ranges. Try 0,384, then change 384 to 385.',{class:'hint'}));}
+ if(mode==='window'){const a=labelInput(p,'start','First site · valid aligned start 0–896','input',{type:'number',min:0,max:896,step:32,inputmode:'numeric'});a.value=o.start??0;p.append(el('p','A step is 32 sites. You may type another start to test the limit of what the paper guarantees.',{class:'hint'}));}
+ if(mode==='one'&&k==='np2m'){const a=labelInput(p,'onlyShank','Selected shank','select');opts(a,Array.from({length:4},(_,i)=>[i,'Shank '+i]));a.value=o.shank??0;}
+ if(mode==='color'){
+  const w=labelInput(p,'wavelength','Optical input','select'),a=labelInput(p,'emitter','Emitter position · zero-based','select');opts(w,[[450,'450 nm · blue'],[638,'638 nm · red']]);opts(a,Array.from({length:14},(_,i)=>[i,String(i)]));w.value=o.wavelength??450;a.value=o.emitter??0;
+ }
+ if(mode==='counts'){
+  const grid=el('div','',{class:'counts'});p.append(grid);for(let i=0;i<m.n;i++){
+   const a=labelInput(grid,'count'+i,'Shank '+i+' · lines','input',{min:0,step:1,type:'number',inputmode:'numeric'});a.value=o.counts?.[i]??Math.floor(m.total/m.n);
+  }
+  if(k==='quad'||k==='nxt'||k==='np2m'){const target=k==='quad'?'nxt':'quad',btn=el('button','Keep these counts → '+E.profiles[target].short,{type:'button',class:'inlineNote'});btn.addEventListener('click',()=>{let counts=Array.from({length:m.n},(_,i)=>$('count'+i).value);changeModel(target,'counts',{counts});});p.append(btn);}
+ }
+}
+function read(){
+ const m=E.profiles[$('model').value],mode=$('pattern').value;
+ return {sites:$('siteList')?.value,start:$('start')?numeric($('start').value):undefined,shank:$('onlyShank')?numeric($('onlyShank').value):0,wavelength:$('wavelength')?numeric($('wavelength').value):undefined,emitter:$('emitter')?numeric($('emitter').value):undefined,counts:mode==='counts'?Array.from({length:m.n},(_,i)=>numeric($('count'+i).value)):undefined};
+}
+function faultUi(){
+ const kind=$('fault').value,n=$('model').value,sh=E.profiles[n].n;
+ $('faultnumWrap').hidden=kind!=='site'&&kind!=='lane';$('faultshankWrap').hidden=!['site','shank'].includes(kind)||sh===1;
+ $('faultnumLabel').textContent=kind==='site'?'Physical site ID':'Output lane ID';
+ const texts={none:'First run without a fault. Compare exact tags, not just whether packets arrived.',site:'Keep the same faulty physical site and change a selection. An unselected site does not lose an active output.',lane:n==='np1'?'A broken 1.0 readout line stays broken when its bank switches to a different physical site.':'This fault addresses a numbered synthetic slot; it does not assert the device’s actual ADC routing.',shank:'Every selected word on this shank is lost. An unselected shank contributes no active words.',swap:'The first two active output words trade places. Packet count stays unchanged even though two channel identities are wrong.',common:'Every selected word disappears, independent of site map or shank.'};
+ $('faultHint').textContent=texts[kind];
+}
+function strip(svgRoot,x,y,w,h,fill,stroke){return svg(svgRoot,'rect',{x,y,width:w,height:h,rx:2,fill,stroke:stroke||'none'});}
+function tx(g,x,y,s,fill='#d9e6d8',size=13,extra={}){return svg(g,'text',{x,y,fill,'font-size':size,'font-family':'ui-monospace,monospace',...extra},s);}
+function plot(ev){
+ const m=E.profiles[ev.key],g=$('art');g.replaceChildren();const narrow=$('diagram').clientWidth<480;$('diagram').setAttribute('viewBox',narrow?'0 0 360 255':'0 0 680 255');
+ const known=ev.groups.some(x=>x.site!==null),bad=ev.code==='invalid',area='#34564a',lime='#b9dfb6',gold='#e1bd69',light='#e4eddf';const tone=bad?'#eba382':ev.code==='bounds'?gold:lime;
+ let caption='';
+ if(ev.key==='ultra'&&ev.rows){
+  tx(g,narrow?12:20,26,'SELECTED FOOTPRINT · SCHEMATIC',lime,13);
+  const n=ev.cols,rows=ev.rows,h=168,xd=narrow?10:24,yt=52,ww=narrow?99:165,rr=Math.min(32,rows);
+  const align=ww/n,cw=Math.min(13,align*.56),rh=h/rr;for(let j=0;j<rr;j++)for(let i=0;i<n;i++){strip(g,xd+(i+.5)*align-cw/2,yt+j*rh,cw,Math.min(3.4,rh-1),j%4===0?'#d6edc6':'#9dcf9e');}
+  tx(g,narrow?11:25,239,n+(narrow?' columns':' selected column'+(n===1?'':'s')),light,14);
+  tx(g,narrow?125:216,72,rows+' rows × '+n+' columns',light,19);tx(g,narrow?125:216,103,'384 nominal site positions',lime,16);
+  tx(g,narrow?125:216,139,'First–last row centers',gold,15);tx(g,narrow?125:216,172,fmt(ev.centerSpan)+' µm',light,29);
+  tx(g,narrow?125:216,201,'(rows − 1) × 6 µm',light,14);tx(g,narrow?125:216,226,'Outer contact edges: '+fmt(ev.edgeSpan)+' µm',light,14);
+  caption='The swatch preserves the number of selected columns; vertical samples are compressed. It is not a diagram of the hardware switch groups.';
+ }else{
+  tx(g,narrow?10:18,24,narrow?'SHANKS':'SHANK ADDRESS SPACE',lime,13);tx(g,narrow?138:295,24,narrow?'LINES PER SHANK':'REQUESTED LINES / SHANK',lime,13);
+  const len=154,top=55,bottom=top+len,barx=narrow?138:296,bw=narrow?143:291,step=39;
+  for(let i=0;i<m.n;i++){
+   const sx=(narrow?21:35)+i*(narrow?29:53);
+   // Silhouette is unitless; height is normalized per family, never a model of a wafer/shank dimension.
+   svg(g,'path',{d:'M'+(sx-9)+' '+top+'H'+(sx+9)+'V'+(bottom-8)+'L'+sx+' '+(bottom+8)+'L'+(sx-9)+' '+(bottom-8)+'Z',fill:'#325849',stroke:'#96b09b','stroke-width':1.5});
+   if(known&&m.sites){
+    let bands=new Set(ev.groups.filter(a=>a.sh===i&&a.site!==null).map(a=>Math.floor(a.site*60/m.sites)));
+    for(let b of bands)strip(g,sx-7,top+len-(b+1)*len/60-4,14,Math.max(2,len/60),lime);
+   }else if(!bad){tx(g,sx,bottom-57,'?',gold,17,{'text-anchor':'middle'});}
+   tx(g,sx,238,'S'+i,light,13,{'text-anchor':'middle'});
+   let value=ev.counts[i],p=Number.isFinite(value)?Math.min(Math.max(value/m.per,0),1):0;
+   let y=57+i*step;
+   tx(g,barx,y,'S'+i,light,14);strip(g,barx+36,y-8,bw-41,10,area);if(p>0)strip(g,barx+36,y-8,(bw-41)*p,10,Number.isFinite(value)&&value>m.per?'#efa888':tone);
+   tx(g,barx+bw+8,y+1,Number.isFinite(value)?(value>99999?'>99k':fmt(value)):'—',light,15);
+  }
+  tx(g,barx,231,'Per-shank ceiling: '+fmt(m.per),light,14);
+  if(known)caption='The tip is at the bottom; site IDs increase upward. Each green band contains selected physical sites. Bars show the fraction of each shank’s readout ceiling. Silhouettes are not to scale.';
+  else if(bad)caption='The request is rejected before a route is generated. A bar can fit its shank ceiling yet still exceed a shared total across shanks.';
+  else caption='Question marks mean no physical-site map was established for this selection. Bars show shank-local counts, not an accepted pin map.';
+  if(ev.wavelength)caption+=' Independent optical address: '+ev.wavelength+' nm, emitter '+ev.emitter+'.';
+ }
+ $('caption').textContent=caption;$('diagramDesc').textContent=caption+' '+ev.counts.map((x,i)=>'Shank '+i+': '+fmt(x)+' requested.').join(' ');
+}
+function clearRun(msg='Selection or fault changed. Run the loopback to generate fresh tags.'){
+ last=null;$('csv').disabled=true;$('json').disabled=true;$('metrics').replaceChildren();$('words').replaceChildren();$('runStatus').classList.remove('bad');$('runStatus').textContent=msg;
+}
+function update(){
+ const key=$('model').value,mode=$('pattern').value,m=E.profiles[key];
+ selected=E.evaluate(key,mode,read());const ev=selected;
+ $('physical').textContent=m.sites===null?'Unstated':fmt(m.n*m.sites);$('available').textContent=fmt(m.total);$('requested').textContent=fmt(ev.requested);
+ $('status').className='badge '+ev.code;$('status').textContent=statusNames[ev.code];$('reason').textContent=ev.why;plot(ev);faultUi();$('run').disabled=ev.code==='invalid';
+ clearRun(boot?'No run yet. Run a clean baseline, then introduce a fault.':ev.code==='invalid'?'No output: the selection was rejected before acquisition.':undefined);boot=false;
+ try{const u=new URL(location.href);u.searchParams.set('model',key);u.searchParams.set('pattern',mode);history.replaceState(null,'',u.href);}catch{/* Standalone file access stays functional. */}
+}
+function run(){
+ if(!selected||selected.code==='invalid')return;
+ const kind=$('fault').value,n=kind==='site'||kind==='lane'?numeric($('faultnum').value):0,sh=(kind==='shank'||kind==='site')?numeric($('faultshank').value):0;
+ const t=E.tags(selected,{kind,num:n,shank:sh});clearRun();
+ if(t.error){$('runStatus').textContent=t.error;$('runStatus').classList.add('bad');return;}
+ last={t,ev:selected};$('csv').disabled=false;$('json').disabled=false;$('runStatus').classList.toggle('bad',t.wrong+t.missing>0);
+ $('runStatus').textContent=t.wrong?'Identity mismatch: '+fmt(t.received)+' packets arrived, but '+fmt(t.wrong)+' tags reached the wrong output.':t.missing?'Missing data: '+fmt(t.missing)+' selected tag'+(t.missing===1?' did':'s did')+' not reach the receiver.':kind!=='none'?'No active word changed: the chosen fault does not intersect this selection.':'Clean synthetic loopback: every selected tag arrived at its assigned output.';
+ const entries=[['Expected',t.rows.length],['Arrived',t.received],['Missing',t.missing],['Wrong tag',t.wrong]];
+ for(const [k,v] of entries){let d=el('div');d.append(el('strong',fmt(v)),el('span',k));$('metrics').append(d);}
+ let grid=el('div','',{class:'wordgrid','aria-label':'Sampled expected and received digital tag words'});
+ for(const h of ['Output','Expected tag','Received tag','Result'])grid.append(el('span',h,{class:'thead'}));
+ const mismatch=t.rows.filter(x=>x.expected!==x.observed),indices=new Set();
+ // Preserve actual mismatches in the visible sample; complete data stays in the download.
+ for(let x of mismatch.slice(0,2))indices.add(t.rows.indexOf(x));
+ const groups=Array.from({length:selected.n},(_,i)=>t.rows.findIndex(x=>x.sh===i)).filter(i=>i>=0);for(let j of groups)if(indices.size<5)indices.add(j);
+ for(const j of [0,1,Math.floor(t.rows.length/2),t.rows.length-1])if(indices.size<5&&j<t.rows.length)indices.add(j);
+ const word=v=>v===null?'— no word':v.toString(16).toUpperCase().padStart(5,'0');
+ Array.from(indices).sort((a,b)=>a-b).forEach(i=>{let x=t.rows[i],correct=x.observed===x.expected;for(const [val,cl] of [['L'+x.lane,''],[word(x.expected),'word'],[word(x.observed),'word'+(correct?'':' off')],[correct?'OK':x.observed===null?'LOST':'SWAP',correct?'':'off']])grid.append(el('span',val,{class:cl}));});
+ $('words').append(grid,el('p','Hexadecimal digital words; up to five representative outputs shown. The exported table retains every requested input and its shank.',{class:'hint'}));
+}
+function download(type){
+ if(!last)return;const ev=last.ev,t=last.t,small=t.rows.map(r=>({shank:r.sh,physical_site_id:r.site,fixture_slot:r.lane,slot_role:r.hardwareLane?'NP1_nominal_hardware_line':'illustrative_slot',expected_tag:r.expected,observed_tag:r.observed,result:r.observed===null?'missing':r.expected===r.observed?'match':'wrong_tag'}));
+ const header=Object.keys(small[0]);const sourceKeys=E.profiles[ev.key].sources;
+ const value=type==='csv'?[header,...small.map(v=>header.map(k=>v[k]??''))].map(a=>a.join(',')).join('\r\n')+'\r\n':JSON.stringify({schema:'BTS-NP-loopback-v1',synthetic:true,not_hardware_configuration:true,model:ev.key,preset:ev.mode,evidence:ev.code,interpretation:ev.why,request:read(),counts:ev.counts,fault:{kind:t.kind,shank:t.shank,address:t.num},summary:{expected:t.rows.length,received:t.received,missing:t.missing,wrong_tag:t.wrong},sources:sourceKeys.map(k=>({title:E.source[k][0],url:E.source[k][1]})),rows:small},null,2);
+ const url=URL.createObjectURL(new Blob([value],{type:type==='csv'?'text/csv;charset=utf-8':'application/json'}));const a=el('a','',{download:'neuropixels-'+ev.key+'-synthetic-tags.'+type,href:url});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+opts($('model'),Object.entries(E.profiles).map(([k,v])=>[k,v.name]));
+$('model').addEventListener('change',()=>changeModel($('model').value));$('pattern').addEventListener('change',()=>{buildOptions();update();});
+$('specific').addEventListener('input',update);
+for(const id of ['fault','faultshank','faultnum'])$(id).addEventListener('input',()=>{faultUi();clearRun();});
+$('run').addEventListener('click',run);$('csv').addEventListener('click',()=>download('csv'));$('json').addEventListener('click',()=>download('json'));
+document.querySelectorAll('[data-demo]').forEach(btn=>btn.addEventListener('click',()=>{const d=btn.dataset.demo;if(d==='collision')changeModel('np1','manual',{sites:'0,384'});else if(d==='fixed')changeModel('quad','counts',{counts:[385,383,384,384]});else{const ids=['u8','u4','u2','u1'],now=$('model').value==='ultra'?ids.indexOf($('pattern').value):-1;changeModel('ultra',ids[(now+1)%4]);}$('controls').scrollIntoView({block:'start'});}));
+let lastNarrow=null;window.addEventListener('resize',()=>{const now=$('diagram').clientWidth<480;if(selected&&lastNarrow!==now){lastNarrow=now;plot(selected);}});
+const p=new URLSearchParams(location.search),k=p.get('model');changeModel(Object.prototype.hasOwnProperty.call(E.profiles,k)?k:'np1',p.get('pattern'));
+})();
+</script></body></html>

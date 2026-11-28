@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#203c3a">
+<meta name="description" content="Follow a four-mask flexible mesh through a virtual wafer process, register its plug-and-play connector, and verify a synthetic electronics-only bench result.">
+<title>Four-Mask Mesh Foundry | Build The Simulation</title>
+<style>:root{--paper:#f7f1e4;--light:#fffbf2;--ink:#172d2c;--sub:#526562;--teal:#295450;--teal-dark:#183b38;--teal-wash:#e3ece2;--copper:#9c542d;--rule:#c6c8b5;--gold:#d29554;--shadow:#00000010;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--serif:Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--paper);color:var(--ink);font:15px/1.45 var(--sans);min-width:0;background-image:repeating-linear-gradient(0deg,#634b3403 0,#634b3403 1px,transparent 1px,transparent 4px)}
+button,select,input{font:inherit;color:inherit}button,a,input,select,summary{-webkit-tap-highlight-color:#174d4d1a}
+button,select{border:1px solid var(--rule);border-radius:3px;background:var(--light);min-height:40px;padding:.42rem .65rem;line-height:1.16}
+button{cursor:pointer}button:hover{background:#f0e8d6}button:disabled,select:disabled{opacity:.49;cursor:default}
+button[aria-pressed="true"]{background:var(--teal);color:#fffdf6;border-color:#21423e;font-weight:650}
+button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible,canvas:focus-visible{outline:2px solid #bf6532;outline-offset:3px}
+a{color:#275a56;text-underline-offset:3px}
+a:hover{color:#924824}
+.wrap{width:min(1428px,calc(100% - 68px));margin-inline:auto;min-width:0}
+.sr-only,.skip:not(:focus){position:absolute;width:1px;height:1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.skip:focus{position:absolute;z-index:3;top:8px;left:8px;background:var(--light);padding:10px}
+.mast{border-bottom:1px solid #9ea691;background:#f3ead9}
+.mast-inner{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:58px}
+.brand{display:inline-flex;align-items:center;gap:8px;font:800 11px/1.13 var(--mono);letter-spacing:.115em;text-decoration:none;color:#254440}
+.brandmark{display:grid;place-items:center;background:#264642;color:#f9efd8;font:italic bold 22px/1 var(--serif);width:28px;height:28px;border-radius:2px;box-shadow:inset 0 0 0 2px #b5c5a868}
+.mast nav{display:flex;gap:clamp(.8rem,2vw,1.65rem);flex-wrap:wrap;align-items:center;justify-content:flex-end}
+.mast nav a{color:#355752;font:700 .75rem/1.3 var(--mono);text-underline-offset:4px}
+.lead{display:flex;justify-content:space-between;align-items:end;gap:1ch;padding:38px 0 23px}
+.eyebrow,.micro,.panel-head,.stamp,.bench-status,.foot{font-family:var(--mono);letter-spacing:.105em;font-weight:750}
+.eyebrow,.micro{font-size:.71rem;color:#466461}
+.eyebrow{margin-bottom:.45em}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;margin:0}
+h1{font-size:clamp(2.56rem,5.1vw,4.875rem);letter-spacing:-.059em}
+h2{font-size:clamp(1.9rem,3.3vw,2.95rem);letter-spacing:-.046em}
+h3{font-size:1.4rem;letter-spacing:-.026em}
+.intro{max-width:73ch;margin:12px 0 0;color:#37524d;font-size:clamp(.98rem,1.5vw,1.21rem);line-height:1.37}
+.insignia{width:176px;max-width:22%;display:grid;gap:1px;color:#4b6c61;text-align:center;flex:none}
+.insignia svg{display:block;width:100%;max-height:109px}
+.insignia span{font:650 9px/1.2 var(--mono);letter-spacing:.11em}
+.mobile-only{display:none}
+.brief{font-size:.9rem;padding:12px 15px;margin:0 0 21px;border-block:1px solid #a8baad;background:#e6eade;color:#284b45}
+.brief strong{font-weight:750}
+.bench-layout{display:grid;grid-template-columns:minmax(238px,290px) minmax(0,1fr);gap:18px;align-items:start}
+.traveler,.inspection,.map-box,.plots{min-width:0;border:1px solid var(--rule);background:var(--light);box-shadow:0 2px 5px var(--shadow)}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:11px;padding:12px;background:#203c3a;color:#f7efd9;min-height:49px;line-height:1.25;font-size:.77rem}
+.panel-head .stamp{font-size:.65rem;border:1px solid #9abcb277;color:#cef0df;padding:4px 6px;white-space:nowrap}
+.stages{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.stages li+li{border-top:1px solid #dedfcf}
+.stages button{width:100%;border:0;text-align:left;background:transparent;font-weight:600;display:grid;grid-template-columns:2.1ch 1fr;gap:10px;padding:11px 12px 10px;min-height:41px;border-radius:0}
+.stages button b{font:700 .72rem/1.2 var(--mono);align-self:center;color:#4c716b}
+.stages button:hover{background:#f4eee1}
+.stages button[aria-current="step"]{background:var(--teal-wash);color:#194642;box-shadow:inset 4px 0 #347a70}
+.stages button[aria-current="step"] b{color:#1f574e}
+.pop-block{padding:11px 12px 12px;display:grid;gap:4px}
+.pop-block label{font-size:.8rem;font-weight:700;color:#4d6661}
+.pop-block select{width:100%;padding-inline:.37rem;min-width:0;font-size:.85rem}
+.trav-controls{border-top:1px solid var(--rule);padding:10px;display:grid;grid-template-columns:41px 1fr;gap:6px}
+#next,#run{font-weight:650}
+#next{background:#23433f;color:#fff6de;border-color:#23433f;text-align:center}
+#next:hover{background:#285650}
+#run{grid-column:1/-1}
+.view-controls{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:8px}
+.seg,.view-actions,.masks{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.view-controls .seg button,.view-controls .view-actions button,.view-actions select,.masks button{font-size:.78rem;padding:5px 8px}
+.view-controls .view-actions button{width:34px;min-height:35px}
+.view-controls select,.view-controls .seg button{min-height:35px}
+#specimen{display:block;width:100%;min-width:0;height:clamp(350px,35vw,465px);background:#0c2126;touch-action:none;cursor:grab}
+#specimen:active{cursor:grabbing}
+.view-reading{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:9px;padding:8px;border-bottom:1px solid var(--rule);background:#f0eddf}
+.selection{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:650}
+.selection select{min-width:100px;max-width:147px;min-height:34px;font-size:.78rem}
+.mark{display:inline-block;width:8px;height:8px;border-radius:1px;margin-right:4px;box-shadow:0 0 0 1px #251b16ad}
+.lower{background:#bc7939}.gold{background:#fac75c}.platinum{background:#b9e1f3}.upper{background:#68b9a7}
+.worknote{padding:13px 16px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:11px 17px}
+.worknote p{margin:5px 0 0}
+.worknote .micro{font-size:.63rem}
+.worknote .check{padding-left:12px;border-left:2px solid #8baea2;font-size:.88rem;color:#3a5954}
+.tool-links{grid-column:1/-1;border-top:1px solid #e1e2d5;padding-top:10px!important;font-size:.77rem}
+#stage-equipment a{white-space:normal;overflow-wrap:anywhere}
+.controls-panel,.results,.evidence{margin-top:30px;border-top:2px solid #82958a;padding-top:17px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:9px;margin:0 0 12px}
+.section-head button{white-space:nowrap;font-size:.8rem}
+.scenario-row{display:flex;flex-wrap:wrap;gap:7px}
+.scenario-row button{font-size:.88rem}
+.settings{margin-top:10px;border:1px solid var(--rule);background:var(--light);padding:0 12px}
+summary{font-weight:730;color:#295851;cursor:pointer;min-height:42px;padding:10px 3px}
+.fine-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:4px 0 7px;gap:12px 18px}
+.knob,.stacked{display:grid;gap:5px;font-size:.83rem;font-weight:670;min-width:0}
+.knob>span{display:flex;flex-wrap:wrap;gap:2px 8px;align-items:center;justify-content:space-between}
+.knob input{width:100%;accent-color:#33736a;min-height:28px;margin:1px 0 0}
+.knob output{font:700 .77rem var(--mono);color:#864423}
+.checks{display:flex;gap:12px;align-items:end;flex-wrap:wrap;font-size:.85rem;color:#29534c}
+.checks label{white-space:nowrap;display:flex;align-items:center;gap:4px;min-height:40px}
+.checks input{accent-color:#33736a;width:18px;height:18px}
+.settings-note{margin:7px 0 13px;color:#45615d;font-size:.8rem}
+.bench-status{font-size:.7rem;border:1px solid #b3beb3;background:#e6eee4;color:#355d54;padding:5px 8px;text-align:center;max-width:11rem}
+.bench-status[data-tone="pass"]{background:#d8eedc;border-color:#86ab92;color:#215538}
+.bench-status[data-tone="fail"]{background:#f3dfce;border-color:#bd9682;color:#803b25}
+.scoped{margin:0 0 12px;color:#3f5d56}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#b7c3b6;border:1px solid #b7c3b6;margin-bottom:13px}
+.metrics>div{display:grid;gap:2px;background:#ebede2;padding:10px 13px;min-width:0}
+.metrics span{color:#3d5850;font:650 .69rem/1.2 var(--mono);letter-spacing:.045em}
+.metrics b{font:650 clamp(1.13rem,2.65vw,1.83rem)/1.2 var(--serif);color:#244c45;overflow-wrap:anywhere}
+.result-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:12px}
+.map-box,.plots{padding:14px}
+.small{font-size:.79rem;color:#4b6961;line-height:1.4;margin:5px 0 8px}
+.pinmap{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}
+.pinmap button{border:1px solid #b4c3b7;min-width:0;padding:4px 1px;display:grid;justify-items:center;align-content:center;min-height:40px;font:750 clamp(.55rem,1.05vw,.75rem) var(--mono);font-variant-numeric:tabular-nums;gap:1px;background:#f1ede1}
+.pinmap button em{font-size:.67rem;font-style:normal;line-height:.9;color:currentColor}
+.pinmap button[data-code="good"]{background:#dfebda;color:#254f3a}
+.pinmap button[data-code="wrong-map"]{background:#efe6bd;color:#71431c}
+.pinmap button[data-code="open"],.pinmap button[data-code="shared"],.pinmap button[data-code="unlatched"]{background:#f2dcd7;color:#943a2e}
+.pinmap button[data-code="empty"]{background:#ece9e4;color:#576667}
+.pinmap button[aria-pressed="true"]{outline:2px solid #24554c;outline-offset:1px}
+.map-key{display:flex;gap:4px 12px;flex-wrap:wrap;margin:9px 0 8px;color:#495e5a;font:600 .66rem/1.3 var(--mono)}
+.map-key span::before{display:inline-block;content:'';width:8px;height:8px;margin:0 4px 0 0;border-radius:50%;border:1px solid #687770}
+.good-dot::before{background:#b3d7bd}.wrong-dot::before{background:#e7cc8c}.fault-dot::before{background:#dfa099}.empty-dot::before{background:#d9d5c9}
+.read-card{padding:10px;background:#edf0e5;border:1px solid #d2d8c9;font-size:.85rem}
+.read-card strong{color:#264d47}
+.read-card dl{display:grid;grid-template-columns:auto minmax(0,1fr);margin:5px 0 0;gap:2px 11px}
+.read-card dt{color:#47655e}.read-card dd{margin:0;overflow-wrap:anywhere}
+.plot-head{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.plot-head label{display:grid;min-width:72px;gap:2px;color:#465f58;font-size:.67rem;white-space:nowrap}
+.plot-head select{font:700 .72rem var(--mono);min-height:35px;padding:3px 5px}
+.plot-wrap{margin:9px 0 7px;min-height:110px}
+.plot-wrap svg,#waveform svg{display:block;width:100%;height:auto;max-height:282px;overflow:visible}
+.plot-empty{border:1px dashed #a9bbb1;min-height:112px;display:grid;place-items:center;text-align:center;padding:12px;background:#eff1e7;color:#4c655e;font-size:.86rem}
+.wave-details{margin-top:8px;border-top:1px solid #d3d9ca}
+.exports{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.exports button{font-size:.79rem}
+.evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 14px}
+.evidence-grid article{border-top:1px solid #a9b8ab;padding:9px 3px 0}
+.evidence p{color:#38554e;font-size:.88rem;line-height:1.5;margin:8px 0}
+.source-list{display:grid;gap:6px;margin:10px 0;padding:10px 12px;background:#e9eee2;border:1px solid var(--rule)}
+.source-list p{margin:0;font-size:.8rem;overflow-wrap:anywhere}
+.model-detail{border-block:1px solid var(--rule);padding:0 9px}
+#method{font-size:.85rem}
+#method ul{margin:7px 0 12px;padding-left:19px}
+#method li{margin-bottom:.45rem}
+.foot{border-top:1px solid #b3c0b4;margin-top:29px;padding:14px 0 30px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.65rem;color:#496a5e}
+@media (max-width:980px){.wrap{width:calc(100% - 40px)}.bench-layout{grid-template-columns:minmax(200px,245px) minmax(0,1fr);gap:12px}.stages button{font-size:.87rem}.panel-head{font-size:.70rem}}
+@media (max-width:740px){.wrap{width:calc(100% - 28px)}.bench-layout{display:flex;flex-direction:column;gap:10px}.traveler,.inspection{width:100%}.traveler .panel-head{min-height:38px}.traveler .pop-block{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:9px;padding:7px 9px}.traveler .stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.stages li+li{border-top:0}.stages li:nth-child(n+3){border-top:1px solid #dedfcf}.stages li:nth-child(odd){border-right:1px solid #dedfcf}.stages button{line-height:1.15;gap:4px;min-height:38px;padding:6px 7px;font-size:.77rem}.trav-controls{grid-template-columns:42px 1fr 1fr;padding:6px;gap:5px}.trav-controls button{min-height:36px;font-size:.79rem}#run{grid-column:auto}.view-controls .seg button,.view-actions select,.view-controls .view-actions button,.masks button{min-height:42px}.view-controls .view-actions button{width:40px}#specimen{height:clamp(290px,62vw,390px)}.worknote{padding:10px;gap:10px}.result-grid,.evidence-grid{grid-template-columns:minmax(0,1fr)}.evidence-grid{gap:7px}.evidence-grid article{padding-top:8px}.lead{padding:25px 0 15px}.brief{margin-bottom:13px;padding:9px 10px;font-size:.81rem}.fine-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.metrics{margin-bottom:10px}.metrics span{font-size:.63rem}.pinmap button{font-size:.72rem}.plots,.map-box{padding:12px}}
+@media (max-width:420px){.wrap{width:calc(100% - 22px)}.lead h1{font-size:2.9rem}.mobile-only{display:inline}.lead .insignia{display:none}.mast-inner{min-height:54px;gap:8px}.mast nav{gap:6px 10px}.mast nav a{font-size:.62rem}.brand{font-size:9px;gap:4px}.brandmark{width:24px;height:24px;font-size:19px}.worknote{grid-template-columns:1fr;gap:7px}.worknote .check{padding-left:7px}.section-head h2{font-size:1.91rem}.scenario-row button{font-size:.77rem;min-height:40px}.pinmap button{font-size:.64rem}.fine-controls{gap:10px}.metrics>div{padding:8px 5px}.lead .eyebrow{font-size:.65rem}.foot{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to the foundry</a>
+<header class="mast">
+  <div class="wrap mast-inner"><a href="/" aria-label="Build The Simulation home" class="brand"><span class="brandmark" aria-hidden="true">B</span><span>BUILD THE<br>SIMULATION</span></a>
+  <nav aria-label="Project links"><a href="/simulations/foundry/">Foundry</a><a href="/simulations/foundry/atlas/">Workflow atlas</a><a href="/devices/23-syringe-injectable-mesh-electronics/">Device record</a></nav></div>
+</header>
+<main class="wrap" id="workspace">
+  <section class="lead" aria-labelledby="top-title">
+    <div>
+      <div class="eyebrow">FLEXIBLE ELECTRONICS / PROCESS PLATE 06</div>
+      <h1 id="top-title">Four-Mask<br class="mobile-only"> Mesh Foundry</h1>
+      <p class="intro">Pattern an open polymer mesh on silicon, expose the platinum sites, and see whether each circuit reaches the pin you expect.</p>
+    </div>
+    <div class="insignia" aria-label="Physical reference: platinum mesh, thirty-two pin fixture">
+      <svg viewBox="0 0 156 108" role="img" aria-label="Line drawing of an open electronics lattice transitioning to its connector">
+        <defs><pattern id="etch-lines" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4L4 0" stroke="#315c57" stroke-width=".55"/></pattern></defs>
+        <g transform="translate(5 14)" fill="none" stroke="#315c57" stroke-width="1.25">
+          <path d="M2 12h54l36 18h50M2 22h54l36 12h50M2 32h54l36 6h50M2 42h54l36 1h50M2 52h54l36-5h50M2 62h54l36-10h50"/>
+          <path d="M8 12l23 51m0-51 23 51m-3-51 23 48"/>
+          <path d="M90 29v25m7-25v25m7-25v25m7-25v25m7-25v25m7-25v25m7-25v25m7-25v25" opacity=".75"/>
+          <circle cx="16" cy="22" r="2" fill="#c38443"/><circle cx="26" cy="42" r="2" fill="#c38443"/><circle cx="22" cy="52" r="2" fill="#c38443"/><circle cx="34" cy="32" r="2" fill="#c38443"/>
+          <path d="M2 77h140M2 72v10m140-10v10" opacity=".4"/>
+        </g>
+      </svg>
+      <span>PLATINUM / GOLD / SU-8</span>
+    </div>
+  </section>
+
+  <div class="brief"><strong>What’s real:</strong> the four mask functions, reported connector dimensions, and published 1 kHz comparator. <strong>What’s reconstructed:</strong> all artwork coordinates, pin ordering, and bench outputs.</div>
+
+  <div class="bench-layout">
+    <aside class="traveler" aria-label="Ten-step foundry traveler">
+      <div class="panel-head"><b>PROCESS TRAVELER</b><span id="step-counter" class="stamp">01 / 10</span></div>
+      <div class="pop-block"><label for="population">Configuration</label><select id="population"><option value="full">32-site Pt baseline</option><option value="half">16 sites / 32-pin fixture</option></select></div>
+      <div class="trav-controls"><button id="prev" type="button" aria-label="Previous step">←</button><button id="next" type="button">Next step <span aria-hidden="true">→</span></button><button id="run" type="button">Run to bench</button></div>
+      <ol class="stages" id="stages"></ol>
+    </aside>
+    <section class="inspection" aria-labelledby="stage-name">
+      <div class="panel-head"><b id="stage-name">01 · Artwork and carrier</b><span id="mode-badge" class="stamp">SPECIMEN</span></div>
+      <div class="view-controls" aria-label="Specimen view controls">
+        <div class="seg" id="view-tabs" aria-label="Inspection regions"><button data-region="overview" aria-pressed="true">Overview</button><button data-region="mesh">Mesh</button><button data-region="site">Site</button><button data-region="stem">Stem</button><button data-region="io">I/O</button><button data-region="section">Layers</button></div>
+        <div class="view-actions">
+          <label class="sr-only" for="camera">Projection</label><select id="camera"><option value="plan">Plan</option><option value="oblique">3D oblique</option><option value="explode">Exploded 3D</option></select>
+          <button id="zoom-out" title="Zoom out" aria-label="Zoom out">−</button><button id="zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button id="reset-view" title="Reset view" aria-label="Reset view">⟲</button>
+        </div>
+      </div>
+      <canvas id="specimen" tabindex="0" aria-label="Projected 3D specimen with four select-able layers. Use arrow keys to pan or orbit, plus or minus to zoom, and zero to reset. In Plan view, the rendered site or fixture can also be selected. The electrical table below provides the same selection with exact values."></canvas>
+      <div class="view-reading">
+        <div class="masks" id="mask-tabs" role="group" aria-label="Mask isolation"><button data-mask="stage" aria-pressed="true">Current stage</button><button data-mask="all">Full stack</button><button data-mask="lower" aria-label="M1 Lower SU-8" title="Lower SU-8"><i class="mark lower"></i>M1</button><button data-mask="gold" aria-label="M2 Chromium and gold" title="Chromium and gold"><i class="mark gold"></i>M2</button><button data-mask="platinum" aria-label="M3 Chromium and platinum" title="Chromium and platinum"><i class="mark platinum"></i>M3</button><button data-mask="upper" aria-label="M4 Top SU-8" title="Top SU-8"><i class="mark upper"></i>M4</button></div>
+        <label class="selection">Inspect <select id="selected-pin" aria-label="Select physical fixture pin to inspect"></select></label>
+      </div>
+      <div class="worknote">
+        <div><span class="micro" id="stage-result"></span><p id="stage-detail"></p></div>
+        <div class="check" id="stage-check"></div>
+        <p class="tool-links"><span class="micro">REGISTER LINKS</span> <span id="stage-equipment"></span></p>
+      </div>
+    </section>
+  </div>
+
+  <section class="controls-panel" aria-labelledby="fault-title">
+    <div class="section-head"><div><div class="eyebrow">CHANGE ONE THING</div><h2 id="fault-title">Make the defect visible</h2></div><button id="clear-faults" type="button">Reset conditions</button></div>
+    <div class="scenario-row" aria-label="Example defects"><button data-preset="nominal">Nominal</button><button data-preset="open">Open lead</button><button data-preset="shift">One-pitch offset</button><button data-preset="occluded">Occluded Pt</button><button data-preset="bridge">Shared net</button><button data-preset="rail">Cracked rail</button></div>
+    <details class="settings" id="settings">
+      <summary>Manual settings</summary>
+      <div class="fine-controls">
+        <label class="knob"><span>ZIF lateral shift <output id="offset-value" for="offset">0 µm</output></span><input id="offset" type="range" min="-550" max="550" step="1" value="0"></label>
+        <label class="knob"><span>ZIF seating offset <output id="depth-value" for="depth">0 µm</output></span><input id="depth" type="range" min="-250" max="250" step="1" value="0"></label>
+        <label class="knob"><span>Pt mask shift, X <output id="ptShift-value" for="ptShift">0 µm</output></span><input id="ptShift" type="range" min="-36" max="36" step=".5" value="0"></label>
+        <label class="knob"><span>Upper window encroachment <output id="window-value" for="window">0 µm</output></span><input id="window" type="range" min="0" max="10" step=".25" value="0"></label>
+        <label class="stacked">Structure / traces <select id="fault"><option value="none">Intact</option><option value="open">Selected lead open</option><option value="bridge">Selected lead bridged to neighbor</option><option value="rail">Selected rail cracked; gold intact</option></select></label>
+        <label class="stacked">Defect target<select id="fault-site" disabled aria-label="Defect site"></select></label>
+        <div class="checks"><label><input type="checkbox" id="latch" checked> Latch closed</label><label><input type="checkbox" id="reverse"> Reverse readout labels</label></div>
+      </div>
+      <p class="settings-note">A ZIF offset moves the pins; it does not renumber the artwork. Reversing the labels changes the readout order without moving any geometry. Defects stay on their target as you inspect other pins. A rail crack holds the lot even if its gold leads still read.</p>
+    </details>
+  </section>
+
+  <section class="results" id="results" aria-labelledby="bench-title">
+    <div class="section-head"><div><div class="eyebrow">INERT ELECTRICAL BENCH</div><h2 id="bench-title">From site to readout</h2></div><span class="bench-status" id="grade" aria-live="polite">UNTESTED</span></div>
+    <p class="scoped" id="diagnosis" aria-live="polite">Reach the dry continuity and wet impedance steps to test your build.</p>
+    <div class="metrics" id="metrics"><div><span>Pad contact</span><b>—</b></div><div><span>Correctly mapped</span><b>—</b></div><div><span>Wet readable</span><b>—</b></div><div><span>Shared / wrong / open</span><b>—</b></div></div>
+    <div class="result-grid">
+      <div class="map-box">
+        <h3>Pin map</h3>
+        <p class="small">P = physical fixture pin, A = Au pad, E = Pt site. Select a pin to inspect it.</p>
+        <div class="pinmap" id="pinmap" role="group" aria-label="32 physical connector positions"></div>
+        <div class="map-key"><span class="good-dot">Correct map</span><span class="wrong-dot">Wrong map</span><span class="fault-dot">Open or shared</span><span class="empty-dot">Empty</span></div>
+        <div class="read-card" id="read-card"></div>
+      </div>
+      <div class="plots">
+        <div class="plot-head"><div><h3>Wet impedance</h3><p class="small" id="plot-label">No bench data yet.</p></div><label for="frequency">Inspect point<select id="frequency" disabled><option value="10">10 Hz</option><option value="30">30 Hz</option><option value="100">100 Hz</option><option value="300">300 Hz</option><option value="1000" selected>1 kHz</option><option value="3000">3 kHz</option><option value="10000">10 kHz</option></select></label></div>
+        <figure class="plot-wrap" id="bode" aria-labelledby="plot-caption"></figure>
+        <p id="plot-caption" class="small">Copper-color curve: calculated, not measured. The blue diamond is the 32-site mean reported at 1 kHz.</p>
+        <details class="wave-details"><summary>Bench signal replay</summary><div id="waveform"></div><p class="small" id="wave-note"></p></details>
+      </div>
+    </div>
+    <div class="exports"><button id="download-report">Download traveler JSON</button><button id="download-map" disabled>Pin map CSV</button><button id="download-eis" disabled>Selected EIS CSV</button><button id="download-wave" disabled>Selected waveform CSV</button><button id="download-artwork">Export displayed mask SVG</button></div>
+  </section>
+
+  <section class="evidence" id="evidence" aria-labelledby="evidence-title">
+    <div class="eyebrow">REFERENCES & SCOPE</div><h2 id="evidence-title">Where the numbers came from</h2>
+    <div class="evidence-grid">
+      <article><h3>Directly reported</h3><p>Separate SU-8, Cr/Au, Cr/Pt, and top SU-8 masks on a nickel release layer. The 32-site reference describes 20 µm Pt disks, a roughly 2.2 × 38 mm specimen, and two Au leads per longitudinal rail. The connector pitch is 500 µm; pads are 400 µm wide against approximately 100 µm pins.</p><p>At 1 kHz, the authors reported a mean 1.3 MΩ and −80° for 32 disks in 1× PBS. A separate contact-resistance measurement was approximately 3 Ω per interface. These are two different experiments.</p></article>
+      <article><h3>Modeled, not recovered</h3><p>Diagram artwork, E→A→P order, nominal structure dimensions where unspecified, sheet resistance, solver contact area, and test waveforms. The 16-site option illustrates known population, not the authors’ unknown occupied pin numbers.</p><p>No measured spectrum, proprietary mask files, actual connector map, or calibrated local recipe is represented. No nanowire transistor branch, biological response, administration, or deployment instructions are included.</p></article>
+      <article><h3>Bench solver</h3><p>A graph computes independent paths from fixture pins through physical pad overlaps to the Pt sites. A dry route is built from sheet resistance, route geometry and a contact estimate; a wet result additionally requires an exposed window.</p><p>A constant-phase interface is anchored to one published mean at 1 kHz. Other frequencies, aperture and load behavior are extrapolations. <a href="#model-detail">Read model details</a>.</p></article>
+    </div>
+    <div id="source-list" class="source-list"></div>
+    <details class="model-detail" id="model-detail"><summary>Units, assumptions and acceptance rules</summary><div id="method"></div></details>
+  </section>
+</main>
+<footer class="wrap foot"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/#device=23-syringe-injectable-mesh-electronics">Return to workflow atlas ↑</a></footer>
+<noscript><p>This lab requires JavaScript for the interactive geometry and bench calculations.</p></noscript>
+<script type="application/json" id="equipment-data">{"01-01": {"name": "CAD/mask workstation", "model": "KLayout + KiCad + FreeCAD (custom workstation)"}, "02-01": {"name": "Contact mask aligner", "model": "Karl SUSS MA6/BA6 Gen 4"}, "02-07": {"name": "Spin coater", "model": "Laurell WS-650Mz"}, "02-10": {"name": "Automated resist developer", "model": "SUSS Delta12AQ"}, "02-12": {"name": "Inspection microscope", "model": "Nikon ECLIPSE LV100ND LED · manual reflected brightfield"}, "03-01": {"name": "Electron-beam evaporation", "model": "Temescal BJD 1800"}, "03-02": {"name": "Thermal evaporation", "model": "Edwards 306 Vacuum Coater"}, "03-12": {"name": "Plasma surface treatment", "model": "Harrick Basic PDC-32G-2 · documentary static exterior"}, "04-06": {"name": "Wet processing", "model": "Custom ReynoldsTech-style wet bench (exact model pending)"}, "05-01": {"name": "Stylus profilometer", "model": "Bruker DektakXT manual XY with enclosure and 1 µm radius stylus"}, "05-07": {"name": "Probe station", "model": "Cascade Microtech Summit 11000B-AP · manual 200 mm"}, "08-06": {"name": "Bond pull / shear tester", "model": "Nordson DAGE legacy 4000 / WP100g cartridge"}, "09-01": {"name": "Potentiostat / galvanostat", "model": "Gamry Reference 600+ (legacy reference; 620 successor)"}, "09-03": {"name": "Source measure unit", "model": "Keithley 2450 SourceMeter"}, "09-06": {"name": "Waveform generator", "model": "Keysight 33622A Trueform (dual channel, standard bench configuration)"}, "09-12": {"name": "Electrochemical test cell", "model": "Custom three-electrode cell / saline bath"}, "10-10": {"name": "Open acquisition system", "model": "Open Ephys Acquisition Board Gen 3"}, "12-01": {"name": "Stereo dissecting microscope", "model": "ZEISS SteREO Discovery V12"}, "16-13": {"name": "Cable and connector library", "model": "Custom BNC, SMA, USB, triax, FFC and headstage families"}}</script>
+<script>/* Four-mask Mesh Foundry. Original teaching artwork; all planar coordinates in µm. */
+(function(root) {
+  'use strict';
+  const P = Object.freeze({
+    count:32, pitch:500, padWidth:400, pinWidth:100, pinDepth:160,
+    padY0:40, padSeatY1:390, padY1:1060, pinCenterY:220,
+    pinFirstX:22500, neckX:12600, stemWidth:328, stemY:-168, stemPitch:9.5,
+    siteRadius:10, leadWidth:3.2, railWidth:13, railPitch:142, braceWidth:10, suBase:.45, suTop:.45,
+    au:.080, crAu:.003, pt:.050, crPt:.003, ni:.100, carrierThickness:525,
+    sheetOhms:.42, zout:1200, zin:1e8, zinC:25e-12, minArea:1e-8,
+    measuredAtHz:1000, measuredWetOhms:1.3e6, measuredWetPhase:-80, measuredPinOhms:3
+  });
+  const SOURCES = Object.freeze({
+    jove:{title:'Schuhmann et al. · JoVE 137, 58003 (2018)',url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC6126522/',detail:'Protocol §1 and Fig. 2 identify the four masks, Cr/Au and Cr/Pt lift-offs, Ni release, and single-sided pad/site exposure. The electrical I/O section notes a 16-channel mesh on a 32-position connector. No mask artwork was recovered.'},
+    fu:{title:'Schuhmann et al. · Nano Letters 17, 5836–5842 (2017)',url:'https://bpb-us-e1.wpmucdn.com/websites.harvard.edu/dist/7/67/files/2022/05/acs.nanolett.7b03081-2.pdf',detail:'Fig. 1: distal open mesh, stem, continuous and porous pad sections, about 2.2 × 38 mm envelope and two Au leads per rail. Figs. 2–3 and surrounding text: 32 Pt electrodes, 20 µm diameter; pad width 400 µm, pin width about 100 µm and pitch 500 µm. Fig. 3: ~3 Ω contact and 1.3 MΩ at −80° at 1 kHz (mean, 32 Pt sites in 1× PBS).'},
+    zhou:{title:'Zhou et al. · Advanced One- and Two-Dimensional Mesh Designs (2017)',url:'https://bpb-us-e1.wpmucdn.com/websites.harvard.edu/dist/7/67/files/2022/05/Advanced-One-and-Two-Dimensional-Mesh-Designs-for-Injectable-Electronics.pdf',detail:'Fig. 1 distinguishes open lattice architectures and cross-brace directions. Those exact rail dimensions are not transferred to this plug-and-play model.'}
+  });
+  const STAGES=Object.freeze([
+    {name:'Artwork and carrier',code:'01',result:'Incoming silicon carrier',layers:['carrier'],inspect:'overview',source:'fu',tools:['01-01','02-12'],detail:'Choose a population, then track the same coordinate system from the device region through the stem and to the pad field. Silicon is a removable carrier, not the recording shank.',check:'Confirm 32 fixture positions, isolated one-site nets, and which positions are populated.'},
+    {name:'Sacrificial nickel',code:'02',result:'Carrier + temporary Ni',layers:['carrier','nickel'],inspect:'section',source:'jove',tools:['03-02','05-01'],detail:'Add the temporary Ni release level on the carrier. The silicon and nickel are below the lower polymer and are not counted as a common electrode.',check:'Record the release interface before depositing the permanent film.'},
+    {name:'M1 · Lower SU-8',code:'03',result:'Patterned mechanical foundation',layers:['carrier','nickel','lower'],inspect:'mesh',source:'jove',tools:['02-07','02-01','02-10'],detail:'Pattern bottom SU-8 into rails, diagonal cross-braces, the stem and the mechanical supports for the pads. A diagonal polymer-only tie never shorts two metal tracks.',check:'Inspect open cells and measure film thickness on a defined witness.'},
+    {name:'M2 · Gold routing',code:'04',result:'Cr/Au lead and I/O mask',layers:['carrier','nickel','lower','gold'],inspect:'stem',source:'jove',tools:['02-01','03-02','04-06'],detail:'Pattern Cr/Au leads and contact-pad structures through a separate lift-off. The porous area of a pad shares its electrical node with its solid seat. Independent leads remain distinct through the stem.',check:'Check the stem spacing and whether a bridge or break exists before passivation.'},
+    {name:'M3 · Platinum faces',code:'05',result:'Cr/Pt contact metal',layers:['carrier','nickel','lower','gold','platinum'],inspect:'site',source:'jove',tools:['02-01','03-01','04-06'],detail:'Define the Pt disks separately from the Au. Each disk must overlap its own landing trace. The 20 µm disk diameter comes from the 32-site specimen; the artwork here is reconstructed.',check:'Confirm every Pt disk overlaps precisely one intended conductor.'},
+    {name:'M4 · Top SU-8',code:'06',result:'Insulated traces; open contact + pad faces',layers:['carrier','nickel','lower','gold','platinum','upper'],inspect:'section',source:'jove',tools:['02-07','02-01','02-12'],detail:'Pattern the upper SU-8 to encapsulate the Au routing while exposing designated Pt and I/O sites. The upper window is not itself metal. An undersized opening can fail wet tests despite a sound dry path.',check:'Compare electrode exposure area and actual lead-to-site registration.'},
+    {name:'Release the mesh',code:'07',result:'Freestanding metal/polymer mesh',layers:['lower','gold','platinum','upper'],inspect:'mesh',source:'jove',tools:['03-12','04-06','12-01'],detail:'Remove the sacrificial interface in the virtual process and recover the free film on a bench support. This is a change in the assembly state, not cutting the patterned metal out of the design.',check:'The carrier and Ni should disappear; a broken rail, a metal open and a blocked window remain separate observations.'},
+    {name:'Register the ZIF fixture',code:'08',result:'Lateral overlap between pins and pads',layers:['lower','gold','platinum','upper','fixture'],inspect:'io',source:'fu',tools:['12-01','16-13','08-06'],detail:'Place the planar pad field over a 32-position zero-insertion-force connector model and inspect its contact witness. This represents fixture registration only, not a manufacturer’s undocumented connector footprint.',check:'Test geometric pin-to-pad overlap, chassis-label order and population separately. No force or wear calibration is assumed.'},
+    {name:'Dry continuity',code:'09',result:'Site–pad–pin graph',layers:['lower','gold','platinum','upper','fixture'],inspect:'io',source:'fu',tools:['05-07','09-03','16-13'],detail:'Trace each physical fixture pin through its gold pad, metal lead and Pt site. Detect opens, shared nets and label swaps before taking wet measurements.',check:'A one-to-one path can still be mapped to the wrong pin. Intentionally empty positions do not count as opens.'},
+    {name:'Wet impedance',code:'10',result:'Synthetic impedance + bench output',layers:['lower','gold','platinum','upper','fixture'],inspect:'site',source:'fu',tools:['09-01','09-12','09-06','10-10'],detail:'Compare the reconstructed electrical path to a virtual electrolyte-load circuit and a known synthetic source. The only wet calibration point is the published 32-electrode mean at 1 kHz.',check:'Check that an occluded contact maintains dry continuity but has no valid wet result. Neither this circuit nor its waveform predicts electrophysiology.'}
+  ]);
+  const MASKS=Object.freeze({
+    lower:{no:1,title:'Lower SU-8',material:'polymer foundation',color:'#d69b51',z:0,depth:P.suBase},
+    gold:{no:2,title:'Cr / Au',material:'routing and I/O',color:'#efbe59',z:P.suBase,depth:P.au+P.crAu},
+    platinum:{no:3,title:'Cr / Pt',material:'electrode sites',color:'#b7dcef',z:P.suBase+P.au+P.crAu,depth:P.pt+P.crPt},
+    upper:{no:4,title:'Upper SU-8',material:'insulation and windows',color:'#70d1bf',z:P.suBase+P.au+P.crAu,depth:P.suTop},
+  });
+  const POPS=Object.freeze({
+    full:{id:'full',name:'32-site Pt baseline',n:32,copy:'Published count and contact dimensions; the drawn netlist and artwork are a reconstruction.'},
+    half:{id:'half',name:'16 populated / 32 fixture positions',n:16,copy:'The protocol documents the 16/32 combination. Centered occupancy P09–P24 and this artwork are teaching choices.'}
+  });
+  const opt0=Object.freeze({population:'full',offset:0,depth:0,ptShift:0,window:0,reverse:false,fault:'none',target:16,latch:true});
+  const round=(x,n=5)=>Number(x.toFixed(n));
+  const clamp=(x,min,max)=>Math.min(max,Math.max(min,x));
+  const calcOptions=(o={})=>{
+    const num=(a,b,c,d)=>Number.isFinite(Number(a))?clamp(Number(a),b,c):d;
+    const fault=['none','open','bridge','rail'].includes(o.fault)?o.fault:'none';
+    return {population:o.population==='half'?'half':'full',offset:num(o.offset,-550,550,0),depth:num(o.depth,-250,250,0),ptShift:num(o.ptShift,-36,36,0),window:num(o.window,0,10,0),reverse:o.reverse===true,fault,target:Math.round(num(o.target,1,32,16)),latch:o.latch!==false};
+  };
+  const padX=i=>P.pinFirstX+(i-1)*P.pitch;
+  const label=(p,n)=>p+String(n).padStart(2,'0');
+  const length=p=>p.slice(1).reduce((sum,[a,b],i)=>sum+Math.hypot(a-p[i][0],b-p[i][1]),0);
+  const dSeg=(x,y,a,b)=>{
+    const dx=b[0]-a[0],dy=b[1]-a[1],q=dx*dx+dy*dy,t=q?clamp(((x-a[0])*dx+(y-a[1])*dy)/q,0,1):0;
+    return Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy);
+  };
+  function overlapCircle(r,s,d) {
+    if(r<=0 || s<=0 || d>=r+s) return 0;
+    if(d<=Math.abs(r-s))return Math.PI*Math.min(r,s)**2;
+    return r*r*Math.acos(clamp((d*d+r*r-s*s)/(2*d*r),-1,1))+s*s*Math.acos(clamp((d*d+s*s-r*r)/(2*d*s),-1,1))-.5*Math.sqrt(Math.max(0,(-d+r+s)*(d+r-s)*(d-r+s)*(d+r+s)));
+  }
+  const overlapLine=(a,b,c,d)=>Math.max(0,Math.min(b,d)-Math.max(a,c));
+  function buildRoutes(pop='full'){
+    const routes=[];
+    for(let n=1;n<=P.count;n++){
+      if(pop==='half'&&(n<9||n>24))continue;
+      const rail=Math.floor((n-1)/2);
+      const lr=rail-(pop==='half'?4:0), nrails=pop==='half'?8:16;
+      const yRail=(.5*(nrails-1)-lr)*(pop==='half'?270:P.railPitch);
+      const sign=n%2?1:-1;
+      const site=[500+((n-1)*7%32)*(2000/31),yRail+sign*24];
+      const dY=yRail+sign*3.85;
+      const leadY=-20-(n-1)*P.stemPitch;
+      const pts=[site,[site[0]+10,dY],[7100,dY],[P.neckX,leadY],[padX(n),leadY],[padX(n),P.padY0+6]];
+      const len=length(pts);
+      routes.push({n,rail,site,points:pts,lengthUm:len,routeR:P.sheetOhms*len/P.leadWidth,yRail,leadY,pad:[padX(n),P.padY0],ids:{site:label('E',n),pad:label('A',n),physicalPin:label('P',n),trace:label('T',n)}});
+    }
+    return routes;
+  }
+  const cache={full:buildRoutes('full'),half:buildRoutes('half')};
+  const routesFor=s=>cache[s==='half'?'half':'full'];
+  const ra=cache.full.find(r=>r.n===16).routeR+P.zout+P.measuredPinOhms;
+  // Calibrate one CPE to one documented measurement, not to an unavailable measured spectrum.
+  const anchorTheta=P.measuredWetPhase*Math.PI/180;
+  const cpeRe=P.measuredWetOhms*Math.cos(anchorTheta)-ra,cpeIm=P.measuredWetOhms*Math.sin(anchorTheta);
+  const alpha=-Math.atan2(cpeIm,cpeRe)*2/Math.PI;
+  const q=1/(Math.hypot(cpeRe,cpeIm)*(2*Math.PI*P.measuredAtHz)**alpha);
+  const CAL=Object.freeze({alpha,q,anchorNet:'E16',anchorSeriesOhm:ra});
+  const polarization=(f,area=1)=>{
+    if(!(f>0)||!(area>0))return null;
+    const mag=1/(q*area*(2*Math.PI*f)**alpha),phi=alpha*Math.PI/2;
+    return {re:mag*Math.cos(phi),im:-mag*Math.sin(phi)};
+  };
+  function impedance(row,f){
+    if(!row||!row.wet||!(f>0))return null;
+    const pol=polarization(f,row.areaFraction);
+    const re=row.dryOhm+P.zout+pol.re,im=pol.im;
+    return {re,im,abs:Math.hypot(re,im),phase:Math.atan2(im,re)*180/Math.PI};
+  }
+  function findHits(route,ptX,ptY){
+    let c=Infinity;
+    // Only traces in the lithography window can overlap a Pt site.
+    for(let i=0;i<2;i++)c=Math.min(c,dSeg(ptX,ptY,route.points[i],route.points[i+1]));
+    return c<P.siteRadius+P.leadWidth/2-1e-8;
+  }
+  function analyze(input={},stage=10){
+    const o=calcOptions(input),routes=routesFor(o.population);
+    const activeByN=new Map(routes.map(r=>[r.n,r]));
+    const graph=new Map();
+    const edge=(a,b)=>{
+      if(!graph.has(a))graph.set(a,new Set());
+      if(!graph.has(b))graph.set(b,new Set());
+      graph.get(a).add(b);graph.get(b).add(a);
+    };
+    const component=(s)=>{
+      const visited=new Set([s]),todo=[s];
+      while(todo.length){for(const next of graph.get(todo.pop())||[]){if(!visited.has(next)){visited.add(next);todo.push(next)}}}
+      return visited;
+    };
+    let bridgeNeighbor=null;
+    if(o.fault==='bridge'&&activeByN.has(o.target)) {
+      bridgeNeighbor=activeByN.has(o.target+1)?o.target+1:activeByN.has(o.target-1)?o.target-1:null;
+    }
+    for(const r of routes){
+      if(stage>=4) {
+        if(!(o.fault==='open' && o.target===r.n))edge('l'+r.n,'u'+r.n);
+        edge('u'+r.n,'a'+r.n);
+      }
+      if(stage>=5) {
+        for(const wire of routes)if(findHits(wire,r.site[0]+o.ptShift,r.site[1]))edge('e'+r.n,'l'+wire.n);
+      }
+    }
+    if(stage>=4&&bridgeNeighbor)edge('u'+o.target,'u'+bridgeNeighbor);
+    const contacts=[],rows=[];
+    for(let slot=1;slot<=P.count;slot++){
+      const pinX=padX(slot)+o.offset,pinY=P.pinCenterY+o.depth;
+      graph.set('p'+slot,new Set());
+      const yOverlap=overlapLine(pinY-P.pinDepth/2,pinY+P.pinDepth/2,P.padY0,P.padSeatY1);
+      if(stage>=8&&o.latch&&yOverlap>1e-8){
+        for(const r of routes){
+          const xOverlap=overlapLine(pinX-P.pinWidth/2,pinX+P.pinWidth/2,r.pad[0]-P.padWidth/2,r.pad[0]+P.padWidth/2);
+          if(xOverlap>1e-8){
+            const overlap=xOverlap*yOverlap/(P.pinWidth*P.pinDepth);
+            contacts.push({slot,pad:r.n,ratio:overlap,ohm:P.measuredPinOhms/overlap});
+            edge('p'+slot,'a'+r.n);
+          }
+        }
+      }
+    }
+    for(let slot=1;slot<=P.count;slot++){
+      const c=component('p'+slot);
+      const gather=prefix=>[...c].filter(s=>s.startsWith(prefix)).map(s=>Number(s.slice(1))).sort((a,b)=>a-b);
+      const labels=o.reverse?33-slot:slot, expected=activeByN.has(labels)?labels:null;
+      const pads=gather('a'),sites=gather('e'),pins=gather('p'), directly=contacts.filter(ct=>ct.slot===slot);
+      const joined=pads.length>1||sites.length>1||pins.length>1;
+      const connected=sites.length>0;
+      const unique=sites.length===1 && !joined && directly.length===1;
+      const mapped=unique&&sites[0]===expected;
+      const exposed=unique&&stage>=6?overlapCircle(P.siteRadius,P.siteRadius-o.window,Math.abs(o.ptShift)):0;
+      const areaFraction=exposed/(Math.PI*P.siteRadius**2);
+      const dryOhm=unique?activeByN.get(sites[0]).routeR+directly[0].ohm:null;
+      const wet=unique&&stage>=10&&exposed>P.minArea;
+      let status=stage<8?'not-seated':!o.latch?'unlatched':joined?'shared':!sites.length?(expected===null&&!pads.length?'empty':'open'):!mapped?'wrong-map':'good';
+      rows.push({slot,label:label('P',labels),expected,physicalPin:label('P',slot),pinX:padX(slot)+o.offset,pinY:P.pinCenterY+o.depth,
+        directPads:directly.map(ct=>ct.pad),pads,sites,pins,connected,unique,mapped,areaUm2:exposed,areaFraction,dryOhm,wet,status,
+        overlap:directly.length===1?directly[0].ratio:0});
+    }
+    const n=(f)=>rows.filter(f).length;
+    const wetNum=n(r=>r.wet);
+    const electricalPass=stage>=10 && o.latch&&n(r=>r.mapped)===routes.length&&wetNum===routes.length &&
+      n(r=>r.status==='shared'||r.status==='wrong-map'||r.status==='open')===0;
+    const structurePass=!(o.fault==='rail'&&activeByN.has(o.target));
+    const accepted=electricalPass && structurePass;
+    const counts={active:routes.length,contactedPins:n(r=>r.directPads.length>0),reachable:n(r=>r.connected),unique:n(r=>r.unique),
+      mapped:n(r=>r.mapped),wet:wetNum,empty:n(r=>r.status==='empty'),shared:n(r=>r.status==='shared'),
+      open:n(r=>r.status==='open'),wrong:n(r=>r.status==='wrong-map')};
+    return {options:o,stage,rows,contacts,bridgeNeighbor,counts,accepted,structurePass,electricalPass};
+  }
+  function cutPolyline(points,gapX,halfGap){
+    const j=points.findIndex((p,i)=>i>0&&points[i-1][0]<=gapX-halfGap&&p[0]>=gapX+halfGap);
+    if(j<0)return [points];
+    const [ax,ay]=points[j-1],[bx,by]=points[j];
+    const split=x=>[x,ay+(by-ay)*(x-ax)/(bx-ax)];
+    return [[...points.slice(0,j),split(gapX-halfGap)],[split(gapX+halfGap),...points.slice(j)]];
+  }
+  function drawing(input={}){
+    const o=calcOptions(input),routes=routesFor(o.population);
+    const L={carrier:[],nickel:[],lower:[],gold:[],platinum:[],upper:[],fixture:[]};
+    const add=(l,shape,g,more={})=>L[l].push({shape,...g,...more});
+    const stroke=(l,pts,w,more)=>add(l,'stroke',{pts,w},more);
+    const disc=(l,x,y,r,more)=>add(l,'circle',{x,y,r},more);
+    const rect=(l,x,y,w,h,more)=>add(l,'rect',{x,y,w,h},more);
+    for(const l of ['carrier','nickel'])rect(l,-1350,-1700,40500,3400,{id:l+'-crop'});
+    const rails=[...new Map(routes.map(r=>[r.rail,r.yRail]))];
+    const s0=444;
+    for(const l of ['lower','upper']) {
+      for(const [rail,y] of rails){
+        const anchor=[[s0,y],[7100,y],[P.neckX,-20-(rail*2+.5)*P.stemPitch]];
+        if(o.fault==='rail'&&Math.floor((o.target-1)/2)===rail){
+          const pieces=cutPolyline(anchor,3640,26);
+          pieces.forEach((path,i)=>stroke(l,path,P.railWidth,{id:l+'-rail-'+(rail+1)+'-'+(i+1),fault:'rail'}));
+        }else{stroke(l,anchor,P.railWidth,{id:l+'-rail-'+(rail+1)});}
+      }
+      for(let i=0;i+1<rails.length;i++){
+        const a=rails[i][1],b=rails[i+1][1];
+        for(let j=0;j<11;j++){
+          let x=650+j*566+((i%2)*43); const d=(a-b)*(i%2?1:-1);
+          const relevant=routes.filter(r=>r.yRail===a||r.yRail===b);
+          while(relevant.some(r=>dSeg(...r.site,[x,a],[x+d,b])<P.siteRadius+P.braceWidth/2+1))x+=12;
+          stroke(l,[[x,a],[x+d,b]],P.braceWidth,{id:l+'-brace-'+i+'-'+j});
+        }
+      }
+      rect(l,P.neckX-30,P.stemY-P.stemWidth/2,37200-(P.neckX-30),P.stemWidth,{id:l+'-stem'});
+      for(const r of routes){
+        const [sx,sy]=r.site,x=r.pad[0],tag={net:r.n};
+        const hole=l==='upper'?Math.max(0,P.siteRadius-o.window):0;
+        const branch=r.points[1],len=Math.hypot(branch[0]-sx,branch[1]-sy);
+        const skip=hole?Math.min(.95,(hole+6.03)/len):0;
+        const capStart=[sx+skip*(branch[0]-sx),sy+skip*(branch[1]-sy)];
+        stroke(l,[capStart,branch],12,{id:l+'-landing-'+r.n,...tag});
+        disc(l,sx,sy,14,{id:l+'-island-'+r.n,...tag,...(hole>0?{hole}: {})});
+        stroke(l,[[x,r.leadY],[x,l==='lower'?P.padY0+16:P.padY0-11.02]],22,{id:l+'-riser-'+r.n,...tag});
+        for(let j=-3;j<=3;j++) {
+          const dx=j*54;
+          if(l==='lower')stroke(l,[[x+dx,P.padY0+3],[x+dx,P.padY1]],34,{id:l+'-pad-strut-'+r.n+'-'+(j+4),...tag});
+          if(l==='upper'){
+            stroke(l,[[x+dx,P.padSeatY1+24],[x+dx,P.padSeatY1+65]],34,{id:l+'-pad-top-base-'+r.n+'-'+(j+4),...tag});
+          }
+        }
+        if(l==='lower'){
+          rect(l,x-206,P.padY0-6,412,P.padSeatY1-P.padY0+15,{id:l+'-pad-base-'+r.n,...tag});
+          for(const y of [701,953])stroke(l,[[x-162,y],[x+162,y+21]],19,{id:l+'-internal-pad-brace-'+r.n+'-'+y,...tag});
+        }
+      }
+      const left=routes[0].pad[0]-190,right=routes[routes.length-1].pad[0]+190;
+      for(const x of [542,799,1029])stroke(l,[[left,x],[right,x]],l==='lower'?19:15,{id:l+'-pad-tie-'+x});
+    }
+    for(const r of routes){
+      const n=r.n,x=r.pad[0],tag={net:n};
+      const traced=o.fault==='open'&&o.target===n?cutPolyline(r.points,18350,30):[r.points];
+      traced.forEach((pts,i)=>stroke('gold',pts,P.leadWidth,{id:'au-route-'+n+(i?'-'+i:''),...tag}));
+      rect('gold',x-P.padWidth/2,P.padY0,P.padWidth,P.padSeatY1-P.padY0,{id:'au-seat-'+n,...tag});
+      for(let j=-3;j<=3;j++)stroke('gold',[[x+j*54,P.padSeatY1-5],[x+j*54,P.padY1-7]],18,{id:'au-pad-finger-'+n+'-'+(j+4),...tag});
+      for(const y of [701,953])stroke('gold',[[x-162,y],[x+162,y+21]],12,{id:'au-pad-inner-link-'+n+'-'+y,...tag});
+      disc('platinum',r.site[0]+o.ptShift,r.site[1],P.siteRadius,{id:'pt-site-'+n,...tag});
+    }
+    if(o.fault==='bridge'){
+      const a=routes.find(r=>r.n===o.target),b=routes.find(r=>r.n===o.target+1)||routes.find(r=>r.n===o.target-1);
+      if(a&&b)stroke('gold',[[18470,a.leadY],[18470,b.leadY]],4,{id:'au-bridge-'+a.n+'-'+b.n,fault:'bridge'});
+    }
+    for(let n=1;n<=P.count;n++){
+      const pinX=padX(n)+o.offset,pinY=P.pinCenterY+o.depth;
+      rect('fixture',pinX-P.pinWidth/2,pinY-P.pinDepth/2,P.pinWidth,P.pinDepth,{id:'pin-'+n,pin:n});
+    }
+    return L;
+  }
+  function transfer(z,f){
+    const a=1/P.zin,b=2*Math.PI*f*P.zinC,d=a*a+b*b;
+    const zr=a/d,zi=-b/d,c=zr+z.re,e=zi+z.im,den=c*c+e*e;
+    return {re:(zr*c+zi*e)/den,im:(zi*c-zr*e)/den};
+  }
+  function waveform(r,opt={}){
+    if(!r?.wet)return [];
+    const n=r.sites[0],f=120+13*n,z=impedance(r,f),G=transfer(z,f),rate=6000,count=192,phase=n*.09;
+    const source=(i)=>Math.sin(2*Math.PI*f*i/rate+phase);
+    const output=(i)=>G.re*source(i)+G.im*Math.cos(2*Math.PI*f*i/rate+phase);
+    return Array.from({length:count},(_,i)=>({timeS:i/rate,inputUV:60*source(i),outputUV:60*output(i),site:n,hz:f}));
+  }
+  function sweep(r,frequency=1000){
+    const f=new Set([...Array.from({length:37},(_,i)=> Math.round(10*10**(i/12))),+frequency]);
+    return [...f].filter(x=>x>=10&&x<=10000).sort((a,b)=>a-b).map(freq=>({frequency:freq,...impedance(r,freq)})).filter(x=>Number.isFinite(x.abs));
+  }
+  const refLabel='Teaching ID map only; actual vendor pad order, mating PCB and acquisition permutation were not recovered. E## → A## → P## is this fixture’s baseline, not the original experiment’s file channel order.';
+  root.MeshEngine={P,SOURCES,STAGES,MASKS,POPS,opt0,calcOptions,routesFor,analyze,drawing,impedance,sweep,waveform,overlapCircle,length,dSeg,CAL,refLabel,label,round};
+})(typeof module==='object'&&module.exports?module.exports:globalThis);
+</script>
+<script>/* Substrate viewer: shared XY artwork, explicit projected schematic Z. Canvas2D only. */
+(function(){
+  'use strict';
+  const E=globalThis.MeshEngine,P=E.P;
+  const Layer={
+    carrier:{c:'#6c8092',lo:-.47,hi:-.18},
+    nickel:{c:'#b0bfc7',lo:-.18,hi:0},
+    lower:{c:'#b87939',lo:0,hi:.45},
+    gold:{c:'#fac75c',lo:.45,hi:.533},
+    platinum:{c:'#b9e1f3',lo:.533,hi:.586},
+    upper:{c:'#68b9a7',lo:.533,hi:.983},
+    fixture:{c:'#de9bd2',lo:1.0,hi:1.15}
+  };
+  const explodedOffset={carrier:-.72,nickel:-.36,lower:0,gold:.42,platinum:.86,upper:1.24,fixture:1.72};
+  const views={overview:'Overview',mesh:'Open mesh',site:'Selected site',stem:'Stem',io:'ZIF pads',section:'Layer stack'};
+  const box=(x,y,dx,dy,stretch=1)=>({x,y,dx,dy,stretch});
+  const conf=(key,r,row)=>key==='mesh'?box(2000,0,4150,2630):
+    key==='site'?box(r.site[0]+20,r.site[1],290,175):
+    key==='stem'?box(18280,-167,2040,415):
+    key==='io'?box(row.pinX-110,380,2220,1570):
+    key==='section'?box(r.site[0]+58,r.site[1]-21,285,139):
+    box(18930,-50,40800,3950,4.0);
+  const polygons=new WeakMap();
+  function rings(x,y,r,n=28) {
+    return Array.from({length:n},(_,k)=>[x+r*Math.cos(2*Math.PI*k/n),y+r*Math.sin(2*Math.PI*k/n)]);
+  }
+  function drawPolygons(p) {
+    let cached=polygons.get(p);
+    if(cached)return cached;
+    if(p.shape==='rect')cached={loops:[[[p.x,p.y],[p.x+p.w,p.y],[p.x+p.w,p.y+p.h],[p.x,p.y+p.h]]]};
+    else if(p.shape==='circle')cached={loops:[rings(p.x,p.y,p.r),...(p.hole?[rings(p.x,p.y,p.hole).reverse()]:[])]};
+    else {
+      const path=p.pts, w=p.w/2, loops=[], dots=[];
+      for(let i=1;i<path.length;i++){
+        const [a,b]=[path[i-1],path[i]], dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;
+        const X=-dy*w/l,Y=dx*w/l;
+        loops.push([[a[0]-X,a[1]-Y],[b[0]-X,b[1]-Y],[b[0]+X,b[1]+Y],[a[0]+X,a[1]+Y]]);
+      }
+      dots.push(...path.map(([x,y])=>rings(x,y,w,11)));
+      cached={loops,dots,multipart:true};
+    }
+    const a=[...cached.loops.flat(),...(cached.dots||[]).flat()]; let xmin=Infinity,xmax=-Infinity,ymin=Infinity,ymax=-Infinity;
+    for(const [x,y] of a){xmin=Math.min(xmin,x);xmax=Math.max(xmax,x);ymin=Math.min(ymin,y);ymax=Math.max(ymax,y)}
+    cached.bounds=[xmin,xmax,ymin,ymax];polygons.set(p,cached);return cached;
+  }
+  function hitBounds(bounds,c){
+    const [x1,x2,y1,y2]=bounds;
+    return x1 < c.x+c.dx*.80 && x2 > c.x-c.dx*.80 && y1 < c.y+c.dy*.77 && y2 > c.y-c.dy*.77;
+  }
+  function createViewer(canvas,callback){
+    const ctx=canvas.getContext('2d');
+    let view={yaw:-.15,pitch:.65,zoom:1,camera:'plan',region:'overview',solo:'stage',xPan:0,yPan:0},
+      payload=null, frame=0, size=[0,0], lastProj=null, active=null, dragStart=null;
+    const ro=new ResizeObserver(()=>invalidate());ro.observe(canvas);
+    const h=(e)=>[e.clientX,e.clientY];
+    const reset=()=>{view={...view,zoom:1,yaw:-.15,pitch:.65,xPan:0,yPan:0};invalidate()};
+    canvas.addEventListener('pointerdown',e=>{
+      if(!payload)return;
+      dragStart={client:h(e),view:{...view},pan:e.shiftKey||view.camera==='plan',drag:false};active=e.pointerId;
+      try{canvas.setPointerCapture(e.pointerId)}catch{}
+    });
+    canvas.addEventListener('pointermove',e=>{
+      if(e.pointerId!==active || !dragStart || !lastProj)return;
+      const [dx,dy]=h(e).map((x,i)=>x-dragStart.client[i]);
+      if(Math.abs(dx)+Math.abs(dy)>5)dragStart.drag=true;
+      if(!dragStart.drag)return;
+      if(dragStart.pan){
+        view.xPan=dragStart.view.xPan-dx/(lastProj.s||1);
+        view.yPan=dragStart.view.yPan+dy/(lastProj.s*lastProj.stretch||1);
+      }else {
+        view.yaw=Math.max(-1.03,Math.min(1.03,dragStart.view.yaw+dx*.006));
+        view.pitch=Math.max(.20,Math.min(1.42,dragStart.view.pitch+dy*.005));
+      }
+      invalidate();
+    });
+    function un(e,click){
+      if(e.pointerId!==active)return;
+      if(click&&dragStart&&!dragStart.drag&&view.camera==='plan'&&lastProj){
+        const r=canvas.getBoundingClientRect(),[x,y]=lastProj.deproject(e.clientX-r.left,e.clientY-r.top);
+        const routes=payload.routes,v=view.region;
+        if(v==='io'||v==='overview'&&x>21450&&y>-340&&y<1270){
+          const n=Math.round((x-P.pinFirstX)/P.pitch)+1;
+          if(n>0&&n<=32)callback(n);
+        }else if(v==='mesh'||v==='site'||v==='section'||(v==='overview'&&x<7500)){
+          let n=0,dd=Infinity; for(const t of routes){const d=Math.hypot(t.site[0]-x,t.site[1]-y);if(d<dd){dd=d;n=t.n}}
+          if(dd<(v==='overview'?400:225)&&n)callback(n);
+        }
+      }
+      dragStart=null;active=null;
+      try{canvas.releasePointerCapture(e.pointerId)}catch{}
+    }
+    canvas.addEventListener('pointerup',e=>un(e,true));canvas.addEventListener('pointercancel',e=>un(e,false));
+    canvas.addEventListener('keydown',e=>{
+      if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','0'].includes(e.key))return;
+      e.preventDefault();
+      if(e.key==='0'){reset();return;}
+      if(e.key==='+'||e.key==='-')view.zoom=Math.min(4,Math.max(.55,view.zoom*(e.key==='+'?1.25:.8)));
+      else if(view.camera==='plan') {
+        const d=50/(lastProj?.s||1); 
+        if(e.key==='ArrowLeft')view.xPan-=d;if(e.key==='ArrowRight')view.xPan+=d;
+        if(e.key==='ArrowUp')view.yPan+=d;if(e.key==='ArrowDown')view.yPan-=d;
+      }else{
+        if(e.key==='ArrowLeft')view.yaw=Math.max(-1.03,view.yaw-.14);
+        if(e.key==='ArrowRight')view.yaw=Math.min(1.03,view.yaw+.14);
+        if(e.key==='ArrowUp')view.pitch=Math.min(1.42,view.pitch+.12);
+        if(e.key==='ArrowDown')view.pitch=Math.max(.20,view.pitch-.12);
+      }
+      invalidate();
+    });
+    function invalidate(){if(!frame)frame=requestAnimationFrame(render)}
+    const rgba=(c,aa)=>c+Math.max(0,Math.min(255,Math.round(aa*255))).toString(16).padStart(2,'0');
+    function polyPath(c,xy,project,z,cont=false) {
+      if(!cont)c.beginPath();
+      for(let i=0;i<xy.length;i++){const p=project(xy[i][0],xy[i][1],z);if(i)c.lineTo(...p);else c.moveTo(...p);}
+      c.closePath();
+    }
+    function projectFactory(c,w,h,camera,view,displaying){
+      const stretch=c.stretch, a=camera==='plan'?0:view.yaw,b=camera==='plan'?0:view.pitch;
+      const cos=Math.cos(a),sin=Math.sin(a),tilt=Math.cos(b),sk=Math.sin(b),
+        margin=w<520?32:55, ht=h-92;
+      const xW=Math.abs(c.dx*cos)+Math.abs(c.dy*stretch*sin);
+      const baseY=Math.abs(c.dx*sin)+Math.abs(c.dy*stretch*cos);
+      // Diagram elevation is assigned a bounded display budget independently of physical XY.
+      const sh=k=>camera==='explode'?(explodedOffset[k]||0):0;
+      const zLo=Math.min(...displaying.map(k=>Layer[k].lo+sh(k))),zHi=Math.max(...displaying.map(k=>Layer[k].hi+sh(k)));
+      const span=Math.max(.2,zHi-zLo), zMid=(zLo+zHi)/2;
+      const separation=camera==='explode'?Math.min((h-84)*.58,(c.stretch>1?92:126)*span):camera==='plan'?0:Math.min((h-84)*.16,40*span);
+      const pxZ=separation/span;
+      const s=Math.min((w-margin)/xW,Math.max(75,ht-separation)/(baseY*tilt))*view.zoom;
+      const ctr=[w/2,h*.51+zMid*pxZ], x0=c.x+view.xPan,y0=c.y+view.yPan/stretch;
+      const project=(x,y,z)=>{
+        const X=x-x0,Y=(y-y0)*stretch;
+        return [ctr[0]+(X*cos-Y*sin)*s,ctr[1]-(X*sin+Y*cos)*s*tilt-z*pxZ];
+      };
+      return {project,s,pxZ,stretch,deproject:(px,py)=>[x0+(px-ctr[0])/s,y0-(py-ctr[1])/s/stretch]};
+    }
+    function render(){
+      frame=0;if(!ctx||!payload)return;
+      const b=canvas.getBoundingClientRect(),w=b.width,h=b.height,R=Math.min(devicePixelRatio||1,2);
+      if(!w||!h)return;
+      if(size[0]!==w*R||size[1]!==h*R){canvas.width=Math.round(w*R);canvas.height=Math.round(h*R);size=[w*R,h*R];}
+      ctx.setTransform(R,0,0,R,0,0);
+      const group=payload.steps, state=payload.state, target=payload.target, row=state.rows[target-1],r=payload.routes.find(x=>x.n===target)||payload.routes[Math.floor(payload.routes.length/2)];
+      const displaying=view.solo==='stage'?group:view.solo==='all'?['lower','gold','platinum','upper']:[view.solo];
+      const c=conf(view.region,r,row),f=projectFactory(c,w,h,view.camera,view,displaying),p=f.project;lastProj=f;
+      const gd=ctx.createLinearGradient(0,0,w,h);gd.addColorStop(0,'#09252c');gd.addColorStop(.53,'#0b181e');gd.addColorStop(1,'#173131');ctx.fillStyle=gd;ctx.fillRect(0,0,w,h);
+      ctx.save();ctx.beginPath();ctx.rect(0,0,w,h);ctx.clip();
+      ctx.strokeStyle='#71949725';ctx.lineWidth=.65;ctx.beginPath();
+      const tick=Math.pow(10,Math.floor(Math.log10(c.dx/9)));
+      for(let a=Math.floor((c.x-c.dx*1.5+view.xPan)/tick)*tick;a<c.x+c.dx*1.5+view.xPan;a+=tick) {
+        const z=-.55;ctx.moveTo(...p(a,c.y-c.dy*1.38+view.yPan/f.stretch,z));ctx.lineTo(...p(a,c.y+c.dy*1.38+view.yPan/f.stretch,z));
+      }
+      const ty=tick/f.stretch;
+      for(let a=Math.floor((c.y-c.dy*1.45+view.yPan/f.stretch)/ty)*ty;a<c.y+c.dy*1.45+view.yPan/f.stretch;a+=ty) {
+        const z=-.55;ctx.moveTo(...p(c.x-c.dx*1.5+view.xPan,a,z));ctx.lineTo(...p(c.x+c.dx*1.5+view.xPan,a,z));
+      }
+      ctx.stroke();
+
+      const explode=explodedOffset;
+      const m=payload.geometry;
+      for(const k of displaying) {
+        const l=Layer[k];if(!l)continue;
+        const dz=view.camera==='explode'?(explode[k]||0):0;
+        const zl=l.lo+dz,zh=l.hi+dz;
+        const clip={...c,x:c.x+view.xPan,y:c.y+view.yPan/f.stretch,dx:c.dx*1.25/Math.min(view.zoom,1),dy:c.dy*1.25/Math.min(view.zoom,1)};
+        ctx.lineJoin='round';ctx.lineCap='round';
+        let group=m[k];
+        for(const prim of group){
+          const sh=drawPolygons(prim);
+          if(!hitBounds(sh.bounds,clip))continue;
+          const hi=prim.net===target&&(k==='gold'||k==='platinum');
+          const col=prim.fault?'#f26d74':hi?(k==='gold'?'#fff0a6':'#f1fbff'):l.c;
+          const pinrow=prim.pin?state.rows[prim.pin-1]:null;
+          const sideAlpha=(k==='carrier'||k==='nickel')?.38:k==='upper'?.41:.69;
+          const topAlpha=k==='carrier'?(view.camera==='plan'?.18:.47):
+            k==='nickel'?(view.camera==='plan'?.22:.36):k==='upper'?(view.solo===k||view.camera==='explode'?.77:.46):
+            k==='fixture'?.32:k==='lower'? .82:1;
+          if(view.camera!=='plan' && prim.shape!=='stroke'){
+            const pp=sh.loops[0];ctx.fillStyle=rgba(col,sideAlpha*.72);
+            for(let i=0;i<pp.length;i++){const a=pp[i],b=pp[(i+1)%pp.length];
+              ctx.beginPath();ctx.moveTo(...p(...a,zl));ctx.lineTo(...p(...b,zl));ctx.lineTo(...p(...b,zh));ctx.lineTo(...p(...a,zh));ctx.closePath();ctx.fill();}
+          }
+          // Keep fabrication layer mask holes as negative geometry, not white paint.
+          if(!sh.multipart){
+            sh.loops.forEach((u,i)=>polyPath(ctx,u,p,zh,i>0));ctx.fillStyle=rgba(col,topAlpha);ctx.fill('evenodd');
+            if(k==='fixture'||(k==='platinum'&&hi)||(k==='upper'&&prim.hole&&prim.net===target)){
+              ctx.lineWidth=(prim.pin===target||hi)?1.8:1;
+              ctx.strokeStyle=k==='fixture'?(pinrow?.status==='good'?'#cafff1':pinrow?.status==='empty'?'#9d9dde':'#f6aece'):rgba(col,.9);
+              ctx.stroke();
+            }
+          }else{
+            ctx.beginPath();
+            for(const u of [...sh.loops,...sh.dots])polyPath(ctx,u,p,zh,true);
+            ctx.fillStyle=rgba(col,topAlpha);ctx.fill();
+            if(hi||prim.fault){
+              ctx.strokeStyle=rgba(col,hi?.45:.5);ctx.lineWidth=1.3;
+              ctx.beginPath();prim.pts.forEach((u,i)=>i?ctx.lineTo(...p(...u,zh)):ctx.moveTo(...p(...u,zh)));ctx.stroke();
+            }
+          }
+        }
+      }
+      function note(x,y,z,tag,color,dx,dy){
+        const [px,py]=p(x,y,z); if(px<10||px>w-10||py<18||py>h-12)return;
+        ctx.font='600 10px ui-monospace, monospace';const width=ctx.measureText(tag).width+12;
+        const tx=Math.max(6,Math.min(w-width-6,px+dx)),ty=Math.max(30,Math.min(h-53,py+dy));
+        ctx.lineWidth=.9;ctx.strokeStyle=rgba(color,.53);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(tx+(dx<0?width:0),ty+8);ctx.stroke();
+        ctx.fillStyle='#0d2328eb';ctx.fillRect(tx,ty,width,18);ctx.fillStyle=color;ctx.fillText(tag,tx+6,ty+12);
+      }
+      function mark(x,y,z,t,stroke='#fff4b5',label=true){
+        const [a,b]=p(x,y,z);if(a<0||a>w||b<0||b>h)return;
+        ctx.lineWidth=1;ctx.strokeStyle=stroke;ctx.beginPath();ctx.arc(a,b,6,0,Math.PI*2);ctx.stroke();
+        if(label)note(x,y,z,t,stroke,15,-30);
+      }
+      if(view.region==='overview'){
+        if(state.stage===1&&view.solo==='stage'){
+          // The incoming carrier is still blank. Show only a ghosted design plan registered to it.
+          ctx.save();ctx.strokeStyle='#9dbbbb85';ctx.lineWidth=1;
+          ctx.setLineDash([3,3]);
+          for(const design of m.lower){
+            if(design.shape==='stroke'&&(design.id.includes('-rail-')||design.id.includes('-brace-'))){
+              ctx.beginPath();design.pts.forEach((u,i)=>i?ctx.lineTo(...p(...u,0)):ctx.moveTo(...p(...u,0)));ctx.stroke();
+            }
+          }
+          const base=p(P.neckX,-332,0),end=p(37800,-4,0);
+          ctx.strokeRect(base[0],end[1],end[0]-base[0],base[1]-end[1]);
+          ctx.setLineDash([]);
+          ctx.fillStyle='#9dbbbb60';ctx.lineWidth=.6;
+          for(const pad of m.gold.filter(x=>x.id.startsWith('au-seat-'))){
+            const q=p(pad.x,pad.y,0),q1=p(pad.x+pad.w,P.padY1,0);
+            ctx.strokeRect(q[0],q1[1],q1[0]-q[0],q[1]-q1[1]);ctx.fillRect(q[0],q[1]-5,q1[0]-q[0],5);
+          }
+          ctx.restore();
+        }
+        const z=view.camera==='explode'?.95:.61;
+        note(3200,60,z,'OPEN MESH','#e9b978',w<500?-8:-28,-36);
+        note(16100,-162,z,'THIN STEM','#b0dfd0',-16,34);
+        note(27900,745,z,'ZIF PAD FIELD','#ddafe3',-14,-47);
+      }
+      if(view.region==='mesh'&&displaying.includes('platinum'))mark(r.site[0]+state.options.ptShift,r.site[1],Layer.platinum.hi+(view.camera==='explode'?explode.platinum:0),r.ids.site,'#eafaff');
+      if(view.region==='site'||view.region==='section'){
+        const [x,y]=r.site;
+        if(displaying.includes('platinum'))mark(x+state.options.ptShift,y,Layer.platinum.hi+(view.camera==='explode'?explode.platinum:0),r.ids.site+' · Pt','#eafaff');
+        if(displaying.includes('upper'))note(x,y,Layer.upper.hi+(view.camera==='explode'?explode.upper:0),'M4 WINDOW','#9be8d5',-100,-21);
+        if(view.region==='section'&&view.camera==='explode'){
+          if(displaying.includes('lower'))note(x-3,y,Layer.lower.hi,'M1 SUPPORT','#f4c78e',w<430?-79:-125,11);
+          if(displaying.includes('gold'))note(x+38,r.points[1][1],Layer.gold.hi+explode.gold,'M2 ROUTE','#ffe19d',w<430?4:34,16);
+        }
+      }
+      if(view.region==='io'){
+        const z=Layer.fixture.hi+(view.camera==='explode'?explode.fixture:0);
+        if(displaying.includes('fixture'))mark(row.pinX,row.pinY,z,row.physicalPin+(row.label!==row.physicalPin?' → '+row.label:''),'#f6cded');
+        const x=P.pinFirstX+(target-1)*P.pitch;
+        if(displaying.includes('gold'))note(x,764,Layer.gold.hi+(view.camera==='explode'?explode.gold:0),'A'+String(target).padStart(2,'0')+' PAD','#f9d78e',-70,-28);
+      }
+      ctx.restore();
+      ctx.fillStyle='#0b1a20e8';ctx.fillRect(0,0,w,28);ctx.fillRect(0,h-27,w,27);
+      ctx.font='10px ui-monospace, monospace';ctx.fillStyle='#b4d9d3';
+      ctx.fillText(views[view.region].toUpperCase()+' / '+(view.camera==='plan'?'XY':view.camera==='explode'?'EXPLODED Z':'OBLIQUE Z'),11,18);
+      ctx.textAlign='right';ctx.fillStyle='#9fbbbc';ctx.fillText(view.camera==='plan'&&view.region!=='overview'?'XY · µm':view.region==='overview'?'ENLARGED TRANSVERSE SCALE':'Z HEIGHT EXAGGERATED',w-10,18);ctx.textAlign='left';
+      if(view.camera==='plan'&&view.region!=='overview'){
+        const targetPx=75;let l=[1,2,5].map(c=>c*10**Math.floor(Math.log10(targetPx/f.s))).concat([10**Math.ceil(Math.log10(targetPx/f.s))]).find(x=>x*f.s>=targetPx*.73)||100;
+        ctx.strokeStyle='#a7cecb';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(12,h-13);ctx.lineTo(12+l*f.s,h-13);ctx.moveTo(12,h-16);ctx.lineTo(12,h-10);ctx.moveTo(12+l*f.s,h-16);ctx.lineTo(12+l*f.s,h-10);ctx.stroke();ctx.fillStyle='#b7cccd';ctx.fillText(l>=1000?(l/1000)+' mm':l+' µm',20+l*f.s,h-10);
+      }else{
+        ctx.fillStyle='#b7cccd';ctx.fillText(view.region==='overview'?(state.stage===1&&view.solo==='stage'?'Dashed artwork · not fabricated':'XY aspect adjusted for inspection'):'Layer elevation is a visual diagram',11,h-10);
+      }
+      ctx.textAlign='right';ctx.fillStyle='#a3c5c4';ctx.fillText(w<430?(view.camera==='plan'?'DRAG TO PAN':'DRAG TO ORBIT'):(view.camera==='plan'?'DRAG TO PAN · TAP A SITE OR PIN':'DRAG TO ORBIT · SHIFT DRAG TO PAN'),w-11,h-10);ctx.textAlign='left';
+    }
+    return {get state(){return {...view}},load(x){payload=x;invalidate()},set(values,resetPosition=false){view={...view,...values};if(resetPosition)reset();else invalidate();},reset,
+      zoom(d){view.zoom=Math.min(4,Math.max(.55,view.zoom*d));invalidate()}};
+  }
+  globalThis.MeshView={createViewer,views,drawPolygons};
+})();
+</script>
+<script>/* Browser controller and export surface. */
+(function(){
+  'use strict';
+  const E=globalThis.MeshEngine,P=E.P,$=id=>document.getElementById(id),Q=s=>Array.from(document.querySelectorAll(s));
+  const siteRoot=location.protocol==='file:'?'https://buildthesimulation.com':'';
+  const nlabel=E.label,fmt=(n,d=1)=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{maximumFractionDigits:d}).format(n):'—';
+  const ohm=(n)=>!Number.isFinite(n)?'—':n>=1e6?fmt(n/1e6,3)+' MΩ':n>=1e3?fmt(n/1e3,3)+' kΩ':fmt(n,2)+' Ω';
+  const escape=(x)=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+  const equip=JSON.parse($('equipment-data').textContent),build='mesh-foundry-1.0.0';
+  let options={...E.opt0},step=1,selected=16,freq=1000,model=E.analyze(options,step),geometry=E.drawing(options),currentPreset='nominal';
+  let timer=null;
+  const view=globalThis.MeshView.createViewer($('specimen'),i=>changeSelected(i));
+  const glyph={'good':'•','wrong-map':'↔','shared':'×','open':'×','empty':'·','not-seated':' ','unlatched':'○'};
+  const translations={'good':'correct map','wrong-map':'wrong map','shared':'shared net','open':'open','empty':'unpopulated','not-seated':'not seated','unlatched':'latch open'};
+  const presets={nominal:{},open:{fault:'open'},shift:{offset:500},occluded:{window:10},bridge:{fault:'bridge'},rail:{fault:'rail'}};
+  const maskHierarchy=['lower','gold','platinum','upper'];
+  const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function stageChange(n,fromRun=false){
+    if(!fromRun)stop(false);
+    step=Math.max(1,Math.min(E.STAGES.length,n));
+    const target=E.STAGES[step-1].inspect;
+    view.set({region:target,solo:'stage',camera:target==='section'?'explode':'plan'},true);
+    refresh(false);
+  }
+  function stop(paint=true){if(timer){clearInterval(timer);timer=null;if(paint)paintStage()}}
+  function start(){
+    if(timer){stop();return}
+    if(prefersReduced){stageChange(E.STAGES.length);return}
+    if(step===E.STAGES.length)stageChange(1,true);
+    timer=setInterval(()=>{
+      const end=step>=E.STAGES.length-1;
+      if(end)stop(false);
+      stageChange(step+1,true);
+    },175);
+    paintStage();
+  }
+  function changeSelected(x){
+    selected=Math.max(1,Math.min(32,+x||1));
+    $('selected-pin').value=selected;
+    refresh(false);
+  }
+  function config(next,recalcGeometry=true){
+    const old=options.population;
+    options=E.calcOptions(next);
+    if(old!==options.population&&options.population==='half')selected=16;
+    if(options.population==='half'&&(options.target<9||options.target>24))options.target=16;
+    $('population').value=options.population;
+    ['offset','depth','ptShift','window','fault'].forEach(id=>{$(id).value=options[id]});
+    ['latch','reverse'].forEach(id=>{$(id).checked=options[id]});
+    ['offset','depth','ptShift','window'].forEach(id=>{$(id+'-value').textContent=(options[id]>0&&id!=='window'?'+':'')+fmt(options[id],2)+' µm'});
+    $('fault-site').disabled=options.fault==='none';
+    $('fault-site').innerHTML=E.routesFor(options.population).map(r=>'<option value="'+r.n+'">'+r.ids.site+' / '+r.ids.trace+'</option>').join('');
+    $('fault-site').value=options.target;
+    Q('[data-preset]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.preset===currentPreset?'true':'false'));
+    refresh(recalcGeometry);
+  }
+  function applyPreset(k){
+    currentPreset=k;
+    let target=E.routesFor(options.population).some(r=>r.n===selected)?selected:16;
+    config({...E.opt0,population:options.population,...presets[k],target});
+    if(k==='shift')view.set({region:'io',camera:'plan',solo:'stage'},true);
+    if(k==='occluded')view.set({region:'site',camera:'plan',solo:'stage'},true);
+    if(k==='open'||k==='bridge')view.set({region:'stem',camera:'plan',solo:'stage'},true);
+    if(k==='rail')view.set({region:'mesh',camera:'plan',solo:'stage'},true);
+    refresh(false);
+  }
+  function paintStage(){
+    const s=E.STAGES[step-1],v=view.state;
+    $('stage-name').textContent=s.code+' · '+s.name;
+    $('step-counter').textContent=s.code+' / '+E.STAGES.length;
+    $('stage-result').textContent=s.result;
+    $('stage-detail').textContent=s.detail;
+    $('stage-check').innerHTML='<strong>Acceptance check</strong><br>'+escape(s.check)+(step>=9?'<br><a href="#results">View bench results ↓</a>':'');
+    $('stage-equipment').innerHTML=s.tools.map(id=>'<a href="'+siteRoot+'/simulations/equipment/'+id+'/" title="'+escape(equip[id]?.model||'Equipment register')+'">'+id+' '+escape(equip[id]?.name||'Equipment')+'</a>').join(' · ');
+    $('mode-badge').textContent=v.solo==='stage'?(step>6?'RELEASED':'ON CARRIER'):v.solo==='all'?'ARTWORK PREVIEW':'MASK '+E.MASKS[v.solo].no+' PREVIEW';
+    $('prev').disabled=step===1;
+    $('next').disabled=step===E.STAGES.length;
+    $('run').textContent=timer?'Pause traveler':step===E.STAGES.length?'Run again':'Run to bench';
+    Q('[data-stage]').forEach(el=>{if(+el.dataset.stage===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')});
+    Q('[data-region]').forEach(el=>el.setAttribute('aria-pressed',v.region===el.dataset.region?'true':'false'));
+    Q('[data-mask]').forEach(el=>el.setAttribute('aria-pressed',v.solo===el.dataset.mask?'true':'false'));
+    $('camera').value=v.camera;
+  }
+  function stageResult(){
+    const {counts:c,accepted,electricalPass,structurePass}=model;
+    if(step<8)return {status:'UNTESTED',tone:'',text:'Reach the ZIF fixture and continuity steps to test the assembled route.'};
+    if(step===8)return {status:'SEATING CHECK',tone:'',text:c.contactedPins+' physical pins meet an Au witness seat. Run dry continuity to check whether a platinum site is actually reached.'};
+    if(!options.latch)return {status:'LATCH OPEN',tone:'fail',text:'There are no seated pin-to-pad paths. This is a fixture failure, not 32 manufactured lead opens.'};
+    if(electricalPass&&!structurePass)return {status:'HOLD: STRUCTURE',tone:'fail',text:'All intended electrical paths read. The selected polymer rail still fails the structural witness.'};
+    if(accepted)return {status:'BENCH PASS',tone:'pass',text:c.active+' intended sites reach the correct readout labels and have exposed, independently sampled Pt faces.'+(c.empty?' '+c.empty+' positions are intentionally empty.':'')};
+    if(c.wrong&&c.unique)return {status:'MAP FAIL',tone:'fail',text:c.unique+' sites have independent continuity, but '+c.wrong+' land on a different readout label. A continuous trace is not evidence of the right channel.'};
+    if(c.shared)return {status:'SHARED NET',tone:'fail',text:c.shared+' fixture positions now share a conducting path. A two-terminal reading cannot separate those sites.'};
+    if(c.open)return {status:'OPEN PATH',tone:'fail',text:c.open+' intended positions have no site-to-pin path. Compare pad overlap, Au continuity, and the Pt landing separately.'};
+    if(step===9&&c.mapped===c.active)return {status:'DRY MAP PASS',tone:'pass',text:'The dry identity check passes. Check the same sites in the virtual wet cell before accepting the finished conditions.'};
+    if(step===10&&c.wet!==c.active)return {status:'WET FAIL',tone:'fail',text:c.mapped+' intended paths pass the dry map, but '+(c.active-c.wet)+' platinum windows have no accessible area. Inspect M4 over the selected site.'};
+    return {status:'BENCH HOLD',tone:'fail',text:'Review the physical map and the individual structural and electrical checks.'};
+  }
+  function svgText(x,y,t,extra=''){return '<text x="'+x+'" y="'+y+'" '+extra+'>'+escape(t)+'</text>'}
+  function impedanceChart(points,selectedValue){
+    const w=520,h=279,L=59,R=13,A=w-L-R;
+    const X=f=>L+Math.log10(f/10)/3*A;
+    const magLo=Math.min(5,Math.floor(Math.log10(Math.min(...points.map(x=>x.abs),P.measuredWetOhms))));
+    const magHi=Math.max(8,Math.ceil(Math.log10(Math.max(...points.map(x=>x.abs),P.measuredWetOhms))));
+    const Y=v=>124-(Math.log10(v)-magLo)/(magHi-magLo)*85;
+    const B=v=>226-(v+90)/90*69;
+    const line=(x1,y1,x2,y2)=>'<path d="M'+x1+' '+y1+'H'+x2+'M'+x1+' '+y1+'V'+y2+'"/>';
+    const diamond=(x,y,sz)=>'<path d="M'+x+' '+(y-sz)+'l'+sz+' '+sz+' -'+sz+' '+sz+' -'+sz+' -'+sz+'z" fill="#326c99" stroke="#f3f1de" stroke-width="1.2"><title>Published 32-site mean, Fig. 3B</title></path>';
+    const path=(arr,yy)=>arr.map((q,i)=>(i?'L':'M')+X(q.frequency).toFixed(2)+' '+yy(q).toFixed(2)).join(' ');
+    const rowLabels=Array.from({length:magHi-magLo+1},(_,i)=>10**(magLo+i));
+    let svg='<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Calculated impedance magnitude and phase versus logarithmic frequency. Blue diamonds denote the published 1 kilohertz mean."><rect x="0" y="0" width="520" height="279" rx="5" fill="#edf0e5"/>';
+    svg+='<g fill="#35544d" font-family="ui-monospace,monospace" font-size="10">';
+    svg+=svgText(12,19,'MAGNITUDE')+svgText(11,150,'PHASE');
+    for(const z of rowLabels)svg+=svgText(L-6,Y(z)+3,ohm(z),'text-anchor="end"');
+    for(const ph of [0,-30,-60,-90])svg+=svgText(L-6,B(ph)+4,ph+'°','text-anchor="end"');
+    for(const [f,l] of [[10,'10 Hz'],[100,'100 Hz'],[1000,'1 kHz'],[10000,'10 kHz']])svg+=svgText(X(f),250,l,'text-anchor="'+(f===10?'start':f===10000?'end':'middle')+'"');
+    svg+=svgText(260,268,'Frequency (log scale)','text-anchor="middle"')+'</g><g stroke="#adc3b8" stroke-width="1" fill="none">';
+    for(const z of rowLabels)svg+=line(L,Y(z),w-R,Y(z));
+    for(const ph of [0,-30,-60,-90])svg+=line(L,B(ph),w-R,B(ph));
+    for(const ff of [10,100,1000,10000])svg+='<path d="M'+X(ff)+' 39V124M'+X(ff)+' 157V226"/>';
+    svg+='</g><g fill="none" stroke="#b36034" stroke-width="2.1"><path d="'+path(points,x=>Y(x.abs))+'"/><path d="'+path(points,x=>B(x.phase))+'"/></g>';
+    svg+=diamond(X(1000),Y(P.measuredWetOhms),8)+diamond(X(1000),B(P.measuredWetPhase),8);
+    svg+='<g fill="#fefcef" stroke="#8e4d28" stroke-width="2"><circle cx="'+X(freq)+'" cy="'+Y(selectedValue.abs)+'" r="3.2"/><circle cx="'+X(freq)+'" cy="'+B(selectedValue.phase)+'" r="3.2"/></g></svg>';
+    return svg;
+  }
+  function waveChart(points){
+    if(points.length<2)return '<div class="plot-empty">No independent wet path to replay.</div>';
+    const dt=points[points.length-1].timeS,W=516,Yn=v=>49-v*.49,Xn=t=>40+t/dt*(W-53);
+    const d=field=>points.map((p,i)=>(i?'L':'M')+Xn(p.timeS).toFixed(2)+' '+Yn(p[field]).toFixed(2)).join(' ');
+    return '<svg viewBox="0 0 '+W+' 105" role="img" aria-label="Synthetic laboratory input tone and calculated fixture output"><rect x="0" y="0" width="516" height="105" rx="4" fill="#eef0e5"/><path d="M40 49H503M40 9V87" stroke="#b1c4b7"/><path d="'+d('inputUV')+'" fill="none" stroke="#63958d" stroke-width="1.25" stroke-dasharray="4 3"/><path d="'+d('outputUV')+'" fill="none" stroke="#a65f35" stroke-width="1.7"/><g font-family="ui-monospace,monospace" fill="#42675d" font-size="10">'+svgText(5,53,'0 µV')+svgText(40,97,'0 ms')+svgText(503,97,fmt(dt*1000,1)+' ms','text-anchor="end"')+'</g></svg>';
+  }
+  function paintBench(){
+    const {status,tone,text}=stageResult(); const c=model.counts,sel=model.rows[selected-1],active=step>=9,wet=step>=10;
+    const m=document.querySelectorAll('#metrics b');
+    $('grade').textContent=status;$('grade').dataset.tone=tone;$('diagnosis').textContent=text;
+    [step<8?'—':c.contactedPins+' / '+P.count,active?c.mapped+' / '+c.active:'—',wet?c.wet+' / '+c.active:'—',active?[c.shared,c.wrong,c.open].join(' / '):'—'].forEach((j,i)=>m[i].textContent=j);
+    Q('[data-pin]').forEach(el=>{
+      const p=model.rows[+el.dataset.pin-1],value=active?p.status:(step===8?((p.directPads.length||!p.expected)?'not-seated':p.status):'not-seated'),caption=active?translations[value]:step===8?p.directPads.length?'pad contact':'no pad contact':'not tested';
+      el.dataset.code=value;el.setAttribute('aria-pressed',p.slot===selected?'true':'false');
+      el.setAttribute('aria-label',p.physicalPin+', '+caption);el.title=p.physicalPin+' · '+caption;
+      el.querySelector('em').textContent=active?glyph[value]:step===8&&p.directPads.length?'▧':' ';
+    });
+    const possible=sel.wet?E.impedance(sel,freq):null, pp=E.waveform(sel);
+    $('frequency').disabled=!possible;
+    $('plot-label').textContent=possible?(sel.physicalPin+' reads '+nlabel('E',sel.sites[0])+': '+ohm(possible.abs)+' / '+fmt(possible.phase,2)+'° at '+(freq>=1000?fmt(freq/1000)+' kHz':freq+' Hz')):(!wet?'No wet test yet.':'No valid wet measurement for '+sel.physicalPin+'.');
+    $('bode').innerHTML=possible?impedanceChart(E.sweep(sel,freq),possible):'<div class="plot-empty">'+(wet?'This pin cannot provide an independent, exposed platinum signal in the selected configuration.':'Complete the wet impedance station to calculate the curve.')+'</div>';
+    if($('waveform').parentElement.open)$('waveform').innerHTML=waveChart(pp);
+    $('wave-note').textContent=pp.length?'Dashed green: '+pp[0].hz+' Hz input assigned to '+E.label('E',pp[0].site)+'. Solid copper: calculated output into a 100 MΩ ∥ 25 pF load. These are electrical test tones, not neural data.':'No valid simulated output for this pin.';
+    let mapSite=sel.sites.map(x=>nlabel('E',x)).join(', '),mapPad=sel.pads.map(x=>nlabel('A',x)).join(', '),who=sel.label===sel.physicalPin?sel.label:sel.physicalPin+' as '+sel.label;
+    $('read-card').innerHTML='<strong>'+who+(active?' · '+translations[sel.status]:'')+'</strong><dl><dt>Expected</dt><dd>'+ (sel.expected?nlabel('E',sel.expected):'No site populated')+
+      '</dd><dt>Au pad</dt><dd>'+(step<8?'Not seated':mapPad||'None')+'</dd><dt>Pt reached</dt><dd>'+(active?mapSite||'None':'Not tested')+'</dd><dt>Seat overlap</dt><dd>'+(step>=8?fmt(100*sel.overlap,2)+'%':'—')+'</dd><dt>Dry path</dt><dd>'+(active?ohm(sel.dryOhm):'—')+
+      '</dd><dt>Pt exposed</dt><dd>'+(active&&sel.unique?fmt(sel.areaUm2,2)+' µm² / '+fmt(100*sel.areaFraction,2)+'%':'—')+'</dd></dl>';
+    $('download-map').disabled=!active;
+    $('download-eis').disabled=!possible;
+    $('download-wave').disabled=!possible;
+  }
+  function refresh(rebuild){
+    if(rebuild)geometry=E.drawing(options);
+    model=E.analyze(options,step);
+    $('selected-pin').value=selected;
+    view.load({steps:E.STAGES[step-1].layers,state:model,target:selected,routes:E.routesFor(options.population),geometry});
+    paintStage();paintBench();
+  }
+  const download=(name,content,type)=>{
+    const b=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1200);
+  };
+  function csv(keys,items) {
+    const field=(x)=>x===null||x===undefined?'':'"'+String(x).replaceAll('"','""')+'"';
+    return keys.join(',')+'\n'+items.map(row=>row.map(field).join(',')).join('\n')+'\n';
+  }
+  function exportArtwork() {
+    const v=view.state,mask=v.solo==='all'?maskHierarchy:v.solo==='stage'?E.STAGES[step-1].layers.filter(x=>maskHierarchy.includes(x)):[v.solo];
+    const selectedMask=mask.length?mask:maskHierarchy;
+    const body=selectedMask.map(k=>'<g data-mask="'+E.MASKS[k].no+'" id="mask-'+k+'" fill="'+E.MASKS[k].color+'" stroke="'+E.MASKS[k].color+'">'+geometry[k].map(p=>{
+      const id=p.id;
+      if(p.shape==='rect')return '<rect id="'+id+'" x="'+p.x+'" y="'+p.y+'" width="'+p.w+'" height="'+p.h+'" stroke="none"/>';
+      if(p.shape==='circle')return p.hole?
+        '<path id="'+id+'" stroke="none" fill-rule="evenodd" d="M '+(p.x-p.r)+' '+p.y+'a '+p.r+' '+p.r+' 0 1 1 '+(2*p.r)+' 0a '+p.r+' '+p.r+' 0 1 1 -'+(2*p.r)+' 0Z M '+(p.x-p.hole)+' '+p.y+'a '+p.hole+' '+p.hole+' 0 1 1 '+(2*p.hole)+' 0a '+p.hole+' '+p.hole+' 0 1 1 -'+(2*p.hole)+' 0Z"/>':
+        '<circle id="'+id+'" cx="'+p.x+'" cy="'+p.y+'" r="'+p.r+'" stroke="none"/>';
+      return '<polyline id="'+id+'" points="'+p.pts.map(x=>x.map(n=>E.round(n,6)).join(',')).join(' ')+'" stroke-width="'+p.w+'" stroke-linecap="round" stroke-linejoin="round" fill="none"/>';
+    }).join('')+'</g>').join('');
+    download('mesh-'+(selectedMask.length===1?'m'+E.MASKS[selectedMask[0]].no+'-'+selectedMask[0]:'stack')+'.svg','<svg xmlns="http://www.w3.org/2000/svg" width="39mm" height="2.45mm" viewBox="-330 -1225 39000 2450"><title>Teaching mesh artwork; not for fabrication</title><desc>1 SVG viewBox unit = 1 micrometre, Y up before reflection. Reconstructed coordinates, not source masks. '+escape(E.refLabel)+'</desc><g transform="scale(1,-1)">'+body+'</g></svg>','image/svg+xml');
+  }
+  function exportReport(){
+    let selection=model.rows[selected-1],z=selection.wet?E.impedance(selection,freq):null;
+    download('mesh-foundry-traveler.json',JSON.stringify({
+      schema:'bts-mesh-foundry/1',revision:build,classification:'Teaching geometry and synthetic electronics bench. Not source CAD or manufacturing release.',
+      options,step:{code:E.STAGES[step-1].code,name:E.STAGES[step-1].name},supportedMasks:E.STAGES[step-1].layers.filter(x=>maskHierarchy.includes(x)),
+      stages:E.STAGES.map((stage,i)=>({code:stage.code,name:stage.name,result:stage.result,tools:stage.tools,completedInModel:i<step})),
+      graphBasis:E.refLabel,counts:step>=9?model.counts:null,accepted:step===10?model.accepted:null,electricalPass:step===10?model.electricalPass:null,
+      structureWitness:model.structurePass,precision:'Planar units µm, resistance Ω, phase degrees, source datum not a per-site spectrum.',
+      sourceAnchor:{frequencyHz:P.measuredAtHz,magnitudeOhm:P.measuredWetOhms,phaseDeg:P.measuredWetPhase,kind:'published mean for 32 electrodes in 1× PBS'},
+      modelCalibration:E.CAL,sources:E.SOURCES,selection:step>=9?{...selection,frequencyHz:freq,impedance:z}:null,
+      rows:step>=9?model.rows:[],electricalFixtures:options.population==='half'?'P09–P24 are populated in this teaching configuration. Actual populated pin positions were not recovered.':'32 reconstructed one-site routes.'
+    },null,2),'application/json');
+  }
+  $('stages').innerHTML=E.STAGES.map((s,i)=>'<li><button data-stage="'+(i+1)+'" type="button"><b>'+s.code+'</b><span>'+escape(s.name)+'</span></button></li>').join('');
+  $('selected-pin').innerHTML=Array.from({length:32},(_,i)=>'<option value="'+(i+1)+'">'+nlabel('P',i+1)+' · fixture</option>').join('');
+  $('pinmap').innerHTML=Array.from({length:32},(_,i)=>'<button type="button" data-pin="'+(i+1)+'"><span>'+nlabel('P',i+1)+'</span><em aria-hidden="true"></em></button>').join('');
+  $('source-list').innerHTML=Object.values(E.SOURCES).map(s=>'<p><a href="'+s.url+'">'+escape(s.title)+'</a> · '+escape(s.detail)+'</p>').join('');
+  $('method').innerHTML='<ul><li><strong>Artwork:</strong> internal plan units µm. The specimen overview expands its transverse axis, and the projective views exaggerate Z; local Plan views retain equal XY scale. Nickel and silicon are carrier witnesses, not modeled at a wafer-tool clearance. 16-position population is a teaching selection, not a recovered pinout.</li><li><strong>Dry graph:</strong> positive-area overlap between the planar fixture-pin rectangle and the continuous part of a pad makes a contact when the virtual latch is closed. Touching edges have zero area. Graph-connected components reveal opens, shared paths and wrong identities. Assumed Au route sheet resistance is 0.42 Ω per square. The contact estimate uses 3 Ω divided by overlap fraction, an illustrative area law, not a force/sliding fit.</li><li><strong>Visible versus conductive:</strong> Pt electrical connection requires overlap with a gold landing path; wet area is the intersection of the Pt disk and the remaining top opening. Encapsulated routes are not wet sensing sites. A cracked polymer witness is a structural fault even if the stylized model leaves the Au path intact.</li><li><strong>Wet circuit:</strong> Z = R<sub>route</sub> + R<sub>pin</sub> + 1.2 kΩ + 1 / (Q·F·(j2πf)<sup>α</sup>), where F is exposed area divided by unobstructed Pt area and α = '+E.CAL.alpha.toFixed(6)+'. Q = '+E.CAL.q.toExponential(5)+' S·s<sup>α</sup>, obtained from the one published 1 kHz mean with E16 chosen as a nominal series-path reference. All other frequencies are calculated extrapolations. No bias, stimulation, electrophysiology or biological setup.</li><li><strong>Pass:</strong> all populated sites are correctly addressed by independent pins, each has nonzero wet access and there is no structural flag. This teaching criterion is an identity and accessibility gate, not a validated tolerance, impedance range, or certification.</li></ul>';
+  Q('[data-stage]').forEach(el=>el.onclick=()=>stageChange(+el.dataset.stage));
+  Q('[data-region]').forEach(el=>el.onclick=()=>{let k=el.dataset.region;view.set({region:k,camera:k==='section'?'explode':view.state.camera},true);refresh(false)});
+  Q('[data-mask]').forEach(el=>el.onclick=()=>{const sel=el.dataset.mask;view.set({solo:sel});refresh(false)});
+  Q('[data-pin]').forEach(el=>el.onclick=()=>changeSelected(+el.dataset.pin));
+  Q('[data-preset]').forEach(el=>el.onclick=()=>applyPreset(el.dataset.preset));
+  $('selected-pin').onchange=e=>changeSelected(e.target.value);
+  $('population').onchange=e=>{currentPreset='';config({...options,population:e.target.value})};
+  $('prev').onclick=()=>stageChange(step-1);$('next').onclick=()=>stageChange(step+1);$('run').onclick=start;
+  $('camera').onchange=e=>{view.set({camera:e.target.value},true);refresh(false)};
+  $('zoom-in').onclick=()=>view.zoom(1.24);$('zoom-out').onclick=()=>view.zoom(1/1.24);$('reset-view').onclick=view.reset;
+  $('clear-faults').onclick=()=>applyPreset('nominal');
+  ['offset','depth','ptShift','window'].forEach(id=>{$(id).oninput=e=>{currentPreset='';config({...options,[id]:+e.target.value})}});
+  ['latch','reverse'].forEach(id=>{$(id).onchange=e=>{currentPreset='';config({...options,[id]:e.target.checked},false)}});
+  $('fault').onchange=e=>{currentPreset='';config({...options,fault:e.target.value,target:E.routesFor(options.population).find(r=>r.n===selected)?.n||16})};
+  $('fault-site').onchange=e=>{currentPreset='';config({...options,target:+e.target.value})};
+  $('frequency').onchange=e=>{freq=+e.target.value;paintBench()};
+  $('waveform').parentElement.addEventListener('toggle',()=>{if($('waveform').parentElement.open)$('waveform').innerHTML=waveChart(E.waveform(model.rows[selected-1]))});
+  $('download-artwork').onclick=exportArtwork;
+  $('download-report').onclick=exportReport;
+  $('download-map').onclick=()=>{
+    if(step<9)return;
+    const key=['physical_pin','logical_label','expected_site','direct_pad','component_pads','reachable_sites','status','contact_fraction','dry_ohm','exposed_um2','wet_model_readable','provenance'];
+    download('mesh-pin-map.csv',csv(key,model.rows.map(r=>[r.physicalPin,r.label,r.expected?nlabel('E',r.expected):'',r.directPads.map(x=>nlabel('A',x)).join('|'),r.pads.map(x=>nlabel('A',x)).join('|'),r.sites.map(x=>nlabel('E',x)).join('|'),r.status,r.overlap,r.dryOhm,r.unique?r.areaUm2:null,r.wet,'synthetic teaching fixture'])), 'text/csv');
+  };
+  $('download-eis').onclick=()=>{
+    const row=model.rows[selected-1];if(!row.wet)return;
+    const data=E.sweep(row,freq);
+    download('mesh-eis-'+row.physicalPin+'.csv',csv(['pin','site','frequency_hz','magnitude_ohm','phase_deg','re_ohm','im_ohm','source'],[...data.map(x=>[row.physicalPin,nlabel('E',row.sites[0]),x.frequency,x.abs,x.phase,x.re,x.im,'single-point-calibrated synthetic model']),['32-site mean','published comparator',1000,1.3e6,-80,null,null,'Schuhmann et al. 2017, Fig. 3B']]),'text/csv');
+  };
+  $('download-wave').onclick=()=>{
+    const row=model.rows[selected-1],data=E.waveform(row);if(!data.length)return;
+    download('mesh-wave-'+row.physicalPin+'.csv',csv(['time_s','physical_pin','site','tone_hz','input_uV','output_uV','provenance'],data.map(d=>[d.timeS,row.physicalPin,nlabel('E',d.site),d.hz,d.inputUV,d.outputUV,'synthetic electrical tone'])), 'text/csv');
+  };
+  if(siteRoot) Q('a[href^="/"]').forEach(a=>a.setAttribute('href',siteRoot+a.getAttribute('href')));
+  config(options,false);
+})();
+</script>
+</body></html>

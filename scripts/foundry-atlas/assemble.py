@@ -2,6 +2,7 @@
 """Build a snapshot from site catalog Markdown, equipment register and reviewed lane JSON."""
 import argparse
 import collections
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -85,6 +86,19 @@ def assemble(repo,lanes,revision,updated,source_revision=None):
     device_index={d['slug']:d for d in devices}
     equipment=load_equipment(repo,lanes)
     profiles=profiles_from(lanes)
+    profile_keys={p['id']:p for p in profiles}
+    lab_ledger=repo/'src/data/foundry-atlas/lab-releases.json'
+    labs=read(lab_ledger) if lab_ledger.exists() else {}
+    if labs:
+        for key,entry in labs.items():
+            path=entry['url']
+            need(bool(re.fullmatch(r'/simulations/[a-z0-9-]+(?:/[a-z0-9-]+)*/',path)), f'{key}: bad lab url')
+            artifact=repo/'public'/path.strip('/')/'index.html'
+            need(artifact.exists() and hashlib.sha256(artifact.read_bytes()).hexdigest()==entry['sha256'], f'{key}: lab digest mismatch')
+            for pid in entry['profiles']:
+                need(pid in profile_keys, f'{key}: missing target profile {pid}')
+                need(not profile_keys[pid].get('lab') or profile_keys[pid]['lab']==path, f'{key}: would overwrite existing lab link {pid}')
+                profile_keys[pid]['lab']=path
     for p in profiles:
         k=p['id']
         need(re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*',k),f'Invalid profile ID {k}')
@@ -124,7 +138,7 @@ def assemble(repo,lanes,revision,updated,source_revision=None):
             d['profileIds'].sort(key=lambda k:(ORDER.index(profile_index[k]['evidence']),k))
             d['status']=profile_index[d['profileIds'][0]]['evidence']
     counts=collections.Counter(d['status'] for d in devices)
-    return dict(meta=dict(revision=revision,updated=updated,sourceRevision=source_revision,overview='A catalog-wide index of virtual and bench-reference process routes, documented branches, equipment matches and missing capabilities. A mapped register ID is not a physical tool reservation, a qualified recipe or proof that an entire device can be fabricated. Queued entries are listed explicitly.',counts={k:counts[k] for k in ORDER}),devices=devices,profiles=profiles,equipment=list(equipment.values()))
+    return dict(meta=dict(revision=revision,updated=updated,sourceRevision=source_revision,toolFitUrl=labs.get('tool-fit',{}).get('url'),overview='A catalog-wide index of virtual and bench-reference process routes, documented branches, equipment matches and missing capabilities. A mapped register ID is not a physical tool reservation, a qualified recipe or proof that an entire device can be fabricated. Queued entries are listed explicitly.',counts={k:counts[k] for k in ORDER}),devices=devices,profiles=profiles,equipment=list(equipment.values()))
 
 if __name__=='__main__':
     a=argparse.ArgumentParser()

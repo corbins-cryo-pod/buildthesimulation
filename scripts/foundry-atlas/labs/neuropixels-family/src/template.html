@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Compare Neuropixels switching capacity, inspect selected electrode patterns and run a tagged digital fault test without connecting to hardware."><title>Neuropixels family | Routing bench</title>
+<style>/*INLINE_STYLE*/</style></head>
+<body><a class="skip" href="#controls">Skip to instrument controls</a><main>
+<header><a href="/simulations/foundry/">BuildTheSimulation <span>/ Foundry</span></a><span class="flag">REFERENCE INSTRUMENT</span></header>
+<section class="hero"><div><p class="eyebrow">Bench electronics &nbsp; / &nbsp; Neuropixels</p><h1>The routing bench.</h1><p class="intro">Which electrodes can you read <em>at the same time?</em> Choose a probe, test a selection, then use a digital tag to tell a missing site from a missing readout.</p></div><aside><span class="lamp"></span><span>Virtual fixture<br><small>No hardware connected</small></span></aside></section>
+<nav class="examples" aria-label="Guided experiments"><strong>Try a comparison</strong><button data-demo="collision" type="button">01 &nbsp; Bank collision</button><button data-demo="fixed" type="button">02 &nbsp; Fixed vs shared</button><button data-demo="span" type="button">03 &nbsp; Ultra footprint</button></nav>
+<div class="bench">
+<section class="panel controls" id="controls" aria-labelledby="setuphead"><p class="eyebrow">01 &nbsp; / &nbsp; Configuration</p><h2 id="setuphead">Select an instrument</h2>
+<label for="model">Probe family and revision</label><select id="model"></select>
+<label for="pattern">Selection under test</label><select id="pattern"></select>
+<div id="specific"></div>
+<div class="spec"><strong id="specTitle"></strong><p id="specDescription"></p><a href="/simulations/foundry/atlas/" id="traveler">See its fabrication route ↗</a></div>
+</section>
+<section class="panel scope" aria-labelledby="scopehead"><div class="scopehead"><div><p class="eyebrow">02 &nbsp; / &nbsp; Live allocation</p><h2 id="scopehead">Selection envelope</h2></div><span id="status" class="badge" aria-live="polite"></span></div>
+<div class="numbers"><div><strong id="physical">–</strong><span>Physical sites <small>whole probe</small></span></div><div><strong id="available">–</strong><span>Readout ceiling <small>whole probe</small></span></div><div><strong id="requested">–</strong><span>Requested <small>this selection</small></span></div></div>
+<figure><svg role="img" id="diagram" viewBox="0 0 680 255" aria-labelledby="diagramTitle diagramDesc"><title id="diagramTitle">Selected shank or Ultra footprint</title><desc id="diagramDesc"></desc><g id="art"></g></svg><figcaption id="caption"></figcaption></figure>
+<p id="reason" class="reason"></p></section>
+</div>
+<section class="panel reader" aria-labelledby="testhead"><div class="readerhead"><div><p class="eyebrow">03 &nbsp; / &nbsp; Synthetic digital output</p><h2 id="testhead">Run an address loopback</h2></div><span class="flag">18-BIT FIXTURE TAGS</span></div>
+<p class="sub">Each selected input receives a distinct test word. The virtual receiver compares what it gets with the expected word. These are identifiers, not spikes, voltages or measured device data.</p>
+<div class="faultbar"><div><label for="fault">Injected fault</label><select id="fault"><option value="none">None · clean baseline</option><option value="site">Open one physical site</option><option value="lane">Drop one output lane</option><option value="shank">Disconnect a shank</option><option value="swap">Exchange the first two active outputs</option><option value="common">Lose the common link</option></select></div><div id="faultnumWrap"><label id="faultnumLabel" for="faultnum">Address</label><input id="faultnum" type="number" step="1" min="0" value="0"></div><div id="faultshankWrap"><label for="faultshank">Fault shank</label><select id="faultshank"></select></div><button id="run" class="primary" type="button">Run loopback →</button></div>
+<p id="faultHint" class="hint"></p>
+<div id="runStatus" role="status" aria-live="polite">No run yet. Run a clean baseline, then introduce a fault.</div><div id="metrics"></div><div id="words"></div>
+<div class="exports"><button id="csv" type="button" disabled>Export tag table · CSV</button><button id="json" type="button" disabled>Export run record · JSON</button></div><p class="hint">The URL saves the instrument and preset. The JSON record preserves exact inputs, injected fault, sources and output.</p>
+</section>
+<section class="reference"><div><p class="eyebrow">Evidence &amp; limitations</p><h2>What the result proves</h2><p>A rejected selection violates a modeled constraint. A shape documented in a paper still is not a complete pin map. Budget-only allocations can fail real switch rules. All non-1.0 “lanes” below are consecutive fixture slots, not validated hardware ADC indices.</p><p>Nominal capacity includes reference-related positions where the hardware uses them. It does not predict how many biological channels are usable. The bench does not create IMRO files or send commands.</p><a href="/simulations/neuropixels-foundry/">Open the separate 1.0 wafer-to-output foundry →</a></div><div><p class="eyebrow">Current instrument</p><h2>Primary references</h2><ul id="sources"></ul></div></section>
+<footer><a href="/simulations/foundry/atlas/">Manufacturing workflow atlas</a><span>BuildTheSimulation &nbsp; / &nbsp; virtual instrument series</span></footer>
+</main><script>/*INLINE_ENGINE*/</script><script>/*INLINE_UI*/</script></body></html>

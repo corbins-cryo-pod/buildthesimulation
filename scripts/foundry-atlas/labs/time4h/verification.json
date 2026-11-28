@@ -1,0 +1,160 @@
+{
+  "entry": "index.html",
+  "sha256": "5fee0b4ff27eb916685e859f3cb22f20bc95f211901f2d03f191de4a4fceaabe",
+  "primary": "https://www.mdpi.com/1424-8220/21/21/7219",
+  "modelSuites": 19,
+  "faultStressConfigurations": 1536,
+  "testedBrowser": {
+    "engine": "Chromium",
+    "actualMobileSafari": false,
+    "formFactors": [
+      "1360x900 desktop",
+      "390x844 touch emulation",
+      "320x620 touch emulation"
+    ],
+    "offline": true,
+    "requestsOutsideFileOrBlob": 0,
+    "uncaughtErrors": 0,
+    "fullTraveler": true,
+    "allPresets": true,
+    "mechanicalControls": true,
+    "spatialRotationAndExplosion": true,
+    "bothExportStates": true,
+    "noDocumentOverflow": true
+  },
+  "examples": {
+    "nominal": {
+      "dryCorrect": 16,
+      "intactCorrectActives": 14,
+      "usableFixtureLoops": 14,
+      "GLAreaMm2": 0.54789375878606,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GL",
+        "qualified": true,
+        "issues": [],
+        "z": {
+          "magnitudeOhm": 5163.496080860545,
+          "phaseDeg": -2.619655754169007,
+          "re": 5158.099963540765,
+          "im": -236.00115080854468
+        }
+      }
+    },
+    "openGL": {
+      "dryCorrect": 15,
+      "intactCorrectActives": 14,
+      "usableFixtureLoops": 7,
+      "GLAreaMm2": 0.54789375878606,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GL",
+        "qualified": false,
+        "issues": [
+          "return mapping"
+        ],
+        "z": null
+      }
+    },
+    "openGLusingGR": {
+      "dryCorrect": 15,
+      "intactCorrectActives": 14,
+      "usableFixtureLoops": 14,
+      "GLAreaMm2": 0.54789375878606,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GR",
+        "qualified": true,
+        "issues": [],
+        "z": {
+          "magnitudeOhm": 5163.496080860545,
+          "phaseDeg": -2.619655754169007,
+          "re": 5158.099963540765,
+          "im": -236.00115080854468
+        }
+      }
+    },
+    "blockedGL": {
+      "dryCorrect": 16,
+      "intactCorrectActives": 14,
+      "usableFixtureLoops": 7,
+      "GLAreaMm2": 0,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GL",
+        "qualified": false,
+        "issues": [
+          "return window"
+        ],
+        "z": null
+      }
+    },
+    "partiallyBlockedGL": {
+      "dryCorrect": 16,
+      "intactCorrectActives": 14,
+      "usableFixtureLoops": 14,
+      "GLAreaMm2": 0.3719645701850315,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GL",
+        "qualified": true,
+        "issues": [],
+        "z": {
+          "magnitudeOhm": 5185.053556294274,
+          "phaseDeg": -2.619981496765159,
+          "re": 5179.633562892599,
+          "im": -237.0158977714807
+        }
+      }
+    },
+    "swapR2R3": {
+      "dryCorrect": 14,
+      "intactCorrectActives": 12,
+      "usableFixtureLoops": 12,
+      "GLAreaMm2": 0.54789375878606,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GL",
+        "qualified": true,
+        "issues": [],
+        "z": {
+          "magnitudeOhm": 5163.496080860545,
+          "phaseDeg": -2.619655754169007,
+          "re": 5158.099963540765,
+          "im": -236.00115080854468
+        }
+      }
+    },
+    "bridgeL3L4": {
+      "dryCorrect": 14,
+      "intactCorrectActives": 12,
+      "usableFixtureLoops": 12,
+      "GLAreaMm2": 0.54789375878606,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GL",
+        "qualified": false,
+        "issues": [
+          "active mapping"
+        ],
+        "z": null
+      }
+    },
+    "zeroWindowArea": {
+      "dryCorrect": 16,
+      "intactCorrectActives": 14,
+      "usableFixtureLoops": 0,
+      "GLAreaMm2": 0,
+      "L4Loop": {
+        "site": "L4",
+        "returnNet": "GL",
+        "qualified": false,
+        "issues": [
+          "active window",
+          "return window"
+        ],
+        "z": null
+      }
+    }
+  }
+}

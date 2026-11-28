@@ -1,0 +1,45 @@
+{
+  "stentrode": {
+    "url": "/simulations/stentrode-foundry/",
+    "sha256": "15da19e4d56b7293ddfc867f47c8d4463c4ea7697a1b85638a25662052a236d2",
+    "profiles": [
+      "systems-stent"
+    ]
+  },
+  "time4h": {
+    "url": "/simulations/time-4h-foundry/",
+    "sha256": "5fee0b4ff27eb916685e859f3cb22f20bc95f211901f2d03f191de4a4fceaabe",
+    "profiles": [
+      "pni-time"
+    ]
+  },
+  "tool-fit": {
+    "url": "/simulations/foundry/tool-fit/",
+    "sha256": "f3c69410895893260cf2aadbf368095cdcb3e471ae2b000afdbcfaaf8b36e3e6",
+    "profiles": []
+  },
+  "neuropixels-family": {
+    "url": "/simulations/neuropixels-family/",
+    "sha256": "e3ed1d7d64cb3ed1ac1add1bac491e3e3972cf9c741df83e2c7b942abca9f6f0",
+    "profiles": [
+      "si-np2",
+      "si-np-ultra",
+      "si-np-quad",
+      "si-np-nxt"
+    ]
+  },
+  "ptnrgrid": {
+    "url": "/simulations/ptnrgrid-foundry/",
+    "sha256": "02f8872d5ba3ff6672e243f99b3ed8a0d77c4dd7a63fca1e7cc976be62f8a327",
+    "profiles": [
+      "flex-ptnr"
+    ]
+  },
+  "mesh-electronics": {
+    "url": "/simulations/mesh-electronics-foundry/",
+    "sha256": "3802d470a25a81bb4140003e2b2e373e433baa0b3a2226467ba253e80ec039a2",
+    "profiles": [
+      "flex-mesh-four-mask"
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "environment": "desktop",
+    "browser": "Chromium 133.0.6943.0",
+    "viewport": {
+      "width": 1365,
+      "height": 932
+    },
+    "mobile_emulation": false,
+    "passed": 22,
+    "checks": [
+      "fresh specimen explicitly not tested",
+      "pre-audit export gate",
+      "process-gated geometry and defect inputs",
+      "all eight stations traversable",
+      "normal identity map",
+      "wrapped D8\u2013D1 bridge reduces correct paths",
+      "off-diagonal C8 to D1 observed",
+      "view selection independent of defect target",
+      "frame fault still has physical disc path",
+      "open joint loss propagated",
+      "connector permutation detected",
+      "masked face fails optics while the metal net is connected",
+      "inert mandrel changes computed axial span",
+      "unwrapped projection",
+      "cylinder rotation",
+      "downloadable JSON reproduces current specimen, baseline and diff",
+      "UTF-8 CSV contains exact test matrix",
+      "true-scale offline OBJ with separate nominal discs and explicit assumed obstruction",
+      "read-only later device comparison separate",
+      "no root horizontal overflow",
+      "reset actually erases specimen, faults and baseline",
+      "no browser errors or external resources"
+    ],
+    "externalRequests": [],
+    "errors": []
+  },
+  {
+    "environment": "mobile",
+    "browser": "Chromium 133.0.6943.0",
+    "viewport": {
+      "width": 390,
+      "height": 664
+    },
+    "mobile_emulation": true,
+    "passed": 22,
+    "checks": [
+      "fresh specimen explicitly not tested",
+      "pre-audit export gate",
+      "process-gated geometry and defect inputs",
+      "all eight stations traversable",
+      "normal identity map",
+      "wrapped D8\u2013D1 bridge reduces correct paths",
+      "off-diagonal C8 to D1 observed",
+      "view selection independent of defect target",
+      "frame fault still has physical disc path",
+      "open joint loss propagated",
+      "connector permutation detected",
+      "masked face fails optics while the metal net is connected",
+      "inert mandrel changes computed axial span",
+      "unwrapped projection",
+      "cylinder rotation",
+      "downloadable JSON reproduces current specimen, baseline and diff",
+      "UTF-8 CSV contains exact test matrix",
+      "true-scale offline OBJ with separate nominal discs and explicit assumed obstruction",
+      "read-only later device comparison separate",
+      "no root horizontal overflow",
+      "reset actually erases specimen, faults and baseline",
+      "no browser errors or external resources"
+    ],
+    "externalRequests": [],
+    "errors": []
+  }
+]

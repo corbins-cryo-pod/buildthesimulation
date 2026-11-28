@@ -14,3 +14,4 @@
 
 .step.not-applicable { border-inline-start:3px dotted var(--line,#9c9c91); }
 .tool-scope { display:block; margin-inline:.25em; opacity:.88; font-size:.84em; }
+.mast nav { flex-wrap:wrap; justify-content:flex-end; }

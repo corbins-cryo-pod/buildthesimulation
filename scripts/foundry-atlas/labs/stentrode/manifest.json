@@ -1,0 +1,24 @@
+{
+  "release": "OX-16-1.0",
+  "sha256": {
+    "index.html": "15da19e4d56b7293ddfc867f47c8d4463c4ea7697a1b85638a25662052a236d2",
+    "src/engine.cjs": "60dc71432e239a112ac83c944e366abf7514f00a3eef1c4cc747c3904fccf8e4",
+    "src/ui.js": "5d53013f2ca7e2cccfa575e627b084f2a9240286fdc8075d8677b12c1d69c31f",
+    "src/style.css": "92fcaa508fef170215d6b3c470e2fe4c6bd217bdab1a17be5648bc721151d382",
+    "src/page.html": "66186969c41ffb19ce4b1015586b7bf98efc4f7b9b4e7fe9d6f865243d038842",
+    "tests/engine.cjs": "15c21bc5af3aaa379c7e9efea948b6e0d9375f67a99d4fa6f3ca6067a0f90d22",
+    "tests/obj_blender.py": "c80a32ec6ea59614fe38334e8cf0f93b175ea0c55d02d605260619836713ae79",
+    "tests/browser.py": "068b62ba026cf930465b0992e4ec41ac8ccd8d11904096634ac669da2249aa8f",
+    "build.py": "e280c10c6c6d491bb39ec1c23563851ab33c5098d524881c434e210502b30bcd",
+    "README.md": "95fe7204346b084cc16e1cd4fdb7201f2b53807ca5c1dbcf5a9cb6378f753d87",
+    "validation/mobile.png": "6cfa6ef97a54e788853fe1f6e610cb86f08e0179489b5a2b2d57e4eb104ba92b",
+    "validation/browser.json": "13a387d469aadb8d8eead4ef98deb1cc2fb003ffce46fafa5a752b26d1dcdbe4",
+    "validation/blender.json": "002e858e0374472105d48959634c1f776c2dda370a289ad142a5a4cbf0f5a0a7",
+    "validation/desktop.png": "b366583cce1ddcc50747a4e9d2143578634ab36bb36581b53609954e93ef76d9",
+    "validation/numerical.json": "7b568cc775fe94bf5166fe52103408573186f8010cc94e74dd8582499a9a6330",
+    "validation/nominal.obj": "98925242ec099e267d5430914703e85ff52dc2b0851249305fe52eaf5839d68d",
+    "validation/OX-16-editable-reference.blend": "9684f7bf778569e05e3696a9dfc0913e6cd0a49d015ddab100eeff4839ac8054",
+    "validation/defect.obj": "93199a2337ccaf9ab4ecfd3dda6efb977c8c872a9a19ea27fa9d80ea5a297e29",
+    "validation/example-comparison.json": "0c1dbf6eb22c37fd73abe9d0b8d98eb5231ec5d340b81f082942e6e7431e4c4e"
+  }
+}

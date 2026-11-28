@@ -804,7 +804,7 @@
       "title": "Rolled microchannel scaffold | PDMS, SU-8 and optional wires",
       "family": "Perforated membranes & channels",
       "evidence": "documented",
-      "summary": "The walls are patterned flat, capped and then rolled. A lumen is a fluidic/geometric feature, not an electrical channel; only the separately instrumented version contains selected metal wire contacts.",
+      "summary": "The walls are patterned flat, capped and then rolled. A lumen is a fluidic/geometric feature, not an electrical channel; only the separately instrumented 150 µm version has eight metal wires in the paper.",
       "devices": [
         "18-microchannel-regenerative-scaffold-srinivasan-2015"
       ],
@@ -818,7 +818,7 @@
         {
           "id": "w100",
           "label": "100 µm width / 84 lumens",
-          "description": "This nominal 100 × 100 µm configuration has 84 lumens.",
+          "description": "This nominal 100 × 100 µm configuration has 84 lumens. It was not the wire-equipped geometry used in §3.7.",
           "status": "documented"
         },
         {
@@ -835,9 +835,15 @@
         },
         {
           "id": "wired",
-          "label": "Separate wired readout article",
-          "description": "Eight selected channels contain stainless-steel microwires; the source distinguishes selectable bipolar and tripolar references. This is not 84 independent channels.",
+          "label": "150 µm width / 59 lumens, 8 wired",
+          "description": "Results §3.7 explicitly selects the wider 150 × 100 µm section for its 60 µm microwires. Eight of 59 positions are wired and source assignments are not recovered.",
           "status": "documented"
+        },
+        {
+          "id": "counter84",
+          "label": "84-lumen geometry with 8 hypothetical wires",
+          "description": "Fair geometry comparison only. Nominal open area after placing a 60 µm disk is approximately 7,173 µm² versus 12,173 µm² in the 150 µm build. Not a source device.",
+          "status": "reference"
         }
       ],
       "steps": [
@@ -886,7 +892,8 @@
             "w50",
             "w100",
             "w150",
-            "wired"
+            "wired",
+            "counter84"
           ]
         },
         {
@@ -929,12 +936,13 @@
             "w50",
             "w100",
             "w150",
-            "wired"
+            "wired",
+            "counter84"
           ]
         },
         {
           "title": "Add the wired article only when selected",
-          "detail": "Methods §2.2 gives eight 304 stainless microwires with 0.5 mm de-insulated ends in selected lumens; reference wires are separate. Gold in Fig. 1B is a possible alternative layout, not these wires.",
+          "detail": "Methods §2.2 gives eight 304 stainless microwires of 60 µm diameter with 0.5 mm de-insulated ends. Results §3.7 identifies the 150 µm (59-lumen) article. References are external; the gold in Fig. 1B is a possible alternative, not these wires.",
           "tools": [
             "12-01",
             "16-13"
@@ -949,6 +957,25 @@
           ],
           "only": [
             "wired"
+          ]
+        },
+        {
+          "title": "Compare a wire hypothetically loaded into the 84-lumen roll",
+          "detail": "An explicit 100 µm reference scenario overlays eight hypothetical 60 µm wires; the paper did not use that configuration for the wired experiment. It is a design alternative for a synthetic bench only.",
+          "tools": [
+            "01-01",
+            "12-01"
+          ],
+          "status": "reference",
+          "check": "At equal nominal height, the hypothetical 100 µm cross-section has less clear area around the same wire than the published 150 µm article.",
+          "sourceIds": [
+            "sr"
+          ],
+          "varies": [
+            "counter84"
+          ],
+          "only": [
+            "counter84"
           ]
         },
         {
@@ -972,7 +999,7 @@
           "id": "sr",
           "title": "Srinivasan et al., Biomaterials 2015",
           "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4324612/",
-          "note": "Methods §§2.1–2.2, Figs. 1–3: channel masks, cap, roll, actual eight-wire instrumented assembly and alternatives."
+          "note": "Methods §§2.1–2.2, Results §§3.1 and 3.7, Figs. 1–3 and 9: three masks, cap, roll, eight wires in the 150 µm section, external references."
         }
       ]
     },

@@ -1210,7 +1210,7 @@
       "title": "Neuropixels NXT: prototype and external foundry boundary",
       "family": "Active CMOS shank",
       "evidence": "proprietary",
-      "summary": "The program reports a four-shank 1,536-channel prototype using 2.0 site geometry. A higher concentration of channels on one shank is public; the exact switch network and production sequence are not.",
+      "summary": "The program reports a four-shank 1,536-channel prototype using 2.0 site geometry. SpikeGLX describes the NP3020 four-shank table fields. This is not a production traveler or proof that any set of sites below the capacity limit is routable on a particular prototype.",
       "devices": [
         "106-neuropixels-nxt-np30-prototype"
       ],
@@ -1287,14 +1287,15 @@
         },
         {
           "title": "Exercise reported capacity bounds",
-          "detail": "Validate a synthetic allocation against the public 1,536 total and up-to-912-on-one-shank statements. The result is a constraint screen, not a complete channel-map validator.",
+          "detail": "Validate a synthetic allocation against the public 1,536 total and up-to-912-on-one-shank statements. The NP3020 software table also needs shank, bank, reference and electrode identities. A channel count alone cannot validate such a table.",
           "tools": [
             "01-05"
           ],
           "status": "reference",
           "check": "Reject 1,537 total and 913 on one shank. Treat an otherwise bounded but undocumented set as unverified, not accepted hardware.",
           "sourceIds": [
-            "np-config"
+            "np-config",
+            "np-imro"
           ],
           "varies": [
             "balanced",
@@ -1307,7 +1308,7 @@
         }
       ],
       "gaps": [
-        "Per-site mapping rules, part-specific packaging and a verified production traveler are unavailable here.",
+        "Revision-specific mapping validation, part-specific packaging and a verified production traveler are unavailable here.",
         "A future release forecast does not demonstrate production yield or present availability."
       ],
       "sources": [
@@ -1328,6 +1329,12 @@
           "title": "Majeed (imec), Neuropixels process flow, slide 11",
           "url": "https://www.semi.org/sites/semi.org/files/2025-06/08_Bivragh%20Majeed.pdf#page=11",
           "note": "Slide 11 identifies the incoming 200 mm, 130 nm foundry wafer and four subsequent 1.0 modules. Slide 13 is a separate hybrid demonstrator, not the production 1.0 recipe."
+        },
+        {
+          "id": "np-imro",
+          "title": "SpikeGLX: Imec readout table formats",
+          "url": "https://billkarsh.github.io/SpikeGLX/help/imroTables/",
+          "note": "The public NP3020 software table specifies channel, shank, bank, reference and electrode fields. Format support does not identify a prototype revision or establish legal combinations from channel totals alone."
         }
       ]
     },

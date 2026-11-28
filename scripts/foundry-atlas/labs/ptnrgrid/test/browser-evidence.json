@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "browserCases": [
+    {
+      "profile": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 980
+      },
+      "verified": [
+        "19-stage sequence and archive",
+        "contact/release process plate",
+        "pass A break / B rescue / zero overlap",
+        "dry-versus-wet window fault",
+        "64-connection bank fault",
+        "selected-site navigation / tap",
+        "1024 and 2048 site exports",
+        "logical geometry withholding",
+        "all four configurations",
+        "mold comparison",
+        "no JS errors / external requests / horizontal overflow"
+      ]
+    },
+    {
+      "profile": "iPhone13",
+      "viewport": {
+        "width": 390,
+        "height": 664
+      },
+      "verified": [
+        "19-stage sequence and archive",
+        "contact/release process plate",
+        "pass A break / B rescue / zero overlap",
+        "dry-versus-wet window fault",
+        "64-connection bank fault",
+        "selected-site navigation / tap",
+        "1024 and 2048 site exports",
+        "logical geometry withholding",
+        "all four configurations",
+        "mold comparison",
+        "no JS errors / external requests / horizontal overflow"
+      ]
+    },
+    {
+      "profile": "narrowDark",
+      "viewport": {
+        "width": 360,
+        "height": 760
+      },
+      "verified": [
+        "19-stage sequence and archive",
+        "contact/release process plate",
+        "pass A break / B rescue / zero overlap",
+        "dry-versus-wet window fault",
+        "64-connection bank fault",
+        "selected-site navigation / tap",
+        "1024 and 2048 site exports",
+        "logical geometry withholding",
+        "all four configurations",
+        "mold comparison",
+        "no JS errors / external requests / horizontal overflow"
+      ]
+    }
+  ],
+  "standaloneFile": "PASS"
+}

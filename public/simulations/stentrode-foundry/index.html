@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="description" content="Trace one documented 2016 stent-electrode prototype through a virtual scaffold, closed-circuit test and exportable inert test record."><title>Stent-electrode foundry | Build The Simulation</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f9f6ec;color:#202e2d;font:16px/1.55 Georgia,'Times New Roman',serif}header{background:#1e3736;color:#f6edd7}.bar,main,footer{max-width:1110px;margin:auto;padding-left:clamp(14px,4vw,54px);padding-right:clamp(14px,4vw,54px)}.bar{min-height:47px;display:flex;align-items:center;justify-content:space-between;gap:12px}.bar span,.brand,.label,.kicker,.tag,.badge,.navstrip,.legend,.metric,.readouts,.controls,.faultcontrols,button,select,.micro,.fine,footer,.identity,.stages,.tablebox,.report p,.callout,.sectionIntro,.stagecheck,.diag p,.diag details,.compare summary,.evidencegrid p,.compare p{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.bar span,.brand{font-size:10px;letter-spacing:.13em;font-weight:760}.brand{color:#fff3d8;text-decoration:none}.bar span{color:#cad3c6}.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:center;padding:48px 0 30px}.kicker,.label{font-size:10px;font-weight:780;line-height:1.5;letter-spacing:.15em;color:#3e5b54}.kicker{margin:0 0 7px;color:#7b441e}.hero h1,h2,h3{font-weight:500;line-height:1.08;margin:0}.hero h1{font-size:clamp(43px,6vw,71px);letter-spacing:-.054em}.hero h1 span{color:#b36e30}.lead{max-width:710px;font-size:clamp(17px,2vw,22px);margin:14px 0 0;line-height:1.44}.identity{border:1px solid #a99c7d;background:#f3ead4;padding:13px 17px;transform:rotate(-1deg);min-width:156px;box-shadow:3px 3px 0 #d5ccb4}.identity strong,.identity span,.identity small{display:block}.identity strong{font-size:16px}.identity span{font-size:12px}.identity small{font-size:10px;padding-top:7px;color:#52615a}.navstrip{display:flex;gap:18px;flex-wrap:wrap;border-top:2px solid #2f4540;border-bottom:1px solid #a4a593;padding:9px 0}.navstrip a{color:#2e5046;font-size:12px;text-decoration:none;font-weight:650}section[id]{padding:29px 0 19px;border-bottom:1px solid #9ea999;scroll-margin-top:12px}.headrow,.toolgroup,.drawing-top,.faultcontrols,.readouts,.legend,.metric,footer{display:flex;align-items:center;gap:8px}.headrow{justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px;flex-wrap:wrap}.toolgroup{flex-wrap:wrap}h2{font-size:clamp(32px,4vw,45px);letter-spacing:-.04em}h3{font-size:clamp(21px,3vw,28px);letter-spacing:-.025em}.toolgroup button,button,.faultcontrols select{color:#233b33;border:1px solid #929c8d;background:#fcfbf4;border-radius:4px;min-height:38px;padding:6px 11px;font-size:12px;font-weight:680;line-height:1.3;cursor:pointer}button:hover:not(:disabled),a:hover{text-decoration:underline}button:focus-visible,summary:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #327bb2;outline-offset:2px}button:disabled,input:disabled{opacity:.55;cursor:not-allowed}.toolgroup .dark,button.dark{background:#24433a;color:#fff;border-color:#24433a}.toolgroup .accent{background:#eed9ae;border-color:#bea373;color:#4b321b}.stages{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}.stages button{text-align:left;font-size:11px;min-height:54px;line-height:1.22;background:#f2eddf;border-color:#c4bfae;display:flex;flex-direction:column;gap:3px;justify-content:flex-start;overflow-wrap:anywhere}.stages button b{font:700 10px ui-monospace,monospace;color:#637263}.stages .active{background:#234137;color:#fff;border-color:#234137}.stages .active b{color:#d8e7c6}.stages .prior{border-bottom:3px solid #73905c}.stage-row{display:grid;grid-template-columns:1.14fr 1fr;border:1px solid #b3b3a0;margin:10px 0 14px;border-radius:4px;overflow:hidden}.stagehead,.stagecheck{padding:16px}.stagehead{background:#f2ecda}.stagehead p,.stagecheck p{font-size:14px;margin:7px 0 12px}.stagecheck{background:white}.stagecheck p{line-height:1.42;margin:3px 0 10px;font-size:12px}.tag,.badge{display:inline-block;width:fit-content;font-size:10px;letter-spacing:.08em;font-weight:bold;background:#e3ecdd;border:1px solid #8f9f8b;color:#315140;padding:3px 7px;border-radius:3px;margin-bottom:6px}.tag.model{background:#f4e3c6;color:#624120;border-color:#bfa783}.visual-panel{display:grid;grid-template-columns:minmax(0,2.7fr) minmax(180px,1fr);border:1px solid #a3a68f;border-radius:4px;overflow:hidden}.drawing{background-color:#f8f8ed;background-image:linear-gradient(#b7c6b12e 1px,transparent 1px),linear-gradient(90deg,#b7c6b12e 1px,transparent 1px);background-size:18px 18px;padding:12px;min-width:0}.drawing-top,.metric{justify-content:space-between}.compact{gap:2px}.compact button{min-height:30px;font-size:11px}.compact button[aria-pressed=true]{background:#2c4c40;color:white}.drawing svg,.inspector svg{width:100%;display:block}.drawing svg{min-height:96px}.legend{font-size:10px;gap:14px;flex-wrap:wrap}.legend span{display:inline-flex;gap:4px;align-items:center}i{width:13px;height:2px;display:inline-block;background:#687a71}.disc-key,.active-key{width:8px;height:8px;border:1px solid #726651;border-radius:50%;background:#dfc99d}.active-key{background:#bd642e}.micro,.fine{font-size:11px;color:#52605b;line-height:1.47}.micro{margin:8px 0 2px}.inspector{padding:12px;background:#f1ebd9;border-left:1px solid #bec3ab;min-width:0}.metric{font-size:11px;align-items:end}.metric b{font-size:17px;white-space:nowrap}.controls,.faultcontrols{display:grid;gap:13px;grid-template-columns:repeat(3,minmax(0,1fr));margin:12px 0}.controls>div,.faultcontrols>div{min-width:0}.controls label,.faultcontrols label{display:flex;justify-content:space-between;font-size:12px;font-weight:670;gap:5px}.controls input{width:100%;accent-color:#3b654e}.controls small{display:block;font-size:10px;color:#58645c}.controls output{white-space:nowrap;font-family:ui-monospace,monospace}.readouts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#c6c6b3;border:1px solid #c6c6b3;border-radius:4px;overflow:hidden}.readouts>div{background:#fffef8;padding:8px 10px;min-width:0}.readouts span,.readouts b{display:block}.readouts span{font-size:10px;color:#66736a}.readouts b{font-size:18px;line-height:1.5}.sectionIntro{font-size:14px;max-width:780px}.faultcontrols{grid-template-columns:minmax(140px,.63fr) minmax(180px,1fr) auto;align-items:end}.faultcontrols select{width:100%;height:37px}.callout{font-size:12px;padding:7px 10px;background:#f0ead7;border-left:3px solid #aa763c;margin:9px 0}.auditrow{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(180px,.8fr);gap:15px;align-items:start}.tablebox{min-width:0}table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px;text-align:center;font-variant-numeric:tabular-nums}caption{text-align:left;font-weight:650;font-size:11px;color:#52645a;margin:0 0 4px}th,td{border:1px solid #bdbfab;padding:5px 1px}th{color:#355044;background:#e9edda}thead th:last-child{width:13%}.hit{background:#dcead6;color:#254728;font-weight:bold}.wrong{background:#f6d9c9;color:#6d311c;font-weight:bold}.selectedrow th{border-left:3px solid #a05b2a}.diag{background:#f0f2e4;border:1px solid #bac2a7;border-radius:4px;padding:13px}.diag h3{margin:5px 0}.diag p,.diag details{font-size:12px;margin:7px 0}.diag details summary,.compare summary{cursor:pointer;font-weight:650;color:#28493d}.gate{display:block;background:#fffdf3;font:600 11px system-ui;padding:6px 8px;border-left:3px solid #8b9d78}.gate.fail{border-color:#a84d32}.badge{margin:0}.badge.fail{background:#f5ded1;color:#753520;border-color:#bd8b77}.report{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-top:16px;padding:12px;border:1px solid #b1b6a1;background:#fffdf4}.report p{font-size:12px;margin:4px 0}.report .kicker{font-size:10px}.report .toolgroup{flex-shrink:0}.evidencegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.evidencegrid article{border-top:2px solid #82957a;padding:10px 0}.evidencegrid h3{font-size:21px}.evidencegrid p,.compare p{font-size:13px;line-height:1.5}.compare{border-top:1px solid #bec5b2;padding:9px 0}.compare summary{font-size:14px}.compare div{padding:1px 7px}.compare a{color:#2c5949}.fine{padding:8px 0}.fine strong{font-weight:bold}footer{font-size:10px;letter-spacing:.08em;justify-content:space-between;min-height:54px}.sr{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}
+@media(max-width:760px){.hero{padding:30px 0 20px;gap:14px}.identity{min-width:125px;padding:9px}.stages{grid-template-columns:repeat(4,minmax(0,1fr))}.auditrow{grid-template-columns:minmax(0,1.4fr) minmax(150px,.85fr)}.report{align-items:start;flex-direction:column}.evidencegrid{gap:10px}.bar span{font-size:9px}.visual-panel{grid-template-columns:minmax(0,2.2fr) minmax(150px,1fr)}}
+@media(max-width:520px){.hero{grid-template-columns:1fr}.identity{display:none}.lead{font-size:17px}.bar span{font-size:8px;letter-spacing:.06em}.hero h1{font-size:44px}.headrow{align-items:start}.stages button{padding:6px 5px;min-height:48px}.stage-row{grid-template-columns:1fr}.stagecheck,.stagehead{padding:12px}.visual-panel{grid-template-columns:1fr}.inspector{border-left:0;border-top:1px solid #bec3ab;display:grid;grid-template-columns:minmax(96px,.75fr) 1.15fr;column-gap:10px;align-items:center}.inspector .label{grid-column:1/-1}.inspector svg{grid-row:2/4}.metric{flex-direction:column;align-items:start}.inspector .micro{margin:0;align-self:start}.controls{grid-template-columns:1fr 1fr}.controls>div:last-child{grid-column:1/-1}.readouts{grid-template-columns:1fr 1fr}.auditrow,.evidencegrid{grid-template-columns:1fr}.faultcontrols{grid-template-columns:1fr 1.5fr;gap:7px}.faultcontrols button{justify-self:start;grid-column:1/-1}table{font-size:10px}.report .toolgroup{gap:4px}.toolgroup button{font-size:11px}.navstrip{gap:12px}.legend{gap:8px}.drawing,.inspector{padding:9px}footer{align-items:start;flex-direction:column;justify-content:center;gap:4px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.inspectlabel{display:flex;align-items:center;justify-content:space-between;font:650 11px system-ui;gap:6px;margin-top:8px}.inspectlabel select{min-height:32px;border:1px solid #9fa990;color:#28493d;background:#fffdf5}.pinInspect{font:inherit;color:inherit;padding:0;border:0;background:transparent;min-height:26px;width:100%}.geoDisc{cursor:pointer}
+</style></head>
+<body>
+<header><div class="bar"><a href="/simulations/foundry/" class="brand">BUILD THE SIMULATION</a><span>DEVICE FOUNDRY&nbsp; / &nbsp;BENCH NOTE 06</span></div></header>
+<main>
+<section class="hero"><div><p class="kicker">ENDOVASCULAR INTERFACES &nbsp;·&nbsp; GEOMETRY AND CONTINUITY</p><h1>Stent-electrode foundry<span>.</span></h1><p class="lead">Eight platinum discs, eight insulated wires and one conductive scaffold. Follow an original research configuration from supplied parts to an auditable test record, then see which faults a continuity test cannot catch.</p></div><div class="identity"><strong>Specimen OX–16</strong><span>Oxley et al. · Fig. 2c</span><small>Original research assembly<br>Virtual bench reconstruction</small></div></section>
+<div class="navstrip" aria-label="Lab sections"><a href="#fixture">01 / Fixture</a><a href="#routing">02 / Test matrix</a><a href="#evidence">03 / Evidence</a></div>
+<section id="fixture">
+<div class="headrow"><div><p class="kicker">01 / PROCESS TRAVELER</p><h2>Make the specimen</h2></div><div class="toolgroup"><button id="reset">Reset specimen</button><button id="finish" class="dark">Jump to finished fixture</button></div></div>
+<div id="stages" class="stages" aria-label="Virtual process stages"></div>
+<div class="stage-row"><div class="stagehead"><span class="tag" id="stageTag"></span><h3 id="stageTitle"></h3><p id="stageDetail"></p></div><div class="stagecheck"><span class="label">STATION AND LIMIT</span><p id="stationTool"></p><span class="label">ACCEPTANCE QUESTION</span><p id="stationCheck"></p><div class="toolgroup"><button id="prev">Previous</button><button id="next" class="accent">Next station →</button></div></div></div>
+<div class="visual-panel">
+<div class="drawing"><div class="drawing-top"><span class="label">FIG. A / SPECIMEN VIEW</span><div class="toolgroup compact" role="group" aria-label="Projection"><button id="volume" aria-pressed="true">Cylinder</button><button id="flat" aria-pressed="false">Unwrapped</button></div></div><svg role="img" id="geometry" viewBox="0 0 690 240" aria-label="Schematic cylindrical scaffold projection"></svg><div class="legend"><span><i class="wire-key"></i>Scaffold</span><span><i class="disc-key"></i>Platinum face</span><span><i class="active-key"></i>Selected path</span></div><p class="micro">Original schematic, not vendor CAD. Axial and transverse scales differ so the 3 mm scaffold and its contacts stay visible. Crossing order, angular positions and pin order are teaching assumptions.</p></div>
+<div class="inspector"><span class="label">FIG. B / FACE INSPECTOR</span><svg id="face" viewBox="0 0 240 160" role="img" aria-label="Magnified selected circular electrode face and optional obstruction"></svg><div class="metric"><span id="facePresent">Selected exposed area</span><b id="area">–</b></div><p class="micro" id="faceNote"></p></div>
+</div>
+<div class="controls">
+<div><label for="diam">Inert mandrel diameter <output id="dout"></output></label><input type="range" min="1" max="3" step="0.05" value="3" id="diam"><small>Virtual geometry only · available from station 06</small></div>
+<div><label for="rot">View rotation <output id="rout"></output></label><input id="rot" type="range" min="-180" max="180" step="1" value="22"><small>Rotate the drawing, not the physical net assignment.</small></div>
+<div><label for="cover">Face-cover penetration <output id="cout"></output></label><input id="cover" type="range" min="0" max="100" step="1" value="0"><small>Fraction of diameter reached by an assumed straight mask edge on the defect target. Not percent area.</small></div>
+</div>
+<div class="readouts"><div><span>Scaffold diameter</span><b id="dia">–</b></div><div><span>Projected axial span</span><b id="len">–</b></div><div><span>Selected disc face</span><b id="expose">–</b></div><div><span>Source disc thickness</span><b>50 µm</b></div></div>
+</section>
+<section id="routing"><div class="headrow"><div><p class="kicker">02 / SAME SPECIMEN</p><h2>Audit the paths</h2></div><span id="testBadge" class="badge"></span></div>
+<p class="sectionIntro">C means fixture connector; D means physical disc. A filled cell means a conductive path exists. Correct diagonal entries alone are not enough: the pin must have no path to a different contact, another connector pin, or the bare scaffold.</p>
+<div class="faultcontrols"><div><label for="site">Defect target (physical disc)</label><select id="site"></select></div><div><label for="fault">Electrical fault</label><select id="fault"></select></div><button id="clear" class="plain">Clear faults</button></div>
+<div id="faultHint" class="callout"></div>
+<div class="auditrow"><div class="tablebox"><table id="matrix"><caption>Fixture-pin to disc and scaffold continuity</caption><thead></thead><tbody></tbody></table><p class="micro">Expanded detail for the selected disc appears at right. The grid reads the graph, not the schematic colors. A dash is no path; “·” means not yet tested.</p></div><div class="diag"><span class="label">FAULT ISOLATION / SELECTED DISC</span><label class="inspectlabel" for="inspection">Inspect physical disc <select id="inspection"></select></label><h3 id="diagnosticTitle"></h3><p id="diagnostic"></p><div id="aperturegate"></div><details><summary>What passes this fixture?</summary><p>A pin connects only to its identically numbered disc, without any other pin or the frame. This is a binary, dry test: absent edges mean open circuits and connections have no modeled resistance. The independent aperture teaching gate requires at least 95% visible face, not a manufacturer limit.</p></details></div></div>
+<div class="report"><div><p class="kicker">CONTROL LOT / EXPORT</p><h3>Keep a before-and-after record</h3><p id="delta" aria-live="polite">At station 07 or later, save the current state as a baseline. Then change a fault or the mandrel diameter to compare the same specimen.</p></div><div class="toolgroup"><button id="baseline">Capture baseline</button><button id="export" class="dark">Export JSON</button><button id="csv">Matrix CSV</button><button id="obj">Geometry OBJ</button></div></div>
+</section>
+<section id="evidence"><div class="headrow"><div><p class="kicker">03 / PROVENANCE</p><h2>What is known, drawn or assumed?</h2></div></div>
+<div class="evidencegrid"><article><span class="tag">PUBLISHED</span><h3>Original eight-site configuration</h3><p>Oxley et al. show an eight-disc example. The nominal bought scaffold is 31.1 mm long when described at 3.0 mm expanded diameter; discs are 750 µm across and 50 µm thick, and the insulated Pt/W conductor core is 25 µm. Strut crossings were reported approximately 2.5 mm apart. This is one documented configuration, not every early Stentrode.</p></article><article><span class="tag model">MODEL</span><h3>One declared lattice</h3><p>We choose 12 axial intervals, eight angular divisions, eight example crossings and an identity fixture pinout. For mandrel diameter <em>D</em>, each diagonal’s unwrapped circumferential run is πD/8. We preserve its length and recalculate the axial run. Strut widths, elastic properties and the original masked pin layout are not recovered.</p></article><article><span class="tag model">DERIVED</span><h3>Metal face versus aperture</h3><p>The nominal face is π(0.375 mm)² = 0.4418 mm². A straight mask edge covers a circular segment. At 50% diameter penetration exactly half the face is obscured. Hiding metal in this geometry never opens its welded electrical path.</p></article></div>
+<details class="compare"><summary>Why later 16-contact versions are not presets in this lab</summary><div><p><strong>SWITCH, 2023:</strong> a 16-electrode sensing system links to an implanted receiver/transmitter. The paper reports a 0.3 mm² electrode surface area. Neither the count nor this area belongs to the eight-disc prototype.</p><p><strong>Kacker et al., 2025:</strong> later participant data describe 16 contacts, including a 500 µm diameter reference. Nominal geometric face area and separately published electrode surface area are not interchangeable measurements. Neither supplies a complete vendor traveler.</p><p><strong>Nankai / Rongyuan:</strong> a separately developed interventional BCI. Its contacts, materials and manufacturing route are not inferred from the Oxley 2016 reference.</p></div></details>
+<details class="compare"><summary>Sources and evidence limits</summary><div id="reflist"></div></details>
+<p class="fine"><strong>Geometry OBJ:</strong> exports the assembled model at equal scale in all axes. All coordinates are millimetres (scale by 0.001 when importing to metres). Scaffold struts export as zero-width centerlines rather than fabricated sections. The disc envelopes are solids and any selected face obstruction is a marked witness surface.</p><p class="fine">Virtual manufacturing and inert inspection only. No physical equipment controls or implantation instructions. No frame-force, tissue, neural signal, electrochemistry, clinical or chronic-lifetime simulation. A successful fixture audit is not certification of a medical device.</p>
+</section></main>
+<footer><span>BUILD THE SIMULATION / DEVICE FOUNDRY</span><span>Technical plate 06 · v1.0</span></footer>
+<script>/* Original educational model. No vendor CAD, firmware, surgical procedures, or control interfaces. */
+const StentBench = (() => {
+"use strict";
+const PI=Math.PI, N=8, axial=12, around=8;
+const published=Object.freeze({reference:"Oxley et al. 2016, Fig. 2c and Online Methods",length:31.1,diameter:3,discDiameter:0.75,discThickness:0.050,wireCore:0.025,nominalCrossingSpacing:2.5,sites:N,units:"mm"});
+const stations=[
+ ["01","Scaffold intake","Supplier input","The 2016 research prototype started with a bought self-expanding nitinol stent. The sandbox does not manufacture the scaffold from silicon, guess its alloy treatment, or recover its CAD.","No registered stent production line.","The reference card identifies the original 31.1 mm × 3.0 mm nominal scaffold. Its drawn lattice is explicitly assumed."],
+ ["02","Platinum discs","Documented dimensions","Eight 750 µm discs appear in the illustrated 2016 assembly. The paper reports 50 µm disc thickness. The circular-face inspector derives area from geometry, not an electrochemical measurement.","12-01 · stereo microscope (reference metrology); 04-10 · candidate laser only, not validated for the discs.","Compare the nominal face area with the inspector’s circular geometry. A face is not a complete electrical channel."],
+ ["03","Disc–wire joints","Specialist process","The paper identifies a resistance-welded interface between platinum discs and 25 µm-core insulated Pt/W wires. The simulator adds one modeled joint per disc; it does not operate a welder.","Original resistance micro-welder: external. 08-08 is a package seam welding reference, not its substitute.","A missing joint breaks the wire-to-disc link while leaving both objects visible."],
+ ["04","Crossover mounting","Published concept · inferred layout","The published contacts attach to repeating strut crossings. Here the crossing net, polar angles and site order are synthetic, not photogrammetry. The straight-edge obstruction in the detail view represents a hypothetical contact partly covered at mounting.","08-10 · dispensing class; 12-01 · visual inspection. Qualified material/cure fixture: external.","Masking an electrode face changes exposed area; on its own it does not disconnect the welded metal."],
+ ["05","Proximal breakout","Teaching substitute","The source routes wires along the scaffold and lead to external connections. Here an explicit eight-pin fixture, C1 through C8, provides traceability. It is not the published connector pinout.","16-13 · test connectors; 12-01 · optical inspection.","Trace each individual pin to a disc. An apparently intact bundle can still contain a swapped pair."],
+ ["06","Mandrel sweep","Geometric surrogate","A smooth, ideal cylinder constrains the drawn scaffold diameter. The model preserves a diagonal on an unwrapped cylinder; there is no force law, strut stress, hysteresis or calibrated nonlinear nitinol.","14-01 · test-frame class; a matching inert mandrel fixture is assumed.","The reference diameter must return the nominal length. Any other computed length is a model result, not a measured collapsed length."],
+ ["07","Continuity audit","Boolean test fixture","The graph has eight connector pins, eight individual wire nodes, eight electrode discs and one conductive frame. A pin only passes if it reaches exactly its own disc and no other pin or frame.","09-03 · source-measure unit class; 16-13 · breakout fixture.","Check both off-diagonal paths and isolation to the frame. The graph does not predict resistance or saline impedance."],
+ ["08","Compare and export","Virtual traveler","Compare with a baseline, isolate any defect and save the geometry, connectivity matrix, assumed site locations, variant, steps and evidence references.","01-01 · design record; 01-05 · derived QA dataset.","Distinguish geometry, electrical identity and source scope in the report. Finishing these stations does not make a clinical device."]
+];
+const refs=[
+ {id:'OX16',title:'Oxley et al. (2016), original stent-electrode',url:'https://doi.org/10.1038/nbt.3428',locator:'Fig. 2c and Online Methods, “Stentrode fabrication”',scope:'Nominal source scaffold and disk/wire dimensions; eight discs in the illustrated example. No machine-ready lattice drawing or complete pin map is claimed.'},
+ {id:'SW23',title:'Mitchell et al. (2023), SWITCH',url:'https://doi.org/10.1001/jamaneurol.2022.4847',locator:'Methods, implanted devices',scope:'Later 16-electrode sensing system with an implantable receiver/transmitter. The reported 0.3 mm² electrode surface area is not a measurement of the 2016 eight-disc fixture.'},
+ {id:'KA25',title:'Kacker et al. (2025), later recordings in two participants',url:'https://pubmed.ncbi.nlm.nih.gov/40048825/',locator:'Device description; channel-specific tables',scope:'Different 16-contact system; published channel retention, dimensions and recordings do not define an older eight-site pin map.'},
+ {id:'NK25',title:'Nankai University (2025), separate interventional BCI',url:'https://en.nankai.edu.cn/2025/0911/c22796a577326/page.htm',locator:'Institutional platform description',scope:'Independent system. Its unknown manufacturing details are not filled with Synchron data.'}
+];
+const faultNames={none:'No electrical fault',open:'Open disc–wire joint',frame:'Wire shorted to frame',bridge:'Bridge to next wire',swap:'Two connector labels swapped'};
+function norm(s={}){
+ const val=(v,def,min,max)=>{let n=typeof v==='number'?v:Number(v);return v==null||!Number.isFinite(n)?def:Math.min(max,Math.max(min,n))};
+ return {stage:Math.round(val(s.stage,0,0,7)),diameter:val(s.diameter,3,1,3),site:Math.round(val(s.site,0,0,7)),inspect:Math.round(val(s.inspect,0,0,7)),fault:Object.hasOwn(faultNames,s.fault)?s.fault:'none',cover:val(s.cover,0,0,100),rotation:val(s.rotation,22,-180,180),view:['volume','flat'].includes(s.view)?s.view:'volume'};
+}
+function geom(d=3){
+ const D=norm({diameter:d}).diameter, D0=published.diameter, x0=published.length/axial, b0=PI*D0/around, b=PI*D/around;
+ const diag=Math.hypot(x0,b0),dx=Math.sqrt(Math.max(0,diag*diag-b*b));
+ return {diameter:D,length:axial*dx,pitch:dx,arcStep:b,diagonal:diag,axialIntervals:axial,azimuthDivisions:around,unit:'mm',metric:'unwrapped cylindrical surface'};
+}
+function aperture(c=0){
+ const frac=norm({cover:c}).cover/100,r=published.discDiameter/2,h=2*r*frac,x=r-h;
+ const full=PI*r*r,occluded=r*r*Math.acos(Math.max(-1,Math.min(1,x/r)))-x*Math.sqrt(Math.max(0,r*r-x*x));
+ return {full,exposed:Math.min(full,Math.max(0,full-occluded)),depth:h,exposedFraction:Math.min(1,Math.max(0,1-occluded/full)),unit:'mm²'};
+}
+function sites(g){
+ // Eight selected model crossings; arbitrary positions on the illustrative grid, not reconstructed author coordinates.
+ return Array.from({length:N},(_,i)=>({id:'D'+(i+1),row:2+i,column:(2+i*3)%around,x:(2+i)*g.pitch,theta:(2+i*3)%around*2*PI/around}));
+}
+function graph(s0){
+ const s=norm(s0),g=Array.from({length:3*N+1},()=>[]),edge=(a,b)=>{g[a].push(b);g[b].push(a)}, F=3*N;
+ const adj=(s.site+1)%N;let active = s.stage>=6, assembled=s.stage>=4;
+ for(let i=0;i<N;i++){
+  if(s.stage>=2 && !(s.fault==='open'&&i===s.site)) edge(N+i,2*N+i);
+  if(assembled) {
+   let k=i;
+   if(s.fault==='swap'){if(i===s.site)k=adj;else if(i===adj)k=s.site;}
+   edge(i,N+k);
+  }
+ }
+ if(s.stage>=3 && s.fault==='frame')edge(s.site+N,F);
+ if(assembled&&s.fault==='bridge')edge(s.site+N,adj+N);
+ const reach=x=>{let seen=new Set([x]),q=[x];while(q.length){const a=q.pop();for(const b of g[a])if(!seen.has(b)){seen.add(b);q.push(b)}}return seen;};
+ const rows=Array.from({length:N},(_,i)=>{
+  const r=reach(i), ds=[],cp=[];
+  for(let j=0;j<N;j++){if(r.has(2*N+j))ds.push(j);if(j!==i&&r.has(j))cp.push(j)}
+  let f=r.has(F),ok=active&&ds.length===1&&ds[0]===i&&!f&&cp.length===0;
+  const reason=!active?'Not audited':f?'Frame short':cp.length?'Bridged pins':!ds.length?'Open':ds[0]!==i?'Misassigned':'Pass';
+  return {pin:i,discs:ds,otherPins:cp,frame:f,pass:active?ok:null,reason}
+ });
+ return {testEnabled:active,breakoutAssembled:assembled,rows,passCount:active?rows.filter(r=>r.pass).length:null,count:N};
+}
+function result(s0){
+ let s=norm(s0),g=geom(s.stage>=5?s.diameter:3),test=graph(s);
+ let areas=Array.from({length:N},(_,i)=>aperture(s.stage>=3&&s.site===i?s.cover:0)); let a=areas[s.inspect];
+ return {schema:'bts.stentrode.bench/1',referencePreset:'Oxley_2016_Fig2c_reconstruction',settings:s,geometry:g,aperture:a,exposedAreaByDisc:areas.map(x=>x.exposed),siteLocations:sites(g),continuity:test,apertureGate:s.stage>=3?(a.exposedFraction>=0.95-1e-12):null,
+ disclaimer:'Illustrative eight-site pinout and idealized scaffold; binary dry continuity, not electrical impedance. No measured force, lifetime, clinical result or later product fabrication.'};
+}
+function diff(a,b){
+ if(!a||!b||!a.continuity.testEnabled||!b.continuity.testEnabled)return null;
+ const rc=r=>JSON.stringify([r.discs,r.otherPins,r.frame]);
+ return {mapDelta:b.continuity.rows.filter((r,i)=>rc(r)!==rc(a.continuity.rows[i])).map(r=>r.pin+1), lengthChangeMm:b.geometry.length-a.geometry.length, areaDeltaByDiscMm2:b.exposedAreaByDisc.map((x,i)=>x-a.exposedAreaByDisc[i]), passesChange:b.continuity.passCount-a.continuity.passCount};
+}
+function obj(setting) {
+ const z=result(setting);if(z.settings.stage<5)return null;
+ const g=z.geometry,D=g.diameter,R=D/2,dx=g.pitch,M=g.azimuthDivisions,K=g.axialIntervals,nseg=36,tau=2*PI,rd=published.discDiameter/2;
+ let out=['# BTS OX-16 inert geometry / v1','# Coordinates in millimetres. For SI metres, scale by 0.001 on import.','# Screen exaggeration is NOT present in this export.','# Scaffold edges are zero-width illustrative centerlines: not vendor CAD, a certified stent or a measured strut section.','# Disc envelopes retain nominal diameter and thickness. Assumed angular positions, generic pin map and optional aperture mask.','# No wires with invented routing, forces, impedance, surgical geometry or tissue.'],count=0;
+ const vertex=(x,y,z)=>{out.push('v '+[x,y,z].map(v=>v.toFixed(8)).join(' '));return ++count;};
+ out.push('o Assumed_Scaffold_Centerlines');const index=[];
+ for(let i=0;i<=K;i++){index[i]=[];for(let j=0;j<M;j++){if((i+j)%2)continue;const t=tau*j/M;index[i][j]=vertex(i*dx,R*Math.cos(t),R*Math.sin(t));}}
+ for(let i=0;i<K;i++)for(let j=0;j<M;j++)if((i+j)%2===0)for(const k of [-1,1])out.push('l '+index[i][j]+' '+index[i+1][(M+j+k)%M]);
+ for(const [i,c] of z.siteLocations.entries()){
+  const co=Math.cos(c.theta),si=Math.sin(c.theta),t=published.discThickness,ring=[[],[]];
+  out.push('o D'+(i+1)+'_Nominal_Platinum_Disc');
+  for(let layer=0;layer<2;layer++)for(let j=0;j<nseg;j++){const a=tau*j/nseg,xx=rd*Math.cos(a),tt=rd*Math.sin(a),rr=R+t*layer;ring[layer].push(vertex(c.x+xx,rr*co+tt*si,rr*si-tt*co));}
+  out.push('f '+ring[0].slice().reverse().join(' '));out.push('f '+ring[1].join(' '));
+  for(let j=0;j<nseg;j++){const k=(j+1)%nseg;out.push('f '+[ring[0][j],ring[0][k],ring[1][k],ring[1][j]].join(' '));}
+  if(i===z.settings.site&&z.settings.cover>0){
+   const f=z.settings.cover/100;const cut=-rd+2*rd*f,theta=Math.acos(Math.max(-1,Math.min(1,cut/rd)));const seg=Math.max(3,Math.ceil(36*(2*PI-2*theta)/(2*PI)));const poly=[];
+   // One open witness surface: the small offset avoids z-fighting; do not assign physical film thickness.
+   const rr=R+t+0.0002;out.push('o D'+(i+1)+'_Assumed_Obstruction_Witness');
+   const lim=f>=1?seg-1:seg;
+   for(let j=0;j<=lim;j++){const a=theta+(2*PI-2*theta)*j/seg,xx=rd*Math.cos(a),tt=rd*Math.sin(a);poly.push(vertex(c.x+xx,rr*co+tt*si,rr*si-tt*co));}
+   out.push('f '+poly.join(' '));
+  }
+ }
+ return out.join('\n')+'\n';
+}
+return {obj,published,stations,refs,faultNames,norm,geom,aperture,sites,graph,result,diff};
+})();
+if(typeof module!=="undefined"&&module.exports)module.exports=StentBench;
+</script><script>(()=>{
+"use strict";
+const E=StentBench,$=x=>document.getElementById(x),num=(x,d=2)=>Number(x).toFixed(d),clamp=(a,l,h)=>Math.min(h,Math.max(l,a));
+let state=E.norm(),base=null,snap=E.result(state);
+for(const id of ['site','inspection'])for(let i=0;i<8;i++)$(id).add(new Option('D'+(i+1),String(i)));
+for(const [v,n] of Object.entries(E.faultNames))$('fault').add(new Option(n,v));
+E.stations.forEach((st,i)=>{let b=document.createElement('button');b.innerHTML='<b>'+st[0]+'</b><span>'+st[1]+'</span>';
+ b.setAttribute('aria-label','Station '+st[0]+': '+st[1]);b.onclick=()=>update({stage:i});$('stages').append(b)});
+E.refs.forEach(ref=>{let p=document.createElement('p'),a=document.createElement('a');a.href=ref.url;a.textContent=ref.title;a.target='_blank';a.rel='noopener noreferrer';
+ p.append(a,document.createTextNode(' · '+ref.locator+'. '+ref.scope));$('reflist').append(p)});
+function update(ch){state=E.norm({...state,...ch});render();}
+function fmt(arr,prefix){return arr.length?arr.map(i=>prefix+(i+1)).join(', '):'none'}
+function line(x1,y1,x2,y2,c= '#567268',w=1.1,extra=''){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+w+'" '+extra+'/>'}
+function txt(x,y,s,fill='#416053',size=11,options=''){return '<text x="'+x+'" y="'+y+'" fill="'+fill+'" font-size="'+size+'" font-family="system-ui,sans-serif" '+options+'>'+s+'</text>'}
+function svg(){
+ const s=state,g=snap.geometry,p=E.published,tau=Math.PI*2,roll=s.rotation*Math.PI/180;
+ let d='',screw=0;const cx=44,cy=103,rx0=57,ry0=58,span0=555,span=span0*g.length/p.length;
+ const dispR=ry0*g.diameter/p.diameter;
+ const pt=(row,col)=>{const x=cx+row/12*span;const theta=col*tau/8+roll;
+ if(s.view==='flat')return [x,55+((col%8+8)%8)/8*94,1];
+ return [x+Math.cos(theta)*dispR*.30,cy+Math.sin(theta)*dispR,Math.cos(theta)]};
+ const flatY=i=>48+i/8*109;
+ let lines=[]; const diskDepth=[];const sitePos=[];
+ if(s.view==='volume'){
+  for(let row=0;row<12;row++)for(let c=0;c<8;c++)for(let k of [-1,1]){
+    if((row+c)%2)continue;let a=pt(row,c),b=pt(row+1,c+k);lines.push({z:(a[2]+b[2])/2,a,b});
+  }
+  lines.sort((a,b)=>a.z-b.z);
+  d+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+dispR*.30+'" ry="'+dispR+'" fill="#cecfb3" fill-opacity=".22" stroke="#96a491" stroke-dasharray="2 3"/>';
+  lines.forEach(l=>{const visible=l.z>=-.02;d+=line(l.a[0],l.a[1],l.b[0],l.b[1],visible?'#4d6a5e':'#adb9a5',visible?1.55:0.85,visible?'':'stroke-dasharray="3 2"')});
+  d+='<ellipse cx="'+(cx+span)+'" cy="'+cy+'" rx="'+dispR*.30+'" ry="'+dispR+'" fill="none" stroke="#8b9a80" stroke-dasharray="2 3"/>';
+ }else{
+  d+='<rect x="'+cx+'" y="48" width="'+span+'" height="109" fill="#cfdec4" fill-opacity=".26" stroke="#84977d" stroke-dasharray="4 3"/>';
+  // Duplicate the seam crossing in a flat rectangular patch; do not draw a spurious line across the cut.
+  for(let row=0;row<12;row++)for(let c=0;c<=8;c++)for(let k of [-1,1]){
+    if((row+c)%2)continue;let b=c+k;if(b<0||b>8)continue;d+=line(cx+span*row/12,flatY(c),cx+span*(row+1)/12,flatY(b),'#5c7568',.9);
+  } d+=txt(cx,37,'Unrolled circumference • seam shown twice', '#597061',10)
+ }
+ const card=snap.siteLocations;
+ if(s.stage>=1)card.forEach((a,i)=>{
+  let v=s.view==='flat'?[cx+a.row*span/12,flatY(a.column),1]:pt(a.row,a.column);
+  if(s.stage===1||s.stage===2)v=[cx+55+i*64,186,1];
+  sitePos[i]=v;
+ });
+ if(s.stage>=4){
+  const a=sitePos[s.inspect],broken=s.fault==='open'&&s.site===s.inspect;
+  // Schematic fan-out, deliberately offset to keep lattice and wires distinct.
+  d+=line(10,179,35,179,'#886d47',3);d+='<path d="M 34 179 Q 45 178 55 164 L '+(a[0]-12)+' '+(a[1]+15)+' L '+(a[0]-2)+' '+(a[1]+3)+'" fill="none" stroke="'+(broken?'#ab5542':'#ad6d39')+'" stroke-width="2" stroke-dasharray="'+(broken?'4 6':'none')+'"/>';
+ }
+ if(s.stage===1||s.stage===2)d+=txt(45,169,s.stage===1?'Unattached disc coupons (not mounted)':'Lead/disc subassemblies (not mounted)','#745839',11)
+ if(s.stage===2)sitePos.forEach(v=>{d+=line(v[0]-19,v[1]+6,v[0]-3,v[1], '#8f7b57',1.5)});
+ // Optical labels for selected face only. All colors also carry text/pick controls.
+ sitePos.map((p,i)=>({p,i})).sort((a,b)=>a.p[2]-b.p[2]).forEach(({p:v,i})=>{
+  const chosen=s.inspect===i, back=v[2]<0, fill=chosen?'#b56031':back?'#e4d9c0':'#e3c790';
+  const rx=chosen?7.4:5.7,ry=s.stage<3||s.view==='flat'?rx:rx*(0.5+0.5*Math.abs(v[2]));
+  d+='<g class="geoDisc" data-disc="'+i+'"><title>D'+(i+1)+(chosen?' · inspected':'')+'</title><circle cx="'+v[0]+'" cy="'+v[1]+'" r="11" fill="transparent"/><ellipse cx="'+v[0]+'" cy="'+v[1]+'" rx="'+rx+'" ry="'+ry+'" fill="'+fill+'" stroke="'+(chosen?'#783d1f':'#756b51')+'" stroke-width="'+(chosen?2:1.1)+'"/></g>';
+  if(chosen)d+=txt(v[0]+9,v[1]-8,'D'+(i+1),'#773e21',12,'font-weight="700"');
+ });
+ const yaxis=215;
+ d+=line(cx,yaxis,cx+span,yaxis,'#708574',.8)+line(cx,yaxis-4,cx,yaxis+4)+line(cx+span,yaxis-4,cx+span,yaxis+4)+txt(cx+span/2,yaxis+18,num(g.length,2)+' mm axial span'+(s.stage>=5&&s.diameter<3?' · surrogate':' · nominal'), '#476153',11,'text-anchor="middle"');
+ if(!s.stage)d+=txt(48,186,'Supplied frame only • no contact network yet','#506a5c',12);
+ $('geometry').innerHTML=d;$('geometry').querySelectorAll('[data-disc]').forEach(x=>x.onclick=()=>update({inspect:Number(x.dataset.disc)}));
+ const r=42,X=114,Y=71,available=s.stage>=1,hasMask=s.stage>=3&&s.inspect===s.site,cover=hasMask?s.cover:0,h=2*r*cover/100;
+ let f='<defs><clipPath id="apClip"><circle cx="'+X+'" cy="'+Y+'" r="'+r+'"/></clipPath><pattern id="maskH" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="6" height="6" fill="#eed5b5"/><line y2="6" stroke="#985d37" stroke-width="1.1"/></pattern></defs>';
+ f+=line(X-66,Y,X+65,Y,'#afb5a2',.6)+line(X,Y-59,X,Y+59,'#afb5a2',.6);
+ f+='<circle cx="'+X+'" cy="'+Y+'" r="'+r+'" fill="'+(available?'#c6b587':'#f2ead8')+'" stroke="#71674c" stroke-width="2" '+(!available?'stroke-dasharray="3 3"':'')+'/>';
+ if(h>0)f+='<rect x="'+(X-r)+'" y="'+(Y-r)+'" width="'+h+'" height="'+(2*r)+'" clip-path="url(#apClip)" fill="url(#maskH)"/>';
+ const ly=132;f+=line(X-r,ly,X+r,ly,'#5c6c5c')+line(X-r,ly-4,X-r,ly+4)+line(X+r,ly-4,X+r,ly+4)+txt(X,ly+18,'750 µm nominal diameter','#425543',11,'text-anchor="middle"');
+ f+=txt(6,15,available?'D'+(s.inspect+1)+' / top face':'Source drawing only','#5d6d5c',11);
+ $('face').innerHTML=f;
+}
+function matrix(){
+ const audit=snap.continuity,inspect=state.inspect,t=$('matrix');t.tHead.innerHTML='<tr><th scope="col">Pin</th>'+Array.from({length:8},(_,i)=>'<th scope="col">D'+(i+1)+'</th>').join('')+'<th scope="col">Frame</th></tr>';
+ t.tBodies[0].innerHTML=audit.rows.map((r,i)=>{
+  const active=audit.testEnabled;const fmtcell=(present,ok,name)=>'<td class="'+(active&&present?(ok?'hit':'wrong'):'')+'" aria-label="C'+(i+1)+' to '+name+': '+(!active?'not audited':present?'connected':'no path')+'">'+(!active?'·':present?'●':'–')+'</td>';
+  return '<tr class="'+(i===inspect?'selectedrow':'')+'"><th scope="row"><button class="pinInspect" data-pin="'+i+'" title="Inspect D'+(i+1)+' (nominally C'+(i+1)+')">C'+(i+1)+'</button></th>'+Array.from({length:8},(_,j)=>fmtcell(r.discs.includes(j),i===j,'D'+(j+1))).join('')+fmtcell(r.frame,false,'frame')+'</tr>';
+ }).join('');
+ t.querySelectorAll('[data-pin]').forEach(x=>x.onclick=()=>update({inspect:Number(x.dataset.pin)}));
+ $('testBadge').textContent=!audit.testEnabled?'Not yet tested':audit.passCount+' / 8 correctly connected';
+ $('testBadge').className='badge'+(audit.testEnabled&&audit.passCount!==8?' fail':'');
+ $('diagnosticTitle').textContent='Disc D'+(inspect+1)+' · nominal C'+(inspect+1);
+ const reachable=audit.rows.filter(x=>x.discs.includes(inspect)).map(x=>x.pin),r=audit.rows[inspect];
+ $('diagnostic').textContent=!audit.testEnabled?'Station 07 enables the dry test. Physical contact presence does not prove continuity.':'D'+(inspect+1)+' is reached by '+fmt(reachable,'C')+'. From its nominal pin C'+(inspect+1)+', reached discs: '+fmt(r.discs,'D')+'; extra pins: '+fmt(r.otherPins,'C')+'; frame path: '+(r.frame?'yes':'no')+'. Nominal-pin result: '+r.reason+'.';
+ const gate=snap.apertureGate;$('aperturegate').innerHTML='<span class="gate'+(gate===false?' fail':'')+'">'+(gate===null?'Aperture gate: not mounted.':('D'+(inspect+1)+' visible-face gate: '+(gate?'PASS':'FAIL')+' · '+num(snap.aperture.exposedFraction*100,1)+'%'))+'</span>';
+}
+const faultComment={none:'No electrical defect. Face coverage can still fail optical inspection without opening a single net.',open:'An open removes one wire-to-disc edge. The disc remains visible, but no fixture pin should reach it.',frame:'Insulation loss connects a wire to the conductive scaffold. The correct diagonal may still be present; audit the frame column.',bridge:'The selected wire and the next wire are tied together. Two pins can now reach the same two discs. D8 wraps to D1.',swap:'Two proximal assignments exchange positions. Each pin can still reach exactly one disc, but the identity check fails on both.'};
+function render(){
+ snap=E.result(state);let s=state,st=E.stations[s.stage];
+ for(let i=0;i<8;i++){let b=$('stages').children[i];b.className=i===s.stage?'active':i<s.stage?'prior':'';b.setAttribute('aria-current',i===s.stage?'step':'false')}
+ $('stageTag').textContent=st[2];$('stageTitle').textContent=st[0]+' / '+st[1];$('stageDetail').textContent=st[3];$('stationTool').textContent=st[4];$('stationCheck').textContent=st[5];
+ $('prev').disabled=s.stage===0;$('next').disabled=s.stage===7;
+ $('diam').value=s.diameter;$('diam').disabled=s.stage<5;$('dout').textContent=num(snap.geometry.diameter,2)+' mm';
+ $('rot').value=s.rotation;$('rot').disabled=s.view==='flat';$('rout').textContent=s.rotation+'°';
+ $('cover').value=s.cover;$('cover').disabled=s.stage<3;$('cout').textContent=s.stage>=3?s.cover+'%':'not mounted';
+ $('site').value=s.site;$('inspection').value=s.inspect;$('fault').value=s.fault;$('faultHint').textContent='Target D'+(s.site+1)+'. '+faultComment[s.fault];
+ $('volume').setAttribute('aria-pressed',String(s.view==='volume'));$('flat').setAttribute('aria-pressed',String(s.view==='flat'));
+ $('facePresent').textContent=s.stage>=1?'D'+(s.inspect+1)+' exposed area':'Pending intake';
+ $('area').textContent=s.stage>=1?num(snap.aperture.exposed,4)+' mm²':'–';
+ $('faceNote').textContent=s.stage===0?'Dimensioned reference, not an attached part.':s.stage<3?'Unmounted face, no masking modeled.':s.inspect===s.site?'Hatching indicates assumed occlusion, not measured adhesive.':'No occlusion is assigned to this disc.';
+ $('dia').textContent=num(snap.geometry.diameter,2)+' mm';$('len').textContent=num(snap.geometry.length,2)+' mm';$('expose').textContent=s.stage===0?'–':num(snap.aperture.exposedFraction*100,1)+'%';
+ svg();matrix();
+ const d=E.diff(base,snap);$('baseline').disabled=!snap.continuity.testEnabled;$('csv').disabled=!snap.continuity.testEnabled;$('obj').disabled=s.stage<5;
+ if(!base)$('delta').textContent='At station 07 or later, save the current state as a baseline. Then change a fault or diameter and compare the same specimen.';
+ else if(!d)$('delta').textContent='Baseline retained. Return to station 07 or 08 to compare the audited state.';
+ else {const changed=d.areaDeltaByDiscMm2.map((x,i)=>Math.abs(x)>1e-10?'D'+(i+1)+' '+(x>=0?'+':'')+num(x,4)+' mm²':'').filter(Boolean);$('delta').textContent='Changed electrical rows: '+(d.mapDelta.length?d.mapDelta.map(n=>'C'+n).join(', '):'none')+'. Axial span Δ '+(d.lengthChangeMm>=0?'+':'')+num(d.lengthChangeMm,3)+' mm. Aperture differences: '+(changed.join('; ')||'none')+'.';}
+}
+function download(name,data,type){
+ const url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)
+}
+$('prev').onclick=()=>update({stage:state.stage-1});$('next').onclick=()=>update({stage:state.stage+1});$('finish').onclick=()=>update({stage:7});$('reset').onclick=()=>{state=E.norm();base=null;render()};
+$('volume').onclick=()=>update({view:'volume'});$('flat').onclick=()=>update({view:'flat'});
+$('diam').oninput=e=>update({diameter:+e.target.value});$('rot').oninput=e=>update({rotation:+e.target.value});$('cover').oninput=e=>update({cover:+e.target.value});
+$('site').onchange=e=>{let site=+e.target.value;update({site,inspect:site})};$('inspection').onchange=e=>update({inspect:+e.target.value});$('fault').onchange=e=>update({fault:e.target.value});
+$('clear').onclick=()=>update({fault:'none',cover:0});$('baseline').onclick=()=>{if(!snap.continuity.testEnabled)return;base=E.result(state);render()};
+$('export').onclick=()=>{const doc={schema:'bts.stentrode.traveler/1',version:'1.0',published:E.published,stations:E.stations.map(([id,title,evidence,description,tools,acceptance])=>({id,title,evidence,description,tools,acceptance})),references:E.refs,current:snap,baseline:base,difference:E.diff(base,snap)};download('stent-electrode-traveler.json',JSON.stringify(doc,null,2),'application/json')};
+$('csv').onclick=()=>{const a=snap.continuity;if(!a.testEnabled)return;let z='fixture_pin,'+Array.from({length:8},(_,i)=>'to_D'+(i+1)).join(',')+',to_frame,classification\r\n'+a.rows.map(r=>['C'+(r.pin+1),...Array.from({length:8},(_,j)=>Number(r.discs.includes(j))),Number(r.frame),r.reason].join(',')).join('\r\n')+'\r\n';download('stent-electrode-dry-matrix.csv',z,'text/csv')};
+$('obj').onclick=()=>{const data=E.obj(state);if(data)download('stent-electrode-inert-geometry-mm.obj',data,'text/plain')};
+render();
+})();
+</script></body></html>

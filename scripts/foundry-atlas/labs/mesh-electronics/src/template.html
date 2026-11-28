@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#203c3a">
+<meta name="description" content="Follow a four-mask flexible mesh through a virtual wafer process, register its plug-and-play connector, and verify a synthetic electronics-only bench result.">
+<title>Four-Mask Mesh Foundry | Build The Simulation</title>
+<style>@@CSS@@</style>
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to the foundry</a>
+<header class="mast">
+  <div class="wrap mast-inner"><a href="/" aria-label="Build The Simulation home" class="brand"><span class="brandmark" aria-hidden="true">B</span><span>BUILD THE<br>SIMULATION</span></a>
+  <nav aria-label="Project links"><a href="/simulations/foundry/">Foundry</a><a href="/simulations/foundry/atlas/">Workflow atlas</a><a href="/devices/23-syringe-injectable-mesh-electronics/">Device record</a></nav></div>
+</header>
+<main class="wrap" id="workspace">
+  <section class="lead" aria-labelledby="top-title">
+    <div>
+      <div class="eyebrow">FLEXIBLE ELECTRONICS / PROCESS PLATE 06</div>
+      <h1 id="top-title">Four-Mask<br class="mobile-only"> Mesh Foundry</h1>
+      <p class="intro">Pattern an open polymer mesh on silicon, expose the platinum sites, and see whether each circuit reaches the pin you expect.</p>
+    </div>
+    <div class="insignia" aria-label="Physical reference: platinum mesh, thirty-two pin fixture">
+      <svg viewBox="0 0 156 108" role="img" aria-label="Line drawing of an open electronics lattice transitioning to its connector">
+        <defs><pattern id="etch-lines" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4L4 0" stroke="#315c57" stroke-width=".55"/></pattern></defs>
+        <g transform="translate(5 14)" fill="none" stroke="#315c57" stroke-width="1.25">
+          <path d="M2 12h54l36 18h50M2 22h54l36 12h50M2 32h54l36 6h50M2 42h54l36 1h50M2 52h54l36-5h50M2 62h54l36-10h50"/>
+          <path d="M8 12l23 51m0-51 23 51m-3-51 23 48"/>
+          <path d="M90 29v25m7-25v25m7-25v25m7-25v25m7-25v25m7-25v25m7-25v25m7-25v25" opacity=".75"/>
+          <circle cx="16" cy="22" r="2" fill="#c38443"/><circle cx="26" cy="42" r="2" fill="#c38443"/><circle cx="22" cy="52" r="2" fill="#c38443"/><circle cx="34" cy="32" r="2" fill="#c38443"/>
+          <path d="M2 77h140M2 72v10m140-10v10" opacity=".4"/>
+        </g>
+      </svg>
+      <span>PLATINUM / GOLD / SU-8</span>
+    </div>
+  </section>
+
+  <div class="brief"><strong>What’s real:</strong> the four mask functions, reported connector dimensions, and published 1 kHz comparator. <strong>What’s reconstructed:</strong> all artwork coordinates, pin ordering, and bench outputs.</div>
+
+  <div class="bench-layout">
+    <aside class="traveler" aria-label="Ten-step foundry traveler">
+      <div class="panel-head"><b>PROCESS TRAVELER</b><span id="step-counter" class="stamp">01 / 10</span></div>
+      <div class="pop-block"><label for="population">Configuration</label><select id="population"><option value="full">32-site Pt baseline</option><option value="half">16 sites / 32-pin fixture</option></select></div>
+      <div class="trav-controls"><button id="prev" type="button" aria-label="Previous step">←</button><button id="next" type="button">Next step <span aria-hidden="true">→</span></button><button id="run" type="button">Run to bench</button></div>
+      <ol class="stages" id="stages"></ol>
+    </aside>
+    <section class="inspection" aria-labelledby="stage-name">
+      <div class="panel-head"><b id="stage-name">01 · Artwork and carrier</b><span id="mode-badge" class="stamp">SPECIMEN</span></div>
+      <div class="view-controls" aria-label="Specimen view controls">
+        <div class="seg" id="view-tabs" aria-label="Inspection regions"><button data-region="overview" aria-pressed="true">Overview</button><button data-region="mesh">Mesh</button><button data-region="site">Site</button><button data-region="stem">Stem</button><button data-region="io">I/O</button><button data-region="section">Layers</button></div>
+        <div class="view-actions">
+          <label class="sr-only" for="camera">Projection</label><select id="camera"><option value="plan">Plan</option><option value="oblique">3D oblique</option><option value="explode">Exploded 3D</option></select>
+          <button id="zoom-out" title="Zoom out" aria-label="Zoom out">−</button><button id="zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button id="reset-view" title="Reset view" aria-label="Reset view">⟲</button>
+        </div>
+      </div>
+      <canvas id="specimen" tabindex="0" aria-label="Projected 3D specimen with four select-able layers. Use arrow keys to pan or orbit, plus or minus to zoom, and zero to reset. In Plan view, the rendered site or fixture can also be selected. The electrical table below provides the same selection with exact values."></canvas>
+      <div class="view-reading">
+        <div class="masks" id="mask-tabs" role="group" aria-label="Mask isolation"><button data-mask="stage" aria-pressed="true">Current stage</button><button data-mask="all">Full stack</button><button data-mask="lower" aria-label="M1 Lower SU-8" title="Lower SU-8"><i class="mark lower"></i>M1</button><button data-mask="gold" aria-label="M2 Chromium and gold" title="Chromium and gold"><i class="mark gold"></i>M2</button><button data-mask="platinum" aria-label="M3 Chromium and platinum" title="Chromium and platinum"><i class="mark platinum"></i>M3</button><button data-mask="upper" aria-label="M4 Top SU-8" title="Top SU-8"><i class="mark upper"></i>M4</button></div>
+        <label class="selection">Inspect <select id="selected-pin" aria-label="Select physical fixture pin to inspect"></select></label>
+      </div>
+      <div class="worknote">
+        <div><span class="micro" id="stage-result"></span><p id="stage-detail"></p></div>
+        <div class="check" id="stage-check"></div>
+        <p class="tool-links"><span class="micro">REGISTER LINKS</span> <span id="stage-equipment"></span></p>
+      </div>
+    </section>
+  </div>
+
+  <section class="controls-panel" aria-labelledby="fault-title">
+    <div class="section-head"><div><div class="eyebrow">CHANGE ONE THING</div><h2 id="fault-title">Make the defect visible</h2></div><button id="clear-faults" type="button">Reset conditions</button></div>
+    <div class="scenario-row" aria-label="Example defects"><button data-preset="nominal">Nominal</button><button data-preset="open">Open lead</button><button data-preset="shift">One-pitch offset</button><button data-preset="occluded">Occluded Pt</button><button data-preset="bridge">Shared net</button><button data-preset="rail">Cracked rail</button></div>
+    <details class="settings" id="settings">
+      <summary>Manual settings</summary>
+      <div class="fine-controls">
+        <label class="knob"><span>ZIF lateral shift <output id="offset-value" for="offset">0 µm</output></span><input id="offset" type="range" min="-550" max="550" step="1" value="0"></label>
+        <label class="knob"><span>ZIF seating offset <output id="depth-value" for="depth">0 µm</output></span><input id="depth" type="range" min="-250" max="250" step="1" value="0"></label>
+        <label class="knob"><span>Pt mask shift, X <output id="ptShift-value" for="ptShift">0 µm</output></span><input id="ptShift" type="range" min="-36" max="36" step=".5" value="0"></label>
+        <label class="knob"><span>Upper window encroachment <output id="window-value" for="window">0 µm</output></span><input id="window" type="range" min="0" max="10" step=".25" value="0"></label>
+        <label class="stacked">Structure / traces <select id="fault"><option value="none">Intact</option><option value="open">Selected lead open</option><option value="bridge">Selected lead bridged to neighbor</option><option value="rail">Selected rail cracked; gold intact</option></select></label>
+        <label class="stacked">Defect target<select id="fault-site" disabled aria-label="Defect site"></select></label>
+        <div class="checks"><label><input type="checkbox" id="latch" checked> Latch closed</label><label><input type="checkbox" id="reverse"> Reverse readout labels</label></div>
+      </div>
+      <p class="settings-note">A ZIF offset moves the pins; it does not renumber the artwork. Reversing the labels changes the readout order without moving any geometry. Defects stay on their target as you inspect other pins. A rail crack holds the lot even if its gold leads still read.</p>
+    </details>
+  </section>
+
+  <section class="results" id="results" aria-labelledby="bench-title">
+    <div class="section-head"><div><div class="eyebrow">INERT ELECTRICAL BENCH</div><h2 id="bench-title">From site to readout</h2></div><span class="bench-status" id="grade" aria-live="polite">UNTESTED</span></div>
+    <p class="scoped" id="diagnosis" aria-live="polite">Reach the dry continuity and wet impedance steps to test your build.</p>
+    <div class="metrics" id="metrics"><div><span>Pad contact</span><b>—</b></div><div><span>Correctly mapped</span><b>—</b></div><div><span>Wet readable</span><b>—</b></div><div><span>Shared / wrong / open</span><b>—</b></div></div>
+    <div class="result-grid">
+      <div class="map-box">
+        <h3>Pin map</h3>
+        <p class="small">P = physical fixture pin, A = Au pad, E = Pt site. Select a pin to inspect it.</p>
+        <div class="pinmap" id="pinmap" role="group" aria-label="32 physical connector positions"></div>
+        <div class="map-key"><span class="good-dot">Correct map</span><span class="wrong-dot">Wrong map</span><span class="fault-dot">Open or shared</span><span class="empty-dot">Empty</span></div>
+        <div class="read-card" id="read-card"></div>
+      </div>
+      <div class="plots">
+        <div class="plot-head"><div><h3>Wet impedance</h3><p class="small" id="plot-label">No bench data yet.</p></div><label for="frequency">Inspect point<select id="frequency" disabled><option value="10">10 Hz</option><option value="30">30 Hz</option><option value="100">100 Hz</option><option value="300">300 Hz</option><option value="1000" selected>1 kHz</option><option value="3000">3 kHz</option><option value="10000">10 kHz</option></select></label></div>
+        <figure class="plot-wrap" id="bode" aria-labelledby="plot-caption"></figure>
+        <p id="plot-caption" class="small">Copper-color curve: calculated, not measured. The blue diamond is the 32-site mean reported at 1 kHz.</p>
+        <details class="wave-details"><summary>Bench signal replay</summary><div id="waveform"></div><p class="small" id="wave-note"></p></details>
+      </div>
+    </div>
+    <div class="exports"><button id="download-report">Download traveler JSON</button><button id="download-map" disabled>Pin map CSV</button><button id="download-eis" disabled>Selected EIS CSV</button><button id="download-wave" disabled>Selected waveform CSV</button><button id="download-artwork">Export displayed mask SVG</button></div>
+  </section>
+
+  <section class="evidence" id="evidence" aria-labelledby="evidence-title">
+    <div class="eyebrow">REFERENCES & SCOPE</div><h2 id="evidence-title">Where the numbers came from</h2>
+    <div class="evidence-grid">
+      <article><h3>Directly reported</h3><p>Separate SU-8, Cr/Au, Cr/Pt, and top SU-8 masks on a nickel release layer. The 32-site reference describes 20 µm Pt disks, a roughly 2.2 × 38 mm specimen, and two Au leads per longitudinal rail. The connector pitch is 500 µm; pads are 400 µm wide against approximately 100 µm pins.</p><p>At 1 kHz, the authors reported a mean 1.3 MΩ and −80° for 32 disks in 1× PBS. A separate contact-resistance measurement was approximately 3 Ω per interface. These are two different experiments.</p></article>
+      <article><h3>Modeled, not recovered</h3><p>Diagram artwork, E→A→P order, nominal structure dimensions where unspecified, sheet resistance, solver contact area, and test waveforms. The 16-site option illustrates known population, not the authors’ unknown occupied pin numbers.</p><p>No measured spectrum, proprietary mask files, actual connector map, or calibrated local recipe is represented. No nanowire transistor branch, biological response, administration, or deployment instructions are included.</p></article>
+      <article><h3>Bench solver</h3><p>A graph computes independent paths from fixture pins through physical pad overlaps to the Pt sites. A dry route is built from sheet resistance, route geometry and a contact estimate; a wet result additionally requires an exposed window.</p><p>A constant-phase interface is anchored to one published mean at 1 kHz. Other frequencies, aperture and load behavior are extrapolations. <a href="#model-detail">Read model details</a>.</p></article>
+    </div>
+    <div id="source-list" class="source-list"></div>
+    <details class="model-detail" id="model-detail"><summary>Units, assumptions and acceptance rules</summary><div id="method"></div></details>
+  </section>
+</main>
+<footer class="wrap foot"><span>BUILD THE SIMULATION / VIRTUAL FOUNDRY</span><a href="/simulations/foundry/atlas/#device=23-syringe-injectable-mesh-electronics">Return to workflow atlas ↑</a></footer>
+<noscript><p>This lab requires JavaScript for the interactive geometry and bench calculations.</p></noscript>
+<script type="application/json" id="equipment-data">@@EQUIPMENT@@</script>
+<script>@@ENGINE@@</script>
+<script>@@VIEW@@</script>
+<script>@@APP@@</script>
+</body></html>

@@ -1331,6 +1331,150 @@
           "note": "Reports prior flexible electro­des and wireless acquisition module without disclosing manufacture."
         }
       ]
+    },
+    {
+      "id": "tolstosheeva-connector-coupons",
+      "title": "Tolstosheeva connector coupons · polymer vs rigid oxide pads",
+      "family": "Flexible cortical surface",
+      "evidence": "documented",
+      "summary": "Two published physical pad-build branches are distinct from the synthetic bank-reference choices in the ECoG lab. The reported connector-open ranges describe tested specimens, not process yield estimates or a probability distribution.",
+      "devices": [],
+      "variants": [
+        {
+          "id": "b",
+          "label": "Type B · retain polyimide under connector pads",
+          "description": "Skip the lower-polyimide pad window; the connector is still soldered and packaged.",
+          "status": "documented"
+        },
+        {
+          "id": "c",
+          "label": "Type C · pads on silicon oxide",
+          "description": "Clear lower-polyimide under connector pads and retain the silicon interposer below the front-side oxide.",
+          "status": "documented"
+        },
+        {
+          "id": "tri",
+          "label": "Reference · parallel trace continuity fixture",
+          "description": "Three parallel conductor subpaths across one transition. This is an ideal topology test, not quantitative source yield.",
+          "status": "reference"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Keep polyimide at connector pads",
+          "detail": "Manufacturing branch B omits the Fig. 3B pad-window step. Do not confuse it with adhesion-only specimen A.",
+          "tools": [
+            "02-01",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Check material at pad cross-section. Both B and C received connector assembly and electrical test.",
+          "sourceIds": [
+            "ecog"
+          ],
+          "varies": [
+            "b"
+          ],
+          "only": [
+            "b"
+          ]
+        },
+        {
+          "title": "Clear polyimide at connector pads",
+          "detail": "Manufacturing branch C exposes the silicon-oxide landing surface. The etched taper and parallel path layout are different mechanisms.",
+          "tools": [
+            "02-01",
+            "04-01",
+            "05-02"
+          ],
+          "status": "documented",
+          "check": "Witness that the pad area reaches oxide without vacating the retained silicon assembly base.",
+          "sourceIds": [
+            "ecog"
+          ],
+          "varies": [
+            "c"
+          ],
+          "only": [
+            "c"
+          ]
+        },
+        {
+          "title": "Align and attach four fine-pitch connectors",
+          "detail": "The cited process used FINEPLACER pico ma for alignment. Register 08-04 is the lambda dry registration model, not evidence for the original mount, joint or thermal profile. Keep mounting, joining and verification as independent gates.",
+          "tools": [
+            "08-04",
+            "08-10",
+            "08-12",
+            "02-12"
+          ],
+          "status": "documented",
+          "check": "Confirm physical pin alignment and separately verify electrical behavior instead of treating overlay as yield.",
+          "sourceIds": [
+            "ecog"
+          ],
+          "varies": [
+            "b",
+            "c"
+          ],
+          "only": [
+            "b",
+            "c"
+          ]
+        },
+        {
+          "title": "Compare measured connector opens",
+          "detail": "In the published specimens, type B had 15–27 open connections per 32-pin connector, and type C 0–3. Authors report no shorts in the separate dry check. These measurements do not turn into a universal threshold.",
+          "tools": [
+            "09-01",
+            "09-12",
+            "05-07"
+          ],
+          "status": "documented",
+          "check": "Record shorts separately from the number of opens on each connector; preserve the reported range rather than fitting yield.",
+          "sourceIds": [
+            "ecog"
+          ],
+          "varies": [
+            "b",
+            "c"
+          ],
+          "only": [
+            "b",
+            "c"
+          ]
+        },
+        {
+          "title": "Check three parallel subpaths",
+          "detail": "Fig. 8 models one metal path splitting into three. Given intact shared endpoints, one or two branch opens retain continuity and opening all three severs the path. A shared-endpoint failure is not protected.",
+          "tools": [
+            "05-07"
+          ],
+          "status": "reference",
+          "check": "Test 0, 1, 2, and 3 opened branches, then one common-end failure. Do not confuse a trace open with a pad solder-joint or bank-reference failure.",
+          "sourceIds": [
+            "ecog"
+          ],
+          "varies": [
+            "tri"
+          ],
+          "only": [
+            "tri"
+          ]
+        }
+      ],
+      "gaps": [
+        "No connector-alignment calibration, joining or sample yield extrapolation is claimed. This comparison is a hardware process reference, not an as-built replay of the 16-stage virtual lab."
+      ],
+      "sources": [
+        {
+          "id": "ecog",
+          "title": "Tolstosheeva et al. (2015), §§2.2–2.3 and 3.1–3.3; Figs. 3, 8, 11",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4327052/",
+          "note": "Methods and results distinguish B and C substrates, three individual parallel subpaths, and observed connector-open intervals."
+        }
+      ],
+      "lab": "/simulations/flex-rigid-ecog-foundry/"
     }
   ]
 }
